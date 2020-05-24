@@ -1,0 +1,205 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="423" height="778" view_box="0 0 423 778"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:link="http://www.w3.org/1999/xlink">\n\n<desc>Généré par Mocodo 2.3.7 le Fri, 22 May 2020 01:47:48</desc>
+
+<rect id="frame" x="0" y="0" width="423" height="778" fill="#f5f5f5" stroke="none" stroke-width="0"/>
+
+<!-- Association FROM -->
+<line x1="139" y1="111" x2="246" y2="111" stroke="#bf812d" stroke-width="2"/>
+<text x="194" y="103.0" fill="#01665e" font-family="Verdana" font-size="12">1,1</text>
+<line x1="350" y1="111" x2="246" y2="111" stroke="#bf812d" stroke-width="2"/>
+<text x="276" y="128.0" fill="#01665e" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-FROM">
+	<path d="M 257 86 a 14 14 90 0 1 14 14 V 111 h -50 V 100 a 14 14 90 0 1 14 -14" fill="#dfc27d" stroke="#dfc27d" stroke-width="0"/>
+	<path d="M 271 111.0 v 11 a 14 14 90 0 1 -14 14 H 235 a 14 14 90 0 1 -14 -14 V 111.0 H 50" fill="#f6e8c3" stroke="#f6e8c3" stroke-width="0"/>
+	<rect x="221" y="86" width="50" height="50" fill="none" rx="14" stroke="#bf812d" stroke-width="2"/>
+	<line x1="221" y1="111" x2="271" y2="111" stroke="#bf812d" stroke-width="1"/>
+	<text x="228" y="103.7" fill="#000000" font-family="Verdana" font-size="12">FROM</text>
+</g>
+
+<!-- Association BELONGS TO -->
+<line x1="57" y1="693" x2="57" y2="567" stroke="#bf812d" stroke-width="2"/>
+<text x="62.0" y="609" fill="#01665e" font-family="Verdana" font-size="12">0,N</text>
+<line x1="57" y1="415" x2="57" y2="567" stroke="#bf812d" stroke-width="2"/>
+<text x="62.0" y="508" fill="#01665e" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-BELONGS TO">
+	<path d="M 91 542 a 14 14 90 0 1 14 14 V 567 h -96 V 556 a 14 14 90 0 1 14 -14" fill="#dfc27d" stroke="#dfc27d" stroke-width="0"/>
+	<path d="M 105 567.0 v 11 a 14 14 90 0 1 -14 14 H 23 a 14 14 90 0 1 -14 -14 V 567.0 H 96" fill="#f6e8c3" stroke="#f6e8c3" stroke-width="0"/>
+	<rect x="9" y="542" width="96" height="50" fill="none" rx="14" stroke="#bf812d" stroke-width="2"/>
+	<line x1="9" y1="567" x2="105" y2="567" stroke="#bf812d" stroke-width="1"/>
+	<text x="16" y="559.7" fill="#000000" font-family="Verdana" font-size="12">BELONGS TO</text>
+</g>
+
+<!-- Association CAN HAVE -->
+<line x1="139" y1="111" x2="246" y2="263" stroke="#bf812d" stroke-width="2"/>
+<text x="194" y="179.387247438" fill="#01665e" font-family="Verdana" font-size="12">0,N</text>
+<line x1="246" y1="415" x2="246" y2="263" stroke="#bf812d" stroke-width="2"/>
+<text x="251.0" y="305" fill="#01665e" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-CAN HAVE">
+	<path d="M 271 238 a 14 14 90 0 1 14 14 V 263 h -78 V 252 a 14 14 90 0 1 14 -14" fill="#dfc27d" stroke="#dfc27d" stroke-width="0"/>
+	<path d="M 285 263.0 v 11 a 14 14 90 0 1 -14 14 H 221 a 14 14 90 0 1 -14 -14 V 263.0 H 78" fill="#f6e8c3" stroke="#f6e8c3" stroke-width="0"/>
+	<rect x="207" y="238" width="78" height="50" fill="none" rx="14" stroke="#bf812d" stroke-width="2"/>
+	<line x1="207" y1="263" x2="285" y2="263" stroke="#bf812d" stroke-width="1"/>
+	<text x="214" y="255.7" fill="#000000" font-family="Verdana" font-size="12">CAN HAVE</text>
+</g>
+
+<!-- Association WHICH CONTAINS -->
+<line x1="246" y1="415" x2="350" y2="567" stroke="#bf812d" stroke-width="2"/>
+<text x="308" y="495.535824631" fill="#01665e" font-family="Verdana" font-size="12">0,1</text>
+<line x1="350" y1="693" x2="350" y2="567" stroke="#bf812d" stroke-width="2"/>
+<text x="355.0" y="617" fill="#01665e" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-WHICH CONTAINS">
+	<path d="M 400 542 a 14 14 90 0 1 14 14 V 567 h -128 V 556 a 14 14 90 0 1 14 -14" fill="#dfc27d" stroke="#dfc27d" stroke-width="0"/>
+	<path d="M 414 567.0 v 11 a 14 14 90 0 1 -14 14 H 300 a 14 14 90 0 1 -14 -14 V 567.0 H 128" fill="#f6e8c3" stroke="#f6e8c3" stroke-width="0"/>
+	<rect x="286" y="542" width="128" height="50" fill="none" rx="14" stroke="#bf812d" stroke-width="2"/>
+	<line x1="286" y1="567" x2="414" y2="567" stroke="#bf812d" stroke-width="1"/>
+	<text x="293" y="559.7" fill="#000000" font-family="Verdana" font-size="12">WHICH CONTAINS</text>
+</g>
+
+<!-- Association GOT -->
+<line x1="57" y1="415" x2="57" y2="263" stroke="#bf812d" stroke-width="2"/>
+<text x="62.0" y="331" fill="#01665e" font-family="Verdana" font-size="12">1,1</text>
+<line x1="139" y1="111" x2="57" y2="263" stroke="#bf812d" stroke-width="2"/>
+<text x="62" y="199.887988703" fill="#01665e" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-GOT">
+	<path d="M 64 238 a 14 14 90 0 1 14 14 V 263 h -42 V 252 a 14 14 90 0 1 14 -14" fill="#dfc27d" stroke="#dfc27d" stroke-width="0"/>
+	<path d="M 78 263.0 v 11 a 14 14 90 0 1 -14 14 H 50 a 14 14 90 0 1 -14 -14 V 263.0 H 42" fill="#f6e8c3" stroke="#f6e8c3" stroke-width="0"/>
+	<rect x="36" y="238" width="42" height="50" fill="none" rx="14" stroke="#bf812d" stroke-width="2"/>
+	<line x1="36" y1="263" x2="78" y2="263" stroke="#bf812d" stroke-width="1"/>
+	<text x="43" y="255.7" fill="#000000" font-family="Verdana" font-size="12">GOT</text>
+</g>
+
+<!-- Association HAS -->
+<line x1="57" y1="693" x2="246" y2="693" stroke="#bf812d" stroke-width="2"/>
+<text x="102" y="710.0" fill="#01665e" font-family="Verdana" font-size="12">0,N</text>
+<line x1="246" y1="415" x2="246" y2="693" stroke="#bf812d" stroke-width="2"/>
+<text x="220.0" y="534" fill="#01665e" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-HAS">
+	<path d="M 252 668 a 14 14 90 0 1 14 14 V 693 h -40 V 682 a 14 14 90 0 1 14 -14" fill="#dfc27d" stroke="#dfc27d" stroke-width="0"/>
+	<path d="M 266 693.0 v 11 a 14 14 90 0 1 -14 14 H 240 a 14 14 90 0 1 -14 -14 V 693.0 H 40" fill="#f6e8c3" stroke="#f6e8c3" stroke-width="0"/>
+	<rect x="226" y="668" width="40" height="50" fill="none" rx="14" stroke="#bf812d" stroke-width="2"/>
+	<line x1="226" y1="693" x2="266" y2="693" stroke="#bf812d" stroke-width="1"/>
+	<text x="233" y="685.7" fill="#000000" font-family="Verdana" font-size="12">HAS</text>
+</g>
+
+<!-- Entity RATING -->
+<g id="entity-RATING">
+	<g id="frame-RATING">
+		<rect x="310" y="625" width="80" height="25" fill="#80cdc1" stroke="#80cdc1" stroke-width="0"/>
+		<rect x="310" y="650.0" width="80" height="111" fill="#c7eae5" stroke="#c7eae5" stroke-width="0"/>
+		<rect x="310" y="625" width="80" height="136" fill="none" stroke="#35978f" stroke-width="2"/>
+		<line x1="310" y1="650" x2="390" y2="650" stroke="#35978f" stroke-width="1"/>
+	</g>
+	<text x="326" y="642.7" fill="#000000" font-family="Verdana" font-size="12">RATING</text>
+	<text x="315" y="667.7" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="315" y1="670" x2="327" y2="670" stroke="#000000" stroke-width="1"/>
+	<text x="315" y="684.7" fill="#000000" font-family="Verdana" font-size="12">comment</text>
+	<text x="315" y="701.8" fill="#000000" font-family="Verdana" font-size="12">star</text>
+	<text x="315" y="718.8" fill="#000000" font-family="Verdana" font-size="12">created_at</text>
+	<text x="315" y="735.8" fill="#000000" font-family="Verdana" font-size="12">updated_at</text>
+	<text x="315" y="752.8" fill="#000000" font-family="Verdana" font-size="12">request_id</text>
+</g>
+
+<!-- Entity SERVICE -->
+<g id="entity-SERVICE">
+	<g id="frame-SERVICE">
+		<rect x="17" y="617" width="80" height="25" fill="#80cdc1" stroke="#80cdc1" stroke-width="0"/>
+		<rect x="17" y="642.0" width="80" height="127" fill="#c7eae5" stroke="#c7eae5" stroke-width="0"/>
+		<rect x="17" y="617" width="80" height="152" fill="none" stroke="#35978f" stroke-width="2"/>
+		<line x1="17" y1="642" x2="97" y2="642" stroke="#35978f" stroke-width="1"/>
+	</g>
+	<text x="30" y="634.7" fill="#000000" font-family="Verdana" font-size="12">SERVICE</text>
+	<text x="22" y="659.7" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="22" y1="662" x2="34" y2="662" stroke="#000000" stroke-width="1"/>
+	<text x="22" y="676.7" fill="#000000" font-family="Verdana" font-size="12">parent_id</text>
+	<text x="22" y="693.8" fill="#000000" font-family="Verdana" font-size="12">title</text>
+	<text x="22" y="710.8" fill="#000000" font-family="Verdana" font-size="12">description</text>
+	<text x="22" y="727.8" fill="#000000" font-family="Verdana" font-size="12">image</text>
+	<text x="22" y="744.8" fill="#000000" font-family="Verdana" font-size="12">created_at</text>
+	<text x="22" y="761.8" fill="#000000" font-family="Verdana" font-size="12">updated_at</text>
+</g>
+
+<!-- Entity REQUEST -->
+<g id="entity-REQUEST">
+	<g id="frame-REQUEST">
+		<rect x="189" y="313" width="114" height="25" fill="#80cdc1" stroke="#80cdc1" stroke-width="0"/>
+		<rect x="189" y="338.0" width="114" height="179" fill="#c7eae5" stroke="#c7eae5" stroke-width="0"/>
+		<rect x="189" y="313" width="114" height="204" fill="none" stroke="#35978f" stroke-width="2"/>
+		<line x1="189" y1="338" x2="303" y2="338" stroke="#35978f" stroke-width="1"/>
+	</g>
+	<text x="217" y="330.7" fill="#000000" font-family="Verdana" font-size="12">REQUEST</text>
+	<text x="194" y="355.7" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="194" y1="358" x2="206" y2="358" stroke="#000000" stroke-width="1"/>
+	<text x="194" y="372.7" fill="#000000" font-family="Verdana" font-size="12">body</text>
+	<text x="194" y="389.7" fill="#000000" font-family="Verdana" font-size="12">reservation_date</text>
+	<text x="194" y="406.7" fill="#000000" font-family="Verdana" font-size="12">reservation_hour</text>
+	<text x="194" y="423.8" fill="#000000" font-family="Verdana" font-size="12">status</text>
+	<text x="194" y="440.8" fill="#000000" font-family="Verdana" font-size="12">created_at</text>
+	<text x="194" y="457.8" fill="#000000" font-family="Verdana" font-size="12">updated_at</text>
+	<text x="194" y="474.8" fill="#000000" font-family="Verdana" font-size="12">friendly_user_id</text>
+	<text x="194" y="491.8" fill="#000000" font-family="Verdana" font-size="12">jobworker_id</text>
+	<text x="194" y="508.8" fill="#000000" font-family="Verdana" font-size="12">service_id</text>
+</g>
+
+<!-- Entity USER -->
+<g id="entity-USER">
+	<g id="frame-USER">
+		<rect x="89" y="9" width="100" height="25" fill="#80cdc1" stroke="#80cdc1" stroke-width="0"/>
+		<rect x="89" y="34.0" width="100" height="179" fill="#c7eae5" stroke="#c7eae5" stroke-width="0"/>
+		<rect x="89" y="9" width="100" height="204" fill="none" stroke="#35978f" stroke-width="2"/>
+		<line x1="89" y1="34" x2="189" y2="34" stroke="#35978f" stroke-width="1"/>
+	</g>
+	<text x="122" y="26.7" fill="#000000" font-family="Verdana" font-size="12">USER</text>
+	<text x="94" y="51.7" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="94" y1="54" x2="106" y2="54" stroke="#000000" stroke-width="1"/>
+	<text x="94" y="68.7" fill="#000000" font-family="Verdana" font-size="12">firstname</text>
+	<text x="94" y="85.7" fill="#000000" font-family="Verdana" font-size="12">lastname</text>
+	<text x="94" y="102.7" fill="#000000" font-family="Verdana" font-size="12">email</text>
+	<text x="94" y="119.8" fill="#000000" font-family="Verdana" font-size="12">password</text>
+	<text x="94" y="136.8" fill="#000000" font-family="Verdana" font-size="12">image</text>
+	<text x="94" y="153.8" fill="#000000" font-family="Verdana" font-size="12">role</text>
+	<text x="94" y="170.8" fill="#000000" font-family="Verdana" font-size="12">created_at</text>
+	<text x="94" y="187.8" fill="#000000" font-family="Verdana" font-size="12">updated_at</text>
+	<text x="94" y="204.8" fill="#000000" font-family="Verdana" font-size="12">department_id</text>
+</g>
+
+<!-- Entity DEPARTMENT -->
+<g id="entity-DEPARTMENT">
+	<g id="frame-DEPARTMENT">
+		<rect x="303" y="52" width="94" height="25" fill="#80cdc1" stroke="#80cdc1" stroke-width="0"/>
+		<rect x="303" y="77.0" width="94" height="93" fill="#c7eae5" stroke="#c7eae5" stroke-width="0"/>
+		<rect x="303" y="52" width="94" height="118" fill="none" stroke="#35978f" stroke-width="2"/>
+		<line x1="303" y1="77" x2="397" y2="77" stroke="#35978f" stroke-width="1"/>
+	</g>
+	<text x="308" y="69.7" fill="#000000" font-family="Verdana" font-size="12">DEPARTMENT</text>
+	<text x="308" y="94.7" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="308" y1="97" x2="320" y2="97" stroke="#000000" stroke-width="1"/>
+	<text x="308" y="111.8" fill="#000000" font-family="Verdana" font-size="12">name</text>
+	<text x="308" y="128.8" fill="#000000" font-family="Verdana" font-size="12">number</text>
+	<text x="308" y="145.8" fill="#000000" font-family="Verdana" font-size="12">created_at</text>
+	<text x="308" y="162.8" fill="#000000" font-family="Verdana" font-size="12">updated_at</text>
+</g>
+
+<!-- Entity SKILL -->
+<g id="entity-SKILL">
+	<g id="frame-SKILL">
+		<rect x="17" y="339" width="80" height="25" fill="#80cdc1" stroke="#80cdc1" stroke-width="0"/>
+		<rect x="17" y="364.0" width="80" height="127" fill="#c7eae5" stroke="#c7eae5" stroke-width="0"/>
+		<rect x="17" y="339" width="80" height="152" fill="none" stroke="#35978f" stroke-width="2"/>
+		<line x1="17" y1="364" x2="97" y2="364" stroke="#35978f" stroke-width="1"/>
+	</g>
+	<text x="39" y="356.7" fill="#000000" font-family="Verdana" font-size="12">SKILL</text>
+	<text x="22" y="381.7" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="22" y1="384" x2="34" y2="384" stroke="#000000" stroke-width="1"/>
+	<text x="22" y="398.7" fill="#000000" font-family="Verdana" font-size="12">description</text>
+	<text x="22" y="415.8" fill="#000000" font-family="Verdana" font-size="12">price</text>
+	<text x="22" y="432.8" fill="#000000" font-family="Verdana" font-size="12">created_at</text>
+	<text x="22" y="449.8" fill="#000000" font-family="Verdana" font-size="12">updated_at</text>
+	<text x="22" y="466.8" fill="#000000" font-family="Verdana" font-size="12">user_id</text>
+	<text x="22" y="483.8" fill="#000000" font-family="Verdana" font-size="12">service_id</text>
+</g>
+</svg>
