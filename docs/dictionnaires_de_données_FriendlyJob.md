@@ -71,14 +71,3 @@
 |created_at|TIMESTAMP|NOT NULL|Creation date of the rating|
 |updated_at|TIMESTAMP|NULL|Update date of the rating|
 |request_id|INT|FOREIGN KEY, NOT NULL|Foreign key use to refer to the request’s table|
-
-## Contact (`contact`)
-|Champ|Type|Spécificités|Description|
-|-|-|-|-|
-|id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|Contact's id|
-|firstname|VARCHAR(255)|NOT NULL|Contact’s firstName|
-|lastname|VARCHAR(255)|NOT NULL|Contact’s name|
-|role|VARCHAR(255)|NOT NULL|Contact’s role in the project|
-|image|VARCHAR(255)|NOT NULL|URL of contact's picture (used on the contact page)|
-|created_at|TIMESTAMP|NOT NULL|Creation date of the contact's|
-|updated_at|TIMESTAMP|NULL|Update date of the contact's|
