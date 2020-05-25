@@ -1,6 +1,10 @@
 // == Import npm
 import React from 'react';
 
+
+import ModalInscription from 'src/components/ModalInscription';
+import ModalConnexion from 'src/components/ModalConnexion';
+
 // == Import
 import './App.scss';
 import JobWorkerList from '../JobWorkerList';
