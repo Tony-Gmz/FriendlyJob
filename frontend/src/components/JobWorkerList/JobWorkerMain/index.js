@@ -2,6 +2,7 @@ import React from 'react';
 import { Dropdown } from 'semantic-ui-react'
 import Jober from '../../JobPresentation/Jober';
 import './jobWorkerMain.scss';
+import { Link } from 'react-router-dom';
 const JobWorkerMain = () => {
 
   return (
@@ -15,18 +16,26 @@ const JobWorkerMain = () => {
     </Dropdown>
     </div>
     <div className="jobWorkerCards">
-      <div className="jobWorkerCards_item">
+     <Link>
+     <div className="jobWorkerCards_item">
       <Jober />
-      </div>
-      <div className="jobWorkerCards_item">
+     </div>
+     </Link> 
+     <Link>
+     <div className="jobWorkerCards_item">
       <Jober />
-      </div>
-      <div className="jobWorkerCards_item">
+     </div>
+     </Link> 
+     <Link>
+     <div className="jobWorkerCards_item">
       <Jober />
-      </div>
-      <div className="jobWorkerCards_item">
+     </div>
+     </Link> 
+     <Link>
+     <div className="jobWorkerCards_item">
       <Jober />
-      </div>
+     </div>
+     </Link> 
     </div>
     </div>
   );
