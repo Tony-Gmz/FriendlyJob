@@ -6,6 +6,8 @@ import React from 'react';
 import './App.scss';
 import JobWorkerList from '../JobWorkerList';
 import Footer from 'src/components/Footer'
+import JobWorkerMain from '../JobWorkerList/JobWorkerMain';
+import NavBar from '../NavBar';
 
 
 
@@ -14,9 +16,8 @@ import Footer from 'src/components/Footer'
 // == Composant
 const App = () => (
   <div className="app">
+    <NavBar />
     <JobWorkerList />
-    <div>cards</div>
-    <div>pagination + lien modal inscription</div>
     <Footer/> 
   </div>
 );

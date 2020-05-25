@@ -6,6 +6,8 @@ import JoberRating from './rating';
 import JoberStyled from './JoberStyled';
 import './jober.scss';
 
+// Styled component reusable
+
 const Jober = () => {
 
   const description = [
@@ -22,7 +24,7 @@ const Jober = () => {
           <Card.Content header="Thibault" />
           <Card.Content description={description} />
           <Card.Content extra>
-            <JoberRating />
+          10€/heure  <JoberRating />
           </Card.Content>
         </Card>
       </div>
