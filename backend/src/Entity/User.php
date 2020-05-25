@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -17,16 +18,19 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"service_jobworker"})
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
+     * @ORM\Column(type="string", length=180)
+     * @Groups({"service_jobworker"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
+     * @Groups({"service_jobworker"})
      */
     private $roles = [];
 
@@ -38,16 +42,19 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"service_jobworker"})
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"service_jobworker"})
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"service_jobworker"})
      */
     private $image;
 
@@ -62,8 +69,9 @@ class User implements UserInterface
     private $updatedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Department::class, inversedBy="users")
+     * @ORM\ManyToOne(targetEntity=Department::class, inversedBy="users",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"service_jobworker"})
      */
     private $department;
 
@@ -73,20 +81,21 @@ class User implements UserInterface
     private $skills;
 
     /**
-     * @ORM\OneToMany(targetEntity=Request::class, mappedBy="friendlyUser", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Demand::class, mappedBy="friendlyUser", orphanRemoval=true)
      */
-    private $friendlyUserRequests;
+    private $friendlyUserDemands;
 
     /**
-     * @ORM\OneToMany(targetEntity=Request::class, mappedBy="jobWorker", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Demand::class, mappedBy="jobWorker", orphanRemoval=true)
      */
-    private $jobWorkerRequests;
+    private $jobWorkerDemands;
 
     public function __construct()
     {
         $this->skills = new ArrayCollection();
-        $this->friendlyUserRequests = new ArrayCollection();
-        $this->jobWorkerRequests = new ArrayCollection();
+        $this->friendlyUserDemands = new ArrayCollection();
+        $this->jobWorkerDemands = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
     public function getId(): ?int
@@ -268,30 +277,30 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|Request[]
+     * @return Collection|Demand[]
      */
-    public function getFriendlyUserRequests(): Collection
+    public function getFriendlyUserDemands(): Collection
     {
-        return $this->friendlyUserRequests;
+        return $this->friendlyUserDemands;
     }
 
-    public function addFriendlyUserRequest(Request $friendlyUserRequest): self
+    public function addFriendlyUserDemand(Demand $friendlyUserDemand): self
     {
-        if (!$this->friendlyUserRequests->contains($friendlyUserRequest)) {
-            $this->friendlyUserRequests[] = $friendlyUserRequest;
-            $friendlyUserRequest->setFriendlyUser($this);
+        if (!$this->friendlyUserDemands->contains($friendlyUserDemand)) {
+            $this->friendlyUserDemands[] = $friendlyUserDemand;
+            $friendlyUserDemand->setFriendlyUser($this);
         }
 
         return $this;
     }
 
-    public function removeFriendlyUserRequest(Request $friendlyUserRequest): self
+    public function removeFriendlyUserDemand(Demand $friendlyUserDemand): self
     {
-        if ($this->friendlyUserRequests->contains($friendlyUserRequest)) {
-            $this->friendlyUserRequests->removeElement($friendlyUserRequest);
+        if ($this->friendlyUserDemands->contains($friendlyUserDemand)) {
+            $this->friendlyUserDemands->removeElement($friendlyUserDemand);
             // set the owning side to null (unless already changed)
-            if ($friendlyUserRequest->getFriendlyUser() === $this) {
-                $friendlyUserRequest->setFriendlyUser(null);
+            if ($friendlyUserDemand->getFriendlyUser() === $this) {
+                $friendlyUserDemand->setFriendlyUser(null);
             }
         }
 
@@ -299,30 +308,30 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|Request[]
+     * @return Collection|Demand[]
      */
-    public function getJobWorkerRequests(): Collection
+    public function getJobWorkerDemands(): Collection
     {
-        return $this->jobWorkerRequests;
+        return $this->jobWorkerDemands;
     }
 
-    public function addJobWorkerRequest(Request $jobWorkerRequest): self
+    public function addJobWorkerDemand(Demand $jobWorkerDemand): self
     {
-        if (!$this->jobWorkerRequests->contains($jobWorkerRequest)) {
-            $this->jobWorkerRequests[] = $jobWorkerRequest;
-            $jobWorkerRequest->setJobWorker($this);
+        if (!$this->jobWorkerDemands->contains($jobWorkerDemand)) {
+            $this->jobWorkerDemands[] = $jobWorkerDemand;
+            $jobWorkerDemand->setJobWorker($this);
         }
 
         return $this;
     }
 
-    public function removeJobWorkerRequest(Request $jobWorkerRequest): self
+    public function removeJobWorkerDemand(Demand $jobWorkerDemand): self
     {
-        if ($this->jobWorkerRequests->contains($jobWorkerRequest)) {
-            $this->jobWorkerRequests->removeElement($jobWorkerRequest);
+        if ($this->jobWorkerDemands->contains($jobWorkerDemand)) {
+            $this->jobWorkerDemands->removeElement($jobWorkerDemand);
             // set the owning side to null (unless already changed)
-            if ($jobWorkerRequest->getJobWorker() === $this) {
-                $jobWorkerRequest->setJobWorker(null);
+            if ($jobWorkerDemand->getJobWorker() === $this) {
+                $jobWorkerDemand->setJobWorker(null);
             }
         }
 

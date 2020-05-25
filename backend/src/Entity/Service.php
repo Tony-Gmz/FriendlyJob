@@ -6,6 +6,7 @@ use App\Repository\ServiceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ServiceRepository::class)
@@ -16,26 +17,31 @@ class Service
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"service_browse", "service_read", "service_jobworker"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"service_browse", "service_read", "service_jobworker"})
      */
     private $parentId;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"service_browse", "service_read", "service_jobworker"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", length=16383)
+     * @Groups({"service_browse", "service_read", "service_jobworker"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"service_browse", "service_read", "service_jobworker"})
      */
     private $image;
 
@@ -51,18 +57,21 @@ class Service
 
     /**
      * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="service", orphanRemoval=true)
+     * @Groups({"service_jobworker"})
      */
     private $skills;
 
     /**
-     * @ORM\OneToMany(targetEntity=Request::class, mappedBy="service", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Demand::class, mappedBy="service", orphanRemoval=true)
      */
-    private $requests;
+    private $demands;
 
     public function __construct()
     {
         $this->skills = new ArrayCollection();
-        $this->requests = new ArrayCollection();
+        $this->demands = new ArrayCollection();
+        $this->createdAt = new \DateTime();
+    
     }
 
     public function getId(): ?int
@@ -174,30 +183,30 @@ class Service
     }
 
     /**
-     * @return Collection|Request[]
+     * @return Collection|Demand[]
      */
-    public function getRequests(): Collection
+    public function getDemands(): Collection
     {
-        return $this->requests;
+        return $this->demands;
     }
 
-    public function addRequest(Request $request): self
+    public function addDemand(Demand $demand): self
     {
-        if (!$this->requests->contains($request)) {
-            $this->requests[] = $request;
-            $request->setService($this);
+        if (!$this->demands->contains($demand)) {
+            $this->demands[] = $demand;
+            $demand->setService($this);
         }
 
         return $this;
     }
 
-    public function removeRequest(Request $request): self
+    public function removeDemand(Demand $demand): self
     {
-        if ($this->requests->contains($request)) {
-            $this->requests->removeElement($request);
+        if ($this->demands->contains($demand)) {
+            $this->demands->removeElement($demand);
             // set the owning side to null (unless already changed)
-            if ($request->getService() === $this) {
-                $request->setService(null);
+            if ($demand->getService() === $this) {
+                $demand->setService(null);
             }
         }
 

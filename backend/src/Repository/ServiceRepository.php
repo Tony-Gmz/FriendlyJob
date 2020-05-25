@@ -18,23 +18,42 @@ class ServiceRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Service::class);
     }
-
-    // /**
-    //  * @return Service[] Returns an array of Service objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function findJobworkerByService($id, $limit = null)
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        $qb = $this->createQueryBuilder('s');
+        
+        $qb
+            ->addSelect('sk', 'u', 'dep', 'dem', 'r')
+            ->join('s.skills', 'sk')
+            ->join('sk.user', 'u')
+            ->join('u.department', 'dep')
+            ->join('u.jobWorkerDemands', 'dem')
+            ->join('dem.rating', 'r')
+            ->orderBy('r.star', 'DESC')
+            ->where('s.id = :id')
+            ->setParameter('id', $id)
+            ->setMaxResults($limit ?? null);
+            //! Moyenne des résultat possible ? Régler fixture avant !
         ;
+        //dd($qb->getQuery());
+        //dd($qb->getQuery()->getResult());
+        return $qb->getQuery()->getResult();
     }
-    */
+
+    public function findSubServiceFromService($id)
+    {
+        $qb = $this->createQueryBuilder('s');
+
+        $qb
+            ->where('s.parentId = :id')
+            ->setParameter('id', $id)
+        ;
+        //dd($qb->getQuery());
+        dd($qb->getQuery()->getResult());
+        return $qb->getQuery()->getResult();
+    }
+    
 
     /*
     public function findOneBySomeField($value): ?Service

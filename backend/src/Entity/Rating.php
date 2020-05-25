@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\RatingRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=RatingRepository::class)
@@ -38,9 +39,14 @@ class Rating
     private $updatedAt;
 
     /**
-     * @ORM\OneToOne(targetEntity=Request::class, inversedBy="rating", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Demand::class, inversedBy="rating", cascade={"persist", "remove"})
      */
-    private $request;
+    private $demand;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -95,14 +101,14 @@ class Rating
         return $this;
     }
 
-    public function getRequest(): ?Request
+    public function getDemand(): ?Demand
     {
-        return $this->request;
+        return $this->demand;
     }
 
-    public function setRequest(?Request $request): self
+    public function setDemand(?Demand $demand): self
     {
-        $this->request = $request;
+        $this->demand = $demand;
 
         return $this;
     }

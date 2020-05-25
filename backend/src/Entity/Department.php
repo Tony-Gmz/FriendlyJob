@@ -6,6 +6,7 @@ use App\Repository\DepartmentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=DepartmentRepository::class)
@@ -16,16 +17,19 @@ class Department
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"service_jobworker"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"service_jobworker"})
      */
     private $name;
 
     /**
-     * @ORM\Column(type="smallint")
+     * @ORM\Column(type="string", length=255)
+     * @Groups({"service_jobworker"})
      */
     private $number;
 
@@ -47,6 +51,7 @@ class Department
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
     public function getId(): ?int
@@ -66,12 +71,12 @@ class Department
         return $this;
     }
 
-    public function getNumber(): ?int
+    public function getNumber(): ?string
     {
         return $this->number;
     }
 
-    public function setNumber(int $number): self
+    public function setNumber(string $number): self
     {
         $this->number = $number;
 

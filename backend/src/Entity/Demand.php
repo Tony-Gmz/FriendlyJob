@@ -2,18 +2,20 @@
 
 namespace App\Entity;
 
-use App\Repository\RequestRepository;
+use App\Repository\DemandRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ORM\Entity(repositoryClass=RequestRepository::class)
+ * @ORM\Entity(repositoryClass=DemandRepository::class)
  */
-class Request
+class Demand
 {
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"service_jobworker"})
      */
     private $id;
 
@@ -48,27 +50,32 @@ class Request
     private $updatedAt;
 
     /**
-     * @ORM\OneToOne(targetEntity=Rating::class, mappedBy="request", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Rating::class, mappedBy="demand", cascade={"persist", "remove"})
      */
     private $rating;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Service::class, inversedBy="requests")
+     * @ORM\ManyToOne(targetEntity=Service::class, inversedBy="demands",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $service;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="friendlyUserRequests")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="friendlyUserDemands",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $friendlyUser;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="jobWorkerRequests")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="jobWorkerDemands",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $jobWorker;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -157,9 +164,9 @@ class Request
         $this->rating = $rating;
 
         // set (or unset) the owning side of the relation if necessary
-        $newRequest = null === $rating ? null : $this;
-        if ($rating->getRequest() !== $newRequest) {
-            $rating->setRequest($newRequest);
+        $newDemand = null === $rating ? null : $this;
+        if ($rating->getDemand() !== $newDemand) {
+            $rating->setDemand($newDemand);
         }
 
         return $this;

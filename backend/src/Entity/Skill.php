@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\SkillRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=SkillRepository::class)
@@ -40,6 +41,7 @@ class Skill
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="skills")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"service_jobworker"})
      */
     private $user;
 
@@ -48,6 +50,11 @@ class Skill
      * @ORM\JoinColumn(nullable=false)
      */
     private $service;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
 
     public function getId(): ?int
     {
