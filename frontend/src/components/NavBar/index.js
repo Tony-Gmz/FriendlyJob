@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import NavStyled from './NavStyled';
 import NavButton from '../Button';
 
@@ -7,14 +7,16 @@ import NavButton from '../Button';
 const NavBar = () => (
 
   <NavStyled>
-    <div className="nav_title">
-      FriendlyJob
-    </div>
+    <Link to="/">
+      <div className="nav_title">
+        FriendlyJob
+      </div>
+    </Link>
     <div className="nav_content">
       <ul className="nav_ul">
-        <Link><li>Trouver un job worker</li></Link>
-        <Link><li>Devenir Jobworker</li></Link>
-        <Link><li>Qui sommes nous</li></Link>
+        <NavLink to="" activeClassName="selected"><li>Trouver un job worker</li></NavLink>
+        <NavLink to=""><li>Devenir Jobworker</li></NavLink>
+        <NavLink to=""><li>Qui sommes nous</li></NavLink>
       </ul>
       <div>
         <NavButton />

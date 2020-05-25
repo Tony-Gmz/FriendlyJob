@@ -1,5 +1,7 @@
 
 .caroussel {
+  width: 80%;
+  margin: auto;
   margin-top: 4em;
   .caroussel_img {
     width: 250px;
@@ -9,6 +11,10 @@
     
     padding-left: 0.5rem;
   
+  }
+  .slick-arrow {
+    background-color: #FF385C;
+    border-radius: 50%;
   }
 }
 

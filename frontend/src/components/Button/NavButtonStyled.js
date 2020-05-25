@@ -5,7 +5,8 @@ margin-left: 1rem;
 padding: 0.3rem;
 border-radius: 10px;
 background-color: #FF385C;
-color: #FFFF
+color: #FFFF;
+margin-top: 1rem;
 
 `;
 

@@ -5,14 +5,25 @@ const NavStyled = styled.nav`
   display: flex;
   justify-content: space-between;
  .nav_title {
-  padding-top: 0.5rem;
+  padding-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FF385C
  }
  .nav_ul {
    display: flex;
    padding-top: 0.5rem;
  }
+ .selected {
+  border-bottom: 1px solid #FF385C;
+ }
  .nav_ul li {
-  padding-left : 1rem
+  padding : 1rem
+ }
+ .nav_ul li:hover {
+   background-color: #f7f7f7;
+   border-radius: 10px;
+   
  }
  .nav_content {
    display: flex

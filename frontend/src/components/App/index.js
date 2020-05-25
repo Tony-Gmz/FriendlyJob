@@ -6,6 +6,8 @@ import './App.scss';
 import NavBar from '../NavBar';
 import Caroussel from '../Caroussel';
 import Presentation from '../Presentation';
+import JobPresentation from '../JobPresentation';
+import Footer from '../Footer';
 
 
 // == Composant
@@ -14,6 +16,8 @@ const App = () => (
     <NavBar />
     <Caroussel />
     <Presentation />
+    <JobPresentation />
+    <Footer />
   </div>
 );
 

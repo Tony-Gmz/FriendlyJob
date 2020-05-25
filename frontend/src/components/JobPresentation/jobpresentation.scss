@@ -1,0 +1,34 @@
+.jobpresentation {
+
+  margin-top: 4em;
+  background-color: #F7F7F7;
+  border-radius: 10px;
+  padding-bottom: 3em;
+
+  .jobpresentation_title {
+    display: inline-block;
+    padding-top: 1rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #FF385C;
+    padding-bottom: 1rem;
+  }
+  .jobpresentation_card {
+    
+    padding-top: 2em;
+  
+  }
+  .jobercard {
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .jobpresentation_content {
+
+    padding: 2em 1em 0 1em;
+    line-height: 2;
+  }
+  
+}
+
+

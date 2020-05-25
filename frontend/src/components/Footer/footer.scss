@@ -1,0 +1,32 @@
+.footer {
+
+  margin-top: 3em;
+  border-top: 4px solid #f7f7f7;
+  display: flex;
+  justify-content: space-between;
+
+  .footer_content {
+
+    text-align: left;
+    padding-top: 1rem;
+
+  }
+
+  .footer_link {
+    display: flex;
+  }
+  .footer_link_text {
+    padding-top: 1rem;
+    padding-right: 1rem;
+  }
+
+  .footer_icon {
+
+    padding-bottom: 1rem;
+
+  }
+
+  
+
+
+}
