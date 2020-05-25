@@ -3,21 +3,18 @@ import React from 'react';
 
 // == Import
 import './App.scss';
-import NavBar from '../NavBar';
-import Caroussel from '../Caroussel';
-import Presentation from '../Presentation';
-import JobPresentation from '../JobPresentation';
-import Footer from '../Footer';
+import JobWorkerList from '../JobWorkerList';
+
+
 
 
 // == Composant
 const App = () => (
   <div className="app">
-    <NavBar />
-    <Caroussel />
-    <Presentation />
-    <JobPresentation />
-    <Footer />
+    <JobWorkerList />
+    <div>cards</div>
+    <div>pagination + lien modal inscription</div>
+    <div>footer</div>
   </div>
 );
 
