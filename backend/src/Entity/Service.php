@@ -64,6 +64,7 @@ class Service
     {
         $this->skills = new ArrayCollection();
         $this->demands = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
     /**

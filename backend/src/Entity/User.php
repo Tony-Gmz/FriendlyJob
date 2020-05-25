@@ -63,7 +63,7 @@ class User implements UserInterface
     private $updatedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Department::class, inversedBy="users")
+     * @ORM\ManyToOne(targetEntity=Department::class, inversedBy="users", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $department;
@@ -74,12 +74,12 @@ class User implements UserInterface
     private $skills;
 
     /**
-     * @ORM\OneToMany(targetEntity=Demand::class, mappedBy="friendlyUser", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Demand::class, mappedBy="friendlyUser", orphanRemoval=true, cascade={"persist"})
      */
     private $friendlyUserDemands;
 
     /**
-     * @ORM\OneToMany(targetEntity=Demand::class, mappedBy="jobWorker", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Demand::class, mappedBy="jobWorker", orphanRemoval=true, cascade={"persist"})
      */
     private $jobWorkerDemands;
 
@@ -88,6 +88,7 @@ class User implements UserInterface
         $this->skills = new ArrayCollection();
         $this->friendlyUserDemands = new ArrayCollection();
         $this->jobWorkerDemands = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
     /**

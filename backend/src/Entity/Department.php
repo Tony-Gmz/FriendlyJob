@@ -17,16 +17,19 @@ class Department
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("department_browse")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("department_browse")
      */
     private $name;
 
     /**
-     * @ORM\Column(type="smallint")
+     * @ORM\Column(type="string", length=255)
+     * @Groups("department_browse")
      */
     private $number;
 
@@ -48,6 +51,7 @@ class Department
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->createdAt = new \DateTime();
     }
 
     /**
@@ -76,12 +80,12 @@ class Department
     /**
      * @Groups({"demand_add", "demand_edit"})
      */
-    public function getNumber(): ?int
+    public function getNumber(): ?string
     {
         return $this->number;
     }
 
-    public function setNumber(int $number): self
+    public function setNumber(string $number): self
     {
         $this->number = $number;
 

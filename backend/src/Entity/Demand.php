@@ -55,19 +55,19 @@ class Demand
     private $rating;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Service::class, inversedBy="demands")
+     * @ORM\ManyToOne(targetEntity=Service::class, inversedBy="demands", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $service;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="friendlyUserDemands")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="friendlyUserDemands", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $friendlyUser;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="jobWorkerDemands")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="jobWorkerDemands", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $jobWorker;
