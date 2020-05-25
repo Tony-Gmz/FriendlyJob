@@ -9,6 +9,7 @@ use Doctrine\Persistence\ObjectManager;
 use App\DataFixtures\NelmioFriendlyJobNativeLoader;
 use App\Entity\Demand;
 use App\Entity\Rating;
+use App\Entity\Service;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class NelmioAliceFixtures extends Fixture
@@ -56,6 +57,10 @@ class NelmioAliceFixtures extends Fixture
                 $ratings[] = $entity;
             }
 
+            if ($entity instanceof Service) {
+                $services[] = $entity;
+            }
+
             echo $count . ' Récupération des entité dans des variable'. PHP_EOL;
             $count ++;
         };
@@ -72,8 +77,6 @@ class NelmioAliceFixtures extends Fixture
             $demand->setJobWorker($jobworkers[0]);
             $demand->setRating($ratings[0]);
 
-            $entities[] = $demand;
-
             echo $count . ' Ecriture des demandes' . PHP_EOL;
             $count ++;
         }
@@ -87,6 +90,12 @@ class NelmioAliceFixtures extends Fixture
 
             $manager->persist($entity);
         }
+        
+        $manager->flush();
+
+        $services[count($services) - 1]->setParentId($services[0]->getId());
+        $services[count($services) - 2]->setParentId($services[0]->getId());
+        $services[count($services) - 3]->setParentId($services[0]->getId());
 
         $manager->flush();
     }
