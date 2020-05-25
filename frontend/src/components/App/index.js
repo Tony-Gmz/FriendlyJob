@@ -11,8 +11,7 @@ import './styles.css';
 // == Composant
 const App = () => (
   <div className="app">
-    <div><ModalConnexion /></div>
-    <div><ModalInscription /></div>
+
   </div>
 );
 
