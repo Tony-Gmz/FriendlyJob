@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -73,27 +74,33 @@ class User implements UserInterface
     private $skills;
 
     /**
-     * @ORM\OneToMany(targetEntity=Request::class, mappedBy="friendlyUser", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Demand::class, mappedBy="friendlyUser", orphanRemoval=true)
      */
-    private $friendlyUserRequests;
+    private $friendlyUserDemands;
 
     /**
-     * @ORM\OneToMany(targetEntity=Request::class, mappedBy="jobWorker", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Demand::class, mappedBy="jobWorker", orphanRemoval=true)
      */
-    private $jobWorkerRequests;
+    private $jobWorkerDemands;
 
     public function __construct()
     {
         $this->skills = new ArrayCollection();
-        $this->friendlyUserRequests = new ArrayCollection();
-        $this->jobWorkerRequests = new ArrayCollection();
+        $this->friendlyUserDemands = new ArrayCollection();
+        $this->jobWorkerDemands = new ArrayCollection();
     }
 
+    /**
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     */
     public function getEmail(): ?string
     {
         return $this->email;
@@ -164,6 +171,9 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
+    /**
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     */
     public function getFirstname(): ?string
     {
         return $this->firstname;
@@ -176,6 +186,9 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     */
     public function getLastname(): ?string
     {
         return $this->lastname;
@@ -188,6 +201,9 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     */
     public function getImage(): ?string
     {
         return $this->image;
@@ -224,6 +240,9 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     */
     public function getDepartment(): ?Department
     {
         return $this->department;
@@ -268,30 +287,30 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|Request[]
+     * @return Collection|Demand[]
      */
-    public function getFriendlyUserRequests(): Collection
+    public function getFriendlyUserDemands(): Collection
     {
-        return $this->friendlyUserRequests;
+        return $this->friendlyUserDemands;
     }
 
-    public function addFriendlyUserRequest(Request $friendlyUserRequest): self
+    public function addFriendlyUserDemand(Demand $friendlyUserDemand): self
     {
-        if (!$this->friendlyUserRequests->contains($friendlyUserRequest)) {
-            $this->friendlyUserRequests[] = $friendlyUserRequest;
-            $friendlyUserRequest->setFriendlyUser($this);
+        if (!$this->friendlyUserDemands->contains($friendlyUserDemand)) {
+            $this->friendlyUserDemands[] = $friendlyUserDemand;
+            $friendlyUserDemand->setFriendlyUser($this);
         }
 
         return $this;
     }
 
-    public function removeFriendlyUserRequest(Request $friendlyUserRequest): self
+    public function removeFriendlyUserDemand(Demand $friendlyUserDemand): self
     {
-        if ($this->friendlyUserRequests->contains($friendlyUserRequest)) {
-            $this->friendlyUserRequests->removeElement($friendlyUserRequest);
+        if ($this->friendlyUserDemands->contains($friendlyUserDemand)) {
+            $this->friendlyUserDemands->removeElement($friendlyUserDemand);
             // set the owning side to null (unless already changed)
-            if ($friendlyUserRequest->getFriendlyUser() === $this) {
-                $friendlyUserRequest->setFriendlyUser(null);
+            if ($friendlyUserDemand->getFriendlyUser() === $this) {
+                $friendlyUserDemand->setFriendlyUser(null);
             }
         }
 
@@ -299,30 +318,30 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|Request[]
+     * @return Collection|Demand[]
      */
-    public function getJobWorkerRequests(): Collection
+    public function getJobWorkerDemands(): Collection
     {
-        return $this->jobWorkerRequests;
+        return $this->jobWorkerDemands;
     }
 
-    public function addJobWorkerRequest(Request $jobWorkerRequest): self
+    public function addJobWorkerDemand(Demand $jobWorkerDemand): self
     {
-        if (!$this->jobWorkerRequests->contains($jobWorkerRequest)) {
-            $this->jobWorkerRequests[] = $jobWorkerRequest;
-            $jobWorkerRequest->setJobWorker($this);
+        if (!$this->jobWorkerDemands->contains($jobWorkerDemand)) {
+            $this->jobWorkerDemands[] = $jobWorkerDemand;
+            $jobWorkerDemand->setJobWorker($this);
         }
 
         return $this;
     }
 
-    public function removeJobWorkerRequest(Request $jobWorkerRequest): self
+    public function removeJobWorkerDemand(Demand $jobWorkerDemand): self
     {
-        if ($this->jobWorkerRequests->contains($jobWorkerRequest)) {
-            $this->jobWorkerRequests->removeElement($jobWorkerRequest);
+        if ($this->jobWorkerDemands->contains($jobWorkerDemand)) {
+            $this->jobWorkerDemands->removeElement($jobWorkerDemand);
             // set the owning side to null (unless already changed)
-            if ($jobWorkerRequest->getJobWorker() === $this) {
-                $jobWorkerRequest->setJobWorker(null);
+            if ($jobWorkerDemand->getJobWorker() === $this) {
+                $jobWorkerDemand->setJobWorker(null);
             }
         }
 

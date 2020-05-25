@@ -6,6 +6,7 @@ use App\Repository\ServiceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ServiceRepository::class)
@@ -55,21 +56,27 @@ class Service
     private $skills;
 
     /**
-     * @ORM\OneToMany(targetEntity=Request::class, mappedBy="service", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Demand::class, mappedBy="service", orphanRemoval=true)
      */
-    private $requests;
+    private $demands;
 
     public function __construct()
     {
         $this->skills = new ArrayCollection();
-        $this->requests = new ArrayCollection();
+        $this->demands = new ArrayCollection();
     }
 
+    /**
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     */
     public function getParentId(): ?int
     {
         return $this->parentId;
@@ -82,6 +89,9 @@ class Service
         return $this;
     }
 
+    /**
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     */
     public function getTitle(): ?string
     {
         return $this->title;
@@ -94,6 +104,9 @@ class Service
         return $this;
     }
 
+    /**
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     */
     public function getDescription(): ?string
     {
         return $this->description;
@@ -106,6 +119,9 @@ class Service
         return $this;
     }
 
+    /**
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     */
     public function getImage(): ?string
     {
         return $this->image;
@@ -174,30 +190,30 @@ class Service
     }
 
     /**
-     * @return Collection|Request[]
+     * @return Collection|Demand[]
      */
-    public function getRequests(): Collection
+    public function getDemands(): Collection
     {
-        return $this->requests;
+        return $this->demands;
     }
 
-    public function addRequest(Request $request): self
+    public function addDemand(Demand $demand): self
     {
-        if (!$this->requests->contains($request)) {
-            $this->requests[] = $request;
-            $request->setService($this);
+        if (!$this->demands->contains($demand)) {
+            $this->demands[] = $demand;
+            $demand->setService($this);
         }
 
         return $this;
     }
 
-    public function removeRequest(Request $request): self
+    public function removeDemand(Demand $demand): self
     {
-        if ($this->requests->contains($request)) {
-            $this->requests->removeElement($request);
+        if ($this->demands->contains($demand)) {
+            $this->demands->removeElement($demand);
             // set the owning side to null (unless already changed)
-            if ($request->getService() === $this) {
-                $request->setService(null);
+            if ($demand->getService() === $this) {
+                $demand->setService(null);
             }
         }
 

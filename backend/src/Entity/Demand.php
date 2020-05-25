@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\RequestRepository;
+use App\Repository\DemandRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ORM\Entity(repositoryClass=RequestRepository::class)
+ * @ORM\Entity(repositoryClass=DemandRepository::class)
  */
-class Request
+class Demand
 {
     /**
      * @ORM\Id()
@@ -19,6 +20,7 @@ class Request
 
     /**
      * @ORM\Column(type="text", length=16383)
+     * @Groups("demand_add")
      */
     private $body;
 
@@ -48,33 +50,44 @@ class Request
     private $updatedAt;
 
     /**
-     * @ORM\OneToOne(targetEntity=Rating::class, mappedBy="request", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Rating::class, mappedBy="demand", cascade={"persist", "remove"})
      */
     private $rating;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Service::class, inversedBy="requests")
+     * @ORM\ManyToOne(targetEntity=Service::class, inversedBy="demands")
      * @ORM\JoinColumn(nullable=false)
      */
     private $service;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="friendlyUserRequests")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="friendlyUserDemands")
      * @ORM\JoinColumn(nullable=false)
      */
     private $friendlyUser;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="jobWorkerRequests")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="jobWorkerDemands")
      * @ORM\JoinColumn(nullable=false)
      */
     private $jobWorker;
 
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+    /**
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     */
     public function getBody(): ?string
     {
         return $this->body;
@@ -87,6 +100,9 @@ class Request
         return $this;
     }
 
+    /**
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     */
     public function getReservationDate(): ?\DateTimeInterface
     {
         return $this->reservationDate;
@@ -99,6 +115,9 @@ class Request
         return $this;
     }
 
+    /**
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     */
     public function getReservationHour(): ?string
     {
         return $this->reservationHour;
@@ -111,6 +130,9 @@ class Request
         return $this;
     }
 
+    /**
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     */
     public function getStatus(): ?string
     {
         return $this->status;
@@ -123,6 +145,9 @@ class Request
         return $this;
     }
 
+    /**
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     */
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
@@ -135,6 +160,9 @@ class Request
         return $this;
     }
 
+    /**
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     */
     public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
@@ -157,14 +185,17 @@ class Request
         $this->rating = $rating;
 
         // set (or unset) the owning side of the relation if necessary
-        $newRequest = null === $rating ? null : $this;
-        if ($rating->getRequest() !== $newRequest) {
-            $rating->setRequest($newRequest);
+        $newDemand = null === $rating ? null : $this;
+        if ($rating->getDemand() !== $newDemand) {
+            $rating->setDemand($newDemand);
         }
 
         return $this;
     }
 
+    /**
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     */
     public function getService(): ?Service
     {
         return $this->service;
@@ -177,6 +208,9 @@ class Request
         return $this;
     }
 
+    /**
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     */
     public function getFriendlyUser(): ?User
     {
         return $this->friendlyUser;
@@ -189,6 +223,9 @@ class Request
         return $this;
     }
 
+    /**
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     */
     public function getJobWorker(): ?User
     {
         return $this->jobWorker;
