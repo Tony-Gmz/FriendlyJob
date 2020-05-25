@@ -17,26 +17,31 @@ class Service
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      */
     private $parentId;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", length=16383)
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      */
     private $image;
 
@@ -67,17 +72,12 @@ class Service
         $this->createdAt = new \DateTime();
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     */
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     */
     public function getParentId(): ?int
     {
         return $this->parentId;
@@ -90,9 +90,6 @@ class Service
         return $this;
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     */
     public function getTitle(): ?string
     {
         return $this->title;
@@ -105,9 +102,6 @@ class Service
         return $this;
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     */
     public function getDescription(): ?string
     {
         return $this->description;
@@ -120,9 +114,6 @@ class Service
         return $this;
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     */
     public function getImage(): ?string
     {
         return $this->image;

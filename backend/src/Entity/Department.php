@@ -17,19 +17,19 @@ class Department
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups("department_browse")
+     * @Groups({"department_browse", "user_read", "user_add", "user_edit", "demand_add", "demand_edit", "demand_one_user"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("department_browse")
+     * @Groups({"department_browse", "user_read", "user_add", "user_edit", "demand_add", "demand_edit", "demand_one_user"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("department_browse")
+     * @Groups({"department_browse", "user_read", "user_add", "user_edit", "demand_add", "demand_edit", "demand_one_user"})
      */
     private $number;
 
@@ -54,17 +54,12 @@ class Department
         $this->createdAt = new \DateTime();
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit"})
-     */
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit"})
-     */
     public function getName(): ?string
     {
         return $this->name;
@@ -77,9 +72,6 @@ class Department
         return $this;
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit"})
-     */
     public function getNumber(): ?string
     {
         return $this->number;

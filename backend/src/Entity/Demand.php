@@ -15,37 +15,43 @@ class Demand
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"demand_add", "demand_edit", "demand_one_user", "demand_delete"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="text", length=16383)
-     * @Groups("demand_add")
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      */
     private $body;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      */
     private $reservationDate;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      */
     private $reservationHour;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      */
     private $status;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"demand_add"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"demand_add", "demand_edit"})
      */
     private $updatedAt;
 
@@ -57,18 +63,21 @@ class Demand
     /**
      * @ORM\ManyToOne(targetEntity=Service::class, inversedBy="demands", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      */
     private $service;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="friendlyUserDemands", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      */
     private $friendlyUser;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="jobWorkerDemands", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      */
     private $jobWorker;
 
@@ -77,17 +86,11 @@ class Demand
         $this->createdAt = new \DateTime();
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     */
     public function getBody(): ?string
     {
         return $this->body;
@@ -100,9 +103,6 @@ class Demand
         return $this;
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     */
     public function getReservationDate(): ?\DateTimeInterface
     {
         return $this->reservationDate;
@@ -115,9 +115,6 @@ class Demand
         return $this;
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     */
     public function getReservationHour(): ?string
     {
         return $this->reservationHour;
@@ -130,9 +127,6 @@ class Demand
         return $this;
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     */
     public function getStatus(): ?string
     {
         return $this->status;
@@ -145,9 +139,6 @@ class Demand
         return $this;
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     */
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
@@ -160,9 +151,6 @@ class Demand
         return $this;
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     */
     public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
@@ -193,9 +181,6 @@ class Demand
         return $this;
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     */
     public function getService(): ?Service
     {
         return $this->service;
@@ -208,9 +193,6 @@ class Demand
         return $this;
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     */
     public function getFriendlyUser(): ?User
     {
         return $this->friendlyUser;
@@ -223,9 +205,6 @@ class Demand
         return $this;
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     */
     public function getJobWorker(): ?User
     {
         return $this->jobWorker;

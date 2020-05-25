@@ -97,7 +97,7 @@ class DemandController extends AbstractController
     /**
      * @Route("/{id}", name="delete", methods={"DELETE"}, requirements={"id": "\d+"})
      */
-    public function delete(Demand $demand, Request $request)
+    public function delete(Demand $demand)
     {
         $em = $this->getDoctrine()->getManager();
         $em->remove($demand);
@@ -106,8 +106,8 @@ class DemandController extends AbstractController
         return $this->json(
             $demand,
             200, 
-            [], 
-            ['groups' => 'movie_edit']
+            [],
+            ['groups' => 'demand_delete']
         );
     }
 }

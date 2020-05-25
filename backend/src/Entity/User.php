@@ -18,16 +18,19 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"user_read", "user_add", "user_edit", "user_delete", "demand_add", "demand_edit", "demand_one_user"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Groups({"user_read", "user_add", "user_edit", "demand_add", "demand_edit", "demand_one_user"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
+     * @Groups({"user_read", "user_add", "user_edit"})
      */
     private $roles = [];
 
@@ -39,16 +42,19 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user_read", "user_add", "user_edit", "demand_add", "demand_edit", "demand_one_user"})
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user_read", "user_add", "user_edit", "demand_add", "demand_edit", "demand_one_user"})
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"user_read", "user_add", "user_edit", "demand_add", "demand_edit", "demand_one_user"})
      */
     private $image;
 
@@ -63,8 +69,9 @@ class User implements UserInterface
     private $updatedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Department::class, inversedBy="users", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=Department::class, inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"user_read", "user_add", "user_edit", "demand_add", "demand_edit", "demand_one_user"})
      */
     private $department;
 
@@ -91,17 +98,12 @@ class User implements UserInterface
         $this->createdAt = new \DateTime();
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     */
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     */
     public function getEmail(): ?string
     {
         return $this->email;
@@ -172,9 +174,6 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     */
     public function getFirstname(): ?string
     {
         return $this->firstname;
@@ -187,9 +186,6 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     */
     public function getLastname(): ?string
     {
         return $this->lastname;
@@ -202,9 +198,6 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     */
     public function getImage(): ?string
     {
         return $this->image;
@@ -241,9 +234,6 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     */
     public function getDepartment(): ?Department
     {
         return $this->department;

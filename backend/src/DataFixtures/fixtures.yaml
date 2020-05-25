@@ -1,21 +1,21 @@
 App\Entity\Department:
     department_{1..101}:
-        name: '<departmentname()>'
-        number: '<departmentnumber()>'
-        
+        name: "<departmentname()>"
+        number: "<departmentNumber()>"
+
 App\Entity\User:
-    user_jb_{1..100}:
+    user_jb_{1..200}:
         email: '<email()>'
         roles: "<randomElements(['JOBWORKER'])>"
         firstname: '<firstname()>'
         lastname: '<lastname()>'
         department: '@department_*'
-    user_fu_{1..100}:
+    user_fu_{1..200}:
         email: '<email()>'
         roles: "<randomElements(['FRIENDLY_USER'])>"
         firstname: '<firstname()>'
         lastname: '<lastname()>'
-        department: '@department_*'
+        department: '@department_*'   
 
 App\Entity\Service:
     service_{1..8}:
@@ -24,26 +24,27 @@ App\Entity\Service:
         image: '<url()>'
 
 App\Entity\Skill:
-    skill_{1..200}:
+    skill_{1..600}:
         description: '<sentence(10)>'
         price: '<numberBetween(10,30)>'
         user: '@user_jb_*'
         service: '@service_*'
 
-# App\Entity\Demand:
-#     demand_{1..20}:
-#         body: '<sentence(10)>'
-#         reservation_date: '<dateTime()>'
-#         reservation_hour: "<numberBetween(9,20)>h"
-#         status: "<numberBetween(0,3)>"
-#         service: '@service_*'
-#         friendlyUser (unique): "@user_fu_*"
-#         jobWorker (unique): "@user_jb_*"
 
 App\Entity\Rating:
-    rating_{1..100}:
-        comment: '<sentence(10)>'
-        star: '<numberBetween(0,5)>'
-        #demand (unique): '@demand_*'
+    rating_{1..250}:
+        comment: "<sentence(10)>"
+        star: "<numberBetween(0,5)>"
+        # demand (unique): "@demand_*" #! Bug
 
-# https://github.com/O-clock-Alumni/fiches-recap/blob/master/symfony/themes/fixturesbundle-faker.md
+#! This code in nelmio is bugged
+#! Related issues on github https://github.com/nelmio/alice/issues/969
+App\Entity\Demand:
+    demand_{1..500}:
+        body: '<sentence(10)>'
+        reservationDate: '<dateTime()>'
+        reservationHour: "<numberBetween(9,23)>h"
+        status: "<numberBetween(0,3)>"
+        service: "@service_*"
+        # friendly_user:  "@user_fu_*" #! Bug
+        # job_worker: "@user_jb_*" #! Bug
