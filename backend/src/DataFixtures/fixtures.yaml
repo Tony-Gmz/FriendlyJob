@@ -1,79 +1,21 @@
-#App\Entity\Genre: # namespace de l'entité
-#    genre_{1..42}: #le nombre d'iteration d'entité souhaité ici : genre_1, genre_2...genre_23
-#        name: '<word()>' <-- numberBetween(0,5), sentence(),(...)  cf (https://github.com/fzaninotto/Faker#basic-usage)
-
-# App\Entity\Genre:
-#     genre_{1..23}:
-#         name (unique): '<movieGenre()>' 
-
-# App\Entity\Movie:
-#     movie_{1..20}:
-#         title (unique): '<movieTitle()>'
-#         genres: '<numberBetween(1,3)>x @genre_*'
-
-# App\Entity\Person:
-#     person_{1..400}:
-#         name: '<moviePerson()>'
-
-# # App\Entity\Casting:
-# #     casting_{1..1000}:
-# #         role: '<movieCasting()>'
-# #         credit_order: '<randomDigit()>'
-# #         movie: '@movie_*'
-# #         person: '@person_*'
-
-
-
-# App\Entity\Actor:
-#     casting_{1..70}:
-#         role: '<movieCasting()>'
-#         credit_order: '<randomDigit()>'
-#         movie: '@movie_*'
-#         person: '@person_*'
-
-# App\Entity\Director:
-#     director_{1..15}:
-#         person: '@person_*'
-#         movie: '@movie_*'
-
-# App\Entity\CrewMember:
-#     cm_{1..250}:
-#         person: '@person_*'
-#         movie: '@movie_*'
-#         job: '@job_*'
-
-# App\Entity\Job:
-#     job_{1..40}:
-#         name: '<jobTitle()>'
-#         department: '@department_*'
-
-# App\Entity\Department:
-#     department_{1..8}:
-#         name: '<word()>'
-
-
-
 App\Entity\Department:
     department_{1..101}:
         name: "<departmentname()>"
         number: "<departmentNumber()>"
 
 App\Entity\User:
-    user_jb_{1..100}:
+    user_jb_{1..200}:
         email: '<email()>'
         roles: "<randomElements(['JOBWORKER'])>"
         firstname: '<firstname()>'
         lastname: '<lastname()>'
         department: '@department_*'
-    user_fu_{1..100}:
+    user_fu_{1..200}:
         email: '<email()>'
         roles: "<randomElements(['FRIENDLY_USER'])>"
         firstname: '<firstname()>'
         lastname: '<lastname()>'
-        department: '@department_*'
-
-
-        
+        department: '@department_*'   
 
 App\Entity\Service:
     service_{1..8}:
@@ -82,7 +24,7 @@ App\Entity\Service:
         image: '<url()>'
 
 App\Entity\Skill:
-    skill_{1..200}:
+    skill_{1..600}:
         description: '<sentence(10)>'
         price: '<numberBetween(10,30)>'
         user: '@user_jb_*'
@@ -90,17 +32,19 @@ App\Entity\Skill:
 
 
 App\Entity\Rating:
-    rating_{1..100}:
+    rating_{1..250}:
         comment: "<sentence(10)>"
         star: "<numberBetween(0,5)>"
-        demand (unique): "@demand_*"
+        # demand (unique): "@demand_*" #! Bug
 
+#! This code in nelmio is bugged
+#! Related issues on github https://github.com/nelmio/alice/issues/969
 App\Entity\Demand:
-    demand_{1..2}:
+    demand_{1..500}:
         body: '<sentence(10)>'
-        reservation_date: '<dateTime()>'
-        reservation_hour: "<numberBetween(9,23)>h"
+        reservationDate: '<dateTime()>'
+        reservationHour: "<numberBetween(9,23)>h"
         status: "<numberBetween(0,3)>"
         service: "@service_*"
-        friendlyUser:  "@user_fu_*"
-        jobWorker: "@user_jb_*"
+        # friendly_user:  "@user_fu_*" #! Bug
+        # job_worker: "@user_jb_*" #! Bug

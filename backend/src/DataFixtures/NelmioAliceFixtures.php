@@ -8,6 +8,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\DataFixtures\NelmioFriendlyJobNativeLoader;
 use App\Entity\Demand;
+use App\Entity\Rating;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class NelmioAliceFixtures extends Fixture
@@ -26,7 +27,7 @@ class NelmioAliceFixtures extends Fixture
         
         //importe le fichier de fixtures et récupère les entités générés
         $entities = $loader->loadFile(__DIR__.'/fixtures.yaml')->getObjects();
-        
+
         $count = 1;
         //empile la liste d'objet à enregistrer en BDD
         foreach ($entities as $entity) {
@@ -37,15 +38,56 @@ class NelmioAliceFixtures extends Fixture
                 // $entity->setPassword('$argon2id$v=19$m=65536,t=4,p=1$P5zK8BE0sHCmTDf8MH0RVQ$NGAMrBwQMa4GNnu3ebegYh80p668DCfaDqtwgEBsXm4');
                 $encodedPassword = $this->passwordEncoder->encodePassword($entity, 'derrick');
                 $entity->setPassword($encodedPassword);
+
+                // je chose toutes les jobworker & friendlyUser
+                if ($entity->getRoles()[0] == 'JOBWORKER' ) {
+                    $jobworkers[] = $entity;
+                }
+                else {
+                    $friendlyUsers[] = $entity;
+                }
             }
 
-            echo $count . PHP_EOL;
+            if ($entity instanceof Demand) {
+                $demands[] = $entity;
+            }
+
+            if ($entity instanceof Rating) {
+                $ratings[] = $entity;
+            }
+
+            echo $count . ' Récupération des entité dans des variable'. PHP_EOL;
+            $count ++;
+        };
+
+        $count = 1;
+
+        foreach ($demands as $demand)
+        {
+            shuffle($friendlyUsers);
+            shuffle($jobworkers);
+            shuffle($ratings);
+
+            $demand->setFriendlyUser($friendlyUsers[0]);
+            $demand->setJobWorker($jobworkers[0]);
+            $demand->setRating($ratings[0]);
+
+            $entities[] = $demand;
+
+            echo $count . ' Ecriture des demandes' . PHP_EOL;
+            $count ++;
+        }
+
+        $count = 1;
+
+        foreach ($entities as $entity) {
+
+            echo $count . ' Persist des données' . PHP_EOL;
             $count ++;
 
             $manager->persist($entity);
-        };
+        }
 
-        //enregistre
         $manager->flush();
     }
 }

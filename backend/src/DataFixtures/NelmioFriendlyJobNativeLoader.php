@@ -4,10 +4,12 @@
 
 namespace App\DataFixtures;
 
+use App\DataFixtures\Providers\UniqueElementProvider;
 use Faker\Factory as FakerGeneratorFactory;
 use Faker\Generator as FakerGenerator;
 use Nelmio\Alice\Faker\Provider\AliceProvider;
 use Nelmio\Alice\Loader\NativeLoader;
+
 
 class NelmioFriendlyJobNativeLoader extends NativeLoader
 {
@@ -26,7 +28,7 @@ class NelmioFriendlyJobNativeLoader extends NativeLoader
         $generator->addProvider(new AliceProvider());
         
         //! Le seed permet de récuperer une valeur qui permettra de générer toujours les même donneés utiles pour avoir une bdd fixe !
-        //$generator->seed($this->getSeed());
+        $generator->seed($this->getSeed());
 
         return $generator;
     }
