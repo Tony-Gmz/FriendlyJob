@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import NavStyled from './NavStyled';
 import NavButton from '../Button';
+import ModalConnexion from 'src/components/ModalConnexion'
+import ModalInscription from '../ModalInscription';
 
 
 const NavBar = () => (
@@ -15,11 +17,12 @@ const NavBar = () => (
     <div className="nav_content">
       <ul className="nav_ul">
         <NavLink to="" activeClassName="selected"><li>Trouver un job worker</li></NavLink>
-        <NavLink to=""><li>Devenir Jobworker</li></NavLink>
+        <a href="#inscription"><li>Devenir Jobworker</li></a>
         <NavLink to=""><li>Qui sommes nous</li></NavLink>
       </ul>
-      <div>
-        <NavButton />
+      <div className="nav_button">
+        <ModalConnexion />
+        <ModalInscription />
       </div>
     </div>
   </NavStyled>

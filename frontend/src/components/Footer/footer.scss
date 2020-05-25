@@ -4,11 +4,17 @@
   border-top: 4px solid #f7f7f7;
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  width: 1000px;
+
+  padding-top: 2em;
 
   .footer_content {
 
     text-align: left;
     padding-top: 1rem;
+    font-size: 0.9rem;
 
   }
 

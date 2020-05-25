@@ -8,7 +8,7 @@ const Footer = () => (
 
   <footer className="footer">
     <div className="footer_content">
-      &copy; 2020 -FriendlyJob All right reserved
+      &copy; 2020 - FriendlyJob All right reserved
     </div>
     <div className="footer_link">
       <div className="footer_link_text">

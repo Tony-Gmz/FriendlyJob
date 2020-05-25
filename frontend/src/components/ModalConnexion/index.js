@@ -1,6 +1,7 @@
 // == Import npm
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import NavButtonStyled from 'src/components/Button/NavButtonStyled';
 
 // == Import
 import './modalConnexion.scss';
@@ -8,7 +9,7 @@ import './modalConnexion.scss';
 // == Composant
 const ModalConnexion = () => (
   <div className="ModalConnexion">
-    <a href="#connexion" className="connexion_btn">Connexion</a>
+    <a href="#connexion"><NavButtonStyled>Connexion</NavButtonStyled></a> 
     <div id="connexion" className="connexion">
       <div className="modal_block">
         <div className="modal_header">

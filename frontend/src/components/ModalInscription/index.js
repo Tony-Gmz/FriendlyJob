@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
+import NavButtonStyled from 'src/components/Button/NavButtonStyled';
 
 // == Import
 import './modalInscription.scss';
@@ -11,7 +12,7 @@ import './modalInscription.scss';
 // == Composant
 const ModalInscription = () => (
   <div className="ModalInscription">
-    <a href="#inscription" className="inscription_btn">Inscription</a>
+    <a href="#inscription"><NavButtonStyled>Inscription</NavButtonStyled></a>
     <div id="inscription" className="inscription">
       <div className="modal_block">
         <div className="modal_header">

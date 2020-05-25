@@ -30,6 +30,10 @@ const NavStyled = styled.nav`
 
  }
 
+ .nav_button {
+   display: flex
+ }
+
 `;
 
 
