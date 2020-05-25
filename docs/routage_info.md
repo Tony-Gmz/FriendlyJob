@@ -88,6 +88,7 @@ Route en GET = recupèrer les contacts
 | /api/v1/jobworker/random | api_v1_jobworker_random | GET | UserController | randomJobWorker | Get a random JobWorker |
 | /api/v1/users/check | api_v1_users_check | POST | UserController | checkUser | Verify credentials from one user |
 | /api/v1/jobworker/{id} | api_v1_jobworker | GET | UserController | getJobWorker | Get details from one JobWorker |
+| /api/v1/contacts | api_v1_contacts | GET | UserController | getAllContact | List of all contacts |
 |||||||
 | /api/v1/department | api_v1_department_browse | GET | DepartmentController | browse | List of all department |
 |||||||
@@ -97,13 +98,12 @@ Route en GET = recupèrer les contacts
 | /api/v1/services/{id}/jobworkers?limit5=on | api_v1_services_jobworkers | GET | ServiceController | getJobWorkersByServices | Get five JobWorkers from a service |
 | /api/v1/services/{id}/sub-services | api_v1_services_subservices | GET | ServiceController | getSubServicesFromService | Get Sub-services from one service |
 |||||||
-| /api/v1/requests/{id} | api_v1_requests_edit | PUT | RequestController | edit | Update one specific request |
-| /api/v1/requests/{id} | api_v1_requests_delete | DELETE | RequestController | delete | Delete one specific request |
-| /api/v1/requests | api_v1_requests_add | POST | RequestController | add | Add a request |
-| /api/v1/requests/users/{id} | api_v1_requests_users | GET | RequestController | getRequestsFromOneUser | Get all requests from one User |
+| /api/v1/demands/{id} | api_v1_demands_edit | PUT | RequestController | edit | Update one specific request |
+| /api/v1/demands/{id} | api_v1_demands_delete | DELETE | RequestController | delete | Delete one specific request |
+| /api/v1/demands | api_v1_demands_add | POST | RequestController | add | Add a request |
+| /api/v1/demands/users/{id} | api_v1_demands_users | GET | RequestController | getDemandsFromOneUser | Get all demands from one User |
 |||||||
-| /api/v1/contacts | api_v1_contacts_browse | GET | ContactController | browse | List of all contacts |
-|||||||
+| /api/v1/rating/jobworker/{id} | api_v1_rating_jobworker | GET | RatingController | getRatingOfJobworker | Get all ratings from one jobWorker |
 
 
 HomePage "/" =
@@ -152,19 +152,19 @@ Réponse : /api/v1/jobWorker/{id}
 
 Reservation (modal)
 Route en POST avec arguments :  date, horaire, description, statut, friendlyUser, JobWorker, Services
-Réponse : /api/v1/requests
+Réponse : /api/v1/demands
 
 MesDemandes  "/mesdemandes"
 Route en GET = récupères toutes les demande de l'utilisateur.
-Réponse : /api/v1/requests/users/{id}
+Réponse : /api/v1/demands/users/{id}
 Route en PUT avec arguments : status de la demande (accepté, refusé) (jobworker)
-Réponse : /api/v1/requests/{id}
+Réponse : /api/v1/demands/{id}
 Route en PUT avec argument (string) : raison du refus (jobWorker)
-Réponse : /api/v1/requests/{id}
+Réponse : /api/v1/demands/{id}
 Route en GET status de la demande (friendlyUser)
-Réponse : /api/v1/requests/{id}
+Réponse : /api/v1/demands/{id}
 Route en DELETE avec argument: id de la demande pour supprimer la demande
-Réponse : /api/v1/requests/{id}
+Réponse : /api/v1/demands/{id}
 
 Profil "/profil"
 Route en GET = recupère l'objet user
@@ -176,7 +176,7 @@ Réponse : /api/v1/users/{id}
 
 Contact "/contact"
 Route en GET = recupèrer les contacts
-Réponse : /api/vi/contacts
+Réponse : /api/v1/contacts
 
 ## Notes pour le back
 
@@ -184,14 +184,6 @@ Réponse : /api/vi/contacts
 /api/v1/jobworker/random => querybuilder qui filtre par role les jobworker => puis algo random => puis récuperer les notes
 /api/v1/users/check => récuperer l'utilisateur par rapport à l'email ( si faux return 401 )
                     => check password ( si faux return 401 )
-                    => si tout est ok ( 200 + l'objet user + propriété islogged ( true) )
-/api/v1/services/{id}/jobworkers => Récupère tout les jobworker affilié à un service ( + note )
 /api/v1/services/{id}/jobworkers?limit5=on => Récupère tout les jobworker affilié à un service ( + note ) avec une limite de 5 jobworkers et trié par note
 /api/v1/services/{id}/sub-services => query builder pour mettre en concordance l'id du service et le champ parent_id
-/api/v1/jobWorker => Récuperer toutes les infos utiles lié à un job
-
-
-### Tips important
-A voir !
-( GET ) => /api/v1/users ( OK ) || /api/v1/users/ ( OK )
 ( POST ) => /api/v1/users ( C'EST HONTEUX ) || /api/v1/users/ ( OK )
