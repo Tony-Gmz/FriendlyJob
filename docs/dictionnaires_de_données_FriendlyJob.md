@@ -10,6 +10,7 @@
 |password|VARCHAR(255)|NOT NULL|User's Password (hash)|
 |image|VARCHAR(255)|NULL|URL of user's profile picture|
 |role|JSON|NOT NULL|User's role|
+|about|TEXT|NULL|User's description|
 |created_at|TIMESTAMP|NOT NULL|Creation date of user’s account|
 |updated_at|TIMESTAMP|NULL|Update date of user’s account|
 |department_id|INT| FOREIGN KEY, NOT NULL|Foreign key for the department|

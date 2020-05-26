@@ -1,0 +1,74 @@
+App\Entity\Department:
+    department_{1..101}:
+        name: "<departmentname()>"
+        number: "<departmentNumber()>"
+
+App\Entity\User:
+    karim{1}:
+        email: 'admin.karim@oclock.io'
+        roles: "<randomElements(['ADMIN'])>"
+        firstname: 'Karim'
+        lastname: 'Maazaoui'
+        department: '@department_*'
+    jolan{1}:
+        email: 'admin.jolan@oclock.io'
+        roles: "<randomElements(['ADMIN'])>"
+        firstname: 'Jolan'
+        lastname: 'Lazzari'
+        department: '@department_*'
+    thibault{1}:
+        email: 'admin.thibault@oclock.io'
+        roles: "<randomElements(['ADMIN'])>"
+        firstname: 'Thibault'
+        lastname: 'Clusel'
+        department: '@department_*'
+    tony{1}:
+        email: 'admin.tony@oclock.io'
+        roles: "<randomElements(['ADMIN'])>"
+        firstname: 'Tony'
+        lastname: 'Gomez'
+        department: '@department_*'
+    user_jb_{1..200}:
+        email: '<email()>'
+        roles: "<randomElements(['JOBWORKER'])>"
+        firstname: '<firstname()>'
+        lastname: '<lastname()>'
+        department: '@department_*'
+    user_fu_{1..200}:
+        email: '<email()>'
+        roles: "<randomElements(['FRIENDLY_USER'])>"
+        firstname: '<firstname()>'
+        lastname: '<lastname()>'
+        department: '@department_*'   
+
+App\Entity\Service:
+    service_{1..8}:
+        title: '<jobTitle()>'
+        description: '<sentence(10)>'
+        image: '<url()>'
+
+App\Entity\Skill:
+    skill_{1..600}:
+        description: '<sentence(10)>'
+        price: '<numberBetween(10,30)>'
+        user: '@user_jb_*'
+        service: '@service_*'
+
+
+App\Entity\Rating:
+    rating_{1..250}:
+        comment: "<sentence(10)>"
+        star: "<numberBetween(0,5)>"
+        # demand (unique): "@demand_*" #! Bug
+
+#! This code in nelmio is bugged
+#! Related issues on github https://github.com/nelmio/alice/issues/969
+App\Entity\Demand:
+    demand_{1..500}:
+        body: '<sentence(10)>'
+        reservationDate: '<dateTime()>'
+        reservationHour: "<numberBetween(9,23)>h"
+        status: "<numberBetween(0,3)>"
+        service: "@service_*"
+        # friendly_user:  "@user_fu_*" #! Bug
+        # job_worker: "@user_jb_*" #! Bug
