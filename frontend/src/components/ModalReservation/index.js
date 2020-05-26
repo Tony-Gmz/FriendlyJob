@@ -25,7 +25,6 @@ const ModalReservation = () => (
             <ModalTextArea />
           </div>
           <div className="modal_calendar">
-            <ModalCalendar />
           </div>
         </div>
         <div>
