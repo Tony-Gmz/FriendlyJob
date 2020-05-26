@@ -19,6 +19,24 @@ class DemandRepository extends ServiceEntityRepository
         parent::__construct($registry, Demand::class);
     }
 
+    public function findAllDemandsFromOneUser(int $userId)
+    {
+        $qb = $this->createQueryBuilder('d');
+
+        $qb
+            ->addSelect('u', 'u1', 's', 'de')
+            ->join('d.friendlyUser', 'u')
+            ->join('d.jobWorker', 'u1')
+            ->join('d.service', 's')
+            ->join('u.department', 'de')
+            ->where('u.id = :id')
+            ->orWhere('u1.id = :id')
+            ->setParameter('id', $userId)
+        ;
+        
+        return $qb->getQuery()->getResult();
+    }
+
     // /**
     //  * @return Demand[] Returns an array of Demand objects
     //  */

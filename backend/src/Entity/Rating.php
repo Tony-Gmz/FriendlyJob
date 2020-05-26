@@ -15,16 +15,19 @@ class Rating
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"user_jobworker_rating"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"user_jobworker_rating"})
      */
     private $comment;
 
     /**
      * @ORM\Column(type="smallint")
+     * @Groups({"user_jobworker_rating"})
      */
     private $star;
 

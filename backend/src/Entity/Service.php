@@ -17,31 +17,41 @@ class Service
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"service_browse", "service_read", "service_jobworker", "user_jobworker_details"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating", "user_jobworker_details", "user_random_jobworker"})
+     * @Groups({"service_browse", "service_read", "service_jobworker"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @Groups({"service_browse", "service_read", "service_jobworker", "user_jobworker_details"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating", "user_jobworker_details", "user_random_jobworker"})
+     * @Groups({"service_browse", "service_read", "service_jobworker"})
      */
     private $parentId;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"service_browse", "service_read", "service_jobworker", "user_jobworker_details"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating", "user_jobworker_details", "user_random_jobworker"})
+     * @Groups({"service_browse", "service_read", "service_jobworker"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", length=16383)
-     * @Groups({"service_browse", "service_read", "service_jobworker", "user_jobworker_details"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating", "user_jobworker_details", "user_random_jobworker"})
+     * @Groups({"service_browse", "service_read", "service_jobworker"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"service_browse", "service_read", "service_jobworker", "user_jobworker_details"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating", "user_jobworker_details", "user_random_jobworker"})
+     * @Groups({"service_browse", "service_read", "service_jobworker"})
      */
     private $image;
 
@@ -71,7 +81,6 @@ class Service
         $this->skills = new ArrayCollection();
         $this->demands = new ArrayCollection();
         $this->createdAt = new \DateTime();
-    
     }
 
     public function getId(): ?int

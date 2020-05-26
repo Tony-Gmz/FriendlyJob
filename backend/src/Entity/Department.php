@@ -17,19 +17,28 @@ class Department
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"service_jobworker", "user_jobworker_details"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"department_browse"})
+     * @Groups({"user_read", "user_add", "user_edit", "user_jobworker_rating", "user_random_jobworker", "user_jobworker_details"})
+     * @Groups({"service_jobworker"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"service_jobworker", "user_jobworker_details"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"department_browse"})
+     * @Groups({"user_read", "user_add", "user_edit", "user_jobworker_rating", "user_random_jobworker", "user_jobworker_details"})
+     * @Groups({"service_jobworker"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"service_jobworker", "user_jobworker_details"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"department_browse"})
+     * @Groups({"user_read", "user_add", "user_edit", "user_jobworker_rating", "user_random_jobworker", "user_jobworker_details"})
+     * @Groups({"service_jobworker"})
      */
     private $number;
 

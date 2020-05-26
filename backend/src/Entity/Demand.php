@@ -16,59 +16,76 @@ class Demand
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      * @Groups({"service_jobworker"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user", "demand_delete"})
+     * @Groups({"user_jobworker_rating"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating"})
      */
     private $body;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating"})
      */
     private $reservationDate;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating"})
      */
     private $reservationHour;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating"})
      */
     private $status;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"demand_add"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups({"demand_add", "demand_edit"})
      */
     private $updatedAt;
 
     /**
      * @ORM\OneToOne(targetEntity=Rating::class, mappedBy="demand", cascade={"persist", "remove"})
+     * @Groups({"user_jobworker_rating"})
      */
     private $rating;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Service::class, inversedBy="demands",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=Service::class, inversedBy="demands", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating"})
      */
     private $service;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="friendlyUserDemands",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="friendlyUserDemands", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      */
     private $friendlyUser;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="jobWorkerDemands",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="jobWorkerDemands", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      */
     private $jobWorker;
 

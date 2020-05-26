@@ -18,19 +18,24 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"service_jobworker", "user_jobworker_details", "user_contact"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact", "user_delete",})
+     * @Groups({"service_jobworker"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups({"service_jobworker", "user_jobworker_details", "user_contact"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
+     * @Groups({"service_jobworker"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
-     * @Groups({"service_jobworker", "user_jobworker_details", "user_contact"})
+     * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
+     * @Groups({"service_jobworker"})
      */
     private $roles = [];
 
@@ -42,19 +47,25 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"service_jobworker", "user_jobworker_details", "user_contact"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
+     * @Groups({"service_jobworker"})
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"service_jobworker", "user_jobworker_details", "user_contact"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
+     * @Groups({"service_jobworker"})
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"service_jobworker", "user_jobworker_details", "user_contact"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
+     * @Groups({"service_jobworker"})
      */
     private $image;
 
@@ -69,31 +80,36 @@ class User implements UserInterface
     private $updatedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Department::class, inversedBy="users",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=Department::class, inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"service_jobworker", "user_jobworker_details"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details"})
+     * @Groups({"service_jobworker"})
      */
     private $department;
 
     /**
      * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="user", orphanRemoval=true)
-     * @Groups({"user_jobworker_details"})
+     * @Groups({"user_random_jobworker", "user_jobworker_details"})
      */
     private $skills;
 
     /**
-     * @ORM\OneToMany(targetEntity=Demand::class, mappedBy="friendlyUser", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Demand::class, mappedBy="friendlyUser", orphanRemoval=true, cascade={"persist"})
      */
     private $friendlyUserDemands;
 
     /**
-     * @ORM\OneToMany(targetEntity=Demand::class, mappedBy="jobWorker", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Demand::class, mappedBy="jobWorker", orphanRemoval=true, cascade={"persist"})
+     * @Groups({"user_jobworker_rating"})
      */
     private $jobWorkerDemands;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Groups({"service_jobworker", "user_jobworker_details", "user_contact"})
+     * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"service_jobworker"})
      */
     private $about;
 
@@ -104,6 +120,7 @@ class User implements UserInterface
         $this->jobWorkerDemands = new ArrayCollection();
         $this->createdAt = new \DateTime();
     }
+
 
     public function getId(): ?int
     {

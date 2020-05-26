@@ -53,6 +53,24 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return $qb->getQuery()->getOneOrNullResult();
     }
 
+    public function findJobWorkerRating($id)
+    {
+        $qb = $this->createQueryBuilder('u');
+        
+        $qb
+            ->addSelect('dep, dem, s, r')
+            ->join('u.department', 'dep')
+            ->join('u.jobWorkerDemands', 'dem')
+            ->join('dem.service', 's')
+            ->join('dem.rating', 'r')
+            ->where('u.id = :id')
+            ->andWhere('u.roles = :roles')
+            ->setParameter('id', $id)
+            ->setParameter('roles', '["JOBWORKER"]')
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
     public function findContactDetails()
     {
         $qb = $this->createQueryBuilder('u');
