@@ -1,0 +1,57 @@
+.evaluation {
+
+  margin-top: 2em;
+  
+  padding: 1rem;
+
+  .evaluation_title {
+    padding-top: 2em;
+    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+    text-align: left;
+    border-bottom: #FF385C;
+    font-style: italic;
+  }
+
+  .evaluation_note {
+    margin-top: 2em;
+
+  }
+
+  .evaluation_message{
+
+    
+    width: 40%;
+    background-color: #f7f7f7;
+
+  }
+  
+  .message_content {
+   
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+  }
+
+  .message_content_avatar {
+
+
+    padding-bottom: 10px;
+
+  }
+
+  .message_content_rating {
+
+    padding-left: 20px;
+    padding-top: 10px;
+  }
+
+  .evaluation_see_more{
+
+    text-align: left;
+    font-style: italic;
+
+  }
+
+}

@@ -11,12 +11,12 @@ import NavBar from '../NavBar';
 import Caroussel from '../Caroussel';
 import ErrorPage from '../404';
 import JobWorkerList from '../JobWorkerList';
+import JobWorkerDetails from '../JobWorkerDetail';
 
 // == Composant
 const App = () => (
   <div className="app">
-    <NavBar />
-    <JobWorkerList />
+    <ErrorPage />
     <Footer />
   </div>
 );

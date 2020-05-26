@@ -1,0 +1,52 @@
+.competence {
+
+  margin-top: 2em;
+
+
+  .competence_title {
+
+    padding-top: 2em;
+    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+    text-align: left;
+    border-bottom: #FF385C;
+    font-style: italic;
+
+  }
+
+  .competence_content {
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-between;
+
+
+
+  }
+
+  .competence_content_illustration {
+
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .competence_img {
+
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+
+  }
+
+  .competence_name {
+
+    padding-top: 20px;
+    padding-left: 20px;
+
+  }
+
+  .competence_about {
+
+    width: 35%;
+
+  }
+}
