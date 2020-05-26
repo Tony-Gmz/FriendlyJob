@@ -1,0 +1,20 @@
+.serviceList{
+  width: 100%;
+  margin: 0 auto;
+}
+
+.presentation_serviceList{
+  display: flex;
+  justify-content: center;
+}
+
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+.serviceCard_img:hover{
+transform: scale(1.2);
+}
