@@ -53,7 +53,7 @@ class UserController extends AbstractController
         $user->setPassword($encodedPassword);
         $user->setFirstname($jsonData->firstname);
         $user->setLastname($jsonData->lastname);
-        $user->setImage($jsonData->image);
+        $user->setImage($jsonData->image ?? null);
         $user->setDepartment($departmentRepository->find($jsonData->department));
 
         $em = $this->getDoctrine()->getManager();
@@ -75,12 +75,15 @@ class UserController extends AbstractController
     {
         $jsonData = json_decode($request->getContent());
         //dd($jsonData);
+        $encodedPassword = $this->passwordEncoder->encodePassword($user, $jsonData->password);
 
-        $user->setEmail($jsonData->email);
+        $user->setEmail(isset($jsonData->email) ? $jsonData->email : $user->getEmail());
         $user->setRoles($jsonData->roles);
+        $user->setPassword($encodedPassword);
         $user->setFirstname($jsonData->firstname);
         $user->setLastname($jsonData->lastname);
         $user->setImage($jsonData->image);
+        $user->setAbout($jsonData->about);
         $user->setDepartment($departmentRepository->find($jsonData->department));
 
         $em = $this->getDoctrine()->getManager();
@@ -104,12 +107,10 @@ class UserController extends AbstractController
         $em->remove($user);
         $em->flush();
 
-        return $this->json(
-            $user,
-            200, 
-            [],
-            ['groups' => 'user_delete']
-        );
+        return $this->json([
+            'statut' => 200,
+            'message' => 'L\'utilisateur a bien été supprimé.'
+        ], 200);
     }
 
     /**
