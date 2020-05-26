@@ -6,6 +6,7 @@ import NavButtonStyled from 'src/components/Button/NavButtonStyled';
 import './modalReservation.scss';
 import ModalTextArea from './TextArea';
 import ModalReservationSelect from './Select';
+import Calendar from './Calendar';
 
 // == Composant
 const ModalReservation = () => (
@@ -24,6 +25,7 @@ const ModalReservation = () => (
             <ModalTextArea />
           </div>
           <div className="modal_calendar" />
+          <Calendar />
         </div>
         <div>
           <div className="div_submit">
