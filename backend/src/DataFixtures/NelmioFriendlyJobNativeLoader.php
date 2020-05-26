@@ -13,7 +13,7 @@ class NelmioFriendlyJobNativeLoader extends NativeLoader
     {
         $generator = FakerGeneratorFactory::create('fr_FR');
         $generator->addProvider(new AliceProvider());
-        
+
         $generator->seed($this->getSeed());
 
         return $generator;
