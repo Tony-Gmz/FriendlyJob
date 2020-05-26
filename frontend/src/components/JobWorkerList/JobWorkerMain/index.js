@@ -36,6 +36,31 @@ const JobWorkerMain = () => {
       <Jober />
      </div>
      </Link> 
+     <Link>
+     <div className="jobWorkerCards_item">
+      <Jober />
+     </div>
+     </Link> 
+     <Link>
+     <div className="jobWorkerCards_item">
+      <Jober />
+     </div>
+     </Link> 
+     <Link>
+     <div className="jobWorkerCards_item">
+      <Jober />
+     </div>
+     </Link> 
+     <Link>
+     <div className="jobWorkerCards_item">
+      <Jober />
+     </div>
+     </Link> 
+     <Link>
+     <div className="jobWorkerCards_item">
+      <Jober />
+     </div>
+     </Link> 
     </div>
     </div>
   );

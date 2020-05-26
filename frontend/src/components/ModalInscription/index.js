@@ -8,6 +8,7 @@ import NavButtonStyled from 'src/components/Button/NavButtonStyled';
 
 // == Import
 import './modalInscription.scss';
+import RadioInscription from './Radio';
 
 // == Composant
 const ModalInscription = () => (
@@ -40,12 +41,12 @@ const ModalInscription = () => (
             />
           </div>
           <div className="form_element">
-            <InputLabel id="demo-simple-select-label">Region</InputLabel>
+            <InputLabel id="demo-simple-select-label">Departement</InputLabel>
             <Select
               className="input"
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value="Region"
+              value="Departement"
             >
               <MenuItem value={1}>Ain</MenuItem>
               <MenuItem value={2}>Aisne</MenuItem>
@@ -88,9 +89,12 @@ const ModalInscription = () => (
             />
           </div>
         </form>
+        <div className="div_radio">
+          <RadioInscription />
+        </div>
         <div className="div_submit">
           <button className="submit_btn" type="submit">S'inscrire</button>
-          <button className="cancel_btn" type="submit">Annuler</button>
+          <a href="#"><button className="cancel_btn" type="submit">Annuler</button></a>
         </div>
         <a href="#" className="close_btn">close</a>
       </div>
