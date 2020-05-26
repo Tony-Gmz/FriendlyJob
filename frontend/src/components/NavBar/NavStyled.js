@@ -4,6 +4,8 @@ const NavStyled = styled.nav`
   margin-top: 1rem;
   display: flex;
   justify-content: space-between;
+  margin-bottom:5em;
+
  .nav_title {
   padding-top: 1rem;
   font-size: 1.5rem;

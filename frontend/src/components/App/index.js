@@ -11,12 +11,18 @@ import NavBar from '../NavBar';
 import Caroussel from '../Caroussel';
 import ErrorPage from '../404';
 import JobWorkerList from '../JobWorkerList';
+import Request from '../Request';
+import ServiceList from '../Service/List';
+import ProfilFriendlyUser from 'src/components/ProfilFriendlyUser';
+import ProfilWorkJober from 'src/components/ProfilWorkJober';
+
 
 // == Composant
 const App = () => (
   <div className="app">
     <NavBar />
-    <JobWorkerList />
+    <ProfilFriendlyUser />
+    <ProfilWorkJober />
     <Footer />
   </div>
 );
