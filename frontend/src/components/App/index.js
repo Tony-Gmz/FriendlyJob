@@ -20,6 +20,13 @@ const App = () => (
   <div className="app">
     <NavBar />
     <HomePage />
+    <ServiceList />
+    <ServiceDetail />
+    <JobWorkerList />
+    <JobWorkerDetails />
+    <ProfilWorkJober />
+    <ProfilFriendlyUser />
+    <Request />
     <Footer />
   </div>
 );
