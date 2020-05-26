@@ -5,7 +5,7 @@ import NavStyled from './NavStyled';
 import ModalInscription from '../ModalInscription';
 
 
-// Styled navbar component reusable 
+// Styled navbar component reusable
 
 const NavBar = () => (
 

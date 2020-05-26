@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './details.scss';
-import Jober from '../../JobPresentation/Jober';
+import Jober from '../../HomePage/JobPresentation/Jober';
 import NavButtonStyled from '../../Button/NavButtonStyled';
 import ModalReservation from '../../ModalReservation';
 

@@ -6,17 +6,15 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import './radio.scss';
 
-const RadioInscription = () => {
+const RadioInscription = () => (
 
-  return (
-    <FormControl className="radio_inscription" component="fieldset">
-      <FormLabel component="legend">Besoin d'un service ou mettre en exergue vos compétences ? Choisissez votre rôle !</FormLabel>
-      <RadioGroup className="radio_inscription_item" aria-label="gender" name="gender1">
-        <FormControlLabel value="JobWorker" control={<Radio />} label="JobWorker" />
-        <FormControlLabel value="male" control={<Radio />} label="FriendlyUser" />
-      </RadioGroup>
-    </FormControl>
-  );
-};
+  <FormControl className="radio_inscription" component="fieldset">
+    <FormLabel component="legend">Besoin d'un service ou mettre en exergue vos compétences ? Choisissez votre rôle !</FormLabel>
+    <RadioGroup className="radio_inscription_item" aria-label="gender" name="gender1">
+      <FormControlLabel value="JobWorker" control={<Radio />} label="JobWorker" />
+      <FormControlLabel value="male" control={<Radio />} label="FriendlyUser" />
+    </RadioGroup>
+  </FormControl>
+);
 
 export default RadioInscription;

@@ -1,7 +1,7 @@
 import React from 'react';
 import Jober from './Jober';
 import './jobpresentation.scss';
-import NavButtonStyled from '../Button/NavButtonStyled';
+import NavButtonStyled from '../../Button/NavButtonStyled';
 
 // component for jobworker presentation in homepage
 

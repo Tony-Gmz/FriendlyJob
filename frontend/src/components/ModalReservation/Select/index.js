@@ -39,5 +39,5 @@ const ModalReservationSelect = () => {
       </FormControl>
     </div>
   );
-}
+};
 export default ModalReservationSelect;
