@@ -43,7 +43,7 @@
 | /api/v1/services/{id}/jobworkers?limit5=on | api_v1_services_jobworkers | GET | ServiceController | getJobWorkersByServices | Get five JobWorkers from a service |
 | /api/v1/services/{id}/sub-services | api_v1_services_subservices | GET | ServiceController | getSubServicesFromService | Get Sub-services from one service |
 |||||||
-| /api/v1/demands/{id} | api_v1_demands_edit | PUT | RequestController | edit | Update one specific request |
-| /api/v1/demands/{id} | api_v1_demands_delete | DELETE | RequestController | delete | Delete one specific request |
-| /api/v1/demands | api_v1_demands_add | POST | RequestController | add | Add a request |
-| /api/v1/demands/users/{id} | api_v1_demands_users | GET | RequestController | getDemandsFromOneUser | Get all demands from one User |
+| /api/v1/demands/{id} | api_v1_demands_edit | PUT | DemandController | edit | Update one specific demands |
+| /api/v1/demands/{id} | api_v1_demands_delete | DELETE | DemandController | delete | Delete one specific demands |
+| /api/v1/demands | api_v1_demands_add | POST | DemandController | add | Add a demands |
+| /api/v1/demands/users/{id} | api_v1_demands_users | GET | DemandController | getDemandsFromOneUser | Get all demands from one User |

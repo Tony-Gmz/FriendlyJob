@@ -152,19 +152,19 @@ Réponse : /api/v1/jobWorker/{id}
 
 Reservation (modal)
 Route en POST avec arguments :  date, horaire, description, statut, friendlyUser, JobWorker, Services
-Réponse : /api/v1/requests
+Réponse : /api/v1/demands
 
 MesDemandes  "/mesdemandes"
 Route en GET = récupères toutes les demande de l'utilisateur.
-Réponse : /api/v1/requests/users/{id}
+Réponse : /api/v1/demands/users/{id}
 Route en PUT avec arguments : status de la demande (accepté, refusé) (jobworker)
-Réponse : /api/v1/requests/{id}
+Réponse : /api/v1/demands/{id}
 Route en PUT avec argument (string) : raison du refus (jobWorker)
-Réponse : /api/v1/requests/{id}
+Réponse : /api/v1/demands/{id}
 Route en GET status de la demande (friendlyUser)
-Réponse : /api/v1/requests/{id}
+Réponse : /api/v1/demands/{id}
 Route en DELETE avec argument: id de la demande pour supprimer la demande
-Réponse : /api/v1/requests/{id}
+Réponse : /api/v1/demands/{id}
 
 Profil "/profil"
 Route en GET = recupère l'objet user

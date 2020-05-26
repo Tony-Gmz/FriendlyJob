@@ -49,16 +49,16 @@
 |created_at|TIMESTAMP|NOT NULL|Creation date of the service|
 |updated_at|TIMESTAMP|NULL|Update date of the service|
 
-## Request (`request`)
+## Demand(`demand`)
 |Champ|Type|Spécificités|Description|
 |-|-|-|-|
-|id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|Request’s id|
-|body|TEXT|NOT NULL|Request’s description|
-|reservation_date|TIMESTAMP|NOT NULL|Request’s date for the reservation|
-|reservation_hour|VARCHAR(255)|NOT NULL|Request’s hour for the reservation|
-|status|VARCHAR(255)|NOT NULL|Request’s status|
-|created_at|TIMESTAMP|NOT NULL|Creation date of the request|
-|updated_at|TIMESTAMP|NULL|Update date of the request|
+|id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|Demand’s id|
+|body|TEXT|NOT NULL|Demand’s description|
+|reservation_date|TIMESTAMP|NOT NULL|Demand’s date for the reservation|
+|reservation_hour|VARCHAR(255)|NOT NULL|Demand’s hour for the reservation|
+|status|VARCHAR(255)|NOT NULL|Demand’s status|
+|created_at|TIMESTAMP|NOT NULL|Creation date of the demand|
+|updated_at|TIMESTAMP|NULL|Update date of the demand|
 |friendly_user_id|INT| FOREIGN KEY, NOT NULL|Foreign key use to refer to the FriendlyUser’s id|
 |jobworker_id|INT| FOREIGN KEY, NOT NULL|Foreign key use to refer to the JobWorker’s id|
 |service_id|INT|FOREIGN KEY, NOT NULL|Foreign key use to refer to the Service’s table|
@@ -71,4 +71,4 @@
 |star|TINYINT|NOT NULL|Service’s evaluation by a FriendlyUser|
 |created_at|TIMESTAMP|NOT NULL|Creation date of the rating|
 |updated_at|TIMESTAMP|NULL|Update date of the rating|
-|request_id|INT|FOREIGN KEY, NOT NULL|Foreign key use to refer to the request’s table|
+|demand_id|INT|FOREIGN KEY, NOT NULL|Foreign key use to refer to the demand’s table|
