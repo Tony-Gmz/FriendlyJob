@@ -28,7 +28,6 @@ App\Entity\User:
         firstname: 'Tony'
         lastname: 'Gomez'
         department: '@department_*'
-    #! =========
     user_jb_{1..200}:
         email: '<email()>'
         roles: "<randomElements(['JOBWORKER'])>"

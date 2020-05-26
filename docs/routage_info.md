@@ -89,6 +89,7 @@ Route en GET = recupèrer les contacts
 | /api/v1/users/check | api_v1_users_check | POST | UserController | checkUser | Verify credentials from one user |
 | /api/v1/users/jobworker/{id} | api_v1_users_jobworker | GET | UserController | getJobWorkerDetails | Get details from one JobWorker |
 | /api/v1/users/contacts | api_v1_users_contacts | GET | UserController | getAllContact | List of all contacts |
+| /api/v1/rating/jobworker/{id} | api_v1_user_rating_jobworker | GET | UserController| getRatingOfJobworker | Get all ratings from one jobWorker |
 |||||||
 | /api/v1/department | api_v1_department_browse | GET | DepartmentController | browse | List of all department |
 |||||||
@@ -102,8 +103,7 @@ Route en GET = recupèrer les contacts
 | /api/v1/demands/{id} | api_v1_demands_delete | DELETE | DemandController | delete | Delete one specific demand |
 | /api/v1/demands | api_v1_demands_add | POST | DemandController | add | Add a demand |
 | /api/v1/demands/users/{id} | api_v1_demands_users | GET | DemandController | getDemandsFromOneUser | Get all demands from one User |
-|||||||
-| /api/v1/rating/jobworker/{id} | api_v1_rating_jobworker | GET | RatingController | getRatingOfJobworker | Get all ratings from one jobWorker |
+
 
 
 HomePage "/" =

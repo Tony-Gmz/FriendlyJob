@@ -128,10 +128,10 @@ class AppFixtures extends Fixture
                 $manager->persist($entity);
             }
 
-            //$manager->flush();
-
+            
             $count++;
         }
-
+        
+        //$manager->flush();
     }
 }

@@ -15,6 +15,7 @@ class Demand
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"service_jobworker"})
      * @Groups({"demand_add", "demand_edit", "demand_one_user", "demand_delete"})
      * @Groups({"user_jobworker_rating"})
      */
@@ -113,7 +114,6 @@ class Demand
 
     public function getReservationDate(): ?string
     {
-        
         return $this->reservationDate->format('d-m-Y');
     }
 

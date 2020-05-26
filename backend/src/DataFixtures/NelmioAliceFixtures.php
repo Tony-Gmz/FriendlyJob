@@ -39,12 +39,10 @@ class NelmioAliceFixtures extends Fixture
                 if ($entity->getRoles()[0] == 'JOBWORKER' ) {
                     $jobworkers[] = $entity;
                 }
-                //! Ajout mot de passe personnalisé pour l'admin ( Je sais tu va me détester JOLAN =P)
                 elseif ($entity->getRoles()[0] == 'ADMIN') {
                     $encodedPassword = $this->passwordEncoder->encodePassword($entity, $_ENV['ADMIN_PASSWORD'] );
                     $entity->setPassword($encodedPassword);
                 }
-                //!=================
                 else {
                     $friendlyUsers[] = $entity;
                 }

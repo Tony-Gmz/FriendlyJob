@@ -18,22 +18,24 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"user_read", "user_add", "user_edit", "user_delete", "demand_add", "demand_edit", "demand_one_user", "user_random_jobworker"})
-     * @Groups({"user_jobworker_rating"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact", "user_delete",})
+     * @Groups({"service_jobworker"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups({"user_read", "user_add", "user_edit", "demand_add", "demand_edit", "demand_one_user", "user_random_jobworker"})
-     * @Groups({"user_jobworker_rating"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
+     * @Groups({"service_jobworker"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
-     * @Groups({"user_read", "user_add", "user_edit", "user_random_jobworker"})
-     * @Groups({"user_jobworker_rating"})
+     * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
+     * @Groups({"service_jobworker"})
      */
     private $roles = [];
 
@@ -45,22 +47,25 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read", "user_add", "user_edit", "demand_add", "demand_edit", "demand_one_user", "user_random_jobworker"})
-     * @Groups({"user_jobworker_rating"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
+     * @Groups({"service_jobworker"})
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read", "user_add", "user_edit", "demand_add", "demand_edit", "demand_one_user", "user_random_jobworker"})
-     * @Groups({"user_jobworker_rating"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
+     * @Groups({"service_jobworker"})
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"user_read", "user_add", "user_edit", "demand_add", "demand_edit", "demand_one_user", "user_random_jobworker"})
-     * @Groups({"user_jobworker_rating"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
+     * @Groups({"service_jobworker"})
      */
     private $image;
 
@@ -77,14 +82,15 @@ class User implements UserInterface
     /**
      * @ORM\ManyToOne(targetEntity=Department::class, inversedBy="users")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"user_read", "user_add", "user_edit", "demand_add", "demand_edit", "demand_one_user", "user_random_jobworker"})
-     * @Groups({"user_jobworker_rating"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details"})
+     * @Groups({"service_jobworker"})
      */
     private $department;
 
     /**
      * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="user", orphanRemoval=true)
-     * @Groups({"user_random_jobworker"})
+     * @Groups({"user_random_jobworker", "user_jobworker_details"})
      */
     private $skills;
 
@@ -101,8 +107,9 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Groups({"user_read", "user_add", "user_edit", "demand_add", "demand_edit", "demand_one_user", "user_random_jobworker"})
-     * @Groups({"user_jobworker_rating"})
+     * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"service_jobworker"})
      */
     private $about;
 

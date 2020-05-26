@@ -17,36 +17,41 @@ class Service
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"demand_add", "demand_edit", "demand_one_user", "user_random_jobworker"})
-     * @Groups({"user_jobworker_rating"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating", "user_jobworker_details", "user_random_jobworker"})
+     * @Groups({"service_browse", "service_read", "service_jobworker"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @Groups({"demand_add", "demand_edit", "demand_one_user", "user_random_jobworker"})
-     * @Groups({"user_jobworker_rating"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating", "user_jobworker_details", "user_random_jobworker"})
+     * @Groups({"service_browse", "service_read", "service_jobworker"})
      */
     private $parentId;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"demand_add", "demand_edit", "demand_one_user", "user_random_jobworker"})
-     * @Groups({"user_jobworker_rating"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating", "user_jobworker_details", "user_random_jobworker"})
+     * @Groups({"service_browse", "service_read", "service_jobworker"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", length=16383)
-     * @Groups({"demand_add", "demand_edit", "demand_one_user", "user_random_jobworker"})
-     * @Groups({"user_jobworker_rating"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating", "user_jobworker_details", "user_random_jobworker"})
+     * @Groups({"service_browse", "service_read", "service_jobworker"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"demand_add", "demand_edit", "demand_one_user", "user_random_jobworker"})
-     * @Groups({"user_jobworker_rating"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating", "user_jobworker_details", "user_random_jobworker"})
+     * @Groups({"service_browse", "service_read", "service_jobworker"})
      */
     private $image;
 
@@ -62,6 +67,7 @@ class Service
 
     /**
      * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="service", orphanRemoval=true)
+     * @Groups({"service_jobworker"})
      */
     private $skills;
 
@@ -76,7 +82,6 @@ class Service
         $this->demands = new ArrayCollection();
         $this->createdAt = new \DateTime();
     }
-
 
     public function getId(): ?int
     {

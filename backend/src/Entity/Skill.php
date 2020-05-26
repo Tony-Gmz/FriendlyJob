@@ -15,19 +15,19 @@ class Skill
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"user_random_jobworker"})
+     * @Groups({"user_random_jobworker", "user_jobworker_details"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"user_random_jobworker"})
+     * @Groups({"user_random_jobworker", "user_jobworker_details"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"user_random_jobworker"})
+     * @Groups({"user_random_jobworker", "user_jobworker_details"})
      */
     private $price;
 
@@ -44,13 +44,14 @@ class Skill
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="skills")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"service_jobworker"})
      */
     private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity=Service::class, inversedBy="skills")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"user_random_jobworker"})
+     * @Groups({"user_random_jobworker", "user_jobworker_details"})
      */
     private $service;
 
