@@ -17,31 +17,36 @@ class Service
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user", "user_random_jobworker"})
+     * @Groups({"user_jobworker_rating"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user", "user_random_jobworker"})
+     * @Groups({"user_jobworker_rating"})
      */
     private $parentId;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user", "user_random_jobworker"})
+     * @Groups({"user_jobworker_rating"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", length=16383)
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user", "user_random_jobworker"})
+     * @Groups({"user_jobworker_rating"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user", "user_random_jobworker"})
+     * @Groups({"user_jobworker_rating"})
      */
     private $image;
 

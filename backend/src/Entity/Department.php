@@ -17,19 +17,22 @@ class Department
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"department_browse", "user_read", "user_add", "user_edit", "demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"department_browse", "user_read", "user_add", "user_edit", "demand_add", "demand_edit", "demand_one_user", "user_random_jobworker"})
+     * @Groups({"user_jobworker_rating"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"department_browse", "user_read", "user_add", "user_edit", "demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"department_browse", "user_read", "user_add", "user_edit", "demand_add", "demand_edit", "demand_one_user", "user_random_jobworker"})
+     * @Groups({"user_jobworker_rating"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"department_browse", "user_read", "user_add", "user_edit", "demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"department_browse", "user_read", "user_add", "user_edit", "demand_add", "demand_edit", "demand_one_user", "user_random_jobworker"})
+     * @Groups({"user_jobworker_rating"})
      */
     private $number;
 

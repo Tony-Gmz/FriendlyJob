@@ -25,25 +25,26 @@ class NelmioAliceFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $loader = new NelmioFriendlyJobNativeLoader();
-        
-        //importe le fichier de fixtures et récupère les entités générés
         $entities = $loader->loadFile(__DIR__.'/fixtures.yaml')->getObjects();
 
         $count = 1;
-        //empile la liste d'objet à enregistrer en BDD
+        
         foreach ($entities as $entity) {
             
             if ($entity instanceof User) {
-                // Pour ajouter le mdp encodé à un utilisateur on peut lui donner directement ce qu'on à obtenue
-                // avec la commande bin/console security:encode-password
-                // $entity->setPassword('$argon2id$v=19$m=65536,t=4,p=1$P5zK8BE0sHCmTDf8MH0RVQ$NGAMrBwQMa4GNnu3ebegYh80p668DCfaDqtwgEBsXm4');
                 $encodedPassword = $this->passwordEncoder->encodePassword($entity, 'derrick');
                 $entity->setPassword($encodedPassword);
 
-                // je chose toutes les jobworker & friendlyUser
+                
                 if ($entity->getRoles()[0] == 'JOBWORKER' ) {
                     $jobworkers[] = $entity;
                 }
+                //! Ajout mot de passe personnalisé pour l'admin ( Je sais tu va me détester JOLAN =P)
+                elseif ($entity->getRoles()[0] == 'ADMIN') {
+                    $encodedPassword = $this->passwordEncoder->encodePassword($entity, $_ENV['ADMIN_PASSWORD'] );
+                    $entity->setPassword($encodedPassword);
+                }
+                //!=================
                 else {
                     $friendlyUsers[] = $entity;
                 }
@@ -64,7 +65,7 @@ class NelmioAliceFixtures extends Fixture
             echo $count . ' Récupération des entité dans des variable'. PHP_EOL;
             $count ++;
         };
-
+        
         $count = 1;
 
         foreach ($demands as $demand)
@@ -85,7 +86,7 @@ class NelmioAliceFixtures extends Fixture
 
         foreach ($entities as $entity) {
 
-            echo $count . ' Persist des données' . PHP_EOL;
+            echo $count . ' Persistance des données' . PHP_EOL;
             $count ++;
 
             $manager->persist($entity);

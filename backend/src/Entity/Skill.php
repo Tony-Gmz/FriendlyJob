@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\SkillRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=SkillRepository::class)
@@ -14,16 +15,19 @@ class Skill
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"user_random_jobworker"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"user_random_jobworker"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"user_random_jobworker"})
      */
     private $price;
 
@@ -46,6 +50,7 @@ class Skill
     /**
      * @ORM\ManyToOne(targetEntity=Service::class, inversedBy="skills")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"user_random_jobworker"})
      */
     private $service;
 

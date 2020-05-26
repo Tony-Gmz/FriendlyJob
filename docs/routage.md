@@ -32,6 +32,7 @@
 | /api/v1/jobworker/random | api_v1_jobworker_random | GET | UserController | randomJobWorker | Get a random JobWorker |
 | /api/v1/users/check | api_v1_users_check | POST | UserController | checkUser | Verify credentials from one user |
 | /api/v1/jobworker/{id} | api_v1_jobworker | GET | UserController | getJobWorker | Get details from one JobWorker |
+| /api/v1/contacts | api_v1_contacts | GET | UserController | getAllContact | List of all contacts |
 |||||||
 | /api/v1/department | api_v1_department_browse | GET | DepartmentController | browse | List of all department |
 |||||||
@@ -45,6 +46,3 @@
 | /api/v1/requests/{id} | api_v1_requests_delete | DELETE | RequestController | delete | Delete one specific request |
 | /api/v1/requests | api_v1_requests_add | POST | RequestController | add | Add a request |
 | /api/v1/requests/users/{id} | api_v1_requests_users | GET | RequestController | getRequestsFromOneUser | Get all requests from one User |
-|||||||
-| /api/v1/contacts | api_v1_contacts_browse | GET | ContactController | browse | List of all contacts |
-|||||||

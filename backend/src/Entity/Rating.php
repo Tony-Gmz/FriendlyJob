@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\RatingRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=RatingRepository::class)
@@ -14,16 +15,19 @@ class Rating
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"user_jobworker_rating"})
      */
     private $id;
 
     /**
-     * @ORM\Column(type="text", length=16383)
+     * @ORM\Column(type="text")
+     * @Groups({"user_jobworker_rating"})
      */
     private $comment;
 
     /**
      * @ORM\Column(type="smallint")
+     * @Groups({"user_jobworker_rating"})
      */
     private $star;
 
