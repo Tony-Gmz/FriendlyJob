@@ -12,11 +12,13 @@ import Caroussel from '../Caroussel';
 import ErrorPage from '../404';
 import JobWorkerList from '../JobWorkerList';
 import JobWorkerDetails from '../JobWorkerDetail';
+import ModalReservation from '../ModalReservation';
 
 // == Composant
 const App = () => (
   <div className="app">
-    <ErrorPage />
+    <NavBar />
+    <JobWorkerDetails />
     <Footer />
   </div>
 );

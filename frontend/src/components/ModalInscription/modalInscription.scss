@@ -9,6 +9,20 @@
   right: 0;
   background-color: #f7f7f7;
 }
+.modal_title {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #FF385C;
+  padding-bottom: 1rem;
+  width: 250px;
+
+}
+
+.modal_block {
+  background-color: #FBFBEF;
+  border-radius: 10px;
+}
 
 #inscription:target{
   display: flex;

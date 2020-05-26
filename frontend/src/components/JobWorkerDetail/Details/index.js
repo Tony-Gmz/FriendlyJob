@@ -3,6 +3,7 @@ import React from 'react';
 import './details.scss';
 import Jober from '../../JobPresentation/Jober';
 import NavButtonStyled from '../../Button/NavButtonStyled';
+import ModalReservation from '../../ModalReservation';
 
 const Details = () => (
 
@@ -22,7 +23,7 @@ const Details = () => (
       </div>
     </div>
     <div className="detail_reservation">
-      <NavButtonStyled>Reservez !</NavButtonStyled>
+      <ModalReservation />
     </div>
   </div>
 
