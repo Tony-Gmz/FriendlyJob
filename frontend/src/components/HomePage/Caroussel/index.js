@@ -99,7 +99,6 @@ const Caroussel = () => {
     </div>
 
   );
-
 };
 
 export default Caroussel;

@@ -15,20 +15,11 @@ import ServiceList from '../Service/List';
 import JobWorkerDetails from '../JobWorkerDetail';
 import Request from '../Request';
 
-
-
 // == Composant
 const App = () => (
   <div className="app">
     <NavBar />
     <HomePage />
-    <JobWorkerList />
-    <ServiceList />
-    <ServiceDetail />
-    <JobWorkerDetails />
-    <Request />
-    <ProfilFriendlyUser />
-    <ProfilWorkJober />
     <Footer />
   </div>
 );
