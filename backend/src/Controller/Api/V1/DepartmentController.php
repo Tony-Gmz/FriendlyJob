@@ -18,10 +18,11 @@ class DepartmentController extends AbstractController
     {
        $departments = $departmentRepository->findAll();
 
-       //dd($departments);
-
-       $response = $this->json($departments, 200, [], ['groups' => 'department_browse']);
-
-       return $response;
+        return $this->json(
+            $departments, 
+            200, 
+            [], 
+            ['groups' => 'department_browse']
+        );
     }
 }

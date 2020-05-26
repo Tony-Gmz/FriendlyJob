@@ -43,7 +43,6 @@ class UserController extends AbstractController
     public function add(Request $request, DepartmentRepository $departmentRepository)
     {
         $jsonData = json_decode($request->getContent());
-        //dd($jsonData);
 
         $user = new User();
         $encodedPassword = $this->passwordEncoder->encodePassword($user, $jsonData->password);
@@ -53,7 +52,7 @@ class UserController extends AbstractController
         $user->setPassword($encodedPassword);
         $user->setFirstname($jsonData->firstname);
         $user->setLastname($jsonData->lastname);
-        $user->setImage($jsonData->image);
+        $user->setImage($jsonData->image ?? null);
         $user->setDepartment($departmentRepository->find($jsonData->department));
 
         $em = $this->getDoctrine()->getManager();
@@ -74,13 +73,17 @@ class UserController extends AbstractController
     public function edit(Request $request, User $user, DepartmentRepository $departmentRepository)
     {
         $jsonData = json_decode($request->getContent());
-        //dd($jsonData);
+        
+        $encodedPassword = $this->passwordEncoder->encodePassword($user, $jsonData->password);
 
+        //$user->setEmail(isset($jsonData->email) ? $jsonData->email : $user->getEmail());
         $user->setEmail($jsonData->email);
         $user->setRoles($jsonData->roles);
+        $user->setPassword($encodedPassword);
         $user->setFirstname($jsonData->firstname);
         $user->setLastname($jsonData->lastname);
         $user->setImage($jsonData->image);
+        $user->setAbout($jsonData->about);
         $user->setDepartment($departmentRepository->find($jsonData->department));
 
         $em = $this->getDoctrine()->getManager();
@@ -104,12 +107,10 @@ class UserController extends AbstractController
         $em->remove($user);
         $em->flush();
 
-        return $this->json(
-            $user,
-            200, 
-            [],
-            ['groups' => 'user_delete']
-        );
+        return $this->json([
+            'statut' => 200,
+            'message' => 'L\'utilisateur a bien été supprimé.'
+        ], 200);
     }
 
     /**
@@ -118,13 +119,10 @@ class UserController extends AbstractController
     public function randomJobWorker(UserRepository $userRepository)
     {
         $jobworker = $userRepository->getAllJobWorkers();
-        //dd($jobworker);
 
         shuffle($jobworker);
-        //dd($jobworker);
 
         $getOneRandomJobWorker = $jobworker[mt_rand(0, count($jobworker) - 1)];
-        //dd($getOneRandomJobWorker);
 
         return $this->json(
             $getOneRandomJobWorker,
@@ -171,7 +169,6 @@ class UserController extends AbstractController
     public function getRatingOfJobworker(UserRepository $userRepository, int $id)
     {
         $jobWorkerRating = $userRepository->findJobWorkerRating($id);
-        //dd($jobWorkerRating);
 
         return $this->json(
             $jobWorkerRating,

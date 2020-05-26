@@ -60,9 +60,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $qb
             ->addSelect('dep, dem, s, r')
             ->join('u.department', 'dep')
-            ->join('u.jobWorkerDemands', 'dem')
+            ->leftjoin('u.jobWorkerDemands', 'dem')
             ->join('dem.service', 's')
-            ->join('dem.rating', 'r')
+            ->leftjoin('dem.rating', 'r')
             ->where('u.id = :id')
             ->andWhere('u.roles = :roles')
             ->setParameter('id', $id)
@@ -100,15 +100,17 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return $qb->getQuery()->getResult();
     }
 
-    /*
-    public function findOneBySomeField($value): ?User
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
+    public function findUserType($id, $roles) {
+        
+        $qb = $this->createQueryBuilder('u');
+
+        $qb
+            ->where('u.roles = :roles')
+            ->andWhere('u.id = :id')
+            ->setParameter('roles', '["'.$roles.'"]')
+            ->setParameter('id', $id)
         ;
+
+        return $qb->getQuery()->getOneOrNullResult();
     }
-    */
 }

@@ -20,21 +20,17 @@ class DemandController extends AbstractController
      */
     public function add(Request $request, ServiceRepository $serviceRepository, UserRepository $userRepository)
     {
-
         $jsonData = json_decode($request->getContent());
-        //dd($jsonData);
 
         $demand = new Demand();
 
         $demand->setBody($jsonData->body);
         $demand->setReservationDate(new \DateTime($jsonData->reservationDate));
         $demand->setReservationHour($jsonData->reservationHour);
-        $demand->setStatus($jsonData->status);
+        $demand->setStatus($jsonData->status ?? 'En attente');
         $demand->setService($serviceRepository->find($jsonData->service));
-        $demand->setFriendlyUser($userRepository->find($jsonData->friendlyUser));
-        $demand->setJobWorker($userRepository->find($jsonData->jobWorker));
-
-        //dd($demand);
+        $demand->setFriendlyUser($userRepository->findUserType($jsonData->friendlyUser, 'FRIENDLY_USER'));
+        $demand->setJobWorker($userRepository->findUserType($jsonData->jobWorker, 'JOBWORKER')); 
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($demand);
@@ -83,8 +79,6 @@ class DemandController extends AbstractController
     {
         $allDemands = $demandRepository->findAllDemandsFromOneUser($id);
 
-        //dd($allDemands);
-
         return $this->json(
             $allDemands,
             200,
@@ -103,11 +97,9 @@ class DemandController extends AbstractController
         $em->remove($demand);
         $em->flush();
 
-        return $this->json(
-            $demand,
-            200, 
-            [],
-            ['groups' => 'demand_delete']
-        );
+        return $this->json([
+            'statut' => 200,
+            'message' => 'La demande a bien été supprimé.'
+        ], 200);
     }
 }

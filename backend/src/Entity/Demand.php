@@ -16,7 +16,7 @@ class Demand
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      * @Groups({"service_jobworker"})
-     * @Groups({"demand_add", "demand_edit", "demand_one_user", "demand_delete"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating"})
      */
     private $id;
