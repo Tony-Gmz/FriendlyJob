@@ -1,14 +1,14 @@
 import React from 'react';
-import NavBar from 'src/components/NavBar';
 import JobWorkerListTitle from './JobWorkerListTitle';
 import JobWorkerMain from './JobWorkerMain';
 import ListPagination from './ListPagination';
 
+// JobWorkerList page component
 const JobWorkerList = () => (
   <>
-  <JobWorkerListTitle />
-  <JobWorkerMain />
-  <ListPagination />
+    <JobWorkerListTitle />
+    <JobWorkerMain />
+    <ListPagination />
   </>
 
 

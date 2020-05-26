@@ -1,8 +1,9 @@
 import React from 'react';
 import { Button, Icon } from 'semantic-ui-react';
-
 import './footer.scss';
 import { Link } from 'react-router-dom';
+
+// Footer reusable component
 
 const Footer = () => (
 
@@ -24,4 +25,5 @@ const Footer = () => (
   </footer>
 );
 
+// Export
 export default Footer;

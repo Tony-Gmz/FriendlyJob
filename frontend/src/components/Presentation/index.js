@@ -2,6 +2,8 @@ import React from 'react';
 import { Input } from 'semantic-ui-react';
 import './presentation.scss';
 
+// component presentation in homepage
+
 const Presentation = () => (
 
   <div className="presentation">

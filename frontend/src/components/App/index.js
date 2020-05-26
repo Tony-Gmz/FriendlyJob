@@ -4,21 +4,17 @@ import React from 'react';
 
 // == Import
 import './App.scss';
-import JobWorkerList from '../JobWorkerList';
-import Footer from 'src/components/Footer'
-import JobWorkerMain from '../JobWorkerList/JobWorkerMain';
+import Footer from 'src/components/Footer';
+import JobPresentation from 'src/components/JobPresentation';
+import Presentation from 'src/components/Presentation';
 import NavBar from '../NavBar';
-
-
-
-
+import Caroussel from '../Caroussel';
+import ErrorPage from '../404';
 
 // == Composant
 const App = () => (
   <div className="app">
-    <NavBar />
-    <JobWorkerList />
-    <Footer/> 
+    <ErrorPage />
   </div>
 );
 

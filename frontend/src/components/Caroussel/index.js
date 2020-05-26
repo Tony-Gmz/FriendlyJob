@@ -4,6 +4,8 @@ import jardinage from 'src/assets/img/jardinage.jpg';
 import './caroussel.scss';
 import { Link } from 'react-router-dom';
 
+// Component caroussel in homepage
+
 const Caroussel = () => {
   const settings = {
     dots: true,
@@ -46,49 +48,49 @@ const Caroussel = () => {
     <div className="caroussel">
       <Slider {...settings}>
         <Link>
-          <div classNames="caroussel_content">
+          <div className="caroussel_content">
             <img className="caroussel_img" src={jardinage} alt="jardinage" />
             <h3>Service 1</h3>
           </div>
         </Link>
         <Link>
-          <div classNames="caroussel_content">
+          <div className="caroussel_content">
             <img className="caroussel_img" src={jardinage} alt="jardinage" />
             <h3>Service 2</h3>
           </div>
         </Link>
         <Link>
-          <div classNames="caroussel_content">
+          <div className="caroussel_content">
             <img className="caroussel_img" src={jardinage} alt="jardinage" />
             <h3>Service 3</h3>
           </div>
         </Link>
         <Link>
-          <div classNames="caroussel_content">
+          <div className="caroussel_content">
             <img className="caroussel_img" src={jardinage} alt="jardinage" />
             <h3>Service 4</h3>
           </div>
         </Link>
         <Link>
-          <div classNames="caroussel_content">
+          <div className="caroussel_content">
             <img className="caroussel_img" src={jardinage} alt="jardinage" />
             <h3>Service 5</h3>
           </div>
         </Link>
         <Link>
-          <div classNames="caroussel_content">
+          <div className="caroussel_content">
             <img className="caroussel_img" src={jardinage} alt="jardinage" />
             <h3>Service 6</h3>
           </div>
         </Link>
         <Link>
-          <div classNames="caroussel_content">
+          <div className="caroussel_content">
             <img className="caroussel_img" src={jardinage} alt="jardinage" />
             <h3>Service 7</h3>
           </div>
         </Link>
         <Link>
-          <div classNames="caroussel_content">
+          <div className="caroussel_content">
             <img className="caroussel_img" src={jardinage} alt="jardinage" />
             <h3>Service 8</h3>
           </div>
@@ -96,7 +98,7 @@ const Caroussel = () => {
       </Slider>
     </div>
 
-  )
+  );
 
 };
 
