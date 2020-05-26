@@ -5,12 +5,11 @@ namespace App\Controller\Api\V1;
 use App\Entity\Service;
 use App\Repository\ServiceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
 /**
- * @Route("/api/v1/service", name="api_v1_service_")
+ * @Route("/api/v1/services", name="api_v1_services_")
  */
 class ServiceController extends AbstractController
 {

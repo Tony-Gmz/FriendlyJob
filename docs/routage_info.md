@@ -85,10 +85,10 @@ Route en GET = recupèrer les contacts
 | /api/v1/users/{id} | api_v1_users_edit | PUT | UserController | edit | Update one specific user |
 | /api/v1/users/{id} | api_v1_users_delete | DELETE | UserController | delete | Delete one specific user |
 | /api/v1/users | api_v1_users_add | POST | UserController | add | Add a user |
-| /api/v1/jobworker/random | api_v1_jobworker_random | GET | UserController | randomJobWorker | Get a random JobWorker |
+| /api/v1/jobworker/random | api_v1_users_jobworker_random | GET | UserController | randomJobWorker | Get a random JobWorker |
 | /api/v1/users/check | api_v1_users_check | POST | UserController | checkUser | Verify credentials from one user |
-| /api/v1/jobworker/{id} | api_v1_jobworker | GET | UserController | getJobWorker | Get details from one JobWorker |
-| /api/v1/contacts | api_v1_contacts | GET | UserController | getAllContact | List of all contacts |
+| /api/v1/jobworker/{id} | api_v1_users_jobworker | GET | UserController | getJobWorkerDetails | Get details from one JobWorker |
+| /api/v1/contacts | api_v1_users_contacts | GET | UserController | getAllContact | List of all contacts |
 |||||||
 | /api/v1/department | api_v1_department_browse | GET | DepartmentController | browse | List of all department |
 |||||||
@@ -103,7 +103,7 @@ Route en GET = recupèrer les contacts
 | /api/v1/demands | api_v1_demands_add | POST | RequestController | add | Add a request |
 | /api/v1/demands/users/{id} | api_v1_demands_users | GET | RequestController | getDemandsFromOneUser | Get all demands from one User |
 |||||||
-| /api/v1/rating/jobworker/{id} | api_v1_rating_jobworker | GET | RatingController | getRatingOfJobworker | Get all ratings from one jobWorker |
+| /api/v1/ratings/jobworker/{id} | api_v1_rating_jobworker | GET | RatingController | getRatingOfJobworker | Get all ratings from one jobWorker |
 
 
 HomePage "/" =

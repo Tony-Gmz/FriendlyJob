@@ -50,7 +50,7 @@ class ServiceRepository extends ServiceEntityRepository
             ->setParameter('id', $id)
         ;
         //dd($qb->getQuery());
-        dd($qb->getQuery()->getResult());
+        //dd($qb->getQuery()->getResult());
         return $qb->getQuery()->getResult();
     }
     

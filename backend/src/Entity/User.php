@@ -18,19 +18,19 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"service_jobworker"})
+     * @Groups({"service_jobworker", "user_jobworker_details", "user_contact"})
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=180)
-     * @Groups({"service_jobworker"})
+     * @ORM\Column(type="string", length=180, unique=true)
+     * @Groups({"service_jobworker", "user_jobworker_details", "user_contact"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
-     * @Groups({"service_jobworker"})
+     * @Groups({"service_jobworker", "user_jobworker_details", "user_contact"})
      */
     private $roles = [];
 
@@ -42,19 +42,19 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"service_jobworker"})
+     * @Groups({"service_jobworker", "user_jobworker_details", "user_contact"})
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"service_jobworker"})
+     * @Groups({"service_jobworker", "user_jobworker_details", "user_contact"})
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"service_jobworker"})
+     * @Groups({"service_jobworker", "user_jobworker_details", "user_contact"})
      */
     private $image;
 
@@ -71,12 +71,13 @@ class User implements UserInterface
     /**
      * @ORM\ManyToOne(targetEntity=Department::class, inversedBy="users",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"service_jobworker"})
+     * @Groups({"service_jobworker", "user_jobworker_details"})
      */
     private $department;
 
     /**
      * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="user", orphanRemoval=true)
+     * @Groups({"user_jobworker_details"})
      */
     private $skills;
 
@@ -89,6 +90,12 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity=Demand::class, mappedBy="jobWorker", orphanRemoval=true)
      */
     private $jobWorkerDemands;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     * @Groups({"service_jobworker", "user_jobworker_details", "user_contact"})
+     */
+    private $about;
 
     public function __construct()
     {
@@ -334,6 +341,18 @@ class User implements UserInterface
                 $jobWorkerDemand->setJobWorker(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAbout(): ?string
+    {
+        return $this->about;
+    }
+
+    public function setAbout(?string $about): self
+    {
+        $this->about = $about;
 
         return $this;
     }

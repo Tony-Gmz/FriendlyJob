@@ -19,7 +19,7 @@ class Rating
     private $id;
 
     /**
-     * @ORM\Column(type="text", length=16383)
+     * @ORM\Column(type="text")
      */
     private $comment;
 

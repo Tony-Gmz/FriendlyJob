@@ -10,6 +10,7 @@
 |password|VARCHAR(255)|NOT NULL|User's Password (hash)|
 |image|VARCHAR(255)|NULL|URL of user's profile picture|
 |role|JSON|NOT NULL|User's role|
+|about|TEXT|NULL|User's description|
 |created_at|TIMESTAMP|NOT NULL|Creation date of user’s account|
 |updated_at|TIMESTAMP|NULL|Update date of user’s account|
 |department_id|INT| FOREIGN KEY, NOT NULL|Foreign key for the department|
@@ -52,7 +53,7 @@
 |Champ|Type|Spécificités|Description|
 |-|-|-|-|
 |id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|Request’s id|
-|body|VARCHAR(255)|NOT NULL|Request’s description|
+|body|TEXT|NOT NULL|Request’s description|
 |reservation_date|TIMESTAMP|NOT NULL|Request’s date for the reservation|
 |reservation_hour|VARCHAR(255)|NOT NULL|Request’s hour for the reservation|
 |status|VARCHAR(255)|NOT NULL|Request’s status|
@@ -66,7 +67,7 @@
 |Champ|Type|Spécificités|Description|
 |-|-|-|-|
 |id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|Rating’s id|
-|comment|VARCHAR(65535)|NOT NULL|FriendlyUser’s comment|
+|comment|TEXT|NOT NULL|FriendlyUser’s comment|
 |star|TINYINT|NOT NULL|Service’s evaluation by a FriendlyUser|
 |created_at|TIMESTAMP|NOT NULL|Creation date of the rating|
 |updated_at|TIMESTAMP|NULL|Update date of the rating|

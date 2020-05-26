@@ -15,16 +15,19 @@ class Skill
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"user_jobworker_details"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"user_jobworker_details"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"user_jobworker_details"})
      */
     private $price;
 
@@ -48,6 +51,7 @@ class Skill
     /**
      * @ORM\ManyToOne(targetEntity=Service::class, inversedBy="skills")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"user_jobworker_details"})
      */
     private $service;
 

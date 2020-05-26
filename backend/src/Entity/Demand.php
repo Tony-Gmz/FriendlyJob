@@ -20,7 +20,7 @@ class Demand
     private $id;
 
     /**
-     * @ORM\Column(type="text", length=16383)
+     * @ORM\Column(type="text")
      */
     private $body;
 
@@ -77,6 +77,7 @@ class Demand
         $this->createdAt = new \DateTime();
     }
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -94,9 +95,9 @@ class Demand
         return $this;
     }
 
-    public function getReservationDate(): ?\DateTimeInterface
+    public function getReservationDate(): ?string
     {
-        return $this->reservationDate;
+        return $this->reservationDate->format('d-m-Y');
     }
 
     public function setReservationDate(\DateTimeInterface $reservationDate): self

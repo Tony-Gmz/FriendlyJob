@@ -36,22 +36,51 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->flush();
     }
 
-    // /**
-    //  * @return User[] Returns an array of User objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findJobWorkerDetails($id)
     {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        $qb = $this->createQueryBuilder('u');
+        
+        $qb
+            ->addSelect('dep, sk, s')
+            ->join('u.department', 'dep')
+            ->join('u.skills', 'sk')
+            ->join('sk.service', 's')
+            ->where('u.id = :id')
+            ->andWhere('u.roles = :roles')
+            ->setParameter('id', $id)
+            ->setParameter('roles', '["JOBWORKER"]')
         ;
+        return $qb->getQuery()->getOneOrNullResult();
     }
-    */
+
+    public function findContactDetails()
+    {
+        $qb = $this->createQueryBuilder('u');
+        
+        $qb
+            ->addSelect('dep')
+            ->leftjoin('u.department', 'dep')
+            ->Where('u.roles = :roles')
+            ->setParameter('roles', '["ADMIN"]')
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getAllJobWorkers()
+    {
+        $qb = $this->createQueryBuilder('u');
+
+        $qb
+            ->addSelect('dep, sk, s')
+            ->join('u.department', 'dep')
+            ->join('u.skills', 'sk')
+            ->join('sk.service', 's')
+            ->where('u.roles =  :roles')
+            ->setParameter('roles', '["JOBWORKER"]')
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
 
     /*
     public function findOneBySomeField($value): ?User

@@ -17,19 +17,19 @@ class Department
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"service_jobworker"})
+     * @Groups({"service_jobworker", "user_jobworker_details"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"service_jobworker"})
+     * @Groups({"service_jobworker", "user_jobworker_details"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"service_jobworker"})
+     * @Groups({"service_jobworker", "user_jobworker_details"})
      */
     private $number;
 

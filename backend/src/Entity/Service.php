@@ -17,31 +17,31 @@ class Service
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"service_browse", "service_read", "service_jobworker"})
+     * @Groups({"service_browse", "service_read", "service_jobworker", "user_jobworker_details"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @Groups({"service_browse", "service_read", "service_jobworker"})
+     * @Groups({"service_browse", "service_read", "service_jobworker", "user_jobworker_details"})
      */
     private $parentId;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"service_browse", "service_read", "service_jobworker"})
+     * @Groups({"service_browse", "service_read", "service_jobworker", "user_jobworker_details"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text", length=16383)
-     * @Groups({"service_browse", "service_read", "service_jobworker"})
+     * @Groups({"service_browse", "service_read", "service_jobworker", "user_jobworker_details"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"service_browse", "service_read", "service_jobworker"})
+     * @Groups({"service_browse", "service_read", "service_jobworker", "user_jobworker_details"})
      */
     private $image;
 
