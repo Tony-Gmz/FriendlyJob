@@ -64,6 +64,7 @@ class Demand
     /**
      * @ORM\OneToOne(targetEntity=Rating::class, mappedBy="demand", cascade={"persist", "remove"})
      * @Groups({"user_jobworker_rating"})
+     * @Groups({"service_jobworker"})
      */
     private $rating;
 

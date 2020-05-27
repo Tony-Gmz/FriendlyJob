@@ -70,6 +70,14 @@ class User implements UserInterface
     private $image;
 
     /**
+     * @ORM\Column(type="text", nullable=true)
+     * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"service_jobworker"})
+     */
+    private $about;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -102,16 +110,9 @@ class User implements UserInterface
     /**
      * @ORM\OneToMany(targetEntity=Demand::class, mappedBy="jobWorker", orphanRemoval=true, cascade={"persist"})
      * @Groups({"user_jobworker_rating"})
-     */
-    private $jobWorkerDemands;
-
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact"})
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"service_jobworker"})
-     */
-    private $about;
+     */ 
+    private $jobWorkerDemands;
 
     public function __construct()
     {
@@ -229,6 +230,18 @@ class User implements UserInterface
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getAbout(): ?string
+    {
+        return $this->about;
+    }
+
+    public function setAbout(?string $about): self
+    {
+        $this->about = $about;
 
         return $this;
     }
@@ -362,15 +375,4 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getAbout(): ?string
-    {
-        return $this->about;
-    }
-
-    public function setAbout(?string $about): self
-    {
-        $this->about = $about;
-
-        return $this;
-    }
 }

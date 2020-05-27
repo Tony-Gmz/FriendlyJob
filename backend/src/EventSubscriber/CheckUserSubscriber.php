@@ -9,7 +9,7 @@ use Symfony\Component\HttpKernel\Event\ResponseEvent;
 class CheckUserSubscriber implements EventSubscriberInterface
 {
     public function onKernelResponse(ResponseEvent $event)
-    {
+    {   
         $response = $event->getResponse();
         $path = $event->getRequest()->getPathInfo();
         $requestHeader = $event->getRequest()->headers->all();

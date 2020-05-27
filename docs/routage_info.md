@@ -94,9 +94,10 @@ Route en GET = recupèrer les contacts
 | /api/v1/department | api_v1_department_browse | GET | DepartmentController | browse | List of all department |
 |||||||
 | /api/v1/services | api_v1_services_browse | GET | ServiceController | browse | List of all services |
-| /api/v1/services/{id} | api_v1_services_read | GET | ServiceController | read | See details of one specific service |
+| /api/v1/services/{id} | api_v1_services_read_id | GET | ServiceController | readByID | See details of one specific service with his id |
+| /api/v1/services/{title} | api_v1_services_read_title | GET | ServiceController | readByTitle | See details of one specific service with his title |
 | /api/v1/services/{id}/jobworkers | api_v1_services_jobworkers | GET | ServiceController | getJobWorkersByServices | Get all JobWorkers from a Service |
-| /api/v1/services/{id}/jobworkers?limit5=on | api_v1_services_jobworkers | GET | ServiceController | getJobWorkersByServices | Get five JobWorkers from a service |
+| /api/v1/services/{id}/jobworkers?limit={number} | api_v1_services_jobworkers | GET | ServiceController | getJobWorkersByServices | Get X JobWorkers from a service |
 | /api/v1/services/{id}/sub-services | api_v1_services_subservices | GET | ServiceController | getSubServicesFromService | Get Sub-services from one service |
 |||||||
 | /api/v1/demands/{id} | api_v1_demands_edit | PUT | DemandController | edit | Update one specific demand |

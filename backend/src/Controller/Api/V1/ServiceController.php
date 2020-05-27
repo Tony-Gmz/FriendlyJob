@@ -26,9 +26,19 @@ class ServiceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="read", requirements={"id": "\d+"}, methods={"GET"})
+     * @Route("/{id}", name="read_id", requirements={"id": "\d+"}, methods={"GET"})
      */
-    public function read(Service $service, SerializerInterface $serializer)
+    public function readById(Service $service, SerializerInterface $serializer)
+    {
+        $arrayService = $serializer->normalize($service, null, ['groups' => 'service_read']);
+
+        return $this->json($arrayService, 200);
+    }
+
+    /**
+     * @Route("/{title}", name="read_title", methods={"GET"})
+     */
+    public function readByTitle(Service $service, SerializerInterface $serializer)
     {
         $arrayService = $serializer->normalize($service, null, ['groups' => 'service_read']);
 
@@ -42,9 +52,9 @@ class ServiceController extends AbstractController
     {
         if (isset($_GET['limit'])) {
             
-            $limit = 5;
+            $limit = $_GET['limit'];
 
-            $service = $serviceRepository->findJobworkerByService($id, $limit);
+            $service = $serviceRepository->findJobworkerByServiceWithLimit($id, $limit);
             
             $arrayService = $serializer->normalize($service, null, ['groups' => 'service_jobworker']);
 
