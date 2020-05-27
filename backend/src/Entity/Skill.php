@@ -16,18 +16,21 @@ class Skill
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      * @Groups({"user_random_jobworker", "user_jobworker_details"})
+     * @Groups({"service_jobworker"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"user_random_jobworker", "user_jobworker_details"})
+     * @Groups({"service_jobworker"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="integer")
      * @Groups({"user_random_jobworker", "user_jobworker_details"})
+     * @Groups({"service_jobworker"})
      */
     private $price;
 

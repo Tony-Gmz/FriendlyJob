@@ -8,7 +8,7 @@
 
 # DemandController
 
-## /api/v1/demands/
+<details><summary>/api/v1/demands/</summary>
 
 ## méthode HTTP = POST
 
@@ -75,7 +75,9 @@
 }
 ```
 
-## /api/v1/demands/{id}
+</details>
+
+<details><summary>/api/v1/demands/{id}</summary>
 
 ## méthode HTTP = PUT
 
@@ -142,7 +144,9 @@
 }
 ```
 
-## /api/v1/demands/users/{id}
+</details>
+
+<details><summary>/api/v1/demands/users/{id}</summary>
 
 ## méthode HTTP = GET
 
@@ -199,7 +203,9 @@ Aucune
 ]
 ```
 
-## /api/v1/demands/{id}
+</details>
+
+<details><summary>/api/v1/demands/{id}</summary>
 
 ## méthode HTTP = DELETE
 
@@ -219,12 +225,13 @@ Aucune
 }
 ```
 
+</details>
+
 ***
-<br><br>
 
 # DepartmentController
 
-## /api/v1/department
+<details><summary>/api/v1/department</summary>
 
 ## méthode HTTP = GET
 
@@ -256,13 +263,13 @@ Aucune
   }
 ]
 ```
+</details>
 
 ***
-<br><br>
 
 # ServiceController
 
-## /api/v1/services
+<details><summary>/api/v1/services</summary>
 
 ## méthode HTTP = GET
 
@@ -271,7 +278,6 @@ Aucune
 ### Les données attendues ( Front => Back)
 
 Aucune
-
 
 ### Les données envoyé ( Back => Front )
 
@@ -293,12 +299,13 @@ Aucune
   }
 ]
 ```
+</details>
+<details><summary>/api/v1/services/{id}</summary>
 
-## /api/v1/services/{id}
 
 ## méthode HTTP = GET
 
-### Cette route permet de récuperer un service en bdd
+### Cette route permet de récuperer un service par son id en bdd
 
 ### Les données attendues ( Front => Back)
 
@@ -316,13 +323,38 @@ Aucune
   "image": "http:\/\/www.tanguy.com\/"
 }
 ```
+</details>
 
-## /api/v1/services/{id}/jobworker
-## /api/v1/services/{id}/jobworker?limit=on
+<details><summary>/api/v1/services/{title}</summary>
+
 
 ## méthode HTTP = GET
 
-### Cette route permet de récuperer tout les jobworker ou 5 jobworker lié a un service en bdd
+### Cette route permet de récuperer un service par son titre en bdd
+
+### Les données attendues ( Front => Back)
+
+Aucune
+
+
+### Les données envoyé ( Back => Front )
+
+```json 
+{
+  "id": 1,
+  "parentId": null,
+  "title": "Pilote fluvial",
+  "description": "Beatae esse et ex fuga quis voluptatem quod est aliquid.",
+  "image": "http:\/\/www.tanguy.com\/"
+}
+```
+</details>
+
+<details><summary>/api/v1/services/{id}/jobworker ou /api/v1/services/{id}/jobworker?limit={number} </summary>
+
+## méthode HTTP = GET
+
+### Cette route permet de récuperer tout les jobworker ou X jobworker lié a un service en bdd
 
 ### Les données attendues ( Front => Back)
 
@@ -361,42 +393,10 @@ Aucune
     ]
 ]
 ```
+</details>
 
-# ServiceController
+<details><summary>/api/v1/services/{id}/subservices</summary>
 
-## /api/v1/services
-
-## méthode HTTP = GET
-
-### Cette route permet de récuperer tout les services en bdd
-
-### Les données attendues ( Front => Back)
-
-Aucune
-
-
-### Les données envoyé ( Back => Front )
-
-```json 
-[
-  {
-    "id": 1,
-    "parentId": null,
-    "title": "Pilote fluvial",
-    "description": "Beatae esse et ex fuga quis voluptatem quod est aliquid.",
-    "image": "http:\/\/www.tanguy.com\/"
-  },
-  {
-    "id": 2,
-    "parentId": null,
-    "title": "Pédologue",
-    "description": "Ratione dignissimos maxime soluta fugit tenetur doloremque quae magni et.",
-    "image": "http:\/\/leleu.org\/voluptates-tenetur-aspernatur-maxime-sint-consequatur-reiciendis"
-  }
-]
-```
-
-## /api/v1/services/{id}/subservices
 
 ## méthode HTTP = GET
 
@@ -434,14 +434,15 @@ Aucune
   }
 ]
 ```
+</details>
 
 ***
-<br><br>
 
 
 # UserController
 
-## /api/v1/users/{id}
+<details><summary>/api/v1/users/{id}</summary>
+
 
 ## méthode HTTP = GET
 
@@ -471,8 +472,8 @@ Aucune
   "about": null
 }
 ```
-
-## /api/v1/users
+</details>
+<details><summary>/api/v1/users</summary>
 
 ## méthode HTTP = POST
 
@@ -512,8 +513,10 @@ Aucune
   "about": null
 }
 ```
+</details>
 
-## /api/v1/users/{id}
+<details><summary>/api/v1/users/{id}</summary>
+
 
 ## méthode HTTP = PUT
 
@@ -555,7 +558,9 @@ Aucune
 }
 ```
 
-## /api/v1/users/{id}
+</details>
+<details><summary>/api/v1/users/{id}</summary>
+
 
 ## méthode HTTP = DELETE
 
@@ -574,7 +579,8 @@ Aucune
 }
 ```
 
-## /api/v1/users/jobworker/random
+</details>
+<details><summary>/api/v1/users/jobworker/random</summary>
 
 ## méthode HTTP = GET
 
@@ -643,7 +649,9 @@ Aucune
 }
 ```
 
-## /api/v1/users/jobworker/{id}
+</details>
+<details><summary>/api/v1/users/jobworker/{id}</summary>
+
 
 ## méthode HTTP = GET
 
@@ -712,7 +720,9 @@ Aucune
 }
 ```
 
-## /api/v1/users/contacts
+</details>
+<details><summary>/api/v1/users/contacts</summary>
+
 
 ## méthode HTTP = GET
 
@@ -741,7 +751,9 @@ Aucune
 
 ```
 
-## /api/v1/users/jobworker/{id}/rating
+</details>
+<details><summary>/api/v1/users/jobworker/{id}/rating</summary>
+
 
 ## méthode HTTP = GET
 
@@ -796,7 +808,9 @@ Aucune
 
 ```
 
-## /api/v1/users/check
+</details>
+<details><summary>/api/v1/users/check</summary>
+
 
 ## méthode HTTP = GET
 
@@ -805,25 +819,7 @@ Aucune
 ### Les données attendues ( Front => Back)
 
 
-#### Sur la route api/login_check :
-
-```json
-{
-	"username":"michele.lopez@tele2.fr",
-	"password":"derrick"
-}
-```
-
-### La route api/login_check retourne :
-
-```json
-{
-  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1OTA1MDg2ODMsImV4cCI6MTU5MDU0NDY4Mywicm9sZXMiOlsiQURNSU4iXSwidXNlcm5hbWUiOiJhZG1pbi5qb2xhbkBvY2xvY2suaW8ifQ.JHsHta3dxTDsBsBuEiqVOnWz64N_KUgaz7fxQWPD8IoAa2HzgGDRJy6_fW2Ysu8JTa-W-JOCx7m4VLNl9QX_PMnvg_IXAyqPXW-O5Wwa2vrRufcyZYZLLQrOJ1N1NMm2VtyWBpZUXMDdokXBFcORcChGvDTf7w0D3qEe-91DdwG7gg-wd_OxN5odCDNJqnXaT493SUGPNerJJ8g511LFVoHIVY4rfIgA66Zg4dnFf4Cz4H42YkLXv6akMgk93AQWgQnoSZWaW1ofkPryPbgA1_Yr46Bu1z3dQrm2cgV-CMvvLtzBGlirSTawt8O6L0RgMZy5khJcRtquOTLmQAVQ1e9cCphz0KHENZwiGgswUVMedCGUTqIrE9VpVb7sakv08n2BIgCVlOjkz1Q2Rotzg-H76b1ijSYMfgfz-LCg6OnllBnHsmQv8fwLHE3fQNHRqGHq7WNEuKMbJNq6s49nwS_6y4uAch95avjQs5iS0qEmmxxm1I0ASEm5eiOxbRIIBhBRN52bmxbRCFOqdKRiQHHGYX3d9E9mGLm2yMw9D7vOoLBjR5u0IcQD_5J2nOYs7MswEfCauO9M-yR6pgY7xsgAHOJAvBLql-6ZOSWGCfqezw5FYS_VhA7Zt_Olon2PjC792x0ERpWd3JT9uGhFsW8nnBhrCPwABUTdZ692moo"
-}
-```
-
-### Puis insérer le token ci-dessus dans une en-tête HTTP sur la route /api/v1/users/check
-Authorization  => Bearer (le token)
+/!\ Bien insérer le token afin de récuperer les données
 
 ### Les données envoyé ( Back => Front )
 
@@ -840,31 +836,62 @@ Authorization  => Bearer (le token)
 }
 ```
 
+</details>
+
+
+## Récuperer un token JWT
+
+<details><summary>/api/login_check</summary>
+
+### Les données attendues ( Front => Back)
+
+```json
+{
+	"username":"admin.jolan@oclock.io",
+	"password":"AdminFJ137313."
+}
+```
+
+### Les données envoyé ( Back => Front )
+
+```json
+{
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1OTA1MDg2ODMsImV4cCI6MTU5MDU0NDY4Mywicm9sZXMiOlsiQURNSU4iXSwidXNlcm5hbWUiOiJhZG1pbi5qb2xhbkBvY2xvY2suaW8ifQ.JHsHta3dxTDsBsBuEiqVOnWz64N_KUgaz7fxQWPD8IoAa2HzgGDRJy6_fW2Ysu8JTa-W-JOCx7m4VLNl9QX_PMnvg_IXAyqPXW-O5Wwa2vrRufcyZYZLLQrOJ1N1NMm2VtyWBpZUXMDdokXBFcORcChGvDTf7w0D3qEe-91DdwG7gg-wd_OxN5odCDNJqnXaT493SUGPNerJJ8g511LFVoHIVY4rfIgA66Zg4dnFf4Cz4H42YkLXv6akMgk93AQWgQnoSZWaW1ofkPryPbgA1_Yr46Bu1z3dQrm2cgV-CMvvLtzBGlirSTawt8O6L0RgMZy5khJcRtquOTLmQAVQ1e9cCphz0KHENZwiGgswUVMedCGUTqIrE9VpVb7sakv08n2BIgCVlOjkz1Q2Rotzg-H76b1ijSYMfgfz-LCg6OnllBnHsmQv8fwLHE3fQNHRqGHq7WNEuKMbJNq6s49nwS_6y4uAch95avjQs5iS0qEmmxxm1I0ASEm5eiOxbRIIBhBRN52bmxbRCFOqdKRiQHHGYX3d9E9mGLm2yMw9D7vOoLBjR5u0IcQD_5J2nOYs7MswEfCauO9M-yR6pgY7xsgAHOJAvBLql-6ZOSWGCfqezw5FYS_VhA7Zt_Olon2PjC792x0ERpWd3JT9uGhFsW8nnBhrCPwABUTdZ692moo"
+}
+```
+
+### Puis insérer le token ci-dessus dans une en-tête HTTP pour toute les routes
+Authorization  => Bearer (le token)
+
+
+</details>
+
 # Remarque pour l'équipe back
 
+<details><summary>Attention Coquillette méchante (elle miaule sur les fronteur)</summary>
 ## Demand
 
-add =>  status optionnelle : OK
-        friendly user sûr : OK
-        Jobworker sûr : OK
-        Erreur NULL sur friendly User ou JobWorker ou Service : X
-        ( PDOException > PDOException > NotNullConstraintViolationException )
+      add =>  status optionnelle : OK
+              friendly user sûr : OK
+              Jobworker sûr : OK
+              Erreur NULL sur friendly User ou JobWorker ou Service : X
+              ( PDOException > PDOException > NotNullConstraintViolationException )
 
-edit => rendre tout les champ optionnelle ( Service à discuter ) ( sauf FriendlyUSER, JobWorker)  : X
-        Erreur NULL sur friendly User ou JobWorker ou Service : X
-        ( PDOException > PDOException > NotNullConstraintViolationException )
-        Utilisation de la queryBuilder findUserType : X ( à discuter )
-        Changement de service : X ( à discuter )
-        Erreur Param Converter à gérer : X
+      edit => rendre tout les champ optionnelle ( Service à discuter ) ( sauf FriendlyUSER, JobWorker)  : X
+              Erreur NULL sur friendly User ou JobWorker ou Service : X
+              ( PDOException > PDOException > NotNullConstraintViolationException )
+              Utilisation de la queryBuilder findUserType : X ( à discuter )
+              Changement de service : X ( à discuter )
+              Erreur Param Converter à gérer : X
 
-getDemandsFromOneUser => gérer un id inexistant : X
+      getDemandsFromOneUser => gérer un id inexistant : X
 
-delete => Erreur Param Converter à gérer : X
+      delete => Erreur Param Converter à gérer : X
 
 
 ## Department
 
- remarque => demande au fronteur pour les jobworker par département ?
+    remarque => demande au fronteur pour les jobworker par département ?
 
 ## Service
 
@@ -908,7 +935,8 @@ delete => Erreur Param Converter à gérer : X
 
     checkUser => Erreur déja gérer via les subscriber ( à revoir )
 
-Tout ce qui utilise le param converter on pourra mettre un subscriber
-App\Entity\Demand object not found by the @ParamConverter annotation.
-( NotFoundHttpException )
-Voir les 404 erreur mauvaise URL
+    Tout ce qui utilise le param converter on pourra mettre un subscriber
+    App\Entity\Demand object not found by the @ParamConverter annotation.
+    ( NotFoundHttpException )
+    Voir les 404 erreur mauvaise URL
+</details>
