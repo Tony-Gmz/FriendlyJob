@@ -20,6 +20,7 @@ class Service
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating", "user_jobworker_details", "user_random_jobworker"})
      * @Groups({"service_browse", "service_read", "service_jobworker", "service_subservices"})
+     * @Groups({"skill_add"})
      */
     private $id;
 
@@ -28,6 +29,7 @@ class Service
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating", "user_jobworker_details", "user_random_jobworker"})
      * @Groups({"service_browse", "service_read", "service_jobworker", "service_subservices"})
+     * @Groups({"skill_add"})
      */
     private $parentId;
 
@@ -36,6 +38,7 @@ class Service
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating", "user_jobworker_details", "user_random_jobworker"})
      * @Groups({"service_browse", "service_read", "service_jobworker", "service_subservices"})
+     * @Groups({"skill_add"})
      */
     private $title;
 
@@ -44,6 +47,7 @@ class Service
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating", "user_jobworker_details", "user_random_jobworker"})
      * @Groups({"service_browse", "service_read", "service_jobworker", "service_subservices"})
+     * @Groups({"skill_add"})
      */
     private $description;
 
@@ -52,6 +56,7 @@ class Service
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating", "user_jobworker_details", "user_random_jobworker"})
      * @Groups({"service_browse", "service_read", "service_jobworker", "service_subservices"})
+     * @Groups({"skill_add"})
      */
     private $image;
 

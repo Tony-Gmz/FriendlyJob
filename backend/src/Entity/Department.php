@@ -21,6 +21,7 @@ class Department
      * @Groups({"department_browse"})
      * @Groups({"user_read", "user_add", "user_edit", "user_jobworker_rating", "user_random_jobworker", "user_jobworker_details"})
      * @Groups({"service_jobworker"})
+     * @Groups({"skill_add"})
      */
     private $id;
 
@@ -30,6 +31,7 @@ class Department
      * @Groups({"department_browse"})
      * @Groups({"user_read", "user_add", "user_edit", "user_jobworker_rating", "user_random_jobworker", "user_jobworker_details"})
      * @Groups({"service_jobworker"})
+     * @Groups({"skill_add"})
      */
     private $name;
 
@@ -39,6 +41,7 @@ class Department
      * @Groups({"department_browse"})
      * @Groups({"user_read", "user_add", "user_edit", "user_jobworker_rating", "user_random_jobworker", "user_jobworker_details"})
      * @Groups({"service_jobworker"})
+     * @Groups({"skill_add"})
      */
     private $number;
 

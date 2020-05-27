@@ -82,8 +82,9 @@ class UserController extends AbstractController
         $user->setPassword($encodedPassword);
         $user->setFirstname($jsonData->firstname);
         $user->setLastname($jsonData->lastname);
-        $user->setImage($jsonData->image);
+        $user->setImage($jsonData->image ?? null);
         $user->setAbout($jsonData->about);
+        $user->setUpdatedAt(new \DateTime());
         $user->setDepartment($departmentRepository->find($jsonData->department));
 
         $em = $this->getDoctrine()->getManager();
