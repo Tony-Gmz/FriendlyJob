@@ -5,13 +5,13 @@ import './listPagination.scss';
 
 const ListPagination = () => {
  
+  const screenWidth = window.screen.width;
 
   return (
     <div className="listPagination">
-    <Pagination defaultActivePage={5} totalPages={10} />
+      { screenWidth > 768 ? <Pagination defaultActivePage={1} totalPages={10} /> : <Pagination defaultActivePage={1} totalPages={5} /> }
     </div>
-    
-  )
+  );
 };
 
 export default ListPagination;

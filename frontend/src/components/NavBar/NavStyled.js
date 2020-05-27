@@ -1,10 +1,16 @@
 import styled from 'styled-components';
+import 'src/styles/_vars.scss';
 
 const NavStyled = styled.nav`
   margin-top: 1rem;
   display: flex;
   justify-content: space-between;
   margin-bottom:5em;
+  @media (max-width: 768px) {
+    width: 100%
+    display: flex;
+    flex-direction: column;
+  }
 
  .nav_title {
   padding-top: 1rem;
@@ -15,8 +21,13 @@ const NavStyled = styled.nav`
  .nav_ul {
    display: flex;
    padding-top: 0.5rem;
+   @media (max-width: 315px) {
+    display: flex;
+    flex-direction: column;
+  }
+
  }
- .selected {
+ .selected-link {
   border-bottom: 1px solid #FF385C;
  }
  .nav_ul li {
@@ -29,6 +40,7 @@ const NavStyled = styled.nav`
  }
  .nav_content {
    display: flex
+  }
 
  }
 

@@ -1,10 +1,16 @@
-// variable wich set responsive design
-$small-desktop: 960px;
-$large-desktop: 1200px;
-$handheld: 768px;
-$handhelds-landscape: 1024px;
-$mobile: 640px;
-$mobile-landscape: 480px;
+// Phone device 
+$screen-phone-min: 315px;
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+ 
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+ 
+// Tablets and small desktops
+$screen-lg-min: 992px;
+ 
+// Large tablets and desktops
+$screen-xl-min: 1200px;
 
 // variable wich set primary and secondary colors
 $primaryColors: red;
@@ -14,39 +20,41 @@ $secondaryColors:pink;
 
 
 // responsive design
-@mixin respond-to($media) {
-  @if $media == largeDesktop {
-    @media only screen and (min-width: $large-desktop) { @content }
-  }
-  @if $media == smallDesktop {
-    @media only screen and (max-width: $small-desktop) { @content; }
-  }
-  @if $media == handhelds {
-    @media only screen and (max-width: $handheld) { @content; }
-  }
-  @if $media == handhelds-landscape {
-    @media only screen  and (min-device-width : $handheld)
-                        and (max-device-width : $handhelds-landscape)
-                        and (orientation : landscape){ @content; }
-  }
-  @if $media == mobile {
-    @media only screen and (max-width: $mobile) { @content; }
-  }
-  @if $media == mobile-portrait {
-    @media only screen  and (max-width: $mobile)
-                        and (orientation : portrait) { @content; }
-  }
-  @if $media == mobile-landscape {
-    @media only screen  and (min-width: 320px)
-                        and (max-width: $mobile-landscape)
-                        and (orientation : landscape) { @content; }
-  }
-
-  @if $media == retina {
-    @media (-webkit-min-device-pixel-ratio: 2) { @content; }
-  }
-
-  @if $media == iphone5 {
-    @media only screen and (device-aspect-ratio: 40/71) { @content }
-  }
+@mixin phone {
+  @media (min-width: #{$screen-phone-min}) {
+    @content;
+}
+}
+@mixin sm {
+   @media (min-width: #{$screen-sm-min}) {
+       @content;
+   }
+}
+ 
+// Medium devices
+@mixin md {
+   @media (min-width: #{$screen-md-min}) {
+       @content;
+   }
+}
+ 
+// Large devices
+@mixin lg {
+   @media (min-width: #{$screen-lg-min}) {
+       @content;
+   }
+}
+ 
+// Extra large devices
+@mixin xl {
+   @media (min-width: #{$screen-xl-min}) {
+       @content;
+   }
+}
+ 
+// Custom devices
+@mixin rwd($screen) {
+   @media (min-width: $screen+'px' ) {
+      @content;
+   }
 }

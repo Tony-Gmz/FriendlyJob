@@ -5,6 +5,7 @@ import { Card } from 'semantic-ui-react';
 import JoberRating from './rating';
 import JoberStyled from './JoberStyled';
 import './jober.scss';
+import NavButtonStyled from '../../../Button/NavButtonStyled';
 
 // Styled component reusable
 
@@ -14,10 +15,13 @@ const Jober = () => {
     "Passionné d'informatique, je sais faire de nombreuses chose sous windows",
   ].join(' ');
 
+  let screenWidth = window.screen.width;
+  console.log(screenWidth);
+
   return (
     <JoberStyled>
       <div className="Jober_avatar">
-        <Avatar alt="Remy Sharp" src={profil} />
+        {screenWidth > 768 ? <Avatar alt="Remy Sharp" src={profil} /> : ''}
       </div>
       <div className="Jober_card">
         <Card>
@@ -25,6 +29,7 @@ const Jober = () => {
           <Card.Content description={description} />
           <Card.Content extra>
           10€/heure  <JoberRating />
+            <NavButtonStyled>Contact</NavButtonStyled>
           </Card.Content>
         </Card>
       </div>
