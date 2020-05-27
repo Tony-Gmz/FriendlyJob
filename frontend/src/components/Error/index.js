@@ -1,10 +1,11 @@
 import React from 'react';
-import './404.scss';
+import './error.scss';
 import Footer from '../Footer';
+import { Link } from 'react-router-dom';
 
 // 404 component
 
-const ErrorPage = () => (
+const Error = () => (
 
   <div className="page_404">
     <div className="container">
@@ -17,15 +18,14 @@ const ErrorPage = () => (
             <div className="contant_box_404">
               <h3 className="h2">T'es perdu ?</h3>
               <p>Tu veux revenir sur la page d'acceuil ?</p>
-              <a href="/" className="link_404">Page d'accueil</a>
+              <Link to="/" className="link_404">Page d'accueil</Link>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <Footer />
   </div>
 
 );
 
-export default ErrorPage;
+export default Error;

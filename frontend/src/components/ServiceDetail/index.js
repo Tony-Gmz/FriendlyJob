@@ -1,6 +1,6 @@
 import React from 'react';
 import Jober from '../HomePage/JobPresentation/Jober';
-
+import { Link } from 'react-router-dom';
 import './serviceDetail.scss';
 
 const ServiceDetail = () => (
@@ -33,7 +33,7 @@ const ServiceDetail = () => (
         </div>
       </div>
       <div className="service_details_link">
-        <a href="">Voir plus de JobWorker dans ma région</a>
+        <Link to="/jobworker"><a href="">Voir plus de JobWorker dans ma région</a></Link>
         <a href="#inscription">Devenez JobWorker ! Rejoingez-nous</a>
       </div>
     </div>

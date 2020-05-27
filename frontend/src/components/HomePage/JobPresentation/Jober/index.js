@@ -6,7 +6,7 @@ import JoberRating from './rating';
 import JoberStyled from './JoberStyled';
 import './jober.scss';
 import NavButtonStyled from '../../../Button/NavButtonStyled';
-
+import { Link } from 'react-router-dom';
 // Styled component reusable
 
 const Jober = () => {
@@ -28,8 +28,10 @@ const Jober = () => {
           <Card.Content header="Thibault" />
           <Card.Content description={description} />
           <Card.Content extra>
-          10€/heure  <JoberRating />
-            <NavButtonStyled>Contact</NavButtonStyled>
+            10€/heure  <JoberRating />
+            <Link to="/jobworker/thibault">
+              <NavButtonStyled>Contact</NavButtonStyled>
+            </Link>
           </Card.Content>
         </Card>
       </div>

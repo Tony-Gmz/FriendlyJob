@@ -2,31 +2,19 @@
 import React from 'react';
 
 
-// == Import
+// == Import style
 import './App.scss';
+
+// == Import Components
 import Footer from 'src/components/Footer';
-import ProfilFriendlyUser from 'src/components/ProfilFriendlyUser';
-import ProfilWorkJober from 'src/components/ProfilWorkJober';
 import NavBar from '../NavBar';
-import ServiceDetail from '../ServiceDetail';
-import HomePage from '../HomePage';
-import JobWorkerList from '../JobWorkerList';
-import ServiceList from '../Service/List';
-import JobWorkerDetails from '../JobWorkerDetail';
-import Request from '../Request';
+import Page from '../Page';
 
 // == Composant
 const App = () => (
   <div className="app">
     <NavBar />
-    <HomePage />
-    <ServiceList />
-    <ServiceDetail />
-    <JobWorkerList />
-    <JobWorkerDetails />
-    <ProfilWorkJober />
-    <ProfilFriendlyUser />
-    <Request />
+    <Page />
     <Footer />
   </div>
 );

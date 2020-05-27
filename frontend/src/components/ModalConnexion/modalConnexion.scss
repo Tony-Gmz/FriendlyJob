@@ -38,7 +38,7 @@
   left: 0;
   top: 50%;
   will-change: height, top;
-  animation: open-animation .6s cubic-bezier(0.83, 0.04, 0, 1.16) .65s both;
+  animation: open-animation .3s cubic-bezier(0.83, 0.04, 0, 1.16) .65s both;
 }
 
 .connexion:after{
@@ -48,7 +48,7 @@
   background-color: #000000;
 
   will-change: width, opacity;
-  animation: line-animation .6s cubic-bezier(0.83, 0.04, 0, 1.16) both;
+  animation: line-animation .3s cubic-bezier(0.83, 0.04, 0, 1.16) both;
 
   position: absolute;
   top: 50%;
@@ -95,7 +95,7 @@
   
   margin: auto;
   overflow: auto;
-  animation: fade .5s ease-out 1.3s both;
+  animation: fade .3s ease-out 0.5s both;
 }
 
 @keyframes fade{

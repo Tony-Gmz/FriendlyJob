@@ -9,21 +9,21 @@ import ModalInscription from '../ModalInscription';
 
 const NavBar = () => {
 
-  const isLogged = true;
+  const isLogged = false;
 
   if (isLogged === false) {
     return (
       <NavStyled>
-        <Link to="/">
+        <NavLink to="/">
           <div className="nav_title">
             FriendlyJob
           </div>
-        </Link>
+        </NavLink>
         <div className="nav_content">
           <ul className="nav_ul">
-            <NavLink to="" activeClassName="selected-link"><li>Trouver un job worker</li></NavLink>
+            <NavLink to="/services" activeClassName="selected-link"><li>Liste de nos services</li></NavLink>
             <a href="#inscription"><li>Devenir Jobworker</li></a>
-            <NavLink to=""><li>Qui sommes nous</li></NavLink>
+            <NavLink to="/contact"><li>Qui sommes nous</li></NavLink>
           </ul>
           <div className="nav_button">
             <ModalConnexion />
@@ -35,23 +35,23 @@ const NavBar = () => {
   }
   // nav Jobworker
   return (
-        <NavStyled>
-        <Link to="/">
-          <div className="nav_title">
-            FriendlyJob
-          </div>
-        </Link>
-        <div className="nav_content">
-          <ul className="nav_ul">
-            <NavLink to=""><li>Profil</li></NavLink>
-            <NavLink to="" activeClassName="selected-link"><li>Mes demandes</li></NavLink>
-            <NavLink to=""><li>Qui sommes nous</li></NavLink>
-          </ul>
-          <div className="nav_button">
-            <NavButtonStyled>Deconnexion</NavButtonStyled>
-          </div>
+    <NavStyled>
+      <NavLink to="/">
+        <div className="nav_title">
+          FriendlyJob
         </div>
-       </NavStyled>
+      </NavLink>
+      <div className="nav_content">
+        <ul className="nav_ul">
+          <NavLink to="/profil"><li>Profil</li></NavLink>
+          <NavLink to="/demandes" activeClassName="selected-link"><li>Mes demandes</li></NavLink>
+          <NavLink to="/contact"><li>Qui sommes nous</li></NavLink>
+        </ul>
+        <div className="nav_button">
+          <NavButtonStyled>Deconnexion</NavButtonStyled>
+        </div>
+      </div>
+    </NavStyled>
   );
 };
 

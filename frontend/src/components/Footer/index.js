@@ -13,7 +13,7 @@ const Footer = () => (
     </div>
     <div className="footer_link">
       <div className="footer_link_text">
-        <Link to="">Qui nous sommes</Link>
+        <Link to="/contact">Qui nous sommes</Link>
       </div>
       <div className="footer_icon">
         <Button classNames="footer_icon_item" circular color='facebook' icon='facebook' />

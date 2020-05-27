@@ -47,49 +47,49 @@ const Caroussel = () => {
 
     <div className="caroussel">
       <Slider {...settings}>
-        <Link>
+        <Link to="/services">
           <div className="caroussel_content">
             <img className="caroussel_img" src={jardinage} alt="jardinage" />
             <h3>Service 1</h3>
           </div>
         </Link>
-        <Link>
+        <Link to="/services">
           <div className="caroussel_content">
             <img className="caroussel_img" src={jardinage} alt="jardinage" />
             <h3>Service 2</h3>
           </div>
         </Link>
-        <Link>
+        <Link to="/services">
           <div className="caroussel_content">
             <img className="caroussel_img" src={jardinage} alt="jardinage" />
             <h3>Service 3</h3>
           </div>
         </Link>
-        <Link>
+        <Link to="/services">
           <div className="caroussel_content">
             <img className="caroussel_img" src={jardinage} alt="jardinage" />
             <h3>Service 4</h3>
           </div>
         </Link>
-        <Link>
+        <Link to="/services">
           <div className="caroussel_content">
             <img className="caroussel_img" src={jardinage} alt="jardinage" />
             <h3>Service 5</h3>
           </div>
         </Link>
-        <Link>
+        <Link to="/services">
           <div className="caroussel_content">
             <img className="caroussel_img" src={jardinage} alt="jardinage" />
             <h3>Service 6</h3>
           </div>
         </Link>
-        <Link>
+        <Link to="/services">
           <div className="caroussel_content">
             <img className="caroussel_img" src={jardinage} alt="jardinage" />
             <h3>Service 7</h3>
           </div>
         </Link>
-        <Link>
+        <Link to="/services">
           <div className="caroussel_content">
             <img className="caroussel_img" src={jardinage} alt="jardinage" />
             <h3>Service 8</h3>
