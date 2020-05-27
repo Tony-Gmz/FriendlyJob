@@ -21,6 +21,7 @@ class User implements UserInterface
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact"})
      * @Groups({"service_jobworker"})
+     * @Groups({"skill_add"})
      */
     private $id;
 
@@ -29,6 +30,7 @@ class User implements UserInterface
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
      * @Groups({"service_jobworker"})
+     * @Groups({"skill_add"})
      */
     private $email;
 
@@ -36,6 +38,7 @@ class User implements UserInterface
      * @ORM\Column(type="json")
      * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
      * @Groups({"service_jobworker"})
+     * @Groups({"skill_add"})
      */
     private $roles = [];
 
@@ -50,6 +53,7 @@ class User implements UserInterface
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
      * @Groups({"service_jobworker"})
+     * @Groups({"skill_add"})
      */
     private $firstname;
 
@@ -58,6 +62,7 @@ class User implements UserInterface
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
      * @Groups({"service_jobworker"})
+     * @Groups({"skill_add"})
      */
     private $lastname;
 
@@ -66,6 +71,7 @@ class User implements UserInterface
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
      * @Groups({"service_jobworker"})
+     * @Groups({"skill_add"})
      */
     private $image;
 
@@ -74,6 +80,7 @@ class User implements UserInterface
      * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact"})
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"service_jobworker"})
+     * @Groups({"skill_add"})
      */
     private $about;
 
@@ -93,6 +100,7 @@ class User implements UserInterface
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details"})
      * @Groups({"service_jobworker"})
+     * @Groups({"skill_add"})
      */
     private $department;
 

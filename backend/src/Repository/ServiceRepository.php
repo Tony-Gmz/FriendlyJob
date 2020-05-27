@@ -40,29 +40,6 @@ class ServiceRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 
-    public function findJobworkerByServiceWithLimit($id, $limit =null)
-    {
-        $qb = $this->createQueryBuilder('s');
-        
-        $qb
-            ->addSelect('sk', 'u', 'dep', 'dem', 'r')
-            ->join('s.skills', 'sk')
-            ->join('sk.user', 'u')
-            ->join('u.department', 'dep')
-            ->join('u.jobWorkerDemands', 'dem')
-            ->join('dem.rating', 'r')
-            ->orderBy('avg(r.star)', 'DESC')
-            ->groupBy('u.id')
-            ->where('s.id = :id')
-            ->setParameter('id', $id)
-            ->setMaxResults($limit)
-            
-        ;
-        //dd($qb->getQuery());
-        //dd($qb->getQuery()->getResult());
-        return $qb->getQuery()->getResult();
-    }
-
     public function findSubServiceFromService($id)
     {
         $qb = $this->createQueryBuilder('s');

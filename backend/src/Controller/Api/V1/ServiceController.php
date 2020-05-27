@@ -54,9 +54,15 @@ class ServiceController extends AbstractController
             
             $limit = $_GET['limit'];
 
-            $service = $serviceRepository->findJobworkerByServiceWithLimit($id, $limit);
+            $service = $serviceRepository->findJobworkerByService($id);
             
             $arrayService = $serializer->normalize($service, null, ['groups' => 'service_jobworker']);
+
+            for ($i = 0; $i < $limit; $i++) {
+                $skillUser[] = $arrayService[0]['skills'][$id];
+            }
+
+            $arrayService[0]['skills'] = $skillUser;
 
             return $this->json($arrayService);
         }

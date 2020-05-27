@@ -91,9 +91,6 @@
 	*"reservationDate" : "2020-01-01",
 	*"reservationHour" : "16h",
 	*"status" : "En attente",
-	**"service" : 1,
-	**"friendlyUser" : 200,
-	**"jobWorker" : 150
 }
 ```
 
@@ -165,7 +162,7 @@ Aucune
     "body": "Praesentium expedita nemo non nobis natus animi quia ipsum magnam quisquam.",
     "reservationDate": "24-09-2010",
     "reservationHour": "16h",
-    "status": "3",
+    "status": "En attente",
     "service": {
       "id": 3,
       "parentId": null,
@@ -205,7 +202,7 @@ Aucune
 
 </details>
 
-<details><summary>/api/v1/demands/{id}</summary>
+<details><summary>/api/v1/demands/</summary>
 
 ## méthode HTTP = DELETE
 
@@ -213,7 +210,11 @@ Aucune
 
 ### Les données attendues ( Front => Back)
 
-Aucune
+```json 
+{
+	**"id":"402"
+}
+```
 
 
 ### Les données envoyé ( Back => Front )
@@ -360,39 +361,57 @@ Aucune
 
 Aucune
 
-
 ### Les données envoyé ( Back => Front )
 
-```json 
+```json
 [
+  [
   {
     "id": 1,
     "parentId": null,
-    "title": "Pilote fluvial",
-    "description": "Beatae esse et ex fuga quis voluptatem quod est aliquid.",
-    "image": "http:\/\/www.tanguy.com\/",
+    "title": "Photographe d'art",
+    "description": "Officiis excepturi eligendi ducimus autem quo atque culpa qui exercitationem odit delectus est ipsum.",
+    "image": "http:\/\/www.moulin.com\/",
     "skills": [
       {
+        "id": 30,
+        "description": "Aut eaque sit soluta labore et molestiae reprehenderit officia excepturi dolores dolor natus.",
+        "price": 12,
         "user": {
-          "id": 70,
-          "email": "vallet.tristan@wanadoo.fr",
+          "id": 190,
+          "email": "lemonnier.dominique@barre.com",
           "roles": [
             "JOBWORKER"
           ],
-          "firstname": "Suzanne",
-          "lastname": "Fouquet",
+          "firstname": "Philippine",
+          "lastname": "Garcia",
           "image": null,
+          "about": "A ea et porro qui quo perspiciatis repellendus vitae reprehenderit excepturi.",
           "department": {
-            "id": 70,
-            "name": "Nord",
-            "number": "12"
+            "id": 62,
+            "name": "Loir-et-Cher",
+            "number": "95"
           },
-          "about": null
+          "jobWorkerDemands": [
+            {
+              "id": 171,
+              "rating": {
+                "id": 195,
+                "comment": "Maiores error quia accusantium perspiciatis repellendus qui praesentium nihil et qui iure laborum qui.",
+                "star": 5
+              }
+            },
+            {
+              "id": 225,
+              "rating": null
+            }
+          ]
         }
       }
     ]
 ]
 ```
+
 </details>
 
 <details><summary>/api/v1/services/{id}/subservices</summary>
@@ -838,10 +857,105 @@ Aucune
 
 </details>
 
+# SkillController
+
+<details><summary>/api/v1/skills</summary>
+
+## méthode HTTP = POST
+
+### Cette route permet de créer une compétence pour un jobworker en bdd
+
+### Les données attendues ( Front => Back)
+
+```json
+{
+	*"description" : "Test Nouveau Skill",
+	**"price" : 20,
+	**"user" : 50,
+	**"service" : 1
+}
+```
+
+### Les données envoyé ( Back => Front )
+
+```json
+{
+  "id": 601,
+  "description": "Test Nouveau Skill",
+  "price": 20,
+  "user": {
+    "id": 50,
+    "email": "virginie.carlier@guerin.fr",
+    "roles": [
+      "JOBWORKER"
+    ],
+    "firstname": "Margaret",
+    "lastname": "Coulon",
+    "image": null,
+    "about": "Veniam enim quae voluptas assumenda dolore explicabo.",
+    "department": []
+  },
+  "service": {
+    "id": 1,
+    "parentId": null,
+    "title": "Photographe d'art",
+    "description": "Officiis excepturi eligendi ducimus autem quo atque culpa qui exercitationem odit delectus est ipsum.",
+    "image": "http:\/\/www.moulin.com\/"
+  }
+}
+```
+</details>
+<details><summary>/api/v1/skills/{id}</summary>
+
+## méthode HTTP = PUT
+
+### Cette route permet de modifier une compétence pour un jobworker en bdd
+
+### Les données attendues ( Front => Back)
+
+```json
+{
+	*"description" : "allo",
+	*"price" : 55
+}
+
+```
+
+### Les données envoyé ( Back => Front )
+
+```json
+{
+  "id": 601,
+  "description": "allo",
+  "price": 55
+}
+```
+</details>
+<details><summary>/api/v1/skills/{id}</summary>
+
+## méthode HTTP = DELETE
+
+### Cette route permet de supprimer une compétence pour un jobworker en bdd
+
+### Les données attendues ( Front => Back)
+
+Aucune
+
+### Les données envoyé ( Back => Front )
+
+```json
+{
+  "statut": 200,
+  "message": "La compétence a bien été supprimé."
+}
+```
+</details>
 
 ## Récuperer un token JWT
 
 <details><summary>/api/login_check</summary>
+
+## méthode HTTP = POST
 
 ### Les données attendues ( Front => Back)
 
@@ -859,11 +973,6 @@ Aucune
   "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1OTA1MDg2ODMsImV4cCI6MTU5MDU0NDY4Mywicm9sZXMiOlsiQURNSU4iXSwidXNlcm5hbWUiOiJhZG1pbi5qb2xhbkBvY2xvY2suaW8ifQ.JHsHta3dxTDsBsBuEiqVOnWz64N_KUgaz7fxQWPD8IoAa2HzgGDRJy6_fW2Ysu8JTa-W-JOCx7m4VLNl9QX_PMnvg_IXAyqPXW-O5Wwa2vrRufcyZYZLLQrOJ1N1NMm2VtyWBpZUXMDdokXBFcORcChGvDTf7w0D3qEe-91DdwG7gg-wd_OxN5odCDNJqnXaT493SUGPNerJJ8g511LFVoHIVY4rfIgA66Zg4dnFf4Cz4H42YkLXv6akMgk93AQWgQnoSZWaW1ofkPryPbgA1_Yr46Bu1z3dQrm2cgV-CMvvLtzBGlirSTawt8O6L0RgMZy5khJcRtquOTLmQAVQ1e9cCphz0KHENZwiGgswUVMedCGUTqIrE9VpVb7sakv08n2BIgCVlOjkz1Q2Rotzg-H76b1ijSYMfgfz-LCg6OnllBnHsmQv8fwLHE3fQNHRqGHq7WNEuKMbJNq6s49nwS_6y4uAch95avjQs5iS0qEmmxxm1I0ASEm5eiOxbRIIBhBRN52bmxbRCFOqdKRiQHHGYX3d9E9mGLm2yMw9D7vOoLBjR5u0IcQD_5J2nOYs7MswEfCauO9M-yR6pgY7xsgAHOJAvBLql-6ZOSWGCfqezw5FYS_VhA7Zt_Olon2PjC792x0ERpWd3JT9uGhFsW8nnBhrCPwABUTdZ692moo"
 }
 ```
-
-### Puis insérer le token ci-dessus dans une en-tête HTTP pour toute les routes
-Authorization  => Bearer (le token)
-
-
 </details>
 
 # Remarque pour l'équipe back
@@ -886,7 +995,8 @@ Authorization  => Bearer (le token)
 
       getDemandsFromOneUser => gérer un id inexistant : X
 
-      delete => Erreur Param Converter à gérer : X
+      delete => Erreur null demand à gérer : X
+                Erreur Json mal formé : X
 
 
 ## Department
@@ -935,8 +1045,22 @@ Authorization  => Bearer (le token)
 
     checkUser => Erreur déja gérer via les subscriber ( à revoir )
 
+## Skill
+
+    add => Gerer le champ user quand ce n'est pas un jobworker
+            (tableau vide + quand id est inexistant => (PDOException  PDOException NotNullConstraintViolationException))
+           Gerer le champ service quand le service n'existe pas 
+           (PDOException  PDOException NotNullConstraintViolationException)
+
+    edit => Gerer l'optionnalité des champs (pouvoir modifier un seul champ et pas tous en même temps)
+            Erreur Paramconverter cause id inexistant
+            (NotFoundHttpException)
+    
+    delete => Erreur paramconverter quand on essaie de supprimer un id inexistant            
+
     Tout ce qui utilise le param converter on pourra mettre un subscriber
     App\Entity\Demand object not found by the @ParamConverter annotation.
     ( NotFoundHttpException )
     Voir les 404 erreur mauvaise URL
+
 </details>

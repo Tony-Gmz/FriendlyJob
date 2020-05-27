@@ -48,7 +48,7 @@ class DemandController extends AbstractController
     /**
      * @Route("/{id}", name="edit", methods={"PUT"}, requirements={"id": "\d+"})
      */
-    public function edit(Request $request, Demand $demand, ServiceRepository $serviceRepository, UserRepository $userRepository)
+    public function edit(Request $request, Demand $demand)
     {
         $jsonData = json_decode($request->getContent());
 
@@ -56,9 +56,7 @@ class DemandController extends AbstractController
         $demand->setReservationDate(new \DateTime($jsonData->reservationDate));
         $demand->setReservationHour($jsonData->reservationHour);
         $demand->setStatus($jsonData->status);
-        $demand->setService($serviceRepository->find($jsonData->service));
-        $demand->setFriendlyUser($userRepository->find($jsonData->friendlyUser));
-        $demand->setJobWorker($userRepository->find($jsonData->jobWorker));
+        $demand->setUpdatedAt(new \DateTime());
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($demand);
@@ -89,10 +87,14 @@ class DemandController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="delete", methods={"DELETE"}, requirements={"id": "\d+"})
+     * @Route("/", name="delete", methods={"DELETE"})
      */
-    public function delete(Demand $demand)
+    public function delete(DemandRepository $demandRepository, Request $request)
     {
+        $jsonData = json_decode($request->getContent());
+        
+        $demand = $demandRepository->find($jsonData->id);
+        
         $em = $this->getDoctrine()->getManager();
         $em->remove($demand);
         $em->flush();
