@@ -14,6 +14,21 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        services:
+            pattern: ^/api/v1/services
+            anonymous: lazy
+        department:
+            pattern: ^/api/v1/department
+            anonymous: lazy
+        user_add:
+            pattern: ^/api/v1/users$
+            anonymous: lazy
+        user_random_jobworker:
+            pattern: ^/api/v1/users/jobworker/(random|\d+)?(/rating)?$
+            anonymous: lazy
+        user_contacts:
+            pattern: ^/api/v1/users/contacts
+            anonymous: lazy
         login:
             pattern:  ^/api/login
             stateless: true

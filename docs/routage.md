@@ -38,13 +38,17 @@
 | /api/v1/department | api_v1_department_browse | GET | DepartmentController | browse | List of all department |
 |||||||
 | /api/v1/services | api_v1_services_browse | GET | ServiceController | browse | List of all services |
-| /api/v1/services/{id} | api_v1_services_read | GET | ServiceController | read | See details of one specific service with his id|
+| /api/v1/services/{id} | api_v1_services_read_id | GET | ServiceController | readByID | See details of one specific service with his id |
 | /api/v1/services/{title} | api_v1_services_read_title | GET | ServiceController | readByTitle | See details of one specific service with his title |
 | /api/v1/services/{id}/jobworkers | api_v1_services_jobworkers | GET | ServiceController | getJobWorkersByServices | Get all JobWorkers from a Service |
 | /api/v1/services/{id}/jobworkers?limit={number} | api_v1_services_jobworkers | GET | ServiceController | getJobWorkersByServices | Get X JobWorkers from a service |
 | /api/v1/services/{id}/sub-services | api_v1_services_subservices | GET | ServiceController | getSubServicesFromService | Get Sub-services from one service |
 |||||||
-| /api/v1/demands/{id} | api_v1_demands_edit | PUT | RequestController | edit | Update one specific request |
-| /api/v1/demands/{id} | api_v1_demands_delete | DELETE | RequestController | delete | Delete one specific request |
-| /api/v1/demands | api_v1_demands_add | POST | RequestController | add | Add a request |
-| /api/v1/demands/users/{id} | api_v1_demands_users | GET | RequestController | getDemandsFromOneUser | Get all demands from one User |
+| /api/v1/demands/{id} | api_v1_demands_edit | PUT | DemandController | edit | Update one specific demands |
+| /api/v1/demands/{id} | api_v1_demands_delete | DELETE | DemandController | delete | Delete one specific demands |
+| /api/v1/demands | api_v1_demands_add | POST | DemandController | add | Add a demands |
+| /api/v1/demands/users/{id} | api_v1_demands_users | GET | DemandController | getDemandsFromOneUser | Get all demands from one User |
+|||||||
+| /api/v1/skills | api_v1_skills_add | POST | SkillController | add | Add one specific skill |
+| /api/v1/skills/{id} | api_v1_skills_edit | PUT | SkillController | edit | Modify one specific skill |
+| /api/v1/skills/{id} | api_v1_skills_delete | DELETE | SkillController | delete | Delete one specific skill |

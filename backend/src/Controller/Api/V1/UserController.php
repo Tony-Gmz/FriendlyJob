@@ -117,7 +117,7 @@ class UserController extends AbstractController
     /**
      * @Route("/jobworker/random", name="jobworker_random", methods={"GET"})
      */
-    public function randomJobWorker(UserRepository $userRepository)
+    public function getRandomJobWorker(UserRepository $userRepository)
     {
         $jobworker = $userRepository->getAllJobWorkers();
         //dd($jobworker);
@@ -181,28 +181,5 @@ class UserController extends AbstractController
             [],
             ['groups' => 'user_jobworker_rating']
         );
-    }
-
-    /**
-     * @Route("/check", name="check", methods={"POST"})
-     * 
-     */
-    public function checkUser()
-    {   // On aurait pu utiliser le serializer pour normaliser l'objet User
-        //! Erreur 400 quand format json invalide (champ manquant)
-        //! Erreur 401 quand l'utilisateur n'est pas bon
-        $user = $this->getUser();
-
-        //dd($user);
-
-        return $this->json([
-            'user' => [
-                'id' => $user->getId(),
-                'email' => $user->getEmail(),
-                'roles' => $user->getRoles(),
-                'isLogged' => true
-            ]
-        ]);
-
     }
 }
