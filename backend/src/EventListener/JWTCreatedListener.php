@@ -49,9 +49,6 @@ class JWTCreatedListener
             'isLogged' => true,
         ];
 
-        unset($payload['roles']);
-        unset($payload['username']);
-
         //dd($payload);
 
         $event->setData($payload);
