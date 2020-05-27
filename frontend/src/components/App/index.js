@@ -5,8 +5,10 @@ import PropTypes from 'prop-types';
 // == Import
 import './App.scss';
 import Footer from 'src/components/Footer';
+import JobWorkerList from 'src/components/JobWorkerList';
 import NavBar from '../NavBar';
 import HomePage from '../HomePage';
+
 
 
 // == Composant
@@ -20,6 +22,7 @@ const App = ({ getToken }) => {
     <div className="app">
       <NavBar />
       <HomePage />
+      <JobWorkerList />
       <Footer />
     </div>
   );
