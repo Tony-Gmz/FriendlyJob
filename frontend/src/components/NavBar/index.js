@@ -9,7 +9,8 @@ import ModalInscription from '../ModalInscription';
 
 const NavBar = () => {
 
-  const isLogged = false;
+  const isLogged = true;
+  const role = 'jobworker';
 
   if (isLogged === false) {
     return (
@@ -34,25 +35,47 @@ const NavBar = () => {
     );
   }
   // nav Jobworker
-  return (
-    <NavStyled>
-      <NavLink to="/">
-        <div className="nav_title">
-          FriendlyJob
+  if (isLogged === true && role === 'jobworker') {
+    return (
+      <NavStyled>
+        <NavLink to="/">
+          <div className="nav_title">
+            FriendlyJob
+          </div>
+        </NavLink>
+        <div className="nav_content">
+          <ul className="nav_ul">
+            <NavLink to="/profil"><li>Profil</li></NavLink>
+            <NavLink to="/demandes" activeClassName="selected-link"><li>Mes demandes</li></NavLink>
+          </ul>
+          <div className="nav_button">
+            <NavButtonStyled>Deconnexion</NavButtonStyled>
+          </div>
         </div>
-      </NavLink>
-      <div className="nav_content">
-        <ul className="nav_ul">
-          <NavLink to="/profil"><li>Profil</li></NavLink>
-          <NavLink to="/demandes" activeClassName="selected-link"><li>Mes demandes</li></NavLink>
-          <NavLink to="/contact"><li>Qui sommes nous</li></NavLink>
-        </ul>
-        <div className="nav_button">
-          <NavButtonStyled>Deconnexion</NavButtonStyled>
+      </NavStyled>
+    );
+  }
+  if (isLogged === true && role === 'friendly-user') {
+    return (
+      <NavStyled>
+        <NavLink to="/">
+          <div className="nav_title">
+            FriendlyJob
+          </div>
+        </NavLink>
+        <div className="nav_content">
+          <ul className="nav_ul">
+            <NavLink to="/services" activeClassName="selected-link"><li>Liste de nos services</li></NavLink>
+            <NavLink to="/profil"><li>Profil</li></NavLink>
+            <NavLink to="/demandes" activeClassName="selected-link"><li>Mes demandes</li></NavLink>
+          </ul>
+          <div className="nav_button">
+            <NavButtonStyled>Deconnexion</NavButtonStyled>
+          </div>
         </div>
-      </div>
-    </NavStyled>
-  );
+      </NavStyled>
+    );
+  }
 };
 
 export default NavBar;
