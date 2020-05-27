@@ -6,7 +6,7 @@ const userMiddleware = (store) => (next) => (action) => {
   console.log('on a intercepté une action dans le middleware: ', action);
   switch (action.type) {
     case GET_TOKEN:
-    axios({
+    axios.get({
       method: 'post',
       url: '',
       data: {
@@ -18,7 +18,7 @@ const userMiddleware = (store) => (next) => (action) => {
       .then((response) => {
         console.log(response);
         console.log(response.data.info.favorites);
-        store.dispatch(logUser(response.data.info));
+      
       })
       .catch(function(error) {
         if (error.response) {

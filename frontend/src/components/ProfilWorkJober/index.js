@@ -8,21 +8,24 @@ import Button from '@material-ui/core/Button';
 
 // == Import
 import './profil.scss';
+import UploadImg from './UploadImg';
+import SelectSkills from './SelectSkill';
+import SkillSelectTag from './SelectSkill/selectSkill';
+
 
 // == Composant
 const ProfilWorkJober = () => (
   <div className="profilWorkJober">
+    <div className="profilWorkJober_title">Profil</div>
     <div className="profilWorkJober_desciption">
       Voici votre espace personnel il vous sera utile si vous voulez effectuer des changements d'informations
       ou bien l'ajout de competences.
-    </div>
-    <div className="profilWorkJober_desciptionSubtitle">
       N'oubliez pas qu'un profil bien renseigner et 10 fois plus solicité q'un profil vide.
     </div>
     <div className="profil">
       <div className="profil_card">
         <img className="profil_img" src={profil} alt="profil's" />
-        <div className="profil_title">Thibault</div>
+        <div className="profil_upload"><UploadImg /></div>
       </div>
       <div className="profil_information">
         <form className="profil_form">
@@ -70,6 +73,9 @@ const ProfilWorkJober = () => (
               variant="outlined"
               disabled
             />
+          </div>
+          <div className="skill_select">
+            <SkillSelectTag />
           </div>
           <div className="profil_group_btn">
             <Button className="profil_btn" variant="contained" color="primary">

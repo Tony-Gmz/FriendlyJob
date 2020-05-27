@@ -67,6 +67,18 @@ const Page = () => (
           <Request />
         </Route>
         <Route
+          path="/profil"
+          exact
+        >
+          <ProfilWorkJober />
+        </Route>
+        <Route
+          path="/profil"
+          exact
+        >
+          <Request />
+        </Route>
+        <Route
           path="/"
           exact
         >

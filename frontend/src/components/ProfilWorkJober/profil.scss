@@ -10,6 +10,18 @@
   justify-content: space-around;
   margin-bottom: 3em;
   margin-top: 3em;
+  background-color:  #F7F7F7;
+  border-radius: 10px;
+}
+
+.profilWorkJober_title {
+  display: inline-block;
+    font-weight: bold;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #FF385C;
+    padding-bottom: 1rem;
+    width: 250px;
+
 }
 
 .profil_card{
@@ -17,25 +29,26 @@
 }
 
 .profil_img{
-  border-radius: 30%;
+  border-radius: 50%;
   -ms-flex-align: center;
   align-items: center;
-  height: 200px;
-  width: 140px;
+  height: 100px;
+  width: 100px;
   display: flex;
   margin-bottom: 1.5em;
+  overflow: hidden;
 }
 
 .profil_information{
   width: 70%;
   align-self: center;
+  background-color: #F7F7F7;
 }
 
 .profil_form{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-color: aliceblue;
   padding: 1em;
   border-radius: 1em;
 }
@@ -49,7 +62,18 @@
 }
 
 .profil_group_btn{
+  margin-top: 2em;
   display: flex;
   justify-content: space-around;
 }
 
+.profilWorkJober_desciption {
+
+  margin-top: 2em;
+  line-height: 2;
+
+}
+
+.skill_select {
+  margin-right: 2em;
+}
