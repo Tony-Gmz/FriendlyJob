@@ -828,34 +828,6 @@ Aucune
 ```
 
 </details>
-<details><summary>/api/v1/users/check</summary>
-
-
-## méthode HTTP = GET
-
-### Cette route permet de récupérer les infos d'un utilisateur lié au TOKEN JWT bdd
-
-### Les données attendues ( Front => Back)
-
-
-/!\ Bien insérer le token afin de récuperer les données
-
-### Les données envoyé ( Back => Front )
-
-```json
-{
-  "user": {
-    "id": 5,
-    "email": "michele.lopez@tele2.fr",
-    "roles": [
-      "JOBWORKER"
-    ],
-    "isLogged": true
-  }
-}
-```
-
-</details>
 
 # SkillController
 
@@ -961,7 +933,7 @@ Aucune
 
 ```json
 {
-	"username":"admin.jolan@oclock.io",
+	"username":"admin.karim@oclock.io",
 	"password":"AdminFJ137313."
 }
 ```
@@ -970,9 +942,32 @@ Aucune
 
 ```json
 {
-  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1OTA1MDg2ODMsImV4cCI6MTU5MDU0NDY4Mywicm9sZXMiOlsiQURNSU4iXSwidXNlcm5hbWUiOiJhZG1pbi5qb2xhbkBvY2xvY2suaW8ifQ.JHsHta3dxTDsBsBuEiqVOnWz64N_KUgaz7fxQWPD8IoAa2HzgGDRJy6_fW2Ysu8JTa-W-JOCx7m4VLNl9QX_PMnvg_IXAyqPXW-O5Wwa2vrRufcyZYZLLQrOJ1N1NMm2VtyWBpZUXMDdokXBFcORcChGvDTf7w0D3qEe-91DdwG7gg-wd_OxN5odCDNJqnXaT493SUGPNerJJ8g511LFVoHIVY4rfIgA66Zg4dnFf4Cz4H42YkLXv6akMgk93AQWgQnoSZWaW1ofkPryPbgA1_Yr46Bu1z3dQrm2cgV-CMvvLtzBGlirSTawt8O6L0RgMZy5khJcRtquOTLmQAVQ1e9cCphz0KHENZwiGgswUVMedCGUTqIrE9VpVb7sakv08n2BIgCVlOjkz1Q2Rotzg-H76b1ijSYMfgfz-LCg6OnllBnHsmQv8fwLHE3fQNHRqGHq7WNEuKMbJNq6s49nwS_6y4uAch95avjQs5iS0qEmmxxm1I0ASEm5eiOxbRIIBhBRN52bmxbRCFOqdKRiQHHGYX3d9E9mGLm2yMw9D7vOoLBjR5u0IcQD_5J2nOYs7MswEfCauO9M-yR6pgY7xsgAHOJAvBLql-6ZOSWGCfqezw5FYS_VhA7Zt_Olon2PjC792x0ERpWd3JT9uGhFsW8nnBhrCPwABUTdZ692moo"
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImN0eSI6IkpXVCJ9.eyJpYXQiOjE1OTA1OTk0MzMsImV4cCI6MTU5MDY3MDgwMCwiaXAiOiIxMjcuMC4wLjEiLCJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFkbWluLmthcmltQG9jbG9jay5pbyIsInJvbGVzIjpbIkFETUlOIl0sImZpcnN0bmFtZSI6IkthcmltIiwibGFzdG5hbWUiOiJNYWF6YW91aSIsImltYWdlIjpudWxsLCJhYm91dCI6IkV4ZXJjaXRhdGlvbmVtIGVzdCByZW0gZGljdGEgdm9sdXB0YXMgZnVnYSB0b3RhbSByZWljaWVuZGlzIHF1aSBhcmNoaXRlY3RvIGZ1Z2lhdCBuZW1vIG9tbmlzIGNvbnNlcXVhdHVyLiIsImlzTG9nZ2VkIjp0cnVlfX0.D4GZmpPbuIec7Q8HjFY7wDvVd5zLRURfSslN_EKuBuHzM_1obyJawa3zeFIYOX3xS8HfU_g4CsXv1mbWwC2qImZhXvvnpChdP-a8njgrwOEe1ct1t1mdn45SRE0hRPWRcQ15WDUXk116Ptw8-SSZfyGvC6QX3NnDTyrX0-B7pR0fH7DAFUHn6BFTdioLKPMOBRK4ncfvaUI58o2qaQeSnEOzT0k4hjoAZe91O0h_BwsRZj3INPPLDikuZ-CgZZOlkMHBmat3gAaVgL-6W_IQp-sSY6WNyNZyapbg-tsJ_AT__Cod9Orc_u6JMRD1P4wSvDDgrpBjrArTWD4UDl8dcNRep-NLwzdH3ZDiaCTbfOJB37W2DO7Ew9dLynOMfs7hCUzwVYQhJ2LdNdKt9RxSpKeuMtXrSOagTmXYYd_D2otcKXlnACywfoYv1WRvAobx8EztZCX0ADgBecyVxT0kVIBsOco24UH0mdetyFp302Tbyy-vjacaEZxa4g1QN5iACSR72p_hTHIPQzFH0W_L0oP_tlf9kxA6fK0ayq4w6J9ctdmnEqkCTXCqPKFP1EOuSLUjiNMQpFL9irWlLpc-2AaKyXrEfh5bSgEKKmyAL6yBLybXU2scNMmfii3hHMcX_6LCgNZXH8r0QH8E73EH0qjgzumUmLLoKuKS5tEJubQ"
 }
 ```
+
+### Une fois le token décoder il contient
+```json
+{
+  "iat": 1590599379,
+  "exp": 1590670800,
+  "ip": "127.0.0.1",
+  "user": {
+    "id": 1,
+    "username": "admin.karim@oclock.io",
+    "roles": [
+      "ADMIN"
+    ],
+    "firstname": "Karim",
+    "lastname": "Maazaoui",
+    "image": null,
+    "about": "Exercitationem est rem dicta voluptas fuga totam reiciendis qui architecto fugiat nemo omnis consequatur.",
+    "isLogged": true
+  }
+}
+```
+
+
 </details>
 
 # Remarque pour l'équipe back
@@ -1043,8 +1038,6 @@ Aucune
     getRatingOfJobworker => Gérer erreur id inexistant []
                             Discuter de l'envoie du tableau ou non avec le rating null ( LeftJoin )
 
-    checkUser => Erreur déja gérer via les subscriber ( à revoir )
-
 ## Skill
 
     add => Gerer le champ user quand ce n'est pas un jobworker
@@ -1062,5 +1055,9 @@ Aucune
     App\Entity\Demand object not found by the @ParamConverter annotation.
     ( NotFoundHttpException )
     Voir les 404 erreur mauvaise URL
+
+## JWT
+
+  Rajouter subscriber pour json mal formé & invalid credentials ( isLogged = false )
 
 </details>

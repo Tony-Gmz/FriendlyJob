@@ -14,6 +14,28 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        #! Toutes les routes départment
+        services:
+            pattern:  ^/api/v1/services
+            anonymous: lazy
+        #! Toutes les routes départment
+        department:
+            pattern:  ^/api/v1/department
+            anonymous: lazy
+        #! UserController::add
+        user_add:
+            pattern:  ^/api/v1/users$
+            anonymous: lazy
+        #! UserController::getRandomJobWorker (/api/v1/users/jobworker/random)
+        #! UserController::getJobWorkerDetails (/api/v1/users/jobworker/150)
+        #! UserController::getRatingOfJobworker (/api/v1/users/jobworker/150/rating)
+        user_jobworker:
+            pattern:  ^/api/v1/users/jobworker/(random|\d+)?(/rating)?$
+            anonymous: lazy
+        #! UserController::getAllContact
+        user_contacts:
+            pattern:  ^/api/v1/users/contact
+            anonymous: lazy
         login:
             pattern:  ^/api/login
             stateless: true
