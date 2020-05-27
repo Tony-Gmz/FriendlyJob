@@ -2,12 +2,12 @@ import { combineReducers } from 'redux';
 
 // Reducer import
 import userReducer from './user';
-import serviceReducer from './services';
+import servicesReducer from './services';
 
 
 const rootReducer = combineReducers({
 
-  service: serviceReducer,
+  service: servicesReducer,
   user: userReducer,
 });
 
