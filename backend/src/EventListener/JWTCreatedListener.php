@@ -50,9 +50,6 @@ class JWTCreatedListener
             'about' => $user->getAbout(),
             'isLogged' => true,
         ];
-
-        unset($payload['roles']);
-        unset($payload['username']);
         
         $event->setData($payload);
         

@@ -946,10 +946,14 @@ Aucune
 }
 ```
 
-### Une fois le token décoder il contient
+### Une fois le token decodé il contient =>
 ```json
 {
-  "iat": 1590599379,
+  "iat": 1590601769,
+  "roles": [
+    "ADMIN"
+  ],
+  "username": "admin.karim@oclock.io",
   "exp": 1590670800,
   "ip": "127.0.0.1",
   "user": {
