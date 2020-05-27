@@ -1,35 +1,37 @@
 // == Import npm
-import React from 'react';
-
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 // == Import
 import './App.scss';
 import Footer from 'src/components/Footer';
-import ProfilFriendlyUser from 'src/components/ProfilFriendlyUser';
-import ProfilWorkJober from 'src/components/ProfilWorkJober';
 import NavBar from '../NavBar';
-import ServiceDetail from '../ServiceDetail';
 import HomePage from '../HomePage';
-import JobWorkerList from '../JobWorkerList';
-import ServiceList from '../Service/List';
-import JobWorkerDetails from '../JobWorkerDetail';
-import Request from '../Request';
+
 
 // == Composant
-const App = () => (
-  <div className="app">
-    <NavBar />
-    <HomePage />
-    <ServiceList />
-    <ServiceDetail />
-    <JobWorkerList />
-    <JobWorkerDetails />
-    <ProfilWorkJober />
-    <ProfilFriendlyUser />
-    <Request />
-    <Footer />
-  </div>
-);
+const App = ({ getToken }) => {
+
+  useEffect(() => {
+    getToken();
+  }, []);
+
+  return (
+    <div className="app">
+      <NavBar />
+      <HomePage />
+      <Footer />
+    </div>
+  );
+};
+
+App.propTypes = {
+  /**
+   * Func with no param
+   */
+  getToken: PropTypes.func.isRequired,
+};
+
 
 // == Export
 export default App;

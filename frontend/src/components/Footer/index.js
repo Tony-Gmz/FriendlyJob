@@ -16,10 +16,10 @@ const Footer = () => (
         <Link to="">Qui nous sommes</Link>
       </div>
       <div className="footer_icon">
-        <Button classNames="footer_icon_item" circular color='facebook' icon='facebook' />
-        <Button classNames="footer_icon_item" circular color='twitter' icon='twitter' />
-        <Button classNames="footer_icon_item" circular color='linkedin' icon='linkedin' />
-        <Button classNames="footer_icon_item" circular color='google plus' icon='google plus' />
+        <Button className="footer_icon_item" circular color='facebook' icon='facebook' />
+        <Button className="footer_icon_item" circular color='twitter' icon='twitter' />
+        <Button className="footer_icon_item" circular color='linkedin' icon='linkedin' />
+        <Button className="footer_icon_item" circular color='google plus' icon='google plus' />
       </div>
     </div>
   </footer>
