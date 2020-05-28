@@ -1,9 +1,8 @@
 @import 'src/styles/vars';
 
 .app {
-  width: 1000px;
-  margin: auto;
-  text-align: center;
+  width: 100%;
+  margin: 0  auto;
   position: relative;
   height: 100vh;
 
@@ -33,7 +32,7 @@
 }
 @include xl {
 
-  width: 1000px;
+  width: 100%;
   margin: auto;
   text-align: center;
   position: relative;

@@ -11,9 +11,10 @@ import NavBar from '../NavBar';
 import Page from '../Page';
 
 // == Composant
-const App = ({ getToken }) => {
+const App = ({ getToken, getServices }) => {
   useEffect(() => {
     getToken();
+    getServices();
   }, []);
   return (
     <div className="app">
@@ -29,6 +30,7 @@ App.propTypes = {
    * Func with no param
    */
   getToken: PropTypes.func.isRequired,
+  getServices: PropTypes.func.isRequired,
 };
 
 

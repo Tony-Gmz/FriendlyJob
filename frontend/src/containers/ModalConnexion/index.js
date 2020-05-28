@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getToken } from 'src/action/userActions';
+import { changeField, submitLoggin } from 'src/action/userActions';
 import ModalConnexion from 'src/components/ModalConnexion';
 
 const mapStateToProps = (state) => ({
@@ -9,8 +9,11 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   // nom de la prop à remplir: callback qui contient un appel à dispatch
   // With dispatch we send the action in the reducer
-  getToken: () => {
-    dispatch(getToken());
+  changeField: (newValue, inputName) => {
+    dispatch(changeField(newValue, inputName));
+  },
+  submitLoggin: () => {
+    dispatch(submitLoggin());
   },
 });
 

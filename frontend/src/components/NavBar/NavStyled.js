@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import 'src/styles/_vars.scss';
 
 const NavStyled = styled.nav`
+  width: 80%;
+  margin: 0 auto;
   margin-top: 1rem;
   display: flex;
   justify-content: space-between;

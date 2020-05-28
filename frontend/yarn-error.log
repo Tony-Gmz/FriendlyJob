@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add @material-ui/pickers1
+  /usr/local/bin/node /usr/local/bin/yarn add @material-ui/lab/Autocomplete
 
 PATH: 
   /home/etudiant/.npm-packages/bin:/home/etudiant/.npm-packages/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
@@ -8,22 +8,22 @@ Yarn version:
   1.21.1
 
 Node version: 
-  13.5.0
+  12.16.1
 
 Platform: 
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@material-ui%2fpickers1: Not found
-      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66947:18)
+  Error: https://registry.yarnpkg.com/@material-ui%2flab/Autocomplete: Request "https://registry.yarnpkg.com/@material-ui%2flab/Autocomplete" returned a 405
+      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66956:18)
       at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140665:22)
-      at Request.emit (events.js:305:20)
+      at Request.emit (events.js:311:20)
       at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141637:10)
-      at Request.emit (events.js:305:20)
+      at Request.emit (events.js:311:20)
       at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141559:12)
-      at Object.onceWrapper (events.js:411:28)
-      at IncomingMessage.emit (events.js:317:22)
-      at endReadableNT (_stream_readable.js:1215:12)
+      at Object.onceWrapper (events.js:417:28)
+      at IncomingMessage.emit (events.js:323:22)
+      at endReadableNT (_stream_readable.js:1204:12)
       at processTicksAndRejections (internal/process/task_queues.js:84:21)
 
 npm manifest: 
@@ -75,8 +75,10 @@ npm manifest:
       "webpack-merge": "*"
     },
     "dependencies": {
-      "@date-io/date-fns": "^2.6.2",
+      "@date-io/date-fns": "1.x",
       "@material-ui/core": "^4.10.0",
+      "@material-ui/icons": "^4.9.1",
+      "@material-ui/lab": "^4.0.0-alpha.54",
       "@material-ui/pickers": "^3.2.10",
       "axios": "^0.19.2",
       "classnames": "^2.2.6",
@@ -1030,22 +1032,17 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
     integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
   
-  "@date-io/core@1.x":
+  "@date-io/core@1.x", "@date-io/core@^1.3.13":
     version "1.3.13"
     resolved "https://registry.yarnpkg.com/@date-io/core/-/core-1.3.13.tgz#90c71da493f20204b7a972929cc5c482d078b3fa"
     integrity sha512-AlEKV7TxjeK+jxWVKcCFrfYAk8spX9aCyiToFIiLPtfQbsjmRGLIhb5VZgptQcJdHtLXo7+m0DuurwFgUToQuA==
   
-  "@date-io/core@^2.6.0":
-    version "2.6.0"
-    resolved "https://registry.yarnpkg.com/@date-io/core/-/core-2.6.0.tgz#01efa47b225d1a94d3138583588b919442149ee8"
-    integrity sha512-GkM3jTlh9r3MfZEuFKV4g1JSbxz1G0Or1CBKkhPcw7UCJRjjsk5mLVYZYtUQEsOY8rCSFUTdCOm63ulWzAC/pw==
-  
-  "@date-io/date-fns@^2.6.2":
-    version "2.6.2"
-    resolved "https://registry.yarnpkg.com/@date-io/date-fns/-/date-fns-2.6.2.tgz#231e075b0ac18beb3654cbd3d4ae09e91846fafa"
-    integrity sha512-LJnNxYhGihB1h503yRLj9s36a9bSF/NOyIbHDp7Bev2lmKn8c2zjoX9u0p5i3WV7z2nujBW1oDR/h+VfzjFkvg==
+  "@date-io/date-fns@1.x":
+    version "1.3.13"
+    resolved "https://registry.yarnpkg.com/@date-io/date-fns/-/date-fns-1.3.13.tgz#7798844041640ab393f7e21a7769a65d672f4735"
+    integrity sha512-yXxGzcRUPcogiMj58wVgFjc9qUYrCnnU9eLcyNbsQCmae4jPuZCDoIBR21j8ZURsM7GRtU62VOw5yNd4dDHunA==
     dependencies:
-      "@date-io/core" "^2.6.0"
+      "@date-io/core" "^1.3.13"
   
   "@emotion/hash@^0.8.0":
     version "0.8.0"
@@ -1091,6 +1088,24 @@ Lockfile:
       prop-types "^15.7.2"
       react-is "^16.8.0"
       react-transition-group "^4.4.0"
+  
+  "@material-ui/icons@^4.9.1":
+    version "4.9.1"
+    resolved "https://registry.yarnpkg.com/@material-ui/icons/-/icons-4.9.1.tgz#fdeadf8cb3d89208945b33dbc50c7c616d0bd665"
+    integrity sha512-GBitL3oBWO0hzBhvA9KxqcowRUsA0qzwKkURyC8nppnC3fw54KPKZ+d4V1Eeg/UnDRSzDaI9nGCdel/eh9AQMg==
+    dependencies:
+      "@babel/runtime" "^7.4.4"
+  
+  "@material-ui/lab@^4.0.0-alpha.54":
+    version "4.0.0-alpha.54"
+    resolved "https://registry.yarnpkg.com/@material-ui/lab/-/lab-4.0.0-alpha.54.tgz#f359fac05667549353e5e21e631ae22cb2c22996"
+    integrity sha512-BK/z+8xGPQoMtG6gWKyagCdYO1/2DzkBchvvXs2bbTVh3sbi/QQLIqWV6UA1KtMVydYVt22NwV3xltgPkaPKLg==
+    dependencies:
+      "@babel/runtime" "^7.4.4"
+      "@material-ui/utils" "^4.9.6"
+      clsx "^1.0.4"
+      prop-types "^15.7.2"
+      react-is "^16.8.0"
   
   "@material-ui/pickers@^3.2.10":
     version "3.2.10"

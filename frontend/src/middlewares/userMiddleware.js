@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_TOKEN } from '../action/userActions';
+import { GET_TOKEN } from '../action/usersActions';
 
 
 const userMiddleware = (store) => (next) => (action) => {

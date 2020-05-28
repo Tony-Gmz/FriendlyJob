@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import { getToken } from 'src/action/userActions';
+import { getToken } from 'src/action/usersActions';
+import { getServices } from 'src/action/servicesActions';
 import App from 'src/components/App';
 
 const mapStateToProps = (state) => ({
@@ -11,6 +12,9 @@ const mapDispatchToProps = (dispatch) => ({
   // With dispatch we send the action in the reducer
   getToken: () => {
     dispatch(getToken());
+  },
+  getServices: () => {
+    dispatch(getServices());
   },
 });
 
