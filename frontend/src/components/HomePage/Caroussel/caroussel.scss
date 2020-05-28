@@ -23,7 +23,14 @@
 }
   .caroussel_img {
     width: 250px;
+    height: 250px;
     overflow: hidden;
+    border-radius: 10px;
+    transition: transform .2s;
+    &:hover {
+      transform: scale(1.5);
+      
+    }
 
     @include phone {
     
@@ -49,6 +56,20 @@
   li{
 
     color: #ffff;
+  }
+
+  .caroussel_service_title {
+    padding-top: 2rem;
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  .caroussel_content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .carroussel_content_img {
+    overflow: hidden;
   }
 }
 

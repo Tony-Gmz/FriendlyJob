@@ -49,50 +49,66 @@ const Caroussel = () => {
       <Slider {...settings}>
         <Link to="/services">
           <div className="caroussel_content">
-            <img className="caroussel_img" src={jardinage} alt="jardinage" />
-            <h3>Service 1</h3>
+            <div className="carroussel_content_img">
+              <img className="caroussel_img" src=" https://i.ibb.co/1bPYLmz/jardinage.jpg" alt="jardinage" />
+            </div>
+            <h3 className="caroussel_service_title">Jardinage</h3>
           </div>
         </Link>
         <Link to="/services">
           <div className="caroussel_content">
-            <img className="caroussel_img" src={jardinage} alt="jardinage" />
-            <h3>Service 2</h3>
+            <div className="carroussel_content_img">
+              <img className="caroussel_img" src="https://i.ibb.co/jhR4T65/Bricolage.jpg" alt="jardinage" />
+            </div>
+            <h3 className="caroussel_service_title">Bricolage</h3>
           </div>
         </Link>
         <Link to="/services">
           <div className="caroussel_content">
-            <img className="caroussel_img" src={jardinage} alt="jardinage" />
-            <h3>Service 3</h3>
+            <div className="carroussel_content_img">
+              <img className="caroussel_img" src="https://i.ibb.co/jG7c7KJ/demenagement.jpg" alt="jardinage" />
+            </div>
+            <h3 className="caroussel_service_title">Déménagement</h3>
           </div>
         </Link>
         <Link to="/services">
           <div className="caroussel_content">
-            <img className="caroussel_img" src={jardinage} alt="jardinage" />
-            <h3>Service 4</h3>
+            <div className="carroussel_content_img">
+              <img className="caroussel_img" src=" https://i.ibb.co/rMB52Bb/gardeanimaux.jpg" alt="jardinage" />
+            </div>
+            <h3 className="caroussel_service_title">Garde d'animaux</h3>
           </div>
         </Link>
         <Link to="/services">
           <div className="caroussel_content">
-            <img className="caroussel_img" src={jardinage} alt="jardinage" />
-            <h3>Service 5</h3>
+            <div className="carroussel_content_img">
+              <img className="caroussel_img" src="https://i.ibb.co/3YtgX26/informatique.jpg" alt="jardinage" />
+            </div>
+            <h3 className="caroussel_service_title">Informatique</h3>
           </div>
         </Link>
         <Link to="/services">
           <div className="caroussel_content">
-            <img className="caroussel_img" src={jardinage} alt="jardinage" />
-            <h3>Service 6</h3>
+            <div className="carroussel_content_img">
+              <img className="caroussel_img" src="https://i.ibb.co/6RkgSB6/babysitting.png" alt="jardinage" />
+            </div>
+            <h3 className="caroussel_service_title">Babby-Sitting</h3>
           </div>
         </Link>
         <Link to="/services">
           <div className="caroussel_content">
-            <img className="caroussel_img" src={jardinage} alt="jardinage" />
-            <h3>Service 7</h3>
+            <div className="carroussel_content_img">
+              <img className="caroussel_img" src=" https://i.ibb.co/BwMSMng/covoiturage.jpg" alt="jardinage" />
+            </div>
+            <h3 className="caroussel_service_title">Co-voiturage</h3>
           </div>
         </Link>
         <Link to="/services">
           <div className="caroussel_content">
-            <img className="caroussel_img" src={jardinage} alt="jardinage" />
-            <h3>Service 8</h3>
+            <div className="carroussel_content_img">
+              <img className="caroussel_img" src="https://i.ibb.co/XL7Bn9h/aide.jpg" alt="jardinage" />
+            </div>
+            <h3 className="caroussel_service_title">Aide à la personne</h3>
           </div>
         </Link>
       </Slider>

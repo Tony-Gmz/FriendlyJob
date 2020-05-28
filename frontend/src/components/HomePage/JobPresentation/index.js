@@ -17,8 +17,8 @@ const JobPresentation = () => (
       </div>
     </div>
     <div className="jobpresentation_content">
-      <p> Vous avez une passion ou une compètence que vous souhaitez exercer de manière plus assidut et rémunerer ?
-        Alors inscris-toi et devient le jobWorker préféré de tes voisins !
+      <p> Vous avez une passion ou une compètence que vous souhaitez exercer de manière plus assidu et rémunerée ?
+        Alors inscris-toi et deviens le jobWorker préféré de tes voisins !
       </p>
     </div>
     <div>
