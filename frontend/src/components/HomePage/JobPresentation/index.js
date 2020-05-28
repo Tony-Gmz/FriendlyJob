@@ -1,7 +1,8 @@
 import React from 'react';
+import ModalInscription from 'src/containers/ModalInscription';
 import Jober from './Jober';
 import './jobpresentation.scss';
-import NavButtonStyled from '../../Button/NavButtonStyled';
+
 
 // component for jobworker presentation in homepage
 
@@ -22,7 +23,7 @@ const JobPresentation = () => (
       </p>
     </div>
     <div>
-      <a href="#inscription"><NavButtonStyled>Let's go</NavButtonStyled></a>
+      <ModalInscription />
     </div>
   </div>
 );

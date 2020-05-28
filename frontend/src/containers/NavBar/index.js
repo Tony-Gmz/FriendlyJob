@@ -1,25 +1,18 @@
 import { connect } from 'react-redux';
-import { getRandomJobWorker } from 'src/action/usersActions';
-import { getServices } from 'src/action/servicesActions';
-import App from 'src/components/App';
+import NavBar from 'src/components/NavBar';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
-  loading: state.service.loading,
+  isLogged: state.user.isLogged,
+  // roles: state.user.userData.roles[0],
 });
 
 const mapDispatchToProps = (dispatch) => ({
   // nom de la prop à remplir: callback qui contient un appel à dispatch
   // With dispatch we send the action in the reducer
-  getServices: () => {
-    dispatch(getServices());
-  },
-  getRandomJobWorker: () => {
-    dispatch(getRandomJobWorker());
-  },
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(App);
+)(NavBar);

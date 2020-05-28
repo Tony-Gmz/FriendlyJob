@@ -4,6 +4,7 @@ const initialState = {
   // Initial State
   /** List of service */
   serviceList: [],
+  loading: true,
 };
 
 const servicesReducer = (state = initialState, action = {}) => {
@@ -12,6 +13,7 @@ const servicesReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         serviceList: action.newServices,
+        loading: false,
       };
     default: return state;
   }

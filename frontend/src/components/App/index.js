@@ -7,20 +7,27 @@ import './App.scss';
 
 // == Import Components
 import Footer from 'src/components/Footer';
-import NavBar from '../NavBar';
+import Loader from 'src/components/Loader';
+import NavBar from 'src/containers/NavBar';
 import Page from '../Page';
 
+
 // == Composant
-const App = ({ getServices, getRandomJobWorker }) => {
+const App = ({ getServices, getRandomJobWorker, loading }) => {
   useEffect(() => {
     getServices();
     getRandomJobWorker();
   }, []);
   return (
     <div className="app">
-      <NavBar />
-      <Page />
-      <Footer />
+      {loading && <Loader /> }
+      {!loading && (
+        <>
+          <NavBar />
+          <Page />
+          <Footer />
+        </>
+      )}
     </div>
   );
 };
@@ -31,6 +38,7 @@ App.propTypes = {
    */
   getRandomJobWorker: PropTypes.func.isRequired,
   getServices: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 

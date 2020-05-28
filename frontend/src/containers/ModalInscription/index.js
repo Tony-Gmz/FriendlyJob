@@ -1,25 +1,24 @@
 import { connect } from 'react-redux';
-import { getRandomJobWorker } from 'src/action/usersActions';
-import { getServices } from 'src/action/servicesActions';
-import App from 'src/components/App';
+import { fieldValue, submitSubscribe } from 'src/action/inscriptionAction';
+import ModalInscription from 'src/components/ModalInscription';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
-  loading: state.service.loading,
+  isSubscribe: state.inscription.isSubscribe,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   // nom de la prop à remplir: callback qui contient un appel à dispatch
   // With dispatch we send the action in the reducer
-  getServices: () => {
-    dispatch(getServices());
+  fieldValue: (newValue, inputName) => {
+    dispatch(fieldValue(newValue, inputName));
   },
-  getRandomJobWorker: () => {
-    dispatch(getRandomJobWorker());
+  submitSubscribe: () => {
+    dispatch(submitSubscribe());
   },
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(App);
+)(ModalInscription);

@@ -1,16 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
 import ModalConnexion from 'src/containers/ModalConnexion';
 import NavButtonStyled from 'src/components/Button/NavButtonStyled';
+import ModalInscription from 'src/containers/ModalInscription';
 import NavStyled from './NavStyled';
-import ModalInscription from '../ModalInscription';
+
 
 // Styled navbar component reusable
 
-const NavBar = () => {
-
-  const isLogged = false;
-  const role = '';
+const NavBar = ({ isLogged }) => {
 
   if (isLogged === false) {
     return (
@@ -35,7 +34,7 @@ const NavBar = () => {
     );
   }
   // nav Jobworker
-  if (isLogged === true && role === 'jobworker') {
+ /*  if (isLogged === true && roles === 'jobworker') {
     return (
       <NavStyled>
         <NavLink to="/">
@@ -54,8 +53,8 @@ const NavBar = () => {
         </div>
       </NavStyled>
     );
-  }
-  if (isLogged === true && role === 'friendly-user') {
+  } */
+  if (isLogged === true) {
     return (
       <NavStyled>
         <NavLink to="/">
@@ -76,6 +75,11 @@ const NavBar = () => {
       </NavStyled>
     );
   }
+};
+
+NavBar.propTypes = {
+  isLogged: PropTypes.bool.isRequired,
+  roles: PropTypes.string.isRequired,
 };
 
 export default NavBar;
