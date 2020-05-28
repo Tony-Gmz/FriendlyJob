@@ -11,9 +11,10 @@ import NavBar from '../NavBar';
 import Page from '../Page';
 
 // == Composant
-const App = ({ getServices }) => {
+const App = ({ getServices, getRandomJobWorker }) => {
   useEffect(() => {
     getServices();
+    getRandomJobWorker();
   }, []);
   return (
     <div className="app">
@@ -28,7 +29,7 @@ App.propTypes = {
   /**
    * Func with no param
    */
-  getToken: PropTypes.func.isRequired,
+  getRandomJobWorker: PropTypes.func.isRequired,
   getServices: PropTypes.func.isRequired,
 };
 

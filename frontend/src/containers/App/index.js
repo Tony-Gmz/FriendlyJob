@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getToken } from 'src/action/usersActions';
+import { getRandomJobWorker } from 'src/action/usersActions';
 import { getServices } from 'src/action/servicesActions';
 import App from 'src/components/App';
 
@@ -12,6 +12,9 @@ const mapDispatchToProps = (dispatch) => ({
   // With dispatch we send the action in the reducer
   getServices: () => {
     dispatch(getServices());
+  },
+  getRandomJobWorker: () => {
+    dispatch(getRandomJobWorker());
   },
 });
 

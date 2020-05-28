@@ -1,3 +1,4 @@
+import { SAVE_RANDOM_JOBWORKER } from "../action/usersActions";
 
 const initialState = {
   // ici l'état initial
@@ -11,10 +12,16 @@ const initialState = {
   userData: null,
   /** Token  */
   token: '',
+  randomJobWorker: null,
 };
 
 const userReducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case SAVE_RANDOM_JOBWORKER:
+      return {
+        ...state,
+        randomJobWorker: action.newRandomJobWorker,
+      };
     default: return state;
   }
 };
