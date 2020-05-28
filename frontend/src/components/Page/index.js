@@ -5,7 +5,7 @@ import './page.scss';
 
 import HomePage from '../HomePage';
 import Contact from '../Contact';
-import ServiceList from '../ServiceList';
+import ServiceList from 'src/containers/ServiceList';
 import ServiceDetail from '../ServiceDetail';
 import JobWorkerList from '../JobWorkerList';
 import JobWorkerDetail from '../JobWorkerDetail';

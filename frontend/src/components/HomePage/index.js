@@ -1,5 +1,5 @@
 import React from 'react';
-import Caroussel from './Caroussel';
+import Caroussel from 'src/containers/Caroussel';
 import Presentation from './Presentation';
 import JobPresentation from './JobPresentation';
 

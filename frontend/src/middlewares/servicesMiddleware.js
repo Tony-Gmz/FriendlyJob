@@ -17,12 +17,12 @@ const servicesMiddleware = (store) => (next) => (action) => {
         console.warn(error);
       });
     next(action);
-    break;
+      break;
 
 
-  default:
+    default:
     // on passe l'action au suivant (middleware suivant ou reducer)
-    next(action);
+      next(action);
   }
 };
 
