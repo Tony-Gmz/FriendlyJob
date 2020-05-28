@@ -6,8 +6,8 @@ import './jobWorkerMain.scss';
 
 
 const JobWorkerMain = () => (
-  <div className="jobWorkerMain">
-    <div className="jobWworkerSort">
+  <div className="jobWorker_main">
+    <div className="jobWworker_sort">
       <Dropdown text="Trier">
         <Dropdown.Menu>
           <Dropdown.Item text="Trier par Prix" />
@@ -15,49 +15,49 @@ const JobWorkerMain = () => (
         </Dropdown.Menu>
       </Dropdown>
     </div>
-    <div className="jobWorkerCards">
+    <div className="jobWorker_wrap">
       <Link>
-        <div className="jobWorkerCards_item">
+        <div className="jobWorker_box">
           <Jober />
         </div>
       </Link>
       <Link>
-        <div className="jobWorkerCards_item">
+        <div className="jobWorker_box">
           <Jober />
         </div>
       </Link>
       <Link>
-        <div className="jobWorkerCards_item">
+        <div className="jobWorker_box">
           <Jober />
         </div>
       </Link>
       <Link>
-        <div className="jobWorkerCards_item">
+        <div className="jobWorker_box">
           <Jober />
         </div>
       </Link>
       <Link>
-        <div className="jobWorkerCards_item">
+        <div className="jobWorker_box">
           <Jober />
         </div>
       </Link>
       <Link>
-        <div className="jobWorkerCards_item">
+        <div className="jobWorker_box">
           <Jober />
         </div>
       </Link>
       <Link>
-        <div className="jobWorkerCards_item">
+        <div className="jobWorker_box">
           <Jober />
         </div>
       </Link>
       <Link>
-        <div className="jobWorkerCards_item">
+        <div className="jobWorker_box">
           <Jober />
         </div>
       </Link>
       <Link>
-        <div className="jobWorkerCards_item">
+        <div className="jobWorker_box">
           <Jober />
         </div>
       </Link>

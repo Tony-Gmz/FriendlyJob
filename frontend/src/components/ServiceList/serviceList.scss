@@ -1,20 +1,29 @@
-.serviceList{
-  width: 100%;
-  margin: 0 auto;
-}
 
-.presentation_serviceList{
-  display: flex;
-  justify-content: center;
+ .serviceList_wrap{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:center;
+  margin:10%;
 }
-
-.list{
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 3em;
-    margin-bottom: 3em;
+.serviceList_box{
+  padding:30px;
+  margin:2%;
+  background:white;
+  width: serviceCard_img;
+  border:1px solid #d6d6d6;
+  box-shadow:0 2px 3px 0px rgba(0,0,0,0.25);
+  border-radius:3px;
+  transition:.2s all; 
 }
-
-.serviceCard_img:hover{
-transform: scale(1.2);
+.serviceList_wrap:hover .serviceList_box{
+  filter:blur(3px);
+  opacity:.5;
+  transform: scale(.98);
+  box-shadow:none;
+}
+.serviceList_wrap:hover .serviceList_box:hover{
+  transform:scale(1);
+  filter:blur(0px);
+  opacity:1;
+  box-shadow:0 8px 20px 0px rgba(0,0,0,0.125);
 }

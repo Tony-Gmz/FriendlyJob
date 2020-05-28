@@ -9,44 +9,45 @@ import './serviceList.scss';
 // == Composant
 const ServiceList = () => (
   <div className="serviceList">
-    <div className="presentation_serviceList">
-      Cliquez sur le service de votre choix pour avoir un appercu des JobWorkers present dans votre region.
+    <div className="serviceList_presentation">
+      Cliquez sur le service de votre choix pour avoir un appercu
+      des JobWorkers present dans votre region.
     </div>
-    <div className="list">
+    <div className="serviceList_wrap">
       <Link to="/services/detail">
-        <div className="serviceCard">
-          <img className="serviceCard_img" src={service} alt="profil's" />
-          <div className="serviceCard_title">Service</div>
+        <div className="serviceList_box">
+          <img className="serviceList_Card_img" src={service} alt="profil's" />
+          <div className="serviceList_Card_title">Service</div>
         </div>
       </Link>
       <Link to="/services/detail">
-        <div className="serviceCard">
-          <img className="serviceCard_img" src={service} alt="profil's" />
-          <div className="serviceCard_title">Service</div>
+        <div className="serviceList_box">
+          <img className="serviceList_Card_img" src={service} alt="profil's" />
+          <div className="serviceList_Card_title">Service</div>
         </div>
       </Link>
       <Link to="/services/detail">
-        <div className="serviceCard">
-          <img className="serviceCard_img" src={service} alt="profil's" />
-          <div className="serviceCard_title">Service</div>
+        <div className="serviceList_box">
+          <img className="serviceList_Card_img" src={service} alt="profil's" />
+          <div className="serviceList_Card_title">Service</div>
         </div>
       </Link>
       <Link to="/services/detail">
-        <div className="serviceCard">
-          <img className="serviceCard_img" src={service} alt="profil's" />
-          <div className="serviceCard_title">Service</div>
+        <div className="serviceList_box">
+          <img className="serviceList_Card_img" src={service} alt="profil's" />
+          <div className="serviceList_Card_title">Service</div>
         </div>
       </Link>
       <Link to="/services/detail">
-        <div className="serviceCard">
-          <img className="serviceCard_img" src={service} alt="profil's" />
-          <div className="serviceCard_title">Service</div>
+        <div className="serviceList_box">
+          <img className="serviceList_Card_img" src={service} alt="profil's" />
+          <div className="serviceList_Card_title">Service</div>
         </div>
       </Link>
       <Link to="/services/detail">
-        <div className="serviceCard">
-          <img className="serviceCard_img" src={service} alt="profil's" />
-          <div className="serviceCard_title">Service</div>
+        <div className="serviceList_box">
+          <img className="serviceList_Card_img" src={service} alt="profil's" />
+          <div className="serviceList_Card_title">Service</div>
         </div>
       </Link>
     </div>
