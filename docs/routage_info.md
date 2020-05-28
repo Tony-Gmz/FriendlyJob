@@ -86,7 +86,6 @@ Route en GET = recupèrer les contacts
 | /api/v1/users/{id} | api_v1_users_delete | DELETE | UserController | delete | Delete one specific user |
 | /api/v1/users | api_v1_users_add | POST | UserController | add | Add a user |
 | /api/v1/users/jobworker/random | api_v1_users_jobworker_random | GET | UserController | randomJobWorker | Get a random JobWorker |
-| /api/v1/users/check | api_v1_users_check | POST | UserController | checkUser | Verify credentials from one user |
 | /api/v1/users/jobworker/{id} | api_v1_users_jobworker | GET | UserController | getJobWorkerDetails | Get details from one JobWorker |
 | /api/v1/users/contacts | api_v1_users_contacts | GET | UserController | getAllContact | List of all contacts |
 | /api/v1/rating/jobworker/{id} | api_v1_user_rating_jobworker | GET | UserController| getRatingOfJobworker | Get all ratings from one jobWorker |
@@ -108,6 +107,8 @@ Route en GET = recupèrer les contacts
 | /api/v1/skills | api_v1_skills_add | POST | SkillController | add | Add one specific skill |
 | /api/v1/skills/{id} | api_v1_skills_edit | PUT | SkillController | edit | Modify one specific skill |
 | /api/v1/skills/{id} | api_v1_skills_delete | DELETE | SkillController | delete | Delete one specific skill |
+|||||||
+| /api/v1/ratings | api_v1_ratings_add | POST | RatingController | add | Add one specific rating |
 
 
 

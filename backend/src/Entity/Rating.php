@@ -17,6 +17,8 @@ class Rating
      * @ORM\Column(type="integer")
      * @Groups({"user_jobworker_rating"})
      * @Groups({"service_jobworker"})
+     * @Groups({"demand_one_user"})
+     * @Groups({"rating_add"})
      */
     private $id;
 
@@ -24,6 +26,8 @@ class Rating
      * @ORM\Column(type="text")
      * @Groups({"user_jobworker_rating"})
      * @Groups({"service_jobworker"})
+     * @Groups({"demand_one_user"})
+     * @Groups({"rating_add"})
      */
     private $comment;
 
@@ -31,6 +35,8 @@ class Rating
      * @ORM\Column(type="smallint")
      * @Groups({"user_jobworker_rating"})
      * @Groups({"service_jobworker"})
+     * @Groups({"demand_one_user"})
+     * @Groups({"rating_add"})
      */
     private $star;
 
@@ -46,6 +52,7 @@ class Rating
 
     /**
      * @ORM\OneToOne(targetEntity=Demand::class, inversedBy="rating", cascade={"persist", "remove"})
+     * @Groups({"rating_add"})
      */
     private $demand;
 

@@ -21,7 +21,6 @@ class DemandController extends AbstractController
     public function add(Request $request, ServiceRepository $serviceRepository, UserRepository $userRepository)
     {
         $jsonData = json_decode($request->getContent());
-        //dd($jsonData);
 
         $demand = new Demand();
 
@@ -31,9 +30,7 @@ class DemandController extends AbstractController
         $demand->setStatus($jsonData->status ?? 'En attente');
         $demand->setService($serviceRepository->find($jsonData->service));
         $demand->setFriendlyUser($userRepository->findUserType($jsonData->friendlyUser, 'FRIENDLY_USER'));
-        $demand->setJobWorker($userRepository->findUserType($jsonData->jobWorker, 'JOBWORKER'));
-
-        //dd($demand);
+        $demand->setJobWorker($userRepository->findUserType($jsonData->jobWorker, 'JOBWORKER')); 
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($demand);
@@ -55,10 +52,10 @@ class DemandController extends AbstractController
     {
         $jsonData = json_decode($request->getContent());
 
-        $demand->setBody($jsonData->body);
-        $demand->setReservationDate(new \DateTime($jsonData->reservationDate));
-        $demand->setReservationHour($jsonData->reservationHour);
-        $demand->setStatus($jsonData->status);
+        $demand->setBody(isset($jsonData->body) ? $jsonData->body : $demand->getBody());
+        $demand->setReservationDate(isset($jsonData->reservationDate) ? new \DateTime($jsonData->reservationDate) : new \DateTime($demand->getReservationDate()));
+        $demand->setReservationHour(isset($jsonData->reservationHour) ? $jsonData->reservationHour : $demand->getReservationHour());
+        $demand->setStatus(isset($jsonData->status) ? $jsonData->status : $demand->getStatus());
         $demand->setUpdatedAt(new \DateTime());
 
         $em = $this->getDoctrine()->getManager();
@@ -79,8 +76,6 @@ class DemandController extends AbstractController
     public function getDemandsFromOneUser(DemandRepository $demandRepository, int $id)
     {
         $allDemands = $demandRepository->findAllDemandsFromOneUser($id);
-
-        //dd($allDemands);
 
         return $this->json(
             $allDemands,

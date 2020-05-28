@@ -75,17 +75,30 @@ class UserController extends AbstractController
     {
         $jsonData = json_decode($request->getContent());
         //dd($jsonData);
-        $encodedPassword = $this->passwordEncoder->encodePassword($user, $jsonData->password);
+
+        if (isset($jsonData->password)) {
+            $encodedPassword = $this->passwordEncoder->encodePassword($user, $jsonData->password);
+        }
+        else {
+            $encodedPassword = null;
+        }
+
+        if (isset($jsonData->image)) {
+            $image = $jsonData->image;
+        }
+        else {
+            $image = null;
+        }
 
         $user->setEmail(isset($jsonData->email) ? $jsonData->email : $user->getEmail());
-        $user->setRoles($jsonData->roles);
-        $user->setPassword($encodedPassword);
-        $user->setFirstname($jsonData->firstname);
-        $user->setLastname($jsonData->lastname);
-        $user->setImage($jsonData->image ?? null);
-        $user->setAbout($jsonData->about);
+        $user->setRoles(isset($jsonData->roles) ? $jsonData->roles : $user->getRoles());
+        $user->setPassword( $encodedPassword !== null ? $encodedPassword : $user->getPassword() );
+        $user->setFirstname(isset($jsonData->firstname) ? $jsonData->firstname : $user->getFirstname());
+        $user->setLastname(isset($jsonData->lastname) ? $jsonData->lastname : $user->getLastname());
+        $user->setImage($image !== null ? $image : $user->getImage());
+        $user->setAbout(isset($jsonData->about) ? $jsonData->about : $user->getAbout());
         $user->setUpdatedAt(new \DateTime());
-        $user->setDepartment($departmentRepository->find($jsonData->department));
+        $user->setDepartment(isset($jsonData->department) ? $departmentRepository->find($jsonData->department) : $user->getDepartment());
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($user);
