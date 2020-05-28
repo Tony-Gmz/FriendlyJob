@@ -923,6 +923,42 @@ Aucune
 ```
 </details>
 
+# RatingController
+
+<details><summary>/api/v1/ratings</summary>
+
+## méthode HTTP = POST
+
+### Les données attendues ( Front => Back)
+
+```json
+{
+	**"comment": "test commentaires",
+	**"star": "5",
+	**"demand": "218"
+}
+```
+
+### Les données envoyé ( Back => Front )
+
+```json
+{
+  "id": 251,
+  "comment": "test commentaires",
+  "star": 5,
+  "demand": {
+    "id": 218,
+    "body": "Velit eos ea corrupti repudiandae ipsam et sed.",
+    "reservationDate": "14-12-2010",
+    "reservationHour": "20h",
+    "status": "0"
+  }
+}
+```
+
+
+</details>
+
 ## Récuperer un token JWT
 
 <details><summary>/api/login_check</summary>
@@ -1052,6 +1088,8 @@ Aucune
     edit => Gerer l'optionnalité des champs (pouvoir modifier un seul champ et pas tous en même temps)
             Erreur Paramconverter cause id inexistant
             (NotFoundHttpException)
+            Gérer l'erreur int sur le champ price
+            (TypeError)
     
     delete => Erreur paramconverter quand on essaie de supprimer un id inexistant            
 
@@ -1059,6 +1097,10 @@ Aucune
     App\Entity\Demand object not found by the @ParamConverter annotation.
     ( NotFoundHttpException )
     Voir les 404 erreur mauvaise URL
+
+## Rating
+
+    add => Gerer l'erreur quand on ajoute un rating sur une demand qui a déjà un rating (DUPLICATE)
 
 ## JWT
 

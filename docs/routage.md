@@ -51,3 +51,5 @@
 | /api/v1/skills | api_v1_skills_add | POST | SkillController | add | Add one specific skill |
 | /api/v1/skills/{id} | api_v1_skills_edit | PUT | SkillController | edit | Modify one specific skill |
 | /api/v1/skills/{id} | api_v1_skills_delete | DELETE | SkillController | delete | Delete one specific skill |
+|||||||
+| /api/v1/ratings | api_v1_ratings_add | POST | RatingController | add | Add one specific rating |

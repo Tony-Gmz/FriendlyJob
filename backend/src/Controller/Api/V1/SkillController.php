@@ -49,11 +49,9 @@ class SkillController extends AbstractController
     {
         $jsonData = json_decode($request->getContent());
 
-        $skill->setDescription($jsonData->description);
-        $skill->setPrice($jsonData->price);
+        $skill->setDescription(isset($jsonData->description) ? $jsonData->description : $skill->getDescription());
+        $skill->setPrice(isset($jsonData->price) ? $jsonData->price : $skill->getPrice());
         $skill->setUpdatedAt(new \DateTime());
-
-        //dd($skill);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($skill);

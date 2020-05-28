@@ -52,10 +52,10 @@ class DemandController extends AbstractController
     {
         $jsonData = json_decode($request->getContent());
 
-        $demand->setBody($jsonData->body);
-        $demand->setReservationDate(new \DateTime($jsonData->reservationDate));
-        $demand->setReservationHour($jsonData->reservationHour);
-        $demand->setStatus($jsonData->status);
+        $demand->setBody(isset($jsonData->body) ? $jsonData->body : $demand->getBody());
+        $demand->setReservationDate(isset($jsonData->reservationDate) ? new \DateTime($jsonData->reservationDate) : new \DateTime($demand->getReservationDate()));
+        $demand->setReservationHour(isset($jsonData->reservationHour) ? $jsonData->reservationHour : $demand->getReservationHour());
+        $demand->setStatus(isset($jsonData->status) ? $jsonData->status : $demand->getStatus());
         $demand->setUpdatedAt(new \DateTime());
 
         $em = $this->getDoctrine()->getManager();

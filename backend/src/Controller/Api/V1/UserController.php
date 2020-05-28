@@ -43,6 +43,7 @@ class UserController extends AbstractController
     public function add(Request $request, DepartmentRepository $departmentRepository)
     {
         $jsonData = json_decode($request->getContent());
+        //dd($jsonData);
 
         $user = new User();
         $encodedPassword = $this->passwordEncoder->encodePassword($user, $jsonData->password);
@@ -73,19 +74,31 @@ class UserController extends AbstractController
     public function edit(Request $request, User $user, DepartmentRepository $departmentRepository)
     {
         $jsonData = json_decode($request->getContent());
-        
-        $encodedPassword = $this->passwordEncoder->encodePassword($user, $jsonData->password);
+        //dd($jsonData);
 
-        //$user->setEmail(isset($jsonData->email) ? $jsonData->email : $user->getEmail());
-        $user->setEmail($jsonData->email);
-        $user->setRoles($jsonData->roles);
-        $user->setPassword($encodedPassword);
-        $user->setFirstname($jsonData->firstname);
-        $user->setLastname($jsonData->lastname);
-        $user->setImage($jsonData->image ?? null);
-        $user->setAbout($jsonData->about);
-        $user->setDepartment($departmentRepository->find($jsonData->department));
+        if (isset($jsonData->password)) {
+            $encodedPassword = $this->passwordEncoder->encodePassword($user, $jsonData->password);
+        }
+        else {
+            $encodedPassword = null;
+        }
+
+        if (isset($jsonData->image)) {
+            $image = $jsonData->image;
+        }
+        else {
+            $image = null;
+        }
+
+        $user->setEmail(isset($jsonData->email) ? $jsonData->email : $user->getEmail());
+        $user->setRoles(isset($jsonData->roles) ? $jsonData->roles : $user->getRoles());
+        $user->setPassword( $encodedPassword !== null ? $encodedPassword : $user->getPassword() );
+        $user->setFirstname(isset($jsonData->firstname) ? $jsonData->firstname : $user->getFirstname());
+        $user->setLastname(isset($jsonData->lastname) ? $jsonData->lastname : $user->getLastname());
+        $user->setImage($image !== null ? $image : $user->getImage());
+        $user->setAbout(isset($jsonData->about) ? $jsonData->about : $user->getAbout());
         $user->setUpdatedAt(new \DateTime());
+        $user->setDepartment(isset($jsonData->department) ? $departmentRepository->find($jsonData->department) : $user->getDepartment());
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($user);
@@ -120,10 +133,13 @@ class UserController extends AbstractController
     public function getRandomJobWorker(UserRepository $userRepository)
     {
         $jobworker = $userRepository->getAllJobWorkers();
+        //dd($jobworker);
 
         shuffle($jobworker);
+        //dd($jobworker);
 
         $getOneRandomJobWorker = $jobworker[mt_rand(0, count($jobworker) - 1)];
+        //dd($getOneRandomJobWorker);
 
         return $this->json(
             $getOneRandomJobWorker,
@@ -170,6 +186,7 @@ class UserController extends AbstractController
     public function getRatingOfJobworker(UserRepository $userRepository, int $id)
     {
         $jobWorkerRating = $userRepository->findJobWorkerRating($id);
+        //dd($jobWorkerRating);
 
         return $this->json(
             $jobWorkerRating,
@@ -178,5 +195,4 @@ class UserController extends AbstractController
             ['groups' => 'user_jobworker_rating']
         );
     }
-
 }
