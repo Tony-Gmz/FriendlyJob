@@ -978,20 +978,7 @@ Aucune
 
 ```json
 {
-  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImN0eSI6IkpXVCJ9.eyJpYXQiOjE1OTA1OTk0MzMsImV4cCI6MTU5MDY3MDgwMCwiaXAiOiIxMjcuMC4wLjEiLCJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFkbWluLmthcmltQG9jbG9jay5pbyIsInJvbGVzIjpbIkFETUlOIl0sImZpcnN0bmFtZSI6IkthcmltIiwibGFzdG5hbWUiOiJNYWF6YW91aSIsImltYWdlIjpudWxsLCJhYm91dCI6IkV4ZXJjaXRhdGlvbmVtIGVzdCByZW0gZGljdGEgdm9sdXB0YXMgZnVnYSB0b3RhbSByZWljaWVuZGlzIHF1aSBhcmNoaXRlY3RvIGZ1Z2lhdCBuZW1vIG9tbmlzIGNvbnNlcXVhdHVyLiIsImlzTG9nZ2VkIjp0cnVlfX0.D4GZmpPbuIec7Q8HjFY7wDvVd5zLRURfSslN_EKuBuHzM_1obyJawa3zeFIYOX3xS8HfU_g4CsXv1mbWwC2qImZhXvvnpChdP-a8njgrwOEe1ct1t1mdn45SRE0hRPWRcQ15WDUXk116Ptw8-SSZfyGvC6QX3NnDTyrX0-B7pR0fH7DAFUHn6BFTdioLKPMOBRK4ncfvaUI58o2qaQeSnEOzT0k4hjoAZe91O0h_BwsRZj3INPPLDikuZ-CgZZOlkMHBmat3gAaVgL-6W_IQp-sSY6WNyNZyapbg-tsJ_AT__Cod9Orc_u6JMRD1P4wSvDDgrpBjrArTWD4UDl8dcNRep-NLwzdH3ZDiaCTbfOJB37W2DO7Ew9dLynOMfs7hCUzwVYQhJ2LdNdKt9RxSpKeuMtXrSOagTmXYYd_D2otcKXlnACywfoYv1WRvAobx8EztZCX0ADgBecyVxT0kVIBsOco24UH0mdetyFp302Tbyy-vjacaEZxa4g1QN5iACSR72p_hTHIPQzFH0W_L0oP_tlf9kxA6fK0ayq4w6J9ctdmnEqkCTXCqPKFP1EOuSLUjiNMQpFL9irWlLpc-2AaKyXrEfh5bSgEKKmyAL6yBLybXU2scNMmfii3hHMcX_6LCgNZXH8r0QH8E73EH0qjgzumUmLLoKuKS5tEJubQ"
-}
-```
-
-### Une fois le token decodé il contient =>
-```json
-{
-  "iat": 1590601769,
-  "roles": [
-    "ADMIN"
-  ],
-  "username": "admin.karim@oclock.io",
-  "exp": 1590670800,
-  "ip": "127.0.0.1",
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImN0eSI6IkpXVCJ9.eyJpYXQiOjE1OTA2Njg3MDcsInJvbGVzIjpbIkFETUlOIl0sInVzZXJuYW1lIjoiYWRtaW4ua2FyaW1Ab2Nsb2NrLmlvIiwiZXhwIjoxNTkwNzU3MjAwLCJpcCI6IjEyNy4wLjAuMSJ9.liQJm2Bf9Yxp9A0m-jDRJ0ZZYTX0rUIUcLA9f-S9VDP1bGeJYXBolf-DRH1Okv7ZTT05Nc2abteTKNexy4Ez79Y8JzW8KlbkQgan7yTHVwTfWs-kBYyeEQb4g8iRiOEzjGwZyABVUA6tGeP3iRXF1TllYfqfJtoqGpzPMq3HVz1p3DMJsgB17vzTDUljjL5SBoh0yG2hxM8cmyHvjYqiBG2UYG3WSgoz7vDg-yyVBScrSsIvoG9wFM1gh-wo4eu8BR5Td-mZbGiP3OiMAmNeZVs5JZEZg55r8-a07iCUwl5VP8inFpta1RZGzhB_c7mKd08pAQ_f9D9POvE0DkzSkfkS5elW398gnw2XJA7tmGltUDyjQxi0qKVhrfkPLp8orduIj-8CbcK5Qt_a1Z1a6v3a6iy88q3CzWKs6oJX26vnEwWyfYiDdREYQ3td_XzJmbqgKxUbo8t-jrRKNPytPy_BVZlw5uZo6FLsC2JbhJ3IDu1WajaIIOH3TW0HUhiOI5TVhior2vtoyxnR14IKw9yX8hHGu2X71PXJDTnfNF7YO5xKdXFBArQsEU448npG9DNf1mEWaotWoLSMlWz6rpz5p9XZg90li7kXY6FjY8hulWUVYBb6mFOV20f-ZOqt3DIJ4onNPM5TEEx2yoxe90IpdDmKzqgPKHCTS-Wf4cg",
   "user": {
     "id": 1,
     "username": "admin.karim@oclock.io",
@@ -1002,8 +989,26 @@ Aucune
     "lastname": "Maazaoui",
     "image": null,
     "about": "Exercitationem est rem dicta voluptas fuga totam reiciendis qui architecto fugiat nemo omnis consequatur.",
+    "department": {
+      "id": 1,
+      "name": "Nièvre",
+      "number": "01"
+    },
     "isLogged": true
   }
+}
+```
+
+### l'entrée token peut être décodé elle donnent comme résultat =>
+```json
+{
+  "iat": 1590668707,
+  "roles": [
+    "ADMIN"
+  ],
+  "username": "admin.karim@oclock.io",
+  "exp": 1590757200,
+  "ip": "127.0.0.1"
 }
 ```
 
