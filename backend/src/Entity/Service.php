@@ -19,7 +19,8 @@ class Service
      * @ORM\Column(type="integer")
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating", "user_jobworker_details", "user_random_jobworker"})
-     * @Groups({"service_browse", "service_read", "service_jobworker"})
+     * @Groups({"service_browse", "service_read", "service_jobworker", "service_subservices"})
+     * @Groups({"skill_add"})
      */
     private $id;
 
@@ -27,7 +28,8 @@ class Service
      * @ORM\Column(type="integer", nullable=true)
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating", "user_jobworker_details", "user_random_jobworker"})
-     * @Groups({"service_browse", "service_read", "service_jobworker"})
+     * @Groups({"service_browse", "service_read", "service_jobworker", "service_subservices"})
+     * @Groups({"skill_add"})
      */
     private $parentId;
 
@@ -35,7 +37,8 @@ class Service
      * @ORM\Column(type="string", length=255)
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating", "user_jobworker_details", "user_random_jobworker"})
-     * @Groups({"service_browse", "service_read", "service_jobworker"})
+     * @Groups({"service_browse", "service_read", "service_jobworker", "service_subservices"})
+     * @Groups({"skill_add"})
      */
     private $title;
 
@@ -43,7 +46,8 @@ class Service
      * @ORM\Column(type="text", length=16383)
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating", "user_jobworker_details", "user_random_jobworker"})
-     * @Groups({"service_browse", "service_read", "service_jobworker"})
+     * @Groups({"service_browse", "service_read", "service_jobworker", "service_subservices"})
+     * @Groups({"skill_add"})
      */
     private $description;
 
@@ -51,7 +55,8 @@ class Service
      * @ORM\Column(type="string", length=255)
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating", "user_jobworker_details", "user_random_jobworker"})
-     * @Groups({"service_browse", "service_read", "service_jobworker"})
+     * @Groups({"service_browse", "service_read", "service_jobworker", "service_subservices"})
+     * @Groups({"skill_add"})
      */
     private $image;
 

@@ -16,18 +16,24 @@ class Skill
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      * @Groups({"user_random_jobworker", "user_jobworker_details"})
+     * @Groups({"service_jobworker"})
+     * @Groups({"skill_add", "skill_edit"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"user_random_jobworker", "user_jobworker_details"})
+     * @Groups({"service_jobworker"})
+     * @Groups({"skill_add", "skill_edit"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="integer")
      * @Groups({"user_random_jobworker", "user_jobworker_details"})
+     * @Groups({"service_jobworker"})
+     * @Groups({"skill_add", "skill_edit"})
      */
     private $price;
 
@@ -45,6 +51,7 @@ class Skill
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="skills")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"service_jobworker"})
+     * @Groups({"skill_add"})
      */
     private $user;
 
@@ -52,6 +59,7 @@ class Skill
      * @ORM\ManyToOne(targetEntity=Service::class, inversedBy="skills")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"user_random_jobworker", "user_jobworker_details"})
+     * @Groups({"skill_add"})
      */
     private $service;
 

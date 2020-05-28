@@ -86,7 +86,6 @@ Route en GET = recupèrer les contacts
 | /api/v1/users/{id} | api_v1_users_delete | DELETE | UserController | delete | Delete one specific user |
 | /api/v1/users | api_v1_users_add | POST | UserController | add | Add a user |
 | /api/v1/users/jobworker/random | api_v1_users_jobworker_random | GET | UserController | randomJobWorker | Get a random JobWorker |
-| /api/v1/users/check | api_v1_users_check | POST | UserController | checkUser | Verify credentials from one user |
 | /api/v1/users/jobworker/{id} | api_v1_users_jobworker | GET | UserController | getJobWorkerDetails | Get details from one JobWorker |
 | /api/v1/users/contacts | api_v1_users_contacts | GET | UserController | getAllContact | List of all contacts |
 | /api/v1/rating/jobworker/{id} | api_v1_user_rating_jobworker | GET | UserController| getRatingOfJobworker | Get all ratings from one jobWorker |
@@ -94,15 +93,22 @@ Route en GET = recupèrer les contacts
 | /api/v1/department | api_v1_department_browse | GET | DepartmentController | browse | List of all department |
 |||||||
 | /api/v1/services | api_v1_services_browse | GET | ServiceController | browse | List of all services |
-| /api/v1/services/{id} | api_v1_services_read | GET | ServiceController | read | See details of one specific service |
+| /api/v1/services/{id} | api_v1_services_read_id | GET | ServiceController | readByID | See details of one specific service with his id |
+| /api/v1/services/{title} | api_v1_services_read_title | GET | ServiceController | readByTitle | See details of one specific service with his title |
 | /api/v1/services/{id}/jobworkers | api_v1_services_jobworkers | GET | ServiceController | getJobWorkersByServices | Get all JobWorkers from a Service |
-| /api/v1/services/{id}/jobworkers?limit5=on | api_v1_services_jobworkers | GET | ServiceController | getJobWorkersByServices | Get five JobWorkers from a service |
+| /api/v1/services/{id}/jobworkers?limit={number} | api_v1_services_jobworkers | GET | ServiceController | getJobWorkersByServices | Get X JobWorkers from a service |
 | /api/v1/services/{id}/sub-services | api_v1_services_subservices | GET | ServiceController | getSubServicesFromService | Get Sub-services from one service |
 |||||||
 | /api/v1/demands/{id} | api_v1_demands_edit | PUT | DemandController | edit | Update one specific demand |
 | /api/v1/demands/{id} | api_v1_demands_delete | DELETE | DemandController | delete | Delete one specific demand |
 | /api/v1/demands | api_v1_demands_add | POST | DemandController | add | Add a demand |
 | /api/v1/demands/users/{id} | api_v1_demands_users | GET | DemandController | getDemandsFromOneUser | Get all demands from one User |
+|||||||
+| /api/v1/skills | api_v1_skills_add | POST | SkillController | add | Add one specific skill |
+| /api/v1/skills/{id} | api_v1_skills_edit | PUT | SkillController | edit | Modify one specific skill |
+| /api/v1/skills/{id} | api_v1_skills_delete | DELETE | SkillController | delete | Delete one specific skill |
+|||||||
+| /api/v1/ratings | api_v1_ratings_add | POST | RatingController | add | Add one specific rating |
 
 
 
@@ -152,19 +158,19 @@ Réponse : /api/v1/jobWorker/{id}
 
 Reservation (modal)
 Route en POST avec arguments :  date, horaire, description, statut, friendlyUser, JobWorker, Services
-Réponse : /api/v1/requests
+Réponse : /api/v1/demands
 
 MesDemandes  "/mesdemandes"
 Route en GET = récupères toutes les demande de l'utilisateur.
-Réponse : /api/v1/requests/users/{id}
+Réponse : /api/v1/demands/users/{id}
 Route en PUT avec arguments : status de la demande (accepté, refusé) (jobworker)
-Réponse : /api/v1/requests/{id}
+Réponse : /api/v1/demands/{id}
 Route en PUT avec argument (string) : raison du refus (jobWorker)
-Réponse : /api/v1/requests/{id}
+Réponse : /api/v1/demands/{id}
 Route en GET status de la demande (friendlyUser)
-Réponse : /api/v1/requests/{id}
+Réponse : /api/v1/demands/{id}
 Route en DELETE avec argument: id de la demande pour supprimer la demande
-Réponse : /api/v1/requests/{id}
+Réponse : /api/v1/demands/{id}
 
 Profil "/profil"
 Route en GET = recupère l'objet user

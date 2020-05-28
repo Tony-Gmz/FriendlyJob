@@ -53,7 +53,7 @@ class UserController extends AbstractController
         $user->setPassword($encodedPassword);
         $user->setFirstname($jsonData->firstname);
         $user->setLastname($jsonData->lastname);
-        $user->setImage($jsonData->image);
+        $user->setImage($jsonData->image ?? null);
         $user->setDepartment($departmentRepository->find($jsonData->department));
 
         $em = $this->getDoctrine()->getManager();
@@ -76,12 +76,29 @@ class UserController extends AbstractController
         $jsonData = json_decode($request->getContent());
         //dd($jsonData);
 
-        $user->setEmail($jsonData->email);
-        $user->setRoles($jsonData->roles);
-        $user->setFirstname($jsonData->firstname);
-        $user->setLastname($jsonData->lastname);
-        $user->setImage($jsonData->image);
-        $user->setDepartment($departmentRepository->find($jsonData->department));
+        if (isset($jsonData->password)) {
+            $encodedPassword = $this->passwordEncoder->encodePassword($user, $jsonData->password);
+        }
+        else {
+            $encodedPassword = null;
+        }
+
+        if (isset($jsonData->image)) {
+            $image = $jsonData->image;
+        }
+        else {
+            $image = null;
+        }
+
+        $user->setEmail(isset($jsonData->email) ? $jsonData->email : $user->getEmail());
+        $user->setRoles(isset($jsonData->roles) ? $jsonData->roles : $user->getRoles());
+        $user->setPassword( $encodedPassword !== null ? $encodedPassword : $user->getPassword() );
+        $user->setFirstname(isset($jsonData->firstname) ? $jsonData->firstname : $user->getFirstname());
+        $user->setLastname(isset($jsonData->lastname) ? $jsonData->lastname : $user->getLastname());
+        $user->setImage($image !== null ? $image : $user->getImage());
+        $user->setAbout(isset($jsonData->about) ? $jsonData->about : $user->getAbout());
+        $user->setUpdatedAt(new \DateTime());
+        $user->setDepartment(isset($jsonData->department) ? $departmentRepository->find($jsonData->department) : $user->getDepartment());
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($user);
@@ -104,18 +121,16 @@ class UserController extends AbstractController
         $em->remove($user);
         $em->flush();
 
-        return $this->json(
-            $user,
-            200, 
-            [],
-            ['groups' => 'user_delete']
-        );
+        return $this->json([
+            'statut' => 200,
+            'message' => 'L\'utilisateur a bien été supprimé.'
+        ], 200);
     }
 
     /**
      * @Route("/jobworker/random", name="jobworker_random", methods={"GET"})
      */
-    public function randomJobWorker(UserRepository $userRepository)
+    public function getRandomJobWorker(UserRepository $userRepository)
     {
         $jobworker = $userRepository->getAllJobWorkers();
         //dd($jobworker);
@@ -179,28 +194,5 @@ class UserController extends AbstractController
             [],
             ['groups' => 'user_jobworker_rating']
         );
-    }
-
-    /**
-     * @Route("/check", name="check", methods={"POST"})
-     * 
-     */
-    public function checkUser()
-    {   // On aurait pu utiliser le serializer pour normaliser l'objet User
-        //! Erreur 400 quand format json invalide (champ manquant)
-        //! Erreur 401 quand l'utilisateur n'est pas bon
-        $user = $this->getUser();
-
-        //dd($user);
-
-        return $this->json([
-            'user' => [
-                'id' => $user->getId(),
-                'email' => $user->getEmail(),
-                'roles' => $user->getRoles(),
-                'isLogged' => true
-            ]
-        ]);
-
     }
 }

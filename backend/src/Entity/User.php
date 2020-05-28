@@ -19,8 +19,9 @@ class User implements UserInterface
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact", "user_delete",})
+     * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact"})
      * @Groups({"service_jobworker"})
+     * @Groups({"skill_add"})
      */
     private $id;
 
@@ -29,6 +30,7 @@ class User implements UserInterface
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
      * @Groups({"service_jobworker"})
+     * @Groups({"skill_add"})
      */
     private $email;
 
@@ -36,6 +38,7 @@ class User implements UserInterface
      * @ORM\Column(type="json")
      * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
      * @Groups({"service_jobworker"})
+     * @Groups({"skill_add"})
      */
     private $roles = [];
 
@@ -50,6 +53,7 @@ class User implements UserInterface
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
      * @Groups({"service_jobworker"})
+     * @Groups({"skill_add"})
      */
     private $firstname;
 
@@ -58,6 +62,7 @@ class User implements UserInterface
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
      * @Groups({"service_jobworker"})
+     * @Groups({"skill_add"})
      */
     private $lastname;
 
@@ -66,8 +71,18 @@ class User implements UserInterface
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
      * @Groups({"service_jobworker"})
+     * @Groups({"skill_add"})
      */
     private $image;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"service_jobworker"})
+     * @Groups({"skill_add"})
+     */
+    private $about;
 
     /**
      * @ORM\Column(type="datetime")
@@ -85,6 +100,7 @@ class User implements UserInterface
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details"})
      * @Groups({"service_jobworker"})
+     * @Groups({"skill_add"})
      */
     private $department;
 
@@ -102,16 +118,9 @@ class User implements UserInterface
     /**
      * @ORM\OneToMany(targetEntity=Demand::class, mappedBy="jobWorker", orphanRemoval=true, cascade={"persist"})
      * @Groups({"user_jobworker_rating"})
-     */
-    private $jobWorkerDemands;
-
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact"})
-     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"service_jobworker"})
-     */
-    private $about;
+     */ 
+    private $jobWorkerDemands;
 
     public function __construct()
     {
@@ -229,6 +238,18 @@ class User implements UserInterface
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getAbout(): ?string
+    {
+        return $this->about;
+    }
+
+    public function setAbout(?string $about): self
+    {
+        $this->about = $about;
 
         return $this;
     }
@@ -362,15 +383,4 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getAbout(): ?string
-    {
-        return $this->about;
-    }
-
-    public function setAbout(?string $about): self
-    {
-        $this->about = $about;
-
-        return $this;
-    }
 }

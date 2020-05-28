@@ -16,8 +16,9 @@ class Demand
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      * @Groups({"service_jobworker"})
-     * @Groups({"demand_add", "demand_edit", "demand_one_user", "demand_delete"})
+     * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating"})
+     * @Groups({"rating_add"})
      */
     private $id;
 
@@ -25,6 +26,7 @@ class Demand
      * @ORM\Column(type="text")
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating"})
+     * @Groups({"rating_add"})
      */
     private $body;
 
@@ -32,6 +34,7 @@ class Demand
      * @ORM\Column(type="datetime")
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating"})
+     * @Groups({"rating_add"})
      */
     private $reservationDate;
 
@@ -39,6 +42,7 @@ class Demand
      * @ORM\Column(type="string", length=255)
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating"})
+     * @Groups({"rating_add"})
      */
     private $reservationHour;
 
@@ -46,6 +50,7 @@ class Demand
      * @ORM\Column(type="string", length=255)
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating"})
+     * @Groups({"rating_add"})
      */
     private $status;
 
@@ -64,6 +69,8 @@ class Demand
     /**
      * @ORM\OneToOne(targetEntity=Rating::class, mappedBy="demand", cascade={"persist", "remove"})
      * @Groups({"user_jobworker_rating"})
+     * @Groups({"demand_one_user"})
+     * @Groups({"service_jobworker"})
      */
     private $rating;
 
@@ -79,6 +86,7 @@ class Demand
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="friendlyUserDemands", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
+     * @Groups({"user_jobworker_rating"})
      */
     private $friendlyUser;
 
