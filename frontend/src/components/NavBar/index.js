@@ -9,8 +9,8 @@ import ModalInscription from '../ModalInscription';
 
 const NavBar = () => {
 
-  const isLogged = true;
-  const role = 'jobworker';
+  const isLogged = false;
+  const role = '';
 
   if (isLogged === false) {
     return (
