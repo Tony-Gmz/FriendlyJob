@@ -37,22 +37,9 @@ class JWTCreatedListener
     
         $payload['ip'] = $request->getClientIp();
         
-        $user = $event->getUser();
-
-        $payload['user'] = [
-            'id' => $user->getId(),
-            'username' => $user->getUsername(),
-            'roles' => $user->getRoles(),
-            'firstname' => $user->getFirstname(),
-            'lastname' => $user->getLastname(),
-            'image' => $user->getImage(),
-            'about' => $user->getAbout(),
-            'isLogged' => true,
-        ];
-        
         $event->setData($payload);
         
-        //dd($payload, $event, $request, $user);
+        //dd($payload, $event, $request);
         
         $header = $event->getHeader();
         $header['cty'] = 'JWT';
