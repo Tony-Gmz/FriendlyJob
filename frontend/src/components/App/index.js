@@ -7,9 +7,10 @@ import './App.scss';
 
 // == Import Components
 import Footer from 'src/components/Footer';
-import NavBar from '../NavBar';
+import Loader from 'src/components/Loader';
+import NavBar from 'src/containers/NavBar';
 import Page from '../Page';
-import Loader from '../Loader';
+
 
 // == Composant
 const App = ({ getServices, getRandomJobWorker, loading }) => {

@@ -12,7 +12,7 @@ const RadioInscription = () => (
     <FormLabel component="legend">Besoin d'un service ou mettre en exergue vos compétences ? Choisissez votre rôle !</FormLabel>
     <RadioGroup className="radio_inscription_item" aria-label="gender" name="gender1">
       <FormControlLabel value="JobWorker" control={<Radio />} label="JobWorker" />
-      <FormControlLabel value="male" control={<Radio />} label="FriendlyUser" />
+      <FormControlLabel value="Friendly-user" control={<Radio />} label="FriendlyUser" />
     </RadioGroup>
   </FormControl>
 );

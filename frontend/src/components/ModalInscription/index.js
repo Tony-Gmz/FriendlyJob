@@ -1,25 +1,43 @@
 // == Import npm
 import React from 'react';
+import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import NavButtonStyled from 'src/components/Button/NavButtonStyled';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormLabel from '@material-ui/core/FormLabel';
 
 // == Import
 import './modalInscription.scss';
-import RadioInscription from './Radio';
+
 
 // == Composant
-const ModalInscription = () => (
-  <div className="ModalInscription">
+const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe }) => {
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    console.log('coucou je suis submit');
+    submitSubscribe();
+  };
+  const handleChange = (evt) => {
+    console.log(`changement du field + ${evt.target.value} + ${evt.target.name}`);
+    fieldValue(evt.target.value, evt.target.name);
+  };
+
+  return (
+    <div className="ModalInscription">
     <a href="#inscription"><NavButtonStyled>Inscription</NavButtonStyled></a>
     <div id="inscription" className="inscription">
       <div className="modal_block">
         <div className="modal_header">
           <p className="modal_title">Bienvenue dans notre espace Inscription</p>
         </div>
-        <form>
+        {isSubscribe && <div>Vous êtes bien inscrit sur FriendlyJob, merci de votre confiance</div>}
+        <form onSubmit={handleSubmit}>
           <div className="form_element">
             <TextField
               className="input"
@@ -28,6 +46,8 @@ const ModalInscription = () => (
               type="text"
               autoComplete="current-name"
               variant="outlined"
+              onChange={handleChange}
+              name="nom"
             />
           </div>
           <div className="form_element">
@@ -38,6 +58,8 @@ const ModalInscription = () => (
               type="text"
               autoComplete="current-firstname"
               variant="outlined"
+              onChange={handleChange}
+              name="prenom"
             />
           </div>
           <div className="form_element">
@@ -47,6 +69,8 @@ const ModalInscription = () => (
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               value="Departement"
+              onChange={handleChange}
+              name="departement"
             >
               <MenuItem value={1}>Ain</MenuItem>
               <MenuItem value={2}>Aisne</MenuItem>
@@ -66,6 +90,8 @@ const ModalInscription = () => (
               type="email"
               autoComplete="current-email"
               variant="outlined"
+              onChange={handleChange}
+              name="email"
             />
           </div>
           <div className="form_element">
@@ -76,6 +102,8 @@ const ModalInscription = () => (
               type="password"
               autoComplete="current-password"
               variant="outlined"
+              onChange={handleChange}
+              name="password"
             />
           </div>
           <div className="form_element">
@@ -86,21 +114,37 @@ const ModalInscription = () => (
               type="password"
               autoComplete="current-password"
               variant="outlined"
+              onchange={handleChange}
+              name="confirm-password"
             />
           </div>
-        </form>
         <div className="div_radio">
-          <RadioInscription />
+          <FormLabel component="legend">Besoin d'un service ou mettre en exergue vos compétences ? Choisissez votre rôle !</FormLabel>
+          <RadioGroup className="radio_inscription_item" aria-label="gender" name="gender1">
+            <FormControlLabel value="JOBWORKER" control={<Radio />} label="JobWorker" onChange={handleChange} name="roles" />
+            <FormControlLabel value="FRIENDLY_USER" control={<Radio />} label="FriendlyUser" onChange={handleChange} name="roles" />
+          </RadioGroup>
         </div>
         <div className="div_submit">
           <button className="submit_btn" type="submit">S'inscrire</button>
           <a href="#"><button className="cancel_btn" type="submit">Annuler</button></a>
         </div>
+        </form>
         <a href="#" className="close_btn">close</a>
       </div>
     </div>
   </div>
-);
+  );
+};
+
+ModalInscription.propTypes = {
+  /** Func without param */
+  submitSubscribe: PropTypes.func.isRequired,
+  /** Func with param */
+  fieldValue: PropTypes.func.isRequired,
+  /** Bool */
+  isSubscribe: PropTypes.bool.isRequired,
+};
 
 // == Export
 export default ModalInscription;
