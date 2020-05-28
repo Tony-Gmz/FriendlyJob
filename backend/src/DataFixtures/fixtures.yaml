@@ -73,7 +73,7 @@ App\Entity\Demand:
         body: '<sentence(10)>'
         reservationDate: '<dateTime()>'
         reservationHour: "<numberBetween(9,23)>h"
-        status: "<randomElements(['En Attente', 'Validé', 'Refusé'])>"
+        status: "En attente"
         service: "@service_*"
         # friendly_user:  "@user_fu_*" #! Bug
         # job_worker: "@user_jb_*" #! Bug
