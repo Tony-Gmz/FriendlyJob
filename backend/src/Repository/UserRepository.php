@@ -89,11 +89,14 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $qb = $this->createQueryBuilder('u');
 
         $qb
-            ->addSelect('dep, sk, s')
+            ->addSelect('dep, sk, s, dem, r')
             ->join('u.department', 'dep')
             ->join('u.skills', 'sk')
             ->join('sk.service', 's')
+            ->join('u.jobWorkerDemands', 'dem')
+            ->join('dem.rating', 'r')
             ->where('u.roles =  :roles')
+            ->andWhere('r IS NOT NULL')
             ->setParameter('roles', '["JOBWORKER"]')
         ;
 
