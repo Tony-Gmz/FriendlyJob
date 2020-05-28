@@ -11,7 +11,6 @@ class JWTCreatedListener
     /**
      * @var RequestStack
      */
-
     private $requestStack;
     /**
      * @param RequestStack $requestStack
