@@ -15,7 +15,7 @@ class Rating
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"user_jobworker_rating"})
+     * @Groups({"user_jobworker_rating", "user_random_jobworker"})
      * @Groups({"service_jobworker"})
      * @Groups({"demand_one_user"})
      * @Groups({"rating_add"})
@@ -24,7 +24,7 @@ class Rating
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"user_jobworker_rating"})
+     * @Groups({"user_jobworker_rating", "user_random_jobworker"})
      * @Groups({"service_jobworker"})
      * @Groups({"demand_one_user"})
      * @Groups({"rating_add"})
@@ -33,7 +33,7 @@ class Rating
 
     /**
      * @ORM\Column(type="smallint")
-     * @Groups({"user_jobworker_rating"})
+     * @Groups({"user_jobworker_rating", "user_random_jobworker"})
      * @Groups({"service_jobworker"})
      * @Groups({"demand_one_user"})
      * @Groups({"rating_add"})

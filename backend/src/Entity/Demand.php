@@ -17,7 +17,7 @@ class Demand
      * @ORM\Column(type="integer")
      * @Groups({"service_jobworker"})
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
-     * @Groups({"user_jobworker_rating"})
+     * @Groups({"user_jobworker_rating", "user_random_jobworker"})
      * @Groups({"rating_add"})
      */
     private $id;
@@ -68,7 +68,7 @@ class Demand
 
     /**
      * @ORM\OneToOne(targetEntity=Rating::class, mappedBy="demand", cascade={"persist", "remove"})
-     * @Groups({"user_jobworker_rating"})
+     * @Groups({"user_jobworker_rating", "user_random_jobworker"})
      * @Groups({"demand_one_user"})
      * @Groups({"service_jobworker"})
      */

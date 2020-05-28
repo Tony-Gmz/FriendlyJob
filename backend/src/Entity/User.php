@@ -117,7 +117,7 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToMany(targetEntity=Demand::class, mappedBy="jobWorker", orphanRemoval=true, cascade={"persist"})
-     * @Groups({"user_jobworker_rating"})
+     * @Groups({"user_jobworker_rating", "user_random_jobworker"})
      * @Groups({"service_jobworker"})
      */ 
     private $jobWorkerDemands;
