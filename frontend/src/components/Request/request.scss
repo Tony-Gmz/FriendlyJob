@@ -1,3 +1,35 @@
 .request{
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  margin: 2em;
+}
+
+.request_Cards{
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.request_Card{
+  width:80% !important;
+}
+
+.request_Content{
+  display: flex !important;
+  justify-content: space-between;
+}
+
+.request_Status{
+  margin: 1em;
+}
+
+.request_RightSide{
+  max-width: 50%;
+}
+
+.request_Picture{
+  position: absolute;
+  display: flex;
+  margin-left: 3em;
 }

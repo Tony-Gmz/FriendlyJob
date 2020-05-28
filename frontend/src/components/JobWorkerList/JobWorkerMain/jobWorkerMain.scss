@@ -1,4 +1,4 @@
-.jobWorkerMain {
+.jobWorker_main {
 
   margin-top: 4em;
   margin-bottom: 2em;
@@ -12,19 +12,38 @@
    z-index: 1;
   }
 
-  .jobWorkerCards {
+  .jobWorker_wrap {
 
     z-index: 1;
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 2em;
-    margin-left: 2em;
-    
-    &_item {
-
-      padding: 1rem;
-    }
   }
 
   
+  .jobWorker_wrap{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    margin:10%;
+  }
+  .jobWorker_box{
+    padding:30px;
+    margin:2%;
+    background:white;
+    width: serviceCard_img;
+    box-shadow:0 2px 3px 0px rgba(0,0,0,0.25);
+    border-radius:2px;
+    transition:.2s all; 
+  }
+  .jobWorker_wrap:hover .jobWorker_box{
+    filter:blur(2px);
+    opacity:.5;
+    transform: scale(.98);
+    box-shadow:none;
+  }
+  .jobWorker_wrap:hover .jobWorker_box:hover{
+    transform:scale(1);
+    filter:blur(0px);
+    opacity:1;
+    box-shadow:0 8px 20px 0px rgba(0,0,0,0.125);
+  }
+
 }
