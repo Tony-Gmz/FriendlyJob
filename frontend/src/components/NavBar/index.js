@@ -33,27 +33,6 @@ const NavBar = ({ isLogged }) => {
       </NavStyled>
     );
   }
-  // nav Jobworker
- /*  if (isLogged === true && roles === 'jobworker') {
-    return (
-      <NavStyled>
-        <NavLink to="/">
-          <div className="nav_title">
-            FriendlyJob
-          </div>
-        </NavLink>
-        <div className="nav_content">
-          <ul className="nav_ul">
-            <NavLink to="/profil"><li>Profil</li></NavLink>
-            <NavLink to="/demandes" activeClassName="selected-link"><li>Mes demandes</li></NavLink>
-          </ul>
-          <div className="nav_button">
-            <NavButtonStyled>Deconnexion</NavButtonStyled>
-          </div>
-        </div>
-      </NavStyled>
-    );
-  } */
   if (isLogged === true) {
     return (
       <NavStyled>

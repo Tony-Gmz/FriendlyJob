@@ -50,7 +50,6 @@ const userMiddleware = (store) => (next) => (action) => {
         });
       next(action);
       break;
-
     }
 
     default:
