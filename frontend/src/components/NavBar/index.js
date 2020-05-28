@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import ModalConnexion from 'src/components/ModalConnexion';
+import ModalConnexion from 'src/containers/ModalConnexion';
 import NavButtonStyled from 'src/components/Button/NavButtonStyled';
 import NavStyled from './NavStyled';
 import ModalInscription from '../ModalInscription';

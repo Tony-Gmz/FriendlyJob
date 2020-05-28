@@ -1,5 +1,6 @@
 // == Import npm
 import React from 'react';
+import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import NavButtonStyled from 'src/components/Button/NavButtonStyled';
 
@@ -7,14 +8,16 @@ import NavButtonStyled from 'src/components/Button/NavButtonStyled';
 import './modalConnexion.scss';
 
 // == Composant
-const ModalConnexion = () => {
+const ModalConnexion = ({ changeField, submitLoggin }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('submit envoyé');
+    submitLoggin();
   };
   const handleChange = (evt) => {
     console.log(`changement du field + ${evt.target.value} + ${evt.target.name}`);
+    changeField(evt.target.value, evt.target.name);
   };
 
   return (
@@ -60,6 +63,13 @@ const ModalConnexion = () => {
       </div>
     </div>
   );
+};
+
+ModalConnexion.propTypes = {
+  /** func with param */
+  changeField: PropTypes.func.isRequired,
+  /** finc without param */
+  submitLoggin: PropTypes.func.isRequired,
 };
 
 // == Export

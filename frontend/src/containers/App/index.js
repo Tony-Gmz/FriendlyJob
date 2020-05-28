@@ -10,9 +10,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   // nom de la prop à remplir: callback qui contient un appel à dispatch
   // With dispatch we send the action in the reducer
-  getToken: () => {
-    dispatch(getToken());
-  },
   getServices: () => {
     dispatch(getServices());
   },

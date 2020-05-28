@@ -1,6 +1,4 @@
 /* eslint-disable import/prefer-default-export */
-export const GET_TOKEN = 'GET_TOKEN';
-export const SAVE_TOKEN = 'SAVE_TOKEN';
 export const CHANGE_FIELD = 'CHANGE_FIELD';
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const SAVE_USER = 'SAVE_USER';
@@ -23,11 +21,3 @@ export const saveUser = (isLogged, info) => ({
 
 });
 
-export const getToken = () => ({
-  type: GET_TOKEN,
-});
-
-export const saveToken = (newToken) => ({
-  type: SAVE_TOKEN,
-  token: newToken,
-});

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { changeField, submitLoggin } from 'src/action/userActions';
+import { changeField, submitLoggin } from 'src/action/usersActions';
 import ModalConnexion from 'src/components/ModalConnexion';
 
 const mapStateToProps = (state) => ({

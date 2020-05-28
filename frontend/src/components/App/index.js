@@ -11,9 +11,8 @@ import NavBar from '../NavBar';
 import Page from '../Page';
 
 // == Composant
-const App = ({ getToken, getServices }) => {
+const App = ({ getServices }) => {
   useEffect(() => {
-    getToken();
     getServices();
   }, []);
   return (
