@@ -1,9 +1,9 @@
 import React from 'react';
 
 import './details.scss';
-import Jober from '../../HomePage/JobPresentation/Jober';
 import NavButtonStyled from '../../Button/NavButtonStyled';
 import ModalReservation from '../../ModalReservation';
+import JoberService from '../../ServiceDetail/JoberService';
 
 const Details = () => (
 
@@ -13,7 +13,7 @@ const Details = () => (
     </div>
     <div className="detail_content">
       <div className="detail_content_card">
-        <Jober />
+        <JoberService />
       </div>
       <div className="detail_content_about">
         <div className="detail_content_about-title">

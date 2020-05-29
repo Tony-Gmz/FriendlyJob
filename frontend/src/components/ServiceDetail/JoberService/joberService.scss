@@ -1,0 +1,33 @@
+.joberService {
+  display: flex;
+}
+.Jober_avatar {
+
+  padding-top: 3em;
+  .MuiAvatar-root {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+.Jober_card {
+
+ 
+  margin-left: 1em;
+
+  .content {
+    font-style: italic;
+  }
+
+  
+}
+
+ .MuiAvatar-root {
+ 
+  position: unset !important;
+}
+
+.card {
+  
+  position: unset !important;
+}

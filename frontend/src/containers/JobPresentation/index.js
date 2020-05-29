@@ -3,6 +3,7 @@ import JobPresentation from 'src/components/HomePage/JobPresentation';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
+  randomJobWorker: state.user.randomJobWorker,
   loading: state.user.loading,
   // roles: state.user.userData.roles[0],
 });
