@@ -7,6 +7,8 @@ export const GET_RANDOM_JOBWORKER = 'GET_RANDOM_JOBWORKER';
 export const SAVE_RANDOM_JOBWORKER = 'SAVE_RANDOM_JOBWORKER';
 export const GET_RANDOM_JOBWORKER_RATING = 'GET_RANDOM_JOBWORKER_RATING';
 export const SAVE_RATING_RANDOM_JOBWORKER = 'SAVE_RATING_RANDOM_JOBWORKER';
+export const GET_JOBWORKER = 'GET_JOBWORKER';
+export const SAVE_JOBWORKER = 'SAVE_JOBWORKER';
 
 export const changeField = (newValue, inputName) => ({
   type: CHANGE_FIELD,
@@ -41,4 +43,14 @@ export const saveRatingRandomJobWorker = (newRating) => ({
 
 export const getRandomJobWorkerRating = () => ({
   type: GET_RANDOM_JOBWORKER_RATING,
+});
+
+
+export const getJobWorker = () => ({
+  type: GET_JOBWORKER,
+});
+
+export const saveJobWorker = (newJobWorker) => ({
+  type: SAVE_JOBWORKER,
+  newJobWorker,
 });

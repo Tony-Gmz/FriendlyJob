@@ -9,14 +9,14 @@ import HomePage from '../HomePage';
 import Contact from '../Contact';
 import ServiceDetail from '../ServiceDetail';
 import JobWorkerList from '../JobWorkerList';
-import JobWorkerDetail from '../JobWorkerDetail';
+import JobWorkerDetail from 'src/containers/JobWorkerDetail';
 import ProfilFriendlyUser from '../ProfilFriendlyUser';
 import ProfilWorkJober from '../ProfilWorkJober';
 import Request from '../Request';
 import Error from '../Error';
 
 
-const Page = ({ serviceList }) => (
+const Page = ({ serviceList}) => (
   <div className="page">
     <div className="page-content">
       <Switch>
@@ -51,7 +51,7 @@ const Page = ({ serviceList }) => (
           <Contact />
         </Route>
         <Route
-          path="/jobworker/thibault"
+          path="/jobworker/:slug"
           exact
         >
           <JobWorkerDetail />

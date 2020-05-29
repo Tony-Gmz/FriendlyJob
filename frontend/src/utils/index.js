@@ -20,3 +20,17 @@ export const slugifyTitle = (title) => (
 export const getServiceBySlug = (serviceList, slug) => (
   serviceList.find((currentService) => slugifyTitle(currentService.title) === slug)
 );
+
+
+export const slugifyId = (id) => (
+  slugify(id)
+);
+
+/**
+ * Get the service for a given slug
+ * @param {Array} randomJobWorker randomJobWorker into which searching the random'information
+ * @param {String} slug Slug to search for
+ */
+export const getRandomJobWorkerBySlug = (randomJobWorker, slug) => (
+  randomJobWorker.find((currentJobWorker) => slugifyId(currentJobWorker.id) === slug)
+);
