@@ -7,33 +7,40 @@ import {
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
+import frLocale from 'date-fns/locale/fr';
+import { fr } from 'date-fns/locale';
 
 const Calendar = () => {
   // The first commit of Material-UI
-  const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+  const [selectedDate, setSelectedDate] = React.useState(Date());
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
 
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <MuiPickersUtilsProvider locale={frLocale} utils={DateFnsUtils}>
       <Grid container justify="space-around">
         <KeyboardDatePicker
           margin="normal"
           id="date-picker-dialog"
-          label="Date picker dialog"
-          format="MM/dd/yyyy"
+          label="Choisissez une date"
+          format="dd/MM/yyyy"
+          type="datetime-fr"
           value={selectedDate}
           onChange={handleDateChange}
           KeyboardButtonProps={{
             'aria-label': 'change date',
           }}
+          DateTimeFormat={Intl.DateTimeFormat}
+          locale="fr"
         />
         <KeyboardTimePicker
+          locale={frLocale}
+          ampm={false}
           margin="normal"
           id="time-picker"
-          label="Time picker"
+          label="Choisissez une heure"
           value={selectedDate}
           onChange={handleDateChange}
           KeyboardButtonProps={{
