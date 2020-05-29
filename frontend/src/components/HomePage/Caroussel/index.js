@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import './caroussel.scss';
 import { Link } from 'react-router-dom';
+import { slugifyTitle } from 'src/utils';
 
 // Component caroussel in homepage
 const Caroussel = ({ serviceList }) => {
@@ -46,16 +47,19 @@ const Caroussel = ({ serviceList }) => {
 
     <div className="caroussel">
       <Slider {...settings}>
-        {serviceList.map((service) => (
-          <Link to="/services">
-            <div key={service.id} className="caroussel_content">
-              <div className="carroussel_content_img">
-                <img className="caroussel_img" src={service.image} alt="jardinage" />
+        {serviceList.map((service) => {
+          const slug = slugifyTitle(service.title);
+          return (
+            <Link to={`/services/${slug}`}>
+              <div key={service.id} className="caroussel_content">
+                <div className="carroussel_content_img">
+                  <img className="caroussel_img" src={service.image} alt="jardinage" />
+                </div>
+                <h3 className="caroussel_service_title">{service.title}</h3>
               </div>
-              <h3 className="caroussel_service_title">{service.title}</h3>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          );
+        })}
       </Slider>
     </div>
 

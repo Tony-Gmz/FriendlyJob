@@ -7,6 +7,7 @@ import ModalInscription from 'src/containers/ModalInscription';
 import NavStyled from './NavStyled';
 
 
+
 // Styled navbar component reusable
 
 const NavBar = ({ isLogged }) => {
