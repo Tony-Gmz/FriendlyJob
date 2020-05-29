@@ -114,7 +114,7 @@ const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe }) => {
               type="password"
               autoComplete="current-password"
               variant="outlined"
-              onchange={handleChange}
+              onChange={handleChange}
               name="confirm-password"
             />
           </div>

@@ -13,6 +13,7 @@ const initialState = {
   /** Token  */
   token: '',
   randomJobWorker: null,
+  loading: true,
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -21,6 +22,7 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         randomJobWorker: action.newRandomJobWorker,
+        loading: false,
       };
     case CHANGE_FIELD:
       return {

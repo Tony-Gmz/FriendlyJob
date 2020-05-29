@@ -48,7 +48,7 @@ const Caroussel = ({ serviceList }) => {
       <Slider {...settings}>
         {serviceList.map((service) => (
           <Link to="/services">
-            <div className="caroussel_content">
+            <div key={service.id} className="caroussel_content">
               <div className="carroussel_content_img">
                 <img className="caroussel_img" src={service.image} alt="jardinage" />
               </div>

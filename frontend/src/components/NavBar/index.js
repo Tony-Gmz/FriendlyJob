@@ -79,7 +79,7 @@ const NavBar = ({ isLogged }) => {
 
 NavBar.propTypes = {
   isLogged: PropTypes.bool.isRequired,
-  roles: PropTypes.string.isRequired,
+  // roles: PropTypes.string.isRequired,
 };
 
 export default NavBar;
