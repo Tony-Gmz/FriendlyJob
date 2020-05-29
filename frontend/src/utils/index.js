@@ -12,6 +12,10 @@ export const slugifyTitle = (title) => (
   })
 );
 
+export const whitoutAvatar = (name) => (
+  name.substr(0, 1)
+);
+
 /**
  * Get the service for a given slug
  * @param {Array} serviceList serviceList into which searching the service

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'semantic-ui-react';
 import './presentation.scss';
-import { location, useHistory } from 'react-router-dom';
-import { selectService } from '../../../action/servicesActions';
+import { slugifyTitle } from 'src/utils';
+import { useHistory } from 'react-router-dom';
 
 // component presentation in homepage
 
@@ -16,7 +16,7 @@ const Presentation = ({ serviceList, fieldService, serviceSelected }) => {
   };
   const handleChange = (evt) => {
     console.log(`value: ${evt.target.value}`);
-    fieldService(evt.target.value);
+    fieldService(slugifyTitle(evt.target.value));
   };
   return (
     <div className="presentation">
