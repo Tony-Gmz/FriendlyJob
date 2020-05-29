@@ -5,7 +5,7 @@ const initialState = {
   /** List of service */
   nom: '',
   prenom: '',
-  departement: '',
+  departement: null,
   email: '',
   roles: '',
   password: '',

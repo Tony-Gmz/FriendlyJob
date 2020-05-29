@@ -28,6 +28,8 @@ const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValu
     fieldValue(evt.target.value, evt.target.name);
   };
 
+  const NumbSelectValue = Number(selectValue);
+
   return (
     <div className="ModalInscription">
     <a href="#inscription"><NavButtonStyled>Inscription</NavButtonStyled></a>
@@ -68,7 +70,7 @@ const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValu
               className="input"
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={selectValue}
+              value={NumbSelectValue}
               onChange={handleChange}
               name="departement"
             >
