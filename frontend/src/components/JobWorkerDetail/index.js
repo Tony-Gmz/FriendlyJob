@@ -11,7 +11,7 @@ console.log(randomJobWorker);
 
         <Details {...randomJobWorker} />
         <Competence skills={randomJobWorker.skills} />
-        <Evaluation />
+        <Evaluation demands={randomJobWorker.jobWorkerDemands} />
       </div>
   );
 };
