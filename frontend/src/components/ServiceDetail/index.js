@@ -1,6 +1,6 @@
 import React from 'react';
-import Jober from '../HomePage/JobPresentation/Jober';
 import { Link } from 'react-router-dom';
+import JoberService from './JoberService';
 import './serviceDetail.scss';
 
 const ServiceDetail = () => (
@@ -14,22 +14,22 @@ const ServiceDetail = () => (
       <div className="service_details_jobworker_title">Liste des JobWorker près de chez vous</div>
       <div className="service_details_jobworker_card">
         <div className="service_details_jobworker_card-item">
-          <Jober />
+          <JoberService />
         </div>
         <div className="service_details_jobworker_card-item">
-          <Jober />
+          <JoberService />
         </div>
         <div className="service_details_jobworker_card-item">
-          <Jober />
+          <JoberService />
         </div>
         <div className="service_details_jobworker_card-item">
-          <Jober />
+          <JoberService />
         </div>
         <div className="service_details_jobworker_card-item">
-          <Jober />
+          <JoberService />
         </div>
         <div className="service_details_jobworker_card-item">
-          <Jober />
+          <JoberService />
         </div>
       </div>
       <div className="service_details_link">

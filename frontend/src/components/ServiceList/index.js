@@ -15,7 +15,7 @@ const ServiceList = ({ serviceList }) => (
     </div>
     <div className="serviceList_wrap">
       {serviceList.map((service) => (
-        <Link className="serviceList_link" to={`/services/${service.title}`}>
+        <Link className="serviceList_link" to="/services/detail">
           <div className="serviceList_box">
             <img className="serviceList_Card_img" src={service.image} alt="profil's" />
             <div className="serviceList_Card_title">{service.title}</div>

@@ -1,42 +1,36 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import profil from 'src/assets/img/screenshot.png';
 import Avatar from '@material-ui/core/Avatar';
-import { Card } from 'semantic-ui-react';
-import JoberRating from './rating';
-import JoberStyled from './JoberStyled';
+import { Card, Rating } from 'semantic-ui-react';
 import './jober.scss';
-import NavButtonStyled from '../../../Button/NavButtonStyled';
 import { Link } from 'react-router-dom';
+import NavButtonStyled from '../../../Button/NavButtonStyled';
+
 // Styled component reusable
 
-const Jober = () => {
+const Jober = ({ randomJobWorker }) => (
 
-  const description = [
-    "Passionné d'informatique, je sais faire de nombreuses chose sous windows",
-  ].join(' ');
+  <div className="jober">
+    <div className="Jober_avatar">
+      <Avatar alt="Remy Sharp" src={randomJobWorker.image} />
+    </div>
+    <div className="Jober_card">
+      <Card key={randomJobWorker.id}>
+        <Card.Content header={randomJobWorker.firstname} />
+        <Card.Content description={randomJobWorker.about} />
+        <Card.Content extra>
+          <Rating defaultRating={randomJobWorker.jobWorkerDemands[0].rating.star} maxRating={5} disabled />
+          <Link to={`/jobworker/${randomJobWorker.firstname}`}>
+            <NavButtonStyled>Contact</NavButtonStyled>
+          </Link>
+        </Card.Content>
+      </Card>
+    </div>
+  </div>
+);
 
-  let screenWidth = window.screen.width;
-  console.log(screenWidth);
-
-  return (
-    <JoberStyled>
-      <div className="Jober_avatar">
-        {screenWidth > 768 ? <Avatar alt="Remy Sharp" src={profil} /> : ''}
-      </div>
-      <div className="Jober_card">
-        <Card>
-          <Card.Content header="Thibault" />
-          <Card.Content description={description} />
-          <Card.Content extra>
-            10€/heure  <JoberRating />
-            <Link to="/jobworker/thibault">
-              <NavButtonStyled>Contact</NavButtonStyled>
-            </Link>
-          </Card.Content>
-        </Card>
-      </div>
-    </JoberStyled>
-  );
+Jober.propTypes = {
+  randomJobWorker: PropTypes.object.isRequired,
 };
-
 export default Jober;

@@ -1,7 +1,8 @@
 import React from 'react';
 import Caroussel from 'src/containers/Caroussel';
+import JobPresentation from 'src/containers/JobPresentation';
 import Presentation from './Presentation';
-import JobPresentation from './JobPresentation';
+
 
 
 const HomePage = () => (
