@@ -16,7 +16,7 @@ import './modalInscription.scss';
 
 
 // == Composant
-const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe }) => {
+const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValue }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -68,7 +68,7 @@ const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe }) => {
               className="input"
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value="Departement"
+              value={selectValue}
               onChange={handleChange}
               name="departement"
             >
@@ -144,6 +144,7 @@ ModalInscription.propTypes = {
   fieldValue: PropTypes.func.isRequired,
   /** Bool */
   isSubscribe: PropTypes.bool.isRequired,
+  selectValue: PropTypes.number.isRequired,
 };
 
 // == Export
