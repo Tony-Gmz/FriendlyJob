@@ -20,9 +20,9 @@ class ServiceProvider extends BaseProvider
         'title' => [
             'Jardinage',
             'Bricolage',
-            'Démégement',
-            'Informatique',
             'Déménagement',
+            'Garde d\'animaux',
+            'Informatique',
             'Babysitting',
             'Covoiturage',
             'Aide à la personne',

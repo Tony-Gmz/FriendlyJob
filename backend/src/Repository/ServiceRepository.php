@@ -19,7 +19,7 @@ class ServiceRepository extends ServiceEntityRepository
         parent::__construct($registry, Service::class);
     }
     
-    public function findJobworkerByService($id)
+    public function findJobworkerByService($serviceId, $departmentId = null)
     {
         $qb = $this->createQueryBuilder('s');
         
@@ -30,11 +30,19 @@ class ServiceRepository extends ServiceEntityRepository
             ->join('u.department', 'dep')
             ->Join('u.jobWorkerDemands', 'dem')
             ->LeftJoin('dem.rating', 'r')
-            ->orderBy('r.star', 'DESC')
             ->where('s.id = :id')
-            ->setParameter('id', $id)
-            
+            ->setParameter('id', $serviceId)
+
         ;
+
+        if ($departmentId != null)
+        {
+            $qb
+                ->andWhere('dep.id = :id2')
+                ->setParameter('id2', $departmentId)
+            ;
+        }
+
         //dd($qb->getQuery());
         //dd($qb->getQuery()->getResult());
         return $qb->getQuery()->getResult();

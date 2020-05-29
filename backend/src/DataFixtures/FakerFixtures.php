@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\DataFixtures\Providers\DemandProvider;
 use App\DataFixtures\Providers\DepartmentProvider;
 use App\DataFixtures\Providers\ServiceProvider;
 use App\Entity\Department;
@@ -21,12 +22,18 @@ class FakerFixtures extends Fixture
 
         $faker->addProvider(new ServiceProvider($faker));
         $faker->addProvider(new DepartmentProvider($faker));
+        $faker->addProvider(new DemandProvider($faker));
+
+        $demandsList = $faker->getReservationDate();
+        dd($demandsList);
 
         $count = 1;
 
         $entities = [];
         $services = [];
-        $department = [];
+        $departments = [];
+        $skills = [];
+
 
         
         // BEGIN OF SERVICES OBJECT CREATION

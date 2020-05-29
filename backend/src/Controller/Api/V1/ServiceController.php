@@ -2,8 +2,10 @@
 
 namespace App\Controller\Api\V1;
 
+use App\Entity\Department;
 use App\Entity\Service;
 use App\Repository\ServiceRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -58,6 +60,8 @@ class ServiceController extends AbstractController
             
             $arrayService = $serializer->normalize($service, null, ['groups' => 'service_jobworker']);
 
+            shuffle($arrayService[0]['skills']);
+
             for ($i = 0; $i < $limit; $i++) {
                 $skillUser[] = $arrayService[0]['skills'][$id];
             }
@@ -86,5 +90,25 @@ class ServiceController extends AbstractController
         return $this->json($arraySubService, 200);
     }
 
+    /**
+     * @Route("/{id}/department/{id2}/jobworker", name="department_jobworker", requirements={"id": "\d+", "id2": "\d+"}, methods={"GET"})
+     * @Entity("service", expr="repository.find(id)")
+     * @Entity("department", expr="repository.find(id2)")
+     */
+    public function getJobWorkersFromDepartmentByServices(Service $service, Department $department, ServiceRepository $serviceRepository)
+    {   
+        $serviceId = $service->getId();
+        $departmentId = $department->getId();
+        
+        $jobWorkerService = $serviceRepository->findJobworkerByService($serviceId, $departmentId);
+
+        return $this->json(
+
+            $jobWorkerService, 
+            200, 
+            [], 
+            ['groups' => 'service_jobworker']
+        );
+    }
     
 }
