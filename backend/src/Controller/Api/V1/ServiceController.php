@@ -49,14 +49,15 @@ class ServiceController extends AbstractController
 
     /**
      * @Route("/{id}/jobworker", name="jobworker", requirements={"id": "\d+"}, methods={"GET"})
+     * @Entity("service", expr="repository.find(id)")
      */
-    public function getJobWorkersByServices(ServiceRepository $serviceRepository, SerializerInterface $serializer, $id)
+    public function getJobWorkersByServices(ServiceRepository $serviceRepository, SerializerInterface $serializer, $id, Service $service)
     {
         if (isset($_GET['limit'])) {
             
             $limit = $_GET['limit'];
 
-            $service = $serviceRepository->findJobworkerByService($id);
+            $service = $serviceRepository->findJobworkerByService($service->getId());
             
             $arrayService = $serializer->normalize($service, null, ['groups' => 'service_jobworker']);
 
