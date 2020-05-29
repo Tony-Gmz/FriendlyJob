@@ -14,13 +14,20 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        #! Toutes les routes départment
+        #! Route jobworker par département pour un service
+        services_department:
+            pattern:   ^/api/v1/services/(\d+)/department/(\d+)/jobworker$
+            stateless: true
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+        #! Toutes les routes services excepté département
         services:
             pattern:  ^/api/v1/services
             anonymous: lazy
         #! Toutes les routes départment
         department:
-            pattern:  ^/api/v1/department
+            pattern:  ^/api/v1/department/
             anonymous: lazy
         #! UserController::add
         user_add:

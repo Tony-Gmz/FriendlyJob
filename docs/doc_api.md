@@ -460,6 +460,113 @@ Aucune
 ```
 </details>
 
+<details><summary>/api/v1/services/{id}/department/{departmentId}/jobwoker ( GET ) :lock: </summary>
+
+## méthode HTTP = GET
+
+### Cette route permet de récuperer tout les jobworker d'un départment lié a un service en bdd
+
+### Les données attendues ( Front => Back)
+
+Aucune
+
+### Les données envoyé ( Back => Front )
+
+```json
+[
+  {
+    "id": 57,
+    "parentId": null,
+    "title": "Photographe d'art",
+    "description": "Officiis excepturi eligendi ducimus autem quo atque culpa qui exercitationem odit delectus est ipsum.",
+    "image": "http:\/\/www.moulin.com\/",
+    "skills": [
+      {
+        "id": 1867,
+        "description": "Unde quibusdam magni aut porro quos repellendus repellendus cupiditate ut suscipit.",
+        "price": 24,
+        "user": {
+          "id": 1282,
+          "email": "paul.leroux@yahoo.fr",
+          "roles": [
+            "JOBWORKER"
+          ],
+          "firstname": "Sabine",
+          "lastname": "Bousquet",
+          "image": null,
+          "about": "Expedita quis ut odio et id consequatur accusantium quia porro minus.",
+          "department": {
+            "id": 409,
+            "name": "Vienne",
+            "number": "76"
+          },
+          "jobWorkerDemands": [
+            {
+              "id": 1786,
+              "rating": null
+            },
+            {
+              "id": 1809,
+              "rating": null
+            }
+          ]
+        }
+      },
+      {
+        "id": 2204,
+        "description": "Cum aliquam laudantium consequatur libero quia fugit accusantium.",
+        "price": 24,
+        "user": {
+          "id": 1291,
+          "email": "cleclercq@tele2.fr",
+          "roles": [
+            "JOBWORKER"
+          ],
+          "firstname": "Thibault",
+          "lastname": "Legrand",
+          "image": null,
+          "about": "Sit ducimus minima nulla suscipit id tempore voluptatibus recusandae et deleniti tenetur.",
+          "department": {
+            "id": 409,
+            "name": "Vienne",
+            "number": "76"
+          },
+          "jobWorkerDemands": [
+            {
+              "id": 1523,
+              "rating": {
+                "id": 775,
+                "comment": "Deserunt voluptatem eos dolor error ut ex nostrum.",
+                "star": 4
+              }
+            },
+            {
+              "id": 1719,
+              "rating": {
+                "id": 995,
+                "comment": "Aut et aspernatur incidunt soluta officiis quo illum consectetur voluptates tenetur modi enim.",
+                "star": 1
+              }
+            },
+            {
+              "id": 1932,
+              "rating": null
+            },
+            {
+              "id": 1934,
+              "rating": null
+            }
+          ]
+        }
+      }
+    ]
+  }
+]
+```
+
+</details>
+
+
 ***
 
 
@@ -618,58 +725,44 @@ Aucune
 
 ```json
 {
-  "id": 85,
-  "email": "christiane.garcia@orange.fr",
+  "id": 120,
+  "email": "potier.astrid@chauveau.fr",
   "roles": [
     "JOBWORKER"
   ],
-  "firstname": "Sabine",
+  "firstname": "Nathalie",
   "lastname": "Hebert",
   "image": null,
+  "about": "Dolor perspiciatis sit nostrum eum omnis quaerat doloremque.",
   "department": {
-    "id": 52,
-    "name": "Gers",
-    "number": "92"
+    "id": 59,
+    "name": "Nord",
+    "number": "74"
   },
   "skills": [
     {
-      "id": 103,
-      "description": "At soluta sint omnis ullam est eos unde.",
-      "price": 29,
+      "id": 300,
+      "description": "Vel est aut sint omnis sint dolores et molestias voluptatibus earum.",
+      "price": 10,
       "service": {
-        "id": 2,
+        "id": 1,
         "parentId": null,
-        "title": "Pédologue",
-        "description": "Ratione dignissimos maxime soluta fugit tenetur doloremque quae magni et.",
-        "image": "http:\/\/leleu.org\/voluptates-tenetur-aspernatur-maxime-sint-consequatur-reiciendis"
-      }
-    },
-    {
-      "id": 38,
-      "description": "Iure quo sit ratione beatae et quis mollitia et facere eum.",
-      "price": 12,
-      "service": {
-        "id": 7,
-        "parentId": 1,
-        "title": "Essayeur-retoucheur",
-        "description": "Maxime ad qui mollitia est nostrum illo quod vero sint ea pariatur.",
-        "image": "https:\/\/gillet.org\/laboriosam-est-nihil-dolore-dolore.html"
-      }
-    },
-    {
-      "id": 514,
-      "description": "Perspiciatis pariatur quidem et distinctio necessitatibus sint vitae vel aperiam molestiae.",
-      "price": 22,
-      "service": {
-        "id": 7,
-        "parentId": 1,
-        "title": "Essayeur-retoucheur",
-        "description": "Maxime ad qui mollitia est nostrum illo quod vero sint ea pariatur.",
-        "image": "https:\/\/gillet.org\/laboriosam-est-nihil-dolore-dolore.html"
+        "title": "Jardinage",
+        "description": "Vous avez besoin d'une taille de haie ou de faire pousser des pommes ? Choisissez le JobWorker qu'il vous faut !",
+        "image": "https:\/\/i.ibb.co\/1bPYLmz\/jardinage.jpg"
       }
     }
   ],
-  "about": null
+  "jobWorkerDemands": [
+    {
+      "id": 54,
+      "rating": {
+        "id": 58,
+        "comment": "Et odio rerum ipsum ut quia nulla quae fuga.",
+        "star": 3
+      }
+    }
+  ]
 }
 ```
 
@@ -1113,6 +1206,10 @@ Aucune
                                 gérer un id inexistant : X
 
     getSubServiceFromService => Gérer un service sans sous services : X
+
+    getJobWorkersFromDepartmentByServices => Id de service inexistant : tableau vide qui ressort
+                                          => Id de département inexistant : tableau vide qui ressort
+                                          => ID OK mais tableau vide : Aucun utilisateur pour ce service dans ce département
 
 ## User
 
