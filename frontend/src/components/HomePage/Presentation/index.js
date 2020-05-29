@@ -1,12 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Input } from 'semantic-ui-react';
 import './presentation.scss';
 import { location, useHistory } from 'react-router-dom';
 
 // component presentation in homepage
 
-const Presentation = () => {
-  let history = useHistory();
+const Presentation = ({ serviceList }) => {
+  const history = useHistory();
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('coucou je suis un submit sur la homepage');
@@ -22,11 +23,25 @@ const Presentation = () => {
       </p>
       <div className="presentation_input">
         <form onSubmit={handleSubmit} action="">
-          <Input icon="search" name="serviceInput" onChange={handleChange} placeholder="Recherchez le service idéale..." />
+          <Input list="services" icon="search" name="serviceInput" onChange={handleChange} placeholder="Recherchez le service idéale..." />
+          <datalist id='services'>
+            {serviceList.map((service) => (
+              <option key={service.id} value={service.title} />
+            ))}
+          </datalist>
         </form>
       </div>
     </div>
   );
+};
+
+Presentation.propTypes = {
+  serviceList: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired
+    }).isRequired,
+  ).isRequired,
 };
 
 export default Presentation;

@@ -25,7 +25,7 @@ const ModalReservation = () => (
             <ModalTextArea />
           </div>
           <div className="modal_calendar" />
-          <Calendar />
+          <Calendar DateTimeFormat={Intl.DateTimeFormat} locale="fr" />
         </div>
         <div>
           <div className="div_submit">
