@@ -4,11 +4,16 @@
 
 \* => optionnel
 
+:lock: => Route utilisant le JWT Token
+
+
+
+
 ***
 
 # DemandController
 
-<details><summary>/api/v1/demands/</summary>
+<details><summary>/api/v1/demands/ ( POST ) :lock:</summary>
 
 ## méthode HTTP = POST
 
@@ -77,7 +82,7 @@
 
 </details>
 
-<details><summary>/api/v1/demands/{id}</summary>
+<details><summary>/api/v1/demands/{id} ( PUT ) :lock:</summary>
 
 ## méthode HTTP = PUT
 
@@ -143,7 +148,7 @@
 
 </details>
 
-<details><summary>/api/v1/demands/users/{id}</summary>
+<details><summary>/api/v1/demands/users/{id} ( GET ) :lock:</summary>
 
 ## méthode HTTP = GET
 
@@ -202,7 +207,7 @@ Aucune
 
 </details>
 
-<details><summary>/api/v1/demands/</summary>
+<details><summary>/api/v1/demands/ ( DELETE ) :lock:</summary>
 
 ## méthode HTTP = DELETE
 
@@ -232,7 +237,7 @@ Aucune
 
 # DepartmentController
 
-<details><summary>/api/v1/department</summary>
+<details><summary>/api/v1/department ( GET )</summary>
 
 ## méthode HTTP = GET
 
@@ -270,7 +275,7 @@ Aucune
 
 # ServiceController
 
-<details><summary>/api/v1/services</summary>
+<details><summary>/api/v1/services ( GET )</summary>
 
 ## méthode HTTP = GET
 
@@ -301,7 +306,7 @@ Aucune
 ]
 ```
 </details>
-<details><summary>/api/v1/services/{id}</summary>
+<details><summary>/api/v1/services/{id} ( GET )</summary>
 
 
 ## méthode HTTP = GET
@@ -326,7 +331,7 @@ Aucune
 ```
 </details>
 
-<details><summary>/api/v1/services/{title}</summary>
+<details><summary>/api/v1/services/{title} ( GET )</summary>
 
 
 ## méthode HTTP = GET
@@ -351,7 +356,7 @@ Aucune
 ```
 </details>
 
-<details><summary>/api/v1/services/{id}/jobworker ou /api/v1/services/{id}/jobworker?limit={number} </summary>
+<details><summary>/api/v1/services/{id}/jobworker ou /api/v1/services/{id}/jobworker?limit={number} ( GET ) </summary>
 
 ## méthode HTTP = GET
 
@@ -414,7 +419,7 @@ Aucune
 
 </details>
 
-<details><summary>/api/v1/services/{id}/subservices</summary>
+<details><summary>/api/v1/services/{id}/subservices ( GET )</summary>
 
 
 ## méthode HTTP = GET
@@ -460,7 +465,7 @@ Aucune
 
 # UserController
 
-<details><summary>/api/v1/users/{id}</summary>
+<details><summary>/api/v1/users/{id} ( GET ) :lock:</summary>
 
 
 ## méthode HTTP = GET
@@ -492,7 +497,7 @@ Aucune
 }
 ```
 </details>
-<details><summary>/api/v1/users</summary>
+<details><summary>/api/v1/users ( POST )</summary>
 
 ## méthode HTTP = POST
 
@@ -534,7 +539,7 @@ Aucune
 ```
 </details>
 
-<details><summary>/api/v1/users/{id}</summary>
+<details><summary>/api/v1/users/{id} ( PUT ) :lock:</summary>
 
 
 ## méthode HTTP = PUT
@@ -578,7 +583,7 @@ Aucune
 ```
 
 </details>
-<details><summary>/api/v1/users/{id}</summary>
+<details><summary>/api/v1/users/{id} ( DELETE ) :lock:</summary>
 
 
 ## méthode HTTP = DELETE
@@ -599,7 +604,7 @@ Aucune
 ```
 
 </details>
-<details><summary>/api/v1/users/jobworker/random</summary>
+<details><summary>/api/v1/users/jobworker/random ( GET )</summary>
 
 ## méthode HTTP = GET
 
@@ -669,7 +674,7 @@ Aucune
 ```
 
 </details>
-<details><summary>/api/v1/users/jobworker/{id}</summary>
+<details><summary>/api/v1/users/jobworker/{id} ( GET )</summary>
 
 
 ## méthode HTTP = GET
@@ -740,7 +745,7 @@ Aucune
 ```
 
 </details>
-<details><summary>/api/v1/users/contacts</summary>
+<details><summary>/api/v1/users/contacts ( GET )</summary>
 
 
 ## méthode HTTP = GET
@@ -771,7 +776,7 @@ Aucune
 ```
 
 </details>
-<details><summary>/api/v1/users/jobworker/{id}/rating</summary>
+<details><summary>/api/v1/users/jobworker/{id}/rating ( GET )</summary>
 
 
 ## méthode HTTP = GET
@@ -831,7 +836,7 @@ Aucune
 
 # SkillController
 
-<details><summary>/api/v1/skills</summary>
+<details><summary>/api/v1/skills ( POST ) :lock:</summary>
 
 ## méthode HTTP = POST
 
@@ -877,7 +882,7 @@ Aucune
 }
 ```
 </details>
-<details><summary>/api/v1/skills/{id}</summary>
+<details><summary>/api/v1/skills/{id} ( PUT ) :lock:</summary>
 
 ## méthode HTTP = PUT
 
@@ -903,7 +908,7 @@ Aucune
 }
 ```
 </details>
-<details><summary>/api/v1/skills/{id}</summary>
+<details><summary>/api/v1/skills/{id} ( DELETE ) :lock:</summary>
 
 ## méthode HTTP = DELETE
 
@@ -925,7 +930,7 @@ Aucune
 
 # RatingController
 
-<details><summary>/api/v1/ratings</summary>
+<details><summary>/api/v1/ratings ( POST ) :lock:</summary>
 
 ## méthode HTTP = POST
 
@@ -1015,9 +1020,64 @@ Aucune
 
 </details>
 
+<details><summary>Les différentes erreurs possible avec la route /api/login_check </summary>
+
+
+### Mot de passe ou Email erroné
+```json
+{
+  "code": 401,
+  "message": "Invalid credentials."
+}
+```
+
+### Format du json erroné
+
+```json
+{
+  "type": "https:\/\/tools.ietf.org\/html\/rfc2616#section-10",
+  "title": "An error occurred",
+  "status": 400,
+  "detail": "Bad Request"
+}
+```
+
+</details>
+
+<details><summary>Les différentes erreurs possible avec les autres routes protégé par JWT</summary>
+
+
+### Token expiré
+```json
+{
+  "code": 401,
+  "message": "Expired JWT Token"
+}
+```
+
+### Token invalide ( Token mal saisie dans l'en-tête)
+
+```json
+{
+  "code": 401,
+  "message": "Invalid JWT Token"
+}
+```
+
+### Token non trouvé ( en-tête Authorization : Bearer ) 
+```json
+{
+  "code": 401,
+  "message": "JWT Token not found"
+}
+```
+
+
+</details>
+
 # Remarque pour l'équipe back
 
-<details><summary>Attention Coquillette méchante (elle miaule sur les fronteur)</summary>
+<details><summary>Détails</summary>
 ## Demand
 
       add =>  status optionnelle : OK
