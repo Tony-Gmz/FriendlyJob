@@ -8,6 +8,8 @@ import {
   GET_SIX_RANDOM_JOBWORKER,
   saveSixJobWorker,
   hideLoader,
+  GET_JOBWORKER,
+  saveJobWorker,
 } from '../action/usersActions';
 
 const userMiddleware = (store) => (next) => (action) => {
@@ -43,15 +45,13 @@ const userMiddleware = (store) => (next) => (action) => {
         // console.log(response);
         // je voudrais enregistrer response.data dans le state => nouvelle action
         // console.log(response);
-          // console.log(response);
+          console.log(response);
           store.dispatch(saveUser(response.data.user.isLogged, response.data.user));
+          window.localStorage.setItem('jwt-token', response.data.token);
         })
         .catch((error) => {
           console.warn(error);
         })
-        .finally((response) => {
-          localStorage.setItem('jwt-token', response.data.token);
-        });
       next(action);
       break;
     }
@@ -83,6 +83,33 @@ const userMiddleware = (store) => (next) => (action) => {
       next(action);
       break;
     }
+    case GET_JOBWORKER: {
+      const { serviceName, serviceList } = store.getState().service;
+      console.log(serviceName);
+      // console.log(changeTitle(serviceName));
+      console.log(serviceList);
+      const findService = serviceList.find(service => service.title === capitalize(changeTitle(serviceName)));
+      console.log(findService);
+      const serviceId = Number(findService.id);
+      console.log(serviceId);
+
+      axios.get(`http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/services/${serviceId}/jobworker`)
+      .then((response) => {
+        // console.log(response);
+        // je voudrais enregistrer response.data dans le state => nouvelle action
+        console.log(response);
+        store.dispatch(saveJobWorker(response.data[0].skills));
+      })
+      .catch((error) => {
+        console.warn(error);
+        console.log('jai fait une erreur');
+      })
+      .finally(() => {
+      });
+    next(action);
+    break;
+    }
+
 
     default:
       // on passe l'action au suivant (middleware suivant ou reducer)

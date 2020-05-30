@@ -3,6 +3,7 @@ import {
   CHANGE_FIELD, SAVE_USER,
   SAVE_SIX_RANDOM_JOBWORKER,
   HIDE_LOADER,
+  SAVE_JOBWORKER,
 } from "../action/usersActions";
 
 const initialState = {
@@ -20,7 +21,8 @@ const initialState = {
   randomJobWorker: null,
   loading: true,
   loadingOnServiceDetail: true,
-  jobWorkerList: [],
+  loadingOnJobWorkerList: true,
+  jobWorkers: [],
   sixJobWorker: [],
 };
 
@@ -53,6 +55,12 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         loadingOnServiceDetail: false,
+      };
+    case SAVE_JOBWORKER:
+      return {
+        ...state,
+        loadingOnJobWorkerList: false,
+        jobWorkers: action.newJobWorker,
       };
 
 

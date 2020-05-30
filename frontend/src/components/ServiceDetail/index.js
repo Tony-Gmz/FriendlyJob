@@ -8,7 +8,7 @@ import './serviceDetail.scss';
 
 function ServiceDetail({ serviceList, getServiceName, getSixJobWorker, sixJobWorker, loadingOnServiceDetail }) {
   const { slug } = useParams();
-  console.log(slug);
+  //console.log(slug);
   useEffect(() => {
     getServiceName(slug);
     getSixJobWorker();
@@ -35,7 +35,6 @@ function ServiceDetail({ serviceList, getServiceName, getSixJobWorker, sixJobWor
                 </div>
               ))
              )}
-             
             </div>
             <div className="service_details_link">
               <Link to="/jobworker"><a href="">Voir plus de JobWorker dans ma région</a></Link>

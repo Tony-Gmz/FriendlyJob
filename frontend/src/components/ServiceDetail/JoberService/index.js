@@ -11,13 +11,13 @@ const JoberService = ({jobWorker}) => {
 
   const userAvatar = jobWorker.user.image;
   const slug = jobWorker.user.id;
-  console.log(jobWorker);
+  //console.log(jobWorker);
   const description = [
     "Passionné d'informatique, je sais faire de nombreuses chose sous windows",
   ].join(' ');
 
   let screenWidth = window.screen.width;
-  console.log(screenWidth);
+  //console.log(screenWidth);
 
   return (
     <div className="joberService">

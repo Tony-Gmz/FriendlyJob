@@ -5,7 +5,7 @@ import Competence from './Competences';
 import PropTypes from 'prop-types';
 
 const JobWorkerDetails = ({ randomJobWorker }) => {
-console.log(randomJobWorker);
+// console.log(randomJobWorker);
   return(
       <div className="jobWorkerDetail">
 

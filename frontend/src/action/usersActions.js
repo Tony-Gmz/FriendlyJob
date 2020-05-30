@@ -70,3 +70,4 @@ export const saveSixJobWorker = (sixJobWorker) => ({
 export const hideLoader = () => ({
   type: HIDE_LOADER,
 });
+
