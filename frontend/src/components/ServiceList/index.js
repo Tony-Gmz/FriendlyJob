@@ -1,6 +1,6 @@
 // == Import npm
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { slugifyTitle } from 'src/utils';
 
@@ -8,8 +8,10 @@ import { slugifyTitle } from 'src/utils';
 import './serviceList.scss';
 
 // == Composant
+
 const ServiceList = ({ serviceList }) => {
-  return(
+
+  return (
     <div className="serviceList">
       <div className="serviceList_presentation">
         Cliquez sur le service de votre choix pour avoir un appercu
@@ -19,9 +21,9 @@ const ServiceList = ({ serviceList }) => {
         {serviceList.map((service) => {
           const slug = slugifyTitle(service.title);
           return (
-            <div className="serviceList_box">
+            <div  className="serviceList_box">
               <Link className="serviceList_link" to={`/services/${slug}`}>
-                <img className="serviceList_Card_img" src={service.image} alt="profil's" />
+                <img id={service.id} className="serviceList_Card_img" src={service.image} alt="profil's" />
                 <div className="serviceList_Card_title">{service.title}</div>
               </Link>
             </div>
@@ -33,6 +35,7 @@ const ServiceList = ({ serviceList }) => {
 };
 
 ServiceList.propTypes = {
+  getServiceId: PropTypes.func.isRequired,
   serviceList: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

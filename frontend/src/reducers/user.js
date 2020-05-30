@@ -1,4 +1,4 @@
-import { SAVE_RANDOM_JOBWORKER, CHANGE_FIELD, SAVE_USER } from "../action/usersActions";
+import { SAVE_RANDOM_JOBWORKER, CHANGE_FIELD, SAVE_USER, SAVE_SIX_RANDOM_JOBWORKER } from "../action/usersActions";
 
 const initialState = {
   // ici l'état initial
@@ -14,6 +14,8 @@ const initialState = {
   token: '',
   randomJobWorker: null,
   loading: true,
+  jobWorkerList: [],
+  sixJobWorker: [],
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -34,6 +36,11 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         isLogged: action.isLogged,
         userData: action.info,
+      };
+    case SAVE_SIX_RANDOM_JOBWORKER:
+      return {
+        ...state,
+        sixJobWorker: action.sixJobWorker,
       };
     default: return state;
   }

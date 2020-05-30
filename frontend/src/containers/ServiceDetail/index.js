@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
-import ServiceList from 'src/components/ServiceList';
-import { getServices } from 'src/action/servicesActions';
+import ServiceDetail from 'src/components/ServiceDetail';
+import { getSixJobWorker } from 'src/action/usersActions';
+import { getServiceId } from 'src/action/servicesActions';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
@@ -10,13 +11,15 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   // nom de la prop à remplir: callback qui contient un appel à dispatch
   // With dispatch we send the action in the reducer
-  getServices: () => {
-    dispatch(getServices());
+  getSixJobWorker: () => {
+    dispatch(getSixJobWorker());
   },
-  
+  getServiceId: (serviceId) => {
+    dispatch(getServiceId(serviceId));
+  },
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(ServiceList);
+)(ServiceDetail);

@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import './page.scss';
 
 import ServiceList from 'src/containers/ServiceList';
+import ServiceDetail from 'src/containers/ServiceDetail';
 import HomePage from '../HomePage';
 import Contact from '../Contact';
-import ServiceDetail from '../ServiceDetail';
 import JobWorkerList from '../JobWorkerList';
 import JobWorkerDetail from 'src/containers/JobWorkerDetail';
 import ProfilFriendlyUser from '../ProfilFriendlyUser';
@@ -16,7 +16,7 @@ import Request from '../Request';
 import Error from '../Error';
 
 
-const Page = ({ serviceList}) => (
+const Page = ({ serviceList }) => (
   <div className="page">
     <div className="page-content">
       <Switch>

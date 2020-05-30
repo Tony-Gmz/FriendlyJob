@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Link, useParams } from 'react-router-dom';
+import { getServiceBySlug } from 'src/utils';
 import JoberService from './JoberService';
 import './serviceDetail.scss';
 
-import { getServiceBySlug } from 'src/utils';
-import PropTypes from 'prop-types';
-
-function ServiceDetail({ serviceList }) {
+function ServiceDetail({ serviceList, getServiceId, getSixJobWorker }) {
   const { slug } = useParams();
+  console.log(slug);
+  useEffect(() => {
+    getServiceId(slug);
+    getSixJobWorker();
+  }, []);
 
   const service = getServiceBySlug(serviceList, slug);
 

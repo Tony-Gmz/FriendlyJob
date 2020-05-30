@@ -1,4 +1,4 @@
-import { SAVE_SERVICES, FIELD_SERVICE } from '../action/servicesActions';
+import { SAVE_SERVICES, FIELD_SERVICE, GET_SERVICE_ID } from '../action/servicesActions';
 
 const initialState = {
   // Initial State
@@ -6,6 +6,7 @@ const initialState = {
   serviceList: [],
   loading: true,
   serviceSelected: '',
+  serviceName: null,
 };
 
 const servicesReducer = (state = initialState, action = {}) => {
@@ -20,6 +21,11 @@ const servicesReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         serviceSelected: action.selectedService,
+      };
+    case GET_SERVICE_ID:
+      return {
+        ...state,
+        serviceName: action.serviceId,
       };
     default: return state;
   }

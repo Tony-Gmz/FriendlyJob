@@ -16,6 +16,26 @@ export const whitoutAvatar = (name) => (
   name.substr(0, 1)
 );
 
+export const changeTitle = (name) => {
+  if (name === 'demenagement') {
+    return name.replace('demenagement', 'déménagement');
+  }
+  if (name === 'garde-danimaux') {
+    return name.replace('garde-danimaux', "garde d'animaux");
+  }
+  if (name === 'aide-a-la-personne') {
+    return name.replace('aide-a-la-personne', "aide à la personne");
+  }
+  else {
+    return name;
+  }
+};
+
+export const capitalize = (name) => {
+  return name.charAt(0).toUpperCase() + name.slice(1);
+};
+
+
 /**
  * Get the service for a given slug
  * @param {Array} serviceList serviceList into which searching the service
