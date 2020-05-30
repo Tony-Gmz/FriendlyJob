@@ -12,7 +12,7 @@ import Contact from '../Contact';
 import JobWorkerList from '../JobWorkerList';
 import ProfilFriendlyUser from '../ProfilFriendlyUser';
 import ProfilWorkJober from '../ProfilWorkJober';
-import Request from '../Request';
+import Request from 'src/containers/Request';
 import Error from '../Error';
 
 

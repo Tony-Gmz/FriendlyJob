@@ -6,12 +6,9 @@ import NavButtonStyled from 'src/components/Button/NavButtonStyled';
 import ModalInscription from 'src/containers/ModalInscription';
 import NavStyled from './NavStyled';
 
-
-
 // Styled navbar component reusable
 
 const NavBar = ({ isLogged }) => {
-
   if (isLogged === false) {
     return (
       <NavStyled>

@@ -3,7 +3,7 @@ import {
   CHANGE_FIELD, SAVE_USER,
   SAVE_SIX_RANDOM_JOBWORKER,
   HIDE_LOADER,
-} from "../action/usersActions";
+} from '../action/usersActions';
 
 const initialState = {
   // ici l'état initial

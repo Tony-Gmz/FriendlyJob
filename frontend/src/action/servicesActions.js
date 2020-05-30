@@ -13,9 +13,9 @@ export const saveServices = (newServices) => ({
 });
 
 export const fieldService = (selectedService) => ({
- type: FIELD_SERVICE,
- selectedService,
-})
+  type: FIELD_SERVICE,
+  selectedService,
+});
 
 export const getServiceName = (serviceName) => ({
   type: GET_SERVICE_NAME,
