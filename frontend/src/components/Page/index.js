@@ -6,10 +6,10 @@ import './page.scss';
 
 import ServiceList from 'src/containers/ServiceList';
 import ServiceDetail from 'src/containers/ServiceDetail';
+import JobWorkerDetail from 'src/containers/JobWorkerDetail';
 import HomePage from '../HomePage';
 import Contact from '../Contact';
 import JobWorkerList from '../JobWorkerList';
-import JobWorkerDetail from 'src/containers/JobWorkerDetail';
 import ProfilFriendlyUser from '../ProfilFriendlyUser';
 import ProfilWorkJober from '../ProfilWorkJober';
 import Request from '../Request';
