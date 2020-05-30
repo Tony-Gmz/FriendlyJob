@@ -6,7 +6,7 @@
 
 :lock: => Route utilisant le JWT Token
 
-
+:key: => Route permettant de récuperer un token afin de déverrouiller  les route :lock:
 
 
 ***
@@ -1059,7 +1059,7 @@ Aucune
 
 ## Récuperer un token JWT
 
-<details><summary>/api/login_check</summary>
+<details><summary>/api/login_check ( POST ) :key:</summary>
 
 ## méthode HTTP = POST
 
@@ -1157,7 +1157,7 @@ Aucune
 }
 ```
 
-### Token non trouvé ( en-tête Authorization : Bearer ) 
+### Token non trouvé ( en-tête Authorization : Bearer non envoyé ) 
 ```json
 {
   "code": 401,
@@ -1204,7 +1204,7 @@ Aucune
 
     getJobWorkersByServices =>  Revoir Algo récupération moyenne des note pour un jobWorker
                                 gérer un id inexistant : X
-                                gérer quand parametre get limit est une chaine de caractères
+				                        gérer le limit non int : X
 
     getSubServiceFromService => Gérer un service sans sous services : X
 
@@ -1264,7 +1264,6 @@ Aucune
 ## Rating
 
     add => Gerer l'erreur quand on ajoute un rating sur une demand qui a déjà un rating (DUPLICATE)
-            Gerer un rating sur une demande qui n'existe pas
 
 ## JWT
 
