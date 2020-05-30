@@ -11,6 +11,7 @@ import {
   GET_JOBWORKER,
   saveJobWorker,
 } from '../action/usersActions';
+import { saveRequest } from '../action/requestAction';
 
 const userMiddleware = (store) => (next) => (action) => {
   // console.log('on a intercepté une action dans le middleware: ', action);
@@ -42,16 +43,25 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-        // console.log(response);
+        console.log(response);
         // je voudrais enregistrer response.data dans le state => nouvelle action
         // console.log(response);
           console.log(response);
           store.dispatch(saveUser(response.data.user.isLogged, response.data.user));
+<<<<<<< HEAD
           window.localStorage.setItem('jwt-token', response.data.token);
         })
         .catch((error) => {
           console.warn(error);
         })
+=======
+          localStorage.setItem('jwt-token', response.data.token);
+         /*  store.dispatch(saveRequest(response.data)); */ // a tester avec un connaissance du token approfondi
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+>>>>>>> develop-tony-request
       next(action);
       break;
     }
