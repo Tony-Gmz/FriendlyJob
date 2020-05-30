@@ -14,6 +14,7 @@ const initialState = {
   token: '',
   randomJobWorker: null,
   loading: true,
+  loadingOnServiceDetail: true,
   jobWorkerList: [],
   sixJobWorker: [],
 };
@@ -41,6 +42,7 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         sixJobWorker: action.sixJobWorker,
+        loadingOnServiceDetail: false,
       };
     default: return state;
   }
