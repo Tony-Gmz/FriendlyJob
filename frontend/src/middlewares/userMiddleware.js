@@ -7,9 +7,9 @@ import {
   saveUser,
   GET_SIX_RANDOM_JOBWORKER,
   saveSixJobWorker,
+  hideLoader,
 } from '../action/usersActions';
 
- 
 const userMiddleware = (store) => (next) => (action) => {
   // console.log('on a intercepté une action dans le middleware: ', action);
   switch (action.type) {
@@ -28,7 +28,7 @@ const userMiddleware = (store) => (next) => (action) => {
       next(action);
       break;
     case SUBMIT_LOGIN: {
-      const {email, password } = store.getState().user;
+      const { email, password } = store.getState().user;
       console.log(email);
       console.log(password);
       axios({
@@ -36,7 +36,7 @@ const userMiddleware = (store) => (next) => (action) => {
         url: 'http://ec2-18-204-19-53.compute-1.amazonaws.com/api/login_check',
         data: {
           username: email,
-          password: password
+          password,
         },
       })
         .then((response) => {
@@ -55,6 +55,7 @@ const userMiddleware = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
     case GET_SIX_RANDOM_JOBWORKER: {
       const { serviceName, serviceList } = store.getState().service;
       console.log(serviceName);
@@ -64,19 +65,22 @@ const userMiddleware = (store) => (next) => (action) => {
       console.log(findService);
       const serviceId = Number(findService.id);
       console.log(serviceId);
-    
+
       axios.get(`http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/services/${serviceId}/jobworker?limit=6`)
-      .then((response) => {
-        // console.log(response);
-        // je voudrais enregistrer response.data dans le state => nouvelle action
-        console.log(response);
-        store.dispatch(saveSixJobWorker(response.data[0].skills));
-      })
-      .catch((error) => {
-        console.warn(error);
-        
-      });
-    next(action);
+        .then((response) => {
+          // console.log(response);
+          // je voudrais enregistrer response.data dans le state => nouvelle action
+          console.log(response);
+          store.dispatch(saveSixJobWorker(response.data[0].skills));
+        })
+        .catch((error) => {
+          console.warn(error);
+          console.log('jai fait une erreur');
+        })
+        .finally(() => {
+          store.dispatch(hideLoader());
+        });
+      next(action);
       break;
     }
 

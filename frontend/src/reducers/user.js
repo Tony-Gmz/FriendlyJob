@@ -1,4 +1,9 @@
-import { SAVE_RANDOM_JOBWORKER, CHANGE_FIELD, SAVE_USER, SAVE_SIX_RANDOM_JOBWORKER } from "../action/usersActions";
+import {
+  SAVE_RANDOM_JOBWORKER,
+  CHANGE_FIELD, SAVE_USER,
+  SAVE_SIX_RANDOM_JOBWORKER,
+  HIDE_LOADER,
+} from "../action/usersActions";
 
 const initialState = {
   // ici l'état initial
@@ -42,8 +47,15 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         sixJobWorker: action.sixJobWorker,
+      };
+
+    case HIDE_LOADER:
+      return {
+        ...state,
         loadingOnServiceDetail: false,
       };
+
+
     default: return state;
   }
 };

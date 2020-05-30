@@ -11,6 +11,7 @@ export const GET_JOBWORKER = 'GET_JOBWORKER';
 export const SAVE_JOBWORKER = 'SAVE_JOBWORKER';
 export const GET_SIX_RANDOM_JOBWORKER = 'GET_SIX_RANDOM_JOBWORKER';
 export const SAVE_SIX_RANDOM_JOBWORKER = 'SAVE_SIX_RANDOM_JOBWORKER';
+export const HIDE_LOADER = 'HIDE_LOADER';
 
 export const changeField = (newValue, inputName) => ({
   type: CHANGE_FIELD,
@@ -64,4 +65,8 @@ export const getSixJobWorker = () => ({
 export const saveSixJobWorker = (sixJobWorker) => ({
   type: SAVE_SIX_RANDOM_JOBWORKER,
   sixJobWorker,
+});
+
+export const hideLoader = () => ({
+  type: HIDE_LOADER,
 });
