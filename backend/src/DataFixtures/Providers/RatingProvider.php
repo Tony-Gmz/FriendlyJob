@@ -25,7 +25,7 @@ class RatingProvider extends BaseProvider
             "Je ne recommande pas ce JobWorker",
             "Ce JobWorker est remarquable !"
         ],
-        'rating' => [
+        'star' => [
             5,
             4,
             4,
@@ -45,7 +45,8 @@ class RatingProvider extends BaseProvider
         ]
     ];
 
-    public static function GetRatingComment(){
+    public static function getDataRatings()
+    {
         return static::$ratings;
     }
 }

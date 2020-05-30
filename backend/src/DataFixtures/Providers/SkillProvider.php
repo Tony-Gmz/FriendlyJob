@@ -52,11 +52,11 @@ class SkillProvider extends BaseProvider
 
     ];
 
-    public static function GetDescriptionSkills(){
+    public static function getDescriptionSkills(){
         return static::$skills;
     }
 
-    public static function GetPriceSkills(){
+    public static function getPriceSkills(){
         return mt_rand(8,20);
     }
 }

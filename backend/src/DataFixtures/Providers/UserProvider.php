@@ -32,10 +32,46 @@ class UserProvider extends BaseProvider
             "Utilité de la boîte, en sortit plusieurs feuilles de parquet étaient soulevées. Uniquement parce que j'aime. Égaré dans une foule de petits princes remplacèrent les invasions des barbares, que le tabernacle fut dressé.",
             "Examen de la caisse à secret de la serrure : mais elles n'étaient que les instruments humains de l'équipage respectaient sa solitude. Parlons argent, parlons de nous... Informez-vous de ces clients dont les noms suivent, qui, poussé de branche durable ; en d'autres mains ?",
         ]
-
     ];
 
-    public static function getUserData(){
+    protected static $admins = [
+        
+        'email' => [
+            'admin.jolan@oclock.io',
+            'admin.karim@oclock.io',
+            'admin.thibault@oclock.io',
+            'admin.tony@oclock.io',
+        ],
+
+        'firstname' => [
+            'Jolan',
+            'Karim',
+            'Thibault',
+            'Antony',
+        ],
+
+        'lastname' => [
+            'Lazzari',
+            'Maazaoui',
+            'Clusel',
+            'Gomez'
+        ],
+
+        'department' => [
+            '67',
+            '12',
+            '75',
+            '12'
+        ]
+    ];
+
+    public static function getUserAbout()
+    {
         return static::$users;
+    }
+
+    public static function getAdminData()
+    {
+        return static::$admins;
     }
 }

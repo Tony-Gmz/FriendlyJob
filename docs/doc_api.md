@@ -1204,6 +1204,7 @@ Aucune
 
     getJobWorkersByServices =>  Revoir Algo récupération moyenne des note pour un jobWorker
                                 gérer un id inexistant : X
+                                gérer quand parametre get limit est une chaine de caractères
 
     getSubServiceFromService => Gérer un service sans sous services : X
 
@@ -1263,6 +1264,7 @@ Aucune
 ## Rating
 
     add => Gerer l'erreur quand on ajoute un rating sur une demand qui a déjà un rating (DUPLICATE)
+            Gerer un rating sur une demande qui n'existe pas
 
 ## JWT
 

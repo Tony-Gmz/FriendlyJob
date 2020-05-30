@@ -60,11 +60,11 @@ class ServiceController extends AbstractController
             $service = $serviceRepository->findJobworkerByService($service->getId());
             
             $arrayService = $serializer->normalize($service, null, ['groups' => 'service_jobworker']);
-
+            
             shuffle($arrayService[0]['skills']);
-
+            
             for ($i = 0; $i < $limit; $i++) {
-                $skillUser[] = $arrayService[0]['skills'][$id];
+                $skillUser[] = $arrayService[0]['skills'][$i];
             }
 
             $arrayService[0]['skills'] = $skillUser;

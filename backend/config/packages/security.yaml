@@ -16,7 +16,7 @@ security:
             security: false
         #! Route jobworker par département pour un service
         services_department:
-            pattern:   ^/api/v1/services/(\d+)/department/(\d+)/jobworker$
+            pattern:   ^/api/v1/services/(\d+)/department/(\d+)/jobworker(/)?$
             stateless: true
             guard:
                 authenticators:
@@ -27,7 +27,7 @@ security:
             anonymous: lazy
         #! Toutes les routes départment
         department:
-            pattern:  ^/api/v1/department/
+            pattern:  ^/api/v1/department(/)?
             anonymous: lazy
         #! UserController::add
         user_add:
@@ -37,11 +37,11 @@ security:
         #! UserController::getJobWorkerDetails (/api/v1/users/jobworker/150)
         #! UserController::getRatingOfJobworker (/api/v1/users/jobworker/150/rating)
         user_jobworker:
-            pattern:  ^/api/v1/users/jobworker/(random|\d+)?(/rating)?$
+            pattern:  ^/api/v1/users/jobworker/(random|\d+)?(/rating)?(/)?$
             anonymous: lazy
         #! UserController::getAllContact
         user_contacts:
-            pattern:  ^/api/v1/users/contact
+            pattern:  ^/api/v1/users/contacts(/)?
             anonymous: lazy
         login:
             pattern:  ^/api/login

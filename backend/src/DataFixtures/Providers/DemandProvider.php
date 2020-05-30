@@ -67,4 +67,12 @@ class DemandProvider extends BaseProvider
     {
         return mt_rand(8, 20) ."h";
     }
+
+    public static function getStatus()
+    {
+        $status = static::$demands['status'];
+        $status = $status[mt_rand(0, count($status) - 1)];
+
+        return $status;
+    }
 }
