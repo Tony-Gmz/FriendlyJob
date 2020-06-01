@@ -31,9 +31,10 @@ class DemandProvider extends BaseProvider
             "J'aurais besoin de vos services pour garder ma fille",
             "J'aurais besoin de vos services pour garder mes enfants",
         ],
-        'co-voiturage' => [
-            "Pourriez-vous m'emmener à Strasbourg ?",
-            "Pourriez-vous m'emmener au travail ?",
+        'soutien scolaire' => [
+            "Pouvez-vous aider mon fils de 8 ans qui a des difficultés en mathématiques ?",
+            "Pouvez-vous aider ma fille de 12 ans qui a des difficultés en français ?",
+            "J'ai des difficultés en anglais, pouvez-vous m'aider ?",
         ],
         'aide à la personne' => [
             "J'aurais besoin de votre aide pour accompagner ma maman faire les courses",

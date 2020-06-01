@@ -44,7 +44,7 @@ class FakerFixtures extends Fixture
         $faker->addProvider(new DemandProvider($faker));
 
         static::$faker = $faker;
-
+        
         $entities = [];
         // Services
         $services = [];
@@ -58,7 +58,7 @@ class FakerFixtures extends Fixture
         $wardenAnimalSkill = [];
         $informaticsSkill = [];
         $babysittingSkill = [];
-        $carpoolingSkill = [];
+        $homeworkSupportSkill = [];
         $personalAssistanceSkill = [];
         // Ratings
         $ratings = [];
@@ -78,7 +78,7 @@ class FakerFixtures extends Fixture
         $wardenAnimalDemands = [];
         $informaticsDemands = [];
         $babysittingDemands = [];
-        $carpoolingDemands = [];
+        $homeworkSupportDemands = [];
         $personalAssistanceDemands = [];
         
         // BEGIN OF SERVICES OBJECT CREATION
@@ -123,7 +123,7 @@ class FakerFixtures extends Fixture
 
         // BEGIN OF SKILL OBJECT CREATION
         $skillsList = $faker->GetDescriptionSkills();
-        $numberOfSkill = 8;
+        $numberOfSkill = 16;
         // Gardening Skill
         for ($i = 0; $i < $numberOfSkill; $i++) {
             $gardeningSkill[] = static::skills($skillsList['jardinage'], 'jardinage', $services[0], $numberOfSkill);
@@ -154,10 +154,10 @@ class FakerFixtures extends Fixture
             $babysittingSkill[] = static::skills( $skillsList['babysitting'], 'babysitting', $services[5], $numberOfSkill);
             $skills[] = $babysittingSkill[$i];
         }
-        // Carpooling Skill
+        // Homework Support Skill
         for ($i = 0; $i < $numberOfSkill; $i++) {
-            $carpoolingSkill[] = static::skills($skillsList['co-voiturage'], 'co-voiturage', $services[6], $numberOfSkill);
-            $skills[] = $carpoolingSkill[$i];
+            $homeworkSupportSkill[] = static::skills($skillsList['soutien scolaire'], 'soutien scolaire', $services[6], $numberOfSkill);
+            $skills[] = $homeworkSupportSkill[$i];
         }
         // PersonnalAssistance Skill
         for ($i = 0; $i < $numberOfSkill; $i++) {
@@ -168,7 +168,7 @@ class FakerFixtures extends Fixture
 
         // BEGIN OF RATING OBJECT CREATION
         $ratingList = $faker->getDataRatings();
-        $numberofRating = 64;
+        $numberofRating = 128;
         for ($i = 0; $i < $numberofRating; $i++) {
             $number = mt_rand(0, count($ratingList['comment']) - 1);
             
@@ -199,7 +199,7 @@ class FakerFixtures extends Fixture
            $adminUser->setPassword($passwordEncoder);
            $adminUser->setFirstname($adminData['firstname'][$i]);
            $adminUser->setLastname($adminData['lastname'][$i]);
-           $adminUser->setImage($faker->imageUrl);
+           $adminUser->setImage($adminData['image'][$i]);
            $adminUser->setCreatedAt(new \DateTime());
            $adminUser->setDepartment($departments[$adminData['department'][$i]]);
 
@@ -216,7 +216,7 @@ class FakerFixtures extends Fixture
        // END OF ADMIN OBJECT CREATION
 
        // BEGIN OF FRIENDLYUSER OBJECT CREATION
-       $numberOfFriendlyUser = 64;
+       $numberOfFriendlyUser = 128;
        for ($i = 0; $i < $numberOfFriendlyUser; $i++) {
            
            $friendlyUser = new User();
@@ -227,7 +227,7 @@ class FakerFixtures extends Fixture
            $friendlyUser->setPassword($passwordEncoder);
            $friendlyUser->setFirstname($faker->firstname);
            $friendlyUser->setLastname($faker->lastname);
-           $friendlyUser->setImage($faker->imageUrl);
+           $friendlyUser->setImage($faker->getRandomImage());
            $friendlyUser->setCreatedAt(new \DateTime());
            $friendlyUser->setDepartment($departments[mt_rand(0, count($departments) - 1)]);
 
@@ -245,7 +245,7 @@ class FakerFixtures extends Fixture
 
        // BEGIN OF JOBWORKER OBJECT CREATION
        $aboutList = $faker->getUserAbout();
-       $numberOfJobWorker = 64;
+       $numberOfJobWorker = 128;
        for ($i = 0; $i < $numberOfJobWorker; $i++) {
            $number = mt_rand(0, count($aboutList['about']) - 1);
            
@@ -257,7 +257,7 @@ class FakerFixtures extends Fixture
            $jobWorker->setPassword($passwordEncoder);
            $jobWorker->setFirstname($faker->firstname);
            $jobWorker->setLastname($faker->lastname);
-           $jobWorker->setImage($faker->imageUrl);
+           $jobWorker->setImage($faker->getRandomImage());
            $jobWorker->setAbout($aboutList['about'][$number]);
            $jobWorker->setCreatedAt(new \DateTime());
            $jobWorker->setDepartment($departments[mt_rand(0, count($departments) - 1)]);
@@ -277,7 +277,7 @@ class FakerFixtures extends Fixture
 
         // BEGIN OF DEMAND OBJECT CREATION
         $demandList = $faker->getDataDemands();
-        $numberOfDemands = 8;
+        $numberOfDemands = 16;
         // Gardening Demands
         for ($i = 0; $i < $numberOfDemands; $i++) {
             $gardeningDemands[] = static::demands($demandList['jardinage'], 'jardinage', $services[0], $numberOfDemands);
@@ -308,10 +308,10 @@ class FakerFixtures extends Fixture
             $babysittingDemands[] = static::demands( $demandList['babysitting'], 'babysitting', $services[5], $numberOfDemands);
             $demands[] = $babysittingDemands[$i];
         }
-        // Carpooling Demands
+        // Homework Support Demands
         for ($i = 0; $i < $numberOfDemands; $i++) {
-            $carpoolingDemands[] = static::demands($demandList['co-voiturage'], 'co-voiturage', $services[6], $numberOfDemands);
-            $demands[] = $carpoolingDemands[$i];
+            $homeworkSupportDemands[] = static::demands($demandList['soutien scolaire'], 'soutien scolaire', $services[6], $numberOfDemands);
+            $demands[] = $homeworkSupportDemands[$i];
         }
         // PersonnalAssistance Demands
         for ($i = 0; $i < $numberOfDemands; $i++) {
@@ -417,5 +417,5 @@ class FakerFixtures extends Fixture
         }
 
     return $demand; 
-}
+    }
 }

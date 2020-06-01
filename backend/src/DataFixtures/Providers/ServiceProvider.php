@@ -24,7 +24,7 @@ class ServiceProvider extends BaseProvider
             'Garde d\'animaux',
             'Informatique',
             'Babysitting',
-            'Covoiturage',
+            'Soutien scolaire',
             'Aide à la personne',
         ],
         'description' => [
@@ -35,6 +35,7 @@ class ServiceProvider extends BaseProvider
             "Votre ordinateur ne s'allume plus ? L'écran bleu de la mort vous guette ? Les patins de votre souris ne glissent plus ? Nos JobWorkers se feront un plaisir de vous dépanner !",
             "Si, comme les animaux, vos proches sont allergique aux enfants, foncez !",
             "Vous avez besoin de prendre l'air, de partir en vacances, ou juste de prendre vos distances avec conjoint(e), ce service est fait pour vous !",
+            "Vous éprouvez des difficultés pour telle ou telle matière ? Nos JobWorkers spécialisés peuvent vous offrir un accompagnement personnalisé qui vous aidera à progresser !",
             "Livraison de repas, visite à domicile, démarches administratives, veillez sur l'un de vos proches ?
             Pas de problème ! Nos JobWorkers qualifiés se feront un plaisir de vous aider !",
         ],
@@ -45,13 +46,12 @@ class ServiceProvider extends BaseProvider
             'https://i.ibb.co/rMB52Bb/gardeanimaux.jpg',
             'https://i.ibb.co/3YtgX26/informatique.jpg',
             'https://i.ibb.co/6RkgSB6/babysitting.png',
-            'https://i.ibb.co/BwMSMng/covoiturage.jpg',
+            'https://i.ibb.co/2nJLWFT/student-team-meeting-at-table.jpg',
             'https://i.ibb.co/XL7Bn9h/aide.jpg',
         ],
-
     ];
 
     public static function getDataServices(){
         return static::$services;
-    }
+    }//composer remove bluemmb/faker-picsum-photos-provider
 }

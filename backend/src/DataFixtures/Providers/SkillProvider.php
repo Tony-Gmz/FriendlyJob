@@ -39,10 +39,10 @@ class SkillProvider extends BaseProvider
             "J'ai toujours aimer les enfants et j'en garde depuis longtemps, je serais ravi de pouvoir garder votre ou vos enfants.",
             "Je garde régulièrement des enfants dans le cadre de mon travail et je me ferais un plaisir de pouvoir garder vos bambins.",
         ],
-        'co-voiturage' => [
-            "Je fais régulièrement de longs trajets dans mon cadre professionnel et je suis tout le temps seul, n'hésitez pas à m'accompagner !",
-            "Parce que faire de la route à plusieurs c'est mieux non ?",
-            "Si vous avez besoin d'être emmené quelque part, contactez moi !",
+        'soutien scolaire' => [
+            "Je suis anglophone, je peux vous aider à progresser en anglais",
+            "Actuellement en études en math sup, je serais heureux de pouvoir vous apporter mon aide",
+            "Ayant reçu la médaille d'or de mon village en dictée, je suis disponible pour faire de vous un as de la dictée !",
         ],
         'aide à la personne' => [
             "Je livre des repas quotidiennement, si vous ou l'un de vos proches en ont besoin, contactez moi !",

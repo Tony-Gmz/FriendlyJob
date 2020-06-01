@@ -31,7 +31,7 @@ class UserProvider extends BaseProvider
             "Entendu, monsieur, répondit-elle doucement, j'ai inventé ce tour pour échapper aux fatigues de l'après-midi se passa dans l'appartement. Revendication : la nouvelle loi. Égarée, sanglotante, le prenant par le bras ; mais, insensé que tu es ici, c'est vous autres qui êtes foutus...",
             "Utilité de la boîte, en sortit plusieurs feuilles de parquet étaient soulevées. Uniquement parce que j'aime. Égaré dans une foule de petits princes remplacèrent les invasions des barbares, que le tabernacle fut dressé.",
             "Examen de la caisse à secret de la serrure : mais elles n'étaient que les instruments humains de l'équipage respectaient sa solitude. Parlons argent, parlons de nous... Informez-vous de ces clients dont les noms suivent, qui, poussé de branche durable ; en d'autres mains ?",
-        ]
+        ],
     ];
 
     protected static $admins = [
@@ -62,7 +62,15 @@ class UserProvider extends BaseProvider
             '12',
             '75',
             '12'
-        ]
+        ],
+        
+        'image' => [
+            'https://i.vippng.com/png/small/91-914118_goku-png-dbz-chibi-dragon-ball-z-son.png',
+            'https://i.vippng.com/png/small/87-870948_hand-clipart-incredible-hulk-hulk-age-of-ultron.png',
+            'https://i.vippng.com/png/small/240-2405419_chibi-super-saiyan-blue-vegeta-by-rayzorblade189-da64uni.png',
+            'https://i.vippng.com/png/small/230-2300287_final-fantasy-xiii-2-releases-before-versus-xiii.png'
+        ],
+
     ];
 
     public static function getUserAbout()
@@ -73,5 +81,12 @@ class UserProvider extends BaseProvider
     public static function getAdminData()
     {
         return static::$admins;
+    }
+
+    public static function getRandomImage()
+    {
+        $image = [
+
+        ];
     }
 }
