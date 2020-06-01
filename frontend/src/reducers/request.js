@@ -2,7 +2,6 @@ import { SAVE_REQUEST } from '../action/requestAction';
 
 const initialState = {
   requestList: [],
-  loading: true,
 };
 
 const requestReducer = (state = initialState, action = {}) => {
@@ -11,7 +10,6 @@ const requestReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         requestList: action.newRequest,
-        loading: false,
       };
 
     default: return state;

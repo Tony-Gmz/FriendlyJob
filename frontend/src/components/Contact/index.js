@@ -8,10 +8,10 @@ return (
   <div className="contact">
 
     <div className="stage">
-      <img className="box bounce-7" alt="admin" src="https://i.pinimg.com/564x/e8/67/de/e867de0619b0323c19614e3a3d294eef.jpg"/>
-      <img className="box bounce-7" alt="admin" src="https://i.pinimg.com/564x/a8/63/cc/a863cc151b350e614d3af395bcc4c662.jpg"/>
-      <img className="box bounce-7" alt="admin" src="https://i.pinimg.com/564x/ce/9e/c5/ce9ec5436e4b033b1ec07351e344b77c.jpg"/>
-      <img className="box bounce-7" alt="admin" src="https://i.pinimg.com/564x/02/99/25/029925d914ee2ebb62ed123e08606e86.jpg"/>
+      <img className="karim bounce-7" alt="admin" src="https://i.vippng.com/png/small/87-870948_hand-clipart-incredible-hulk-hulk-age-of-ultron.png"/>
+      <img className="jolan bounce-7" alt="admin" src="https://i.vippng.com/png/small/91-914118_goku-png-dbz-chibi-dragon-ball-z-son.png"/>
+      <img className="thibault bounce-7" alt="admin" src="https://i.vippng.com/png/small/240-2405419_chibi-super-saiyan-blue-vegeta-by-rayzorblade189-da64uni.png"/>
+      <img className="tony bounce-7" alt="admin" src="https://i.vippng.com/png/small/230-2300287_final-fantasy-xiii-2-releases-before-versus-xiii.png"/>
 
     </div>
 

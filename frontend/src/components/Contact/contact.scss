@@ -24,9 +24,9 @@
   margin-top: 0.5em;
 }
 
-.box {
+.karim {
   align-self: flex-end;
-  animation-duration: 2s;
+  animation-duration: 1.5s;
   animation-iteration-count: infinite;
   background-color: #F44336;
   height: 200px;
@@ -34,6 +34,40 @@
   transform-origin: bottom;
   width: 200px;
 }
+
+.jolan  {
+  align-self: flex-end;
+  animation-duration: 1.6s;
+  animation-iteration-count: infinite;
+  background-color: #F44336;
+  height: 200px;
+  margin: 0 auto 0 auto;
+  transform-origin: bottom;
+  width: 200px;
+}
+
+.thibault {
+  align-self: flex-end;
+  animation-duration: 1.7s;
+  animation-iteration-count: infinite;
+  background-color: #F44336;
+  height: 200px;
+  margin: 0 auto 0 auto;
+  transform-origin: bottom;
+  width: 200px;
+}
+
+.tony {
+  align-self: flex-end;
+  animation-duration: 1.8s;
+  animation-iteration-count: infinite;
+  background-color: #F44336;
+  height: 200px;
+  margin: 0 auto 0 auto;
+  transform-origin: bottom;
+  width: 200px;
+}
+
 .bounce-7 {
   animation-name: bounce-7;
   animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
