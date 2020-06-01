@@ -5,6 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import servicesMiddleware from 'src/middlewares/servicesMiddleware';
 import userMiddleware from 'src/middlewares/userMiddleware';
 import inscriptionMiddlware from 'src/middlewares/inscriptionMiddleware';
+import requestMiddlware from 'src/middlewares/requestMiddleware';
 // import RootReducer
 import reducer from 'src/reducers';
 
@@ -14,6 +15,7 @@ const enhancers = composeWithDevTools(
     servicesMiddleware,
     userMiddleware,
     inscriptionMiddlware,
+    requestMiddlware,
     // add middleware
   ),
 );

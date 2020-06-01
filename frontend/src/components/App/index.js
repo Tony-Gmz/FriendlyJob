@@ -13,7 +13,7 @@ import Page from 'src/containers/Page';
 
 
 // == Composant
-const App = ({ getServices, getRandomJobWorker, loading, getUserData }) => {
+const App = ({ getServices, getRandomJobWorker, loading, getUserData, getRequest }) => {
   useEffect(() => {
     getServices();
     getRandomJobWorker();
