@@ -58,3 +58,12 @@ export const slugifyId = (id) => (
 export const getRandomJobWorkerBySlug = (randomJobWorker, slug) => (
   randomJobWorker.find((currentJobWorker) => slugifyId(currentJobWorker.id) === slug)
 );
+
+/**
+ * Get the service for a given slug
+ * @param {Array} jobWorkers randomJobWorker into which searching the random'information
+ * @param {String} slug Slug to search for
+ */
+export const getJobWorkerBySlug = (jobWorkers, slug) => (
+  jobWorkers.find((currentJobWorker) => currentJobWorker.user.id == slug)
+);

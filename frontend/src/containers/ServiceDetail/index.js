@@ -6,7 +6,7 @@ import { getServiceName } from 'src/action/servicesActions';
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
   serviceList: state.service.serviceList,
-  sixJobWorker: state.user.sixJobWorker,
+  jobWorkers: state.user.jobWorkers,
   loadingOnServiceDetail: state.user.loadingOnServiceDetail,
 });
 

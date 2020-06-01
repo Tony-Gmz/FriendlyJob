@@ -51,7 +51,7 @@ const Page = ({ serviceList }) => (
           <Contact />
         </Route>
         <Route
-          path="/jobworker/:slug"
+          path="/jobworker/:id"
           exact
         >
           <JobWorkerDetail />

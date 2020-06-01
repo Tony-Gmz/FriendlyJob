@@ -2,29 +2,37 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Message, Rating } from 'semantic-ui-react';
 import Avatar from '@material-ui/core/Avatar';
-
+import { whitoutAvatar } from 'src/utils';
 
 import './evaluation.scss';
 
 
-const Evaluation = ({ demands }) => {
+const Evaluation = ({ jobWorkerRating }) => {
   // eslint-disable-next-line no-console
-  console.log(`demande: ${demands} `);
+  console.log(jobWorkerRating);
   return (
 
     <div className="evaluation">
       <h4 className="evaluation_title">Evaluation</h4>
       <div className="evaluation_note">
-        {demands.map((demand) => (
-          <Message className="evaluation_message">
-            <Message.Header> </Message.Header>
-            <div className="message_content">
-              <div className="message_content_avatar"><Avatar>{demand.rating.id}</Avatar></div>
-              <div className="message_content_rating"><Rating icon="star" defaultRating={demand.rating.star} maxRating={5} /></div>
-              <div className="message_content_comment">{demand.rating.comment}</div>
-            </div>
-          </Message>
-        ))}
+        {jobWorkerRating.map((jobWorker) => {
+          const userAvatar = jobWorker.friendlyUser.firstname;
+          return (
+
+            <Message className="evaluation_message">
+              <Message.Header> </Message.Header>
+              <div className="message_content">
+                <div className="message_content_avatar">
+                  {userAvatar && <Avatar alt="Remy Sharp" src={jobWorker.friendlyUser.image} /> }
+                  {!userAvatar && <Avatar alt="Remy Sharp" src="">{whitoutAvatar(jobWorker.friendlyUser.firstname)}</Avatar>}
+                </div>
+                <span>{jobWorker.friendlyUser.firstname}</span>
+                <div className="message_content_rating"><Rating icon="star" defaultRating={jobWorker.rating.star} maxRating={5} /></div>
+                <div className="message_content_comment">{jobWorker.rating.comment}</div>
+              </div>
+            </Message>
+          );
+        })}
       </div>
       <div className="evaluation_see_more">
         <a href="">Voir plus</a>
@@ -34,14 +42,6 @@ const Evaluation = ({ demands }) => {
 };
 
 Evaluation.propTypes = {
-  demands: PropTypes.arrayOf(
-    PropTypes.shape({
-      rating: PropTypes.object.isRequired,
-      comment: PropTypes.string.isRequired,
-      star: PropTypes.number.isRequired,
-      id: PropTypes.number.isRequired,
-    }).isRequired,
-  ).isRequired,
 };
 
 

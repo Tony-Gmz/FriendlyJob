@@ -7,14 +7,11 @@ import NavButtonStyled from 'src/components/Button/NavButtonStyled';
 import './joberService.scss';
 import { Link } from 'react-router-dom';
 
-const JoberService = ({jobWorker}) => {
+const JoberService = ({ jobWorker }) => {
 
   const userAvatar = jobWorker.user.image;
-  const slug = jobWorker.user.id;
-  //console.log(jobWorker);
-  const description = [
-    "Passionné d'informatique, je sais faire de nombreuses chose sous windows",
-  ].join(' ');
+  const id = jobWorker.user.id;
+  console.log(jobWorker);
 
   let screenWidth = window.screen.width;
   //console.log(screenWidth);
@@ -31,7 +28,7 @@ const JoberService = ({jobWorker}) => {
           <Card.Content description={jobWorker.user.about} />
           <Card.Content extra>
             <Rating defaultRating={jobWorker.user.jobWorkerDemands[0].rating.star} maxRating={5} disabled />
-            <Link to={`/jobworker/${slug}`}>
+            <Link to={`/jobworker/${id}`}>
               <NavButtonStyled>Contact</NavButtonStyled>
             </Link>
           </Card.Content>

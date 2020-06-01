@@ -4,11 +4,8 @@ import PropTypes from 'prop-types';
 
 import './competences.scss';
 
-const Competence = ({ skills, getJobWorker }) => {
-  /* console.log(`Competence : ${skills}`); */
-  useEffect(() => {
-    getJobWorker();  // ===============ON RECUPERE TJR LE MEME EN DETAIL FAUDRAIT ACTUALISER================
-  }, []);
+const Competence = ({ skills }) => {
+
   return (
     <div className="competence">
       <h4 className="competence_title">Competence(s)</h4>
@@ -17,7 +14,7 @@ const Competence = ({ skills, getJobWorker }) => {
           <div className="competence_content_illustration">
             <img className="competence_img" src={skill.service.image} alt="competence" />
             <p className="competence_name">{skill.service.title}</p>
-            <div className="competence_price">{skill.price} €/heure</div>
+            <div className="competence_price"> {skill.price}€/heure</div>
           </div>
           <div className="competence_about">
             <p>{skill.description}</p>
@@ -32,9 +29,13 @@ Competence.propTypes = {
   skills: PropTypes.arrayOf(
     PropTypes.shape({
       description: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
       price: PropTypes.number.isRequired,
-      id: PropTypes.number.isRequired,
+      service: PropTypes.arrayOf(
+        PropTypes.shape({
+          image: PropTypes.string.isRequired,
+          title: PropTypes.string.isRequired,
+        }).isRequired,
+      ).isRequired,
     }).isRequired,
   ).isRequired,
 };

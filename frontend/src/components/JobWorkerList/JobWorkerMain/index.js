@@ -22,7 +22,7 @@ const JobWorkerMain = ({ jobWorkers }) => {
       </div>
       <div className="jobWorker_wrap">
         {jobWorkers.map((jobWorker) => {
-          const slug = jobWorker.id;
+          const slug = jobWorker.user.id;
           const userAvatar = jobWorker.user.image;
           return (
             <Link>

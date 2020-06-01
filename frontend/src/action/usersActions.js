@@ -13,6 +13,11 @@ export const GET_SIX_RANDOM_JOBWORKER = 'GET_SIX_RANDOM_JOBWORKER';
 export const SAVE_SIX_RANDOM_JOBWORKER = 'SAVE_SIX_RANDOM_JOBWORKER';
 export const HIDE_LOADER = 'HIDE_LOADER';
 export const GET_USER_DATA = 'GET_USER_DATA';
+export const GET_JOBWORKER_DETAIL = 'GET_JOBWORKER_DETAIL';
+export const SAVE_JOBWORKER_DETAIL = 'SAVE_JOBWORKER_DETAIL';
+export const GET_JOBWORKER_ID = 'GET_JOBWORKER_ID';
+export const GET_JOBWORKER_RATING = 'GET_JOBWORKER_RATING';
+export const SAVE_JOBWORKER_RATING = 'SAVE_JOBWORKER_RATING';
 
 export const changeField = (newValue, inputName) => ({
   type: CHANGE_FIELD,
@@ -73,4 +78,26 @@ export const hideLoader = () => ({
 
 export const getUserData = () => ({
   type: GET_USER_DATA,
+});
+
+export const getJobWorkerId = (jobWorkerId) => ({
+  type: GET_JOBWORKER_ID,
+  jobWorkerId,
+});
+
+export const getJobWorkerDetail = () => ({
+  type: GET_JOBWORKER_DETAIL,
+});
+
+export const saveJobWorkerDetail = (detail) => ({
+  type: SAVE_JOBWORKER_DETAIL,
+  detail,
+});
+export const getJobWorkerRating = () => ({
+  type: GET_JOBWORKER_RATING,
+});
+
+export const saveJobWorkerRating = (rating) => ({
+  type: SAVE_JOBWORKER_RATING,
+  rating,
 });

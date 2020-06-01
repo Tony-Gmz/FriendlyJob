@@ -11,6 +11,10 @@ import {
   GET_JOBWORKER,
   saveJobWorker,
   GET_USER_DATA,
+  saveJobWorkerDetail,
+  GET_JOBWORKER_DETAIL,
+  saveJobWorkerRating,
+  GET_JOBWORKER_RATING,
 } from '../action/usersActions';
 import { saveRequest } from '../action/requestAction';
 
@@ -33,8 +37,8 @@ const userMiddleware = (store) => (next) => (action) => {
       break;
     case SUBMIT_LOGIN: {
       const { email, password } = store.getState().user;
-      console.log(email);
-      console.log(password);
+      // console.log(email);
+      // console.log(password);
       axios({
         method: 'post',
         url: 'http://ec2-18-204-19-53.compute-1.amazonaws.com/api/login_check',
@@ -44,10 +48,10 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-        console.log(response);
+        // console.log(response);
         // je voudrais enregistrer response.data dans le state => nouvelle action
         // console.log(response);
-          console.log(response);
+          // console.log(response);
           store.dispatch(saveUser(response.data.user));
           window.localStorage.setItem('jwtToken', response.data.token);
           window.localStorage.setItem('userId', response.data.user.id);
@@ -71,7 +75,7 @@ const userMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
-          console.log(response);
+          // console.log(response);
           store.dispatch(saveUser(response.data.user));
         })
         .catch((error) => {
@@ -85,13 +89,13 @@ const userMiddleware = (store) => (next) => (action) => {
 
     case GET_SIX_RANDOM_JOBWORKER: {
       const { serviceName, serviceList } = store.getState().service;
-      console.log(serviceName);
+      // console.log(serviceName);
       // console.log(changeTitle(serviceName));
-      console.log(serviceList);
+      // console.log(serviceList);
       const findService = serviceList.find(service => service.title === capitalize(changeTitle(serviceName)));
-      console.log(findService);
+      // console.log(findService);
       const serviceId = Number(findService.id);
-      console.log(serviceId);
+      // console.log(serviceId);
 
       axios.get(`http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/services/${serviceId}/jobworker?limit=6`)
         .then((response) => {
@@ -112,19 +116,19 @@ const userMiddleware = (store) => (next) => (action) => {
     }
     case GET_JOBWORKER: {
       const { serviceName, serviceList } = store.getState().service;
-      console.log(serviceName);
+      // console.log(serviceName);
       // console.log(changeTitle(serviceName));
-      console.log(serviceList);
+      // console.log(serviceList);
       const findService = serviceList.find(service => service.title === capitalize(changeTitle(serviceName)));
-      console.log(findService);
+      // console.log(findService);
       const serviceId = Number(findService.id);
-      console.log(serviceId);
+      // console.log(serviceId);
 
       axios.get(`http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/services/${serviceId}/jobworker`)
       .then((response) => {
         // console.log(response);
         // je voudrais enregistrer response.data dans le state => nouvelle action
-        console.log(response);
+       // console.log(response);
         store.dispatch(saveJobWorker(response.data[0].skills));
       })
       .catch((error) => {
@@ -135,6 +139,40 @@ const userMiddleware = (store) => (next) => (action) => {
       });
     next(action);
     break;
+    }
+    case GET_JOBWORKER_DETAIL: {
+
+      const { currentJobWorkerId } = store.getState().user;
+      axios.get(`http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/jobworker/${currentJobWorkerId}`)
+        .then((response) => {
+        // console.log(response);
+        // je voudrais enregistrer response.data dans le state => nouvelle action
+        // console.log(response);
+          store.dispatch(saveJobWorkerDetail(response.data));
+        })
+        .catch((error) => {
+          console.warn(error);
+          console.log('jai fait une erreur');
+        });
+      next(action);
+      break;
+    }
+    case GET_JOBWORKER_RATING: {
+      const { currentJobWorkerId } = store.getState().user;
+      console.log(currentJobWorkerId);
+      axios.get(`http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/jobworker/${currentJobWorkerId}/rating`)
+        .then((response) => {
+        // console.log(response);
+        // je voudrais enregistrer response.data dans le state => nouvelle action
+          console.log(response);
+          store.dispatch(saveJobWorkerRating(response.data));
+        })
+        .catch((error) => {
+          console.warn(error);
+          console.log('jai fait une erreur');
+        });
+      next(action);
+      break;
     }
 
 

@@ -6,7 +6,7 @@ import { getServiceBySlug } from 'src/utils';
 import JoberService from './JoberService';
 import './serviceDetail.scss';
 
-function ServiceDetail({ serviceList, getServiceName, getSixJobWorker, sixJobWorker, loadingOnServiceDetail }) {
+function ServiceDetail({ serviceList, getServiceName, getSixJobWorker, jobWorkers, loadingOnServiceDetail }) {
   const { slug } = useParams();
   //console.log(slug);
   useEffect(() => {
@@ -29,7 +29,7 @@ function ServiceDetail({ serviceList, getServiceName, getSixJobWorker, sixJobWor
             <div className="service_details_jobworker_card">
             {loadingOnServiceDetail && <Loader /> }
              {!loadingOnServiceDetail && (
-              sixJobWorker.map((jobWorker) => (
+              jobWorkers.map((jobWorker) => (
                 <div className="service_details_jobworker_card-item">
                   <JoberService jobWorker={jobWorker} />
                 </div>

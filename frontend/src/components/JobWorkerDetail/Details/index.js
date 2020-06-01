@@ -4,10 +4,19 @@ import './details.scss';
 import ModalReservation from 'src/components/ModalReservation';
 import Avatar from '@material-ui/core/Avatar';
 import { Card } from 'semantic-ui-react';
+import { whitoutAvatar } from 'src/utils';
 
 
-const Details = ({ firstname, about, department }) => {
+const Details = ({
+  isLogged,
+  firstname,
+  image,
+  about,
+  department,
+  skills,
+  id }) => {
   /*  console.log(`prenom: ${department.name} + a propos :${about}`); */
+  const userAvatar = image
   const screenWidth = window.screen.width;
   return (
 
@@ -18,14 +27,15 @@ const Details = ({ firstname, about, department }) => {
       <div className="detail_content">
         <div className="detail_content_card">
           <div className="Jober_avatar">
-            {screenWidth > 768 ? <Avatar alt="Remy Sharp" src="" /> : ''}
+            {userAvatar && <Avatar alt="Remy Sharp" src={image} /> }
+            {!userAvatar && <Avatar alt="Remy Sharp" src="">{whitoutAvatar(firstname)}</Avatar>}
           </div>
           <div className="Jober_card">
-            <Card>
+            <Card key={id}>
               <Card.Content header={firstname} />
-              <Card.Content description={about} />
+              <Card.Content description={skills[0].description} />
               <Card.Content extra>
-                Departement :{department.name}
+                Departement : {department.name}
               </Card.Content>
             </Card>
           </div>
@@ -38,18 +48,27 @@ const Details = ({ firstname, about, department }) => {
         </div>
       </div>
       <div className="detail_reservation">
-        <ModalReservation />
+        {isLogged && <ModalReservation />}
+        {!isLogged && <div>Vous souhaitez reserver un service à nom du jobworker ? Connectez-vous ou inscrivez-vous </div>}
       </div>
     </div>
   );
 };
 
 Details.propTypes = {
+  id: PropTypes.number.isRequired,
+  isLogged: PropTypes.bool.isRequired,
   firstname: PropTypes.string.isRequired,
   about: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
   department: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
+  skills: PropTypes.arrayOf(
+    PropTypes.shape({
+      description: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,
 };

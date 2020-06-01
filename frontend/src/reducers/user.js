@@ -4,6 +4,9 @@ import {
   SAVE_SIX_RANDOM_JOBWORKER,
   HIDE_LOADER,
   SAVE_JOBWORKER,
+  GET_JOBWORKER_ID,
+  SAVE_JOBWORKER_DETAIL,
+  SAVE_JOBWORKER_RATING,
 } from "../action/usersActions";
 
 const initialState = {
@@ -18,12 +21,15 @@ const initialState = {
   userData: null,
   /** Token  */
   token: '',
+  currentJobWorkerId: null,
   randomJobWorker: null,
   loading: true,
   loadingOnServiceDetail: true,
   loadingOnJobWorkerList: true,
+  loadingOnJobWorkerDetail: true,
   jobWorkers: [],
-  sixJobWorker: [],
+  currentJobWorkerDetail: [],
+  currentJobWorkerRating: [],
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -48,7 +54,7 @@ const userReducer = (state = initialState, action = {}) => {
     case SAVE_SIX_RANDOM_JOBWORKER:
       return {
         ...state,
-        sixJobWorker: action.sixJobWorker,
+        jobWorkers: action.sixJobWorker,
       };
 
     case HIDE_LOADER:
@@ -61,6 +67,22 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         loadingOnJobWorkerList: false,
         jobWorkers: action.newJobWorker,
+      };
+    case GET_JOBWORKER_ID:
+      return {
+        ...state,
+        currentJobWorkerId: action.jobWorkerId,
+      };
+    case SAVE_JOBWORKER_DETAIL:
+      return {
+        ...state,
+        currentJobWorkerDetail: action.detail,
+      };
+    case SAVE_JOBWORKER_RATING:
+      return {
+        ...state,
+        currentJobWorkerRating: action.rating,
+        loadingOnJobWorkerDetail: false,
       };
 
 
