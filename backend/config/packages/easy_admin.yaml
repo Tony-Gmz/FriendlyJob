@@ -1,0 +1,167 @@
+easy_admin:
+    site_name: '<div style="display : inline"><img style="width: 100px; margin-right: 10px"" src="https://symfony.com/logos/symfony_white_01.png"/>FriendlyJob</div>' 
+    design:
+        menu:
+            - User
+            - Department
+            - Skill
+            - Service
+            - Demand
+            - Rating
+        brand_color: '#FF385C'
+    entities:
+        User:
+            class: App\Entity\User
+            label: 'Utilisateurs'
+            disabled_actions: ['new']
+            list:
+                title: "Liste des utilisateurs"
+                fields:
+                     ['id', 'firstname', 'lastname', { property: 'image', type: 'image' }, 'createdAt', 'department' ]
+                actions:
+                    - { name: 'show', icon: 'eye', label: 'Voir'}
+                    - { name: 'edit', icon: 'pencil', label: 'Modifier'}
+                    - { name: 'delete', icon: 'dumpster', label: 'Supprimer'}
+            edit:
+                title: "Modification utilisateur (#%%entity_id%%)"
+                fields:
+                    ['email', 'firstname', 'lastname', 'image', 'about']
+                actions:
+                    - { name: 'delete', icon: 'dumpster', label: 'Supprimer'}
+                    - { name: 'list', label: 'Retour à la liste'}
+            search:
+                fields: 
+                    ['email', 'firstname', 'lastname']
+            show:
+                title: "Affichage utilisateur (#%%entity_id%%)"
+                fields:
+                     ['id', 'email', 'roles', 'firstname', 'lastname', { property: 'image', type: 'image' }, 'about', 'createdAt', 'department' ]
+                actions:
+                    - { name: 'delete', icon: 'dumpster', label: 'Supprimer'}
+                    - { name: 'edit', icon: 'pencil', label: 'Modifier'}
+                    - { name: 'list', label: 'Retour à la liste'}
+        Department:
+            class: App\Entity\Department
+            label: 'Départements'
+            disabled_actions: ['edit', 'new', 'delete']
+            list:
+                title: "Liste des départements"
+                fields:
+                     ['id', 'name', 'number', 'users' ]
+            search:
+                fields:
+                     ['name', 'number']
+            show:
+                title: "Affichage département (#%%entity_id%%)"
+                actions:
+                    - { name: 'list' , label: 'Retour à la liste'}
+        Skill:
+            class: App\Entity\Skill
+            label: 'Compétences'
+            list:
+                title: "Liste des compétences"
+                actions:
+                    - { name: 'edit', icon: 'pencil', label: 'Modifier'}
+                    - { name: 'new', label: 'Ajouter une compétence'}
+                    - { name: 'delete', icon: 'dumpster', label: 'Supprimer'}
+            edit:
+                title: "Modification d'une compétence (#%%entity_id%%)"
+                fields:
+                    ['description', 'price', 'user', 'service']
+                actions:
+                    - { name: 'delete', icon: 'dumpster', label: 'Supprimer'}
+                    - { name: 'list' , label: 'Retour à la liste'}
+            new:
+                title: "Ajout d'une compétence"
+                fields:
+                    ['description', 'price', 'user', 'service']
+                actions:
+                    - { name: 'list', label: 'Retour à la liste'}
+            search:
+                fields: 
+                    ['description', 'price', 'user', 'service']
+            show:
+                title: "Affichage compétence (#%%entity_id%%)"
+                actions:
+                    - { name: 'edit', icon: 'pencil', label: 'Modifier'}
+                    - { name: 'delete', icon: 'dumpster', label: 'Supprimer'}
+                    - { name: 'list' , label: 'Retour à la liste'}
+        Service:
+            class: App\Entity\Service
+            label: 'Services'
+            list:
+                title: "Liste des services/sous-services"
+                fields:
+                    ['id', 'parentId', 'title', { property: 'image', type: 'image' }, 'createdAt', 'skills', 'demands']
+                actions:
+                    - { name: 'edit', icon: 'pencil', label: 'Modifier'}
+                    - { name: 'new', label: 'Ajouter un service/sous-services'}
+                    - { name: 'delete', icon: 'dumpster', label: 'Supprimer'}
+            edit:
+                title: "Modification service/sous-services (#%%entity_id%%)"
+                fields:
+                    ['parentId', 'title', 'description', 'image']
+                actions:
+                    - { name: 'delete', icon: 'dumpster', label: 'Supprimer'}
+                    - { name: 'list', label: 'Retour à la liste'}
+            new:
+                title: "Ajout d'un service/sous-services"
+                fields:
+                    ['parentId', 'title', 'description', 'image']
+                actions:
+                    - { name: 'list', label: 'Retour à la liste'}
+            show:
+                title: "Affichage service/sous-services (#%%entity_id%%)"
+                fields:
+                    ['parentId', 'title', 'description', { property: 'image', type: 'image' }]
+                actions:
+                    - { name: 'edit', icon: 'pencil', label: 'Modifier'}
+                    - { name: 'delete', icon: 'dumpster', label: 'Supprimer'}
+                    - { name: 'list' , label: 'Retour à la liste'}
+            search:
+                fields: ['id', 'parentId', 'title']
+        Demand:
+            class: App\Entity\Demand
+            label: 'Demandes'
+            disabled_actions: ['new', 'edit']
+            list:
+                title: "Liste des demandes"
+                fields: 
+                    ['id', 'body', 'reservationDate','reservationHour', 'status', 'createdAt', 'rating', 'service']
+                actions:
+                    - { name: 'show', icon: 'eye', label: 'Voir'}
+                    - { name: 'delete', icon: 'dumpster', label: 'Supprimer'}
+            show:
+                title: "Affichage demande (#%%entity_id%%)"
+                actions:
+                    - { name: 'delete', icon: 'dumpster', label: 'Supprimer'}
+                    - { name: 'list' , label: 'Retour à la liste'}
+            search:
+                fields: 
+                    ['id', 'reservationDate', 'reservationHour', 'status', 'service']
+        Rating:
+            class: App\Entity\Rating
+            label: 'Evaluations'
+            disabled_actions: ['new', 'edit']
+            list:
+                title: "Liste des évaluations"
+                fields:
+                    ['id', 'comment', 'star', 'createdAt', 'demand']
+                actions:
+                    - { name: 'show', icon: 'eye', label: 'Voir'}
+                    - { name: 'delete', icon: 'dumpster', label: 'Supprimer'}
+            show:
+                title: "Affichage évaluation (#%%entity_id%%)"
+                actions:
+                    - { name: 'delete', icon: 'dumpster', label: 'Supprimer'}
+                    - { name: 'list' , label: 'Retour à la liste'}
+            search:
+                fields: 
+                    ['id', 'comment', 'star', 'createdAt', 'demand']
+    user:
+        name_property_path: 'getFullName'
+        #avatar_property_path: 'getImage'
+    formats:
+        date:     'd/m/Y'
+        time:     'H:i'
+        datetime: 'd/m/Y à H:i:s'

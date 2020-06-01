@@ -130,6 +130,11 @@ class User implements UserInterface
         $this->createdAt = new \DateTime();
     }
 
+    public function __toString()
+    {
+        return $this->getFullName();
+    }
+
 
     public function getId(): ?int
     {
@@ -228,6 +233,11 @@ class User implements UserInterface
         $this->lastname = $lastname;
 
         return $this;
+    }
+
+    public function getFullName(): ?string
+    {
+        return $this->firstname . " " . $this->lastname;
     }
 
     public function getImage(): ?string

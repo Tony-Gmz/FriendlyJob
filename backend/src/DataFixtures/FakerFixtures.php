@@ -195,7 +195,7 @@ class FakerFixtures extends Fixture
            $passwordEncoder = static::$passwordEncoder->encodePassword($adminUser, $_ENV['ADMIN_PASSWORD']);
            $adminUser->setPassword($passwordEncoder);
            $adminUser->setEmail($adminData['email'][$i]);
-           $adminUser->setRoles(["ADMIN"]);
+           $adminUser->setRoles(["ROLE_ADMIN"]);
            $adminUser->setPassword($passwordEncoder);
            $adminUser->setFirstname($adminData['firstname'][$i]);
            $adminUser->setLastname($adminData['lastname'][$i]);

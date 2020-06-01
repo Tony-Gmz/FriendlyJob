@@ -857,7 +857,7 @@ Aucune
     "id": 4,
     "email": "admin.tony@oclock.io",
     "roles": [
-      "ADMIN"
+      "ROLE_ADMIN"
     ],
     "firstname": "Tony",
     "lastname": "Gomez",
