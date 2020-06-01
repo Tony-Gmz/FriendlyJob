@@ -1,13 +1,17 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
-// == Import npm
+
+// == Import library
 import React from 'react';
-import { Button, Card } from 'semantic-ui-react';
+
+// == Import components
 import RequestAccepte from './RequestAccepte';
 import RequestRefuse from './RequestRefuse';
 import RequestWait from './RequestWait';
 import RequestFinish from './RequestFinish';
 
+// == Import Style
+import '../request.scss';
 
 // == Composant
 const Request = ({ requestList }) => {

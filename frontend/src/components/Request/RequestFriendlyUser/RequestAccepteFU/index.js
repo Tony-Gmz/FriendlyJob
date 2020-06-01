@@ -3,7 +3,8 @@ import { Button, Card } from 'semantic-ui-react';
 
 
 // == Composant
-const RequestRefuse = ({ request }) => (
+const RequestAccepteFU = ({ request }) => (
+
   <Card className="request_Card">
     <Card.Content className="request_Content">
       <div className="request_LeftSide">
@@ -22,11 +23,16 @@ const RequestRefuse = ({ request }) => (
     </Card.Content>
     <div className="request_Status">{request.status}</div>
     <Card.Content extra>
-      <div className="refuse_texte">
-        Vous avez refusé cette demande...
+      <div className="buttons">
+        <Button className="approve_Button">
+          Contacter le JW
+        </Button>
+        <Button className="decline_Button" disabled>
+          Refuser
+        </Button>
       </div>
     </Card.Content>
   </Card>
-);
 
-export default RequestRefuse;
+);
+export default RequestAccepteFU;
