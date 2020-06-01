@@ -60,7 +60,7 @@ const userMiddleware = (store) => (next) => (action) => {
     }
     case GET_USER_DATA: {
       const userId = localStorage.getItem('userId');
-      const userToken = localStorage.getItem('jwtToken')
+      const userToken = localStorage.getItem('jwtToken');
       axios({
         method: 'get',
         url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/${userId}`,
