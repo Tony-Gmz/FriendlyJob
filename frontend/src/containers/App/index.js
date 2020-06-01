@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getRandomJobWorker } from 'src/action/usersActions';
+import { getRandomJobWorker, getUserData } from 'src/action/usersActions';
 import { getServices } from 'src/action/servicesActions';
 import App from 'src/components/App';
 
@@ -16,6 +16,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getRandomJobWorker: () => {
     dispatch(getRandomJobWorker());
+  },
+  getUserData: () => {
+    dispatch(getUserData());
   },
 });
 

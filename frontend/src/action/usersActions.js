@@ -12,6 +12,7 @@ export const SAVE_JOBWORKER = 'SAVE_JOBWORKER';
 export const GET_SIX_RANDOM_JOBWORKER = 'GET_SIX_RANDOM_JOBWORKER';
 export const SAVE_SIX_RANDOM_JOBWORKER = 'SAVE_SIX_RANDOM_JOBWORKER';
 export const HIDE_LOADER = 'HIDE_LOADER';
+export const GET_USER_DATA = 'GET_USER_DATA';
 
 export const changeField = (newValue, inputName) => ({
   type: CHANGE_FIELD,
@@ -23,10 +24,9 @@ export const submitLoggin = () => ({
   type: SUBMIT_LOGIN,
 });
 
-export const saveUser = (isLogged, info) => ({
+export const saveUser = (info) => ({
   type: SAVE_USER,
   info,
-  isLogged,
 
 });
 
@@ -71,3 +71,6 @@ export const hideLoader = () => ({
   type: HIDE_LOADER,
 });
 
+export const getUserData = () => ({
+  type: GET_USER_DATA,
+});

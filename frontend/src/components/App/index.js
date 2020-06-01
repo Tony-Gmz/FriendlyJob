@@ -13,10 +13,14 @@ import Page from 'src/containers/Page';
 
 
 // == Composant
-const App = ({ getServices, getRandomJobWorker, loading }) => {
+const App = ({ getServices, getRandomJobWorker, loading, getUserData }) => {
   useEffect(() => {
     getServices();
     getRandomJobWorker();
+    const userToken = localStorage.getItem('jwtToken');
+    if (userToken) {
+      getUserData();
+    }
   }, []);
 
   return (
@@ -38,6 +42,7 @@ App.propTypes = {
   /**
    * Func with no param
    */
+  getUserData: PropTypes.func.isRequired,
   getRandomJobWorker: PropTypes.func.isRequired,
   getServices: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,

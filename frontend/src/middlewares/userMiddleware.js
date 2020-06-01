@@ -10,6 +10,7 @@ import {
   hideLoader,
   GET_JOBWORKER,
   saveJobWorker,
+  GET_USER_DATA,
 } from '../action/usersActions';
 import { saveRequest } from '../action/requestAction';
 
@@ -47,23 +48,39 @@ const userMiddleware = (store) => (next) => (action) => {
         // je voudrais enregistrer response.data dans le state => nouvelle action
         // console.log(response);
           console.log(response);
-          store.dispatch(saveUser(response.data.user.isLogged, response.data.user));
-<<<<<<< HEAD
-          window.localStorage.setItem('jwt-token', response.data.token);
+          store.dispatch(saveUser(response.data.user));
+          window.localStorage.setItem('jwtToken', response.data.token);
+          window.localStorage.setItem('userId', response.data.user.id);
         })
         .catch((error) => {
           console.warn(error);
         })
-=======
-          localStorage.setItem('jwt-token', response.data.token);
-         /*  store.dispatch(saveRequest(response.data)); */ // a tester avec un connaissance du token approfondi
-        })
-        .catch((error) => {
-          console.warn(error);
-        });
->>>>>>> develop-tony-request
       next(action);
       break;
+    }
+    case GET_USER_DATA: {
+      const userId = localStorage.getItem('userId');
+      const userToken = localStorage.getItem('jwtToken')
+      axios({
+        method: 'get',
+        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/${userId}`,
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+        .then((response) => {
+          // console.log(response);
+          // je voudrais enregistrer response.data dans le state => nouvelle action
+          console.log(response);
+          store.dispatch(saveUser(response.data.user));
+        })
+        .catch((error) => {
+          console.warn(error);
+          console.log('jai fait une erreur');
+        });
+      next(action);
+      break;
+
     }
 
     case GET_SIX_RANDOM_JOBWORKER: {

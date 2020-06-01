@@ -3,12 +3,8 @@ import {
   CHANGE_FIELD, SAVE_USER,
   SAVE_SIX_RANDOM_JOBWORKER,
   HIDE_LOADER,
-<<<<<<< HEAD
   SAVE_JOBWORKER,
 } from "../action/usersActions";
-=======
-} from '../action/usersActions';
->>>>>>> develop-tony-request
 
 const initialState = {
   // ici l'état initial
@@ -46,7 +42,7 @@ const userReducer = (state = initialState, action = {}) => {
     case SAVE_USER:
       return {
         ...state,
-        isLogged: action.isLogged,
+        isLogged: true,
         userData: action.info,
       };
     case SAVE_SIX_RANDOM_JOBWORKER:
