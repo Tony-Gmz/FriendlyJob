@@ -85,8 +85,6 @@ class UserProvider extends BaseProvider
 
     public static function getRandomImage()
     {
-        $image = [
-
-        ];
+        return "https://i.picsum.photos/id/".mt_rand(0, 1050)."/640/480.jpg";
     }
 }
