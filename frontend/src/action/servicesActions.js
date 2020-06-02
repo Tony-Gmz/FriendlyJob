@@ -3,8 +3,9 @@ export const SAVE_SERVICES = 'SAVE_SERVICES';
 export const FIELD_SERVICE = 'SELECT_SERVICE';
 export const GET_SERVICE_NAME = 'GET_SERVICE_NAME';
 
-export const getServices = () => ({
+export const getServices = (newValue, inputName) => ({
   type: GET_SERVICES,
+  
 });
 
 export const saveServices = (newServices) => ({

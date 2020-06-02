@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './details.scss';
-import ModalReservation from 'src/components/ModalReservation';
+import ModalReservation from 'src/containers/ModalReservation';
 import Avatar from '@material-ui/core/Avatar';
 import { Card } from 'semantic-ui-react';
 import { whitoutAvatar } from 'src/utils';
