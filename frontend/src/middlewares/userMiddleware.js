@@ -16,7 +16,7 @@ import {
   saveJobWorkerRating,
   GET_JOBWORKER_RATING,
 } from '../action/usersActions';
-import { saveRequest } from '../action/requestAction';
+
 
 const userMiddleware = (store) => (next) => (action) => {
   // console.log('on a intercepté une action dans le middleware: ', action);
@@ -52,13 +52,18 @@ const userMiddleware = (store) => (next) => (action) => {
         // je voudrais enregistrer response.data dans le state => nouvelle action
         // console.log(response);
           // console.log(response);
+          console.log(response);
+          // je voudrais enregistrer response.data dans le state => nouvelle action
+          // console.log(response);
+          console.log(response);
           store.dispatch(saveUser(response.data.user));
           window.localStorage.setItem('jwtToken', response.data.token);
           window.localStorage.setItem('userId', response.data.user.id);
+          window.localStorage.setItem('userRole', response.data.user.roles);
         })
         .catch((error) => {
           console.warn(error);
-        })
+        });
       next(action);
       break;
     }
@@ -84,7 +89,6 @@ const userMiddleware = (store) => (next) => (action) => {
         });
       next(action);
       break;
-
     }
 
     case GET_SIX_RANDOM_JOBWORKER: {
@@ -125,6 +129,7 @@ const userMiddleware = (store) => (next) => (action) => {
       // console.log(serviceId);
 
       axios.get(`http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/services/${serviceId}/jobworker`)
+<<<<<<< HEAD
       .then((response) => {
         // console.log(response);
         // je voudrais enregistrer response.data dans le state => nouvelle action
@@ -139,6 +144,21 @@ const userMiddleware = (store) => (next) => (action) => {
       });
     next(action);
     break;
+=======
+        .then((response) => {
+
+          console.log(response);
+          store.dispatch(saveJobWorker(response.data[0].skills));
+        })
+        .catch((error) => {
+          console.warn(error);
+          console.log('jai fait une erreur');
+        })
+        .finally(() => {
+        });
+      next(action);
+      break;
+>>>>>>> 24673691670ce959df9b10751361646e16791fb3
     }
     case GET_JOBWORKER_DETAIL: {
 

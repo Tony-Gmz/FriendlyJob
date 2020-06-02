@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import './page.scss';
 
+import Request from 'src/containers/Request';
 import ServiceList from 'src/containers/ServiceList';
 import ServiceDetail from 'src/containers/ServiceDetail';
 import JobWorkerDetail from 'src/containers/JobWorkerDetail';
@@ -12,7 +13,7 @@ import HomePage from '../HomePage';
 import Contact from '../Contact';
 import ProfilFriendlyUser from '../ProfilFriendlyUser';
 import ProfilWorkJober from '../ProfilWorkJober';
-import Request from 'src/containers/Request';
+
 import Error from '../Error';
 
 

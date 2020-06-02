@@ -13,7 +13,6 @@ const mapDispatchToProps = (dispatch) => ({
   getServices: () => {
     dispatch(getServices());
   },
-  
 });
 
 export default connect(

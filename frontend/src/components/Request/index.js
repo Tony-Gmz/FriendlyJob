@@ -1,18 +1,32 @@
 // == Import npm
 import React, { useEffect } from 'react';
-import { Button, Card } from 'semantic-ui-react';
 
 // == Import
 import './request.scss';
-import ModalExampleCloseConfig from '../ModalComment';
-
+import RequestFriendlyUser from './RequestFriendlyUser';
+import RequestJobWorker from './RequestJobWorker';
 
 // == Composant
-const Request = ({ getRequest }) => {
+const Request = ({ getRequest, requestList }) => {
   useEffect(() => {
-    getRequest();
+    const userToken = localStorage.getItem('jwtToken');
+    if (userToken) {
+      getRequest();
+    }
   }, []);
 
 }; // fermeture de la const request
+  console.log(requestList);
+
+  const Role = localStorage.getItem('userRole');
+  return (
+    <div className="request">
+      {Role === 'FRIENDLY_USER'
+        ? <RequestFriendlyUser requestList={requestList} />
+        : <RequestJobWorker requestList={requestList} /> }
+    </div>
+  );
+};
+
 // == Export
 export default Request;
