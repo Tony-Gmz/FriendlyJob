@@ -43,6 +43,9 @@ security:
         user_contacts:
             pattern:  ^/api/v1/users/contacts(/)?
             anonymous: lazy
+        api_doc:
+            pattern:  ^/doc$
+            anonymous: lazy
         login:
             pattern:  ^/api/login
             stateless: true

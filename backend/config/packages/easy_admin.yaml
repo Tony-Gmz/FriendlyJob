@@ -48,6 +48,8 @@ easy_admin:
                 title: "Liste des départements"
                 fields:
                      ['id', 'name', 'number', 'users' ]
+                actions:
+                    - { name: 'show', icon: 'eye', label: 'Voir'}
             search:
                 fields:
                      ['name', 'number']
@@ -94,6 +96,7 @@ easy_admin:
                 fields:
                     ['id', 'parentId', 'title', { property: 'image', type: 'image' }, 'createdAt', 'skills', 'demands']
                 actions:
+                    - { name: 'show', icon: 'eye', label: 'Voir'}
                     - { name: 'edit', icon: 'pencil', label: 'Modifier'}
                     - { name: 'new', label: 'Ajouter un service/sous-services'}
                     - { name: 'delete', icon: 'dumpster', label: 'Supprimer'}
@@ -113,7 +116,7 @@ easy_admin:
             show:
                 title: "Affichage service/sous-services (#%%entity_id%%)"
                 fields:
-                    ['parentId', 'title', 'description', { property: 'image', type: 'image' }]
+                    ['parentId', 'title', 'description', { property: 'image', type: 'image' }, skills]
                 actions:
                     - { name: 'edit', icon: 'pencil', label: 'Modifier'}
                     - { name: 'delete', icon: 'dumpster', label: 'Supprimer'}
@@ -127,7 +130,7 @@ easy_admin:
             list:
                 title: "Liste des demandes"
                 fields: 
-                    ['id', 'body', 'reservationDate','reservationHour', 'status', 'createdAt', 'rating', 'service']
+                    ['id', 'body', 'reservationDate','reservationHour', 'status', 'createdAt', 'rating', 'service', 'friendlyUser', 'jobWorker']
                 actions:
                     - { name: 'show', icon: 'eye', label: 'Voir'}
                     - { name: 'delete', icon: 'dumpster', label: 'Supprimer'}

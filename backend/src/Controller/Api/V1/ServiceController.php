@@ -5,7 +5,9 @@ namespace App\Controller\Api\V1;
 use App\Entity\Department;
 use App\Entity\Service;
 use App\Repository\ServiceRepository;
+use Nelmio\ApiDocBundle\Annotation\Model;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
+use Swagger\Annotations as OA;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -16,6 +18,15 @@ use Symfony\Component\Serializer\SerializerInterface;
 class ServiceController extends AbstractController
 {
     /**
+     * @OA\Tag(name="ServiceController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Return the list of the services",
+     *     @OA\Schema(
+     *      type="array",
+     *      @Model(type=Service::class, groups={"service_browse"})
+     *     ) 
+     * )
      * @Route("", name="browse", methods={"GET"})
      */
     public function browse(ServiceRepository $serviceRepository, SerializerInterface $serializer)
@@ -28,6 +39,12 @@ class ServiceController extends AbstractController
     }
 
     /**
+     * @OA\Tag(name="ServiceController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Return one service with his id",
+     *     @Model(type=Service::class, groups={"service_read"})
+     * )
      * @Route("/{id}", name="read_id", requirements={"id": "\d+"}, methods={"GET"})
      */
     public function readById(Service $service, SerializerInterface $serializer)
@@ -38,6 +55,12 @@ class ServiceController extends AbstractController
     }
 
     /**
+     * @OA\Tag(name="ServiceController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Return one service with his title",
+     *     @Model(type=Service::class, groups={"service_read"})
+     * )
      * @Route("/{title}", name="read_title", methods={"GET"})
      */
     public function readByTitle(Service $service, SerializerInterface $serializer)
@@ -48,6 +71,11 @@ class ServiceController extends AbstractController
     }
 
     /**
+     * @OA\Tag(name="ServiceController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Return a list of JobWorkers from one service id"
+     * )
      * @Route("/{id}/jobworker", name="jobworker", requirements={"id": "\d+"}, methods={"GET"})
      * @Entity("service", expr="repository.find(id)")
      */
@@ -80,6 +108,12 @@ class ServiceController extends AbstractController
     }
 
     /**
+     * @OA\Tag(name="ServiceController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Return sub-services from one service",
+     *     @Model(type=Service::class, groups={"service_subservices"})
+     * )
      * @Route("/{id}/subservices", name="subservices", requirements={"id": "\d+"}, methods={"GET"})
      */
     public function getSubServicesFromService(SerializerInterface $serializer, ServiceRepository $serviceRepository, $id)
@@ -92,6 +126,11 @@ class ServiceController extends AbstractController
     }
 
     /**
+     * @OA\Tag(name="ServiceController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Return all Jobworkers from one department by services",
+     * )
      * @Route("/{id}/department/{id2}/jobworker", name="department_jobworker", requirements={"id": "\d+", "id2": "\d+"}, methods={"GET"})
      * @Entity("service", expr="repository.find(id)")
      * @Entity("department", expr="repository.find(id2)")

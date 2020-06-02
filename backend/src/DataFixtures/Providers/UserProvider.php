@@ -3,9 +3,17 @@
 namespace App\DataFixtures\Providers;
 
 use Faker\Provider\Base as BaseProvider;
+use Symfony\Component\HttpClient\HttpClient;
 
 class UserProvider extends BaseProvider
 {
+    private static $client;
+
+    public function __construct()
+    {
+        static::$client = HttpClient::create();
+    }
+
     protected static $users = [
         
         'about' => [
@@ -85,6 +93,17 @@ class UserProvider extends BaseProvider
 
     public static function getRandomImage()
     {
-        return "https://i.picsum.photos/id/".mt_rand(0, 1050)."/640/480.jpg";
+        $url = "https://i.picsum.photos/id/".mt_rand(0, 1050)."/640/480.jpg";
+        
+        $response = static::$client->request('GET', $url);
+        
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode == 404) {
+            return static::getRandomImage();
+        }
+        else {
+            return $url;
+        }   
     }
 }

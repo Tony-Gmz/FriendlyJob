@@ -206,7 +206,7 @@ class FakerFixtures extends Fixture
            $adminUsers[] = $adminUser;
            $users[] = $adminUsers[$i];
 
-           echo static::$count. " => Objet FriendlyUser crée" . PHP_EOL;
+           echo static::$count. " => Objet Admin crée" . PHP_EOL;
            static::$count++;
            if (static::$count > count($adminData['email']))
            {

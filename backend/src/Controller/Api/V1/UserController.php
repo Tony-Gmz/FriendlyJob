@@ -5,6 +5,7 @@ namespace App\Controller\Api\V1;
 use App\Entity\User;
 use App\Repository\DepartmentRepository;
 use App\Repository\UserRepository;
+use Swagger\Annotations as OA;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,6 +24,11 @@ class UserController extends AbstractController
     }
 
     /**
+     * @OA\Tag(name="UserController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Return data from one user",
+     * )
      * @Route("/{id}", name="read", methods={"GET"}, requirements={"id": "\d+"})
      */
     public function read(User $user)
@@ -38,6 +44,28 @@ class UserController extends AbstractController
     }
 
     /**
+     * @OA\Tag(name="UserController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Return the created users",
+     * )
+     * @OA\Parameter(
+     *     name="user",
+     *     in="body",
+     *     description="Create a user",
+     *     @OA\Schema(
+     *      type="object",
+     *      @OA\Property(property="email", type="string"),
+     *      @OA\Property(property="roles", type="array",
+     *          @OA\Items(type="string")
+     *      ),
+     *      @OA\Property(property="password", type="string"),
+     *      @OA\Property(property="firstname", type="string"),
+     *      @OA\Property(property="lastname", type="string"),
+     *      @OA\Property(property="image", type="string"),
+     *      @OA\Property(property="department", type="integer"),
+     *     )
+     * )
      * @Route("", name="add", methods={"POST"})
      */
     public function add(Request $request, DepartmentRepository $departmentRepository)
@@ -69,6 +97,28 @@ class UserController extends AbstractController
     }
 
     /**
+     * @OA\Tag(name="UserController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Return the modified users",
+     * )
+     * @OA\Parameter(
+     *     name="demand",
+     *     in="body",
+     *     description="Modify a user",
+     *     @OA\Schema(
+     *      type="object",
+     *      @OA\Property(property="email", type="string"),
+     *      @OA\Property(property="roles", type="array",
+     *          @OA\Items(type="string")
+     *      ),
+     *      @OA\Property(property="password", type="string"),
+     *      @OA\Property(property="firstname", type="string"),
+     *      @OA\Property(property="lastname", type="string"),
+     *      @OA\Property(property="image", type="string"),
+     *      @OA\Property(property="department", type="integer"),
+     *     )
+     * )
      * @Route("/{id}", name="edit", methods={"PUT"}, requirements={"id": "\d+"})
      */
     public function edit(Request $request, User $user, DepartmentRepository $departmentRepository)
@@ -113,6 +163,11 @@ class UserController extends AbstractController
     }
 
     /**
+     * @OA\Tag(name="UserController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Delete a user",
+     * )
      * @Route("/{id}", name="delete", methods={"DELETE"}, requirements={"id": "\d+"})
      */
     public function delete(User $user)
@@ -128,6 +183,11 @@ class UserController extends AbstractController
     }
 
     /**
+     * @OA\Tag(name="UserController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Return one random jobworker",
+     * )
      * @Route("/jobworker/random", name="jobworker_random", methods={"GET"})
      */
     public function getRandomJobWorker(UserRepository $userRepository)
@@ -151,6 +211,11 @@ class UserController extends AbstractController
     }
     
     /**
+     * @OA\Tag(name="UserController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Return details from one jobworker",
+     * )
      * @Route("/jobworker/{id}", name="jobworker", methods={"GET"}, requirements={"id": "\d+"})
      */
     public function getJobWorkerDetails(UserRepository $userRepository, $id)
@@ -166,6 +231,11 @@ class UserController extends AbstractController
     }
 
     /**
+     * @OA\Tag(name="UserController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Return details of all admins",
+     * )
      * @Route("/contacts", name="contacts", methods={"GET"})
      */
     public function getAllContact(UserRepository $userRepository)
@@ -181,6 +251,11 @@ class UserController extends AbstractController
     }
 
     /**
+     * @OA\Tag(name="UserController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Return rating from one JobWorker",
+     * )
      * @Route("/jobworker/{id}/rating", name="jobworker_rating", methods={"GET"})
      */
     public function getRatingOfJobworker(UserRepository $userRepository, int $id)

@@ -5,6 +5,8 @@ namespace App\Controller\Api\V1;
 use App\Entity\Skill;
 use App\Repository\ServiceRepository;
 use App\Repository\UserRepository;
+use Nelmio\ApiDocBundle\Annotation\Model;
+use Swagger\Annotations as OA;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,6 +17,23 @@ use Symfony\Component\Routing\Annotation\Route;
 class SkillController extends AbstractController
 {
     /**
+     * @OA\Tag(name="SkillController")
+     * @OA\Response(
+     *     response=201,
+     *     description="Return the created skills",
+     * )
+     * @OA\Parameter(
+     *     name="skill",
+     *     in="body",
+     *     description="Modify a skill for one user",
+     *     @OA\Schema(
+     *      type="object",
+     *      @OA\Property(property="description", type="string"),
+     *      @OA\Property(property="price", type="integer"),
+     *      @OA\Property(property="user", type="integer"),
+     *      @OA\Property(property="service", type="integer"),
+     *     )
+     * )
      * @Route("", name="add", methods={"POST"})
      */
     public function add(Request $request, UserRepository $userRepository, ServiceRepository $serviceRepository)
@@ -43,6 +62,22 @@ class SkillController extends AbstractController
     }
 
     /**
+     * @OA\Tag(name="SkillController")
+     * @OA\Response(
+     *     response=201,
+     *     description="Return the modified skills",
+     *     @Model(type=Skill::class, groups={"skill_edit"})
+     * )
+     * @OA\Parameter(
+     *     name="skill",
+     *     in="body",
+     *     description="Modify a skill for one user",
+     *     @OA\Schema(
+     *      type="object",
+     *      @OA\Property(property="description", type="string"),
+     *      @OA\Property(property="price", type="integer"),
+     *     )
+     * )
      * @Route("/{id}", name="edit", methods={"PUT"})
      */
     public function edit(Request $request, Skill $skill)
@@ -66,6 +101,11 @@ class SkillController extends AbstractController
     }
 
     /**
+     * @OA\Tag(name="SkillController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Delete a skill",
+     * )
      * @Route("/{id}", name="delete", methods={"DELETE"}, requirements={"id": "\d+"})
      */
     public function delete(Skill $skill)

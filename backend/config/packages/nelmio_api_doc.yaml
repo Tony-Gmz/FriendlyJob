@@ -1,0 +1,23 @@
+nelmio_api_doc:
+    documentation:
+        # servers:
+        #   - url: http://api.friendlyjob.fr/doc
+        #     description: API avec HTTP
+        #   - url: https://api.friendlyjob.fr/doc
+        #     description: API avec HTTPS
+        info:
+            title: FriendlyJob
+            description: Documentation API
+            version: 1.0.0
+        securityDefinitions:
+            jwt_token:
+                type: apiKey
+                description: Votre JWT token
+                name:  Authorization
+                in: Header
+        security:
+            - jwt_token: []
+    areas:
+        default:
+            path_patterns: [ ^/api ]
+

@@ -1,0 +1,3 @@
+'Invalid credentials.': 'Votre mot de passe est erroné'
+'Email could not be found.': 'Votre e-mail est incorrect'
+'Invalid CSRF token.': 'Le CSRF Token est invalide'

@@ -6,6 +6,8 @@ use App\Entity\Demand;
 use App\Repository\DemandRepository;
 use App\Repository\ServiceRepository;
 use App\Repository\UserRepository;
+use Nelmio\ApiDocBundle\Annotation\Model;
+use Swagger\Annotations as OA;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,6 +18,27 @@ use Symfony\Component\Routing\Annotation\Route;
 class DemandController extends AbstractController
 {
     /**
+     * @OA\Tag(name="DemandController")
+     * @OA\Response(
+     *     response=201,
+     *     description="Return the added demand",
+     *     @Model(type=Demand::class, groups={"demand_add"}),
+     * )
+     * @OA\Parameter(
+     *     name="demand",
+     *     in="body",
+     *     description="Create a demand between a FriendlyUser and a JobWorker",
+     *     @OA\Schema(
+     *      type="object",
+     *      @OA\Property(property="body", type="string"),
+     *      @OA\Property(property="reservationDate", type="string"),
+     *      @OA\Property(property="reservationHour", type="string"),
+     *      @OA\Property(property="status", type="string"),
+     *      @OA\Property(property="service", type="integer"),
+     *      @OA\Property(property="friendlyUser", type="integer"),
+     *      @OA\Property(property="jobWorker", type="integer"),
+     *     )
+     * )
      * @Route("", name="add", methods={"POST"})
      */
     public function add(Request $request, ServiceRepository $serviceRepository, UserRepository $userRepository)
@@ -46,6 +69,24 @@ class DemandController extends AbstractController
     }
 
     /**
+     * @OA\Tag(name="DemandController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Return the modified demand",
+     *     @Model(type=Demand::class, groups={"demand_edit"}),
+     * )
+     * @OA\Parameter(
+     *     name="demand",
+     *     in="body",
+     *     description="Modify a demand",
+     *     @OA\Schema(
+     *      type="object",
+     *      @OA\Property(property="body", type="string"),
+     *      @OA\Property(property="reservationDate", type="string"),
+     *      @OA\Property(property="reservationHour", type="string"),
+     *      @OA\Property(property="status", type="string"),
+     *     )
+     * )
      * @Route("/{id}", name="edit", methods={"PUT"}, requirements={"id": "\d+"})
      */
     public function edit(Request $request, Demand $demand)
@@ -71,6 +112,12 @@ class DemandController extends AbstractController
     }
 
     /**
+     * @OA\Tag(name="DemandController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Return all the demands from one user",
+     *     @Model(type=Demand::class, groups={"demand_one_user"})
+     * )
      * @Route("/users/{id}", name="users", methods={"GET"}, requirements={"id": "\d+"})
      */
     public function getDemandsFromOneUser(DemandRepository $demandRepository, int $id)
@@ -87,6 +134,20 @@ class DemandController extends AbstractController
     }
 
     /**
+     * @OA\Tag(name="DemandController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Delete a demand",
+     * )
+     * @OA\Parameter(
+     *     name="demand",
+     *     in="body",
+     *     description="Delete a demand",
+     *     @OA\Schema(
+     *      type="object",
+     *      @OA\Property(property="id", type="integer"),
+     *     )
+     * )
      * @Route("/", name="delete", methods={"DELETE"})
      */
     public function delete(DemandRepository $demandRepository, Request $request)

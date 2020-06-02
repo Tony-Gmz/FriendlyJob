@@ -79,7 +79,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->addSelect('dep')
             ->leftjoin('u.department', 'dep')
             ->Where('u.roles = :roles')
-            ->setParameter('roles', '["ADMIN"]')
+            ->setParameter('roles', '["ROLE_ADMIN"]')
         ;
         return $qb->getQuery()->getResult();
     }
