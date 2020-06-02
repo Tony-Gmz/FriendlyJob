@@ -15,10 +15,9 @@ import { fr } from 'date-fns/locale';
 
 // == Import
 import './modalReservation.scss';
-import Calendar from './Calendar';
 
 // == Composant
-const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerDetail }) => {
+const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerDetail, changeFieldHourRequest, changeFieldDateRequest, requestDate, requestHour }) => {
   const { skills } = currentJobWorkerDetail;
   // console.log(skills);
   const selectedDate = Date();
@@ -29,37 +28,37 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
 
 
   const handleChange = (evt) => {
-    console.log(evt.target.value);
-    console.log(evt.target.name);
+    console.log(`coucou j'envoi ${evt.target.value} + ${evt.target.name}`);
     changeFieldRequest(evt.target.value, evt.target.name);
   };
   console.log(currentJobWorkerDetail);
   const handleSubmit = (evt) => {
     console.log('coucou je suis le submit de la request');
+    evt.preventDefault();
     submitRequest();
   };
   const handleDate = (date) => {
-    // console.log(date);
-    // console.log(dateParse);
-    // console.log(date.getDate());
+    // Methode to listen the change on the calendar et send the result in the reducer
     let month = (date.getMonth() + 1);
     month = month.toString();
     month = ('0' + (month)).slice(-2);
-    console.log(month);
-    console.log(date.getFullYear());
+    // console.log(month);
+    // console.log(date.getFullYear());
     const years = date.getFullYear().toString();
     const days = date.getDate().toString();
     const newDate = `${years}-${month}-${days}`;
-    console.log(newDate);
+    // console.log(newDate);
+    changeFieldDateRequest(newDate);
   };
   const handleHour = (date) => {
-    console.log(date);
-    console.log(date.getHours());
-    console.log(date.getMinutes());
+    // console.log(date);
+    // console.log(date.getHours());
+    // console.log(date.getMinutes());
     const hour = date.getHours().toString();
-    const minutes = date.getMinutes().toString(); 
+    const minutes = date.getMinutes().toString();
     const newHour = `${hour}h${minutes}`;
-    console.log(newHour);
+    // console.log(newHour);
+    changeFieldHourRequest(newHour);
   };
   return (
     <div className="ModalReservation">
@@ -133,6 +132,10 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
 ModalReservation.propTypes = {
   /** func with param {newValue} {inputName} */
   changeFieldRequest: PropTypes.func.isRequired,
+  /** func with param {newHour} */
+  changeFieldHourRequest: PropTypes.func.isRequired,
+  /** func with param {newDate} */
+  changeFieldDateRequest: PropTypes.func.isRequired,
   /** func with no params */
   submitRequest: PropTypes.func.isRequired,
   currentJobWorkerDetail: PropTypes.arrayOf(

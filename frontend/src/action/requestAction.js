@@ -25,7 +25,7 @@ export const submitRequest = () => ({
   type: SUBMIT_REQUEST,
 });
 
-export const saveNewRequest = (addRequest) => ({
+export const saveNewRequestsaveNewRequest = (addRequest) => ({
   type: SAVE_NEW_REQUEST,
   addRequest,
 });

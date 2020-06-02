@@ -52,10 +52,10 @@ const userMiddleware = (store) => (next) => (action) => {
         // je voudrais enregistrer response.data dans le state => nouvelle action
         // console.log(response);
           // console.log(response);
-          console.log(response);
+          //console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
           // console.log(response);
-          console.log(response);
+          //console.log(response);
           store.dispatch(saveUser(response.data.user));
           window.localStorage.setItem('jwtToken', response.data.token);
           window.localStorage.setItem('userId', response.data.user.id);
