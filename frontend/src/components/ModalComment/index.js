@@ -1,91 +1,43 @@
-import React, { Component } from 'react';
-import { Button, Modal } from 'semantic-ui-react';
+import React from 'react';
+import {
+  Button,
+  Header,
+  Image,
+  Modal,
+  TextArea,
+  Form,
+  Icon,
+  ModalContent,
+} from 'semantic-ui-react';
+import Rater from 'react-rater';
 
-class ModalExampleCloseConfig extends Component {
-  state = { open: false };
+import 'react-rater/lib/react-rater.css';
+import './modalComment.scss';
 
-  closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
-    this.setState({ closeOnEscape, closeOnDimmerClick, open: true });
-  };
-
-  close = () => this.setState({ open: false });
-
-  render() {
-    const { open, closeOnEscape, closeOnDimmerClick } = this.state;
-
-    return (
-      <div>
-        <Button onClick={this.closeConfigShow(false, true)}>
-          Laisser un commentaire
-        </Button>
-        <Modal
-          open={open}
-          closeOnEscape={closeOnEscape}
-          closeOnDimmerClick={closeOnDimmerClick}
-          onClose={this.close}
-        >
-          <Modal.Header>Service realiser par *Karim* pour *aide a la personne*</Modal.Header>
-          <Modal.Content>
-            <label>Commentaire : </label>
-            <input
-              type="textarea"
-              placeholder="Dites ce que vous avez pensez du service de notre JobWorker"
-            />
-          </Modal.Content>
-          <Modal.Content>
-            <label>Evaluation : 
-            <div className="ui star rating" role="radiogroup" tabindex="-1">
-              <i
-                tabindex="0"
-                aria-checked="false"
-                aria-posinset="1"
-                aria-setsize="4"
-                class="active icon"
-                role="radio"
-              />
-              <i
-                tabindex="0"
-                aria-checked="false"
-                aria-posinset="2"
-                aria-setsize="4"
-                class="active icon"
-                role="radio"
-              />
-              <i
-                tabindex="0"
-                aria-checked="true"
-                aria-posinset="3"
-                aria-setsize="4"
-                class="active icon"
-                role="radio"
-              />
-              <i
-                tabindex="0"
-                aria-checked="false"
-                aria-posinset="4"
-                aria-setsize="4"
-                class="active icon"
-                role="radio"
-              />
-            </div>
-            </label>
-          </Modal.Content>
-          <Modal.Actions>
-            <Button onClick={this.close} negative>
+const ModalExampleTopAligned = ({ request }) => (
+  <Modal className="modal_comment" trigger={<Button>Laisser un commentaire</Button>} centered={false}>
+    <Modal.Header>Dites nous ce que vous pensez des compétences de {request.jobWorker.firstname} en {request.service.title}</Modal.Header>
+    <Modal.Content image>
+      <Image wrapped size="medium" className="comment_image" src={request.jobWorker.image} />
+      <Modal.Description>
+        <Header>Commentaire & Notation</Header>
+        <Form>
+          <TextArea placeholder="Laissez votre commentaire ici et n'oubliez pas la note. Merci" style={{ border: 'none', width: '100%' }} />
+          <Rater rating={4} total={5} />
+          <ModalContent>
+            <Button icon labelPosition='left'>
+              <Icon name='delete' />
               Annuler
             </Button>
-            <Button
-              onClick={this.close}
-              positive
-              labelPosition="right"
-              icon="checkmark"
-              content="Valider"
-            />
-          </Modal.Actions>
-        </Modal>
-      </div>
-    );
-  }
-}
+            <Button icon labelPosition='right'>
+              Envoyer
+              <Icon name='paper plane outline' />
+            </Button>
+          </ModalContent>
+        </Form>
+      </Modal.Description>
+    </Modal.Content>
+  </Modal>
+);
 
-export default ModalExampleCloseConfig;
+export default ModalExampleTopAligned;

@@ -129,7 +129,6 @@ const userMiddleware = (store) => (next) => (action) => {
       // console.log(serviceId);
 
       axios.get(`http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/services/${serviceId}/jobworker`)
-<<<<<<< HEAD
       .then((response) => {
         // console.log(response);
         // je voudrais enregistrer response.data dans le state => nouvelle action
@@ -144,21 +143,6 @@ const userMiddleware = (store) => (next) => (action) => {
       });
     next(action);
     break;
-=======
-        .then((response) => {
-
-          console.log(response);
-          store.dispatch(saveJobWorker(response.data[0].skills));
-        })
-        .catch((error) => {
-          console.warn(error);
-          console.log('jai fait une erreur');
-        })
-        .finally(() => {
-        });
-      next(action);
-      break;
->>>>>>> 24673691670ce959df9b10751361646e16791fb3
     }
     case GET_JOBWORKER_DETAIL: {
 

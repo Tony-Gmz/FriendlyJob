@@ -27,7 +27,7 @@ const RequestFinishFU = ({ request }) => (
       <div className="finish_texte">
         Merci d'avoir fait confiance a notre JobWorker, si vous le desirez vous pouvez laisser un commentaire sur sa prestation.
       </div>
-      <ModalComment />
+      <ModalComment request={request} />
     </Card.Content>
   </Card>
 );

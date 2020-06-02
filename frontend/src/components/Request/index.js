@@ -15,9 +15,6 @@ const Request = ({ getRequest, requestList }) => {
     }
   }, []);
 
-}; // fermeture de la const request
-  console.log(requestList);
-
   const Role = localStorage.getItem('userRole');
   return (
     <div className="request">
