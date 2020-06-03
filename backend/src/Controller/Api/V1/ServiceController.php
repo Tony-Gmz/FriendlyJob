@@ -76,6 +76,12 @@ class ServiceController extends AbstractController
      *     response=200,
      *     description="Return a list of JobWorkers from one service id"
      * )
+     * @OA\Parameter(
+     *     name="limit",
+     *     in="query",
+     *     type="integer",
+     *     description="Limit number of jobworker",
+     * )
      * @Route("/{id}/jobworker", name="jobworker", requirements={"id": "\d+"}, methods={"GET"})
      * @Entity("service", expr="repository.find(id)")
      */
@@ -105,6 +111,62 @@ class ServiceController extends AbstractController
         $arrayService = $serializer->normalize($service, null, ['groups' => 'service_jobworker']);
 
         return $this->json($arrayService, 200);
+    }
+
+    /**
+     * @OA\Tag(name="ServiceController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Return a list of JobWorkers from one service id ordered by price"
+     * )
+     * @OA\Parameter(
+     *     name="limit",
+     *     in="query",
+     *     type="string",
+     *     description="Order By DESC price",
+     * )
+     * @Route("/{id}/jobworker/price", name="jobworker_price", requirements={"id": "\d+"}, methods={"GET"})
+     */
+    public function getJobWorkersByPrice(ServiceRepository $serviceRepository, Service $service, $id)
+    {       
+            $orderBy = 'ASC';
+            if(isset($_GET['desc'])) {
+                $orderBy = 'DESC';
+            }
+
+            $service = $serviceRepository->findJobworkerByService($id, null, 1, null, $orderBy);
+            //dd($service);
+
+            return $this->json(
+
+                $service, 
+                200, 
+                [], 
+                ['groups' => 'service_jobworker']
+            );
+    }
+
+    /**
+     * @OA\Tag(name="ServiceController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Return a list of JobWorkers from one service id ordered by rating"
+     * )
+     * @Route("/{id}/jobworker/rating", name="jobworker_rating", requirements={"id": "\d+"}, methods={"GET"})
+     */
+    public function getJobWorkersByRating(ServiceRepository $serviceRepository, Service $service, $id)
+    {
+
+            $service = $serviceRepository->findJobworkerByService($id, null, null, $rating = 1);
+            //dd($service);
+
+            return $this->json(
+
+                $service, 
+                200, 
+                [], 
+                ['groups' => 'service_jobworker']
+            );
     }
 
     /**
@@ -145,6 +207,72 @@ class ServiceController extends AbstractController
         return $this->json(
 
             $jobWorkerService, 
+            200, 
+            [], 
+            ['groups' => 'service_jobworker']
+        );
+    }
+
+    /**
+     * @OA\Tag(name="ServiceController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Return a list of JobWorkers from one department by services id ordered by price"
+     * )
+     * @OA\Parameter(
+     *     name="limit",
+     *     in="query",
+     *     type="string",
+     *     description="Order By DESC price",
+     * )
+     * @Route("/{id}/department/{id2}/jobworker/price", name="department_jobworker_price", requirements={"id": "\d+", "id2": "\d+"}, methods={"GET"})
+     * @Entity("service", expr="repository.find(id)")
+     * @Entity("department", expr="repository.find(id2)")
+     */
+    public function getJobWorkersFromDepartmentByPrice(ServiceRepository $serviceRepository, Service $service, Department $department)
+    {
+        $serviceId = $service->getId();
+        $departmentId = $department->getId();
+
+        $orderBy = 'ASC';
+        if (isset($_GET['desc'])) {
+            $orderBy = 'DESC';
+        }
+
+
+        $jobWorkerPrice = $serviceRepository->findJobworkerByService($serviceId, $departmentId, 1, null, $orderBy);
+        //dd($jobWorkerPrice);
+
+        return $this->json(
+
+            $jobWorkerPrice, 
+            200, 
+            [], 
+            ['groups' => 'service_jobworker']
+        );
+    }
+
+    /**
+     * @OA\Tag(name="ServiceController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Return a list of JobWorkers from one department by services id ordered by price"
+     * )
+     * @Route("/{id}/department/{id2}/jobworker/rating", name="department_jobworker_rating", requirements={"id": "\d+", "id2": "\d+"}, methods={"GET"})
+     * @Entity("service", expr="repository.find(id)")
+     * @Entity("department", expr="repository.find(id2)")
+     */
+    public function getJobWorkersFromDepartmentByRating(ServiceRepository $serviceRepository, Service $service, Department $department)
+    {
+        $serviceId = $service->getId();
+        $departmentId = $department->getId();
+
+        $jobWorkerRating = $serviceRepository->findJobworkerByService($serviceId, $departmentId, null, 1);
+        //dd($service);
+
+        return $this->json(
+
+            $jobWorkerRating, 
             200, 
             [], 
             ['groups' => 'service_jobworker']

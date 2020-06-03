@@ -16,7 +16,7 @@ security:
             security: false
         #! Route jobworker par département pour un service
         services_department:
-            pattern:   ^/api/v1/services/(\d+)/department/(\d+)/jobworker(/)?$
+            pattern:   ^/api/v1/services/(\d+)/department/(\d+)/jobworker(/)?(rating|price)?(/)?$
             stateless: true
             guard:
                 authenticators:
