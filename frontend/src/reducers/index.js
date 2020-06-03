@@ -5,6 +5,7 @@ import userReducer from './user';
 import servicesReducer from './services';
 import inscriptionReducer from './inscription';
 import requestReducer from './request';
+import departmentsReducer from './departments';
 
 
 const rootReducer = combineReducers({
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   service: servicesReducer,
   user: userReducer,
   inscription: inscriptionReducer,
+  departments: departmentsReducer,
 });
 
 

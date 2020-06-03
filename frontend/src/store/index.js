@@ -6,6 +6,7 @@ import servicesMiddleware from 'src/middlewares/servicesMiddleware';
 import userMiddleware from 'src/middlewares/userMiddleware';
 import inscriptionMiddlware from 'src/middlewares/inscriptionMiddleware';
 import requestMiddlware from 'src/middlewares/requestMiddleware';
+import departmentsMiddlewares from 'src/middlewares/departmentsMiddleware';
 // import RootReducer
 import reducer from 'src/reducers';
 
@@ -16,6 +17,7 @@ const enhancers = composeWithDevTools(
     userMiddleware,
     inscriptionMiddlware,
     requestMiddlware,
+    departmentsMiddlewares,
     // add middleware
   ),
 );

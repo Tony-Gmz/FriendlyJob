@@ -27,7 +27,6 @@ const Jober = ({ randomJobWorker }) => {
           <Card.Content extra>
             <Rating defaultRating={randomJobWorker.jobWorkerDemands[0].rating.star} maxRating={5} disabled />
             <Link to={`/jobworker/${slug}`}>
-              <NavButtonStyled>Contact</NavButtonStyled>
             </Link>
           </Card.Content>
         </Card>

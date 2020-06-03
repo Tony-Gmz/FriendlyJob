@@ -44,7 +44,7 @@
 }
 
 .MuiInputBase-root{
-  line-height: 0.1em !important;
+  line-height: 2 !important;
 }
 
 .profil_group_btn{
@@ -52,3 +52,15 @@
   justify-content: space-around;
 }
 
+.MuiChip-label {
+
+  line-height: 2;
+};
+
+.MuiFormControl-root{
+  width: 593px;
+}
+
+.MuiInputBase-input {
+  line-height: 1!important;
+}

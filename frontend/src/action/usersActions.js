@@ -18,6 +18,13 @@ export const SAVE_JOBWORKER_DETAIL = 'SAVE_JOBWORKER_DETAIL';
 export const GET_JOBWORKER_ID = 'GET_JOBWORKER_ID';
 export const GET_JOBWORKER_RATING = 'GET_JOBWORKER_RATING';
 export const SAVE_JOBWORKER_RATING = 'SAVE_JOBWORKER_RATING';
+export const CAN_EDIT_PROFIL = 'CAN_EDIT_PROFIL';
+export const CANCEL_EDIT = 'CANCEL_EDIT';
+export const EDIT_FIELD_VALUE = 'EDIT_FIELD_VALUE';
+export const SUBMIT_EDIT = 'SUBMIT_EDIT';
+export const SAVE_EDIT = 'SAVE_EDIT';
+export const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
+export const SUBMIT_DELETE = 'SUBMIT_DELETE';
 
 export const changeField = (newValue, inputName) => ({
   type: CHANGE_FIELD,
@@ -100,4 +107,35 @@ export const getJobWorkerRating = () => ({
 export const saveJobWorkerRating = (rating) => ({
   type: SAVE_JOBWORKER_RATING,
   rating,
+});
+
+export const canEditProfil = () => ({
+  type: CAN_EDIT_PROFIL,
+});
+
+export const cancelEdit = () => ({
+  type: CANCEL_EDIT,
+});
+
+export const editFieldValue = (value, name) => ({
+  type: EDIT_FIELD_VALUE,
+  value,
+  name,
+});
+
+export const submitEdit = () => ({
+  type: SUBMIT_EDIT,
+});
+
+export const saveEdit = (userData) => ({
+  type: SAVE_EDIT,
+  userData,
+});
+
+export const submitDelete = () => ({
+  type: SUBMIT_DELETE,
+});
+
+export const deleteAccount = () => ({
+  type: DELETE_ACCOUNT,
 });

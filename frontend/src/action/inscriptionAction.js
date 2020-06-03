@@ -2,6 +2,7 @@
 export const FIED_VALUE = 'FIELD_VALUE';
 export const SUBMIT_SUBSCRIBE = 'SUBMIT_SUBSCRIBE';
 export const IS_SUBSCRIBE = 'IS_SUBSCRIBE';
+export const SAVE_USER_DATA = 'SA'
 
 
 export const fieldValue = (newValue, inputName) => ({

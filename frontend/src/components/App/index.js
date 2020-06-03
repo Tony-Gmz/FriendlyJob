@@ -13,10 +13,11 @@ import Page from 'src/containers/Page';
 
 
 // == Composant
-const App = ({ getServices, getRandomJobWorker, loading, getUserData, getRequest }) => {
+const App = ({ getServices, getRandomJobWorker, loading, getUserData, getAllDepartments, getRequest }) => {
   useEffect(() => {
     getServices();
     getRandomJobWorker();
+    getAllDepartments();
     const userToken = localStorage.getItem('jwtToken');
     if (userToken) {
       getUserData();
@@ -46,6 +47,7 @@ App.propTypes = {
   getRandomJobWorker: PropTypes.func.isRequired,
   getServices: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
+  getAllDepartments: PropTypes.func.isRequired,
 };
 
 

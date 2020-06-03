@@ -15,6 +15,10 @@ import {
   GET_JOBWORKER_DETAIL,
   saveJobWorkerRating,
   GET_JOBWORKER_RATING,
+  SUBMIT_EDIT,
+  saveEdit,
+  SUBMIT_DELETE,
+  deleteAccount,
 } from '../action/usersActions';
 
 
@@ -52,10 +56,10 @@ const userMiddleware = (store) => (next) => (action) => {
         // je voudrais enregistrer response.data dans le state => nouvelle action
         // console.log(response);
           // console.log(response);
-          //console.log(response);
+          console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
           // console.log(response);
-          //console.log(response);
+          // console.log(response);
           store.dispatch(saveUser(response.data.user));
           window.localStorage.setItem('jwtToken', response.data.token);
           window.localStorage.setItem('userId', response.data.user.id);
@@ -80,8 +84,8 @@ const userMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
-          // console.log(response);
-          store.dispatch(saveUser(response.data.user));
+          console.log(response);
+          store.dispatch(saveUser(response.data));
         })
         .catch((error) => {
           console.warn(error);
@@ -178,7 +182,68 @@ const userMiddleware = (store) => (next) => (action) => {
       next(action);
       break;
     }
-
+    case SUBMIT_EDIT: {
+      const userId = localStorage.getItem('userId');
+      const userToken = localStorage.getItem('jwtToken');
+      let { editEmail, editPassword, editDepartments, password, editAbout, userData } = store.getState().user;
+      const { departmentId } = store.getState().user.userData.department.id;
+      console.log(departmentId);
+      console.log(editEmail);
+      console.log(editDepartments);
+      console.log(editPassword);
+      console.log(editAbout);
+      axios({
+        method: 'PUT',
+        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/${userId}`,
+        data: {
+          email: editEmail,
+          password: editPassword,
+          departments: editDepartments,
+          about: editAbout,
+        },
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+        .then((response) => {
+          // console.log(response);
+          // je voudrais enregistrer response.data dans le state => nouvelle action
+          console.log(response);
+          store.dispatch(saveEdit(response.data));
+        })
+        .catch((error) => {
+          console.warn(error);
+          console.log('jai fait une erreur');
+        });
+      next(action);
+      break;
+    }
+    case SUBMIT_DELETE: {
+      const userId = localStorage.getItem('userId');
+      const userToken = localStorage.getItem('jwtToken');
+      axios({
+        method: 'DELETE',
+        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/${userId}`,
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+        .then((response) => {
+          // console.log(response);
+          // je voudrais enregistrer response.data dans le state => nouvelle action
+          console.log(response);
+          store.dispatch(deleteAccount());
+          localStorage.getItem('jwtToken');
+          localStorage.removeItem('userId');
+          localStorage.removeItem('userRole');
+        })
+        .catch((error) => {
+          console.warn(error);
+          console.log('jai fait une erreur');
+        });
+      next(action);
+      break;
+    }
 
     default:
       // on passe l'action au suivant (middleware suivant ou reducer)

@@ -7,6 +7,11 @@ import {
   GET_JOBWORKER_ID,
   SAVE_JOBWORKER_DETAIL,
   SAVE_JOBWORKER_RATING,
+  CAN_EDIT_PROFIL,
+  CANCEL_EDIT,
+  EDIT_FIELD_VALUE,
+  SAVE_EDIT,
+  DELETE_ACCOUNT,
 } from "../action/usersActions";
 
 const initialState = {
@@ -21,15 +26,36 @@ const initialState = {
   userData: null,
   /** Token  */
   token: '',
+  /** currentJobwokerId */
   currentJobWorkerId: null,
+  /** RandomJobWoker Data for homePage */
   randomJobWorker: null,
+  /** Loading HomePage */
   loading: true,
+  /** Loading service detail */
   loadingOnServiceDetail: true,
+  /** Loading for jobWorker List */
   loadingOnJobWorkerList: true,
+  /** Loading for jobWorker Detail */
   loadingOnJobWorkerDetail: true,
+  /** Jobworkers List */
   jobWorkers: [],
+  /** Current Jobworker Detail */
   currentJobWorkerDetail: [],
+  /** Current JobWorker Rating */
   currentJobWorkerRating: [],
+  /** bool for edit */
+  isEditable: false,
+  /** data for edit */
+  editEmail: null,
+  editPassword: null,
+  editDepartment: null,
+  editAbout: null,
+  editConfirmationPassword: null,
+  /** bool for edit */
+  edit: false,
+  /** bool for delete */
+  isDelete: false,
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -84,8 +110,35 @@ const userReducer = (state = initialState, action = {}) => {
         currentJobWorkerRating: action.rating,
         loadingOnJobWorkerDetail: false,
       };
+    case CAN_EDIT_PROFIL:
+      return {
+        ...state,
+        isEditable: true,
+      };
 
+    case CANCEL_EDIT:
+      return {
+        ...state,
+        isEditable: false,
+      };
+    case EDIT_FIELD_VALUE:
+      return {
+        ...state,
+        [action.name]: action.value,
+      };
+    case SAVE_EDIT:
+      return {
+        ...state,
+        userData: action.userData,
+        edit: true,
 
+      };
+    case DELETE_ACCOUNT:
+      return {
+        ...state,
+        isDelete: true,
+        isLogged: false,
+      };
     default: return state;
   }
 };

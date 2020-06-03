@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { getRandomJobWorker, getUserData } from 'src/action/usersActions';
 import { getServices } from 'src/action/servicesActions';
+import { getAllDepartments } from 'src/action/departmentsActions';
 import App from 'src/components/App';
 
 const mapStateToProps = (state) => ({
@@ -19,6 +20,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getUserData: () => {
     dispatch(getUserData());
+  },
+  getAllDepartments: () => {
+    dispatch(getAllDepartments());
   },
 });
 

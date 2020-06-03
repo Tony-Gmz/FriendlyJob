@@ -34,7 +34,6 @@ const requestReducer = (state = initialState, action = {}) => {
     case SAVE_NEW_REQUEST:
       return {
         ...state,
-        requestList: [...action.newRequest],
       };
     default: return state;
   }
