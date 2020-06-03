@@ -12,7 +12,8 @@ import {
   EDIT_FIELD_VALUE,
   SAVE_EDIT,
   DELETE_ACCOUNT,
-} from "../action/usersActions";
+  LOG_OUT,
+} from '../action/usersActions';
 
 const initialState = {
   // ici l'état initial
@@ -136,6 +137,12 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isDelete: true,
+        isLogged: false,
+      };
+
+    case LOG_OUT:
+      return {
+        ...state,
         isLogged: false,
       };
     default: return state;

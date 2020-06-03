@@ -6,9 +6,17 @@ import NavButtonStyled from 'src/components/Button/NavButtonStyled';
 import ModalInscription from 'src/containers/ModalInscription';
 import NavStyled from './NavStyled';
 
+
 // Styled navbar component reusable
 
-const NavBar = ({ isLogged }) => {
+const NavBar = ({ isLogged, logOut }) => {
+  const handleClick = () => {
+    logOut();
+    localStorage.removeItem('jwtToken');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userRole');
+  };
+
   if (isLogged === false) {
     return (
       <NavStyled>
@@ -46,7 +54,7 @@ const NavBar = ({ isLogged }) => {
             <NavLink to="/demandes" activeClassName="selected-link"><li>Mes demandes</li></NavLink>
           </ul>
           <div className="nav_button">
-            <NavButtonStyled>Deconnexion</NavButtonStyled>
+            <NavButtonStyled onClick={handleClick}>Deconnexion</NavButtonStyled>
           </div>
         </div>
       </NavStyled>
