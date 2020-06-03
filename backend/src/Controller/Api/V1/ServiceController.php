@@ -120,18 +120,18 @@ class ServiceController extends AbstractController
      *     description="Return a list of JobWorkers from one service id ordered by price"
      * )
      * @OA\Parameter(
-     *     name="limit",
+     *     name="orderby",
      *     in="query",
      *     type="string",
-     *     description="Order By DESC price",
+     *     description="Order By DESC price example : ( /endpoint?orderby=DESC or ASC )",
      * )
      * @Route("/{id}/jobworker/price", name="jobworker_price", requirements={"id": "\d+"}, methods={"GET"})
      */
     public function getJobWorkersByPrice(ServiceRepository $serviceRepository, Service $service, $id)
     {       
             $orderBy = 'ASC';
-            if(isset($_GET['desc'])) {
-                $orderBy = 'DESC';
+            if(isset($_GET['orderby'])) {
+                $orderBy = strtoupper($_GET['orderby']);
             }
 
             $service = $serviceRepository->findJobworkerByService($id, null, 1, null, $orderBy);
@@ -220,10 +220,10 @@ class ServiceController extends AbstractController
      *     description="Return a list of JobWorkers from one department by services id ordered by price"
      * )
      * @OA\Parameter(
-     *     name="limit",
+     *     name="orderby",
      *     in="query",
      *     type="string",
-     *     description="Order By DESC price",
+     *     description="Order By DESC price example : ( /endpoint?orderby=DESC or ASC )",
      * )
      * @Route("/{id}/department/{id2}/jobworker/price", name="department_jobworker_price", requirements={"id": "\d+", "id2": "\d+"}, methods={"GET"})
      * @Entity("service", expr="repository.find(id)")
@@ -235,8 +235,8 @@ class ServiceController extends AbstractController
         $departmentId = $department->getId();
 
         $orderBy = 'ASC';
-        if (isset($_GET['desc'])) {
-            $orderBy = 'DESC';
+        if(isset($_GET['orderby'])) {
+            $orderBy = strtoupper($_GET['orderby']);
         }
 
 

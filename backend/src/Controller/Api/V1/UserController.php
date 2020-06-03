@@ -153,7 +153,7 @@ class UserController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->persist($user);
         $em->flush();
-
+        
         return $this->json(
             $user,
             200,
