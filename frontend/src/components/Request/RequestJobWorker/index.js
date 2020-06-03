@@ -1,20 +1,19 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
-
 // == Import library
 import React from 'react';
 
 // == Import components
+import RequestCancel from './RequestCancel';
+import RequestWait from './RequestWait';
 import RequestAccepte from './RequestAccepte';
 import RequestRefuse from './RequestRefuse';
-import RequestWait from './RequestWait';
 import RequestFinish from './RequestFinish';
+
 
 // == Import Style
 import '../request.scss';
 
 // == Composant
-const Request = ({ requestList }) => {
+const Request = ({ requestList, submitAccepteRequest, submitDeleteRequest, getCommentId }) => {
   console.log(requestList);
   return (
     <>
@@ -25,9 +24,11 @@ const Request = ({ requestList }) => {
           case 'Refusé':
             return <RequestRefuse request={request} />;
           case 'En attente':
-            return <RequestWait request={request} />;
+            return <RequestWait request={request} submitAccepteRequest={submitAccepteRequest} getCommentId={getCommentId} />;
           case 'Terminé':
             return <RequestFinish request={request} />;
+          case 'Annulé':
+            return <RequestCancel request={request} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />;
 
           default:
             return null;

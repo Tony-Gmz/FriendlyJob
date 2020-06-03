@@ -7,7 +7,10 @@ export const SAVE_NEW_REQUEST = 'SAVE_NEW_REQUEST';
 export const CHANGE_FIELD_DATE_REQUEST = 'CHANGE_FIELD_DATE_REQUEST';
 export const CHANGE_FIELD_HOUR_REQUEST = 'CHANGE_FIELD_HOUR_REQUEST';
 export const SUBMIT_CANCEL_REQUEST = 'SUBMIT_CANCEL_REQUEST';
-
+export const SUBMIT_REFUSE_REQUEST = 'SUBMIT_REFUSE_REQUEST';
+export const SUBMIT_ACCEPTE_REQUEST = 'SUBMIT_ACCEPTE_REQUEST';
+export const SUBMIT_DELETE_REQUEST = 'SUBMIT_DELETE_REQUEST';
+export const SUBMIT_SET_REQUEST = 'SUBMIT_SET_REQUEST';
 
 // == EXPORT FOR COMMENT PART
 export const GET_COMMENT_ID = 'GET_COMMENT_ID';
@@ -52,13 +55,27 @@ export const changeFieldHourRequest = (newHour) => ({
   newHour,
 });
 
-
 export const submitCancelRequest = () => ({
   type: SUBMIT_CANCEL_REQUEST,
 });
 
-// ========================================= COMMENT ==================================
+export const submitRefuseRequest = () => ({
+  type: SUBMIT_REFUSE_REQUEST,
+});
 
+export const submitAccepteRequest = () => ({
+  type: SUBMIT_ACCEPTE_REQUEST,
+});
+
+export const submitDeleteRequest = () => ({
+  type: SUBMIT_DELETE_REQUEST,
+});
+
+export const submitSETRequest = () => ({
+  type: SUBMIT_SET_REQUEST,
+});
+
+// ========================================= COMMENT ==================================
 
 export const getCommentId = (commentId) => ({
   type: GET_COMMENT_ID,
@@ -79,4 +96,3 @@ export const changeRatingComment = (newRate) => ({
 export const submitComment = () => ({
   type: SUBMIT_COMMENT,
 });
-

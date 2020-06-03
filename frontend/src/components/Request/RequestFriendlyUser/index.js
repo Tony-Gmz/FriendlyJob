@@ -1,21 +1,20 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
-
 // == Import library
 import React from 'react';
 
 
 // == Import components
-import RequestAccepteFU from './RequestAccepteFU';
 import RequestRefuseFU from './RequestRefuseFU';
+import RequestAccepteFU from './RequestAccepteFU';
 import RequestWaitFU from './RequestWaitFU';
 import RequestFinishFU from './RequestFinishFU';
+import RequestCancelFU from './RequestCancelFU';
 
 // == Import Style
 import '../request.scss';
 
+
 // == Composant
-const Request = ({ requestList }) => {
+const Request = ({ requestList, submitDeleteRequest, getCommentId  }) => {
   console.log(requestList);
   return (
     <>
@@ -24,11 +23,13 @@ const Request = ({ requestList }) => {
           case 'Accepté':
             return <RequestAccepteFU request={request} />;
           case 'Refusé':
-            return <RequestRefuseFU request={request} />;
+            return <RequestRefuseFU request={request} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />;
           case 'En attente':
             return <RequestWaitFU request={request} />;
           case 'Terminé':
             return <RequestFinishFU request={request} />;
+          case 'Annulé':
+            return <RequestCancelFU request={request} />;
 
           default:
             return null;

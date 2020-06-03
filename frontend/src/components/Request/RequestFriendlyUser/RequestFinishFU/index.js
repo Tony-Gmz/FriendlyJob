@@ -7,15 +7,12 @@ import ModalComment from 'src/containers/ModalComment';
 // == Composant
 const RequestFinishFU = ({ request }) => {
 
-  const handleClick = (evt) => {
-    console.log(evt.target.getAttribute('id'));
-  };
 
   return (
   <Card className="request_Card">
     <Card.Content className="request_Content">
       <div className="request_LeftSide">
-        <Card.Header>{request.friendlyUser.firstname}</Card.Header>
+        <Card.Header>{request.jobWorker.firstname}</Card.Header>
         <Card.Meta>{request.service.title}</Card.Meta>
       </div>
       <div className="request_MiddleSide">
@@ -33,7 +30,7 @@ const RequestFinishFU = ({ request }) => {
       <div className="finish_texte">
         Merci d'avoir fait confiance a notre JobWorker, si vous le desirez vous pouvez laisser un commentaire sur sa prestation.
       </div>
-      <ModalComment onClick={handleClick} request={request} id={request.id} />
+      <ModalComment request={request} />
     </Card.Content>
   </Card>
   );
