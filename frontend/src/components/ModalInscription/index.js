@@ -14,10 +14,8 @@ import FormLabel from '@material-ui/core/FormLabel';
 // == Import
 import './modalInscription.scss';
 
-
 // == Composant
 const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValue }) => {
-
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('coucou je suis submit');

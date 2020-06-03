@@ -1,5 +1,10 @@
 import { connect } from 'react-redux';
-import { changeFieldRequest, submitRequest, changeFieldHourRequest, changeFieldDateRequest } from 'src/action/requestAction';
+import {
+  changeFieldRequest,
+  submitRequest,
+  changeFieldHourRequest,
+  changeFieldDateRequest,
+} from 'src/action/requestAction';
 import ModalReservation from '../../components/ModalReservation';
 
 const mapStateToProps = (state) => ({
@@ -25,7 +30,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(changeFieldDateRequest(newDate));
   },
 });
-
 
 export default connect(
   mapStateToProps,

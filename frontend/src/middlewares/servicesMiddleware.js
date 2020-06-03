@@ -7,16 +7,16 @@ const servicesMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_SERVICES:
       axios.get('http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/services')
-      .then((response) => {
+        .then((response) => {
+          // console.log(response);
+          // je voudrais enregistrer response.data dans le state => nouvelle action
         // console.log(response);
-        // je voudrais enregistrer response.data dans le state => nouvelle action
-       // console.log(response);
-        store.dispatch(saveServices(response.data));
-      })
-      .catch((error) => {
-        console.warn(error);
-      });
-    next(action);
+          store.dispatch(saveServices(response.data));
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+      next(action);
       break;
 
 

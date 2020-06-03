@@ -25,6 +25,10 @@ export const SUBMIT_EDIT = 'SUBMIT_EDIT';
 export const SAVE_EDIT = 'SAVE_EDIT';
 export const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
 export const SUBMIT_DELETE = 'SUBMIT_DELETE';
+export const SORT_BY_PRICE = 'SORT_BY_PRICE';
+export const FILTER_BY_PRICE = 'FILTER_BY_PRICE';
+export const SORT_BY_ALPHABET = 'SORT_BY_ALPHABET';
+export const LOAD_DATA = 'LOAD_DATA';
 
 export const changeField = (newValue, inputName) => ({
   type: CHANGE_FIELD,
@@ -138,4 +142,19 @@ export const submitDelete = () => ({
 
 export const deleteAccount = () => ({
   type: DELETE_ACCOUNT,
+});
+
+export const sortByPrice = (payload) => ({
+  type: SORT_BY_PRICE,
+  payload,
+});
+
+export const filterByPrice = (payload) => ({
+  type: FILTER_BY_PRICE,
+  payload,
+});
+
+export const sortByAlphabet = (payload) => ({
+  type: SORT_BY_ALPHABET,
+  payload,
 });

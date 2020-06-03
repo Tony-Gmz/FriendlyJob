@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Card } from 'semantic-ui-react';
+import ModalCancelRequest from 'src/containers/ModalCancelRequest';
 
 
 // == Composant
@@ -27,7 +28,7 @@ const RequestWaitFU = ({ request }) => (
           Modifier
         </Button>
         <Button className="decline_Button">
-          Annuler
+          <ModalCancelRequest request={request} />
         </Button>
       </div>
     </Card.Content>

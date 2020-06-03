@@ -131,7 +131,6 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         userData: action.userData,
         edit: true,
-
       };
     case DELETE_ACCOUNT:
       return {
