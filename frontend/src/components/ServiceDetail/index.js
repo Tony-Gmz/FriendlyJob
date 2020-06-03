@@ -14,33 +14,31 @@ function ServiceDetail({ serviceList, getServiceName, getSixJobWorker, jobWorker
     getSixJobWorker();
   }, []);
 
-
-
   const service = getServiceBySlug(serviceList, slug);
 
   return (
     <div className="service_detail">
-          <div className="service_detail_title">
-            <h2 className="service_detail_title-content">{service.title}</h2>
-          </div>
-          <div className="service_detail_presentation">{service.description}</div>
-          <div className="service_details_jobworker">
-            <div className="service_details_jobworker_title">Liste des JobWorker près de chez vous</div>
-            <div className="service_details_jobworker_card">
-            {loadingOnServiceDetail && <Loader /> }
-             {!loadingOnServiceDetail && (
-              jobWorkers.map((jobWorker) => (
-                <div className="service_details_jobworker_card-item">
-                  <JoberService jobWorker={jobWorker} />
-                </div>
-              ))
-             )}
-            </div>
-            <div className="service_details_link">
-              <Link to="/jobworker"><a href="">Voir plus de JobWorker dans ma région</a></Link>
-              <a href="#inscription">Devenez JobWorker ! Rejoingez-nous</a>
-            </div>
-          </div>
+      <div className="service_detail_title">
+        <h2 className="service_detail_title-content">{service.title}</h2>
+      </div>
+      <div className="service_detail_presentation">{service.description}</div>
+      <div className="service_details_jobworker">
+        <div className="service_details_jobworker_title">Liste des JobWorker près de chez vous</div>
+        <div className="service_details_jobworker_card">
+          {loadingOnServiceDetail && <Loader /> }
+          {!loadingOnServiceDetail && (
+            jobWorkers.map((jobWorker) => (
+              <div className="service_details_jobworker_card-item">
+                <JoberService jobWorker={jobWorker} />
+              </div>
+            ))
+          )}
+        </div>
+        <div className="service_details_link">
+          <Link to={`/services/${slug}/jobworker`}>Voir plus de JobWorker dans ma région</Link>
+          <a href="#inscription">Devenez JobWorker ! Rejoingez-nous</a>
+        </div>
+      </div>
     </div>
   );
 }
