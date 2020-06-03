@@ -12,6 +12,7 @@ import {
   EDIT_FIELD_VALUE,
   SAVE_EDIT,
   DELETE_ACCOUNT,
+  SAVE_JOBWORKER_SKILLS,
 } from "../action/usersActions";
 
 const initialState = {
@@ -38,12 +39,16 @@ const initialState = {
   loadingOnJobWorkerList: true,
   /** Loading for jobWorker Detail */
   loadingOnJobWorkerDetail: true,
+  /** Loading for jobWorker profil */
+  loadingOnJobWorkerProfil: true,
   /** Jobworkers List */
   jobWorkers: [],
   /** Current Jobworker Detail */
   currentJobWorkerDetail: [],
-  /** Current JobWorker Rating */
+  /** Current JobWorker Rating for details */
   currentJobWorkerRating: [],
+  /** current jobWorker Skills for edit */
+  currentJobWorkerSkills: [],
   /** bool for edit */
   isEditable: false,
   /** data for edit */
@@ -53,7 +58,7 @@ const initialState = {
   editAbout: null,
   editConfirmationPassword: null,
   /** bool for edit */
-  edit: false,
+  isEdited: false,
   /** bool for delete */
   isDelete: false,
 };
@@ -130,13 +135,19 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         userData: action.userData,
-        edit: true,
+        isEdited: true,
       };
     case DELETE_ACCOUNT:
       return {
         ...state,
         isDelete: true,
         isLogged: false,
+      };
+    case SAVE_JOBWORKER_SKILLS:
+      return {
+        ...state,
+        currentJobWorkerSkills: action.skills,
+        loadingOnJobWorkerProfil: false,
       };
     default: return state;
   }

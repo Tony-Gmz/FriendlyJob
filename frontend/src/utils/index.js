@@ -26,6 +26,9 @@ export const changeTitle = (name) => {
   if (name === 'aide-a-la-personne') {
     return name.replace('aide-a-la-personne', "aide à la personne");
   }
+  if (name === 'soutien-scolaire') {
+    return name.replace('soutien-scolaire', 'soutien scolaire');
+  }
   else {
     return name;
   }

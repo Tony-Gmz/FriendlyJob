@@ -77,3 +77,33 @@
 .skill_select {
   margin-right: 2em;
 }
+
+
+.MuiFormControl-root{
+  width: 593px;
+}
+
+.MuiInputBase-input {
+  line-height: 1!important;
+}
+
+.form_skill {
+  margin: 0 auto;
+
+  
+}
+.form_skill_content_price {
+  width: 200px;
+}
+
+.form_skill_content {
+  padding-top: 2em;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.MuiInputBase-multiline {
+  width: 250px;
+}

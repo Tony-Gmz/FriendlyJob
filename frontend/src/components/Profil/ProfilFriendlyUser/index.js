@@ -30,7 +30,7 @@ const ProfilFiendlyUser = ({
   editEmail,
   editPassword,
   editConfirmationPassword,
-  edit,
+  isEdited,
   editAbout,
 }) => {
   const userAvatar = image;
@@ -100,34 +100,6 @@ const ProfilFiendlyUser = ({
                 <TextField className="profil_input" id="select" label="Departement" value="" select disabled>
                   <MenuItem value={department.id}>{department.name}</MenuItem>
                 </TextField>
-              </div>
-            )}
-            {!isEditable && (
-              <div className="form_element">
-                <TextField
-                  id="outlined-multiline-static"
-                  label="A propos"
-                  multiline
-                  value={about}
-                  rows={10}
-                  defaultValue="Default Value"
-                  variant="outlined"
-                  disabled
-                />
-              </div>
-            )}
-            {isEditable && (
-              <div className="form_element">
-                <TextField
-                  id="outlined-multiline-static"
-                  label="A propos"
-                  multiline
-                  rows={4}
-                  value={editAbout}
-                  variant="outlined"
-                  name="editAbout"
-                  onChange={handleChange}
-                />
               </div>
             )}
             {isEditable && (
@@ -203,7 +175,7 @@ const ProfilFiendlyUser = ({
                 />
               </div>
             )}
-            {edit && <div>Vos modifications ont bien été prises en compte</div>}
+            {isEdited && <div>Vos modifications ont bien été prises en compte</div>}
             <div className="profil_group_btn">
               {isEditable && (
                 <Link to="/"><Button onClick={handleCancelClick} className="profil_btn" variant="contained" color="alert"> Annuler</Button></Link>
@@ -229,11 +201,27 @@ const ProfilFiendlyUser = ({
 };
 
 ProfilFiendlyUser.propTypes = {
-  isEditable: PropTypes.bool.isRequired,
-  /** func with no params */
+  /** func with params */
+  editField: PropTypes.func.isRequired,
+  /** func without param */
   canEditProfil: PropTypes.func.isRequired,
-  /** func with no params */
   cancelEdit: PropTypes.func.isRequired,
+  submitEdit: PropTypes.func.isRequired,
+  /** string */
+  editEmail: PropTypes.string.isRequired,
+  editPassword: PropTypes.string.isRequired,
+  editConfirmationPassword: PropTypes.string.isRequired,
+  editAbout: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  lastname: PropTypes.string.isRequired,
+  firstname: PropTypes.string.isRequired,
+  about: PropTypes.string.isRequired,
+  department: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  /** bool */
+  isEdited: PropTypes.bool.isRequired,
+  isEditable: PropTypes.bool.isRequired,
+  /** array  */
   departmentsList: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,

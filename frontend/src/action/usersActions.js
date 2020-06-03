@@ -29,7 +29,8 @@ export const SORT_BY_PRICE = 'SORT_BY_PRICE';
 export const FILTER_BY_PRICE = 'FILTER_BY_PRICE';
 export const SORT_BY_ALPHABET = 'SORT_BY_ALPHABET';
 export const LOAD_DATA = 'LOAD_DATA';
-
+export const GET_JOBWORKER_SKILLS = 'GET_JOBWORKER_SKILLS';
+export const SAVE_JOBWORKER_SKILLS = 'SAVE_JOBWORKER_SKILLS';
 export const changeField = (newValue, inputName) => ({
   type: CHANGE_FIELD,
   newValue,
@@ -157,4 +158,13 @@ export const filterByPrice = (payload) => ({
 export const sortByAlphabet = (payload) => ({
   type: SORT_BY_ALPHABET,
   payload,
+});
+
+export const getJobWorkerSkill = () => ({
+  type: GET_JOBWORKER_SKILLS,
+});
+
+export const saveJobWorkerSkills = (skills) => ({
+  type: SAVE_JOBWORKER_SKILLS,
+  skills,
 });

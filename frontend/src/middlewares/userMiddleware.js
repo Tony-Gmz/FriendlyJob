@@ -19,6 +19,8 @@ import {
   saveEdit,
   SUBMIT_DELETE,
   deleteAccount,
+  GET_JOBWORKER_SKILLS,
+  saveJobWorkerSkills,
 } from '../action/usersActions';
 
 
@@ -242,6 +244,31 @@ const userMiddleware = (store) => (next) => (action) => {
         });
       next(action);
       break;
+    }
+    case GET_JOBWORKER_SKILLS: {
+      const userId = localStorage.getItem('userId');
+      const userToken = localStorage.getItem('jwtToken');
+      console.log(userId);
+      axios({
+        method: 'get',
+        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/jobworker/${userId}`,
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+        .then((response) => {
+          // console.log(response);
+          // je voudrais enregistrer response.data dans le state => nouvelle action
+          console.log(response);
+          store.dispatch(saveJobWorkerSkills(response.data.skills));
+        })
+        .catch((error) => {
+          console.warn(error);
+          console.log('jai fait une erreur');
+        });
+      next(action);
+      break;
+
     }
 
     default:
