@@ -1,4 +1,13 @@
-import { SAVE_REQUEST, CHANGE_FIELD_REQUEST, CHANGE_FIELD_DATE_REQUEST, CHANGE_FIELD_HOUR_REQUEST, SAVE_NEW_REQUEST } from '../action/requestAction';
+import {
+  SAVE_REQUEST,
+  CHANGE_FIELD_REQUEST,
+  CHANGE_FIELD_DATE_REQUEST,
+  CHANGE_FIELD_HOUR_REQUEST,
+  SAVE_NEW_REQUEST,
+  GET_COMMENT_ID,
+  CHANGE_FIELD_COMMENT,
+  CHANGE_RATING_COMMENT,
+} from '../action/requestAction';
 
 const initialState = {
   requestList: [],
@@ -6,6 +15,9 @@ const initialState = {
   requestBody: '',
   requestDate: '',
   requestHour: '',
+  commentBody: '',
+  newRate: '',
+  commentId: '',
 
 };
 
@@ -36,6 +48,28 @@ const requestReducer = (state = initialState, action = {}) => {
         ...state,
         requestList: [...action.newRequest],
       };
+
+      // =====================================COMMENT
+
+    case GET_COMMENT_ID:
+      return {
+        ...state,
+        commentId: action.commentId,
+      };
+
+    case CHANGE_FIELD_COMMENT:
+      return {
+        ...state,
+        commentBody: action.newValue,
+      };
+
+
+    case CHANGE_RATING_COMMENT:
+      return {
+        ...state,
+        newRate: action.newRate,
+      };
+
     default: return state;
   }
 };

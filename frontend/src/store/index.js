@@ -1,11 +1,15 @@
 // import mandatory for store
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+
+
 // we need to import middleware
 import servicesMiddleware from 'src/middlewares/servicesMiddleware';
 import userMiddleware from 'src/middlewares/userMiddleware';
 import inscriptionMiddlware from 'src/middlewares/inscriptionMiddleware';
 import requestMiddlware from 'src/middlewares/requestMiddleware';
+
+
 // import RootReducer
 import reducer from 'src/reducers';
 
@@ -21,7 +25,6 @@ const enhancers = composeWithDevTools(
 );
 
 const store = createStore(
-
   reducer,
   enhancers,
 );

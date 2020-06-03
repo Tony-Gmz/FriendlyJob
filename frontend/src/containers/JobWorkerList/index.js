@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import JobWorkerList from 'src/components/JobWorkerList';
-import { getJobWorker } from 'src/action/usersActions';
+import { getJobWorker, loadData } from 'src/action/usersActions';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
@@ -16,6 +16,9 @@ const mapDispatchToProps = (dispatch) => ({
   getJobWorker: () => {
     dispatch(getJobWorker());
   },
+/*   loadData: (payload) => {
+    dispatch(loadData(payload));
+  }, */
 });
 
 export default connect(

@@ -7,6 +7,11 @@ import {
   GET_JOBWORKER_ID,
   SAVE_JOBWORKER_DETAIL,
   SAVE_JOBWORKER_RATING,
+  SET_SORT_PARAMS,
+  SORT_BY_ALPHABET,
+  SORT_BY_PRICE,
+  FILTER_BY_PRICE,
+  LOAD_DATA,
 } from "../action/usersActions";
 
 const initialState = {
@@ -84,6 +89,18 @@ const userReducer = (state = initialState, action = {}) => {
         currentJobWorkerRating: action.rating,
         loadingOnJobWorkerDetail: false,
       };
+
+    case SORT_BY_ALPHABET:
+      // sort alphabetically
+      return state;
+
+    case SORT_BY_PRICE:
+      // sort by price
+      return state;
+
+    case FILTER_BY_PRICE:
+      // filter by price
+      return state;
 
 
     default: return state;

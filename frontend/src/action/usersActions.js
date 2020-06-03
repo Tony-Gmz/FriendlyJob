@@ -18,6 +18,12 @@ export const SAVE_JOBWORKER_DETAIL = 'SAVE_JOBWORKER_DETAIL';
 export const GET_JOBWORKER_ID = 'GET_JOBWORKER_ID';
 export const GET_JOBWORKER_RATING = 'GET_JOBWORKER_RATING';
 export const SAVE_JOBWORKER_RATING = 'SAVE_JOBWORKER_RATING';
+export const SORT_BY_PRICE = 'SORT_BY_PRICE';
+export const FILTER_BY_PRICE = 'FILTER_BY_PRICE';
+export const SORT_BY_ALPHABET = 'SORT_BY_ALPHABET';
+export const LOAD_DATA = 'LOAD_DATA';
+
+
 
 export const changeField = (newValue, inputName) => ({
   type: CHANGE_FIELD,
@@ -100,4 +106,19 @@ export const getJobWorkerRating = () => ({
 export const saveJobWorkerRating = (rating) => ({
   type: SAVE_JOBWORKER_RATING,
   rating,
+});
+
+export const sortByPrice = (payload) => ({
+  type: SORT_BY_PRICE,
+  payload,
+});
+
+export const filterByPrice = (payload) => ({
+  type: FILTER_BY_PRICE,
+  payload,
+});
+
+export const sortByAlphabet = (payload) => ({
+  type: SORT_BY_ALPHABET,
+  payload,
 });

@@ -1,11 +1,17 @@
 import React from 'react';
 import { Button, Card } from 'semantic-ui-react';
 
-import ModalComment from 'src/components/ModalComment';
+import ModalComment from 'src/containers/ModalComment';
 
 
 // == Composant
-const RequestFinishFU = ({ request }) => (
+const RequestFinishFU = ({ request }) => {
+
+  const handleClick = (evt) => {
+    console.log(evt.target.getAttribute('id'));
+  };
+
+  return (
   <Card className="request_Card">
     <Card.Content className="request_Content">
       <div className="request_LeftSide">
@@ -27,8 +33,11 @@ const RequestFinishFU = ({ request }) => (
       <div className="finish_texte">
         Merci d'avoir fait confiance a notre JobWorker, si vous le desirez vous pouvez laisser un commentaire sur sa prestation.
       </div>
-      <ModalComment request={request} />
+      <ModalComment onClick={handleClick} request={request} id={request.id} />
     </Card.Content>
   </Card>
-);
+  );
+};
+
+
 export default RequestFinishFU;
