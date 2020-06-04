@@ -7,12 +7,15 @@ import MenuItem from '@material-ui/core/MenuItem';
 import profil from 'src/assets/img/screenshot.png';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
+import { Radio, Input } from 'semantic-ui-react';
+import CancelSharpIcon from '@material-ui/icons/CancelSharp';
 import { whitoutAvatar } from 'src/utils';
 
 // == Import
 import './profilJobWorker.scss';
 import ModalSuppression from 'src/containers/ModalSuppression';
 import { Link } from 'react-router-dom';
+import { add } from 'date-fns/esm';
 import ModalAddSkill from 'src/containers/ModalAddSkill';
 
 // == Composant
@@ -42,6 +45,10 @@ const ProfilFiendlyUser = ({
   selectedSkillId,
   selectedSkillPrice,
 }) => {
+  useEffect(() => {
+    getJobWorkerSkill();
+  }, []);
+
   // console.log(currentJobWorkerSkills);
   const userAvatar = image;
   const handleClick = () => {
@@ -52,14 +59,21 @@ const ProfilFiendlyUser = ({
   };
   const handleChange = (evt) => {
     console.log(`${evt.target.value} + ${evt.target.name}`);
-    // editField(evt.target.value, evt.target.name);
+    editField(evt.target.value, evt.target.name);
+  };
+  const handleRadioChange = (e, data) => {
+    const { name, value } = data;
+    console.log(`${name} + ${value}`);
+    getNewSkillValue(value, name);
   };
   const handleSubmit = (evt) => {
     console.log('coucou je suis le submit de edit profil');
     evt.preventDefault();
     submitEdit();
   };
- 
+  const handleRadioRemoveChange = (e, data) => {
+    const {id, value} = data;
+  };
   return (
     <div className="profilFiendlyUser">
       <div className="profilFiendlyUser_desciption">
@@ -231,9 +245,59 @@ const ProfilFiendlyUser = ({
               )}
             </div>
           </form>
-          <div className="jobWorker_profil_modal">
-            <div className="jobWorker_profil_modal_add">
-              <ModalAddSkill /> 
+          <div className="form_skill">
+            <div className="form_skill_description">
+              Vous souhaitez changer ou ajouter des compétences ? Modifier votre prix horaire ? C'est par ici 
+            </div>
+            {serviceList.map((service) => (
+              <>
+                {currentJobWorkerSkills.map((skill) => {
+                  const currentSkill = skill.service.id;
+                  //console.log(service.id)
+                  // console.log(currentSkill);
+                  { if (currentSkill === service.id) {
+                     return (
+                       <>
+                      
+                      <div key={service.id} className="form_skill_content">
+                      <div className="form_skill_content_radio">
+                       {service.title}
+                      
+                      </div>
+                      <div className="form_skill_content_price">
+                        <Input
+                          label={{ basic: true, content: '/heure' }}
+                          labelPosition='right'
+                          placeholder='Indiquez votre prix...'
+                          value={`${skill.price}€`}
+                          disabled
+                        />
+                      </div>
+                      <div className="form_skill_content_about">
+                        <TextField
+                          id="textArea-skills"
+                          label="Description"
+                          multiline
+                          rows={4}
+                          defaultValue="Default Value"
+                          variant="outlined"
+                          value={skill.description}
+                          disabled
+                        />
+                      </div>
+                    </div>
+                    </>
+                    );
+                  }
+                  }
+                  }
+                )}
+              </>
+            ))}
+            <div className="skill_modal">
+              <div>
+                <ModalAddSkill />
+              </div>
             </div>
           </div>
           <ModalSuppression />

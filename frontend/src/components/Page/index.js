@@ -51,7 +51,7 @@ const Page = ({ isLogged }) => {
             path="/demandes"
             exact
           >
-            {isLogged === true && userToken.length > 0
+            {isLogged === true
               ? <Request />
               : <Error />}
           </Route>
@@ -59,7 +59,7 @@ const Page = ({ isLogged }) => {
             path="/profil"
             exact
           >
-            {isLogged === true && userToken.length > 0
+            {isLogged === true
               ? <Profil />
               : <Error />}
           </Route>

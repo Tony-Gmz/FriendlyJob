@@ -21,6 +21,7 @@ import {
   deleteAccount,
   GET_JOBWORKER_SKILLS,
   saveJobWorkerSkills,
+  SUBMIT_NEW_SKILL,
 } from '../action/usersActions';
 
 
@@ -269,6 +270,43 @@ const userMiddleware = (store) => (next) => (action) => {
       next(action);
       break;
 
+    }
+    case SUBMIT_NEW_SKILL: {
+      const userId = localStorage.getItem('userId');
+      const userToken = localStorage.getItem('jwtToken');
+      const { selectedSkillId, selectedSkillPrice, selectedSkillDescription } = store.getState().user;
+      const { serviceList } = store.getState().service;
+      const price = Number(selectedSkillPrice);
+      console.log(`${selectedSkillId}+${selectedSkillPrice}+${selectedSkillDescription}+`);
+      console.log(price);
+      const selectedSkillIdByName = serviceList.find(service => service.title === selectedSkillId);
+      console.log(selectedSkillIdByName);
+      const serviceId = selectedSkillIdByName.id;
+      axios({
+        method: 'POST',
+        url: 'http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/skills',
+        data: {
+          description: selectedSkillDescription,
+          price,
+          user: userId,
+          service: serviceId,
+        },
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+        .then((response) => {
+          // console.log(response);
+          // je voudrais enregistrer response.data dans le state => nouvelle action
+          console.log(response);
+          // store.dispatch(saveJobWorkerSkills(response.data.skills));
+        })
+        .catch((error) => {
+          console.warn(error);
+          console.log('jai fait une erreur');
+        });
+      next(action);
+      break;
     }
 
     default:

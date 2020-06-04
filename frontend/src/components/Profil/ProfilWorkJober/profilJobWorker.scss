@@ -104,5 +104,16 @@
   justify-content: space-between;
 }
 
-
+.form_skill {
+  .MuiFormControl-root {
+    width: 250px;
+    margin: auto;
+  }
+  .MuiInputBase-multiline {
+    width: 250px;
+  }
+  .form_skill_icon {
+    cursor: pointer;
+  }
+}
 

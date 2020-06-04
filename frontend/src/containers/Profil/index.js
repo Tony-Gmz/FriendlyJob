@@ -15,9 +15,9 @@ const mapStateToProps = (state) => ({
   editAbout: state.user.editAbout,
   serviceList: state.service.serviceList,
   currentJobWorkerSkills: state.user.currentJobWorkerSkills,
-  selectedSkillId: state.user.selectedSkill,
+  selectedSkill: state.user.selectedSkill,
   selectedSkillPrice: state.user.selectedSkillPrice,
-  selectedSkillDescription: state.user.selectedSkillDescription,
+  selectedSkillDescription: state.user.selectedSkillDescription
 
   // roles: state.user.userData.roles[0],
 });
@@ -36,6 +36,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   submitEdit: () => {
     dispatch(submitEdit());
+  },
+  getJobWorkerSkill: () => {
+    dispatch(getJobWorkerSkill());
   },
   getNewSkillValue: (skillValue, nameInput) => {
     dispatch(getNewSkillValue(skillValue, nameInput));
