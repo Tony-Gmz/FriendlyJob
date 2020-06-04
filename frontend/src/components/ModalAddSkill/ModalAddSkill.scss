@@ -1,0 +1,16 @@
+.form_skill {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+
+  .MuiFormControl-root {
+    width: 250px;
+    margin: auto;
+  }
+  .MuiInputBase-multiline {
+    width: 250px;
+  }
+
+}

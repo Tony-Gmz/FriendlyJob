@@ -13,6 +13,7 @@ import {
   SAVE_EDIT,
   DELETE_ACCOUNT,
   SAVE_JOBWORKER_SKILLS,
+  GET_NEW_SKILL_VALUE,
 } from "../action/usersActions";
 
 const initialState = {
@@ -61,6 +62,12 @@ const initialState = {
   isEdited: false,
   /** bool for delete */
   isDelete: false,
+  /** Selected Skill id in jobWorker Profil */
+  selectedSkillId: null,
+  /** Selected skill Pric in JobWoker Profil */
+  selectedSkillPrice: null,
+  /** Selected Skill Description in jobWorker Profil */
+  selectedSkillDescription: '',
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -148,6 +155,11 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         currentJobWorkerSkills: action.skills,
         loadingOnJobWorkerProfil: false,
+      };
+    case GET_NEW_SKILL_VALUE: 
+      return {
+        ...state,
+        [action.nameInput]: action.skillValue,
       };
     default: return state;
   }

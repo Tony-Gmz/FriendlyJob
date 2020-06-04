@@ -31,6 +31,10 @@ export const SORT_BY_ALPHABET = 'SORT_BY_ALPHABET';
 export const LOAD_DATA = 'LOAD_DATA';
 export const GET_JOBWORKER_SKILLS = 'GET_JOBWORKER_SKILLS';
 export const SAVE_JOBWORKER_SKILLS = 'SAVE_JOBWORKER_SKILLS';
+export const GET_NEW_SKILL_VALUE = 'GET_NEW_SKILL_VALUE';
+export const SAVE_NEW_SKILL_VALUE = 'SAVE_NEW_SKILL_VALUE';
+export const SUBMIT_NEW_SKILL = 'SUBMIT_NEW_SKILL';
+
 export const changeField = (newValue, inputName) => ({
   type: CHANGE_FIELD,
   newValue,
@@ -167,4 +171,18 @@ export const getJobWorkerSkill = () => ({
 export const saveJobWorkerSkills = (skills) => ({
   type: SAVE_JOBWORKER_SKILLS,
   skills,
+});
+
+export const getNewSkillValue = (skillValue, nameInput) => ({
+  type: GET_NEW_SKILL_VALUE,
+  skillValue,
+  nameInput,
+});
+
+export const saveNewSkillValue = () => ({
+  type: SAVE_NEW_SKILL_VALUE,
+});
+
+export const submitNewSkill = () => ({
+  type: SUBMIT_NEW_SKILL,
 });

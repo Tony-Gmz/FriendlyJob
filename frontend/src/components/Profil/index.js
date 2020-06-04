@@ -19,6 +19,10 @@ const Profil = ({
   getJobWorkerSkill,
   serviceList,
   currentJobWorkerSkills,
+  getNewSkillValue,
+  selectedSkillId,
+  selectedSkillPrice,
+  selectedSkillDescription
 }) => {
   const role = localStorage.getItem('userRole');
   return (
@@ -58,6 +62,10 @@ const Profil = ({
             getJobWorkerSkill={getJobWorkerSkill}
             serviceList={serviceList}
             currentJobWorkerSkills={currentJobWorkerSkills}
+            selectedSkillId={selectedSkillId}
+            selectedSkillPrice={selectedSkillPrice}
+            selectedSkillDescription={selectedSkillDescription}
+            getNewSkillValue={getNewSkillValue}
           />
         )}
     </>

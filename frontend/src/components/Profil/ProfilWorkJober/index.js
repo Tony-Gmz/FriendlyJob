@@ -7,13 +7,13 @@ import MenuItem from '@material-ui/core/MenuItem';
 import profil from 'src/assets/img/screenshot.png';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
-import { Radio, Input } from 'semantic-ui-react';
 import { whitoutAvatar } from 'src/utils';
 
 // == Import
 import './profilJobWorker.scss';
 import ModalSuppression from 'src/containers/ModalSuppression';
 import { Link } from 'react-router-dom';
+import ModalAddSkill from 'src/containers/ModalAddSkill';
 
 // == Composant
 const ProfilFiendlyUser = ({
@@ -37,12 +37,12 @@ const ProfilFiendlyUser = ({
   getJobWorkerSkill,
   serviceList,
   currentJobWorkerSkills,
+  getNewSkillValue,
+  selectedSkillDescription,
+  selectedSkillId,
+  selectedSkillPrice,
 }) => {
-  useEffect(() => {
-    getJobWorkerSkill();
-  }, []);
-
-  console.log(currentJobWorkerSkills);
+  // console.log(currentJobWorkerSkills);
   const userAvatar = image;
   const handleClick = () => {
     canEditProfil();
@@ -54,16 +54,12 @@ const ProfilFiendlyUser = ({
     console.log(`${evt.target.value} + ${evt.target.name}`);
     // editField(evt.target.value, evt.target.name);
   };
-  const handleRadioChange = (e, data) => {
-    const { name, value } = data;
-    console.log(value);
-    // ...
-  }
   const handleSubmit = (evt) => {
     console.log('coucou je suis le submit de edit profil');
     evt.preventDefault();
     submitEdit();
   };
+ 
   return (
     <div className="profilFiendlyUser">
       <div className="profilFiendlyUser_desciption">
@@ -221,7 +217,7 @@ const ProfilFiendlyUser = ({
             {isEdited && <div>Vos modifications ont bien été prises en compte</div>}
             <div className="profil_group_btn">
               {isEditable && (
-                <Link to="/"><Button onClick={handleCancelClick} className="profil_btn" variant="contained" color="alert"> Annuler</Button></Link>
+                <Link to="/"><Button onClick={handleCancelClick} className="profil_btn" variant="contained" color="alerte"> Annuler</Button></Link>
               )}
               {!isEditable && (
                 <Button onClick={handleClick} className="profil_btn" variant="contained" color="primary">
@@ -235,88 +231,11 @@ const ProfilFiendlyUser = ({
               )}
             </div>
           </form>
-          <form className="form_skill">
-            <div className="form_skill_description">
-              Vous souhaitez changer ou ajouter des compétences ? Modifier votre prix horaire ? C'est par ici 
+          <div className="jobWorker_profil_modal">
+            <div className="jobWorker_profil_modal_add">
+              <ModalAddSkill /> 
             </div>
-            {serviceList.map((service) => (
-              <>
-              <div key={service.id} className="form_skill_content">
-                      <div className="form_skill_content_radio">
-                        <Radio toggle
-                        label={service.title}
-                        value={service.id}
-                        onChange={handleRadioChange}
-                        name="selectedSkill"
-                        />
-                      </div>
-                      <div className="form_skill_content_price">
-                        <Input
-                          label={{ basic: true, content: '/heure' }}
-                          labelPosition='right'
-                          placeholder='Indiquez votre prix...'
-                          value=""
-                          onChange={handleChange}
-                          name="editedPrice"
-                        />
-                      </div>
-                      <div className="form_skill_content_about">
-                        <TextField
-                          id="textArea-skills"
-                          label="Multiline"
-                          multiline
-                          rows={4}
-                          defaultValue="Default Value"
-                          variant="outlined"
-                          value=""
-                        />
-                      </div>
-                    </div>
-                    
-                {currentJobWorkerSkills.map((skill) => {
-                  const currentSkill = skill.service.id;
-                  console.log(service.id)
-                  console.log(currentSkill);
-                  { if (currentSkill === service.id) {
-                     return (
-                      <div key={service.id} className="form_skill_content">
-                      <div className="form_skill_content_radio">
-                        <Radio toggle 
-                        label={service.title}
-                        value={service.id}
-                        onChange={handleRadioChange}
-                        checked
-                        />
-                      </div>
-                      <div className="form_skill_content_price">
-                        <Input
-                          label={{ basic: true, content: '/heure' }}
-                          labelPosition='right'
-                          placeholder='Indiquez votre prix...'
-                          value={`${skill.price}€`}
-                          onChange={handleChange}
-                        />
-                      </div>
-                      <div className="form_skill_content_about">
-                        <TextField
-                          id="textArea-skills"
-                          label="Multiline"
-                          multiline
-                          rows={4}
-                          defaultValue="Default Value"
-                          variant="outlined"
-                          value={skill.description}
-                        />
-                      </div>
-                    </div>
-                    );
-                  }
-                  }
-                  }
-                )}
-              </>
-            ))}
-          </form>
+          </div>
           <ModalSuppression />
         </div>
       </div>
