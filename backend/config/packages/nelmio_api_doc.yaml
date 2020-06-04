@@ -6,7 +6,7 @@ nelmio_api_doc:
         #   - url: https://api.friendlyjob.fr/doc
         #     description: API avec HTTPS
         info:
-            title: FriendlyJob
+            title: API FriendlyJob
             description: Documentation API
             version: 1.0.0
         securityDefinitions:
