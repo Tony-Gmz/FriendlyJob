@@ -1,0 +1,16 @@
+body {
+    background: #ff385c;
+  }
+  #error {
+    margin: 0 auto;
+    display: block;
+  }
+
+.redirectP {
+    text-align: center;
+    padding-top: 5em;
+}
+
+a:hover {
+    background-color: whitesmoke;
+}

@@ -31,6 +31,13 @@ class DemandRepository extends ServiceEntityRepository
             ->join('u.department', 'de')
             ->where('u.id = :id')
             ->orWhere('u1.id = :id')
+            ->addSelect("(CASE WHEN d.status like 'En attente' THEN 0
+                        WHEN d.status like 'Accepté' THEN 2
+                        WHEN d.status like 'Annulé' THEN 3
+                        WHEN d.status like 'Refusé' THEN 4
+                        WHEN d.status like 'Terminé' THEN 5
+                        ELSE 6 END) AS HIDDEN ORD ")
+            ->orderBy('ORD', 'ASC')
             ->setParameter('id', $userId)
         ;
         

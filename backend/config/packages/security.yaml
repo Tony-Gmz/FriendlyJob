@@ -43,9 +43,6 @@ security:
         user_contacts:
             pattern:  ^/api/v1/users/contacts(/)?
             anonymous: lazy
-        api_doc:
-            pattern:  ^/doc$
-            anonymous: lazy
         login:
             pattern:  ^/api/login
             stateless: true
@@ -81,3 +78,4 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/doc, roles: ROLE_ADMIN }
