@@ -17,9 +17,11 @@ import ModalSuppression from 'src/containers/ModalSuppression';
 import { Link } from 'react-router-dom';
 import { add } from 'date-fns/esm';
 import ModalAddSkill from 'src/containers/ModalAddSkill';
+import ModalDeleteSkill from 'src/containers/ModalDeleteSkill';
+import ModalEditSkill from 'src/containers/ModalEditSkill';
 
 // == Composant
-const ProfilFiendlyUser = ({
+const ProfilJobWorker = ({
   canEditProfil,
   isEditable,
   image,
@@ -258,7 +260,6 @@ const ProfilFiendlyUser = ({
                   { if (currentSkill === service.id) {
                      return (
                        <>
-                      
                       <div key={service.id} className="form_skill_content">
                       <div className="form_skill_content_radio">
                        {service.title}
@@ -284,7 +285,11 @@ const ProfilFiendlyUser = ({
                           value={skill.description}
                           disabled
                         />
+                        <div>
+                          <ModalEditSkill {...skill} />
+                        </div>
                       </div>
+                        <ModalDeleteSkill skill={skill.id} />
                     </div>
                     </>
                     );
@@ -308,7 +313,7 @@ const ProfilFiendlyUser = ({
   );
 };
 
-ProfilFiendlyUser.propTypes = {
+ProfilJobWorker.propTypes = {
   /** func with params */
   editField: PropTypes.func.isRequired,
   /** func without param */
@@ -340,4 +345,4 @@ ProfilFiendlyUser.propTypes = {
 
 };
 // == Export
-export default ProfilFiendlyUser;
+export default ProfilJobWorker;

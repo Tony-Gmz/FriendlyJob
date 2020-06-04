@@ -35,6 +35,9 @@ export const GET_NEW_SKILL_VALUE = 'GET_NEW_SKILL_VALUE';
 export const SAVE_NEW_SKILL_VALUE = 'SAVE_NEW_SKILL_VALUE';
 export const SUBMIT_NEW_SKILL = 'SUBMIT_NEW_SKILL';
 export const LOG_OUT = 'LOG_OUT';
+export const GET_SKILL_ID = 'GET_SKILL_ID';
+export const SUBMIT_DELETE_SKILL = 'SUBMIT_DELETE_SKILL';
+export const SUBMIT_EDIT_SKILL = 'SUBMIT_EDIT_SKILL';
 
 export const changeField = (newValue, inputName) => ({
   type: CHANGE_FIELD,
@@ -175,4 +178,17 @@ export const saveNewSkillValue = () => ({
 
 export const submitNewSkill = () => ({
   type: SUBMIT_NEW_SKILL,
+});
+
+export const getSkillId = (id) => ({
+  type: GET_SKILL_ID,
+  id,
+});
+
+export const submitDeleteSkill = () => ({
+  type: SUBMIT_DELETE_SKILL,
+});
+
+export const submitEditSkill = () => ({
+  type: SUBMIT_EDIT_SKILL,
 });

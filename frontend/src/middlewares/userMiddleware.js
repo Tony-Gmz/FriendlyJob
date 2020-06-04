@@ -22,6 +22,8 @@ import {
   GET_JOBWORKER_SKILLS,
   saveJobWorkerSkills,
   SUBMIT_NEW_SKILL,
+  SUBMIT_DELETE_SKILL,
+  SUBMIT_EDIT_SKILL,
 } from '../action/usersActions';
 
 
@@ -290,6 +292,58 @@ const userMiddleware = (store) => (next) => (action) => {
           price,
           user: userId,
           service: serviceId,
+        },
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+        .then((response) => {
+          // console.log(response);
+          // je voudrais enregistrer response.data dans le state => nouvelle action
+          console.log(response);
+          // store.dispatch(saveJobWorkerSkills(response.data.skills));
+        })
+        .catch((error) => {
+          console.warn(error);
+          console.log('jai fait une erreur');
+        });
+      next(action);
+      break;
+    }
+    case SUBMIT_DELETE_SKILL : {
+
+      const userToken = localStorage.getItem('jwtToken');
+      const { skillId } = store.getState().user;
+      console.log(skillId);
+      axios({
+        method: 'DELETE',
+        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/skills/${skillId}`,
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+        .then((response) => {
+          // console.log(response);
+          // je voudrais enregistrer response.data dans le state => nouvelle action
+          console.log(response);
+          // store.dispatch(saveJobWorkerSkills(response.data.skills));
+        })
+        .catch((error) => {
+          console.warn(error);
+          console.log('jai fait une erreur');
+        });
+      next(action);
+      break;
+    }
+    case SUBMIT_EDIT_SKILL: {
+      const userToken = localStorage.getItem('jwtToken');
+      const { skillId, selectedSkillPrice, selectedSkillDescription } = store.getState().user;
+      axios({
+        method: 'PUT',
+        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/skills/${skillId}`,
+        data: {
+          description: selectedSkillDescription,
+          price: selectedSkillPrice,
         },
         headers: {
           Authorization: `Bearer ${userToken}`,

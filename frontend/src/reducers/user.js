@@ -15,6 +15,7 @@ import {
   SAVE_JOBWORKER_SKILLS,
   GET_NEW_SKILL_VALUE,
   LOG_OUT,
+  GET_SKILL_ID,
 } from '../action/usersActions';
 
 const initialState = {
@@ -68,7 +69,8 @@ const initialState = {
   /** Selected skill Pric in JobWoker Profil */
   selectedSkillPrice: null,
   /** Selected Skill Description in jobWorker Profil */
-  selectedSkillDescription: '',
+  selectedSkillDescription: null,
+  skillId: null,
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -166,6 +168,11 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isLogged: false,
+      };
+    case GET_SKILL_ID:
+      return {
+        ...state,
+        skillId: action.id,
       };
     default: return state;
   }
