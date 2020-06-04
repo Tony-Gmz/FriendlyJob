@@ -8,7 +8,7 @@ const RequestWaitFU = ({ request }) => (
   <Card className="request_Card">
     <Card.Content className="request_Content">
       <div className="request_LeftSide">
-        <Card.Header>{request.friendlyUser.firstname}</Card.Header>
+        <Card.Header>{request.jobWorker.firstname}</Card.Header>
         <Card.Meta>{request.service.title}</Card.Meta>
       </div>
       <div className="request_MiddleSide">

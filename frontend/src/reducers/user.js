@@ -14,7 +14,8 @@ import {
   DELETE_ACCOUNT,
   SAVE_JOBWORKER_SKILLS,
   GET_NEW_SKILL_VALUE,
-} from "../action/usersActions";
+  LOG_OUT,
+} from '../action/usersActions';
 
 const initialState = {
   // ici l'état initial
@@ -160,6 +161,11 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.nameInput]: action.skillValue,
+      };
+    case LOG_OUT:
+      return {
+        ...state,
+        isLogged: false,
       };
     default: return state;
   }

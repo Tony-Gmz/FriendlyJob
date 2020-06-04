@@ -16,28 +16,24 @@ import Contact from '../Contact';
 import Error from '../Error';
 
 
-const Page = ({ serviceList }) => {
+const Page = ({ isLogged }) => {
+  const userToken = localStorage.getItem('jwtToken');
+
   return (
     <div className="page">
       <div className="page-content">
         <Switch>
           <Route
-            path="/services/:slug/menage"
+            path="/services/:slug/jobworker"
             exact
           >
-            <ServiceDetail />
-          </Route>
-          <Route
-            path="/services/"
-            exact
-          >
-            <ServiceList />
+            <JobWorkerList />
           </Route>
           <Route
             path="/services/:slug"
             exact
           >
-            <ServiceDetail serviceList={serviceList} />
+            <ServiceDetail />
           </Route>
           <Route
             path="/services"
@@ -46,39 +42,32 @@ const Page = ({ serviceList }) => {
             <ServiceList />
           </Route>
           <Route
-            path="/contact"
-            exact
-          >
-            <Contact />
-          </Route>
-          <Route
             path="/jobworker/:id"
             exact
           >
             <JobWorkerDetail />
           </Route>
           <Route
-            path="/jobworker"
-          >
-            <JobWorkerList />
-          </Route>
-          <Route
             path="/demandes"
             exact
           >
-            <Request />
+            {isLogged === true && userToken.length > 0
+              ? <Request />
+              : <Error />}
           </Route>
           <Route
             path="/profil"
             exact
           >
-            <Profil />
+            {isLogged === true && userToken.length > 0
+              ? <Profil />
+              : <Error />}
           </Route>
           <Route
-            path="/profil"
+            path="/contact"
             exact
           >
-            <Request />
+            <Contact />
           </Route>
           <Route
             path="/"

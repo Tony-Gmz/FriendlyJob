@@ -7,7 +7,7 @@ import RequestFriendlyUser from './RequestFriendlyUser';
 import RequestJobWorker from './RequestJobWorker';
 
 // == Composant
-const Request = ({ getRequest, requestList }) => {
+const Request = ({ getRequest, requestList, submitAccepteRequest, submitDeleteRequest, getCommentId }) => {
   useEffect(() => {
     const userToken = localStorage.getItem('jwtToken');
     if (userToken) {
@@ -19,8 +19,8 @@ const Request = ({ getRequest, requestList }) => {
   return (
     <div className="request">
       {Role === 'FRIENDLY_USER'
-        ? <RequestFriendlyUser requestList={requestList} />
-        : <RequestJobWorker requestList={requestList} /> }
+        ? <RequestFriendlyUser requestList={requestList} submitAccepteRequest={submitAccepteRequest} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />
+        : <RequestJobWorker requestList={requestList} submitAccepteRequest={submitAccepteRequest} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />}
     </div>
   );
 };

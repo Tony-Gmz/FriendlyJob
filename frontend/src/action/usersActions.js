@@ -34,6 +34,7 @@ export const SAVE_JOBWORKER_SKILLS = 'SAVE_JOBWORKER_SKILLS';
 export const GET_NEW_SKILL_VALUE = 'GET_NEW_SKILL_VALUE';
 export const SAVE_NEW_SKILL_VALUE = 'SAVE_NEW_SKILL_VALUE';
 export const SUBMIT_NEW_SKILL = 'SUBMIT_NEW_SKILL';
+export const LOG_OUT = 'LOG_OUT';
 
 export const changeField = (newValue, inputName) => ({
   type: CHANGE_FIELD,
@@ -149,19 +150,8 @@ export const deleteAccount = () => ({
   type: DELETE_ACCOUNT,
 });
 
-export const sortByPrice = (payload) => ({
-  type: SORT_BY_PRICE,
-  payload,
-});
-
-export const filterByPrice = (payload) => ({
-  type: FILTER_BY_PRICE,
-  payload,
-});
-
-export const sortByAlphabet = (payload) => ({
-  type: SORT_BY_ALPHABET,
-  payload,
+export const logOut = () => ({
+  type: LOG_OUT,
 });
 
 export const getJobWorkerSkill = () => ({
