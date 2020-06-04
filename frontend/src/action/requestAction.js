@@ -71,7 +71,7 @@ export const submitDeleteRequest = () => ({
   type: SUBMIT_DELETE_REQUEST,
 });
 
-export const submitSETRequest = () => ({
+export const submitSetRequest = () => ({
   type: SUBMIT_SET_REQUEST,
 });
 
