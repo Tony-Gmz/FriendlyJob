@@ -31,12 +31,13 @@ const userMiddleware = (store) => (next) => (action) => {
   // console.log('on a intercepté une action dans le middleware: ', action);
   switch (action.type) {
     case GET_RANDOM_JOBWORKER:
+      // REQUEST TO GET A RANDOM JOBWORKER FOR THE HOMEPAGE 
+
       // console.log('coucou je suis get_random_jobworker');
       axios.get('http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/jobworker/random')
         .then((response) => {
-          // console.log(response);
-          // je voudrais enregistrer response.data dans le state => nouvelle action
-          // console.log(response);
+        
+          // dispatch the action
           store.dispatch(saveRandomJobWorker(response.data));
         })
         .catch((error) => {
@@ -45,6 +46,7 @@ const userMiddleware = (store) => (next) => (action) => {
       next(action);
       break;
     case SUBMIT_LOGIN: {
+      // REQUEST TO SAVE THE NEW USER WITH  SIGN IN 
       const { email, password } = store.getState().user;
       // console.log(email);
       // console.log(password);
@@ -52,22 +54,21 @@ const userMiddleware = (store) => (next) => (action) => {
         method: 'post',
         url: 'http://ec2-18-204-19-53.compute-1.amazonaws.com/api/login_check',
         data: {
+          // give the necessary data for the request
           username: email,
           password,
         },
       })
         .then((response) => {
-        // console.log(response);
-        // je voudrais enregistrer response.data dans le state => nouvelle action
-        // console.log(response);
-          // console.log(response);
+       
           console.log(response);
-          // je voudrais enregistrer response.data dans le state => nouvelle action
-          // console.log(response);
-          // console.log(response);
+          // dispact the action saveUser to the reducer
           store.dispatch(saveUser(response.data.user));
+          // we stock the jwtToken in the localStorage
           window.localStorage.setItem('jwtToken', response.data.token);
+          // we stock the user id in the localStorage
           window.localStorage.setItem('userId', response.data.user.id);
+          // we stock the user Role in the localstorage
           window.localStorage.setItem('userRole', response.data.user.roles);
         })
         .catch((error) => {
@@ -77,6 +78,10 @@ const userMiddleware = (store) => (next) => (action) => {
       break;
     }
     case GET_USER_DATA: {
+
+      // REQUEST TO SAVE THE CURRENT USER DATA 
+
+      // we take the necessary data in the localStorage
       const userId = localStorage.getItem('userId');
       const userToken = localStorage.getItem('jwtToken');
       axios({
@@ -90,6 +95,7 @@ const userMiddleware = (store) => (next) => (action) => {
           // console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
           console.log(response);
+          // we dispacth saveUser action to the reducer
           store.dispatch(saveUser(response.data));
         })
         .catch((error) => {
@@ -101,6 +107,8 @@ const userMiddleware = (store) => (next) => (action) => {
     }
 
     case GET_SIX_RANDOM_JOBWORKER: {
+      // REQUEST TO SAVE SIX JOBWORKER AFFILIATED TO A SERVICE
+
       const { serviceName, serviceList } = store.getState().service;
       // console.log(serviceName);
       // console.log(changeTitle(serviceName));
@@ -128,6 +136,9 @@ const userMiddleware = (store) => (next) => (action) => {
       break;
     }
     case GET_JOBWORKER: {
+
+      // REQUEST TO SAVE ALL JOBWORKER AFFILIATED TO A SERVICE 
+
       const { serviceName, serviceList } = store.getState().service;
       // console.log(serviceName);
       // console.log(changeTitle(serviceName));
@@ -141,7 +152,8 @@ const userMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
-        // console.log(response);
+          console.log(response);
+          // dispatch saveJobWorker action in userReducer
           store.dispatch(saveJobWorker(response.data[0].skills));
         })
         .catch((error) => {
@@ -154,6 +166,8 @@ const userMiddleware = (store) => (next) => (action) => {
       break;
     }
     case GET_JOBWORKER_DETAIL: {
+      // REQUEST TO GET THE DETAIL OF THE CURRENTJOBWORKER
+
       const { currentJobWorkerId } = store.getState().user;
       axios.get(`http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/jobworker/${currentJobWorkerId}`)
         .then((response) => {
@@ -170,6 +184,8 @@ const userMiddleware = (store) => (next) => (action) => {
       break;
     }
     case GET_JOBWORKER_RATING: {
+      // REQUEST TO GET THE RATING OF THE CURRENTJOBWORKER
+
       const { currentJobWorkerId } = store.getState().user;
       console.log(currentJobWorkerId);
       axios.get(`http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/jobworker/${currentJobWorkerId}/rating`)
@@ -187,6 +203,7 @@ const userMiddleware = (store) => (next) => (action) => {
       break;
     }
     case SUBMIT_EDIT: {
+      // REQUEST TO SAVE THE EDIT OF THE USER DATA
       const userId = localStorage.getItem('userId');
       const userToken = localStorage.getItem('jwtToken');
       let { editEmail, editPassword, editDepartments, password, editAbout, userData } = store.getState().user;
@@ -223,6 +240,7 @@ const userMiddleware = (store) => (next) => (action) => {
       break;
     }
     case SUBMIT_DELETE: {
+      // REQUEST TO DELETE USER'S ACCOUNT
       const userId = localStorage.getItem('userId');
       const userToken = localStorage.getItem('jwtToken');
       axios({
@@ -249,6 +267,7 @@ const userMiddleware = (store) => (next) => (action) => {
       break;
     }
     case GET_JOBWORKER_SKILLS: {
+      // REQUEST TO GET THE SKILL OF THE CURRENT JOBWORKER
       const userId = localStorage.getItem('userId');
       const userToken = localStorage.getItem('jwtToken');
       console.log(userId);
@@ -274,15 +293,20 @@ const userMiddleware = (store) => (next) => (action) => {
 
     }
     case SUBMIT_NEW_SKILL: {
+
+      // REQUEST FOR ADD A NEW SKILL TO THE CURRENT JOBWORKER
+
+      // we get all the necessary data for the request from localStorage and state
       const userId = localStorage.getItem('userId');
       const userToken = localStorage.getItem('jwtToken');
       const { selectedSkillId, selectedSkillPrice, selectedSkillDescription } = store.getState().user;
       const { serviceList } = store.getState().service;
       const price = Number(selectedSkillPrice);
-      console.log(`${selectedSkillId}+${selectedSkillPrice}+${selectedSkillDescription}+`);
-      console.log(price);
+      // console.log(`${selectedSkillId}+${selectedSkillPrice}+${selectedSkillDescription}+`);
+      // console.log(price);
+      // get the current id skill with a find function 
       const selectedSkillIdByName = serviceList.find(service => service.title === selectedSkillId);
-      console.log(selectedSkillIdByName);
+      //  console.log(selectedSkillIdByName);
       const serviceId = selectedSkillIdByName.id;
       axios({
         method: 'POST',

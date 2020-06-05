@@ -19,6 +19,8 @@ import { add } from 'date-fns/esm';
 import ModalAddSkill from 'src/containers/ModalAddSkill';
 import ModalDeleteSkill from 'src/containers/ModalDeleteSkill';
 import ModalEditSkill from 'src/containers/ModalEditSkill';
+import UploadImg from './UploadImg';
+import { FormControl } from '@material-ui/core';
 
 // == Composant
 const ProfilJobWorker = ({
@@ -77,15 +79,20 @@ const ProfilJobWorker = ({
     const {id, value} = data;
   };
   return (
-    <div className="profilFiendlyUser">
-      <div className="profilFiendlyUser_desciption">
+    <div className="profilJobWorker">
+      <div className="profilJobWorker_desciption">
         Voici votre espace personnel il vous sera utile si vous voulez effectuer des changements d'informations
       </div>
       <div className="profil">
         <div className="profil_card">
-          {userAvatar && <Avatar alt="Remy Sharp" src={image} /> }
-          {!userAvatar && <Avatar alt="Remy Sharp" src="">{whitoutAvatar(firstname)}</Avatar>}
           <div className="profil_title">{firstname}</div>
+          <div className="profil_card_img">
+            {userAvatar && <Avatar alt="Remy Sharp" src={image} /> }
+            {!userAvatar && <Avatar alt="Remy Sharp" src="">{whitoutAvatar(firstname)}</Avatar>}
+            <div className="profil_card_img_upload">
+              <UploadImg />
+            </div>
+          </div>
         </div>
         <div className="profil_information">
           <form onSubmit={handleSubmit} className="profil_form">
@@ -94,7 +101,7 @@ const ProfilJobWorker = ({
                 className="profil_input"
                 id="outlined-name-input"
                 label='Nom'
-                value={firstname}
+                value={lastname}
                 type="text"
                 autoComplete="current-name"
                 variant="outlined"
@@ -106,7 +113,7 @@ const ProfilJobWorker = ({
                 className="profil_input"
                 id="outlined-firstname-input"
                 label="Prénom"
-                value={lastname}
+                value={firstname}
                 type="text"
                 autoComplete="current-firstname"
                 variant="outlined"
@@ -114,8 +121,8 @@ const ProfilJobWorker = ({
               />
             </div>
             {isEditable && (
-              <div className="form_element">
-                <TextField className="profil_input" id="select" onChange={handleChange} label="Departement" name="department" value="" select>
+              <div className="form_element jobWorker_department_select">
+                <TextField className="profil_input" id="select" onChange={handleChange} label="Departement" name="department" select>
                   {departmentsList.map((depart) => (
                     <MenuItem value={depart.id}>{depart.name}</MenuItem>
                   ))}
@@ -124,7 +131,7 @@ const ProfilJobWorker = ({
             )}
             {!isEditable && (
               <div className="form_element">
-                <TextField className="profil_input" id="select" label="Departement" value="" select disabled>
+                <TextField className="profil_input" id="select" label="Departement" value={department} select disabled>
                   <MenuItem value={department.id}>{department.name}</MenuItem>
                 </TextField>
               </div>
@@ -261,6 +268,7 @@ const ProfilJobWorker = ({
                      return (
                        <>
                       <div key={service.id} className="form_skill_content">
+                      <div className="form_skill_input">
                       <div className="form_skill_content_radio">
                        {service.title}
                       
@@ -285,12 +293,17 @@ const ProfilJobWorker = ({
                           value={skill.description}
                           disabled
                         />
-                        <div>
-                          <ModalEditSkill {...skill} />
                         </div>
+                        </div>
+                        <div className="form_skill_button">
+                          <div>
+                            <ModalEditSkill {...skill} />
+                          </div>
+                      <div>
+                      <ModalDeleteSkill skill={skill.id} />
                       </div>
-                        <ModalDeleteSkill skill={skill.id} />
-                    </div>
+                      </div>
+                      </div>
                     </>
                     );
                   }

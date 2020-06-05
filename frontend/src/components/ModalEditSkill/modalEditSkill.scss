@@ -1,0 +1,44 @@
+
+
+.modalEditSkill_title {
+  padding-top: 1rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #FF385C;
+  padding-bottom: 1rem;
+  width: 400px;
+}
+
+.modalEditSkill_description {
+text-align: center;
+font-weight: bold;
+font-size: 1.5rem;
+padding-top: 1.5rem;
+line-height: 1.5;
+
+}
+
+.modalEditSkill_input {
+padding-top: 1.5em;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+
+.MuiFormControl-root {
+  width: 400px;
+}
+}
+.form_skill_content_about {
+width: 400px;
+}
+
+.form_skill_content_price {
+align-self: center;
+}
+
+.modalEditSkill_submit_button {
+ padding-top: 2em;
+ padding-bottom: 2em;
+ display: inline-block;
+ text-align: center;
+}

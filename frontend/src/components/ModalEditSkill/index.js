@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Modal, Input } from 'semantic-ui-react';
 import TextField from '@material-ui/core/TextField';
-
+import './modalEditSkill.scss';
 const ModalEditSkill = ({ price, description, id, getSkillId, getNewSkillValue, submitEditSkill, selectedSkillPrice, selectedSkillDescription }) => {
 
 
@@ -22,13 +22,14 @@ const ModalEditSkill = ({ price, description, id, getSkillId, getNewSkillValue, 
     getSkillId(id);
   };
   return (
-    <Modal trigger={<Button onClick={handleClick}>modifier</Button>} closeIcon>
-   <Modal.Header>Select a Photo</Modal.Header>
-    <Modal.Description>
-    <p>
+    <Modal trigger={<Button style={{ backgroundColor: 'green', color: '#FFFF' }} onClick={handleClick}>modifier</Button>} closeIcon>
+   <Modal.Header className="modalEditSkill_title">Modifier votre compétence</Modal.Header>
+    <Modal.Description >
+    <p className="modalEditSkill_description">
       Si vous souhaitez modifier cette compétence veuillez indiquer votre prix/horaire et une description.
     </p>
-      <form onSubmit={handleSubmit} className="modalAddSkill_input">
+      <form className="modalEdit_form" onSubmit={handleSubmit} >
+      <div className="modalEditSkill_input">
           <div className="form_skill_content_price">
             <Input
               label={{ basic: true, content: '/heure' }}
@@ -52,8 +53,9 @@ const ModalEditSkill = ({ price, description, id, getSkillId, getNewSkillValue, 
               name="selectedSkillDescription"
             />
           </div>
-          <div>
-            <button type="submit">Envoyer</button>
+           </div>
+            <div className="modalEditSkill_submit_button">
+              <Button style={{ backgroundColor: 'green', color: '#FFFF', margin: 'auto' }} type="submit">Envoyer</Button>
           </div>
       </form>
     </Modal.Description>

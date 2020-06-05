@@ -7,6 +7,7 @@
 .profil{
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   margin-bottom: 3em;
   margin-top: 3em;
@@ -32,8 +33,8 @@
   border-radius: 50%;
   -ms-flex-align: center;
   align-items: center;
-  height: 100px;
-  width: 100px;
+  height: 250px;
+  width: 250px;
   display: flex;
   margin-bottom: 1.5em;
   overflow: hidden;
@@ -67,10 +68,17 @@
   justify-content: space-around;
 }
 
-.profilWorkJober_desciption {
+.profilJobWorker_desciption {
 
   margin-top: 2em;
   line-height: 2;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #FF385C;
+  padding-bottom: 1rem;
+  width: 650px;
+
 
 }
 
@@ -117,3 +125,61 @@
   }
 }
 
+.profil_title {
+  display: inline-block;
+  padding-top: 1em;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #FF385C;
+  padding-bottom: 1rem;
+  width: 400px;
+}
+
+.profil_card_img {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10em;
+  margin-top: 2em;
+}
+
+.MuiAvatar-circle{
+  img {
+    width: 250px;
+   height: 250px;
+  }
+  
+}
+
+.jobWorker_department_select {
+  
+  margin-bottom: 2.5em;
+}
+
+.form_skill_content {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFF;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+.form_skill_input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+.form_skill_button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.form_skill_content_price {
+  width: 100px;
+}
+
+.skill_modal {
+  margin-bottom: 2em;
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Modal, Input } from 'semantic-ui-react';
 import TextField from '@material-ui/core/TextField';
+import './ModalAddSkill.scss';
 
 const ModalAddSkill = ({ serviceList, selectedSkillDescription, selectedSkillId, selectedSkillPrice, getNewSkillValue, submitNewSkill  }) => {
 
@@ -17,21 +18,22 @@ const ModalAddSkill = ({ serviceList, selectedSkillDescription, selectedSkillId,
   };
 
   return (
-    <Modal trigger={<Button>Ajouter une compétence</Button>} closeIcon>
-<Modal.Header>Select a Photo</Modal.Header>
-  <Modal.Description>
-    <p>
-      Si vous souhaitez ajouter cette compétence veuillez indiquer votre prix/horaire et une description.
+    <Modal trigger={<Button className="ModalAddSkill_triggerButton" style={{ backgroundColor: '#303f9f', color: '#FFFF' }}>Ajouter une compétence</Button>} closeIcon>
+   <Modal.Header className="modalAddSkill_title">Ajout d'une compétence</Modal.Header>
+    <Modal.Description>
+    <p className="modalAddSkill_description">
+      Choisissez une compétence, veuillez indiquer votre prix/horaire, une description et c'est parti !
     </p>
       <div className="modalAddSkill_input">
-        <form onSubmit={handleSubmit}>
-          <Input list="services" icon="search" name="selectedSkillId" onChange={handleChange} placeholder="Recherchez le service idéale..." />
+        <form className="modalAddSkill_form" onSubmit={handleSubmit}>
+          <Input className="modalAddSkill_select" list="services" icon="search" name="selectedSkillId" onChange={handleChange} placeholder="Recherchez le service idéale..." />
           <datalist id='services'>
             {serviceList.map((service) => (
               <option key={service.id} value={service.title} />
             ))}
           </datalist>
-          <div className="form_skill_content_price">
+          <div className="modalSkill_input_content">
+           <div className="form_skill_content_price">
             <Input
               label={{ basic: true, content: '/heure' }}
               labelPosition='right'
@@ -53,8 +55,9 @@ const ModalAddSkill = ({ serviceList, selectedSkillDescription, selectedSkillId,
               name="selectedSkillDescription"
             />
           </div>
-          <div>
-            <button type="submit">Envoyer</button>
+          </div>
+          <div className="modalAddSkill_submit_button">
+            <Button style={{ backgroundColor: 'green', color: '#FFFF' }}>Envoyer</Button>
           </div>
         </form>
       </div>

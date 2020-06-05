@@ -10,6 +10,7 @@ function ServiceDetail({ serviceList, getServiceName, getSixJobWorker, jobWorker
   const { slug } = useParams();
   //console.log(slug);
   useEffect(() => {
+    
     getServiceName(slug);
     getSixJobWorker();
   }, []);

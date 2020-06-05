@@ -25,7 +25,7 @@ const ModalDeleteSkill = ({ skill, getSkillId, submitDeleteSkill }) => {
   };
 
   return (
-    <Modal trigger={<Button onClick={handleClick}>Supprimer</Button>} closeIcon>
+    <Modal trigger={<Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }} onClick={handleClick}>Supprimer</Button>} closeIcon>
       <Header icon="trash" content="supprimer la compétence" />
       <Modal.Content>
         <p>
