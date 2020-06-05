@@ -13,13 +13,12 @@ const Footer = () => (
     </div>
     <div className="footer_link">
       <div className="footer_link_text">
-        <Link to="/contact">Qui nous sommes</Link>
+        <Link to="/contact">Qui somme nous ?</Link>
       </div>
       <div className="footer_icon">
         <Button className="footer_icon_item" circular color='facebook' icon='facebook' />
         <Button className="footer_icon_item" circular color='twitter' icon='twitter' />
         <Button className="footer_icon_item" circular color='linkedin' icon='linkedin' />
-        <Button className="footer_icon_item" circular color='google plus' icon='google plus' />
       </div>
     </div>
   </footer>

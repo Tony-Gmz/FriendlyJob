@@ -2,10 +2,14 @@
 
 .jobpresentation {
 
-  margin-top: 4em;
-  background-color: #F7F7F7;
+  background-color: rgba(19, 18, 18, 0.582);
   border-radius: 10px;
   padding-bottom: 3em;
+  color: white;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 4em;
+  
   @include phone {
     
     width: 100%;
