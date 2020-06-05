@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Card } from 'semantic-ui-react';
 import ModalCancelRequest from 'src/containers/ModalCancelRequest';
+import ModalEditRequest from 'src/containers/ModalEditRequest';
 
 
 // == Composant
@@ -25,7 +26,7 @@ const RequestWaitFU = ({ request }) => (
     <Card.Content extra>
       <div className="buttons">
         <Button className="approve_Button">
-          Modifier
+          <ModalEditRequest request={request} />
         </Button>
         <Button className="decline_Button">
           <ModalCancelRequest request={request} />

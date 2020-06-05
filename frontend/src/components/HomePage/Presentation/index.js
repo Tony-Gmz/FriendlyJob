@@ -11,11 +11,9 @@ const Presentation = ({ serviceList, fieldService, serviceSelected }) => {
   const history = useHistory();
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log('coucou je suis un submit sur la homepage');
     history.push(`/services/${serviceSelected}`);
   };
   const handleChange = (evt) => {
-    console.log(`value: ${evt.target.value}`);
     fieldService(slugifyTitle(evt.target.value));
   };
   return (
@@ -28,7 +26,7 @@ const Presentation = ({ serviceList, fieldService, serviceSelected }) => {
           <Input list="services" icon="search" name="serviceInput" onChange={handleChange} placeholder="Recherchez le service idéale..." />
           <datalist id='services'>
             {serviceList.map((service) => (
-              <option key={service.id} value={service.title} />
+              <option key={service.id} value={service.title}>{service.title}</option>
             ))}
           </datalist>
         </form>

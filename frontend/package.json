@@ -69,6 +69,7 @@
     "rsuite": "^4.7.0",
     "semantic-ui-react": "^0.88.2",
     "slugify": "^1.4.0",
+    "sort-array": "^4.1.1",
     "styled-components": "^5.1.0"
   }
 }

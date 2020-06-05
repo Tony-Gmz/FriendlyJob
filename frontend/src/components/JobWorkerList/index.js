@@ -3,14 +3,16 @@ import PropTypes from 'prop-types';
 import Loader from 'src/components/Loader';
 import JobWorkerListTitle from './JobWorkerListTitle';
 import JobWorkerMain from './JobWorkerMain';
+import { useParams } from 'react-router-dom';
 
 // JobWorkerList page component
-const JobWorkerList = ({ getJobWorker, currentService, jobWorkers, loadingOnJobWorkerList }) => {
+const JobWorkerList = ({ getJobWorker, currentService, jobWorkers, loadingOnJobWorkerList, getServiceName }) => {
+  const { slug } = useParams();
   useEffect(() => {
+    getServiceName(slug);
     getJobWorker();
   }, []);
 
-  console.log(jobWorkers);
 
   return (
     <>
@@ -18,7 +20,7 @@ const JobWorkerList = ({ getJobWorker, currentService, jobWorkers, loadingOnJobW
       {!loadingOnJobWorkerList && (
         <>
           <JobWorkerListTitle currentService={currentService} />
-          <JobWorkerMain jobWorkers={jobWorkers} />
+          <JobWorkerMain jobWorkers={jobWorkers} getJobWorker={getJobWorker} getServiceName={getServiceName} />
         </>
       )}
     </>
