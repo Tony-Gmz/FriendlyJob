@@ -35,7 +35,6 @@ class DemandController extends AbstractController
      *      @OA\Property(property="reservationHour", type="string"),
      *      @OA\Property(property="status", type="string"),
      *      @OA\Property(property="service", type="integer"),
-     *      @OA\Property(property="friendlyUser", type="integer"),
      *      @OA\Property(property="jobWorker", type="integer"),
      *     )
      * )
@@ -47,12 +46,19 @@ class DemandController extends AbstractController
 
         $demand = new Demand();
 
+        $friendlyUser = $userRepository->findUserType($this->getUser()->getId(), 'FRIENDLY_USER');
+        //! Condition si user null ( donc n'est pas un friendlyUser )
+        if ($friendlyUser == null ) {
+            dd('BRAHHHHH raté c\'est pas un friendlyUSER');
+        }
+        //dd($friendlyUser);
+
         $demand->setBody($jsonData->body);
         $demand->setReservationDate(new \DateTime($jsonData->reservationDate));
         $demand->setReservationHour($jsonData->reservationHour);
         $demand->setStatus($jsonData->status ?? 'En attente');
         $demand->setService($serviceRepository->find($jsonData->service));
-        $demand->setFriendlyUser($userRepository->findUserType($jsonData->friendlyUser, 'FRIENDLY_USER'));
+        $demand->setFriendlyUser($friendlyUser);
         $demand->setJobWorker($userRepository->findUserType($jsonData->jobWorker, 'JOBWORKER')); 
 
         $em = $this->getDoctrine()->getManager();
@@ -118,11 +124,11 @@ class DemandController extends AbstractController
      *     description="Return all the demands from one user",
      *     @Model(type=Demand::class, groups={"demand_one_user"})
      * )
-     * @Route("/users/{id}", name="users", methods={"GET"}, requirements={"id": "\d+"})
+     * @Route("/users", name="users", methods={"GET"}, requirements={"id": "\d+"})
      */
-    public function getDemandsFromOneUser(DemandRepository $demandRepository, int $id)
+    public function getDemandsFromOneUser(DemandRepository $demandRepository)
     {
-        $allDemands = $demandRepository->findAllDemandsFromOneUser($id);
+        $allDemands = $demandRepository->findAllDemandsFromOneUser($this->getUser()->getId());
 
         return $this->json(
             $allDemands,

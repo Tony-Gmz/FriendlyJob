@@ -4,12 +4,16 @@ namespace App\Controller\Api\V1;
 
 use App\Entity\User;
 use App\Repository\DepartmentRepository;
+use App\Repository\ServiceRepository;
 use App\Repository\UserRepository;
+use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
+use Nelmio\ApiDocBundle\Annotation\Model;
 use Swagger\Annotations as OA;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * @Route("/api/v1/users", name="api_v1_users_")
@@ -17,10 +21,12 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class UserController extends AbstractController
 {
     private $passwordEncoder;
+    private $tokenManager;
 
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder, JWTTokenManagerInterface $tokenManager)
     {
         $this->passwordEncoder = $passwordEncoder;
+        $this->tokenManager = $tokenManager;
     }
 
     /**
@@ -29,12 +35,12 @@ class UserController extends AbstractController
      *     response=200,
      *     description="Return data from one user",
      * )
-     * @Route("/{id}", name="read", methods={"GET"}, requirements={"id": "\d+"})
+     * @Route("", name="read", methods={"GET"}, requirements={"id": "\d+"})
      */
-    public function read(User $user)
+    public function read()
     {
         $response = $this->json(
-            $user, 
+            $this->getUser(), 
             200, 
             [], 
             ['groups' => 'user_read']
@@ -66,7 +72,7 @@ class UserController extends AbstractController
      *      @OA\Property(property="department", type="integer"),
      *     )
      * )
-     * @Route("", name="add", methods={"POST"})
+     * @Route("/add", name="add", methods={"POST"})
      */
     public function add(Request $request, DepartmentRepository $departmentRepository)
     {
@@ -119,12 +125,14 @@ class UserController extends AbstractController
      *      @OA\Property(property="department", type="integer"),
      *     )
      * )
-     * @Route("/{id}", name="edit", methods={"PUT"}, requirements={"id": "\d+"})
+     * @Route("", name="edit", methods={"PUT"})
      */
-    public function edit(Request $request, User $user, DepartmentRepository $departmentRepository)
+    public function edit(Request $request, DepartmentRepository $departmentRepository)
     {
         $jsonData = json_decode($request->getContent());
         //dd($jsonData);
+
+        $user = $this->getUser();
 
         if (isset($jsonData->password)) {
             $encodedPassword = $this->passwordEncoder->encodePassword($user, $jsonData->password);
@@ -149,13 +157,22 @@ class UserController extends AbstractController
         $user->setAbout(isset($jsonData->about) ? $jsonData->about : $user->getAbout());
         $user->setUpdatedAt(new \DateTime());
         $user->setDepartment(isset($jsonData->department) ? $departmentRepository->find($jsonData->department) : $user->getDepartment());
-
+ 
         $em = $this->getDoctrine()->getManager();
         $em->persist($user);
         $em->flush();
-        
+
+        $token = null;
+        if (isset($jsonData->email) && $user->getEmail() != $jsonData->email)
+        {
+            $token = $this->tokenManager->create($user);
+        }
+
         return $this->json(
-            $user,
+            [
+                $user, 
+                'token' => $token
+            ],
             200,
             [],
             ['groups' => 'user_edit']
@@ -168,12 +185,12 @@ class UserController extends AbstractController
      *     response=200,
      *     description="Delete a user",
      * )
-     * @Route("/{id}", name="delete", methods={"DELETE"}, requirements={"id": "\d+"})
+     * @Route("", name="delete", methods={"DELETE"})
      */
-    public function delete(User $user)
+    public function delete()
     {
         $em = $this->getDoctrine()->getManager();
-        $em->remove($user);
+        $em->remove($this->getUser());
         $em->flush();
 
         return $this->json([
@@ -268,6 +285,56 @@ class UserController extends AbstractController
             200, 
             [],
             ['groups' => 'user_jobworker_rating']
+        );
+    }
+
+    /**
+     * @OA\Tag(name="UserController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Return the list of the services which has no skill for a jobworker ",
+     * )
+     * @Route("/jobworker/skill/select", name="jobworker_skill_select", methods={"GET"})
+     */
+    public function selectSkillForJobWorker(UserRepository $userRepository, SerializerInterface $serializer, ServiceRepository $serviceRepository)
+    {
+        // Récupération des info jobworker en utilisant une qb existante
+        $JobworkerInfo = $userRepository->findJobWorkerDetails($this->getUser()->getId());
+        
+        // Transformation en tableau de ces données avec un groupe existant
+        $arrayJobworkerInfo = $serializer->normalize($JobworkerInfo, null, ['groups' => 'user_jobworker_details']);
+
+        // Récupération de tout les services
+        $allService = $serviceRepository->findAll();
+
+        // Transformation en tableau de ces données avec un groupe existant
+        $arrayServices = $serializer->normalize($allService, null, ['groups' => 'service_browse']);
+        //dd($arrayServices);
+
+        $AllJobworkerSkill = $arrayJobworkerInfo['skills'];
+        //dd($AllJobworkerSkill);
+
+        foreach($arrayServices as $index => $service)
+        {
+            foreach ($AllJobworkerSkill as $skills) {
+                $serviceName = $service['title'];
+                $skillServiceName = $skills['service']['title'];
+                
+                if ($serviceName == $skillServiceName)
+                {
+                    //dump('MATCH !');
+                    //dump($serviceName, $skillServiceName);
+                    unset($arrayServices[$index]);
+                }
+                //dump('nope');
+            }
+        }
+        //dd($arrayServices);
+        //! Quand la personne a tout les skill sur son profil ça retourne un tableau vide !
+
+        return $this->json(
+            $arrayServices, 
+            200
         );
     }
 }

@@ -25,12 +25,11 @@ class SkillController extends AbstractController
      * @OA\Parameter(
      *     name="skill",
      *     in="body",
-     *     description="Modify a skill for one user",
+     *     description="Modify a skill for one jobworker",
      *     @OA\Schema(
      *      type="object",
      *      @OA\Property(property="description", type="string"),
      *      @OA\Property(property="price", type="integer"),
-     *      @OA\Property(property="user", type="integer"),
      *      @OA\Property(property="service", type="integer"),
      *     )
      * )
@@ -38,13 +37,18 @@ class SkillController extends AbstractController
      */
     public function add(Request $request, UserRepository $userRepository, ServiceRepository $serviceRepository)
     {
+        
         $jsonData = json_decode($request->getContent());
 
         $skill = new Skill();
 
+        $user = $userRepository->findUserType($this->getUser()->getId(), 'JOBWORKER');
+        // Condition si user null ( donc n'est pas jobworker )
+        //dd($user);
+
         $skill->setDescription($jsonData->description);
         $skill->setPrice($jsonData->price);
-        $skill->setUser($userRepository->findUserType($jsonData->user, 'JOBWORKER'));
+        $skill->setUser($user);
         $skill->setService($serviceRepository->find($jsonData->service));
 
         //dd($skill);
