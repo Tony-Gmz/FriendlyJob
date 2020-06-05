@@ -26,8 +26,8 @@ class RatingController extends AbstractController
      *     @Model(type=Rating::class, groups={"rating_add"}),
      * )
      * @OA\Response(
-     *     response=400,
-     *     description="Return a bad request message",
+     *     response=404,
+     *     description="Return an error message",
      *     @OA\Schema(
      *      type="object",
      *      @OA\Property(property="status", type="integer"),
@@ -35,8 +35,8 @@ class RatingController extends AbstractController
      *     )
      * )
      * @OA\Response(
-     *     response=404,
-     *     description="Return an error message",
+     *     response=400,
+     *     description="Return a bad Request message",
      *     @OA\Schema(
      *      type="object",
      *      @OA\Property(property="status", type="integer"),

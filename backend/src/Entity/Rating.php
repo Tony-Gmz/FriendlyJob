@@ -31,7 +31,6 @@ class Rating
      * @Groups({"rating_add"})
      * @Assert\NotBlank
      * @Assert\NotNull
-     * 
      */
     private $comment;
 
@@ -90,7 +89,7 @@ class Rating
         return $this->star;
     }
 
-    public function setStar(int $star): self
+    public function setStar(?int $star): self
     {
         $this->star = $star;
 
