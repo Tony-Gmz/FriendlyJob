@@ -32,8 +32,9 @@ const ProfilFiendlyUser = ({
   editConfirmationPassword,
   isEdited,
   editAbout,
+  urlAvatar,
 }) => {
-  const userAvatar = image;
+  const userAvatar = urlAvatar;
   const handleClick = () => {
     canEditProfil();
   };
@@ -56,7 +57,7 @@ const ProfilFiendlyUser = ({
       </div>
       <div className="profil">
         <div className="profil_card">
-          {userAvatar && <Avatar alt="Remy Sharp" src={image} /> }
+          {userAvatar && <Avatar alt="Remy Sharp" src={urlAvatar} /> }
           {!userAvatar && <Avatar alt="Remy Sharp" src="">{whitoutAvatar(firstname)}</Avatar>}
           <div className="profil_title">{firstname}</div>
         </div>

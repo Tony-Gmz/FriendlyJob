@@ -38,6 +38,10 @@ export const LOG_OUT = 'LOG_OUT';
 export const GET_SKILL_ID = 'GET_SKILL_ID';
 export const SUBMIT_DELETE_SKILL = 'SUBMIT_DELETE_SKILL';
 export const SUBMIT_EDIT_SKILL = 'SUBMIT_EDIT_SKILL';
+export const SAVE_URL_AVATAR = 'SAVE_URL_AVATAR';
+export const GET_URL_AVATAR = 'GET_URL_AVATAR';
+export const SAVE_EDIT_URL_AVATAR = 'SAVE_EDIT_URL_AVATAR';
+export const SUBMIT_AVATAR = 'SAVE_AVATAR';
 
 export const changeField = (newValue, inputName) => ({
   type: CHANGE_FIELD,
@@ -191,4 +195,18 @@ export const submitDeleteSkill = () => ({
 
 export const submitEditSkill = () => ({
   type: SUBMIT_EDIT_SKILL,
+});
+
+export const saveUrlAvatar = (avatar) => ({
+  type: SAVE_URL_AVATAR,
+  avatar,
+});
+
+export const getUrlAvatar = (newAvatar) => ({
+  type: GET_URL_AVATAR,
+  newAvatar,
+});
+
+export const subitAvatar = () => ({
+  type: SUBMIT_AVATAR,
 });

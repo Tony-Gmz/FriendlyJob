@@ -1,3 +1,4 @@
+import { jardinage } from 'src/assets/img/jardinage.jpg';
 import {
   SAVE_RANDOM_JOBWORKER,
   CHANGE_FIELD, SAVE_USER,
@@ -16,6 +17,8 @@ import {
   GET_NEW_SKILL_VALUE,
   LOG_OUT,
   GET_SKILL_ID,
+  SAVE_URL_AVATAR,
+  GET_URL_AVATAR,
 } from '../action/usersActions';
 
 const initialState = {
@@ -71,6 +74,8 @@ const initialState = {
   /** Selected Skill Description in jobWorker Profil */
   selectedSkillDescription: null,
   skillId: null,
+  urlAvatar: '',
+  avatarData: null,
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -173,6 +178,16 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         skillId: action.id,
+      };
+    case SAVE_URL_AVATAR:
+      return {
+        ...state,
+        urlAvatar: action.avatar,
+      };
+    case GET_URL_AVATAR:
+      return {
+        ...state,
+        avatarData: action.newAvatar,
       };
     default: return state;
   }

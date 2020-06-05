@@ -24,6 +24,9 @@ import {
   SUBMIT_NEW_SKILL,
   SUBMIT_DELETE_SKILL,
   SUBMIT_EDIT_SKILL,
+  saveUrlAvatar,
+  GET_URL_AVATAR,
+  SUBMIT_AVATAR,
 } from '../action/usersActions';
 
 
@@ -64,6 +67,8 @@ const userMiddleware = (store) => (next) => (action) => {
           console.log(response);
           // dispact the action saveUser to the reducer
           store.dispatch(saveUser(response.data.user));
+          // dispatch the action saveUrlAvatar to reducer
+          store.dispatch(saveUrlAvatar(response.data.image));
           // we stock the jwtToken in the localStorage
           window.localStorage.setItem('jwtToken', response.data.token);
           // we stock the user id in the localStorage
@@ -97,6 +102,8 @@ const userMiddleware = (store) => (next) => (action) => {
           console.log(response);
           // we dispacth saveUser action to the reducer
           store.dispatch(saveUser(response.data));
+          // dispatch the action saveUrlAvatar to reducer
+          store.dispatch(saveUrlAvatar(response.data.image));
         })
         .catch((error) => {
           console.warn(error);
@@ -206,13 +213,14 @@ const userMiddleware = (store) => (next) => (action) => {
       // REQUEST TO SAVE THE EDIT OF THE USER DATA
       const userId = localStorage.getItem('userId');
       const userToken = localStorage.getItem('jwtToken');
-      let { editEmail, editPassword, editDepartments, password, editAbout, userData } = store.getState().user;
+      let { editEmail, editPassword, editDepartments, password, editAbout, userData, urlAvatar } = store.getState().user;
       const { departmentId } = store.getState().user.userData.department.id;
       console.log(departmentId);
       console.log(editEmail);
       console.log(editDepartments);
       console.log(editPassword);
       console.log(editAbout);
+      console.log(urlAvatar);
       axios({
         method: 'PUT',
         url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/${userId}`,
@@ -221,6 +229,7 @@ const userMiddleware = (store) => (next) => (action) => {
           password: editPassword,
           departments: editDepartments,
           about: editAbout,
+          image: urlAvatar,
         },
         headers: {
           Authorization: `Bearer ${userToken}`,
@@ -385,6 +394,30 @@ const userMiddleware = (store) => (next) => (action) => {
         });
       next(action);
       break;
+    }
+    case SUBMIT_AVATAR: {
+      const{ avatarData } = store.getState().user;
+      console.log(avatarData);
+      const data = new FormData();
+      data.append('file', avatarData);
+      data.append('upload_preset', 'friendlyjob');
+      axios({
+        method: 'POST',
+        url: 'https://api.cloudinary.com/v1_1/friendlyjob/image/upload',
+        data,
+      })
+        .then((response) => {
+          // console.log(response);
+          // je voudrais enregistrer response.data dans le state => nouvelle action
+          console.log(response);
+          store.dispatch(saveUrlAvatar(response.data.secure_url));
+        })
+        .catch((error) => {
+          console.warn(error);
+          console.log('jai fait une erreur');
+        });
+        next(action);
+        break;
     }
 
     default:

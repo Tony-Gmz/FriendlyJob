@@ -22,7 +22,8 @@ const Profil = ({
   getNewSkillValue,
   selectedSkillId,
   selectedSkillPrice,
-  selectedSkillDescription
+  selectedSkillDescription,
+  urlAvatar,
 }) => {
   const role = localStorage.getItem('userRole');
   return (
@@ -42,6 +43,7 @@ const Profil = ({
             editConfirmationPassword={editConfirmationPassword}
             isEdited={isEdited}
             editAbout={editAbout}
+            urlAvatar={urlAvatar}
           />
         )
         : (
@@ -66,6 +68,7 @@ const Profil = ({
             selectedSkillPrice={selectedSkillPrice}
             selectedSkillDescription={selectedSkillDescription}
             getNewSkillValue={getNewSkillValue}
+            urlAvatar={urlAvatar}
           />
         )}
     </>

@@ -19,7 +19,7 @@ import { add } from 'date-fns/esm';
 import ModalAddSkill from 'src/containers/ModalAddSkill';
 import ModalDeleteSkill from 'src/containers/ModalDeleteSkill';
 import ModalEditSkill from 'src/containers/ModalEditSkill';
-import UploadImg from './UploadImg';
+import UploadImg from 'src/containers/UploadImg';
 import { FormControl } from '@material-ui/core';
 
 // == Composant
@@ -48,13 +48,14 @@ const ProfilJobWorker = ({
   selectedSkillDescription,
   selectedSkillId,
   selectedSkillPrice,
+  urlAvatar,
 }) => {
   useEffect(() => {
     getJobWorkerSkill();
   }, []);
 
   // console.log(currentJobWorkerSkills);
-  const userAvatar = image;
+  const userAvatar = urlAvatar;
   const handleClick = () => {
     canEditProfil();
   };
@@ -87,10 +88,10 @@ const ProfilJobWorker = ({
         <div className="profil_card">
           <div className="profil_title">{firstname}</div>
           <div className="profil_card_img">
-            {userAvatar && <Avatar alt="Remy Sharp" src={image} /> }
+            {userAvatar && <Avatar alt="Remy Sharp" src={urlAvatar} /> }
             {!userAvatar && <Avatar alt="Remy Sharp" src="">{whitoutAvatar(firstname)}</Avatar>}
             <div className="profil_card_img_upload">
-              <UploadImg />
+              <UploadImg urlAvatar={urlAvatar} />
             </div>
           </div>
         </div>
