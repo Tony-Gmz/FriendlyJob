@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\RatingRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=RatingRepository::class)
@@ -28,6 +29,9 @@ class Rating
      * @Groups({"service_jobworker"})
      * @Groups({"demand_one_user"})
      * @Groups({"rating_add"})
+     * @Assert\NotBlank
+     * @Assert\NotNull
+     * 
      */
     private $comment;
 
@@ -37,6 +41,9 @@ class Rating
      * @Groups({"service_jobworker"})
      * @Groups({"demand_one_user"})
      * @Groups({"rating_add"})
+     * @Assert\Positive
+     * @Assert\Range(min = 1, max = 5, notInRangeMessage = "This value should be an integer between {{ min }} and {{ max }}")
+     * @Assert\NotNull
      */
     private $star;
 
@@ -71,7 +78,7 @@ class Rating
         return $this->comment;
     }
 
-    public function setComment(string $comment): self
+    public function setComment(?string $comment): self
     {
         $this->comment = $comment;
 

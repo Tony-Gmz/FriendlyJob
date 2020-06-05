@@ -31,7 +31,7 @@ security:
             anonymous: lazy
         #! UserController::add
         user_add:
-            pattern:  ^/api/v1/users$
+            pattern:  ^/api/v1/users/add$
             anonymous: lazy
         #! UserController::getRandomJobWorker (/api/v1/users/jobworker/random)
         #! UserController::getJobWorkerDetails (/api/v1/users/jobworker/150)
