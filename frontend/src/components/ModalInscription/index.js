@@ -10,6 +10,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
+import { Button } from 'react-bootstrap';
 
 // == Import
 import './modalInscription.scss';
@@ -30,7 +31,7 @@ const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValu
 
   return (
     <div className="ModalInscription">
-    <a href="#inscription"><NavButtonStyled>Inscription</NavButtonStyled></a>
+    <a href="#inscription"><Button variant="outline-danger">Inscription</Button></a>
     <div id="inscription" className="inscription">
       <div className="modal_block">
         <div className="modal_header">

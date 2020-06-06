@@ -52,11 +52,15 @@
     "@material-ui/lab": "^4.0.0-alpha.54",
     "@material-ui/pickers": "^3.2.10",
     "axios": "^0.19.2",
+    "bootstrap": "4.5.0",
     "classnames": "^2.2.6",
     "date-fns": "^2.14.0",
     "dompurify": "^2.0.11",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
     "prop-types": "*",
     "react": "*",
+    "react-bootstrap": "^1.0.1",
     "react-dom": "*",
     "react-feather": "^2.0.8",
     "react-rater": "^5.1.1",
@@ -71,5 +75,8 @@
     "slugify": "^1.4.0",
     "sort-array": "^4.1.1",
     "styled-components": "^5.1.0"
+  },
+  "externals": {
+      "jquery": "jQuery"
   }
 }

@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
-import NavButtonStyled from 'src/components/Button/NavButtonStyled';
+import { Button } from 'react-bootstrap';
 
 // == Import
 import './modalConnexion.scss';
@@ -23,7 +23,7 @@ const ModalConnexion = ({ changeField, submitLoggin }) => {
 
   return (
     <div className="ModalConnexion">
-      <a href="#connexion"><NavButtonStyled>Connexion</NavButtonStyled></a>
+      <a href="#connexion"><Button variant="outline-danger">Connexion</Button></a>
       <div id="connexion" className="connexion">
         <div className="modal_block">
           <div className="modal_header">
