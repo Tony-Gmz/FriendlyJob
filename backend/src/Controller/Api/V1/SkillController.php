@@ -24,6 +24,24 @@ class SkillController extends AbstractController
      *     response=201,
      *     description="Return the created skills",
      * )
+     * @OA\Response(
+     *     response=404,
+     *     description="Return an error message",
+     *     @OA\Schema(
+     *      type="object",
+     *      @OA\Property(property="status", type="integer"),
+     *      @OA\Property(property="message", type="string")
+     *     )
+     * )
+     * @OA\Response(
+     *     response=400,
+     *     description="Return a bad Request message",
+     *     @OA\Schema(
+     *      type="object",
+     *      @OA\Property(property="status", type="integer"),
+     *      @OA\Property(property="message", type="string")
+     *     )
+     * )
      * @OA\Parameter(
      *     name="skill",
      *     in="body",
@@ -37,7 +55,7 @@ class SkillController extends AbstractController
      * )
      * @Route("", name="add", methods={"POST"})
      */
-    public function add(Request $request, UserRepository $userRepository, ServiceRepository $serviceRepository)
+    public function add(Request $request, UserRepository $userRepository, ServiceRepository $serviceRepository, ValidatorInterface $validator)
     {
         
         $jsonData = json_decode($request->getContent());
@@ -45,26 +63,63 @@ class SkillController extends AbstractController
         $skill = new Skill();
 
         $user = $userRepository->findUserType($this->getUser()->getId(), 'JOBWORKER');
-        // Condition si user null ( donc n'est pas jobworker )
-        //dd($user);
+        //! Condition si user null ( donc n'est pas jobworker )
+        if ($user == null)
+        {
+            return $this->json([
+                'statut' => 404,
+                'message' => "Adding a skill is impossible for a non-jobworker"
+            ], 404);
+        }
 
-        $skill->setDescription($jsonData->description);
-        $skill->setPrice($jsonData->price);
-        $skill->setUser($user);
-        $skill->setService($serviceRepository->find($jsonData->service));
+        try {
+            $skill->setDescription($jsonData->description ?? null);
 
-        //dd($skill);
+            //! Regex pour vérifier que price soit un int
+            if ( isset($jsonData->price) && !preg_match('/^\d+$/', $jsonData->price) ) {
+                return $this->json([
+                    'statut' => 404,
+                    'message' => "Property price need to be an integer"
+                ], 404);
+            }
+            $skill->setPrice($jsonData->price);
+            $skill->setUser($user);
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($skill);
-        $em->flush();
 
-        return $this->json(
-            $skill,
-            201,
-            [],
-            ['groups' => 'skill_add']
-        );
+            $service = $serviceRepository->find($jsonData->service);
+            //! Condition si service null ( donc service inexistant )
+            if ($service == null)
+            {
+                return $this->json([
+                    'statut' => 404,
+                    'message' => "Adding a skill is impossible for a non-existent service"
+                ], 404);
+            }
+            $skill->setService($service);
+
+            //! Validator
+            $errors = $validator->validate($skill);
+        
+            if (count($errors) > 0) {
+                return $this->json($errors, 400);
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($skill);
+            $em->flush();
+
+            return $this->json(
+                $skill,
+                201,
+                [],
+                ['groups' => 'skill_add']
+            );
+        } catch (ErrorException $e){
+            return $this->json([
+                'status' => 400,
+                'message' => "Json syntax error"
+            ], 400);
+        }
     }
 
     /**
@@ -73,6 +128,24 @@ class SkillController extends AbstractController
      *     response=201,
      *     description="Return the modified skills",
      *     @Model(type=Skill::class, groups={"skill_edit"})
+     * )
+     * @OA\Response(
+     *     response=404,
+     *     description="Return an error message",
+     *     @OA\Schema(
+     *      type="object",
+     *      @OA\Property(property="status", type="integer"),
+     *      @OA\Property(property="message", type="string")
+     *     )
+     * )
+     * @OA\Response(
+     *     response=400,
+     *     description="Return a bad Request message",
+     *     @OA\Schema(
+     *      type="object",
+     *      @OA\Property(property="status", type="integer"),
+     *      @OA\Property(property="message", type="string")
+     *     )
      * )
      * @OA\Parameter(
      *     name="skill",
@@ -93,15 +166,16 @@ class SkillController extends AbstractController
             $jsonData = json_decode($request->getContent());
     
             $skill->setDescription(isset($jsonData->description) ? $jsonData->description : $skill->getDescription());
+            
             //! Regex pour vérifier que price soit un int
-            if ( ! preg_match('/^\d+$/', $jsonData->price) ) {
+            if ( isset($jsonData->price) && !preg_match('/^\d+$/', $jsonData->price) ) {
                 return $this->json([
                     'statut' => 404,
                     'message' => "Property price need to be an integer"
                 ], 404);
-              }
-
+            }
             $skill->setPrice(isset($jsonData->price) ? $jsonData->price : $skill->getPrice());
+            
             $skill->setUpdatedAt(new \DateTime());
     
             //! Validator
@@ -110,7 +184,7 @@ class SkillController extends AbstractController
             if (count($errors) > 0) {
                 return $this->json($errors, 400);
             }
-    
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($skill);
             $em->flush();
@@ -134,6 +208,15 @@ class SkillController extends AbstractController
      * @OA\Response(
      *     response=200,
      *     description="Delete a skill",
+     * )
+     * @OA\Response(
+     *     response=404,
+     *     description="Return an error message",
+     *     @OA\Schema(
+     *      type="object",
+     *      @OA\Property(property="status", type="integer"),
+     *      @OA\Property(property="message", type="string")
+     *     )
      * )
      * @Route("/{id}", name="delete", methods={"DELETE"}, requirements={"id": "\d+"})
      */

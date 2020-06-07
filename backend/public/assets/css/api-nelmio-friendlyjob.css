@@ -3,7 +3,7 @@ header:before {
 }
 
 header #logo img {
-    background-color: linear-gradient(#a04261, #80e5f7);
+    background-color: transparent
 }
 
 #swagger-ui.api-platform .info .title {

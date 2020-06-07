@@ -27,7 +27,7 @@ class Skill
      * @Groups({"user_random_jobworker", "user_jobworker_details"})
      * @Groups({"service_jobworker"})
      * @Groups({"skill_add", "skill_edit"})
-     * @Assert\NotBlank
+     * @Assert\NotBlank(allowNull = true)
      */
     private $description;
 
@@ -37,7 +37,7 @@ class Skill
      * @Groups({"service_jobworker"})
      * @Groups({"skill_add", "skill_edit"})
      * @Assert\Positive
-     * @Assert\Range(min = 8, max = 25, notInRangeMessage = "This value should be an integer between {{ min }} and {{ max }}")
+     * @Assert\Range(min = 8, max = 50, notInRangeMessage = "This value should be an integer between {{ min }} and {{ max }}")
      * @Assert\NotNull
      */
     private $price;
