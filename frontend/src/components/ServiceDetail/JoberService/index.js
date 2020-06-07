@@ -1,9 +1,8 @@
 // == Import Library
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
-import { Card, Rating } from 'semantic-ui-react';
+import { Card, Rating, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
 
 // == Import style
 import './joberService.scss';

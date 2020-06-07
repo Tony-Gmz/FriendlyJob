@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Rating } from 'semantic-ui-react';
+import { Card, Rating, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
 import Avatar from '@material-ui/core/Avatar';
 import sortArray from 'sort-array';
 

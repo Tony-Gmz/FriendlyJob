@@ -9,7 +9,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
-import { Button } from 'react-bootstrap';
+import { Button } from 'semantic-ui-react';
 
 // == Import
 import './modalInscription.scss';

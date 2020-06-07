@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import ModalConnexion from 'src/containers/ModalConnexion';
+import {Button} from 'semantic-ui-react';
 import ModalInscription from 'src/containers/ModalInscription';
-import Logo from 'src/assets/img/logo.png';
-import { Navbar, Nav, Button } from 'react-bootstrap';
+import NavStyled from './NavStyled';
 
 
-// Style
-import './navBar.scss';
+// Styled navbar component reusable
 
-// eslint-disable-next-line consistent-return
 const NavBar = ({ isLogged, logOut }) => {
   const handleClick = () => {
     logOut();
@@ -21,45 +19,49 @@ const NavBar = ({ isLogged, logOut }) => {
 
   if (isLogged === false) {
     return (
-      <Navbar bg="light" expand="lg">
+      <NavStyled>
         <NavLink to="/">
-          <img className="logo" src={Logo} alt="logo" />
+          <div className="nav_title">
+            FriendlyJob
+          </div>
         </NavLink>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <NavLink to="/services">Liste de nos services</NavLink>
-            <a href="#inscription">Devenir JobWorker</a>
-          </Nav>
-          <Nav className="mr-auto">
+        <div className="nav_content">
+          <ul className="nav_ul">
+            <NavLink to="/services" activeClassName="selected-link"><li>Liste de nos services</li></NavLink>
+            <a href="#inscription"><li>Devenir Jobworker</li></a>
+            <NavLink to="/contact"><li>Qui sommes nous</li></NavLink>
+          </ul>
+          <div className="nav_button">
             <ModalConnexion />
             <ModalInscription />
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+          </div>
+        </div>
+      </NavStyled>
     );
   }
   if (isLogged === true) {
     return (
-      <Navbar bg="light" expand="lg">
+      <NavStyled>
         <NavLink to="/">
-          <img className="logo" src={Logo} alt="logo" />
+          <div className="nav_title">
+            FriendlyJob
+          </div>
         </NavLink>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <NavLink to="/services">Liste de nos services</NavLink>
-            <NavLink to="/profil">profil</NavLink>
-            <NavLink to="/demandes" activeClassName="selected-link">Mes demandes</NavLink>
-          </Nav>
-          <Nav className="mr-auto">
-            <Button variant="outline-danger" onClick={handleClick}>Deconnexion</Button>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+        <div className="nav_content">
+          <ul className="nav_ul">
+            <NavLink to="/services" activeClassName="selected-link"><li>Liste de nos services</li></NavLink>
+            <NavLink to="/profil"><li>Profil</li></NavLink>
+            <NavLink to="/demandes" activeClassName="selected-link"><li>Mes demandes</li></NavLink>
+          </ul>
+          <div className="nav_button">
+            <Button onClick={handleClick}>Deconnexion</Button>
+          </div>
+        </div>
+      </NavStyled>
     );
   }
 };
+
 NavBar.propTypes = {
   isLogged: PropTypes.bool.isRequired,
   // roles: PropTypes.string.isRequired,

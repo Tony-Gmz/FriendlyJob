@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, TextArea } from 'semantic-ui-react';
+import { Form, TextArea, Button } from 'semantic-ui-react';
 import 'date-fns';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
@@ -10,11 +10,11 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 import frLocale from 'date-fns/locale/fr';
-import { fr } from 'date-fns/locale';
 
-// == Import
+
+// == Import style
 import './modalReservation.scss';
-import { Button } from 'react-bootstrap';
+
 
 // == Composant
 const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerDetail, changeFieldHourRequest, changeFieldDateRequest, requestDate, requestHour }) => {
