@@ -3,6 +3,9 @@
 {% block title %}FriendlyJob - API
 {% endblock %}
 
+{% block stylesheets %} <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,700,800" rel="stylesheet">
+						<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+						<link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">{% endblock %}
 
 {% block body %}
 
@@ -12,6 +15,10 @@
 		<div class="container">
 			<div class="row no-gutters slider-text align-items-center justify-content-center">
 				<div class="col-md-6 ftco-animate text-center">
+					{% if app.user is not null %}
+						<h6 class="hello">Bonjour <strong>{{app.user}}</strong></h6>
+					{% endif %}
+					<img class="logoFront" src="/assets/images/logo_fj_crop.png" alt="">
 					<h1 class="mb-4">Bienvenue sur l'API de
 						<strong>FriendlyJob</strong>
 					</h1>
@@ -24,6 +31,15 @@
 					<p>
 						<a href="/admin" class="btn btn-primary btn-outline-white px-5 py-3">Administration</a>
 					</p>
+					{% if app.user is null %}
+						<p>
+							<a href="/login" class="login btn btn-primary btn-outline-white px-5 py-3">Connexion</a>
+						</p>
+					{% else %}
+						<p>
+							<a href="/logout" class="logout btn btn-primary btn-outline-white px-5 py-3">Déconnexion</a>
+						</p>
+					{% endif %}
 				</div>
 			</div>
 		</div>

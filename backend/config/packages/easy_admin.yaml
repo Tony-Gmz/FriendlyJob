@@ -1,5 +1,5 @@
 easy_admin:
-    site_name: '<div style="display : inline"><img style="width: 100px; margin-right: 10px"" src="https://symfony.com/logos/symfony_white_01.png"/>FriendlyJob</div>' 
+    site_name: '<div><a href="/"><img class="logo" src="/assets/images/logo_fj_title_crop.png"/></a></div>' 
     design:
         menu:
             - User

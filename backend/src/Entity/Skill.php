@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\SkillRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=SkillRepository::class)
@@ -26,6 +27,7 @@ class Skill
      * @Groups({"user_random_jobworker", "user_jobworker_details"})
      * @Groups({"service_jobworker"})
      * @Groups({"skill_add", "skill_edit"})
+     * @Assert\NotBlank
      */
     private $description;
 
@@ -34,6 +36,9 @@ class Skill
      * @Groups({"user_random_jobworker", "user_jobworker_details"})
      * @Groups({"service_jobworker"})
      * @Groups({"skill_add", "skill_edit"})
+     * @Assert\Positive
+     * @Assert\Range(min = 8, max = 25, notInRangeMessage = "This value should be an integer between {{ min }} and {{ max }}")
+     * @Assert\NotNull
      */
     private $price;
 

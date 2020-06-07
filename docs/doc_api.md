@@ -1191,11 +1191,6 @@ Aucune
       delete => Erreur null demand à gérer : X
                 Erreur Json mal formé : X
 
-
-## Department
-
-    remarque => demande au fronteur pour les jobworker par département ?
-
 ## Service
 
     browse => RAS
@@ -1248,25 +1243,12 @@ Aucune
            Gerer le champ service quand le service n'existe pas 
            (PDOException  PDOException NotNullConstraintViolationException)
 
-    edit => Gerer l'optionnalité des champs (pouvoir modifier un seul champ et pas tous en même temps)
-            Erreur Paramconverter cause id inexistant
-            (NotFoundHttpException)
-            Gérer l'erreur int sur le champ price
-            (TypeError)
-    
-    delete => Erreur paramconverter quand on essaie de supprimer un id inexistant            
+    edit => Description plus optionnel
+             
 
     Tout ce qui utilise le param converter on pourra mettre un subscriber
     App\Entity\Demand object not found by the @ParamConverter annotation.
     ( NotFoundHttpException )
     Voir les 404 erreur mauvaise URL
-
-## Rating
-
-    add => Gerer l'erreur quand on ajoute un rating sur une demand qui a déjà un rating (DUPLICATE)
-
-## JWT
-
-  Rajouter subscriber pour json mal formé & invalid credentials ( isLogged = false )
 
 </details>

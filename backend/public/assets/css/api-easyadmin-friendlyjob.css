@@ -1,14 +1,16 @@
 :root {    
-    --body-bg: #FF385C;
+    --body-bg: #a04261;
     --text-color: #ffffff;
     --text-color-light: #ffffff;
-    --text-color-dark: #000000;
+    --text-color-dark: black;
 
 }
 
 body {
-    background-color: #FF385C;
+    background: #a04261;
+
 }
+
 
 .sidebar-menu li:not(.submenu-active).active .fa,
 .sidebar-menu li:not(.submenu-active).active a {
@@ -17,4 +19,24 @@ body {
 
 .form-group label {
     color: black;
+}
+
+.linkHomePage {
+    border: 2px solid white;
+    border-radius: 1em;
+    padding: 1.2em;
+    width: 10em;
+    margin-top: 2em;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+}
+
+.linkHomePage:hover {
+    background-color: white;
+    color: #a04261;
+}
+
+.logo {
+    width: 200px;
 }

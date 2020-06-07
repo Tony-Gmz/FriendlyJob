@@ -1,11 +1,29 @@
 header:before {
-    background-color: #FF385C
+    background: linear-gradient(#a04261, #80e5f7);
 }
 
 header #logo img {
-    background-color: #FF385C
+    background-color: linear-gradient(#a04261, #80e5f7);
 }
 
 #swagger-ui.api-platform .info .title {
-    color: #FF385C
+    color: #a04261
+}
+
+.linkHomePage {
+    border: 2px solid #80e5f7;
+    border-radius: 1em;
+    padding: 1em;
+    position: relative;
+    left: 50em;
+    top: 10.6em;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: large;
+    color: #80e5f7;
+}
+
+.linkHomePage:hover {
+    background-color: #3CAAB5;
+    color: white;
 }
