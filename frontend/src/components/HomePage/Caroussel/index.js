@@ -1,12 +1,18 @@
+// == Import Library
 import React from 'react';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
-import './caroussel.scss';
 import { Link } from 'react-router-dom';
+
+// Import Style
+import './caroussel.scss';
+
+// == Import Utils to use the slugifyTitle fonction
 import { slugifyTitle } from 'src/utils';
 
 // Component caroussel in homepage
 const Caroussel = ({ serviceList }) => {
+  // settings for the caroussel
   const settings = {
     dots: true,
     infinite: true,
@@ -46,7 +52,11 @@ const Caroussel = ({ serviceList }) => {
   return (
 
     <div className="caroussel">
+      {/* we use spread operator to send settings to the children "Slider" */}
       <Slider {...settings}>
+        {/* with the container's caroussel we have acces to
+        the serviceList's prop and now we can map it in our caroussel
+        to print all pictures and title */}
         {serviceList.map((service) => {
           const slug = slugifyTitle(service.title);
           return (

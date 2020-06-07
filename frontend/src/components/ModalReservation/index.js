@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import NavButtonStyled from 'src/components/Button/NavButtonStyled';
 import { Form, TextArea } from 'semantic-ui-react';
 import 'date-fns';
 import Grid from '@material-ui/core/Grid';
@@ -15,6 +14,7 @@ import { fr } from 'date-fns/locale';
 
 // == Import
 import './modalReservation.scss';
+import { Button } from 'react-bootstrap';
 
 // == Composant
 const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerDetail, changeFieldHourRequest, changeFieldDateRequest, requestDate, requestHour }) => {
@@ -62,7 +62,7 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
   };
   return (
     <div className="ModalReservation">
-      <a href="#reservation"><NavButtonStyled>Reservation</NavButtonStyled></a>
+      <a href="#reservation"><Button>Reservation</Button></a>
       <div id="reservation" className="reservation">
         <div className="modal_block">
           <div className="modal_header">

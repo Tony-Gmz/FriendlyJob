@@ -12,12 +12,19 @@ import NavBar from 'src/containers/NavBar';
 import Page from 'src/containers/Page';
 
 
-// == Composant
-const App = ({ getServices, getRandomJobWorker, loading, getUserData, getAllDepartments, getRequest }) => {
+// == Component App our main component
+const App = ({
+  getServices,
+  getRandomJobWorker,
+  loading,
+  getUserData,
+  getAllDepartments,
+}) => {
+  // Hook useEffect to load necessary information for our homepage ex: ServiceList for the caroussel
   useEffect(() => {
     getServices();
     getRandomJobWorker();
-    getAllDepartments();
+    getAllDepartments(); // ==================================== ????
     const userToken = localStorage.getItem('jwtToken');
     if (userToken) {
       getUserData();
@@ -26,6 +33,7 @@ const App = ({ getServices, getRandomJobWorker, loading, getUserData, getAllDepa
 
   return (
     <div className="app">
+      {/* condition for the render (if loading print the loader if not print App) */}
       {loading && <Loader />}
       {!loading && (
       <>

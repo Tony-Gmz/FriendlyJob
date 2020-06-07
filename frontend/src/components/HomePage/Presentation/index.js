@@ -1,12 +1,16 @@
+// == Import Library
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'semantic-ui-react';
-import './presentation.scss';
-import { slugifyTitle } from 'src/utils';
 import { useHistory } from 'react-router-dom';
 
-// component presentation in homepage
+// == Import Style
+import './presentation.scss';
 
+// == Import Utils
+import { slugifyTitle } from 'src/utils';
+
+// component presentation in homepage
 const Presentation = ({ serviceList, fieldService, serviceSelected }) => {
   const history = useHistory();
   const handleSubmit = (evt) => {
@@ -24,7 +28,7 @@ const Presentation = ({ serviceList, fieldService, serviceSelected }) => {
       <div className="presentation_input">
         <form onSubmit={handleSubmit} action="">
           <Input list="services" icon="search" name="serviceInput" onChange={handleChange} placeholder="Recherchez le service idéale..." />
-          <datalist id='services'>
+          <datalist id="services">
             {serviceList.map((service) => (
               <option key={service.id} value={service.title}>{service.title}</option>
             ))}
@@ -42,7 +46,7 @@ Presentation.propTypes = {
   serviceList: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
-      id: PropTypes.number.isRequired
+      id: PropTypes.number.isRequired,
     }).isRequired,
   ).isRequired,
 };

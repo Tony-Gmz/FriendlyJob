@@ -15,9 +15,8 @@ import {
 const requestMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_REQUEST: {
-      const userId = localStorage.getItem('userId');
       const userToken = localStorage.getItem('jwtToken');
-      axios.get(`http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/demands/users/${userId}`, {
+      axios.get(`http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/demands/users`, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
@@ -34,7 +33,6 @@ const requestMiddleware = (store) => (next) => (action) => {
     case SUBMIT_REQUEST: {
       const { currentSkill, requestBody, requestDate, requestHour } = store.getState().request;
       const { currentJobWorkerId } = store.getState().user;
-      const FriendlyJoberId = localStorage.getItem('userId');
       const userToken = localStorage.getItem('jwtToken');
       // console.log(`${currentSkill}, ${requestBody}, ${requestDate}, ${requestHour}, ${currentJobWorkerId},${FriendlyJoberId}`);
 
@@ -46,7 +44,6 @@ const requestMiddleware = (store) => (next) => (action) => {
           reservationDate: requestDate,
           reservationHour: requestHour,
           service: currentSkill,
-          friendlyUser: FriendlyJoberId,
           jobWorker: currentJobWorkerId,
         },
         headers: {

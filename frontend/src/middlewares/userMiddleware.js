@@ -87,11 +87,10 @@ const userMiddleware = (store) => (next) => (action) => {
       // REQUEST TO SAVE THE CURRENT USER DATA 
 
       // we take the necessary data in the localStorage
-      const userId = localStorage.getItem('userId');
       const userToken = localStorage.getItem('jwtToken');
       axios({
         method: 'get',
-        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/${userId}`,
+        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/`,
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
@@ -125,7 +124,7 @@ const userMiddleware = (store) => (next) => (action) => {
       const serviceId = Number(findService.id);
       // console.log(serviceId);
 
-      axios.get(`http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/services/${serviceId}/jobworker?limit=6`)
+      axios.get(`http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/services/${serviceId}/jobworker?limit=4`)
         .then((response) => {
           // console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
@@ -211,7 +210,6 @@ const userMiddleware = (store) => (next) => (action) => {
     }
     case SUBMIT_EDIT: {
       // REQUEST TO SAVE THE EDIT OF THE USER DATA
-      const userId = localStorage.getItem('userId');
       const userToken = localStorage.getItem('jwtToken');
       let { editEmail, editPassword, editDepartments, password, editAbout, userData, urlAvatar } = store.getState().user;
       const { departmentId } = store.getState().user.userData.department.id;
@@ -223,7 +221,7 @@ const userMiddleware = (store) => (next) => (action) => {
       console.log(urlAvatar);
       axios({
         method: 'PUT',
-        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/${userId}`,
+        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users`,
         data: {
           email: editEmail,
           password: editPassword,
@@ -250,11 +248,10 @@ const userMiddleware = (store) => (next) => (action) => {
     }
     case SUBMIT_DELETE: {
       // REQUEST TO DELETE USER'S ACCOUNT
-      const userId = localStorage.getItem('userId');
       const userToken = localStorage.getItem('jwtToken');
       axios({
         method: 'DELETE',
-        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/${userId}`,
+        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users`,
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
@@ -282,7 +279,7 @@ const userMiddleware = (store) => (next) => (action) => {
       console.log(userId);
       axios({
         method: 'get',
-        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/jobworker/${userId}`,
+        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/jobworker`,
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
@@ -306,7 +303,6 @@ const userMiddleware = (store) => (next) => (action) => {
       // REQUEST FOR ADD A NEW SKILL TO THE CURRENT JOBWORKER
 
       // we get all the necessary data for the request from localStorage and state
-      const userId = localStorage.getItem('userId');
       const userToken = localStorage.getItem('jwtToken');
       const { selectedSkillId, selectedSkillPrice, selectedSkillDescription } = store.getState().user;
       const { serviceList } = store.getState().service;
@@ -323,7 +319,6 @@ const userMiddleware = (store) => (next) => (action) => {
         data: {
           description: selectedSkillDescription,
           price,
-          user: userId,
           service: serviceId,
         },
         headers: {

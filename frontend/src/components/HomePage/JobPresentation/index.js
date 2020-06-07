@@ -25,7 +25,9 @@ const JobPresentation = ({ randomJobWorker, loading }) => (
     </>
     )}
     <div className="jobpresentation_content">
-      <p> Vous avez une passion ou une compètence que vous souhaitez exercer de manière plus assidu et rémunerée ?
+      <p>
+        Vous avez une passion ou une compètence que vous souhaitez exercer
+        de manière plus assidu et rémunerée ?
         Alors inscris-toi et deviens le jobWorker préféré de tes voisins !
       </p>
     </div>

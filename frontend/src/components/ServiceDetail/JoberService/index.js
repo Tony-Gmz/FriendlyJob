@@ -1,11 +1,16 @@
+// == Import Library
 import React from 'react';
-import profil from 'src/assets/img/screenshot.png';
 import Avatar from '@material-ui/core/Avatar';
 import { Card, Rating } from 'semantic-ui-react';
-import { whitoutAvatar } from 'src/utils';
-import NavButtonStyled from 'src/components/Button/NavButtonStyled';
-import './joberService.scss';
 import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+
+// == Import style
+import './joberService.scss';
+
+// == Import Utils
+import { whitoutAvatar } from 'src/utils';
+
 
 const JoberService = ({ jobWorker }) => {
 
@@ -29,7 +34,7 @@ const JoberService = ({ jobWorker }) => {
           <Card.Content extra>
             <Rating defaultRating={jobWorker.user.jobWorkerDemands[0].rating.star} maxRating={5} disabled />
             <Link to={`/jobworker/${id}`}>
-              <NavButtonStyled>Contact</NavButtonStyled>
+              <Button>Contact</Button>
             </Link>
           </Card.Content>
         </Card>

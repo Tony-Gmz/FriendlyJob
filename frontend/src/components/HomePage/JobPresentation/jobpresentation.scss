@@ -2,22 +2,21 @@
 
 .jobpresentation {
 
-  background-color: rgba(19, 18, 18, 0.582);
+  background-color: rgba(0, 0, 0, 0.623);
   border-radius: 10px;
   padding-bottom: 3em;
   color: white;
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
   margin-top: 4em;
   
   @include phone {
     
-    width: 100%;
+    
    
    }
    @include sm {
    
-     
      
  }
  @include md {
@@ -32,10 +31,9 @@
     font-size: 1.5rem;
     border-bottom: 1px solid #FF385C;
     padding-bottom: 1rem;
-    width: 650px;
+    width: 50%;
     @include phone {
     
-      width: 100%;
      
      }
      @include sm {

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, Rating } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import NavButtonStyled from 'src/components/Button/NavButtonStyled';
+import { Button } from 'react-bootstrap';
 import Avatar from '@material-ui/core/Avatar';
 import sortArray from 'sort-array';
 
@@ -39,7 +39,7 @@ const JobWorkerMain = ({ jobWorkers }) => {
                       <Card.Content extra>
                         <Rating defaultRating={jobWorker.user.jobWorkerDemands[0].rating.star} maxRating={5} disabled />
                         <Link to={`/jobworker/${slug}`}>
-                          <NavButtonStyled>Contact</NavButtonStyled>
+                          <Button>Contact</Button>
                         </Link>
                       </Card.Content>
                     </Card>

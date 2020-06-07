@@ -12,8 +12,9 @@
 
 .Jober_card {
 
- 
-  margin-left: 1em;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 
   .content {
     font-style: italic;
