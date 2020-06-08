@@ -7,13 +7,10 @@ import RequestFriendlyUser from './RequestFriendlyUser';
 import RequestJobWorker from './RequestJobWorker';
 
 // == Composant
-const Request = ({ getRequest, requestList, submitAccepteRequest, submitDeleteRequest, getCommentId }) => {
+const Request = ({ toggle, getRequest, requestList, submitAccepteRequest, submitDeleteRequest, getCommentId }) => {
   useEffect(() => {
-    async function load() {
-      await getRequest();
-    }
-    load();
-  }, []);
+    getRequest();
+  }, [toggle]);
 
   const Role = localStorage.getItem('userRole');
   return (

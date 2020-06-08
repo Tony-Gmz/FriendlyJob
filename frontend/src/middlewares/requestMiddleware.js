@@ -10,6 +10,7 @@ import {
   SUBMIT_ACCEPTE_REQUEST,
   SUBMIT_DELETE_REQUEST,
   SUBMIT_SET_REQUEST,
+  saveToggle,
 } from '../action/requestAction';
 
 const requestMiddleware = (store) => (next) => (action) => {
@@ -66,6 +67,7 @@ const requestMiddleware = (store) => (next) => (action) => {
       const { commentBody, newRate } = store.getState().request;
       const { commentId } = store.getState().request;
       const userToken = localStorage.getItem('jwtToken');
+      const { toggle } = store.getState().request;
 
       axios({
         method: 'post',
@@ -80,6 +82,7 @@ const requestMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
+          store.dispatch(saveToggle(!toggle));
           console.log(response);
         })
         .catch((error) => {
@@ -92,7 +95,7 @@ const requestMiddleware = (store) => (next) => (action) => {
     case SUBMIT_SET_REQUEST: {
       const { commentId, requestBody, requestDate, requestHour } = store.getState().request;
       const userToken = localStorage.getItem('jwtToken');
-
+      const { toggle } = store.getState().request;
       axios({
         method: 'put',
         url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/demands/${commentId}`,
@@ -106,6 +109,7 @@ const requestMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
+          store.dispatch(saveToggle(!toggle));
           console.log(response);
         })
         .catch((error) => {
@@ -118,7 +122,7 @@ const requestMiddleware = (store) => (next) => (action) => {
     case SUBMIT_CANCEL_REQUEST: {
       const { commentId } = store.getState().request;
       const userToken = localStorage.getItem('jwtToken');
-
+      const { toggle } = store.getState().request;
       axios({
         method: 'put',
         url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/demands/${commentId}`,
@@ -131,6 +135,7 @@ const requestMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
+          store.dispatch(saveToggle(!toggle));
           console.log(response);
         })
         .catch((error) => {
@@ -143,7 +148,7 @@ const requestMiddleware = (store) => (next) => (action) => {
     case SUBMIT_REFUSE_REQUEST: {
       const { commentId } = store.getState().request;
       const userToken = localStorage.getItem('jwtToken');
-
+      const { toggle } = store.getState().request;
       axios({
         method: 'put',
         url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/demands/${commentId}`,
@@ -156,6 +161,7 @@ const requestMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
+          store.dispatch(saveToggle(!toggle));
           console.log(response);
         })
         .catch((error) => {
@@ -168,7 +174,7 @@ const requestMiddleware = (store) => (next) => (action) => {
     case SUBMIT_ACCEPTE_REQUEST: {
       const { commentId } = store.getState().request;
       const userToken = localStorage.getItem('jwtToken');
-
+      const { toggle } = store.getState().request;
       axios({
         method: 'put',
         url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/demands/${commentId}`,
@@ -180,6 +186,7 @@ const requestMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
+          store.dispatch(saveToggle(!toggle));
           console.log(response);
         })
         .catch((error) => {
@@ -192,7 +199,7 @@ const requestMiddleware = (store) => (next) => (action) => {
     case SUBMIT_DELETE_REQUEST: {
       const { commentId } = store.getState().request;
       const userToken = localStorage.getItem('jwtToken');
-
+      const { toggle } = store.getState().request;
       axios({
         method: 'delete',
         url: 'http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/demands/',
@@ -204,6 +211,7 @@ const requestMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
+          store.dispatch(saveToggle(!toggle));
           console.log(response);
         })
         .catch((error) => {

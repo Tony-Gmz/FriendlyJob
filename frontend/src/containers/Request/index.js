@@ -9,6 +9,7 @@ const mapStateToProps = (state) => ({
   commentId: state.request.commentId,
   userData: state.user.userData,
   requestList: state.request.requestList,
+  toggle: state.request.toggle,
 });
 
 const mapDispatchToProps = (dispatch) => ({

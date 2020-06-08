@@ -28,6 +28,7 @@ import {
   GET_URL_AVATAR,
   SUBMIT_AVATAR,
 } from '../action/usersActions';
+import { saveToggle } from '../action/requestAction';
 
 
 const userMiddleware = (store) => (next) => (action) => {
@@ -276,6 +277,7 @@ const userMiddleware = (store) => (next) => (action) => {
       // REQUEST TO GET THE SKILL OF THE CURRENT JOBWORKER
       const userToken = localStorage.getItem('jwtToken');
       const id = localStorage.getItem('userId');
+      const { toggle } = store.getState().request;
       axios({
         method: 'get',
         url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/jobworker/${id}`,
@@ -287,7 +289,12 @@ const userMiddleware = (store) => (next) => (action) => {
           // console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
           console.log(response);
-          store.dispatch(saveJobWorkerSkills(response.data.skills));
+          if (!response.data) {
+            store.dispatch(saveJobWorkerSkills([]));
+          }
+          else {
+            store.dispatch(saveJobWorkerSkills(response.data.skills));
+          }
         })
         .catch((error) => {
           console.warn(error);
@@ -306,6 +313,7 @@ const userMiddleware = (store) => (next) => (action) => {
       const { selectedSkillId, selectedSkillPrice, selectedSkillDescription } = store.getState().user;
       const { serviceList } = store.getState().service;
       const price = Number(selectedSkillPrice);
+      const { toggle } = store.getState().request;
       // console.log(`${selectedSkillId}+${selectedSkillPrice}+${selectedSkillDescription}+`);
       // console.log(price);
       // get the current id skill with a find function 
@@ -325,6 +333,7 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
+          store.dispatch(saveToggle(!toggle));
           // console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
           console.log(response);
@@ -341,6 +350,7 @@ const userMiddleware = (store) => (next) => (action) => {
 
       const userToken = localStorage.getItem('jwtToken');
       const { skillId } = store.getState().user;
+      const { toggle } = store.getState().request;
       console.log(skillId);
       axios({
         method: 'DELETE',
@@ -353,10 +363,12 @@ const userMiddleware = (store) => (next) => (action) => {
           // console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
           console.log(response);
+          store.dispatch(saveToggle(!toggle));
           // store.dispatch(saveJobWorkerSkills(response.data.skills));
         })
         .catch((error) => {
           console.warn(error);
+         
           console.log('jai fait une erreur');
         });
       next(action);
@@ -365,6 +377,7 @@ const userMiddleware = (store) => (next) => (action) => {
     case SUBMIT_EDIT_SKILL: {
       const userToken = localStorage.getItem('jwtToken');
       const { skillId, selectedSkillPrice, selectedSkillDescription } = store.getState().user;
+      const { toggle } = store.getState().request;
       axios({
         method: 'PUT',
         url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/skills/${skillId}`,
@@ -377,6 +390,7 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
+          store.dispatch(saveToggle(!toggle));
           // console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
           console.log(response);

@@ -25,6 +25,7 @@ const Profil = ({
   selectedSkillPrice,
   selectedSkillDescription,
   urlAvatar,
+  toggle,
 }) => {
 
   /* useEffect(() => {
@@ -54,6 +55,7 @@ const Profil = ({
         )
         : (
           <ProfilWorkJober
+            toggle={toggle}
             {...userData}
             departmentsList={departmentsList}
             editField={editFieldValue}

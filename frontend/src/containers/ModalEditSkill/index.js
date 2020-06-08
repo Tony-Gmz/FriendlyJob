@@ -7,6 +7,7 @@ const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
   selectedSkillPrice: state.user.selectedSkillPrice,
   selectedSkillDescription: state.user.selectedSkillDescription,
+ 
 });
 
 const mapDispatchToProps = (dispatch) => ({
