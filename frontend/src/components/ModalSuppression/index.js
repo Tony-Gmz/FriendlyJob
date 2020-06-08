@@ -11,8 +11,8 @@ const ModalSuppression = ({isDelete, submitDelete}) => {
   };
 
   return (
-     <Modal trigger={<Button>supprimer votre compte</Button>} basic size='small' closeIcon>
-         <Header icon='trash alternate icon' content='Vous souhaitez déjà nous quitter ?' />
+    <Modal trigger={<Button basic color='red' content='Red'>supprimer votre compte</Button>} basic size='small' closeIcon>
+      <Header icon='trash alternate icon' content='Vous souhaitez déjà nous quitter ?' />
       {!isDelete && (
         <>
           <Modal.Content>
@@ -25,7 +25,6 @@ const ModalSuppression = ({isDelete, submitDelete}) => {
             <Button  basic color='red' inverted >
               <Icon name='remove' close /> No
             </Button>
-            
               <Button type="submit"  color='green' inverted>
                 <Icon name='checkmark' /> Yes
               </Button>

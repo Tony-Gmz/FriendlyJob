@@ -91,7 +91,7 @@ const ProfilJobWorker = ({
             {userAvatar && <Avatar alt="Remy Sharp" src={urlAvatar} /> }
             {!userAvatar && <Avatar alt="Remy Sharp" src="">{whitoutAvatar(firstname)}</Avatar>}
             <div className="profil_card_img_upload">
-              <UploadImg urlAvatar={urlAvatar} />
+              {isEditable && <UploadImg urlAvatar={urlAvatar} />}
             </div>
           </div>
         </div>
