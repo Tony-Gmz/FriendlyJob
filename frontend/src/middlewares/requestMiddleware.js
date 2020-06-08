@@ -47,6 +47,7 @@ const requestMiddleware = (store) => (next) => (action) => {
           reservationHour: requestHour,
           service: currentSkill,
           jobWorker: currentJobWorkerId,
+          status: 'En attente',
         },
         headers: {
           Authorization: `Bearer ${userToken}`,

@@ -23,6 +23,7 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
   const selectedDate = Date();
 
   const handleDateChange = (date) => {
+    console.log(date)
     setSelectedDate(date);
   };
 
@@ -39,6 +40,7 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
   };
   const handleDate = (date) => {
     // Methode to listen the change on the calendar et send the result in the reducer
+    console.log(date);
     let month = (date.getMonth() + 1);
     month = month.toString();
     month = ('0' + (month)).slice(-2);
@@ -47,9 +49,23 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
     const years = date.getFullYear().toString();
     const days = date.getDate().toString();
     const newDate = `${years}-${month}-${days}`;
-    // console.log(newDate);
+    console.log(newDate);
     changeFieldDateRequest(newDate);
   };
+  const changeDateFormat = (requestDate) => {
+    const years = requestDate.slice(0,4);
+    console.log(years);
+    const month = requestDate.slice(5, 7);
+    console.log(month);
+    const day = requestDate.slice(8, 10)
+    console.log(day);
+    // const days = requestDate.getDate();
+    // const newRequestDate= `${month}/${days}/${years}`;
+    // console.log(newRequestDate);
+    requestDate = `${month}/${day}/${years}`;
+    return requestDate;
+  };
+
   const handleHour = (date) => {
     // console.log(date);
     // console.log(date.getHours());
@@ -89,10 +105,10 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
                   margin="normal"
                   id="date-picker-dialog"
                   label="Choisissez une date"
-                  format="MM/dd/yyyy"
+                  format="dd/MM/yyyy"
                   type="datetime-fr"
                   name="requestDate"
-                  value={selectedDate}
+                  value={requestDate ? changeDateFormat(requestDate) : selectedDate}
                   onChange={handleDate}
                   KeyboardButtonProps={{
                     'aria-label': 'change date',
