@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\DemandRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=DemandRepository::class)
@@ -27,6 +28,9 @@ class Demand
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating"})
      * @Groups({"rating_add"})
+     * @Assert\NotBlank
+     * @Assert\Length( max = 500, maxMessage = "Your demand body must not exceed {{ limit }} characters",
+     * )
      */
     private $body;
 
@@ -43,6 +47,7 @@ class Demand
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating"})
      * @Groups({"rating_add"})
+     * @Assert\NotBlank
      */
     private $reservationHour;
 
@@ -51,6 +56,7 @@ class Demand
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating"})
      * @Groups({"rating_add"})
+     * @Assert\NotBlank
      */
     private $status;
 
@@ -112,7 +118,7 @@ class Demand
         return $this->body;
     }
 
-    public function setBody(string $body): self
+    public function setBody(?string $body): self
     {
         $this->body = $body;
 
@@ -136,7 +142,7 @@ class Demand
         return $this->reservationHour;
     }
 
-    public function setReservationHour(string $reservationHour): self
+    public function setReservationHour(?string $reservationHour): self
     {
         $this->reservationHour = $reservationHour;
 

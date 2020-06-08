@@ -64,6 +64,11 @@ class ParamConverterSubscriber implements EventSubscriberInterface
         if ( $throwable instanceof NotFoundHttpException && $route == 'api_v1_services_department_jobworker_rating' ) {
             return $event->setResponse($this->setApiResponse());
         }
+
+        //! Gestion Erreur Param Converter sur edit demande
+        if ( $throwable instanceof NotFoundHttpException && $route == 'api_v1_demands_edit' ) {
+            return $event->setResponse($this->setApiResponse());
+        }
     }
 
     public static function getSubscribedEvents()

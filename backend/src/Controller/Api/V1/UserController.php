@@ -148,7 +148,13 @@ class UserController extends AbstractController
             $image = null;
         }
 
-        $user->setEmail(isset($jsonData->email) ? $jsonData->email : $user->getEmail());
+        $token = null;
+        if (isset($jsonData->email) && $user->getEmail() != $jsonData->email)
+        {
+            $user->setEmail($jsonData->email);
+            $token = $this->tokenManager->create($user);
+        }
+
         $user->setRoles(isset($jsonData->roles) ? $jsonData->roles : $user->getRoles());
         $user->setPassword( $encodedPassword !== null ? $encodedPassword : $user->getPassword() );
         $user->setFirstname(isset($jsonData->firstname) ? $jsonData->firstname : $user->getFirstname());
@@ -157,20 +163,14 @@ class UserController extends AbstractController
         $user->setAbout(isset($jsonData->about) ? $jsonData->about : $user->getAbout());
         $user->setUpdatedAt(new \DateTime());
         $user->setDepartment(isset($jsonData->department) ? $departmentRepository->find($jsonData->department) : $user->getDepartment());
- 
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($user);
         $em->flush();
 
-        $token = null;
-        if (isset($jsonData->email) && $user->getEmail() != $jsonData->email)
-        {
-            $token = $this->tokenManager->create($user);
-        }
-
         return $this->json(
             [
-                $user, 
+                'user' => $user, 
                 'token' => $token
             ],
             200,
@@ -238,6 +238,26 @@ class UserController extends AbstractController
     public function getJobWorkerDetails(UserRepository $userRepository, $id)
     {
         $jobWorker = $userRepository->findJobWorkerDetails($id);
+
+        return $this->json(
+            $jobWorker,
+            200, 
+            [],
+            ['groups' => 'user_jobworker_details']
+        );
+    }
+
+    /**
+     * @OA\Tag(name="UserController")
+     * @OA\Response(
+     *     response=200,
+     *     description="Return details from one jobworker for the profile",
+     * )
+     * @Route("/jobworker", name="jobworker_profile", methods={"GET"})
+     */
+    public function getJobWorkerDetailsProfile(UserRepository $userRepository)
+    {
+        $jobWorker = $userRepository->findJobWorkerDetails($this->getUser()->getId());
 
         return $this->json(
             $jobWorker,
