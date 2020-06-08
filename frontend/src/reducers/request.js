@@ -7,6 +7,7 @@ import {
   GET_COMMENT_ID,
   CHANGE_FIELD_COMMENT,
   CHANGE_RATING_COMMENT,
+  SAVE_TOGGLE,
 } from '../action/requestAction';
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
   commentBody: '',
   newRate: '',
   commentId: '',
+  toggle: true,
 
 };
 
@@ -27,6 +29,11 @@ const requestReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         requestList: action.newRequest,
+      };
+    case SAVE_TOGGLE:
+      return {
+        ...state,
+        toggle: action.newToggle,
       };
     case CHANGE_FIELD_REQUEST:
       return {

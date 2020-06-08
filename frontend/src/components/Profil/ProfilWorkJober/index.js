@@ -49,10 +49,11 @@ const ProfilJobWorker = ({
   selectedSkillId,
   selectedSkillPrice,
   urlAvatar,
+  toggle,
 }) => {
   useEffect(() => {
     getJobWorkerSkill();
-  }, []);
+  }, [toggle]);
 
   // console.log(currentJobWorkerSkills);
   const userAvatar = urlAvatar;

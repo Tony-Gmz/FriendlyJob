@@ -24,6 +24,7 @@ const Profil = ({
   selectedSkillPrice,
   selectedSkillDescription,
   urlAvatar,
+  toggle,
 }) => {
   const role = localStorage.getItem('userRole');
   return (
@@ -48,6 +49,7 @@ const Profil = ({
         )
         : (
           <ProfilWorkJober
+            toggle={toggle}
             {...userData}
             departmentsList={departmentsList}
             editField={editFieldValue}

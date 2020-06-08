@@ -11,6 +11,7 @@ import './modalCancelRequest.scss';
 
 
 const ModalCancelRequest = ({ request, getCommentId, submitCancelRequest  }) => {
+
   const handleClick = () => {
     getCommentId(request.id);
   };
@@ -20,6 +21,7 @@ const ModalCancelRequest = ({ request, getCommentId, submitCancelRequest  }) => 
     console.log('voila le submit du commentaire');
     evt.preventDefault();
     submitCancelRequest();
+    getRequest();
   };
 
   return (

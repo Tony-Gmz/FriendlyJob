@@ -11,6 +11,7 @@ export const SUBMIT_REFUSE_REQUEST = 'SUBMIT_REFUSE_REQUEST';
 export const SUBMIT_ACCEPTE_REQUEST = 'SUBMIT_ACCEPTE_REQUEST';
 export const SUBMIT_DELETE_REQUEST = 'SUBMIT_DELETE_REQUEST';
 export const SUBMIT_SET_REQUEST = 'SUBMIT_SET_REQUEST';
+export const SAVE_TOGGLE = 'SAVE_TOGGLE';
 
 // == EXPORT FOR COMMENT PART
 export const GET_COMMENT_ID = 'GET_COMMENT_ID';
@@ -23,6 +24,11 @@ export const SUBMIT_COMMENT = 'SUBMIT_COMMENT';
 
 export const getRequest = () => ({
   type: GET_REQUEST,
+});
+
+export const saveToggle = (newToggle) => ({
+  type: SAVE_TOGGLE,
+  newToggle,
 });
 
 export const saveRequest = (newRequest) => ({

@@ -25,7 +25,7 @@ const Request = ({ getRequest, requestList, submitDeleteRequest, getCommentId  }
           case 'Refusé':
             return <RequestRefuseFU request={request} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />;
           case 'En attente':
-            return <RequestWaitFU request={request} />;
+            return <RequestWaitFU request={request} getRequest={getRequest} />;
           case 'Terminé':
             return <RequestFinishFU request={request} />;
           case 'Annulé':

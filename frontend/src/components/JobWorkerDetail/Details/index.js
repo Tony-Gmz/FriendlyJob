@@ -15,7 +15,8 @@ const Details = ({
   about,
   department,
   skills,
-  id }) => {
+  id,
+}) => {
   /*  console.log(`prenom: ${department.name} + a propos :${about}`); */
   const userAvatar = image;
   const screenWidth = window.screen.width;
@@ -35,7 +36,7 @@ const Details = ({
           <div className="Jober_card">
             <Card key={id}>
               <Card.Content header={firstname} />
-              <Card.Content description={skills[0].description} />
+              {skills && <Card.Content description={skills[0].description} />}
               <Card.Content extra>
                 Departement : {department.name}
               </Card.Content>

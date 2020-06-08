@@ -46,6 +46,7 @@
     "webpack-merge": "*"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.10.1",
     "@date-io/date-fns": "1.x",
     "@material-ui/core": "^4.10.0",
     "@material-ui/icons": "^4.9.1",
