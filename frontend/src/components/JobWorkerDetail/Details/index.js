@@ -5,6 +5,7 @@ import ModalReservation from 'src/containers/ModalReservation';
 import Avatar from '@material-ui/core/Avatar';
 import { Card } from 'semantic-ui-react';
 import { whitoutAvatar } from 'src/utils';
+import { Message } from 'semantic-ui-react'
 
 
 const Details = ({
@@ -16,8 +17,9 @@ const Details = ({
   skills,
   id }) => {
   /*  console.log(`prenom: ${department.name} + a propos :${about}`); */
-  const userAvatar = image
+  const userAvatar = image;
   const screenWidth = window.screen.width;
+  const role = localStorage.getItem('userRole');
   return (
 
     <div className="detail">
@@ -48,8 +50,20 @@ const Details = ({
         </div>
       </div>
       <div className="detail_reservation">
-        {isLogged && <ModalReservation />}
-        {!isLogged && <div>Vous souhaitez reserver un service à nom du jobworker ? Connectez-vous ou inscrivez-vous </div>}
+        {isLogged === 'true' && role === 'FRIENDLY_USER' ? <ModalReservation /> : ''}
+        {!isLogged && (
+          <div className="detail_reservation_message">
+         <Message warning>
+            <div>
+              <i className="info circle icon"></i>
+            </div>
+            <div className="reservation_message content">
+            <Message.Header> Vous souhaitez prendre rendez-vous avec {firstname} ? Vous devez être inscrit ou connecté</Message.Header>
+            <p>Visitez notre page <a className="message_reservation_link" href="#inscription">d'inscription</a>  ou de <a className="message_reservation_link" href="#connexion"> connexion</a> et réessayez ! </p>
+            </div>
+          </Message>
+          </div>
+        )}
       </div>
     </div>
   );

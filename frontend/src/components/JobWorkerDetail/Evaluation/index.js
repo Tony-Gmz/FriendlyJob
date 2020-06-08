@@ -18,19 +18,25 @@ const Evaluation = ({ jobWorkerRating }) => {
         {jobWorkerRating.map((jobWorker) => {
           const userAvatar = jobWorker.friendlyUser.firstname;
           return (
-
+            <div className="evalutation_content">
+            <div className="evalutation_content_author">
+            <div className="evaluation_content_avatar">
+                {userAvatar && <Avatar alt="Remy Sharp" src={jobWorker.friendlyUser.image} /> }
+                {!userAvatar && <Avatar alt="Remy Sharp" src="">{whitoutAvatar(jobWorker.friendlyUser.firstname)}</Avatar>}
+              </div>
+              <div className="evaluation_content_firstname">
+              {jobWorker.friendlyUser.firstname}
+              </div>
+            </div>
             <Message className="evaluation_message">
               <Message.Header> </Message.Header>
               <div className="message_content">
-                <div className="message_content_avatar">
-                  {userAvatar && <Avatar alt="Remy Sharp" src={jobWorker.friendlyUser.image} /> }
-                  {!userAvatar && <Avatar alt="Remy Sharp" src="">{whitoutAvatar(jobWorker.friendlyUser.firstname)}</Avatar>}
-                </div>
-                <span>{jobWorker.friendlyUser.firstname}</span>
-                <div className="message_content_rating"><Rating icon="star" defaultRating={jobWorker.rating.star} maxRating={5} /></div>
+                <div className="message_content_rating"><Rating icon="star" defaultRating={jobWorker.rating.star} maxRating={5} disabled /></div>
                 <div className="message_content_comment">{jobWorker.rating.comment}</div>
               </div>
             </Message>
+            </div>
+            
           );
         })}
       </div>
