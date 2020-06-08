@@ -44,8 +44,8 @@ class DemandProvider extends BaseProvider
         'status' => [
             'En attente',
             'Acceptée',
-            'Refusée',
             'Annulée',
+            'Refusée',
             'Terminée'
         ],
     ];
