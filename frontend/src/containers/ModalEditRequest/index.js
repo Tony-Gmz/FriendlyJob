@@ -23,6 +23,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(getCommentId(commentId));
   },
 
+
   changeFieldRequest: (newValue, inputName) => {
     dispatch(changeFieldRequest(newValue, inputName));
   },

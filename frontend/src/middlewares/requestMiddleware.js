@@ -23,6 +23,7 @@ const requestMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           store.dispatch(saveRequest(response.data));
+          console.log(response);
         })
         .catch((error) => {
           console.warn(error);

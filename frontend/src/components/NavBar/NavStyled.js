@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import 'src/styles/_vars.scss';
 
 const NavStyled = styled.nav`
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   display: flex;
   justify-content: space-between;
   margin-bottom:5em;
@@ -17,11 +17,14 @@ const NavStyled = styled.nav`
   padding-top: 1rem;
   font-size: 1.5rem;
   font-weight: bold;
-  color: #FF385C
+  color: #FF385C;
+  height:50px;
  }
  .nav_ul {
-   display: flex;
-   padding-top: 0.5rem;
+    display: flex;
+    font-size: large;
+    font-weight: 500;
+    margin-right: 1em;
    @media (max-width: 315px) {
     display: flex;
     flex-direction: column;
@@ -40,6 +43,12 @@ const NavStyled = styled.nav`
  }
  .nav_content {
    display: flex
+  }
+  .nav_logo{
+    position: relative;
+    width:60%;
+    top: -90px;
+    left: -120px;
   }
  }
  .nav_button {

@@ -38,7 +38,7 @@ const JobWorkerMain = ({ jobWorkers }) => {
                       <Card.Content extra>
                         <Rating defaultRating={jobWorker.user.jobWorkerDemands[0].rating.star} maxRating={5} disabled />
                         <Link to={`/jobworker/${slug}`}>
-                          <Button>Contact</Button>
+                          <Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }}>Contact</Button>
                         </Link>
                       </Card.Content>
                     </Card>

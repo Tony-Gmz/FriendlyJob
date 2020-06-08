@@ -1,7 +1,7 @@
 // == Import Library
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
-import { Card, Rating, Button } from 'semantic-ui-react';
+import { Card, Rating, Button, Image, CardContent } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 // == Import style
@@ -29,11 +29,13 @@ const JoberService = ({ jobWorker }) => {
       <div className="Jober_card">
         <Card>
           <Card.Content header={jobWorker.user.firstname} />
-          <Card.Content description={jobWorker.user.about} />
+          <Card.Content>
+            "{jobWorker.user.jobWorkerDemands[0].rating.comment}"
+          </Card.Content>
           <Card.Content extra>
             <Rating defaultRating={jobWorker.user.jobWorkerDemands[0].rating.star} maxRating={5} disabled />
             <Link to={`/jobworker/${id}`}>
-              <Button>Contact</Button>
+              <Button style={{ backgroundColor: '#FF385C', color: '#FFFF', marginLeft: '1em' }}>Contact</Button>
             </Link>
           </Card.Content>
         </Card>

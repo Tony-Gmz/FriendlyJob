@@ -7,14 +7,10 @@
     display: inline-block;
     padding-top: 1rem;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: xx-large;
     border-bottom: 1px solid #FF385C;
     padding-bottom: 1rem;
-    width: 400px;
-
-  }
-  .service_detail_title-content {
-
+    width: 60%;
 
   }
 
@@ -24,32 +20,28 @@
     background-color: #f7f7f7;
     padding: 1rem;
     border-radius: 10px;
-
+    font-weight: 600;
+    font-size: large;
   }
 
-  .service_details_jobworker {
-
-
-  }
 
   .service_details_jobworker_title {
 
     padding-top: 2em;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     padding-bottom: 0.5rem;
     text-align: left;
     border-bottom: #FF385C;
     font-style: italic;
-
+    margin-left: 3em;
   }
 
   .service_details_jobworker_card {
-
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     margin-top: 2em;
     margin-left: 2em;
-
   }
 
   .service_details_jobworker_card-item {
@@ -59,9 +51,12 @@
   }
 
   .service_details_link {
-    margin-top: 2em;
     display: flex;
     justify-content: space-between;
+    width: 90%;
+    margin: 2.5em auto;
+    font-size: larger;
+    font-weight: 700;
 
   }
 }

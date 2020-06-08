@@ -62,7 +62,7 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
   };
   return (
     <div className="ModalReservation">
-      <a href="#reservation"><Button>Reservation</Button></a>
+      <a href="#reservation"><Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }}>Reservation</Button></a>
       <div id="reservation" className="reservation">
         <div className="modal_block">
           <div className="modal_header">
