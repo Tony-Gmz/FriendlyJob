@@ -7,6 +7,7 @@ import profil from 'src/assets/img/screenshot.png';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import { whitoutAvatar } from 'src/utils';
+import UploadImg from 'src/containers/UploadImg';
 
 // == Import
 import './profilFriendlyUser.scss';
@@ -56,10 +57,12 @@ const ProfilFiendlyUser = ({
         Voici votre espace personnel il vous sera utile si vous voulez effectuer des changements d'informations
       </div>
       <div className="profil">
-        <div className="profil_card">
+        <div className="profil_card_img">
           {userAvatar && <Avatar alt="Remy Sharp" src={urlAvatar} /> }
           {!userAvatar && <Avatar alt="Remy Sharp" src="">{whitoutAvatar(firstname)}</Avatar>}
-          <div className="profil_title">{firstname}</div>
+          <div className="profil_card_img_upload">
+            {isEditable && <UploadImg urlAvatar={urlAvatar} />}
+          </div>
         </div>
         <div className="profil_information">
           <form onSubmit={handleSubmit} className="profil_form">

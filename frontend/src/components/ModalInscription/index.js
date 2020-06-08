@@ -1,5 +1,6 @@
 // == Import npm
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
@@ -36,6 +37,7 @@ const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValu
           <div className="modal_header">
             <p className="modal_title">Bienvenue dans notre espace Inscription</p>
           </div>
+          {!isSubscribe && <div className="modal_inscription_info"><i class="info circle icon"></i>Les champs précédés de * sont obligatoire pour l'inscription</div>}
           {isSubscribe && (
             <Message  positive>
               <Message.Header>Vous êtes bien inscrit sur le site FriendlyJob</Message.Header>
@@ -55,6 +57,7 @@ const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValu
                 variant="outlined"
                 onChange={handleChange}
                 name="nom"
+                required
               />
             </div>
             <div className="form_element">
@@ -67,10 +70,11 @@ const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValu
                 variant="outlined"
                 onChange={handleChange}
                 name="prenom"
+                required
               />
             </div>
             <div className="form_element">
-              <InputLabel id="demo-simple-select-label">Departement</InputLabel>
+              <InputLabel required id="demo-simple-select-label">Departement</InputLabel>
               <Select
                 className="input"
                 labelId="demo-simple-select-label"
@@ -78,6 +82,7 @@ const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValu
                 value={NumbSelectValue}
                 onChange={handleChange}
                 name="departement"
+                required
               >
                 <MenuItem value={1}>Ain</MenuItem>
                 <MenuItem value={2}>Aisne</MenuItem>
@@ -99,6 +104,7 @@ const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValu
                 variant="outlined"
                 onChange={handleChange}
                 name="email"
+                required
               />
             </div>
             <div className="form_element">
@@ -111,6 +117,7 @@ const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValu
                 variant="outlined"
                 onChange={handleChange}
                 name="password"
+                required
               />
             </div>
             <div className="form_element">
@@ -123,13 +130,14 @@ const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValu
                 variant="outlined"
                 onChange={handleChange}
                 name="confirm-password"
+                required
               />
             </div>
             <div className="div_radio">
-              <FormLabel component="legend">Besoin d'un service ou mettre en exergue vos compétences ? Choisissez votre rôle !</FormLabel>
+              <FormLabel required component="legend">Besoin d'un service ou mettre en exergue vos compétences ? Choisissez votre rôle !</FormLabel>
               <RadioGroup className="radio_inscription_item" aria-label="gender" name="gender1">
-                <FormControlLabel value="JOBWORKER" control={<Radio />} label="JobWorker" onChange={handleChange} name="roles" />
-                <FormControlLabel value="FRIENDLY_USER" control={<Radio />} label="FriendlyUser" onChange={handleChange} name="roles" />
+                <FormControlLabel value="JOBWORKER" control={<Radio />} label="JobWorker" onChange={handleChange} name="roles"  />
+                <FormControlLabel value="FRIENDLY_USER" control={<Radio />} label="FriendlyUser" onChange={handleChange} name="roles"  />
               </RadioGroup>
             </div>
             <div className="div_submit">
@@ -137,7 +145,7 @@ const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValu
               <a href="#"><button className="cancel_btn" type="submit">Annuler</button></a>
             </div>
           </form>
-          <a href="#" className="close_btn">close</a>
+          <Link to="/" className="close_btn">close</Link>
         </div>
       </div>
     </div>

@@ -42,6 +42,8 @@ export const SAVE_URL_AVATAR = 'SAVE_URL_AVATAR';
 export const GET_URL_AVATAR = 'GET_URL_AVATAR';
 export const SAVE_EDIT_URL_AVATAR = 'SAVE_EDIT_URL_AVATAR';
 export const SUBMIT_AVATAR = 'SAVE_AVATAR';
+export const IS_SKILL_SAVE = 'IS_SKILL_SAVE';
+export const CLEAR_SAVE = 'CLEAR_SAVE';
 
 export const changeField = (newValue, inputName) => ({
   type: CHANGE_FIELD,
@@ -209,4 +211,12 @@ export const getUrlAvatar = (newAvatar) => ({
 
 export const subitAvatar = () => ({
   type: SUBMIT_AVATAR,
+});
+
+export const isSkillSave = () => ({
+  type: IS_SKILL_SAVE,
+});
+
+export const clearSave = () => ({
+  type: CLEAR_SAVE,
 });

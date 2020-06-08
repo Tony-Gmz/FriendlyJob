@@ -19,6 +19,8 @@ import {
   GET_SKILL_ID,
   SAVE_URL_AVATAR,
   GET_URL_AVATAR,
+  IS_SKILL_SAVE,
+  CLEAR_SAVE,
 } from '../action/usersActions';
 
 const initialState = {
@@ -76,6 +78,7 @@ const initialState = {
   skillId: null,
   urlAvatar: '',
   avatarData: null,
+  isSave: false,
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -164,7 +167,7 @@ const userReducer = (state = initialState, action = {}) => {
         currentJobWorkerSkills: action.skills,
         loadingOnJobWorkerProfil: false,
       };
-    case GET_NEW_SKILL_VALUE: 
+    case GET_NEW_SKILL_VALUE:
       return {
         ...state,
         [action.nameInput]: action.skillValue,
@@ -188,6 +191,16 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         avatarData: action.newAvatar,
+      };
+    case IS_SKILL_SAVE:
+      return {
+        ...state,
+        isSave: true,
+      };
+    case CLEAR_SAVE:
+      return {
+        ...state,
+        isSave: false,
       };
     default: return state;
   }

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Modal, Input } from 'semantic-ui-react';
+import { Button, Modal, Input, Message } from 'semantic-ui-react';
 import TextField from '@material-ui/core/TextField';
 import './ModalAddSkill.scss';
 
-const ModalAddSkill = ({ serviceList, selectedSkillDescription, selectedSkillId, selectedSkillPrice, getNewSkillValue, submitNewSkill  }) => {
+const ModalAddSkill = ({ serviceList, selectedSkillDescription, selectedSkillId, selectedSkillPrice, getNewSkillValue, submitNewSkill, isSave, clearSave  }) => {
 
   const handleChange = (evt) => {
     console.log(`${evt.target.value} + ${evt.target.name}`);
@@ -17,8 +17,12 @@ const ModalAddSkill = ({ serviceList, selectedSkillDescription, selectedSkillId,
     submitNewSkill();
   };
 
+  const handleClose = () => {
+    clearSave();
+  };
+
   return (
-    <Modal trigger={<Button className="ModalAddSkill_triggerButton" style={{ backgroundColor: '#303f9f', color: '#FFFF' }}>Ajouter une compétence</Button>} closeIcon>
+    <Modal onClose={handleClose} trigger={<Button className="ModalAddSkill_triggerButton" style={{ backgroundColor: '#303f9f', color: '#FFFF' }}>Ajouter une compétence</Button>} closeIcon>
    <Modal.Header className="modalAddSkill_title">Ajout d'une compétence</Modal.Header>
     <Modal.Description>
     <p className="modalAddSkill_description">
@@ -55,6 +59,16 @@ const ModalAddSkill = ({ serviceList, selectedSkillDescription, selectedSkillId,
               name="selectedSkillDescription"
             />
           </div>
+          </div>
+          <div className="succes_save_message">
+          {isSave && (
+            <Message  positive>
+                <Message.Header><i class="check circle icon"></i>Votre ajout de compétence a été pris en compte</Message.Header>
+                <p className="message_success">
+                  Vous souhaitez revenir sur votre profil ? C'est par ici  <i class="hand point right icon"></i><a href="/profil"><span className="message_connexion">Profil</span></a>
+                </p>
+            </Message>
+          )}
           </div>
           <div className="modalAddSkill_submit_button">
             <Button style={{ backgroundColor: 'green', color: '#FFFF' }}>Envoyer</Button>

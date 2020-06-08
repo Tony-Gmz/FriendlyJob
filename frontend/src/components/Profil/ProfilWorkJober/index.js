@@ -4,10 +4,9 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import profil from 'src/assets/img/screenshot.png';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
-import { Radio, Input } from 'semantic-ui-react';
+import { Input, Message } from 'semantic-ui-react';
 import CancelSharpIcon from '@material-ui/icons/CancelSharp';
 import { whitoutAvatar } from 'src/utils';
 
@@ -102,7 +101,7 @@ const ProfilJobWorker = ({
               <TextField
                 className="profil_input"
                 id="outlined-name-input"
-                label='Nom'
+                label="Nom"
                 value={lastname}
                 type="text"
                 autoComplete="current-name"
@@ -163,6 +162,7 @@ const ProfilJobWorker = ({
                   variant="outlined"
                   name="editAbout"
                   onChange={handleChange}
+                  maxlength="500"
                 />
               </div>
             )}
@@ -239,23 +239,53 @@ const ProfilJobWorker = ({
                 />
               </div>
             )}
-            {isEdited && <div>Vos modifications ont bien été prises en compte</div>}
-            <div className="profil_group_btn">
-              {isEditable && (
-                <Link to="/"><Button onClick={handleCancelClick} className="profil_btn" variant="contained" color="alerte"> Annuler</Button></Link>
-              )}
-              {!isEditable && (
-                <Button onClick={handleClick} className="profil_btn" variant="contained" color="primary">
-                  Modifier
-                </Button>
-              )}
-              {isEditable && (
-                <Button type="submit" className="profil_btn" variant="contained">
-                  Valider
-                </Button>
-              )}
-            </div>
-          </form>
+            {isEdited && (
+              <Message  positive>
+                <Message.Header><i class="check circle icon"></i>Vos modifications ont bien été prise en compte</Message.Header>
+                <p className="message_success">
+                  Vous souhaitez revenir sur la page d'accueil ? C'est par ici  <i class="hand point right icon"></i><a href="/"><span className="message_connexion">Page d'accueil</span></a>
+                </p>
+              </Message>
+            )}
+            {editPassword !== editConfirmationPassword ? (
+              <>
+                <div className="error_message_passwordConfirmation"><i class="times circle icon"></i>Le champ "mot de passe" est différent du champ "confirmation"</div>
+                <div className="profil_group_btn">
+                  {isEditable && (
+                    <Link to="/"><Button onClick={handleCancelClick} className="profil_btn" variant="contained" color="alerte"> Annuler</Button></Link>
+                  )}
+                  {!isEditable && (
+                    <Button onClick={handleClick} className="profil_btn" variant="contained" color="primary">
+                      Modifier
+                    </Button>
+                  )}
+                  {isEditable && (
+                    <Button type="submit" className="profil_btn" variant="contained" disabled>
+                      Valider
+                    </Button>
+                  )}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="profil_group_btn">
+                  {isEditable && (
+                    <Link to="/"><Button onClick={handleCancelClick} className="profil_btn" variant="contained" color="alerte"> Annuler</Button></Link>
+                  )}
+                  {!isEditable && (
+                    <Button onClick={handleClick} className="profil_btn" variant="contained" color="primary">
+                      Modifier
+                    </Button>
+                  )}
+                  {isEditable && (
+                    <Button type="submit" className="profil_btn" variant="contained">
+                      Valider
+                    </Button>
+                  )}
+                </div>
+              </>
+            )}
+            </form>
           <div className="form_skill">
             <div className="form_skill_description">
               Vous souhaitez changer ou ajouter des compétences ? Modifier votre prix horaire ? C'est par ici 

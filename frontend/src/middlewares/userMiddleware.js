@@ -27,6 +27,7 @@ import {
   saveUrlAvatar,
   GET_URL_AVATAR,
   SUBMIT_AVATAR,
+  isSkillSave,
 } from '../action/usersActions';
 import { saveToggle } from '../action/requestAction';
 
@@ -334,6 +335,7 @@ const userMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           store.dispatch(saveToggle(!toggle));
+          store.dispatch(isSkillSave());
           // console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
           console.log(response);
@@ -364,6 +366,7 @@ const userMiddleware = (store) => (next) => (action) => {
           // je voudrais enregistrer response.data dans le state => nouvelle action
           console.log(response);
           store.dispatch(saveToggle(!toggle));
+          store.dispatch(isSkillSave());
           // store.dispatch(saveJobWorkerSkills(response.data.skills));
         })
         .catch((error) => {
@@ -391,6 +394,7 @@ const userMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           store.dispatch(saveToggle(!toggle));
+          store.dispatch(isSkillSave());
           // console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
           console.log(response);
