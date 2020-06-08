@@ -50,7 +50,7 @@ const Details = ({
         </div>
       </div>
       <div className="detail_reservation">
-        {isLogged === 'true' && role === 'FRIENDLY_USER' ? <ModalReservation /> : ''}
+        {isLogged === true && role === 'FRIENDLY_USER' ? <ModalReservation /> : ''}
         {!isLogged && (
           <div className="detail_reservation_message">
          <Message warning>

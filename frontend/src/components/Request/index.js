@@ -9,8 +9,11 @@ import RequestJobWorker from './RequestJobWorker';
 // == Composant
 const Request = ({ getRequest, requestList, submitAccepteRequest, submitDeleteRequest, getCommentId }) => {
   useEffect(() => {
-    getRequest();
-  });
+    async function load() {
+      await getRequest();
+    }
+    load();
+  }, []);
 
   const Role = localStorage.getItem('userRole');
   return (
