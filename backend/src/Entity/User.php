@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -31,6 +32,7 @@ class User implements UserInterface
      * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
      * @Groups({"service_jobworker"})
      * @Groups({"skill_add"})
+     * @Assert\Email
      */
     private $email;
 
@@ -54,6 +56,8 @@ class User implements UserInterface
      * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
      * @Groups({"service_jobworker"})
      * @Groups({"skill_add"})
+     * @Assert\NotBlank
+     * @Assert\Length(max = 255, maxMessage = "Your firstname should not exceed {{ limit }} characters")
      */
     private $firstname;
 
@@ -63,6 +67,8 @@ class User implements UserInterface
      * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
      * @Groups({"service_jobworker"})
      * @Groups({"skill_add"})
+     * @Assert\NotBlank
+     * @Assert\Length(max = 255, maxMessage = "Your lastname should not exceed {{ limit }} characters")
      */
     private $lastname;
 
@@ -72,6 +78,7 @@ class User implements UserInterface
      * @Groups({"user_jobworker_rating", "user_read", "user_add", "user_edit", "user_random_jobworker", "user_jobworker_details", "user_contact" })
      * @Groups({"service_jobworker"})
      * @Groups({"skill_add"})
+     * @Assert\Url
      */
     private $image;
 
