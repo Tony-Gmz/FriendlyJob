@@ -1,5 +1,5 @@
 // == Import library
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // == Import components
 import RequestCancel from './RequestCancel';
@@ -13,7 +13,7 @@ import RequestFinish from './RequestFinish';
 import '../request.scss';
 
 // == Composant
-const Request = ({ requestList, submitAccepteRequest, submitDeleteRequest, getCommentId }) => {
+const Request = ({ getRequest, requestList, submitAccepteRequest, submitDeleteRequest, getCommentId }) => {
   console.log(requestList);
   return (
     <>

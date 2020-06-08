@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import ModalConnexion from 'src/containers/ModalConnexion';
 import {Button} from 'semantic-ui-react';
 import ModalInscription from 'src/containers/ModalInscription';
 import NavStyled from './NavStyled';
-
 
 // Styled navbar component reusable
 
@@ -22,7 +21,7 @@ const NavBar = ({ isLogged, logOut }) => {
       <NavStyled>
         <NavLink to="/">
           <div className="nav_title">
-            FriendlyJob
+            <img className="nav_logo" src="https://res.cloudinary.com/friendlyjob/image/upload/c_scale,h_382,q_100,w_700/v1591563541/friendlyjob/logo_fj_remastered_horizontale_hmbfwl.png" alt="logo" />
           </div>
         </NavLink>
         <div className="nav_content">
@@ -44,7 +43,7 @@ const NavBar = ({ isLogged, logOut }) => {
       <NavStyled>
         <NavLink to="/">
           <div className="nav_title">
-            FriendlyJob
+            <img className="nav_logo" src="https://res.cloudinary.com/friendlyjob/image/upload/c_scale,h_382,q_100,w_450/v1591563541/friendlyjob/logo_fj_remastered_horizontale_hmbfwl.png" alt="logo" />
           </div>
         </NavLink>
         <div className="nav_content">
@@ -54,7 +53,7 @@ const NavBar = ({ isLogged, logOut }) => {
             <NavLink to="/demandes" activeClassName="selected-link"><li>Mes demandes</li></NavLink>
           </ul>
           <div className="nav_button">
-            <Button onClick={handleClick}>Deconnexion</Button>
+            <Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }} onClick={handleClick}>Deconnexion</Button>
           </div>
         </div>
       </NavStyled>

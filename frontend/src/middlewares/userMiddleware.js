@@ -274,12 +274,11 @@ const userMiddleware = (store) => (next) => (action) => {
     }
     case GET_JOBWORKER_SKILLS: {
       // REQUEST TO GET THE SKILL OF THE CURRENT JOBWORKER
-      const userId = localStorage.getItem('userId');
       const userToken = localStorage.getItem('jwtToken');
-      console.log(userId);
+      const id = localStorage.getItem('userId');
       axios({
         method: 'get',
-        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/jobworker`,
+        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/jobworker/${id}`,
         headers: {
           Authorization: `Bearer ${userToken}`,
         },

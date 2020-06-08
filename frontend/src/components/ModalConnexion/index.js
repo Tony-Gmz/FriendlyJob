@@ -23,7 +23,7 @@ const ModalConnexion = ({ changeField, submitLoggin }) => {
 
   return (
     <div className="ModalConnexion">
-      <a href="#connexion"><Button variant="outline-danger">Connexion</Button></a>
+      <a href="#connexion"><Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }}>Connexion</Button></a>
       <div id="connexion" className="connexion">
         <div className="modal_block">
           <div className="modal_header">

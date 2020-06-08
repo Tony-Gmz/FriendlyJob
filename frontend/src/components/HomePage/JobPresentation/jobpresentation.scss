@@ -1,50 +1,47 @@
 @import 'src/styles/vars';
 
 .jobpresentation {
-
-  background-color: rgba(0, 0, 0, 0.623);
-  border-radius: 10px;
-  padding-bottom: 3em;
-  color: white;
-  width: 80%;
-  margin: 0 auto;
-  margin-top: 4em;
-  
   @include phone {
     
     
    
-   }
-   @include sm {
-   
-     
- }
- @include md {
+    }
+    @include sm {
+      
+    }
+    @include md {
   
- 
- }
+    }
+    @include xl {
+      background-color: rgba(0, 0, 0, 0.80);
+      border-radius: 10px;
+      padding-bottom: 3em;
+      color: white;
+      width: 100%;
+      margin: 0 auto;
+      margin-top: 4em;
+    }
 
-  .jobpresentation_title {
-    display: inline-block;
-    padding-top: 1rem;
-    font-weight: bold;
-    font-size: 1.5rem;
-    border-bottom: 1px solid #FF385C;
-    padding-bottom: 1rem;
-    width: 50%;
-    @include phone {
+      .jobpresentation_title {
+        display: inline-block;
+        padding-top: 1rem;
+        font-weight: bold;
+        font-size: 1.5rem;
+        border-bottom: 1px solid #FF385C;
+        padding-bottom: 1rem;
+        width: 50%;
+        @include phone {
     
      
-     }
-     @include sm {
-     
-       
-       
-   }
-   @include md {
-    
-   
-   }
+        }
+        @include sm {
+        
+          
+          
+        }
+        @include md {
+          
+        }
   }
   .jobpresentation_card {
     

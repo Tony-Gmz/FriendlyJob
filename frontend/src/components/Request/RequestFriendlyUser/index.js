@@ -1,5 +1,5 @@
 // == Import library
-import React from 'react';
+import React, { useEffect } from 'react';
 
 
 // == Import components
@@ -14,7 +14,7 @@ import '../request.scss';
 
 
 // == Composant
-const Request = ({ requestList, submitDeleteRequest, getCommentId  }) => {
+const Request = ({ getRequest, requestList, submitDeleteRequest, getCommentId  }) => {
   console.log(requestList);
   return (
     <>
