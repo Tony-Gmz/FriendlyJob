@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ProfilFriendlyUser from './ProfilFriendlyUser';
 import ProfilWorkJober from './ProfilWorkJober';
@@ -18,6 +18,7 @@ const Profil = ({
   editAbout,
   getJobWorkerSkill,
   serviceList,
+  getUserData,
   currentJobWorkerSkills,
   getNewSkillValue,
   selectedSkillId,
@@ -25,6 +26,11 @@ const Profil = ({
   selectedSkillDescription,
   urlAvatar,
 }) => {
+
+  /* useEffect(() => {
+    getUserData();
+  }, [userData]); */
+
   const role = localStorage.getItem('userRole');
   return (
     <>

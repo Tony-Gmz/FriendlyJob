@@ -52,7 +52,8 @@ const ProfilJobWorker = ({
 }) => {
   useEffect(() => {
     getJobWorkerSkill();
-  }, []);
+  }, [currentJobWorkerSkills]);
+
 
   // console.log(currentJobWorkerSkills);
   const userAvatar = urlAvatar;

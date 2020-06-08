@@ -148,3 +148,11 @@
   border-radius: 1em;
   margin: 1em;
 }
+
+.message_success {
+  background-color: green($color: #FFFF);
+  .message_connexion {
+    font-weight: bold;
+    font-style: italic;
+  }
+}

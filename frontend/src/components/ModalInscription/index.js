@@ -9,7 +9,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
-import { Button } from 'semantic-ui-react';
+import { Button, Message } from 'semantic-ui-react';
 
 // == Import
 import './modalInscription.scss';
@@ -36,7 +36,14 @@ const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValu
           <div className="modal_header">
             <p className="modal_title">Bienvenue dans notre espace Inscription</p>
           </div>
-          {isSubscribe && <div>Vous êtes bien inscrit sur FriendlyJob, merci de votre confiance</div>}
+          {isSubscribe && (
+            <Message  positive>
+              <Message.Header>Vous êtes bien inscrit sur le site FriendlyJob</Message.Header>
+                <p className="message_success">
+                  Merci pour votre confiance ! Vous pouvez dorénavant vous <a href="#connexion"><span className="message_connexion">connecter</span></a>
+                </p>
+            </Message>
+          )}
           <form onSubmit={handleSubmit}>
             <div className="form_element">
               <TextField

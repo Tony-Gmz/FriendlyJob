@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import ModalConnexion from 'src/containers/ModalConnexion';
 import {Button} from 'semantic-ui-react';
 import ModalInscription from 'src/containers/ModalInscription';
@@ -53,7 +53,7 @@ const NavBar = ({ isLogged, logOut }) => {
             <NavLink to="/demandes" activeClassName="selected-link"><li>Mes demandes</li></NavLink>
           </ul>
           <div className="nav_button">
-            <Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }} onClick={handleClick}>Deconnexion</Button>
+            <Link to="/"><Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }} onClick={handleClick}>Deconnexion</Button></Link>
           </div>
         </div>
       </NavStyled>
