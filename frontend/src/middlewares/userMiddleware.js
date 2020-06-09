@@ -206,6 +206,7 @@ const userMiddleware = (store) => (next) => (action) => {
         .catch((error) => {
           console.warn(error);
           console.log('jai fait une erreur');
+          store.dispatch(saveJobWorkerRating(null));
         });
       next(action);
       break;

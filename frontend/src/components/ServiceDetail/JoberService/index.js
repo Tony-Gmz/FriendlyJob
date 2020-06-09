@@ -14,6 +14,8 @@ import { whitoutAvatar } from 'src/utils';
 const JoberService = ({ jobWorker }) => {
 
   const userAvatar = jobWorker.user.image;
+  const userRating = jobWorker.user.jobWorkerDemands[0];
+  console.log(userRating);
   const id = jobWorker.user.id;
   console.log(jobWorker);
 
@@ -30,10 +32,11 @@ const JoberService = ({ jobWorker }) => {
         <Card>
           <Card.Content header={jobWorker.user.firstname} />
           <Card.Content>
-            "{jobWorker.user.jobWorkerDemands[0].rating.comment}"
+            {userRating && jobWorker.user.jobWorkerDemands[0].rating.comment}
           </Card.Content>
           <Card.Content extra>
-            <Rating defaultRating={jobWorker.user.jobWorkerDemands[0].rating.star} maxRating={5} disabled />
+            {userRating && <Rating defaultRating={jobWorker.user.jobWorkerDemands[0].rating.star} maxRating={5} disabled />}
+            {!userRating && <Rating defaultRating={0} maxRating={5} disabled />}
             <Link to={`/jobworker/${id}`}>
               <Button style={{ backgroundColor: '#FF385C', color: '#FFFF', marginLeft: '1em' }}>Contact</Button>
             </Link>

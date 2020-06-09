@@ -75,32 +75,26 @@ export const getJobWorkerBySlug = (jobWorkers, slug) => (
  * Change date format for the component DateTimePicker
  * @param {string} requestDate 
  */
-export const changeDateFormat = (requestDate) => {
-  const years = requestDate.slice(0, 4);
-  // console.log(years);
-  const month = requestDate.slice(5, 7);
-  // console.log(month);
-  const day = requestDate.slice(8, 10);
-  // console.log(day);
-  // const days = requestDate.getDate();
-  // const newRequestDate= `${month}/${days}/${years}`;
-  // console.log(newRequestDate);
-  requestDate = `${month}/${day}/${years}`;
-  return requestDate;
+
+export const changeHourFormat = (date) => {
+
+  const hour = date.getHours();
+  let minutes = date.getMinutes().toString();
+  minutes = ('0'+(minutes)).slice(-2);
+  // console.log(minutes);
+  date = `${hour}h${minutes}`;
+  return date;
 };
 
-export const changeDateEditFormat = (requestDate) => {
-  const years = requestDate.slice(7, 10);
-  // console.log(years);
-  const month = requestDate.slice(4, 6);
-  // console.log(month);
-  const day = requestDate.slice(0, 2);
-  //console.log(day);
-  // const days = requestDate.getDate();
-  // const newRequestDate= `${month}/${days}/${years}`;
-  // console.log(newRequestDate);
-  requestDate = `${month}/${day}/${years}`;
-  return requestDate;
-};
+export const changeDateFormat = (date) => {
 
-
+  let month = (date.getMonth() + 1);
+    month = month.toString();
+    month = ('0' + (month)).slice(-2);
+    // console.log(month);
+    // console.log(date.getFullYear());
+    const years = date.getFullYear().toString();
+    const days = date.getDate().toString();
+    date = `${years}-${month}-${days}`;
+    return date;
+}

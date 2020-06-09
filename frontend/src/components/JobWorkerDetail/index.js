@@ -14,7 +14,7 @@ const JobWorkerDetails = ({
   getJobWorkerRating,
   loadingOnJobWorkerDetail,
   currentJobWorkerDetail,
-  currentJobWorkerRating
+  currentJobWorkerRating,
 }) => {
   const jobWorkerId = useParams();
   useEffect(() => {
@@ -22,6 +22,7 @@ const JobWorkerDetails = ({
     getJobWorkerDetail();
     getJobWorkerRating();
   }, []);
+ 
   return (
     <div className="jobWorkerDetail">
       {loadingOnJobWorkerDetail && <Loader /> }
@@ -29,9 +30,16 @@ const JobWorkerDetails = ({
         <>
           <Details isLogged={isLogged} {...currentJobWorkerDetail} />
           <Competence skills={currentJobWorkerDetail.skills} />
+          {currentJobWorkerRating && (
+            <>
             {currentJobWorkerRating.map((jobWorkerRating) => (
               <Evaluation jobWorkerRating={jobWorkerRating.jobWorkerDemands} />
             ))}
+            </>
+          )}
+          {!currentJobWorkerRating && (
+            <div>Test</div>
+          )}
         </>
       )}
     </div>

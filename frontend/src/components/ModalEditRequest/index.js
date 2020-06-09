@@ -34,7 +34,7 @@ const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHou
   };
 
   // console.log(changeDateEditFormat(requestDate));
-
+ 
   const handleDate = (date) => {
     // Methode to listen the change on the calendar et send the result in the reducer
     let month = (date.getMonth() + 1);
@@ -46,7 +46,7 @@ const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHou
     const days = date.getDate().toString();
     const newDate = `${years}-${month}-${days}`;
     // console.log(newDate);
-    changeFieldDateRequest(newDate);
+    changeFieldDateRequest(date);
   };
   const handleHour = (date) => {
     // console.log(date);
@@ -56,7 +56,7 @@ const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHou
     const minutes = date.getMinutes().toString();
     const newHour = `${hour}h${minutes}`;
     // console.log(newHour);
-    changeFieldHourRequest(newHour);
+    changeFieldHourRequest(date);
   };
 
   /* console.log(requestHour);
@@ -67,7 +67,11 @@ const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHou
   console.log(minutes);
   
   console.log(hour); */
+  const hourValue = "2020-06-09T16:27:58+02:00";
 
+  const reservationDate = request.reservationDate;
+  const reservationHour = request.reservationHour;
+  console.log(reservationHour);
 
   const selectedDate = Date();
 
@@ -85,7 +89,7 @@ const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHou
               format="dd/MM/yyyy"
               type="datetime-fr"
               name="requestDate"
-              value={changeDateEditFormat(requestDate)}
+              value={requestDate ? requestDate : reservationDate}
               onChange={handleDate}
               KeyboardButtonProps={{
                 'aria-label': 'change date',
@@ -99,9 +103,9 @@ const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHou
               margin="normal"
               id="time-picker"
               name="requestHour"
-              format="hh:mm"
+              format="HH:mm"
               label="Choisissez une heure"
-              value={requestHour}
+              value={requestHour ? requestHour : reservationHour}
               onChange={handleHour}
               KeyboardButtonProps={{
                 'aria-label': 'change time',
