@@ -5,6 +5,7 @@ const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
   randomJobWorker: state.user.randomJobWorker,
   loading: state.user.loading,
+  isLogged: state.user.isLogged,
   // roles: state.user.userData.roles[0],
 });
 

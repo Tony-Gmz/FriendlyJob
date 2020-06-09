@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, TextArea, Button } from 'semantic-ui-react';
+import { Form, TextArea, Button, Message } from 'semantic-ui-react';
 import 'date-fns';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
@@ -10,6 +10,7 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 import frLocale from 'date-fns/locale/fr';
+import { changeDateFormat } from 'src/utils';
 
 
 // == Import style
@@ -17,7 +18,7 @@ import './modalReservation.scss';
 
 
 // == Composant
-const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerDetail, changeFieldHourRequest, changeFieldDateRequest, requestDate, requestHour, displayHour, hour }) => {
+const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerDetail, changeFieldHourRequest, changeFieldDateRequest, requestDate, requestHour, displayHour, hour, isSave }) => {
   const { skills } = currentJobWorkerDetail;
   // console.log(skills);
   const selectedDate = Date();
@@ -51,30 +52,6 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
     const newDate = `${years}-${month}-${days}`;
     console.log(newDate);
     changeFieldDateRequest(newDate);
-  };
-  const changeDateFormat = (requestDate) => {
-    const years = requestDate.slice(0,4);
-    console.log(years);
-    const month = requestDate.slice(5, 7);
-    console.log(month);
-    const day = requestDate.slice(8, 10);
-    console.log(day);
-    // const days = requestDate.getDate();
-    // const newRequestDate= `${month}/${days}/${years}`;
-    // console.log(newRequestDate);
-    requestDate = `${month}/${day}/${years}`;
-    return requestDate;
-  };
-
-  const changeHourFormat = (requestHour) => {
-    const hours = requestHour.slice(0, 2);
-    console.log(hours);
-    const minutes = requestHour.slice(3, 5);
-    // console.log(minutes);
-   
-    requestHour = `${hours}:${minutes}`;
-    console.log(requestHour);
-    return requestHour;
   };
 
   const handleHour = (date) => {
@@ -137,6 +114,7 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
                   id="time-picker"
                   name="requestHour"
                   label="Choisissez une heure"
+                  refuse={/^(0[6-9]|1[0-9]|20):([0-5][0-9])|(21:00)/gi}
                   value={requestHour ? hour : selectedDate}
                   onChange={handleHour}
                   KeyboardButtonProps={{
@@ -146,6 +124,16 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
               </Grid>
             </MuiPickersUtilsProvider>
           </div>
+          {isSave && (
+            <div className="modalReservation_successMessage">
+              <Message  positive>
+                <Message.Header><i class="check circle icon"></i>Votre demande à bien été prise en compte ! Vous êtes dans l'attente de l'acception de votre JobWworker</Message.Header>
+                <p className="message_success">
+                  Vous souhaitez regarder vos demandes ? C'est par ici  <i class="hand point right icon"></i><a href="/demandes"><span className="message_connexion">Demandes</span></a>
+                </p>
+              </Message>
+            </div>
+          )}
           <div>
             <form onSubmit={handleSubmit} className="div_submit">
               <a href="#"><Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }} className="button_modalReservation_cancel" type="submit">Annuler</Button></a>

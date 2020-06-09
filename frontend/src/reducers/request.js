@@ -9,6 +9,8 @@ import {
   CHANGE_RATING_COMMENT,
   SAVE_TOGGLE,
   DISPLAY_HOUR,
+  GET_REQUEST_DATE,
+  GET_REQUEST_HOUR,
 } from '../action/requestAction';
 
 const initialState = {
@@ -21,7 +23,8 @@ const initialState = {
   newRate: '',
   commentId: '',
   toggle: true,
-  hour: ''
+  hour: '',
+  isSave: false,
 
 };
 
@@ -55,6 +58,7 @@ const requestReducer = (state = initialState, action = {}) => {
     case SAVE_NEW_REQUEST:
       return {
         ...state,
+        isSave: true,
       };
     case DISPLAY_HOUR:
       return {
@@ -82,7 +86,16 @@ const requestReducer = (state = initialState, action = {}) => {
         ...state,
         newRate: action.newRate,
       };
-
+    case GET_REQUEST_DATE:
+      return {
+        ...state,
+        requestDate: action.reservationDate,
+      };
+    case GET_REQUEST_HOUR:
+      return {
+        ...state,
+        requestHour: action.reservationHour,
+      };
     default: return state;
   }
 };

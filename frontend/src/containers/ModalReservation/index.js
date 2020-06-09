@@ -14,6 +14,7 @@ const mapStateToProps = (state) => ({
   requestDate: state.request.requestDate,
   requestHour: state.request.requestHour,
   hour: state.request.hour,
+  isSave: state.request.isSave,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -8,7 +8,7 @@ import './jobpresentation.scss';
 
 // component for jobworker presentation in homepage
 
-const JobPresentation = ({ randomJobWorker, loading }) => (
+const JobPresentation = ({ randomJobWorker, loading, isLogged }) => (
 
   <div className="jobpresentation">
     {loading && <Loader />}
@@ -31,9 +31,11 @@ const JobPresentation = ({ randomJobWorker, loading }) => (
         Alors inscris-toi et deviens le jobWorker préféré de tes voisins !
       </p>
     </div>
+    {!isLogged && (
     <div>
       <ModalInscription />
     </div>
+    )}
   </div>
 );
 
