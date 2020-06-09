@@ -179,22 +179,44 @@ const ProfilFiendlyUser = ({
                 />
               </div>
             )}
-            {isEdited && <div>Vos modifications ont bien été prises en compte</div>}
-            <div className="profil_group_btn">
-              {isEditable && (
-                <Link to="/"><Button onClick={handleCancelClick} className="profil_btn" variant="contained" color="alert"> Annuler</Button></Link>
-              )}
-              {!isEditable && (
-                <Button onClick={handleClick} className="profil_btn" variant="contained" color="primary">
-                  Modifier
-                </Button>
-              )}
-              {isEditable && (
-                <Button type="submit" className="profil_btn" variant="contained">
-                  Valider
-                </Button>
-              )}
-            </div>
+            {editPassword !== editConfirmationPassword ? (
+              <>
+                <div className="error_message_passwordConfirmation"><i class="times circle icon"></i>Le champ "mot de passe" est différent du champ "confirmation"</div>
+                <div className="profil_group_btn">
+                  {isEditable && (
+                    <Link to="/"><Button onClick={handleCancelClick} className="profil_btn" variant="contained" color="alerte"> Annuler</Button></Link>
+                  )}
+                  {!isEditable && (
+                    <Button onClick={handleClick} className="profil_btn" variant="contained" color="primary">
+                      Modifier
+                    </Button>
+                  )}
+                  {isEditable && (
+                    <Button type="submit" className="profil_btn" variant="contained" disabled>
+                      Valider
+                    </Button>
+                  )}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="profil_group_btn">
+                  {isEditable && (
+                    <Link to="/"><Button onClick={handleCancelClick} className="profil_btn" variant="contained" color="alerte"> Annuler</Button></Link>
+                  )}
+                  {!isEditable && (
+                    <Button onClick={handleClick} className="profil_btn" variant="contained" color="primary">
+                      Modifier
+                    </Button>
+                  )}
+                  {isEditable && (
+                    <Button type="submit" className="profil_btn" variant="contained">
+                      Valider
+                    </Button>
+                  )}
+                </div>
+              </>
+            )}
           </form>
           <ModalSuppression />
         </div>

@@ -14,9 +14,9 @@ import {
 } from '@material-ui/pickers';
 import frLocale from 'date-fns/locale/fr';
 import DateFnsUtils from '@date-io/date-fns';
+import { changeDateEditFormat } from 'src/utils';
 
-const ModalEditRequest = ({ request, getCommentId, submitSetRequest, changeFieldRequest, changeFieldDateRequest, changeFieldHourRequest }) => {
-
+const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHour, submitSetRequest, changeFieldRequest, changeFieldDateRequest, changeFieldHourRequest, requestDate, requestHour, editedDate, editedHour }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -25,18 +25,15 @@ const ModalEditRequest = ({ request, getCommentId, submitSetRequest, changeField
 
   const handleClick = () => {
     getCommentId(request.id);
+    getRequestDate(request.reservationDate);
+    getRequestHour(request.reservationHour);
   };
 
   const handleChangeDescription = (evt) => {
     changeFieldRequest(evt.target.value, evt.target.name);
   };
 
-
- /*  const selectedDate = Date();
-
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  }; */
+  // console.log(changeDateEditFormat(requestDate));
 
   const handleDate = (date) => {
     // Methode to listen the change on the calendar et send the result in the reducer
@@ -62,6 +59,16 @@ const ModalEditRequest = ({ request, getCommentId, submitSetRequest, changeField
     changeFieldHourRequest(newHour);
   };
 
+  /* console.log(requestHour);
+  let hour = requestHour.slice(0, 2);
+  hour = ('0' + (hour) - 2).slice(0, 2);
+  console.log(hour);
+  let minutes = requestHour.slice(2, 4);
+  console.log(minutes);
+  
+  console.log(hour); */
+
+
   const selectedDate = Date();
 
   return (
@@ -75,10 +82,10 @@ const ModalEditRequest = ({ request, getCommentId, submitSetRequest, changeField
               margin="normal"
               id="date-picker-dialog"
               label="Choisissez une date"
-              format="MM/dd/yyyy"
+              format="dd/MM/yyyy"
               type="datetime-fr"
               name="requestDate"
-              value={selectedDate}
+              value={changeDateEditFormat(requestDate)}
               onChange={handleDate}
               KeyboardButtonProps={{
                 'aria-label': 'change date',
@@ -92,8 +99,9 @@ const ModalEditRequest = ({ request, getCommentId, submitSetRequest, changeField
               margin="normal"
               id="time-picker"
               name="requestHour"
+              format="hh:mm"
               label="Choisissez une heure"
-              value={selectedDate}
+              value={requestHour}
               onChange={handleHour}
               KeyboardButtonProps={{
                 'aria-label': 'change time',

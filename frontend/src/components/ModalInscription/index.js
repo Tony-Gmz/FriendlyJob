@@ -142,10 +142,10 @@ const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValu
             </div>
             <div className="div_submit">
               <button className="submit_btn" type="submit">S'inscrire</button>
-              <a href="#"><button className="cancel_btn" type="submit">Annuler</button></a>
+              <a href="#"><button className="cancel_btn" >Annuler</button></a>
             </div>
           </form>
-          <Link to="/" className="close_btn">close</Link>
+          <a href="/" className="close_btn">close</a>
         </div>
       </div>
     </div>

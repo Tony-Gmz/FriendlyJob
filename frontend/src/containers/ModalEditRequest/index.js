@@ -5,6 +5,8 @@ import {
   changeFieldDateRequest,
   submitSetRequest,
   getCommentId,
+  getRequestDate,
+  getRequestHour,
 } from '../../action/requestAction';
 import ModalEditRequest from '../../components/ModalEditRequest';
 
@@ -12,8 +14,10 @@ const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
   commentId: state.request.commentId,
   RequestBody: state.request.RequestBody,
-  RequestDate: state.request.RequestDate,
-  RequestHour: state.request.RequestHour,
+  requestDate: state.request.requestDate,
+  requestHour: state.request.requestHour,
+  editedDate: state.request.editedDate,
+  editedHour: state.request.editedHour,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -23,7 +27,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(getCommentId(commentId));
   },
 
-
+  getRequestDate: (reservationDate) => {
+    dispatch(getRequestDate(reservationDate));
+  },
+  getRequestHour: (reservationHour) => {
+    dispatch(getRequestHour(reservationHour));
+  },
   changeFieldRequest: (newValue, inputName) => {
     dispatch(changeFieldRequest(newValue, inputName));
   },
@@ -31,11 +40,11 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(submitSetRequest());
   },
 
-  changeFieldHourRequest: (newRate) => {
-    dispatch(changeFieldHourRequest(newRate));
+  changeFieldHourRequest: (newHour) => {
+    dispatch(changeFieldHourRequest(newHour));
   },
-  changeFieldDateRequest: (newRate) => {
-    dispatch(changeFieldDateRequest(newRate));
+  changeFieldDateRequest: (newDate) => {
+    dispatch(changeFieldDateRequest(newDate));
   },
 });
 

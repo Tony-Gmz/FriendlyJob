@@ -70,3 +70,37 @@ export const getRandomJobWorkerBySlug = (randomJobWorker, slug) => (
 export const getJobWorkerBySlug = (jobWorkers, slug) => (
   jobWorkers.find((currentJobWorker) => currentJobWorker.user.id == slug)
 );
+
+/**
+ * Change date format for the component DateTimePicker
+ * @param {string} requestDate 
+ */
+export const changeDateFormat = (requestDate) => {
+  const years = requestDate.slice(0, 4);
+  // console.log(years);
+  const month = requestDate.slice(5, 7);
+  // console.log(month);
+  const day = requestDate.slice(8, 10);
+  // console.log(day);
+  // const days = requestDate.getDate();
+  // const newRequestDate= `${month}/${days}/${years}`;
+  // console.log(newRequestDate);
+  requestDate = `${month}/${day}/${years}`;
+  return requestDate;
+};
+
+export const changeDateEditFormat = (requestDate) => {
+  const years = requestDate.slice(7, 10);
+  // console.log(years);
+  const month = requestDate.slice(4, 6);
+  // console.log(month);
+  const day = requestDate.slice(0, 2);
+  //console.log(day);
+  // const days = requestDate.getDate();
+  // const newRequestDate= `${month}/${days}/${years}`;
+  // console.log(newRequestDate);
+  requestDate = `${month}/${day}/${years}`;
+  return requestDate;
+};
+
+

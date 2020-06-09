@@ -13,6 +13,8 @@ export const SUBMIT_DELETE_REQUEST = 'SUBMIT_DELETE_REQUEST';
 export const SUBMIT_SET_REQUEST = 'SUBMIT_SET_REQUEST';
 export const SAVE_TOGGLE = 'SAVE_TOGGLE';
 export const DISPLAY_HOUR = 'DISPLAY_HOUR';
+export const GET_REQUEST_DATE = 'GET_REQUEST_DATE';
+export const GET_REQUEST_HOUR = 'GET_REQUEST_HOUR';
 // == EXPORT FOR COMMENT PART
 export const GET_COMMENT_ID = 'GET_COMMENT_ID';
 export const CHANGE_FIELD_COMMENT = 'CHANGE_FIELD_COMMENT';
@@ -84,6 +86,14 @@ export const submitSetRequest = () => ({
 export const displayHour = (initialHour) => ({
   type: DISPLAY_HOUR,
   initialHour,
+});
+export const getRequestDate = (reservationDate) => ({
+  type: GET_REQUEST_DATE,
+  reservationDate,
+});
+export const getRequestHour = (reservationHour) => ({
+  type: GET_REQUEST_HOUR,
+  reservationHour,
 });
 // ========================================= COMMENT ==================================
 
