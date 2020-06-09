@@ -43,6 +43,15 @@ class RatingController extends AbstractController
      *      @OA\Property(property="message", type="string")
      *     )
      * )
+     * @OA\Response(
+     *     response=403,
+     *     description="Return a unAuthorization message",
+     *     @OA\Schema(
+     *      type="object",
+     *      @OA\Property(property="status", type="integer"),
+     *      @OA\Property(property="message", type="string")
+     *     )
+     * )
      * @OA\Parameter(
      *     name="rating",
      *     in="body",
@@ -87,6 +96,9 @@ class RatingController extends AbstractController
             }
             $rating->setDemand($demand);
 
+            //! Voter
+            $this->denyAccessUnlessGranted('ADD', $rating);
+            
             //! Validator
             $errors = $validator->validate($rating);
             

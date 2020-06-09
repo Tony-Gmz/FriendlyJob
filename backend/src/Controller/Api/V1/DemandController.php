@@ -192,6 +192,9 @@ class DemandController extends AbstractController
      */
     public function edit(Request $request, Demand $demand, ValidatorInterface $validator)
     {
+        //! Voter
+        $this->denyAccessUnlessGranted('EDIT', $demand);
+        
         $jsonData = json_decode($request->getContent());
 
         $demand->setBody(isset($jsonData->body) ? $jsonData->body : $demand->getBody());
@@ -318,6 +321,9 @@ class DemandController extends AbstractController
                 'message' => "This demand does not exist"
             ], 404);
             }
+
+            //! Voter
+            $this->denyAccessUnlessGranted('DELETE', $demand);
 
             $em = $this->getDoctrine()->getManager();
             $em->remove($demand);
