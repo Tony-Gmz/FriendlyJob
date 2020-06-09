@@ -12,11 +12,22 @@ $screen-lg-min: 992px;
 // Large tablets and desktops
 $screen-xl-min: 1200px;
 
-// variable wich set primary and secondary colors
-$primaryColors: red;
-$secondaryColors:pink;
+// variable wich set primary and secondary colors for button
+$buttonColorsMain:#FF385C;
+$buttonColorsSecondary: #303f9f;
 
-// variable wich set font-family 
+// variable wich set weight and font size for titles (h1, h2)
+$titleFontWeight: bolder;
+$mainTitleFontSize: 1.7rem;
+$secondaryTitleFontSize: 1.5rem;
+
+$littleTitleFontWeight:bold;
+$littleTitleFontSize:1.3rem;
+
+$linkWeight: bold;
+$linkFontSize: 1.3rem;
+
+$textFontSize: 1.2rem;
 
 
 // responsive design

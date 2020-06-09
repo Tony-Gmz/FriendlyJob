@@ -23,7 +23,7 @@ const Jober = ({ randomJobWorker }) => {
           {userAvatar && <Avatar alt="Remy Sharp" src={randomJobWorker.image} /> }
           {!userAvatar && <Avatar alt="Remy Sharp" src="">{whitoutAvatar(randomJobWorker.firstname)}</Avatar>}
         </div>
-        <Card key={randomJobWorker.id}>
+        <Card key={randomJobWorker.id} className="jober_card_detail">
           <Card.Content header={randomJobWorker.firstname} />
           <Card.Content description={randomJobWorker.about} />
           <Card.Content extra>

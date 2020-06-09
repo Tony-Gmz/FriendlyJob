@@ -34,13 +34,13 @@
     transition:.2s all; 
   }
   .jobWorker_wrap:hover .jobWorker_box{
-    filter:blur(2px);
-    opacity:.5;
+    filter: grayscale(10%);
+    opacity:.8;
     transform: scale(.98);
     box-shadow:none;
   }
   .jobWorker_wrap:hover .jobWorker_box:hover{
-    transform:scale(1);
+    transform: scale(1.1);
     filter:blur(0px);
     opacity:1;
     box-shadow:0 8px 20px 0px rgba(0,0,0,0.125);
