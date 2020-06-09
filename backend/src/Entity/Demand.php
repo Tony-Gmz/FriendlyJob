@@ -38,15 +38,16 @@ class Demand
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating"})
      * @Groups({"rating_add"})
+     * @Assert\Type("\DateTimeInterface")
      */
     private $reservationDate;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="datetime")
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"user_jobworker_rating"})
      * @Groups({"rating_add"})
-     * @Assert\NotBlank
+     * @Assert\Type("\DateTimeInterface")
      */
     private $reservationHour;
 
@@ -124,9 +125,9 @@ class Demand
         return $this;
     }
 
-    public function getReservationDate(): ?string
+    public function getReservationDate(): \DateTimeInterface
     {
-        return $this->reservationDate->format('d-m-Y');
+        return $this->reservationDate;
     }
 
     public function setReservationDate(\DateTimeInterface $reservationDate): self
@@ -136,12 +137,12 @@ class Demand
         return $this;
     }
 
-    public function getReservationHour(): ?string
+    public function getReservationHour(): \DateTimeInterface
     {
         return $this->reservationHour;
     }
 
-    public function setReservationHour(?string $reservationHour): self
+    public function setReservationHour(\DateTimeInterface $reservationHour): self
     {
         $this->reservationHour = $reservationHour;
 

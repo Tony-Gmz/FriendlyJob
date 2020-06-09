@@ -67,7 +67,7 @@ class DemandProvider extends BaseProvider
 
     public static function getReservationHour()
     {
-        return mt_rand(8, 20) ."h";
+        return mt_rand(6, 21) .":00";
     }
 
     public static function getStatus()
