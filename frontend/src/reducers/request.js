@@ -16,7 +16,7 @@ import {
 const initialState = {
   requestList: [],
   currentSkill: null,
-  requestBody: '',
+  requestBody: null,
   requestDate: '',
   requestHour: '',
   commentBody: '',

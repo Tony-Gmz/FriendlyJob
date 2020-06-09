@@ -126,12 +126,12 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         currentJobWorkerDetail: action.detail,
+        loadingOnJobWorkerDetail: false,
       };
     case SAVE_JOBWORKER_RATING:
       return {
         ...state,
         currentJobWorkerRating: action.rating,
-        loadingOnJobWorkerDetail: false,
       };
     case CAN_EDIT_PROFIL:
       return {

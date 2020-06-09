@@ -10,7 +10,7 @@ import './jobWorkerMain.scss';
 
 
 const JobWorkerMain = ({ jobWorkers }) => {
-
+  
   return (
     <div className="jobWorker_main">
       <div className="jobWworker_sort">
@@ -23,6 +23,7 @@ const JobWorkerMain = ({ jobWorkers }) => {
         {jobWorkers.map((jobWorker) => {
           const slug = jobWorker.user.id;
           const userAvatar = jobWorker.user.image;
+          const userRating = jobWorker.user.jobWorkerDemands[0];
           return (
             <Link>
               <div className="jobWorker_box">
@@ -36,7 +37,8 @@ const JobWorkerMain = ({ jobWorkers }) => {
                       <Card.Content header={jobWorker.user.firstname} />
                       <Card.Content description={jobWorker.description} />
                       <Card.Content extra>
-                        <Rating defaultRating={jobWorker.user.jobWorkerDemands[0].rating.star} maxRating={5} disabled />
+                        {userRating && <Rating defaultRating={jobWorker.user.jobWorkerDemands[0].rating.star} maxRating={5} disabled />}
+                        {!userRating && <Rating defaultRating={0} maxRating={5} disabled />}
                         <Link to={`/jobworker/${slug}`}>
                           <Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }}>Contact</Button>
                         </Link>

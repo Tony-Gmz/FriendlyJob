@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Card } from 'semantic-ui-react';
+import { changeHourFormat } from 'src/utils';
 
 
 // == Composant

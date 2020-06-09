@@ -25,6 +25,7 @@ const ModalEditSkill = ({ price, description, id, getSkillId, getNewSkillValue, 
     clearSave();
   };
 
+  
   return (
     <Modal onClose={handleClose} trigger={<Button style={{ backgroundColor: 'green', color: '#FFFF' }} onClick={handleClick}>modifier</Button>} closeIcon>
    <Modal.Header className="modalEditSkill_title">Modifier votre compétence</Modal.Header>
