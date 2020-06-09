@@ -499,12 +499,12 @@ class UserController extends AbstractController
 
         $jobWorkerRating = $userRepository->findJobWorkerRating($id);
         //! Condition si le jobworker a aucune note ( donc n'est pas un Jobworker )
-        if ($jobWorkerRating == null) {
-            return $this->json([
-                'statut' => 404,
-                'message' => "This jobworker has no rating"
-            ], 404);
-        }
+        // if ($jobWorkerRating == null) {
+        //     return $this->json([
+        //         'statut' => 404,
+        //         'message' => "This jobworker has no rating"
+        //     ], 404);
+        // }
 
         return $this->json(
             $jobWorkerRating,
