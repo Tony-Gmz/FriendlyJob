@@ -1,3 +1,5 @@
+@import 'src/styles/vars';
+
 .jobWorker_main {
 
   margin-top: 4em;
@@ -31,7 +33,7 @@
     width: serviceCard_img;
     box-shadow:0 2px 3px 0px rgba(0,0,0,0.25);
     border-radius:2px;
-    transition:.2s all; 
+    transition:0 all; 
   }
   .jobWorker_wrap:hover .jobWorker_box{
     filter: grayscale(10%);

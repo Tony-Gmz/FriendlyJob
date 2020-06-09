@@ -128,8 +128,8 @@ const requestMiddleware = (store) => (next) => (action) => {
         method: 'put',
         url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/demands/${commentId}`,
         data: {
-          body: 'Ce service à été annulé',
-          status: 'Annulé',
+          body: 'Ce service à été annulée',
+          status: 'Annulée',
         },
         headers: {
           Authorization: `Bearer ${userToken}`,
@@ -154,8 +154,8 @@ const requestMiddleware = (store) => (next) => (action) => {
         method: 'put',
         url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/demands/${commentId}`,
         data: {
-          body: 'Ce service à été refusé',
-          status: 'Refusé',
+          body: 'Ce service à été refusée',
+          status: 'Refusée',
         },
         headers: {
           Authorization: `Bearer ${userToken}`,
@@ -180,7 +180,7 @@ const requestMiddleware = (store) => (next) => (action) => {
         method: 'put',
         url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/demands/${commentId}`,
         data: {
-          status: 'Accepté',
+          status: 'Acceptée',
         },
         headers: {
           Authorization: `Bearer ${userToken}`,

@@ -2,7 +2,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -10,7 +9,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
-import { Button, Message } from 'semantic-ui-react';
+import { Button, Message, Form } from 'semantic-ui-react';
 
 // == Import
 import './modalInscription.scss';
@@ -39,37 +38,41 @@ const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValu
           </div>
           {!isSubscribe && <div className="modal_inscription_info"><i class="info circle icon"></i>Les champs précédés de * sont obligatoire pour l'inscription</div>}
           {isSubscribe && (
-            <Message  positive>
+            <Message positive>
               <Message.Header>Vous êtes bien inscrit sur le site FriendlyJob</Message.Header>
-                <p className="message_success">
-                  Merci pour votre confiance ! Vous pouvez dorénavant vous <a href="#connexion"><span className="message_connexion">connecter</span></a>
-                </p>
+              <p className="message_success">
+                Merci pour votre confiance ! Vous pouvez dorénavant vous <a href="#connexion"><span className="message_connexion">connecter</span></a>
+              </p>
             </Message>
           )}
           <form onSubmit={handleSubmit}>
             <div className="form_element">
-              <TextField
+              <Form.Input
                 className="input"
-                id="outlined-name-input"
-                label="Nom"
+                label="Nom*"
                 type="text"
-                autoComplete="current-name"
-                variant="outlined"
                 onChange={handleChange}
                 name="nom"
+                placeholder="Nom"
+                pattern="[A-Za-z]{2,}"
+                title="Votre Nom doit au moins avoir deux caractere et ne doit contenir aucun chiffre"
+                maxLength="30"
+                minLength="2"
                 required
               />
             </div>
             <div className="form_element">
-              <TextField
+              <Form.Input
                 className="input"
-                id="outlined-firstname-input"
-                label="Prenom"
+                label="Prenom*"
                 type="text"
-                autoComplete="current-firstname"
-                variant="outlined"
                 onChange={handleChange}
                 name="prenom"
+                placeholder="Prenom"
+                pattern="[A-Za-z]{2,}"
+                title="Votre Prenom doit au moins avoir deux caractere et ne doit contenir aucun chiffre"
+                maxLength="30"
+                minLength="2"
                 required
               />
             </div>
@@ -95,46 +98,48 @@ const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValu
               </Select>
             </div>
             <div className="form_element">
-              <TextField
+              <Form.Input
                 className="input"
-                id="outlined-email-input"
-                label="Email"
+                label="Email*"
                 type="email"
-                autoComplete="current-email"
-                variant="outlined"
                 onChange={handleChange}
                 name="email"
+                placeholder="Email"
+                patern="/^[-._a-z0-9]+@[-._a-z0-9]+$/"
                 required
               />
             </div>
             <div className="form_element">
-              <TextField
+              <Form.Input
                 className="input"
                 id="outlined-password-input"
-                label="Mot de passe"
+                label="Mot de passe*"
                 type="password"
-                autoComplete="current-password"
-                variant="outlined"
                 onChange={handleChange}
                 name="password"
+                placeholder="Mot de passe"
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-.]).{8,100}$"
+                title="Votre mot de passe doit contenir au moins : huit caracteres dont une minuscule, une majuscule, un chiffre et un caractere special (ex:=$?!.;/@...)"
+                minLength="8"
                 required
               />
             </div>
             <div className="form_element">
-              <TextField
+              <Form.Input
                 className="input"
-                id="outlined-passwordConfirmation-input"
-                label="Confirmation du mot de passe"
+                label="Confirmation*"
                 type="password"
-                autoComplete="current-password"
-                variant="outlined"
                 onChange={handleChange}
                 name="confirm-password"
+                placeholder="Confirmation du mot de passe"
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-.]).{8,100}$"
+                title="la confirmation n'est pas identique au mot de passe"
+                minLength="8"
                 required
               />
             </div>
             <div className="div_radio">
-              <FormLabel required component="legend">Besoin d'un service ou mettre en exergue vos compétences ? Choisissez votre rôle !</FormLabel>
+              <FormLabel required component="legend">Besoin d'un service ou mettre en exergue vos compétences ? Choisissez votre rôle</FormLabel>
               <RadioGroup className="radio_inscription_item" aria-label="gender" name="gender1">
                 <FormControlLabel value="JOBWORKER" control={<Radio />} label="JobWorker" onChange={handleChange} name="roles"  />
                 <FormControlLabel value="FRIENDLY_USER" control={<Radio />} label="FriendlyUser" onChange={handleChange} name="roles"  />
@@ -142,10 +147,10 @@ const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValu
             </div>
             <div className="div_submit">
               <button className="submit_btn" type="submit">S'inscrire</button>
-              <a href="#"><button className="cancel_btn" >Annuler</button></a>
+              <a href="#"><button type="button" className="cancel_btn">Annuler</button></a>
             </div>
           </form>
-          <a href="/" className="close_btn">close</a>
+          <a href="#" className="close_btn">close</a>
         </div>
       </div>
     </div>

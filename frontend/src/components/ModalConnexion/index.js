@@ -1,8 +1,7 @@
 // == Import npm
 import React from 'react';
 import PropTypes from 'prop-types';
-import TextField from '@material-ui/core/TextField';
-import { Button } from 'semantic-ui-react';
+import { Button, Form } from 'semantic-ui-react';
 
 // == Import
 import './modalConnexion.scss';
@@ -31,27 +30,28 @@ const ModalConnexion = ({ changeField, submitLoggin }) => {
           </div>
           <form onSubmit={handleSubmit}>
             <div className="form_element">
-              <TextField
+              <Form.Input
                 className="input"
-                id="outlined-password-input"
-                label="Adresse Email"
+                label="Email*"
                 type="email"
-                autoComplete="current-username"
-                variant="outlined"
-                name="email"
                 onChange={handleChange}
+                name="email"
+                placeholder="Email"
+                patern="/^[-._a-z0-9]+@[-._a-z0-9]+$/"
+                title="Le format de l'adresse mail est incorrecte"
+                required
               />
             </div>
             <div className="form_element">
-              <TextField
+              <Form.Input
                 className="input"
                 id="outlined-password-input"
-                label="Mot de passe"
+                label="Mot de passe*"
                 type="password"
-                autoComplete="current-password"
-                variant="outlined"
-                name="password"
                 onChange={handleChange}
+                name="password"
+                placeholder="Mot de passe"
+                required
               />
             </div>
             <div className="div_submit">
