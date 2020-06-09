@@ -72,7 +72,7 @@ App\Entity\Demand:
     demand_{1..500}:
         body: '<sentence(10)>'
         reservationDate: '<dateTime()>'
-        reservationHour: "<numberBetween(9,23)>h"
+        reservationHour: '<dateTime()>'
         status: "En attente"
         service: "@service_*"
         # friendly_user:  "@user_fu_*" #! Bug

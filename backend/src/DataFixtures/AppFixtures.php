@@ -90,14 +90,14 @@ class AppFixtures extends Fixture
             $demand = new Demand();
             $demand->setBody('Test Body Request'.$count.'');
             $demand->setReservationDate(new \DateTime());
-            $demand->setReservationHour("15h30 - 16h00");
+            $demand->setReservationHour(new \DateTime());
             $demand->setStatus('Test Status Request'.$count.'');
             $demand->setCreatedAt(new \DateTime());
 
             $demand1 = new Demand();
             $demand1->setBody('Test Body Request'.$count.'');
             $demand1->setReservationDate(new \DateTime());
-            $demand1->setReservationHour("15h30 - 16h00");
+            $demand1->setReservationHour(new \DateTime());
             $demand1->setStatus('Test Status Request'.$count.'');
             $demand1->setCreatedAt(new \DateTime());
 

@@ -403,8 +403,8 @@ class FakerFixtures extends Fixture
             
         $demand = new Demand();
         $demand->setBody($arrayData[mt_rand(0, count($arrayData) -1 )]);
-        $demand->setReservationDate(new \Datetime(static::$faker->getReservationDate()));
-        $demand->setReservationHour(static::$faker->getReservationHour());
+        $demand->setReservationDate(new \Datetime(static::$faker->getReservationDate().'T'.static::$faker->getReservationHour()));
+        $demand->setReservationHour(new \Datetime(static::$faker->getReservationDate().'T'.static::$faker->getReservationHour()));
         $demand->setStatus(static::$faker->getStatus());
         $demand->setService($objectService);
         $demand->setCreatedAt(new \DateTime());

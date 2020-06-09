@@ -7,6 +7,7 @@ use App\Repository\DemandRepository;
 use App\Repository\ServiceRepository;
 use App\Repository\UserRepository;
 use ErrorException;
+use Exception;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use Swagger\Annotations as OA;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -77,23 +78,15 @@ class DemandController extends AbstractController
         try {
             $demand->setBody($jsonData->body);
 
-            //! Regex pour le format de date Y-m-d
-            if (!preg_match('/^([0-9]{4})\-([0-9]{2})-([0-9]{2})$/', $jsonData->reservationDate)) {
+            try {
+                $demand->setReservationDate(new \DateTime($jsonData->reservationDate));
+                $demand->setReservationHour(new \DateTime($jsonData->reservationHour));
+            } catch (Exception $e) {
                 return $this->json([
-                'statut' => 404,
-                'message' => "Property reservationDate need to be a DateTime with the format YYYY-MM-DD"
-            ], 404);
+                    'status' => 400,
+                    'message' => "The date format is incorrect"
+                ], 400);
             }
-            $d = explode('-', $jsonData->reservationDate);
-            //! Regex pour une date existante dans le calendrier
-            if (!checkdate($d[1], $d[2], $d[0])) {
-                return $this->json([
-                'statut' => 404,
-                'message' => "The entered date does not exist"
-            ], 404);
-            }
-            $demand->setReservationDate(new \DateTime($jsonData->reservationDate));
-            $demand->setReservationHour($jsonData->reservationHour);
 
             //! Condition pour controler la valeur de statut
             if (isset($jsonData->status) && ucfirst(strtolower($jsonData->status)) != 'En attente') {
@@ -199,26 +192,15 @@ class DemandController extends AbstractController
 
         $demand->setBody(isset($jsonData->body) ? $jsonData->body : $demand->getBody());
 
-        //! Regex pour le format de date Y-m-d
-        if ( isset($jsonData->reservationDate) && !preg_match('/^([0-9]{4})\-([0-9]{2})-([0-9]{2})$/', $jsonData->reservationDate)) {
+        try {
+            $demand->setReservationDate(isset($jsonData->reservationDate) ? new \DateTime($jsonData->reservationDate) : $demand->getReservationDate());
+            $demand->setReservationHour(isset($jsonData->reservationHour) ? new \DateTime($jsonData->reservationHour) : $demand->getReservationHour());
+        } catch (Exception $e) {
             return $this->json([
-            'statut' => 404,
-            'message' => "Property reservationDate need to be a DateTime with the format YYYY-MM-DD"
-        ], 404);
+                'status' => 400,
+                'message' => "The date format is incorrect"
+            ], 400);
         }
-        //! L'explode est déclencher seulement quand le jsonData contient la date de réservation
-        if ( isset($jsonData->reservationDate)) {
-            $d = explode('-', $jsonData->reservationDate);
-        }
-        //! Regex pour une date existante dans le calendrier
-        if ( isset($jsonData->reservationDate) && !checkdate($d[1], $d[2], $d[0])) {
-            return $this->json([
-            'statut' => 404,
-            'message' => "The entered date does not exist"
-        ], 404);
-        }
-        $demand->setReservationDate(isset($jsonData->reservationDate) ? new \DateTime($jsonData->reservationDate) : new \DateTime($demand->getReservationDate()));
-        $demand->setReservationHour(isset($jsonData->reservationHour) ? $jsonData->reservationHour : $demand->getReservationHour());
 
         //! Condition pour controler la valeur de statut d'une demande editer
         if ( isset($jsonData->status) && !preg_match('/^(En attente|Accept(e|é)e|Annul(e|é)e|Refus(e|é)e|Termin(e|é)e)$/', ucfirst(strtolower($jsonData->status))))
