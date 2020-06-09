@@ -2,7 +2,6 @@
 
 namespace App\Security\Voter;
 
-use App\Entity\Skill;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -14,13 +13,14 @@ class SkillVoter extends Voter
         // replace with your own logic
         // https://symfony.com/doc/current/security/voters.html
         return in_array($attribute, ['EDIT', 'DELETE'])
-            && $subject instanceof Skill;
+            && $subject instanceof \App\Entity\Skill;
     }
 
     protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
     {
+        
         $user = $token->getUser();
-        //dd($user, $subject);
+        $userSkill = $subject->getUser();
         // if the user is anonymous, do not grant access
         if (!$user instanceof UserInterface) {
             return false;
@@ -30,9 +30,12 @@ class SkillVoter extends Voter
         switch ($attribute) {
             case 'EDIT':
             case 'DELETE':
-                if ($user == $subject->getUser()) {
+                // Condition AUTEUR DE LA COMPETENCE (exemple)
+                if ($user == $userSkill) {
                     return true;
                 }
+                // logic to determine if the user can VIEW
+                // return true or false
                 break;
         }
 

@@ -12,10 +12,12 @@ class ExceptionSubscriber implements EventSubscriberInterface
 {
     public function onKernelException(ExceptionEvent $event)
     {
+        
         $throwable = $event->getThrowable();
         $request = $event->getRequest();
-        if (method_exists($throwable, 'getStatusCode')) {
-
+        //! if qui à été nécessaire suite a l'impossibilité d'utiliser la méthode getStatusCode sur une erreur 500
+        if (method_exists($throwable,'getStatusCode'))
+        {
             $statusCode = $throwable->getStatusCode();
         }
         else {
@@ -59,10 +61,10 @@ class ExceptionSubscriber implements EventSubscriberInterface
     public function setApiResponse403()
     {
         $message = [
-            'status' => 404,
-            'message' => "You do not have the permissions to access this request",
+            'status' => 403,
+            'message' => "You do not have the permission to access this request",
         ];
-        $status = 404;
+        $status = 403;
 
         $response = new JsonResponse(
             $message,

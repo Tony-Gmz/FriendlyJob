@@ -147,6 +147,15 @@ class SkillController extends AbstractController
      *      @OA\Property(property="message", type="string")
      *     )
      * )
+     * @OA\Response(
+     *     response=403,
+     *     description="Return a unAuthorization message",
+     *     @OA\Schema(
+     *      type="object",
+     *      @OA\Property(property="status", type="integer"),
+     *      @OA\Property(property="message", type="string")
+     *     )
+     * )
      * @OA\Parameter(
      *     name="skill",
      *     in="body",
@@ -162,7 +171,7 @@ class SkillController extends AbstractController
     public function edit(Request $request, Skill $skill, ValidatorInterface $validator)
     {
         try {
-            //! VOTER
+            //! Voter
             $this->denyAccessUnlessGranted('EDIT', $skill);
 
             $jsonData = json_decode($request->getContent());
@@ -220,11 +229,20 @@ class SkillController extends AbstractController
      *      @OA\Property(property="message", type="string")
      *     )
      * )
+     * @OA\Response(
+     *     response=403,
+     *     description="Return a unAuthorization message",
+     *     @OA\Schema(
+     *      type="object",
+     *      @OA\Property(property="status", type="integer"),
+     *      @OA\Property(property="message", type="string")
+     *     )
+     * )
      * @Route("/{id}", name="delete", methods={"DELETE"}, requirements={"id": "\d+"})
      */
     public function delete(Skill $skill)
     {
-        //! VOTER
+        //! Voter
         $this->denyAccessUnlessGranted('DELETE', $skill);
 
         $em = $this->getDoctrine()->getManager();

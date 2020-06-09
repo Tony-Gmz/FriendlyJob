@@ -22,7 +22,6 @@ class DemandVoter extends Voter
         $friendlyUser = $subject->getFriendlyUser();
         $jobWorker = $subject->getJobworker();
         $status = $subject->getStatus();
-        //dd($subject);
         // if the user is anonymous, do not grant access
         if (!$user instanceof UserInterface) {
             return false;
@@ -44,7 +43,8 @@ class DemandVoter extends Voter
                 // return true or false
                 break;
             case 'EDIT':
-                if ($user == $friendlyUser || $jobWorker) {
+                // Condition friendlyUser edition
+                if ($user == $friendlyUser || $user == $jobWorker) {
                     return true;
                 }
                 break;
