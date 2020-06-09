@@ -88,6 +88,7 @@ class User implements UserInterface
      * @Groups({"demand_add", "demand_edit", "demand_one_user"})
      * @Groups({"service_jobworker"})
      * @Groups({"skill_add"})
+     * @Assert\Length(max = 500, maxMessage = "Your description can't exceed {{ limit }} characters")
      */
     private $about;
 

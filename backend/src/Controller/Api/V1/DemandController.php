@@ -102,7 +102,7 @@ class DemandController extends AbstractController
                 'message' => "New demand has to be with a 'En attente' status"
             ], 404);
             }
-            $demand->setStatus(ucfirst(strtolower($jsonData->status)) ?? 'En attente');
+            $demand->setStatus(isset($jsonData->status) ? ucfirst(strtolower($jsonData->status)) : 'En attente');
 
             $service = $serviceRepository->find($jsonData->service);
             //! Controle existance d'un service

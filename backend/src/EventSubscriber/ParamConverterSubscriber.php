@@ -13,60 +13,10 @@ class ParamConverterSubscriber implements EventSubscriberInterface
     {
         $throwable = $event->getThrowable();
         $request = $event->getRequest();
-        $route = $request->get('_route');
-
-        //! Gestion Erreur Param Converter sur delete skill
-        if ( $throwable instanceof NotFoundHttpException && $route == 'api_v1_skills_delete' ) {
-            return $event->setResponse($this->setApiResponse());
-        }
-
-        //! Gestion Erreur Param Converter sur edit skill
-        if ( $throwable instanceof NotFoundHttpException && $route == 'api_v1_skills_edit' ) {
-            return $event->setResponse($this->setApiResponse());
-        }
-
-        //! Gestion Erreur Param Converter sur readById service
-        if ( $throwable instanceof NotFoundHttpException && $route == 'api_v1_services_read_id' ) {
-            return $event->setResponse($this->setApiResponse());
-        }
-
-        //! Gestion Erreur Param Converter sur readByTitle service
-        if ( $throwable instanceof NotFoundHttpException && $route == 'api_v1_services_read_title' ) {
-            return $event->setResponse($this->setApiResponse());
-        }
-
-        //! Gestion Erreur Param Converter sur getJobWorkerByServices service
-        if ( $throwable instanceof NotFoundHttpException && $route == 'api_v1_services_jobworker' ) {
-            return $event->setResponse($this->setApiResponse());
-        }
-
-        //! Gestion Erreur Param Converter sur getJobWorkerByServices service
-        if ( $throwable instanceof NotFoundHttpException && $route == 'api_v1_services_jobworker_price' ) {
-            return $event->setResponse($this->setApiResponse());
-        }
-
-        //! Gestion Erreur Param Converter sur getJobWorkerByServices service
-        if ( $throwable instanceof NotFoundHttpException && $route == 'api_v1_services_jobworker_rating' ) {
-            return $event->setResponse($this->setApiResponse());
-        }
-
-        //! Gestion Erreur Param Converter sur getJobWorkersFromDepartmentByServices service
-        if ( $throwable instanceof NotFoundHttpException && $route == 'api_v1_services_department_jobworker' ) {
-            return $event->setResponse($this->setApiResponse());
-        }
-
-        //! Gestion Erreur Param Converter sur getJobWorkersFromDepartmentByPrice service
-        if ( $throwable instanceof NotFoundHttpException && $route == 'api_v1_services_department_jobworker_price' ) {
-            return $event->setResponse($this->setApiResponse());
-        }
-
-        //! Gestion Erreur Param Converter sur getJobWorkersFromDepartmentByRating service
-        if ( $throwable instanceof NotFoundHttpException && $route == 'api_v1_services_department_jobworker_rating' ) {
-            return $event->setResponse($this->setApiResponse());
-        }
-
-        //! Gestion Erreur Param Converter sur edit demande
-        if ( $throwable instanceof NotFoundHttpException && $route == 'api_v1_demands_edit' ) {
+        $statusCode = $throwable->getStatusCode();
+        $pathInfo = $request->getPathInfo();
+        
+        if ( $throwable instanceof NotFoundHttpException && $statusCode == 404 && preg_match('`^\/api\/`', $pathInfo) ) {
             return $event->setResponse($this->setApiResponse());
         }
     }
