@@ -1173,78 +1173,54 @@ Aucune
 <details><summary>Détails</summary>
 ## Demand
 
-      add =>  status optionnelle : OK
-              friendly user sûr : OK
-              Jobworker sûr : OK
-              Erreur NULL sur friendly User ou JobWorker ou Service : X
-              ( PDOException > PDOException > NotNullConstraintViolationException )
+      add => Validé
 
-      edit => rendre tout les champ optionnelle ( Service à discuter ) ( sauf FriendlyUSER, JobWorker)  : X
-              Erreur NULL sur friendly User ou JobWorker ou Service : X
-              ( PDOException > PDOException > NotNullConstraintViolationException )
-              Utilisation de la queryBuilder findUserType : X ( à discuter )
-              Changement de service : X ( à discuter )
-              Erreur Param Converter à gérer : X
+      edit => Validé
 
-      getDemandsFromOneUser => gérer un id inexistant : X
+      getDemandsFromOneUser => Validé
 
-      delete => Erreur null demand à gérer : X
-                Erreur Json mal formé : X
+      delete => Validé
 
 ## Service
 
     browse => RAS
 
-    read => Erreur Param Converter à gérer : X
+    readByiD => validé
 
-    getJobWorkersByServices =>  Revoir Algo récupération moyenne des note pour un jobWorker
-                                gérer un id inexistant : X
-				                        gérer le limit non int : X
+    readyByTitle => validé
 
-    getSubServiceFromService => Gérer un service sans sous services : X
+    getJobWorkersByPrice => validé
 
-    getJobWorkersFromDepartmentByServices => Id de service inexistant : tableau vide qui ressort
-                                          => Id de département inexistant : tableau vide qui ressort
-                                          => ID OK mais tableau vide : Aucun utilisateur pour ce service dans ce département
+    getJobWorkersByRating => validé
+
+    getJobWorkersByServices => validé
+
+    getSubServiceFromService => validé
+
+    getJobWorkersFromDepartmentByServices => validé
+    
+    getJobWorkersFromDepartmentByPrice => validé
+
+    getJobWorkersFromDepartmentByRating => validé
 
 ## User
 
-    read => Erreur Param Converter à gérer : X
+    read => Validé
 
-    add => Erreur NULL sur département : X
-        ( PDOException > PDOException > NotNullConstraintViolationException )
-        Erreur Unique sur email : X /!\
-        ( PDOException > PDOException > UniqueConstraintViolationException )
-        Duplicate entry 'kefzzgeyz@oclock.io' for key 'UNIQ_8D93D649E7927C74'
-        Vérification les champ bien présent dans le json
+    add => Pour suivre la direction de notre projet, un utilisateur ne peut avoir qu'un seul rôle, à revoir pour une potentielle V2 où un utilisateur pourra être FRIENDLYUSER et JOBWORKER à la fois. (methode add de UserController)
+        Validé
     
-    edit => Erreur NULL sur département : X
-        ( PDOException > PDOException > NotNullConstraintViolationException )
-        Erreur Unique sur email : X /!\
-        ( PDOException > PDOException > UniqueConstraintViolationException )
-        Duplicate entry 'kefzzgeyz@oclock.io' for key 'UNIQ_8D93D649E7927C74'
-        tous les champs peuvent être optionnelle : Voir Commentaires
+    edit = Validé
 
-    delete => Erreur Param Converter à gérer : X
+    delete => Validé
 
-    randomJobWorker => remarque ( remonter la propriété about de notre table user )
+    randomJobWorker => Validé
 
-    getJobWorkerDetails => Erreur id inexistant : X
+    getJobWorkerDetails => Validé
 
-    getAllContact => rien
+    getAllContact => Validé
 
-    getRatingOfJobworker => Gérer erreur id inexistant []
-                            Discuter de l'envoie du tableau ou non avec le rating null ( LeftJoin )
-
-## Skill
-
-    add => Gerer le champ user quand ce n'est pas un jobworker
-            (tableau vide + quand id est inexistant => (PDOException  PDOException NotNullConstraintViolationException))
-           Gerer le champ service quand le service n'existe pas 
-           (PDOException  PDOException NotNullConstraintViolationException)
-
-    edit => Description plus optionnel
-             
+    getRatingOfJobworker => Validé
 
     Tout ce qui utilise le param converter on pourra mettre un subscriber
     App\Entity\Demand object not found by the @ParamConverter annotation.
