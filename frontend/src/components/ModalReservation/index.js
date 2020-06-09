@@ -17,7 +17,7 @@ import './modalReservation.scss';
 
 
 // == Composant
-const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerDetail, changeFieldHourRequest, changeFieldDateRequest, requestDate, requestHour }) => {
+const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerDetail, changeFieldHourRequest, changeFieldDateRequest, requestDate, requestHour, displayHour, hour }) => {
   const { skills } = currentJobWorkerDetail;
   // console.log(skills);
   const selectedDate = Date();
@@ -57,7 +57,7 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
     console.log(years);
     const month = requestDate.slice(5, 7);
     console.log(month);
-    const day = requestDate.slice(8, 10)
+    const day = requestDate.slice(8, 10);
     console.log(day);
     // const days = requestDate.getDate();
     // const newRequestDate= `${month}/${days}/${years}`;
@@ -66,14 +66,28 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
     return requestDate;
   };
 
+  const changeHourFormat = (requestHour) => {
+    const hours = requestHour.slice(0, 2);
+    console.log(hours);
+    const minutes = requestHour.slice(3, 5);
+    // console.log(minutes);
+   
+    requestHour = `${hours}:${minutes}`;
+    console.log(requestHour);
+    return requestHour;
+  };
+
   const handleHour = (date) => {
-    // console.log(date);
+    console.log(date);
     // console.log(date.getHours());
     // console.log(date.getMinutes());
     const hour = date.getHours().toString();
-    const minutes = date.getMinutes().toString();
+    let minutes = date.getMinutes().toString();
+    minutes = ('0'+(minutes)).slice(-2);
+    console.log(minutes);
     const newHour = `${hour}h${minutes}`;
-    // console.log(newHour);
+    console.log(newHour);
+    displayHour(date);
     changeFieldHourRequest(newHour);
   };
   return (
@@ -123,7 +137,7 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
                   id="time-picker"
                   name="requestHour"
                   label="Choisissez une heure"
-                  value={selectedDate}
+                  value={requestHour ? hour : selectedDate}
                   onChange={handleHour}
                   KeyboardButtonProps={{
                     'aria-label': 'change time',
@@ -134,8 +148,8 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
           </div>
           <div>
             <form onSubmit={handleSubmit} className="div_submit">
-              <a href="#"><button className="cancel_btn" type="submit">Annuler</button></a>
-              <button className="submit_btn" type="submit">Reserver</button>
+              <a href="#"><Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }} className="button_modalReservation_cancel" type="submit">Annuler</Button></a>
+              <Button style={{ backgroundColor: '#303f9f', color: '#FFFF' }} className="button_modalReservation_validate" type="submit">Reserver</Button>
             </form>
             <a href="#" className="close_btn">close</a>
           </div>

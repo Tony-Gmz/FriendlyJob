@@ -4,6 +4,7 @@ import {
   submitRequest,
   changeFieldHourRequest,
   changeFieldDateRequest,
+  displayHour,
 } from 'src/action/requestAction';
 import ModalReservation from '../../components/ModalReservation';
 
@@ -12,6 +13,7 @@ const mapStateToProps = (state) => ({
   currentJobWorkerDetail: state.user.currentJobWorkerDetail,
   requestDate: state.request.requestDate,
   requestHour: state.request.requestHour,
+  hour: state.request.hour,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -28,6 +30,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   changeFieldDateRequest: (newDate) => {
     dispatch(changeFieldDateRequest(newDate));
+  },
+  displayHour: (initialHour) => {
+    dispatch(displayHour(initialHour));
   },
 });
 

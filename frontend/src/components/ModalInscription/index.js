@@ -32,7 +32,7 @@ const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValu
   return (
     <div className="ModalInscription">
       <a href="#inscription"><Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }}>Inscription</Button></a>
-      <div id="inscription" className="inscription">
+      <div id="inscription" className="inscription" >
         <div className="modal_block">
           <div className="modal_header">
             <p className="modal_title">Bienvenue dans notre espace Inscription</p>

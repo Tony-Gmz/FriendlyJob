@@ -8,6 +8,7 @@ import {
   CHANGE_FIELD_COMMENT,
   CHANGE_RATING_COMMENT,
   SAVE_TOGGLE,
+  DISPLAY_HOUR,
 } from '../action/requestAction';
 
 const initialState = {
@@ -20,6 +21,7 @@ const initialState = {
   newRate: '',
   commentId: '',
   toggle: true,
+  hour: ''
 
 };
 
@@ -53,6 +55,11 @@ const requestReducer = (state = initialState, action = {}) => {
     case SAVE_NEW_REQUEST:
       return {
         ...state,
+      };
+    case DISPLAY_HOUR:
+      return {
+        ...state,
+        hour: action.initialHour,
       };
 
       // =====================================COMMENT

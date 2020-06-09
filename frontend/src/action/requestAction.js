@@ -12,7 +12,7 @@ export const SUBMIT_ACCEPTE_REQUEST = 'SUBMIT_ACCEPTE_REQUEST';
 export const SUBMIT_DELETE_REQUEST = 'SUBMIT_DELETE_REQUEST';
 export const SUBMIT_SET_REQUEST = 'SUBMIT_SET_REQUEST';
 export const SAVE_TOGGLE = 'SAVE_TOGGLE';
-
+export const DISPLAY_HOUR = 'DISPLAY_HOUR';
 // == EXPORT FOR COMMENT PART
 export const GET_COMMENT_ID = 'GET_COMMENT_ID';
 export const CHANGE_FIELD_COMMENT = 'CHANGE_FIELD_COMMENT';
@@ -81,6 +81,10 @@ export const submitSetRequest = () => ({
   type: SUBMIT_SET_REQUEST,
 });
 
+export const displayHour = (initialHour) => ({
+  type: DISPLAY_HOUR,
+  initialHour,
+});
 // ========================================= COMMENT ==================================
 
 export const getCommentId = (commentId) => ({
