@@ -28,8 +28,8 @@ class ServiceRepository extends ServiceEntityRepository
             ->join('s.skills', 'sk')
             ->join('sk.user', 'u')
             ->join('u.department', 'dep')
-            ->Join('u.jobWorkerDemands', 'dem')
-            ->LeftJoin('dem.rating', 'r')
+            ->leftJoin('u.jobWorkerDemands', 'dem')
+            ->leftJoin('dem.rating', 'r')
             ->where('s.id = :id')
             ->setParameter('id', $serviceId)
 

@@ -58,6 +58,7 @@ class RatingController extends AbstractController
      */
     public function add(Request $request, DemandRepository $demandRepository, ValidatorInterface $validator)
     {   
+
         //! Try Catch pour un json MalFormé
         try {
             $jsonData = json_decode($request->getContent());
@@ -86,6 +87,9 @@ class RatingController extends AbstractController
                 ], 404);
             }
             $rating->setDemand($demand);
+
+            //! VOTER
+            $this->denyAccessUnlessGranted('ADD', $rating);
 
             //! Validator
             $errors = $validator->validate($rating);

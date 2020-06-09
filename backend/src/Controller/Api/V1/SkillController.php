@@ -162,6 +162,8 @@ class SkillController extends AbstractController
     public function edit(Request $request, Skill $skill, ValidatorInterface $validator)
     {
         try {
+            //! VOTER
+            $this->denyAccessUnlessGranted('EDIT', $skill);
 
             $jsonData = json_decode($request->getContent());
     
@@ -222,6 +224,9 @@ class SkillController extends AbstractController
      */
     public function delete(Skill $skill)
     {
+        //! VOTER
+        $this->denyAccessUnlessGranted('DELETE', $skill);
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($skill);
         $em->flush();
