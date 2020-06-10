@@ -6,7 +6,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import profil from 'src/assets/img/screenshot.png';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
+import { Form } from 'semantic-ui-react';
+
+
 import { whitoutAvatar } from 'src/utils';
+
 import UploadImg from 'src/containers/UploadImg';
 
 // == Import
@@ -70,7 +74,7 @@ const ProfilFiendlyUser = ({
               <TextField
                 className="profil_input"
                 id="outlined-name-input"
-                label='Nom'
+                label="Nom"
                 value={firstname}
                 type="text"
                 autoComplete="current-name"
@@ -108,18 +112,18 @@ const ProfilFiendlyUser = ({
             )}
             {isEditable && (
               <div className="form_element">
-                <TextField
-                  className="profil_input"
-                  id="outlined-email-input"
-                  label="Email"
-                  value={editEmail}
-                  placeholder={email}
-                  type="email"
-                  variant="outlined"
-                  onChange={handleChange}
-                  name="editEmail"
-                />
-              </div>
+              <Form.Input
+                className="input"
+                label="Email*"
+                type="email"
+                onChange={handleChange}
+                value={editEmail}
+                name="editEmail"
+               placeholder={email}
+                patern="/^[-._a-z0-9]+@[-._a-z0-9]+$/"
+                title="Le format de l'adresse mail est incorrecte"
+              />
+            </div>
             )}
             {!isEditable && (
               <div className="form_element">
@@ -151,37 +155,33 @@ const ProfilFiendlyUser = ({
             )}
             {isEditable && (
               <div className="form_element">
-                <TextField
-                  className="profil_input"
-                  id="outlined-password-input"
-                  label="Mot de passe"
+                <Form.Input
+                  className="input"
+                  label="Mot de passe*"
                   value={editPassword}
                   type="password"
-                  autoComplete="current-firstname"
-                  variant="outlined"
                   onChange={handleChange}
                   name="editPassword"
+                  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-.]).{8,100}$"
+                  title="Votre mot de passe doit contenir au moins : huit caracteres dont une minuscule, une majuscule, un chiffre et un caractere special (ex:=$?!.;/@...)"
                 />
               </div>
             )}
             {isEditable && (
               <div className="form_element">
-                <TextField
-                  className="profil_input"
-                  id="outlined-password-input"
-                  label="Confirmation du Mot de passe"
-                  value={editConfirmationPassword}
+                <Form.Input
+                  className="input"
+                  label="Mot de passe*"
                   type="password"
-                  autoComplete="current-firstname"
-                  variant="outlined"
-                  name="editConfirmationPassword"
+                  value={editConfirmationPassword}
                   onChange={handleChange}
+                  name="editConfirmationPassword"
                 />
               </div>
             )}
             {editPassword !== editConfirmationPassword ? (
               <>
-                <div className="error_message_passwordConfirmation"><i class="times circle icon"></i>Le champ "mot de passe" est différent du champ "confirmation"</div>
+                <div className="error_message_passwordConfirmation"><i className="times circle icon"/>Le champ "mot de passe" est différent du champ "confirmation"</div>
                 <div className="profil_group_btn">
                   {isEditable && (
                     <Link to="/"><Button onClick={handleCancelClick} className="profil_btn" variant="contained" color="alerte"> Annuler</Button></Link>

@@ -5,7 +5,7 @@ import {
   Icon,
   Modal,
   TextArea,
-  Message
+  Message,
 } from 'semantic-ui-react';
 import Grid from '@material-ui/core/Grid';
 import {
@@ -16,6 +16,8 @@ import {
 import frLocale from 'date-fns/locale/fr';
 import DateFnsUtils from '@date-io/date-fns';
 import { changeDateEditFormat } from 'src/utils';
+
+import './modalEditRequest.scss';
 
 const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHour, submitSetRequest, changeFieldRequest, changeFieldDateRequest, changeFieldHourRequest, requestDate, requestHour, editedDate, editedHour }) => {
 
@@ -69,57 +71,57 @@ const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHou
 
   return (
     <Modal trigger={<Button onClick={handleClick}>Modifier</Button>} closeIcon>
-      <Header icon='pencil alternate' content='Modifier ma demande' />
+      <Header icon="pencil alternate" content="Modifier ma demande" />
       <form onSubmit={handleSubmit}>
         <Modal.Content>
-        <div className="modaleEditSkill_infoMessage">
-        <Message compact>
-          <i class="info circle icon"></i> Une fois acceptée par votre JobWorker vous ne serez plus en mesure de modifier votre demande
-          </Message>
-        </div>
-        <MuiPickersUtilsProvider locale={frLocale} utils={DateFnsUtils}>
-          <Grid container justify="space-around">
-            <KeyboardDatePicker
-              margin="normal"
-              id="date-picker-dialog"
-              label="Choisissez une date"
-              format="dd/MM/yyyy"
-              type="datetime-fr"
-              name="requestDate"
-              value={requestDate ? requestDate : reservationDate}
-              onChange={handleDate}
-              KeyboardButtonProps={{
-                'aria-label': 'change date',
-              }}
-              DateTimeFormat={Intl.DateTimeFormat}
-              locale="fr"
-            />
-            <KeyboardTimePicker
-              locale={frLocale}
-              ampm={false}
-              margin="normal"
-              id="time-picker"
-              name="requestHour"
-              format="HH:mm"
-              label="Choisissez une heure"
-              value={requestHour ? requestHour : reservationHour}
-              onChange={handleHour}
-              KeyboardButtonProps={{
-                'aria-label': 'change time',
-              }}
-            />
-          </Grid>
-        </MuiPickersUtilsProvider>
+          <div className="modaleEditSkill_infoMessage">
+            <Message compact>
+              <i className="info circle icon" /> Une fois acceptée par votre JobWorker vous ne serez plus en mesure de modifier votre demande
+            </Message>
+          </div>
+          <MuiPickersUtilsProvider locale={frLocale} utils={DateFnsUtils}>
+            <Grid container justify="space-around">
+              <KeyboardDatePicker
+                margin="normal"
+                id="date-picker-dialog"
+                label="Choisissez une date"
+                format="dd/MM/yyyy"
+                type="datetime-fr"
+                name="requestDate"
+                value={requestDate ? requestDate : reservationDate}
+                onChange={handleDate}
+                KeyboardButtonProps={{
+                  'aria-label': 'change date',
+                }}
+                DateTimeFormat={Intl.DateTimeFormat}
+                locale="fr"
+              />
+              <KeyboardTimePicker
+                locale={frLocale}
+                ampm={false}
+                margin="normal"
+                id="time-picker"
+                name="requestHour"
+                format="HH:mm"
+                label="Choisissez une heure"
+                value={requestHour ? requestHour : reservationHour}
+                onChange={handleHour}
+                KeyboardButtonProps={{
+                  'aria-label': 'change time',
+                }}
+              />
+            </Grid>
+          </MuiPickersUtilsProvider>
         </Modal.Content>
-        <Modal.Content>
+        <Modal.Content className="modal_edit_request_textarea">
           <TextArea onChange={handleChangeDescription} name="requestBody" className="modalTextArea_content" placeholder="Décrivez précisément ce dont vous avez besoin..." />
         </Modal.Content>
-        <Modal.Actions>
-          <Button color='red'>
-            <Icon name='remove' /> Annuler
+        <Modal.Actions className="modal_edit_action_button">
+          <Button color="red">
+            <Icon name="remove" /> Annuler
           </Button>
-          <Button color='green'>
-            <Icon name='checkmark' /> Valider
+          <Button color="green">
+            <Icon name="checkmark" /> Valider
           </Button>
         </Modal.Actions>
       </form>

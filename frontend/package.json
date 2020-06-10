@@ -65,6 +65,7 @@
     "react-rater": "^5.1.1",
     "react-rating": "^2.0.5",
     "react-redux": "^7.2.0",
+    "react-router-breadcrumbs-hoc": "^3.3.0",
     "react-router-dom": "^5.2.0",
     "react-slick": "^0.26.1",
     "redux": "^4.0.5",

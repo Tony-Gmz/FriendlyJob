@@ -10,6 +10,7 @@ import Footer from 'src/components/Footer';
 import Loader from 'src/components/Loader';
 import NavBar from 'src/containers/NavBar';
 import Page from 'src/containers/Page';
+import Breadcrumb from 'src/components/BreadCrumb';
 
 
 // == Component App our main component
@@ -38,6 +39,7 @@ const App = ({
       {!loading && (
       <>
         <NavBar />
+        <Breadcrumb />
         <Page />
         <Footer />
       </>

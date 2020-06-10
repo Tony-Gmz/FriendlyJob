@@ -25,12 +25,14 @@ const Page = ({ isLogged }) => {
         <Switch>
           <Route
             path="/services/:slug/jobworker"
+            breadcrumb="service/:slug/jobworker"
             exact
           >
             <JobWorkerList />
           </Route>
           <Route
             path="/services/:slug"
+            breadcrumb="service/:slug"
             exact
           >
             <ServiceDetail />
