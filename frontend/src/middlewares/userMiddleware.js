@@ -241,8 +241,12 @@ const userMiddleware = (store) => (next) => (action) => {
           // console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
           console.log(response);
-          store.dispatch(saveEdit(response.data));
 
+          const { token } = response.data.token;
+          if (token !== null) {
+            window.localStorage.setItem('jwtToken', response.data.token);
+          }
+          // store.dispatch(saveEdit(response.data));
         })
         .catch((error) => {
           console.warn(error);
