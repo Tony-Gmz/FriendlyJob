@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './page.scss';
@@ -17,22 +17,37 @@ import Error from '../Error';
 
 
 const Page = ({ isLogged }) => {
-  const userToken = localStorage.getItem('jwtToken');
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
 
   return (
     <div className="page">
       <div className="page-content">
         <Switch>
           <Route
-            path="/services/:slug/jobworker"
-            breadcrumb="service/:slug/jobworker"
+            path="/services/:slug/jobworkers/jobworker_:id"
+            exact
+          >
+            <JobWorkerDetail />
+          </Route>
+          <Route
+            path="/services/:slug/jobworker_:id"
+            exact
+          >
+            <JobWorkerDetail />
+          </Route>
+          <Route
+            path="/services/:slug/jobworkers/"
             exact
           >
             <JobWorkerList />
           </Route>
           <Route
             path="/services/:slug"
-            breadcrumb="service/:slug"
             exact
           >
             <ServiceDetail />
@@ -42,12 +57,6 @@ const Page = ({ isLogged }) => {
             exact
           >
             <ServiceList />
-          </Route>
-          <Route
-            path="/jobworker/:id"
-            exact
-          >
-            <JobWorkerDetail />
           </Route>
           <Route
             path="/demandes"

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Card, Rating, Button } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import sortArray from 'sort-array';
 
@@ -9,8 +9,11 @@ import { whitoutAvatar } from 'src/utils';
 import './jobWorkerMain.scss';
 
 
-const JobWorkerMain = ({ jobWorkers }) => {
-  
+const JobWorkerMain = ({ jobWorkers, getServiceName }) => {
+  const { slug } = useParams();
+  useEffect(() => {
+    getServiceName(slug);
+  }, []);
   return (
     <div className="jobWorker_main">
       <div className="jobWworker_sort">
@@ -21,7 +24,7 @@ const JobWorkerMain = ({ jobWorkers }) => {
       </div>
       <div className="jobWorker_wrap">
         {jobWorkers.map((jobWorker) => {
-          const slug = jobWorker.user.id;
+          const id = jobWorker.user.id;
           const userAvatar = jobWorker.user.image;
           const userRating = jobWorker.user.jobWorkerDemands[0];
           return (
@@ -39,7 +42,7 @@ const JobWorkerMain = ({ jobWorkers }) => {
                       <Card.Content extra>
                         {userRating && <Rating defaultRating={jobWorker.user.jobWorkerDemands[0].rating.star} maxRating={5} disabled />}
                         {!userRating && <Rating defaultRating={0} maxRating={5} disabled />}
-                        <Link to={`/jobworker/${slug}`}>
+                        <Link to={`/services/${slug}/jobworkers/jobworker_${id}`}>
                           <Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }}>Contact</Button>
                         </Link>
                       </Card.Content>

@@ -9,7 +9,6 @@ import './modalConnexion.scss';
 // == Composant
 const ModalConnexion = ({ changeField, submitLoggin }) => {
 
-
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('submit envoyé');

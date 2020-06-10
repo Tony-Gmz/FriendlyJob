@@ -5,10 +5,11 @@ import { NavLink } from 'react-router-dom';
 import './breadCrumbs.scss';
 
 const routes = [
-  { path: '/services/:slug/jobworker', breadcrumb: 'JobWorker Liste' },
+  { path: '/services/:slug/jobworkers/jobworker_:id', breadcrumb: 'JobWorker Détails' },
+  { path: '/services/:slug/jobworker_:id', breadcrumb: 'JobWorker Détails' },
+  { path: '/services/:slug/jobworkers', breadcrumb: 'JobWorkers Liste' },
   { path: '/services/:slug' },
-  { path: '/services', breadcrumb: 'Services' },
-  { path: '/jobworker/:id', breadcrumb: 'JobWorker Details' },
+  { path: '/services', breadcrumb: ' Nos Services' },
   { path: '/demandes', breadcrumb: 'Mes demandes' },
   { path: '/profil', breadcrumb: 'Mon profil' },
   { path: '/contact', breadcrumb: 'Contact' },

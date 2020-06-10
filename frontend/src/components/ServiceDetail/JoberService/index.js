@@ -1,8 +1,8 @@
 // == Import Library
-import React from 'react';
+import React, { useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import { Card, Rating, Button, Image, CardContent } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 // == Import style
 import './joberService.scss';
@@ -11,7 +11,11 @@ import './joberService.scss';
 import { whitoutAvatar } from 'src/utils';
 
 
-const JoberService = ({ jobWorker }) => {
+const JoberService = ({ jobWorker, getServiceName }) => {
+  const { slug } = useParams();
+  useEffect(() => {
+    getServiceName(slug);
+  }, []);
 
   const userAvatar = jobWorker.user.image;
   const userRating = jobWorker.user.jobWorkerDemands[0];
@@ -37,7 +41,7 @@ const JoberService = ({ jobWorker }) => {
           <Card.Content extra>
             {userRating && <Rating defaultRating={jobWorker.user.jobWorkerDemands[0].rating.star} maxRating={5} disabled />}
             {!userRating && <Rating defaultRating={0} maxRating={5} disabled />}
-            <Link to={`/jobworker/${id}`}>
+            <Link to={`/services/${slug}/jobworker_${id}`}>
               <Button style={{ backgroundColor: '#FF385C', color: '#FFFF', marginLeft: '1em' }}>Contact</Button>
             </Link>
           </Card.Content>
