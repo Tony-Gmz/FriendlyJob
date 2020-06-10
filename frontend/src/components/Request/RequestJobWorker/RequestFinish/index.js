@@ -1,18 +1,22 @@
 import React from 'react';
 import { Card } from 'semantic-ui-react';
-
+import { changeHourFormat, changeDateFormat } from 'src/utils';
 
 // == Composant
-const RequestFinish = ({ request }) => (
-  <Card className="request_Card">
+const RequestFinish = ({ request }) => {
+
+  const hourResevation = new Date(request.reservationHour);
+  const dateReservation = new Date(request.reservationDate);
+  return (
+    <Card className="request_Card">
     <Card.Content className="request_Content">
       <div className="request_LeftSide">
         <Card.Header>{request.friendlyUser.firstname}</Card.Header>
         <Card.Meta>{request.service.title}</Card.Meta>
       </div>
       <div className="request_MiddleSide">
-        <div className="date">{request.reservationDate}</div>
-        <div className="hour">{request.reservationHour}</div>
+        <div className="date">{changeDateFormat(dateReservation)}</div>
+        <div className="hour">{changeHourFormat(hourResevation)}</div>
       </div>
       <div className="request_RightSide">
         <Card.Description>
@@ -27,5 +31,7 @@ const RequestFinish = ({ request }) => (
       </div>
     </Card.Content>
   </Card>
-);
+  )
+  
+};
 export default RequestFinish;

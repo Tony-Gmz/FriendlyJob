@@ -4,6 +4,7 @@ import { Button, Card } from 'semantic-ui-react';
 
 // == Composant
 const RequestCancelFU = ({ request }) => {
+
   return (
     <Card className="request_Card">
       <Card.Content className="request_Content">

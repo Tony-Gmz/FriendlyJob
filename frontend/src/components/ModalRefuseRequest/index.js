@@ -5,12 +5,13 @@ import {
   Icon,
   Modal,
   Form,
+  Message,
 } from 'semantic-ui-react';
 
 import './modalRefuseRequest.scss';
 
 
-const ModalRefuseRequest = ({ request, getCommentId, submitRefuseRequest }) => {
+const ModalRefuseRequest = ({ request, getCommentId, submitRefuseRequest, clearRefuse, isRefuse }) => {
   const handleClick = () => {
     getCommentId(request.id);
   };
@@ -21,9 +22,13 @@ const ModalRefuseRequest = ({ request, getCommentId, submitRefuseRequest }) => {
     evt.preventDefault();
     submitRefuseRequest();
   };
+  // Handle on close for cleaning refuse on state.
+  const handleClose = () => {
+    clearRefuse();
+  };
 
   return (
-    <Modal trigger={<Button onClick={handleClick}>Refuser</Button>} closeIcon>
+    <Modal onClose={handleClose} trigger={<Button onClick={handleClick}>Refuser</Button>} closeIcon>
       <Header icon="trash" content="Refuser le service" />
       <Modal.Content>
         <p>

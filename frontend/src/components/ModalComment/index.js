@@ -8,6 +8,7 @@ import {
   Form,
   Icon,
   ModalContent,
+  Message
 } from 'semantic-ui-react';
 import Rating from 'react-rating';
 
@@ -15,7 +16,7 @@ import Rating from 'react-rating';
 import 'react-rater/lib/react-rater.css';
 import './modalComment.scss';
 
-const ModalComment = ({ request, changeFieldComment, submitComment, changeRatingComment, getCommentId }) => {
+const ModalComment = ({ request, changeFieldComment, submitComment, changeRatingComment, getCommentId, clearSave, isSend }) => {
 
   const handleChange = (evt) => {
     console.log(`coucou j'envoi ${evt.target.value} + ${evt.target.name}`);
@@ -38,8 +39,12 @@ const ModalComment = ({ request, changeFieldComment, submitComment, changeRating
     getCommentId(request.id);
   };
 
+  const handleClose = () => {
+    clearSave();
+  };
+
   return (
-    <Modal className="modal_comment" trigger={<Button onClick={handleClick}>Laisser un commentaire</Button>} centered={false}>
+    <Modal onClose={handleClose} className="modal_comment" trigger={<Button onClick={handleClick}>Laisser un commentaire</Button>} centered={false}>
       <Modal.Header>Dites nous ce que vous pensez des compétences de {request.jobWorker.firstname} en {request.service.title}</Modal.Header>
       <Modal.Content image>
         <Image wrapped size="medium" className="comment_image" src={request.jobWorker.image} />
@@ -49,6 +54,13 @@ const ModalComment = ({ request, changeFieldComment, submitComment, changeRating
             <TextArea onChange={handleChange} placeholder="Laissez votre commentaire ici et n'oubliez pas la note. Merci" style={{ border: 'none', width: '100%' }} />
             <Rating onChange={handleRate} maxRating={5} />
             <ModalContent>
+              {isSend && (
+                <Message
+                  success
+                  header={<i className="check circle icon">Votre commentaire a bien été pris en comtpe</i> }
+                  content="Merci pour votre confiance"
+                />
+              )}
               <Button icon labelPosition="left">
                 <Icon name="delete" />
                 Annuler

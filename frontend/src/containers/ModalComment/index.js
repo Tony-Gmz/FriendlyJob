@@ -4,6 +4,7 @@ import {
   submitComment,
   changeRatingComment,
   getCommentId,
+  clearSave,
 } from '../../action/requestAction';
 import ModalComment from '../../components/ModalComment';
 
@@ -12,6 +13,7 @@ const mapStateToProps = (state) => ({
   commentId: state.request.commentId,
   commentBody: state.request.commentBody,
   commentRate: state.request.commentRate,
+  isSend: state.request.isSend,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -30,6 +32,9 @@ const mapDispatchToProps = (dispatch) => ({
 
   changeRatingComment: (newRate) => {
     dispatch(changeRatingComment(newRate));
+  },
+  clearSave: () => {
+    dispatch(clearSave());
   },
 });
 

@@ -11,6 +11,8 @@ import {
   SUBMIT_DELETE_REQUEST,
   SUBMIT_SET_REQUEST,
   saveToggle,
+  isCommentSend,
+  isRequestRefuse,
 } from '../action/requestAction';
 
 const requestMiddleware = (store) => (next) => (action) => {
@@ -84,10 +86,12 @@ const requestMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           store.dispatch(saveToggle(!toggle));
+          store.dispatch(isCommentSend());
           console.log(response);
         })
         .catch((error) => {
           console.warn(error);
+          console.log(error.response.data)
         });
       next(action);
       break;
@@ -163,6 +167,7 @@ const requestMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           store.dispatch(saveToggle(!toggle));
+          store.dispatch(isRequestRefuse());
           console.log(response);
         })
         .catch((error) => {

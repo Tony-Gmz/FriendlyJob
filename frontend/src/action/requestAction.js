@@ -15,11 +15,15 @@ export const SAVE_TOGGLE = 'SAVE_TOGGLE';
 export const DISPLAY_HOUR = 'DISPLAY_HOUR';
 export const GET_REQUEST_DATE = 'GET_REQUEST_DATE';
 export const GET_REQUEST_HOUR = 'GET_REQUEST_HOUR';
+export const IS_REQUEST_REFUSE = 'IS_REQUEST_REFUSE';
+export const CLEAR_REFUSE = 'CLEAR_REFUSE';
 // == EXPORT FOR COMMENT PART
 export const GET_COMMENT_ID = 'GET_COMMENT_ID';
 export const CHANGE_FIELD_COMMENT = 'CHANGE_FIELD_COMMENT';
 export const CHANGE_RATING_COMMENT = 'CHANGE_RATING_COMMENT';
 export const SUBMIT_COMMENT = 'SUBMIT_COMMENT';
+export const IS_COMMENT_SEND = 'IS_COMMENT_SEND';
+export const CLEAR_SAVE = 'CLEAR_SAVE';
 
 
 // ========================================= REQUEST ==================================
@@ -95,6 +99,12 @@ export const getRequestHour = (reservationHour) => ({
   type: GET_REQUEST_HOUR,
   reservationHour,
 });
+export const isRequestRefuse = () => ({
+  type: IS_REQUEST_REFUSE,
+});
+export const clearRefuse = () => ({
+  type: CLEAR_REFUSE,
+});
 // ========================================= COMMENT ==================================
 
 export const getCommentId = (commentId) => ({
@@ -115,4 +125,12 @@ export const changeRatingComment = (newRate) => ({
 
 export const submitComment = () => ({
   type: SUBMIT_COMMENT,
+});
+
+export const isCommentSend = () => ({
+  type: IS_COMMENT_SEND,
+});
+
+export const clearSave = () => ({
+  type: CLEAR_SAVE,
 });

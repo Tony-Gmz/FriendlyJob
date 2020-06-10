@@ -20,15 +20,15 @@ const Request = ({ getRequest, requestList, submitDeleteRequest, getCommentId  }
     <>
       {requestList.map((request) => {
         switch (request.status) {
-          case 'Accepté':
+          case 'Acceptée':
             return <RequestAccepteFU request={request} />;
-          case 'Refusé':
+          case 'Refusée':
             return <RequestRefuseFU request={request} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />;
           case 'En attente':
             return <RequestWaitFU request={request} getRequest={getRequest} />;
-          case 'Terminé':
+          case 'Terminée':
             return <RequestFinishFU request={request} />;
-          case 'Annulé':
+          case 'Annulée':
             return <RequestCancelFU request={request} />;
 
           default:

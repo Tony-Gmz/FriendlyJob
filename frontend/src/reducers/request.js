@@ -11,6 +11,10 @@ import {
   DISPLAY_HOUR,
   GET_REQUEST_DATE,
   GET_REQUEST_HOUR,
+  IS_COMMENT_SEND,
+  CLEAR_SAVE,
+  IS_REQUEST_REFUSE,
+  CLEAR_REFUSE,
 } from '../action/requestAction';
 
 const initialState = {
@@ -25,6 +29,8 @@ const initialState = {
   toggle: true,
   hour: '',
   isSave: false,
+  isSend: false,
+  isRefuse: false,
 
 };
 
@@ -95,6 +101,26 @@ const requestReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         requestHour: action.reservationHour,
+      };
+    case IS_COMMENT_SEND:
+      return {
+        ...state,
+        isSend: true,
+      };
+    case CLEAR_SAVE:
+      return {
+        ...state,
+        isSend: false,
+      };
+    case IS_REQUEST_REFUSE:
+      return {
+        ...state,
+        isRefuse: true,
+      };
+    case CLEAR_REFUSE:
+      return {
+        ...state,
+        isRefuse: false,
       };
     default: return state;
   }

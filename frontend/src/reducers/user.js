@@ -21,6 +21,7 @@ import {
   GET_URL_AVATAR,
   IS_SKILL_SAVE,
   CLEAR_SAVE,
+  SAVE_ERROR_CONNEXION,
 } from '../action/usersActions';
 
 const initialState = {
@@ -79,6 +80,7 @@ const initialState = {
   urlAvatar: '',
   avatarData: null,
   isSave: false,
+  connexionError: null,
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -202,8 +204,14 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         isSave: false,
       };
+    case SAVE_ERROR_CONNEXION:
+      return {
+        ...state,
+        connexionError: action.error,
+      };
     default: return state;
   }
+
 };
 
 export default userReducer;

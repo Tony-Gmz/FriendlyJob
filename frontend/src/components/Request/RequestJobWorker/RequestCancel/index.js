@@ -4,6 +4,7 @@ import { Card } from 'semantic-ui-react';
 
 // == Composant
 const RequestCancel = ({ request, getCommentId, submitDeleteRequest }) => {
+  
   const handleClick = () => {
     getCommentId(request.id);
     submitDeleteRequest();

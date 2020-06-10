@@ -28,6 +28,7 @@ import {
   GET_URL_AVATAR,
   SUBMIT_AVATAR,
   isSkillSave,
+  saveErrorConnexion,
 } from '../action/usersActions';
 import { saveToggle } from '../action/requestAction';
 
@@ -65,7 +66,6 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-       
           console.log(response);
           // dispact the action saveUser to the reducer
           store.dispatch(saveUser(response.data.user));
@@ -80,12 +80,13 @@ const userMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.warn(error);
+          // DISPATCH for save in state an error to make an conditionnal display
+          store.dispatch(saveErrorConnexion(error.response.data));
         });
       next(action);
       break;
     }
     case GET_USER_DATA: {
-
       // REQUEST TO SAVE THE CURRENT USER DATA 
 
       // we take the necessary data in the localStorage

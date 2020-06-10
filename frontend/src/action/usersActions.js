@@ -44,6 +44,7 @@ export const SAVE_EDIT_URL_AVATAR = 'SAVE_EDIT_URL_AVATAR';
 export const SUBMIT_AVATAR = 'SAVE_AVATAR';
 export const IS_SKILL_SAVE = 'IS_SKILL_SAVE';
 export const CLEAR_SAVE = 'CLEAR_SAVE';
+export const SAVE_ERROR_CONNEXION = 'SAVE_ERROR_CONNEXION';
 
 export const changeField = (newValue, inputName) => ({
   type: CHANGE_FIELD,
@@ -219,4 +220,9 @@ export const isSkillSave = () => ({
 
 export const clearSave = () => ({
   type: CLEAR_SAVE,
+});
+
+export const saveErrorConnexion = (error) => ({
+  type: SAVE_ERROR_CONNEXION,
+  error,
 });
