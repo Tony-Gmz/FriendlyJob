@@ -44,8 +44,6 @@ const ModalComment = ({ request, changeFieldComment, submitComment, changeRating
     clearSave();
   };
 
-
-    
   return (
     <Modal onClose={handleClose} className="modal_comment" trigger={<Button onClick={handleClick}>Laisser un commentaire</Button>} centered={false}>
       <Modal.Header>Dites nous ce que vous pensez des compétences de {request.jobWorker.firstname} en {request.service.title}</Modal.Header>

@@ -1,5 +1,14 @@
+@import 'src/styles/vars';
+
+
+@include phone {
 .breadCrumb{
+   
+  width: 100%;
   display: flex;
   justify-content: flex-start;
+  margin-left: 0.5em;
   position: relative;
+  
+}
 }
