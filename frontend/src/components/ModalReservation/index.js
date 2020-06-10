@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, TextArea, Button } from 'semantic-ui-react';
+import { Form, TextArea, Button, Message } from 'semantic-ui-react';
 import 'date-fns';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
@@ -17,7 +17,7 @@ import './modalReservation.scss';
 
 
 // == Composant
-const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerDetail, changeFieldHourRequest, changeFieldDateRequest, requestDate, requestHour, displayHour }) => {
+const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerDetail, changeFieldHourRequest, changeFieldDateRequest, requestDate, requestHour, displayHour, isSave }) => {
   const { skills } = currentJobWorkerDetail;
   // console.log(skills);
   const selectedDate = Date();
@@ -109,6 +109,7 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
             <MuiPickersUtilsProvider locale={frLocale} utils={DateFnsUtils}>
               <Grid container justify="space-around">
                 <KeyboardDatePicker
+                  required
                   margin="normal"
                   id="date-picker-dialog"
                   label="Choisissez une date"
@@ -124,6 +125,7 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
                   locale="fr"
                 />
                 <KeyboardTimePicker
+                  required
                   locale={frLocale}
                   ampm={false}
                   margin="normal"
@@ -139,6 +141,16 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
               </Grid>
             </MuiPickersUtilsProvider>
           </div>
+          {isSave && (
+            <div className="modalReservation_succes_message">
+              <Message  positive>
+                <Message.Header><i className="check circle icon"/> Votre reservation a bien été prise en compte</Message.Header>
+                <p className="message_success">
+                  Vous êtes maintenante dans l'attente de confirmation de votre jobWorker ! Vous souhaitez acceder au suivi de vos demandes  ? C'est par ici        <i className="hand point right icon" /><a href="/demandes"><span className="message_connexion">Demandes</span></a>
+                </p>
+              </Message>
+            </div>
+          )}
           <div>
             <form onSubmit={handleSubmit} className="div_submit">
               <a href="#"><Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }} className="button_modalReservation_cancel" type="submit">Annuler</Button></a>

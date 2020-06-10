@@ -5,6 +5,7 @@ import {
   Icon,
   Modal,
   TextArea,
+  Message
 } from 'semantic-ui-react';
 import Grid from '@material-ui/core/Grid';
 import {
@@ -59,15 +60,6 @@ const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHou
     changeFieldHourRequest(date);
   };
 
-  /* console.log(requestHour);
-  let hour = requestHour.slice(0, 2);
-  hour = ('0' + (hour) - 2).slice(0, 2);
-  console.log(hour);
-  let minutes = requestHour.slice(2, 4);
-  console.log(minutes);
-  
-  console.log(hour); */
-  const hourValue = "2020-06-09T16:27:58+02:00";
 
   const reservationDate = request.reservationDate;
   const reservationHour = request.reservationHour;
@@ -80,6 +72,11 @@ const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHou
       <Header icon='pencil alternate' content='Modifier ma demande' />
       <form onSubmit={handleSubmit}>
         <Modal.Content>
+        <div className="modaleEditSkill_infoMessage">
+        <Message compact>
+          <i class="info circle icon"></i> Une fois acceptée par votre JobWorker vous ne serez plus en mesure de modifier votre demande
+          </Message>
+        </div>
         <MuiPickersUtilsProvider locale={frLocale} utils={DateFnsUtils}>
           <Grid container justify="space-around">
             <KeyboardDatePicker

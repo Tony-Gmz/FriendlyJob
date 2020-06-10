@@ -95,6 +95,6 @@ export const changeDateFormat = (date) => {
     // console.log(date.getFullYear());
     const years = date.getFullYear().toString();
     const days = date.getDate().toString();
-    date = `${years}-${month}-${days}`;
+    date = `${days}-${month}-${years}`;
     return date;
 }
