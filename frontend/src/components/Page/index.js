@@ -32,7 +32,7 @@ const Page = ({ isLogged }) => {
             path="/services/:slug/jobworkers/jobworker_:id"
             exact
           >
-            <JobWorkerDetail />
+            <JobWorkerDetail /> 
           </Route>
           <Route
             path="/services/:slug/jobworker_:id"
