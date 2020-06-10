@@ -12,6 +12,7 @@ import { Form } from 'semantic-ui-react';
 import { whitoutAvatar } from 'src/utils';
 
 import UploadImg from 'src/containers/UploadImg';
+import { Message } from 'semantic-ui-react';
 
 // == Import
 import './profilFriendlyUser.scss';
@@ -54,6 +55,7 @@ const ProfilFiendlyUser = ({
     console.log('coucou je suis le submit de edit profil');
     evt.preventDefault();
     submitEdit();
+    // cancelEdit();
   };
   return (
     <div className="profilFiendlyUser">
@@ -179,12 +181,20 @@ const ProfilFiendlyUser = ({
                 />
               </div>
             )}
+            {isEdited && (
+              <Message  positive>
+                <Message.Header><i class="check circle icon"></i>Vos modifications ont bien été prise en compte</Message.Header>
+                <p className="message_success">
+                  Vous souhaitez revenir sur la page d'accueil ? C'est par ici  <i class="hand point right icon"></i><a href="/"><span className="message_connexion">Page d'accueil</span></a>
+                </p>
+              </Message>
+            )}
             {editPassword !== editConfirmationPassword ? (
               <>
                 <div className="error_message_passwordConfirmation"><i className="times circle icon"/>Le champ "mot de passe" est différent du champ "confirmation"</div>
                 <div className="profil_group_btn">
                   {isEditable && (
-                    <Link to="/"><Button onClick={handleCancelClick} className="profil_btn" variant="contained" color="alerte"> Annuler</Button></Link>
+                    <Button onClick={handleCancelClick} className="profil_btn" variant="contained" color="alerte"> Annuler</Button>
                   )}
                   {!isEditable && (
                     <Button onClick={handleClick} className="profil_btn" variant="contained" color="primary">
@@ -202,7 +212,7 @@ const ProfilFiendlyUser = ({
               <>
                 <div className="profil_group_btn">
                   {isEditable && (
-                    <Link to="/"><Button onClick={handleCancelClick} className="profil_btn" variant="contained" color="alerte"> Annuler</Button></Link>
+                    <Button onClick={handleCancelClick} className="profil_btn" variant="contained" color="alerte"> Annuler</Button>
                   )}
                   {!isEditable && (
                     <Button onClick={handleClick} className="profil_btn" variant="contained" color="primary">

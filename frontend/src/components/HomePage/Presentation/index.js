@@ -28,9 +28,9 @@ const Presentation = ({ serviceList, fieldService, serviceSelected }) => {
       <div className="presentation_input">
         <form onSubmit={handleSubmit} action="">
           <Input list="services" icon="search" name="serviceInput" onChange={handleChange} placeholder="Recherchez le service idéale..." />
-          <datalist id="services">
+          <datalist className="datalist" id="services">
             {serviceList.map((service) => (
-              <option key={service.id} value={service.title}>{service.title}</option>
+              <option className="datalist" key={service.id} value={service.title}>{service.title}</option>
             ))}
           </datalist>
         </form>

@@ -1,10 +1,14 @@
 import React from 'react';
 import { Button, Card } from 'semantic-ui-react';
 import ModalRefuseRequest from 'src/containers/ModalRefuseRequest';
-
+import { changeHourFormat, changeDateFormat } from 'src/utils';
 
 // == Composant
 const RequestWait = ({ request, submitAccepteRequest, getCommentId  }) => {
+
+  const hourResevation = new Date(request.reservationHour);
+  const dateReservation = new Date(request.reservationDate);
+
   const handleClick = () => {
     console.log('click sur accepte detecté');
     getCommentId(request.id);
@@ -18,8 +22,8 @@ const RequestWait = ({ request, submitAccepteRequest, getCommentId  }) => {
           <Card.Meta>{request.service.title}</Card.Meta>
         </div>
         <div className="request_MiddleSide">
-          <div className="date">{request.reservationDate}</div>
-          <div className="hour">{request.reservationHour}</div>
+          <div className="date">{changeDateFormat(dateReservation)}</div>
+          <div className="hour">{changeHourFormat(hourResevation)}</div>
         </div>
         <div className="request_RightSide">
           <Card.Description>

@@ -1,12 +1,14 @@
 import React from 'react';
 import { Button, Card } from 'semantic-ui-react';
-
+import { changeHourFormat, changeDateFormat } from 'src/utils';
 import ModalComment from 'src/containers/ModalComment';
 
 
 // == Composant
 const RequestFinishFU = ({ request }) => {
 
+  const hourResevation = new Date(request.reservationHour);
+  const dateReservation = new Date(request.reservationDate);
 
   return (
   <Card className="request_Card">
@@ -16,8 +18,8 @@ const RequestFinishFU = ({ request }) => {
         <Card.Meta>{request.service.title}</Card.Meta>
       </div>
       <div className="request_MiddleSide">
-        <div className="date">{request.reservationDate}</div>
-        <div className="hour">{request.reservationHour}</div>
+          <div className="date">{changeDateFormat(dateReservation)}</div>
+          <div className="hour">{changeHourFormat(hourResevation)}</div>
       </div>
       <div className="request_RightSide">
         <Card.Description>

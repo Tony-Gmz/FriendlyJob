@@ -4,6 +4,8 @@ import ModalConnexion from 'src/components/ModalConnexion';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
+  connexionError: state.user.connexionError,
+  isLogged: state.user.isLogged,
 });
 
 const mapDispatchToProps = (dispatch) => ({

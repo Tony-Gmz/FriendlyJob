@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import {getNewSkillValue, submitNewSkill, clearSave } from 'src/action/usersActions';
+import {getNewSkillValue, submitNewSkill, clearSave} from 'src/action/usersActions';
 import ModalAddSkill from 'src/components/ModalAddSkill';
 
 

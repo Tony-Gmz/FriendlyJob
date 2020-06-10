@@ -28,6 +28,9 @@ import {
   GET_URL_AVATAR,
   SUBMIT_AVATAR,
   isSkillSave,
+  saveErrorConnexion,
+  GET_JOBWORKER_SERVICE,
+  saveJobWorkerService,
 } from '../action/usersActions';
 import { saveToggle } from '../action/requestAction';
 
@@ -65,7 +68,6 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-       
           console.log(response);
           // dispact the action saveUser to the reducer
           store.dispatch(saveUser(response.data.user));
@@ -80,12 +82,13 @@ const userMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.warn(error);
+          // DISPATCH for save in state an error to make an conditionnal display
+          store.dispatch(saveErrorConnexion(error.response.data));
         });
       next(action);
       break;
     }
     case GET_USER_DATA: {
-
       // REQUEST TO SAVE THE CURRENT USER DATA 
 
       // we take the necessary data in the localStorage
@@ -240,12 +243,17 @@ const userMiddleware = (store) => (next) => (action) => {
           // console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
           console.log(response);
+          // const { token } = response.data;
+          console.log(response.data.token);
+          if (response.data.token !== null) {
+            localStorage.removeItem('jwtToken');
+            localStorage.setItem('jwtToken', response.data.token);
+          }
           store.dispatch(saveEdit(response.data));
-
         })
         .catch((error) => {
           console.warn(error);
-          console.log(error.response);
+          console.log(error.response.data);
           console.log('jai fait une erreur');
         });
       next(action);
@@ -434,7 +442,28 @@ const userMiddleware = (store) => (next) => (action) => {
         next(action);
         break;
     }
-
+    case GET_JOBWORKER_SERVICE: {
+      const userToken = localStorage.getItem('jwtToken');
+      console.log(userToken);
+      axios({
+        method: 'get',
+        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/jobworker/skill/select`,
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+        .then((response) => {
+          // console.log(response);
+          // je voudrais enregistrer response.data dans le state => nouvelle action
+          console.log(response);
+          // we dispacth saveUser action to the reducer
+          store.dispatch(saveJobWorkerService(response.data));
+        })
+        .catch((error) => {
+          console.warn(error);
+          console.log('jai fait une erreur');
+        });
+    }
     default:
       // on passe l'action au suivant (middleware suivant ou reducer)
       next(action);

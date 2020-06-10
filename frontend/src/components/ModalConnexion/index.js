@@ -1,13 +1,13 @@
 // == Import npm
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form } from 'semantic-ui-react';
+import { Button, Form, Message } from 'semantic-ui-react';
 
 // == Import
 import './modalConnexion.scss';
 
 // == Composant
-const ModalConnexion = ({ changeField, submitLoggin }) => {
+const ModalConnexion = ({ changeField, submitLoggin, connexionError }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -53,6 +53,18 @@ const ModalConnexion = ({ changeField, submitLoggin }) => {
                 required
               />
             </div>
+            {connexionError && (
+              <div className="errorMessage">
+                <Message
+                  error
+                  header="Une erreur s'est produite lors de la connexion"
+                  list={[
+                    'Verifiez si vous avez indiqué la bonne adresse email.',
+                    'N\'oubliez pas que votre mot de passe doit contenir une majuscule, un chiffre et un caractère spéciale.',
+                  ]}
+                />
+              </div>
+            )}
             <div className="div_submit">
               <button className="submit_btn" type="submit">Connexion</button>
               <button className="cancel_btn" type="submit">Annuler</button>
@@ -70,6 +82,8 @@ ModalConnexion.propTypes = {
   changeField: PropTypes.func.isRequired,
   /** finc without param */
   submitLoggin: PropTypes.func.isRequired,
+  /** array */
+  connexionError: PropTypes.array.isRequired,
 };
 
 // == Export
