@@ -100,7 +100,7 @@ class Skill
         return $this->price;
     }
 
-    public function setPrice(int $price): self
+    public function setPrice(?int $price): self
     {
         $this->price = $price;
 
