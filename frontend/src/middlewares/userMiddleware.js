@@ -241,9 +241,11 @@ const userMiddleware = (store) => (next) => (action) => {
           // je voudrais enregistrer response.data dans le state => nouvelle action
           console.log(response);
           store.dispatch(saveEdit(response.data));
+
         })
         .catch((error) => {
           console.warn(error);
+          console.log(error.response);
           console.log('jai fait une erreur');
         });
       next(action);
@@ -344,7 +346,7 @@ const userMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.warn(error);
-          console.log('jai fait une erreur');
+          console.log(error.response);
         });
       next(action);
       break;
