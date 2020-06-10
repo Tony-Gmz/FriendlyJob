@@ -10,7 +10,6 @@ import {
 
 
 const ModalDeleteSkill = ({ skill, getSkillId, submitDeleteSkill }) => {
-  
 
   const handleClick = () => {
     console.log(skill);

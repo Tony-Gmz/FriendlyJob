@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { canEditProfil, cancelEdit, editFieldValue, submitEdit, getJobWorkerSkill, getNewSkillValue, getUserData } from 'src/action/usersActions';
+import { canEditProfil, cancelEdit, editFieldValue, submitEdit, getJobWorkerSkill, getNewSkillValue, getUserData, getJobWorkerService } from 'src/action/usersActions';
 import Profil from 'src/components/Profil/';
 
 const mapStateToProps = (state) => ({
@@ -47,6 +47,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getUserData: () => {
     dispatch(getUserData());
+  },
+  getJobWorkerService: () => {
+    dispatch(getJobWorkerService());
   },
 });
 

@@ -22,6 +22,7 @@ import {
   IS_SKILL_SAVE,
   CLEAR_SAVE,
   SAVE_ERROR_CONNEXION,
+  SAVE_JOBWORKER_SERVICE,
 } from '../action/usersActions';
 
 const initialState = {
@@ -50,6 +51,7 @@ const initialState = {
   loadingOnJobWorkerDetail: true,
   /** Loading for jobWorker profil */
   loadingOnJobWorkerProfil: true,
+  loadingOnModalAddSkill: true,
   /** Jobworkers List */
   jobWorkers: [],
   /** Current Jobworker Detail */
@@ -76,11 +78,18 @@ const initialState = {
   selectedSkillPrice: null,
   /** Selected Skill Description in jobWorker Profil */
   selectedSkillDescription: null,
+  /** id of the currentSkill for the ModalDeleteSkill */
   skillId: null,
+  /** url of the picture who send by the user in his profil, we send this url in DB */
   urlAvatar: '',
+  /** file send for picture in user's profil */
   avatarData: null,
+  /** bool for the user's profil */
   isSave: false,
+  /** error when the user try to connect in app  */
   connexionError: null,
+  /** List of service for the current jobworker's modal add Skill in his profil */
+  jobWorkerService: [],
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -208,6 +217,12 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         connexionError: action.error,
+      };
+    case SAVE_JOBWORKER_SERVICE:
+      return {
+        ...state,
+        jobWorkerService: action.service,
+        loadingOnModalAddSkill: false,
       };
     default: return state;
   }

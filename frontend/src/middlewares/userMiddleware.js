@@ -29,6 +29,8 @@ import {
   SUBMIT_AVATAR,
   isSkillSave,
   saveErrorConnexion,
+  GET_JOBWORKER_SERVICE,
+  saveJobWorkerService,
 } from '../action/usersActions';
 import { saveToggle } from '../action/requestAction';
 
@@ -440,7 +442,28 @@ const userMiddleware = (store) => (next) => (action) => {
         next(action);
         break;
     }
-
+    case GET_JOBWORKER_SERVICE: {
+      const userToken = localStorage.getItem('jwtToken');
+      console.log(userToken);
+      axios({
+        method: 'get',
+        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/jobworker/skill/select`,
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+        .then((response) => {
+          // console.log(response);
+          // je voudrais enregistrer response.data dans le state => nouvelle action
+          console.log(response);
+          // we dispacth saveUser action to the reducer
+          store.dispatch(saveJobWorkerService(response.data));
+        })
+        .catch((error) => {
+          console.warn(error);
+          console.log('jai fait une erreur');
+        });
+    }
     default:
       // on passe l'action au suivant (middleware suivant ou reducer)
       next(action);

@@ -45,6 +45,8 @@ export const SUBMIT_AVATAR = 'SAVE_AVATAR';
 export const IS_SKILL_SAVE = 'IS_SKILL_SAVE';
 export const CLEAR_SAVE = 'CLEAR_SAVE';
 export const SAVE_ERROR_CONNEXION = 'SAVE_ERROR_CONNEXION';
+export const GET_JOBWORKER_SERVICE = 'GET_JOBWORKER_SERVICE';
+export const SAVE_JOBWORKER_SERVICE = 'SAVE_JOBWORKER_SERIVE';
 
 export const changeField = (newValue, inputName) => ({
   type: CHANGE_FIELD,
@@ -225,4 +227,13 @@ export const clearSave = () => ({
 export const saveErrorConnexion = (error) => ({
   type: SAVE_ERROR_CONNEXION,
   error,
+});
+
+export const getJobWorkerService = () => ({
+  type: GET_JOBWORKER_SERVICE,
+});
+
+export const saveJobWorkerService = (service) => ({
+  type: SAVE_JOBWORKER_SERVICE,
+  service,
 });
