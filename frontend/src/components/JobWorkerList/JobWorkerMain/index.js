@@ -26,7 +26,9 @@ const JobWorkerMain = ({ jobWorkers, getServiceName }) => {
         {jobWorkers.map((jobWorker) => {
           const id = jobWorker.user.id;
           const userAvatar = jobWorker.user.image;
-          const userRating = jobWorker.user.jobWorkerDemands[0];
+          let userRating = jobWorker.user.jobWorkerDemands[0];
+          console.log(userRating.rating);
+          userRating = userRating.rating;
           return (
             <Link>
               <div className="jobWorker_box">
@@ -40,8 +42,8 @@ const JobWorkerMain = ({ jobWorkers, getServiceName }) => {
                       <Card.Content header={jobWorker.user.firstname} />
                       <Card.Content description={jobWorker.description} />
                       <Card.Content extra>
-                        {userRating && <Rating defaultRating={jobWorker.user.jobWorkerDemands[0].rating.star} maxRating={5} disabled />}
-                        {!userRating && <Rating defaultRating={0} maxRating={5} disabled />}
+                        {userRating && <Rating defaultRating={jobWorker.user.jobWorkerDemands[0].rating.star} maxRating={5} disabled /> }
+                        {!userRating && <Rating defaultRating={0} maxRating={5} disabled /> }
                         <Link to={`/services/${slug}/jobworkers/jobworker_${id}`}>
                           <Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }}>Contact</Button>
                         </Link>
