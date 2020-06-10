@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import Request from 'src/components/Request';
 import { getRequest, submitRefuseRequest, submitAccepteRequest, getCommentId, submitDeleteRequest } from 'src/action/requestAction';
 import { getUserData } from 'src/action/usersActions';
+import { submitFinishRequest } from '../../action/requestAction';
 
 
 const mapStateToProps = (state) => ({
@@ -36,6 +37,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   submitDeleteRequest: () => {
     dispatch(submitDeleteRequest());
+  },
+
+  submitFinishRequest: () => {
+    dispatch(submitFinishRequest());
   },
 });
 

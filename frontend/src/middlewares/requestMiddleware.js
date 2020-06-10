@@ -13,6 +13,8 @@ import {
   saveToggle,
   isCommentSend,
   isRequestRefuse,
+  SUBMIT_FINISH_REQUEST,
+  submitComment,
 } from '../action/requestAction';
 
 const requestMiddleware = (store) => (next) => (action) => {
@@ -91,7 +93,7 @@ const requestMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.warn(error);
-          console.log(error.response.data)
+          console.log(error.response.data);
         });
       next(action);
       break;
@@ -145,6 +147,32 @@ const requestMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.warn(error);
+        });
+      next(action);
+      break;
+    }
+
+    case SUBMIT_FINISH_REQUEST: {
+      const { commentId } = store.getState().request;
+      const userToken = localStorage.getItem('jwtToken');
+      const { toggle } = store.getState().request;
+      axios({
+        method: 'put',
+        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/demands/${commentId}`,
+        data: {
+          status: 'terminée',
+        },
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+        .then((response) => {
+          store.dispatch(saveToggle(!toggle));
+          console.log(response);
+        })
+        .catch((error) => {
+          console.warn(error);
+          console.log(error.response);
         });
       next(action);
       break;

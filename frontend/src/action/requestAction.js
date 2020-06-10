@@ -10,6 +10,7 @@ export const SUBMIT_CANCEL_REQUEST = 'SUBMIT_CANCEL_REQUEST';
 export const SUBMIT_REFUSE_REQUEST = 'SUBMIT_REFUSE_REQUEST';
 export const SUBMIT_ACCEPTE_REQUEST = 'SUBMIT_ACCEPTE_REQUEST';
 export const SUBMIT_DELETE_REQUEST = 'SUBMIT_DELETE_REQUEST';
+export const SUBMIT_FINISH_REQUEST = 'SUBMIT_FINISH_REQUEST';
 export const SUBMIT_SET_REQUEST = 'SUBMIT_SET_REQUEST';
 export const SAVE_TOGGLE = 'SAVE_TOGGLE';
 export const DISPLAY_HOUR = 'DISPLAY_HOUR';
@@ -17,6 +18,7 @@ export const GET_REQUEST_DATE = 'GET_REQUEST_DATE';
 export const GET_REQUEST_HOUR = 'GET_REQUEST_HOUR';
 export const IS_REQUEST_REFUSE = 'IS_REQUEST_REFUSE';
 export const CLEAR_REFUSE = 'CLEAR_REFUSE';
+
 // == EXPORT FOR COMMENT PART
 export const GET_COMMENT_ID = 'GET_COMMENT_ID';
 export const CHANGE_FIELD_COMMENT = 'CHANGE_FIELD_COMMENT';
@@ -81,6 +83,10 @@ export const submitAccepteRequest = () => ({
 
 export const submitDeleteRequest = () => ({
   type: SUBMIT_DELETE_REQUEST,
+});
+
+export const submitFinishRequest = () => ({
+  type: SUBMIT_FINISH_REQUEST,
 });
 
 export const submitSetRequest = () => ({

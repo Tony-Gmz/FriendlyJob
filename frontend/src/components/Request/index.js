@@ -7,7 +7,7 @@ import RequestFriendlyUser from './RequestFriendlyUser';
 import RequestJobWorker from './RequestJobWorker';
 
 // == Composant
-const Request = ({ toggle, getRequest, requestList, submitAccepteRequest, submitDeleteRequest, getCommentId }) => {
+const Request = ({ toggle, getRequest, requestList, submitAccepteRequest, submitDeleteRequest, getCommentId, submitFinishRequest }) => {
   useEffect(() => {
     getRequest();
   }, [toggle]);
@@ -16,7 +16,7 @@ const Request = ({ toggle, getRequest, requestList, submitAccepteRequest, submit
   return (
     <div className="request">
       {Role === 'FRIENDLY_USER'
-        ? <RequestFriendlyUser getRequest={getRequest} requestList={requestList} submitAccepteRequest={submitAccepteRequest} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />
+        ? <RequestFriendlyUser getRequest={getRequest} requestList={requestList} submitFinishRequest={submitFinishRequest} submitAccepteRequest={submitAccepteRequest} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />
         : <RequestJobWorker getRequest={getRequest} requestList={requestList} submitAccepteRequest={submitAccepteRequest} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />}
     </div>
   );

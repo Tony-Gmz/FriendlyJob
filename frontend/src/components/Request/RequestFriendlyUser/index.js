@@ -14,14 +14,14 @@ import '../request.scss';
 
 
 // == Composant
-const Request = ({ getRequest, requestList, submitDeleteRequest, getCommentId  }) => {
+const Request = ({ getRequest, requestList, submitDeleteRequest, submitFinishRequest, getCommentId  }) => {
   console.log(requestList);
   return (
     <>
       {requestList.map((request) => {
         switch (request.status) {
           case 'Acceptée':
-            return <RequestAccepteFU request={request} />;
+            return <RequestAccepteFU request={request} submitFinishRequest={submitFinishRequest} getCommentId={getCommentId} />;
           case 'Refusée':
             return <RequestRefuseFU request={request} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />;
           case 'En attente':

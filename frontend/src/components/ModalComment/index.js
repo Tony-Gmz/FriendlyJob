@@ -34,15 +34,18 @@ const ModalComment = ({ request, changeFieldComment, submitComment, changeRating
     evt.preventDefault();
     submitComment();
   };
-
+  const requestRating = request.rating;
   const handleClick = () => {
     getCommentId(request.id);
+    console.log(requestRating);
   };
 
   const handleClose = () => {
     clearSave();
   };
 
+
+    
   return (
     <Modal onClose={handleClose} className="modal_comment" trigger={<Button onClick={handleClick}>Laisser un commentaire</Button>} centered={false}>
       <Modal.Header>Dites nous ce que vous pensez des compétences de {request.jobWorker.firstname} en {request.service.title}</Modal.Header>
@@ -50,27 +53,29 @@ const ModalComment = ({ request, changeFieldComment, submitComment, changeRating
         <Image wrapped size="medium" className="comment_image" src={request.jobWorker.image} />
         <Modal.Description>
           <Header>Commentaire & Notation</Header>
-          <Form autoComplete="off" onSubmit={handleSubmit}>
-            <TextArea onChange={handleChange} placeholder="Laissez votre commentaire ici et n'oubliez pas la note. Merci" style={{ border: 'none', width: '100%' }} />
-            <Rating onChange={handleRate} maxRating={5} />
-            <ModalContent>
-              {isSend && (
-                <Message
-                  success
-                  header={<i className="check circle icon">Votre commentaire a bien été pris en comtpe</i> }
-                  content="Merci pour votre confiance"
-                />
-              )}
-              <Button icon labelPosition="left">
-                <Icon name="delete" />
-                Annuler
-              </Button>
-              <Button icon labelPosition="right" type="submit">
-                Envoyer
-                <Icon name="paper plane outline" />
-              </Button>
-            </ModalContent>
-          </Form>
+          {requestRating && (
+            <Message
+              success
+              header="Status"
+              content={<i className="check circle icon">Votre commentaire a bien été pris en comtpe</i>}
+            />
+          )}
+          {!requestRating && (
+            <Form autoComplete="off" onSubmit={handleSubmit}>
+              <TextArea onChange={handleChange} placeholder="Laissez votre commentaire ici et n'oubliez pas la note. Merci" style={{ border: 'none', width: '100%' }} />
+              <Rating onChange={handleRate} maxRating={5} />
+              <ModalContent>
+                <Button icon labelPosition="left">
+                  <Icon name="delete" />
+                  Annuler
+                </Button>
+                <Button icon labelPosition="right" type="submit">
+                  Envoyer
+                  <Icon name="paper plane outline" />
+                </Button>
+              </ModalContent>
+            </Form>
+          )}
         </Modal.Description>
       </Modal.Content>
     </Modal>
