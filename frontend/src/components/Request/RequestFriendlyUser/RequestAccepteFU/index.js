@@ -15,7 +15,7 @@ const RequestAccepteFU = ({ request, submitFinishRequest, getCommentId}) => {
   };
 
   return (
-    <Card className="request_Card">
+    <Card className="request_Card_accepte">
       <Card.Content className="request_Content">
         <div className="request_LeftSide">
           <Card.Header>{request.jobWorker.firstname}</Card.Header>

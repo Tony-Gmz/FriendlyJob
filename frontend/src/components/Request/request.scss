@@ -1,6 +1,9 @@
 @import 'src/styles/vars';
 
+
+
 .request{
+  width: 100%;
   z-index: 1;
   display: flex;
   justify-content: center;
@@ -8,14 +11,42 @@
   flex-wrap: wrap;
 }
 
-.request_Cards{
+.request_presentation{
+  display: flex;
   flex-direction: column;
-  width: 100%;
-  align-items: center;
 }
 
-.request_Card{
-  width:80% !important;
+.request_presentation_title{
+  display: flex;
+  justify-content: center;
+  border-bottom: #FF385C solid 1px;
+  margin: 1.5em;
+  padding-bottom: 0.2em;
+}
+
+
+.request_Card_refuse{
+  flex-direction: row!important;
+  border: red solid 1px!important;
+  width:100% !important;
+}
+
+.request_Card_accepte{
+  flex-direction: row!important;
+  border: blue solid 1px!important;
+  width:100% !important;
+}
+
+.request_Card_wait{
+  flex-direction: row!important;
+  width:100% !important;
+  border: yellow solid 1px!important;
+}
+
+.request_Card_finish{
+  flex-direction: row!important;
+  width:100% !important;
+  border: green solid 1px!important;
 }
 
 .request_Content{

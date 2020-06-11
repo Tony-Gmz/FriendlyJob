@@ -10,7 +10,7 @@ const RequestCancel = ({ request, getCommentId, submitDeleteRequest }) => {
     submitDeleteRequest();
   };
   return (
-    <Card className="request_Card">
+    <Card className="request_Card_refuse">
       <Card.Content className="request_Content">
         <div className="request_LeftSide">
           <Card.Header>{request.friendlyUser.firstname}</Card.Header>

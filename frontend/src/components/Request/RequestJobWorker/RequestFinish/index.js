@@ -8,7 +8,7 @@ const RequestFinish = ({ request }) => {
   const hourResevation = new Date(request.reservationHour);
   const dateReservation = new Date(request.reservationDate);
   return (
-    <Card className="request_Card">
+    <Card className="request_Card_finish">
     <Card.Content className="request_Content">
       <div className="request_LeftSide">
         <Card.Header>{request.friendlyUser.firstname}</Card.Header>
