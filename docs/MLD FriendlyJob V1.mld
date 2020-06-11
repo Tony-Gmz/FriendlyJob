@@ -1,0 +1,22 @@
+%%mocodo
+:
+CHECK_EMAIL: id, token, is_confirmed, created_at, updated_at, #user_id
+:
+USER: id, firstname, lastname, email, password, image, role, about, created_at, updated_at, #department_id
+:::
+DEPARTMENT: id, name, number, created_at, updated_at
+:
+
+
+:
+SKILL: id, description, price, created_at, updated_at, #service_id, #user_id
+:
+REQUEST: id, body, reservation_date, reservation_hour, status, created_at, updated_at, #friendly_user_id, #jobworker_id, #service_id
+:::::
+
+
+:
+SERVICE: id, parent_id, title, description, image, created_at, updated_at
+:::
+RATING: id, comment, star, created_at, updated_at, #request_id
+:::

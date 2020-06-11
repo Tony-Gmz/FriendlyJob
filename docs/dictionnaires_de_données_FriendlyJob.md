@@ -15,6 +15,16 @@
 |updated_at|TIMESTAMP|NULL|Update date of user’s account|
 |department_id|INT| FOREIGN KEY, NOT NULL|Foreign key for the department|
 
+## CheckEmail (`check_email`)
+|Champ|Type|Spécificités|Description|
+|-|-|-|-|
+|id|INT|PRIMARY KEY, NOT NULL, AUTO_INCREMENT, UNSIGNED|CheckEmail's id|
+|token|VARCHAR(255)|NOT NULL|Allow verification of user's email|
+|is_confirmed|BOOLEAN|NOT NULL|Check that the user has confirmed his email|
+|created_at|TIMESTAMP|NOT NULL|Creation checkEmail’s account|
+|updated_at|TIMESTAMP|NULL|Update date of user’s account|
+|user_id|INT| FOREIGN KEY, NOT NULL|Foreign key for the user|
+
 
 ## Department (`department`)
 |Champ|Type|Spécificités|Description|
@@ -55,7 +65,7 @@
 |id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|Demand’s id|
 |body|TEXT|NOT NULL|Demand’s description|
 |reservation_date|TIMESTAMP|NOT NULL|Demand’s date for the reservation|
-|reservation_hour|VARCHAR(255)|NOT NULL|Demand’s hour for the reservation|
+|reservation_hour|TIMESTAMP|NOT NULL|Demand’s hour for the reservation|
 |status|VARCHAR(255)|NOT NULL|Demand’s status|
 |created_at|TIMESTAMP|NOT NULL|Creation date of the demand|
 |updated_at|TIMESTAMP|NULL|Update date of the demand|

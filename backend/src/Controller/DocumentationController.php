@@ -10,7 +10,7 @@ class DocumentationController extends AbstractController
     /**
      * @Route("/", name="documentation")
      */
-    public function index()
+    public function homepage()
     {
         return $this->render('documentation/index.html.twig', [
             'controller_name' => 'DocumentationController',

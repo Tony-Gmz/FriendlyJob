@@ -244,10 +244,12 @@ class FakerFixtures extends Fixture
        // END OF FRIENDLYUSER OBJECT CREATION
 
        // BEGIN OF JOBWORKER OBJECT CREATION
+       
+       // MALE
        $aboutList = $faker->getUserAbout();
-       $numberOfJobWorker = 128;
+       $numberOfJobWorker = 64;
        for ($i = 0; $i < $numberOfJobWorker; $i++) {
-           $number = mt_rand(0, count($aboutList['about']) - 1);
+           $number = mt_rand(0, count($aboutList['about_male']) - 1);
            
            $jobWorker = new User();
            $passwordEncoder = static::$passwordEncoder->encodePassword($jobWorker, 'derrick');
@@ -255,17 +257,47 @@ class FakerFixtures extends Fixture
            $jobWorker->setEmail($faker->email);
            $jobWorker->setRoles(["JOBWORKER"]);
            $jobWorker->setPassword($passwordEncoder);
-           $jobWorker->setFirstname($faker->firstname);
+           $jobWorker->setFirstname($faker->firstname('male'));
            $jobWorker->setLastname($faker->lastname);
            $jobWorker->setImage($faker->getRandomImage());
-           $jobWorker->setAbout($aboutList['about'][$number]);
+           $jobWorker->setAbout($aboutList['about_male'][$number]);
            $jobWorker->setCreatedAt(new \DateTime());
            $jobWorker->setDepartment($departments[mt_rand(0, count($departments) - 1)]);
 
            $jobWorkers[] = $jobWorker;
            $users[] = $jobWorkers[$i];
 
-           echo static::$count. " => Objet JobWorker crée" . PHP_EOL;
+           echo static::$count. " => Objet JobWorker ( homme ) crée" . PHP_EOL;
+           static::$count++;
+           if (static::$count > $numberOfJobWorker)
+           {
+               static::$count = 1;
+           }
+       }
+
+       // FEMALE
+       $aboutList = $faker->getUserAbout();
+       $numberOfJobWorker = 64;
+       for ($i = 0; $i < $numberOfJobWorker; $i++) {
+           $number = mt_rand(0, count($aboutList['about_female']) - 1);
+           
+           $jobWorker = new User();
+           $passwordEncoder = static::$passwordEncoder->encodePassword($jobWorker, 'derrick');
+           $jobWorker->setPassword($passwordEncoder);
+           $jobWorker->setEmail($faker->email);
+           $jobWorker->setRoles(["JOBWORKER"]);
+           $jobWorker->setPassword($passwordEncoder);
+           $jobWorker->setFirstname($faker->firstname('female'));
+           $jobWorker->setLastname($faker->lastname);
+           $jobWorker->setImage($faker->getRandomImage());
+           $jobWorker->setAbout($aboutList['about_female'][$number]);
+           $jobWorker->setCreatedAt(new \DateTime());
+           $jobWorker->setDepartment($departments[mt_rand(0, count($departments) - 1)]);
+
+           $jobWorkers[] = $jobWorker;
+           $users[] = $jobWorkers[$i];
+
+           echo static::$count. " => Objet JobWorker ( femme ) crée" . PHP_EOL;
            static::$count++;
            if (static::$count > $numberOfJobWorker)
            {
@@ -274,6 +306,9 @@ class FakerFixtures extends Fixture
        }
 
        // END OF JOBWORKER OBJECT CREATION
+
+
+
 
         // BEGIN OF DEMAND OBJECT CREATION
         $demandList = $faker->getDataDemands();

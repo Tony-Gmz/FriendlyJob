@@ -1,0 +1,186 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="670" height="618" view_box="0 0 670 618"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:link="http://www.w3.org/1999/xlink">\n\n<desc>Généré par Mocodo 2.3.7 le Thu, 11 Jun 2020 05:01:28</desc>
+
+<rect id="frame" x="0" y="0" width="670" height="618" fill="#f5f5f5" stroke="none" stroke-width="0"/>
+
+<!-- Entity RATING -->
+<g id="entity-RATING">
+	<g id="frame-RATING">
+		<rect x="385" y="465" width="86" height="25" fill="#80cdc1" stroke="#80cdc1" stroke-width="0"/>
+		<rect x="385" y="490.0" width="86" height="111" fill="#c7eae5" stroke="#c7eae5" stroke-width="0"/>
+		<rect x="385" y="465" width="86" height="136" fill="none" stroke="#35978f" stroke-width="2"/>
+		<line x1="385" y1="490" x2="471" y2="490" stroke="#35978f" stroke-width="1"/>
+	</g>
+	<text x="404" y="482.7" fill="#000000" font-family="Verdana" font-size="12">RATING</text>
+	<text x="390" y="507.7" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="390" y1="510" x2="402" y2="510" stroke="#000000" stroke-width="1"/>
+	<text x="390" y="524.7" fill="#000000" font-family="Verdana" font-size="12">comment</text>
+	<text x="390" y="541.8" fill="#000000" font-family="Verdana" font-size="12">star</text>
+	<text x="390" y="558.8" fill="#000000" font-family="Verdana" font-size="12">created_at</text>
+	<text x="390" y="575.8" fill="#000000" font-family="Verdana" font-size="12">updated_at</text>
+	<text x="390" y="592.8" fill="#000000" font-family="Verdana" font-size="12">#request_id</text>
+</g>
+
+<!-- Entity SERVICE -->
+<g id="entity-SERVICE">
+	<g id="frame-SERVICE">
+		<rect x="50" y="457" width="80" height="25" fill="#80cdc1" stroke="#80cdc1" stroke-width="0"/>
+		<rect x="50" y="482.0" width="80" height="127" fill="#c7eae5" stroke="#c7eae5" stroke-width="0"/>
+		<rect x="50" y="457" width="80" height="152" fill="none" stroke="#35978f" stroke-width="2"/>
+		<line x1="50" y1="482" x2="130" y2="482" stroke="#35978f" stroke-width="1"/>
+	</g>
+	<text x="63" y="474.7" fill="#000000" font-family="Verdana" font-size="12">SERVICE</text>
+	<text x="55" y="499.7" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="55" y1="502" x2="67" y2="502" stroke="#000000" stroke-width="1"/>
+	<text x="55" y="516.7" fill="#000000" font-family="Verdana" font-size="12">parent_id</text>
+	<text x="55" y="533.8" fill="#000000" font-family="Verdana" font-size="12">title</text>
+	<text x="55" y="550.8" fill="#000000" font-family="Verdana" font-size="12">description</text>
+	<text x="55" y="567.8" fill="#000000" font-family="Verdana" font-size="12">image</text>
+	<text x="55" y="584.8" fill="#000000" font-family="Verdana" font-size="12">created_at</text>
+	<text x="55" y="601.8" fill="#000000" font-family="Verdana" font-size="12">updated_at</text>
+</g>
+
+<!-- Entity REQUEST -->
+<g id="entity-REQUEST">
+	<g id="frame-REQUEST">
+		<rect x="203" y="254" width="118" height="25" fill="#80cdc1" stroke="#80cdc1" stroke-width="0"/>
+		<rect x="203" y="279.0" width="118" height="179" fill="#c7eae5" stroke="#c7eae5" stroke-width="0"/>
+		<rect x="203" y="254" width="118" height="204" fill="none" stroke="#35978f" stroke-width="2"/>
+		<line x1="203" y1="279" x2="321" y2="279" stroke="#35978f" stroke-width="1"/>
+	</g>
+	<text x="233" y="271.7" fill="#000000" font-family="Verdana" font-size="12">REQUEST</text>
+	<text x="208" y="296.7" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="208" y1="299" x2="220" y2="299" stroke="#000000" stroke-width="1"/>
+	<text x="208" y="313.7" fill="#000000" font-family="Verdana" font-size="12">body</text>
+	<text x="208" y="330.7" fill="#000000" font-family="Verdana" font-size="12">reservation_date</text>
+	<text x="208" y="347.7" fill="#000000" font-family="Verdana" font-size="12">reservation_hour</text>
+	<text x="208" y="364.8" fill="#000000" font-family="Verdana" font-size="12">status</text>
+	<text x="208" y="381.8" fill="#000000" font-family="Verdana" font-size="12">created_at</text>
+	<text x="208" y="398.8" fill="#000000" font-family="Verdana" font-size="12">updated_at</text>
+	<text x="208" y="415.8" fill="#000000" font-family="Verdana" font-size="12">#friendly_user_id</text>
+	<text x="208" y="432.8" fill="#000000" font-family="Verdana" font-size="12">#jobworker_id</text>
+	<text x="208" y="449.8" fill="#000000" font-family="Verdana" font-size="12">#service_id</text>
+</g>
+
+<!-- Entity USER -->
+<g id="entity-USER">
+	<g id="frame-USER">
+		<rect x="207" y="9" width="110" height="25" fill="#80cdc1" stroke="#80cdc1" stroke-width="0"/>
+		<rect x="207" y="34.0" width="110" height="195" fill="#c7eae5" stroke="#c7eae5" stroke-width="0"/>
+		<rect x="207" y="9" width="110" height="220" fill="none" stroke="#35978f" stroke-width="2"/>
+		<line x1="207" y1="34" x2="317" y2="34" stroke="#35978f" stroke-width="1"/>
+	</g>
+	<text x="245" y="26.7" fill="#000000" font-family="Verdana" font-size="12">USER</text>
+	<text x="212" y="51.7" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="212" y1="54" x2="224" y2="54" stroke="#000000" stroke-width="1"/>
+	<text x="212" y="68.7" fill="#000000" font-family="Verdana" font-size="12">firstname</text>
+	<text x="212" y="85.7" fill="#000000" font-family="Verdana" font-size="12">lastname</text>
+	<text x="212" y="102.7" fill="#000000" font-family="Verdana" font-size="12">email</text>
+	<text x="212" y="119.8" fill="#000000" font-family="Verdana" font-size="12">password</text>
+	<text x="212" y="136.8" fill="#000000" font-family="Verdana" font-size="12">image</text>
+	<text x="212" y="153.8" fill="#000000" font-family="Verdana" font-size="12">role</text>
+	<text x="212" y="170.8" fill="#000000" font-family="Verdana" font-size="12">about</text>
+	<text x="212" y="187.8" fill="#000000" font-family="Verdana" font-size="12">created_at</text>
+	<text x="212" y="204.8" fill="#000000" font-family="Verdana" font-size="12">updated_at</text>
+	<text x="212" y="221.8" fill="#000000" font-family="Verdana" font-size="12">#department_id</text>
+</g>
+
+<!-- Entity CHECK_EMAIL -->
+<g id="entity-CHECK_EMAIL">
+	<g id="frame-CHECK_EMAIL">
+		<rect x="41" y="51" width="98" height="25" fill="#80cdc1" stroke="#80cdc1" stroke-width="0"/>
+		<rect x="41" y="76.0" width="98" height="111" fill="#c7eae5" stroke="#c7eae5" stroke-width="0"/>
+		<rect x="41" y="51" width="98" height="136" fill="none" stroke="#35978f" stroke-width="2"/>
+		<line x1="41" y1="76" x2="139" y2="76" stroke="#35978f" stroke-width="1"/>
+	</g>
+	<text x="46" y="68.7" fill="#000000" font-family="Verdana" font-size="12">CHECK_EMAIL</text>
+	<text x="46" y="93.7" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="46" y1="96" x2="58" y2="96" stroke="#000000" stroke-width="1"/>
+	<text x="46" y="110.7" fill="#000000" font-family="Verdana" font-size="12">token</text>
+	<text x="46" y="127.8" fill="#000000" font-family="Verdana" font-size="12">is_confirmed</text>
+	<text x="46" y="144.8" fill="#000000" font-family="Verdana" font-size="12">created_at</text>
+	<text x="46" y="161.8" fill="#000000" font-family="Verdana" font-size="12">updated_at</text>
+	<text x="46" y="178.8" fill="#000000" font-family="Verdana" font-size="12">#user_id</text>
+</g>
+
+<!-- Entity DEPARTMENT -->
+<g id="entity-DEPARTMENT">
+	<g id="frame-DEPARTMENT">
+		<rect x="535" y="60" width="94" height="25" fill="#80cdc1" stroke="#80cdc1" stroke-width="0"/>
+		<rect x="535" y="85.0" width="94" height="93" fill="#c7eae5" stroke="#c7eae5" stroke-width="0"/>
+		<rect x="535" y="60" width="94" height="118" fill="none" stroke="#35978f" stroke-width="2"/>
+		<line x1="535" y1="85" x2="629" y2="85" stroke="#35978f" stroke-width="1"/>
+	</g>
+	<text x="540" y="77.7" fill="#000000" font-family="Verdana" font-size="12">DEPARTMENT</text>
+	<text x="540" y="102.7" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="540" y1="105" x2="552" y2="105" stroke="#000000" stroke-width="1"/>
+	<text x="540" y="119.8" fill="#000000" font-family="Verdana" font-size="12">name</text>
+	<text x="540" y="136.8" fill="#000000" font-family="Verdana" font-size="12">number</text>
+	<text x="540" y="153.8" fill="#000000" font-family="Verdana" font-size="12">created_at</text>
+	<text x="540" y="170.8" fill="#000000" font-family="Verdana" font-size="12">updated_at</text>
+</g>
+
+<!-- Entity SKILL -->
+<g id="entity-SKILL">
+	<g id="frame-SKILL">
+		<rect x="49" y="280" width="82" height="25" fill="#80cdc1" stroke="#80cdc1" stroke-width="0"/>
+		<rect x="49" y="305.0" width="82" height="127" fill="#c7eae5" stroke="#c7eae5" stroke-width="0"/>
+		<rect x="49" y="280" width="82" height="152" fill="none" stroke="#35978f" stroke-width="2"/>
+		<line x1="49" y1="305" x2="131" y2="305" stroke="#35978f" stroke-width="1"/>
+	</g>
+	<text x="72" y="297.7" fill="#000000" font-family="Verdana" font-size="12">SKILL</text>
+	<text x="54" y="322.7" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="54" y1="325" x2="66" y2="325" stroke="#000000" stroke-width="1"/>
+	<text x="54" y="339.7" fill="#000000" font-family="Verdana" font-size="12">description</text>
+	<text x="54" y="356.8" fill="#000000" font-family="Verdana" font-size="12">price</text>
+	<text x="54" y="373.8" fill="#000000" font-family="Verdana" font-size="12">created_at</text>
+	<text x="54" y="390.8" fill="#000000" font-family="Verdana" font-size="12">updated_at</text>
+	<text x="54" y="407.8" fill="#000000" font-family="Verdana" font-size="12">#service_id</text>
+	<text x="54" y="424.8" fill="#000000" font-family="Verdana" font-size="12">#user_id</text>
+</g>
+
+<!-- Link from "id" (RATING) to "id" (REQUEST) -->
+<path d="M385 588.5 C 353.0 440.5 363.666666667 292.5 321 292.5" fill="none" stroke="#bf812d" stroke-width="2"/>
+<path d="M 321 292.5 L 333.0 286.5 L 329.0 292.5 L 333.0 298.5 Z" fill="#bf812d" stroke-width="0"/>
+<circle cx="385" cy="588.5" r="2" stroke="#bf812d" stroke-width="2" fill="#bf812d"/>
+
+<!-- Link from "id" (REQUEST) to "id" (USER) -->
+<path d="M203 411.5 C 149 229.5 153 47.5 207 47.5" fill="none" stroke="#bf812d" stroke-width="2"/>
+<path d="M 207 47.5 L 195.0 53.5 L 199.0 47.5 L 195.0 41.5 Z" fill="#bf812d" stroke-width="0"/>
+<circle cx="203" cy="411.5" r="2" stroke="#bf812d" stroke-width="2" fill="#bf812d"/>
+
+<!-- Link from "id" (REQUEST) to "id" (USER) -->
+<path d="M321 428.5 C 375 238.0 371 47.5 317 47.5" fill="none" stroke="#bf812d" stroke-width="2"/>
+<path d="M 317 47.5 L 329.0 41.5 L 325.0 47.5 L 329.0 53.5 Z" fill="#bf812d" stroke-width="0"/>
+<circle cx="321" cy="428.5" r="2" stroke="#bf812d" stroke-width="2" fill="#bf812d"/>
+
+<!-- Link from "id" (REQUEST) to "id" (SERVICE) -->
+<path d="M203 445.5 C 166.5 470.5 178.666666667 495.5 130 495.5" fill="none" stroke="#bf812d" stroke-width="2"/>
+<path d="M 130 495.5 L 142.0 489.5 L 138.0 495.5 L 142.0 501.5 Z" fill="#bf812d" stroke-width="0"/>
+<circle cx="203" cy="445.5" r="2" stroke="#bf812d" stroke-width="2" fill="#bf812d"/>
+
+<!-- Link from "id" (USER) to "id" (DEPARTMENT) -->
+<path d="M317 217.5 C 426.0 158.0 389.666666667 98.5 535 98.5" fill="none" stroke="#bf812d" stroke-width="2"/>
+<path d="M 535 98.5 L 523.0 104.5 L 527.0 98.5 L 523.0 92.5 Z" fill="#bf812d" stroke-width="0"/>
+<circle cx="317" cy="217.5" r="2" stroke="#bf812d" stroke-width="2" fill="#bf812d"/>
+
+<!-- Link from "id" (CHECK_EMAIL) to "id" (USER) -->
+<path d="M139 174.5 C 173.0 111.0 161.666666667 47.5 207 47.5" fill="none" stroke="#bf812d" stroke-width="2"/>
+<path d="M 207 47.5 L 195.0 53.5 L 199.0 47.5 L 195.0 41.5 Z" fill="#bf812d" stroke-width="0"/>
+<circle cx="139" cy="174.5" r="2" stroke="#bf812d" stroke-width="2" fill="#bf812d"/>
+
+<!-- Link from "id" (SKILL) to "id" (SERVICE) -->
+<path d="M49 403.5 C -5 449.5 -4 495.5 50 495.5" fill="none" stroke="#bf812d" stroke-width="2"/>
+<path d="M 50 495.5 L 38.0 501.5 L 42.0 495.5 L 38.0 489.5 Z" fill="#bf812d" stroke-width="0"/>
+<circle cx="49" cy="403.5" r="2" stroke="#bf812d" stroke-width="2" fill="#bf812d"/>
+
+<!-- Link from "id" (SKILL) to "id" (USER) -->
+<path d="M131 420.5 C 169.0 234.0 156.333333333 47.5 207 47.5" fill="none" stroke="#bf812d" stroke-width="2"/>
+<path d="M 207 47.5 L 195.0 53.5 L 199.0 47.5 L 195.0 41.5 Z" fill="#bf812d" stroke-width="0"/>
+<circle cx="131" cy="420.5" r="2" stroke="#bf812d" stroke-width="2" fill="#bf812d"/>
+</svg>
