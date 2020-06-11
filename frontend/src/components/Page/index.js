@@ -3,7 +3,7 @@ import { Route, Switch, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './page.scss';
-
+import Breadcrumb from 'src/components/BreadCrumb';
 import Request from 'src/containers/Request';
 import ServiceList from 'src/containers/ServiceList';
 import ServiceDetail from 'src/containers/ServiceDetail';
@@ -14,6 +14,7 @@ import HomePage from '../HomePage';
 import Contact from '../Contact';
 
 import Error from '../Error';
+
 
 
 const Page = ({ isLogged }) => {
@@ -27,6 +28,7 @@ const Page = ({ isLogged }) => {
   return (
     <div className="page">
       <div className="page-content">
+        <Breadcrumb />
         <Switch>
           <Route
             path="/services/:slug/jobworkers/jobworker_:id"

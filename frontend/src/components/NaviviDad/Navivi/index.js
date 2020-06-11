@@ -1,10 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useSpring, animated, config } from 'react-spring';
+import { Link } from 'react-router-dom';
+import ModalConnexion from 'src/containers/ModalConnexion';
+import {Button} from 'semantic-ui-react';
+import ModalInscription from 'src/containers/ModalInscription';
 
 import Brand from './Brand';
 import BurgerMenu from './BurgerMenu';
 import CollapseMenu from './CollapseMenu';
+
+import './navivi.scss';
 
 const Navbar = (props) => {
   const barAnimation = useSpring({
@@ -23,16 +29,23 @@ const Navbar = (props) => {
     <>
       <NavBar style={barAnimation}>
         <FlexContainer>
-          <Brand />
-          <NavLinks style={linkAnimation}>
-            <a href="/">link n1</a>
-            <a href="/">link n2</a>
-            <a href="/">link n3</a>
-            <a href="/">link n4</a>
-          </NavLinks>
+          <div className="brandForNav">
+            <Brand />
+          </div>
+          <div className="linkForNav">
+            <NavLinks style={linkAnimation}>
+              <Link to="/services">Liste de nos services</Link>
+              <a href="#inscription">Devenir JobWorker</a>
+              <Link to="/contact">Qui sommes nous</Link>
+            </NavLinks>
+            <NavLinks className="buttonForModal">
+              <ModalConnexion />
+              <ModalInscription />
+            </NavLinks>
+          </div>
           <BurgerWrapper>
             <BurgerMenu
-              navbarState={props.navbarState} 
+              navbarState={props.navbarState}
               handleNavbar={props.handleNavbar}
             />
           </BurgerWrapper>

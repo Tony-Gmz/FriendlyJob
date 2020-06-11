@@ -2,21 +2,27 @@
 
 .footer {
   width: 80%;
-  margin: 0 auto;
-  z-index: 3;
+  z-index: 1;
   margin-top: 4em;
-  border-top: 4px solid #dfdada;
+  border-top: 3px solid #dfdadaca;
   display: flex;
   justify-content: space-around;
   bottom: 0;
-  width: 1000px;
   background-color: #FFFF;
-
   padding-top: 2em;
+
   @include phone {
     
     width: 100%;
-   
+    z-index: 1;
+    margin-top: 4em;
+    border-top: 3px solid #dfdadaca;
+    display: flex;
+    justify-content: space-around;
+    bottom: 0;
+    background-color: #FFFF;
+    padding-top: 2em;
+    
    }
    @include sm {
    

@@ -10,7 +10,7 @@ import Footer from 'src/components/Footer';
 import Loader from 'src/components/Loader';
 // import NavBar from 'src/containers/NavBar';
 import Page from 'src/containers/Page';
-import Breadcrumb from 'src/components/BreadCrumb';
+// import Breadcrumb from 'src/components/BreadCrumb';
 import NaviviDad from '../NaviviDad';
 
 
@@ -41,7 +41,7 @@ const App = ({
       <>
         {/*  <NavBar /> */}
         <NaviviDad />
-        <Breadcrumb />
+        {/* <Breadcrumb /> */}
         <Page />
         <Footer />
       </>
