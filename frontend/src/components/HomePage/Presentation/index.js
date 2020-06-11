@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'semantic-ui-react';
 import { useHistory } from 'react-router-dom';
+import Select from 'react-select';
 
 // == Import Style
 import './presentation.scss';
@@ -12,14 +13,25 @@ import { slugifyTitle } from 'src/utils';
 
 // component presentation in homepage
 const Presentation = ({ serviceList, fieldService, serviceSelected }) => {
+
   const history = useHistory();
   const handleSubmit = (evt) => {
     evt.preventDefault();
     history.push(`/services/${serviceSelected}`);
   };
-  const handleChange = (evt) => {
-    fieldService(slugifyTitle(evt.target.value));
+
+  const handleChange = (serviceSelected) => {
+    fieldService(slugifyTitle(serviceSelected.value));
   };
+
+  const handleKeyPress = (evt) => {
+    if (evt.key === 'Enter') {
+      history.push(`/services/${serviceSelected}`);
+    }
+  };
+
+  const falseSet = false;
+
   return (
     <div className="presentation">
       <h2 className="presentation_title">FriendlyJob oui ! Mais pourquoi faire ?</h2>
@@ -27,12 +39,23 @@ const Presentation = ({ serviceList, fieldService, serviceSelected }) => {
       </p>
       <div className="presentation_input">
         <form onSubmit={handleSubmit} action="">
-          <Input list="services" icon="search" name="serviceInput" onChange={handleChange} placeholder="Recherchez le service idéale..." />
-          <datalist className="datalist" id="services">
-            {serviceList.map((service) => (
-              <option className="datalist" key={service.id} value={service.title}>{service.title}</option>
-            ))}
-          </datalist>
+          <Select
+            blurInputOnSelect={falseSet}
+            name="serviceInput"
+            onChange={handleChange}
+            onKeyDown={handleKeyPress}
+            placeholder="Selectionne un service"
+            options={serviceList.map((service) => ({
+              key: service.id,
+              value: service.title,
+              label: service.title,
+            }))}
+            // value={serviceSelected}
+            isSearchable={falseSet}
+            onInputChange="input-change"
+            controlShouldRenderValue
+          />
+          <button type="submit" value="ok">ok</button>
         </form>
       </div>
     </div>
