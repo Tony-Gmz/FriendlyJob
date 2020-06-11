@@ -18,6 +18,7 @@ export const GET_REQUEST_DATE = 'GET_REQUEST_DATE';
 export const GET_REQUEST_HOUR = 'GET_REQUEST_HOUR';
 export const IS_REQUEST_REFUSE = 'IS_REQUEST_REFUSE';
 export const CLEAR_REFUSE = 'CLEAR_REFUSE';
+export const REQUEST_SORT_SELECTED = 'REQUEST_SORT_SELECTED';
 
 // == EXPORT FOR COMMENT PART
 export const GET_COMMENT_ID = 'GET_COMMENT_ID';
@@ -29,6 +30,11 @@ export const CLEAR_SAVE = 'CLEAR_SAVE';
 
 
 // ========================================= REQUEST ==================================
+
+export const requestSortSelected = (newSort) => ({
+  type: REQUEST_SORT_SELECTED,
+  newSort,
+});
 
 export const getRequest = () => ({
   type: GET_REQUEST,

@@ -15,6 +15,7 @@ import {
   CLEAR_SAVE,
   IS_REQUEST_REFUSE,
   CLEAR_REFUSE,
+  REQUEST_SORT_SELECTED,
 } from '../action/requestAction';
 
 const initialState = {
@@ -31,6 +32,7 @@ const initialState = {
   isSave: false,
   isSend: false,
   isRefuse: false,
+  requestSelected: null,
 
 };
 
@@ -40,6 +42,12 @@ const requestReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         requestList: action.newRequest,
+      };
+
+    case REQUEST_SORT_SELECTED:
+      return {
+        ...state,
+        requestSelected: action.newSort,
       };
     case SAVE_TOGGLE:
       return {

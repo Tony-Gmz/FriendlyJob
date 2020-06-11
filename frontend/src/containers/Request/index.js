@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Request from 'src/components/Request';
-import { getRequest, submitRefuseRequest, submitAccepteRequest, getCommentId, submitDeleteRequest } from 'src/action/requestAction';
+import { getRequest, submitRefuseRequest, submitAccepteRequest, getCommentId, submitDeleteRequest, requestSortSelected } from 'src/action/requestAction';
 import { getUserData } from 'src/action/usersActions';
 import { submitFinishRequest } from '../../action/requestAction';
 
@@ -11,6 +11,7 @@ const mapStateToProps = (state) => ({
   userData: state.user.userData,
   requestList: state.request.requestList,
   toggle: state.request.toggle,
+  requestSelected: state.request.requestSelected,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -19,7 +20,9 @@ const mapDispatchToProps = (dispatch) => ({
   getCommentId: (commentId) => {
     dispatch(getCommentId(commentId));
   },
-
+  requestSortSelected: (newSort) => {
+    dispatch(requestSortSelected(newSort));
+  },
   getRequest: () => {
     dispatch(getRequest());
   },
