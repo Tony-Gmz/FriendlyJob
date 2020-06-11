@@ -130,6 +130,11 @@ class User implements UserInterface
      */ 
     private $jobWorkerDemands;
 
+    /**
+     * @ORM\OneToOne(targetEntity=CheckEmail::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $checkEmail;
+
     public function __construct()
     {
         $this->skills = new ArrayCollection();
@@ -396,6 +401,23 @@ class User implements UserInterface
             if ($jobWorkerDemand->getJobWorker() === $this) {
                 $jobWorkerDemand->setJobWorker(null);
             }
+        }
+
+        return $this;
+    }
+
+    public function getCheckEmail(): ?CheckEmail
+    {
+        return $this->checkEmail;
+    }
+
+    public function setCheckEmail(CheckEmail $checkEmail): self
+    {
+        $this->checkEmail = $checkEmail;
+
+        // set the owning side of the relation if necessary
+        if ($checkEmail->getUser() !== $this) {
+            $checkEmail->setUser($this);
         }
 
         return $this;

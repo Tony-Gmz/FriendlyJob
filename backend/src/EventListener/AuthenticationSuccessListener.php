@@ -20,7 +20,29 @@ class AuthenticationSuccessListener
             return;
         }
 
-        $department = [ 'id' => $user->getDepartment()->getId(), 
+        // On récuperer le checkEmail
+        $checkEmail = $user->getCheckEmail();
+
+        // Si $checkEmail est null donc l'utilisateur n'a pas d'entrée dans notre checkEmail
+        // on n'éxécute la méthode getIsConfirmed
+        // si checkEmail == null notre utilisateur est confirmé ( mécanique commande possible pour clean la table checkEmail)
+        if ( $checkEmail != null ){
+            $isConfirmed = $checkEmail->getIsConfirmed();
+        }
+        else {
+            $isConfirmed = true;
+        }
+
+        //! Petite sécurité pour éviter que le token soit envoyé si l'utilisateur n'est pas confirmé
+        /*
+        if ( $isConfirmed == false )
+        {
+            $data['token']= 'Invalid Token';
+        }
+        */
+
+        $department = [ 
+                        'id' => $user->getDepartment()->getId(), 
                         'name' => $user->getDepartment()->getName(), 
                         'number' => $user->getDepartment()->getNumber(),
                     ];
@@ -35,6 +57,7 @@ class AuthenticationSuccessListener
             'about' => $user->getAbout(),
             'department' => $department,
             'isLogged' => true,
+            'isConfirmed' => $isConfirmed,
         ];
 
         $user = $event->getUser();

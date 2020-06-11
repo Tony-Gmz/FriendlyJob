@@ -2,10 +2,12 @@
 
 namespace App\Controller\Api\V1;
 
+use App\Entity\CheckEmail;
 use App\Entity\User;
 use App\Repository\DepartmentRepository;
 use App\Repository\ServiceRepository;
 use App\Repository\UserRepository;
+use App\Services\Email;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use ErrorException;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
@@ -24,11 +26,13 @@ class UserController extends AbstractController
 {
     private $passwordEncoder;
     private $tokenManager;
+    private $emailService;
 
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder, JWTTokenManagerInterface $tokenManager)
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder, JWTTokenManagerInterface $tokenManager, Email $emailService)
     {
         $this->passwordEncoder = $passwordEncoder;
         $this->tokenManager = $tokenManager;
+        $this->emailService = $emailService;
     }
 
     /**
@@ -173,8 +177,16 @@ class UserController extends AbstractController
                 'message' => "This email already exist"
             ], 404);
             }
-        
 
+            $checkEmail = new CheckEmail();
+            $checkEmail->setToken($this->emailService->generateToken());
+            $checkEmail->setUser($user);
+            $checkEmail->setIsConfirmed(0);
+            $em->persist($checkEmail);
+            $em->flush();
+            
+            $this->emailService->sendEmail($user, $checkEmail);
+            
             return $this->json(
                 $user,
                 201,
