@@ -11,7 +11,7 @@ import Loader from 'src/components/Loader';
 // import NavBar from 'src/containers/NavBar';
 import Page from 'src/containers/Page';
 // import Breadcrumb from 'src/components/BreadCrumb';
-import NaviviDad from '../NaviviDad';
+import NaviviDad from 'src/containers/NaviviDad';
 
 
 // == Component App our main component

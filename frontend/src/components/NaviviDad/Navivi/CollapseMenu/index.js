@@ -6,10 +6,11 @@ import ModalInscription from 'src/containers/ModalInscription';
 
 import { useSpring, animated } from 'react-spring';
 
-const CollapseMenu = (props) => {
-  const { open } = useSpring({ open: props.navbarState ? 0 : 1 });
-
-  if (props.navbarState === true) {
+const CollapseMenu = ({isOpen}) => {
+  const { open } = useSpring({ open: isOpen ? 0 : 1 });
+console.log(`is open est ${isOpen}`);
+  if (isOpen === true) {
+    console.log('je suis rentrer dans le if');
     return (
       <CollapseWrapper style={{
         transform: open.interpolate({

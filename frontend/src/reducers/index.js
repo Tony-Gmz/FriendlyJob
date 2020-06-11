@@ -6,6 +6,7 @@ import servicesReducer from './services';
 import inscriptionReducer from './inscription';
 import requestReducer from './request';
 import departmentsReducer from './departments';
+import navbarReducer from './navbar';
 
 
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   inscription: inscriptionReducer,
   departments: departmentsReducer,
+  navbar: navbarReducer,
 });
 
 

@@ -1,26 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Navbar from 'src/components/NaviviDad/Navivi';
 
 
-class NaviviDad extends Component {
-  state = {
-    navbarOpen: false,
+const NaviviDad = ({isOpen, isNavbarOpen, isLogged, logOut})=> {
+  const handleNavbar = () => {
+    isNavbarOpen(!isOpen);
+    console.log(isOpen);
   };
 
-  handleNavbar = () => {
-    this.setState({ navbarOpen: !this.state.navbarOpen });
-  };
+  return (
+    <>
+      <Navbar
+        isOpen={isOpen}
+        handleNavbar={handleNavbar}
+        isLogged={isLogged}
+        logOut={logOut}
+      />
+    </>
+  );
+};
 
-  render() {
-
-    return (
-      <>
-        <Navbar
-          navbarState={this.state.navbarOpen}
-          handleNavbar={this.handleNavbar}
-        />
-      </>
-    );
-  }
-}
 export default NaviviDad;

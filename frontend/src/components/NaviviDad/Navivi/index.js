@@ -4,6 +4,7 @@ import { useSpring, animated, config } from 'react-spring';
 import { NavLink } from 'react-router-dom';
 import ModalConnexion from 'src/containers/ModalConnexion';
 import ModalInscription from 'src/containers/ModalInscription';
+import { Button } from 'semantic-ui-react';
 
 import Brand from './Brand';
 import BurgerMenu from './BurgerMenu';
@@ -12,7 +13,15 @@ import CollapseMenu from './CollapseMenu';
 import './navivi.scss';
 import 'src/styles/_vars.scss';
 
-const Navbar = (props) => {
+const Navbar = ({isOpen, handleNavbar, isLogged, logOut}) => {
+
+  const handleClick = () => {
+    logOut();
+    localStorage.removeItem('jwtToken');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userRole');
+  }; 
+
   const barAnimation = useSpring({
     from: { transform: 'translate3d(0, -10rem, 0)' },
     transform: 'translate3d(0, 0, 0)',
@@ -25,38 +34,73 @@ const Navbar = (props) => {
     config: config.wobbly,
   });
 
-  return (
-    <>
-      <NavBar style={barAnimation}>
-        <FlexContainer>
-          <div className="brandForNav">
-            <Brand />
-          </div>
-          <div className="linkForNav">
-            <NavLinks style={linkAnimation}>
-              <NavLink exact to="/services">Liste de nos services</NavLink>
-              <a href="#inscription">Devenir JobWorker</a>
-              <NavLink to="/contact">Qui sommes nous</NavLink>
-            </NavLinks>
-            <NavLinks className="buttonForModal">
-              <ModalConnexion />
-              <ModalInscription />
-            </NavLinks>
-          </div>
-          <BurgerWrapper>
-            <BurgerMenu
-              navbarState={props.navbarState}
-              handleNavbar={props.handleNavbar}
-            />
-          </BurgerWrapper>
-        </FlexContainer>
-      </NavBar>
-      <CollapseMenu
-        navbarState={props.navbarState} 
-        handleNavbar={props.handleNavbar}
-      />
-    </>
-  );
+  if (isLogged === false) {
+    return (
+      <>
+        <NavBar style={barAnimation}>
+          <FlexContainer>
+            <div className="brandForNav">
+              <Brand />
+            </div>
+            <div className="linkForNav">
+              <NavLinks style={linkAnimation}>
+                <NavLink exact to="/services">Liste de nos services</NavLink>
+                <a href="#inscription">Devenir JobWorker</a>
+                <NavLink to="/contact">Qui sommes nous</NavLink>
+              </NavLinks>
+              <NavLinks className="buttonForModal">
+                <ModalConnexion />
+                <ModalInscription />
+              </NavLinks>
+            </div>
+            <BurgerWrapper>
+              <BurgerMenu
+                isOpen={isOpen}
+                handleNavbar={handleNavbar}
+              />
+            </BurgerWrapper>
+          </FlexContainer>
+        </NavBar>
+        <CollapseMenu
+          isOpen={isOpen}
+          handleNavbar={handleNavbar}
+        />
+      </>
+    );
+  }
+  if (isLogged === true) {
+    return (
+      <>
+        <NavBar style={barAnimation}>
+          <FlexContainer>
+            <div className="brandForNav">
+              <Brand />
+            </div>
+            <div className="linkForNav">
+              <NavLinks style={linkAnimation}>
+                <NavLink to="/services">Liste de nos services</NavLink>
+                <NavLink to="/profil">Profil</NavLink>
+                <NavLink to="/demandes">Mes demandes</NavLink>
+              </NavLinks>
+              <NavLinks className="buttonForModal">
+                <NavLink to="/"><Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }} onClick={handleClick}>Deconnexion</Button></NavLink>
+              </NavLinks>
+            </div>
+            <BurgerWrapper>
+              <BurgerMenu
+                isOpen={isOpen}
+                handleNavbar={handleNavbar}
+              />
+            </BurgerWrapper>
+          </FlexContainer>
+        </NavBar>
+        <CollapseMenu
+          isOpen={isOpen}
+          handleNavbar={handleNavbar}
+        />
+      </>
+    );
+  }
 };
 
 export default Navbar;
@@ -67,7 +111,7 @@ const NavBar = styled(animated.nav)`
   top: 0;
   left: 0;
   background: #2d3436;
-  z-index: 1;
+  z-index: 2;
   font-size: 1.4rem;
 `;
 
