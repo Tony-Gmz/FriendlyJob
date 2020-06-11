@@ -270,7 +270,7 @@ const ProfilJobWorker = ({
               <>
                 <div className="profil_group_btn">
                   {isEditable && (
-                    <Link to="/"><Button onClick={handleCancelClick} className="profil_btn" variant="contained" color="alerte"> Annuler</Button></Link>
+                    <Button onClick={handleCancelClick} className="profil_btn" variant="contained" color="alerte"> Annuler</Button>
                   )}
                   {!isEditable && (
                     <Button onClick={handleClick} className="profil_btn" variant="contained" color="primary">
