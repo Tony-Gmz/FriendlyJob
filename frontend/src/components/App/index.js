@@ -8,9 +8,10 @@ import './App.scss';
 // == Import Components
 import Footer from 'src/components/Footer';
 import Loader from 'src/components/Loader';
-import NavBar from 'src/containers/NavBar';
+// import NavBar from 'src/containers/NavBar';
 import Page from 'src/containers/Page';
 import Breadcrumb from 'src/components/BreadCrumb';
+import NaviviDad from '../NaviviDad';
 
 
 // == Component App our main component
@@ -38,7 +39,8 @@ const App = ({
       {loading && <Loader />}
       {!loading && (
       <>
-        <NavBar />
+        {/*  <NavBar /> */}
+        <NaviviDad />
         <Breadcrumb />
         <Page />
         <Footer />

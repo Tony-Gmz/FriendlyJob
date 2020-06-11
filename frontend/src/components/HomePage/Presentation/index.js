@@ -1,7 +1,6 @@
 // == Import Library
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input } from 'semantic-ui-react';
 import { useHistory } from 'react-router-dom';
 import Select from 'react-select';
 
