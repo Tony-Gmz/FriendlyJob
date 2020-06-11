@@ -1,51 +1,112 @@
 @import 'src/styles/vars';
+ 
 
- .serviceList_wrap{
-  width: 90%;
-  margin: 5% auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+@include phone {
+  .serviceList_wrap{
+    width: 90%;
+    margin: 5% auto;
+    display: column;
+    justify-content: center;
+  }
+  
+  .serviceList_presentation{
+  width: 80%;
+  margin: 3% auto;
+  border-bottom: #ff385c solid 1px;
+  font-size: x-large;
+  font-weight: 600;
+  padding-bottom: 2em;
+  padding-top: 1em;
+  }
+  
+  .serviceList_box{
+    padding:25px;
+    margin:2%;
+    background:white;
+    width: 100%;
+    border:1px solid #d6d6d6;
+    box-shadow:0 2px 3px 0px rgba(0,0,0,0.25);
+    border-radius:3px;
+    transition:0 all; 
+  }
+  .serviceList_wrap:hover .serviceList_box{
+    filter:grayscale(20%);
+    opacity:.7;
+    transform: scale(.98);
+    box-shadow:none;
+  }
+  .serviceList_wrap:hover .serviceList_box:hover{
+    transform:scale(1);
+    filter:grayscale(0);
+    opacity:1;
+    box-shadow:0 8px 20px 0px rgba(0,0,0,0.125);
+  }
+  
+  .serviceList_Card_img{
+    max-width: 100% ;
+  }
+  
+  .serviceList_Card_title{
+    margin-top: 1em;
+  }
+  
 }
+@include sm {
 
-.serviceList_presentation{
-width: 80%;
-margin: 3% auto;
-border-bottom: #ff385c solid 1px;
-font-size: x-large;
-font-weight: 600;
-padding-bottom: 2em;
-padding-top: 1em;
+ 
 }
+@include md {
+ 
+}
+@include xl {
 
-.serviceList_box{
-  padding:25px;
-  margin:2%;
-  background:white;
-  width: 25%;
-  border:1px solid #d6d6d6;
-  box-shadow:0 2px 3px 0px rgba(0,0,0,0.25);
-  border-radius:3px;
-  transition:0 all; 
-}
-.serviceList_wrap:hover .serviceList_box{
-  filter:grayscale(20%);
-  opacity:.7;
-  transform: scale(.98);
-  box-shadow:none;
-}
-.serviceList_wrap:hover .serviceList_box:hover{
-  transform:scale(1.2);
-  filter:grayscale(0);
-  opacity:1;
-  box-shadow:0 8px 20px 0px rgba(0,0,0,0.125);
-  z-index: 1;
-}
+  .serviceList_wrap{
+    width: 90%;
+    margin: 5% auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .serviceList_presentation{
+  width: 80%;
+  margin: 3% auto;
+  border-bottom: #ff385c solid 1px;
+  font-size: x-large;
+  font-weight: 600;
+  padding-bottom: 2em;
+  padding-top: 1em;
+  }
+  
+  .serviceList_box{
+    padding:25px;
+    margin:2%;
+    background:white;
+    width: 25%;
+    border:1px solid #d6d6d6;
+    box-shadow:0 2px 3px 0px rgba(0,0,0,0.25);
+    border-radius:3px;
+    transition:0 all; 
+  }
+  .serviceList_wrap:hover .serviceList_box{
+    filter:grayscale(20%);
+    opacity:.7;
+    transform: scale(.98);
+    box-shadow:none;
+  }
+  .serviceList_wrap:hover .serviceList_box:hover{
+    transform:scale(1);
+    filter:grayscale(0);
+    opacity:1;
+    box-shadow:0 8px 20px 0px rgba(0,0,0,0.125);
+  }
+  
+  .serviceList_Card_img{
+    max-width: 100% ;
+  }
+  
+  .serviceList_Card_title{
+    margin-top: 1em;
+  }
 
-.serviceList_Card_img{
-  max-width: 100% ;
-}
-
-.serviceList_Card_title{
-  margin-top: 1em;
 }

@@ -1,66 +1,158 @@
+
+
+
 @import 'src/styles/vars';
+ 
 
-.service_detail {
+@include phone {
+  .service_detail {
 
-  margin-top: 5em;
+    margin-top: 5em;
+  
+    .service_detail_title {
+  
+      display: inline-block;
+      padding-top: 1rem;
+      font-weight: bold;
+      font-size: xx-large;
+      border-bottom: 1px solid #FF385C;
+      padding-bottom: 1rem;
+      width: 100%;
+  
+    }
+  
+    .service_detail_presentation {
+  
+      margin-top: 2em;
+      background-color: #f7f7f7;
+      padding: 1rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: large;
+      width: 100%;
+    }
+  
+  
+    .service_details_jobworker_title {
+  
+      padding-top: 2em;
+      font-size: 1.3rem;
+      padding-bottom: 0.5rem;
+      text-align: left;
+      border-bottom: #FF385C;
+      font-style: italic;
+      margin-left: 3em;
+    }
+  
+    .service_details_jobworker_card {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2em;
+      margin-left: 2em;
+    }
+  
+    .service_details_jobworker_card-item {
+  
+      padding: 1rem;
+      
+      .Jober_avatar {
+        display: none;
+      }
+  
+    }
+  
+    .service_details_link {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 90%;
+      margin: 2.5em auto;
+      font-size: larger;
+      font-weight: 700;
 
-  .service_detail_title {
-
-    display: inline-block;
-    padding-top: 1rem;
-    font-weight: bold;
-    font-size: xx-large;
-    border-bottom: 1px solid #FF385C;
-    padding-bottom: 1rem;
-    width: 60%;
-
+      .service_details_link-item {
+        padding: 1em;
+        border: black solid 1px;
+        box-shadow: 10px 5px 5px grey;
+        border-radius: 0.5em;
+        margin-bottom: 1em;
+      }
+  
+    }
   }
-
-  .service_detail_presentation {
-
-    margin-top: 2em;
-    background-color: #f7f7f7;
-    padding: 1rem;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: large;
-  }
-
-
-  .service_details_jobworker_title {
-
-    padding-top: 2em;
-    font-size: 1.3rem;
-    padding-bottom: 0.5rem;
-    text-align: left;
-    border-bottom: #FF385C;
-    font-style: italic;
-    margin-left: 3em;
-  }
-
-  .service_details_jobworker_card {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 2em;
-    margin-left: 2em;
-  }
-
-  .service_details_jobworker_card-item {
-
-    padding: 1rem;
-
-  }
-
-  .service_details_link {
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-    margin: 2.5em auto;
-    font-size: larger;
-    font-weight: 700;
-
-  }
+  
 }
+@include sm {
 
+ 
+}
+@include md {
+ 
+}
+@include xl {
 
+  .service_detail {
+
+    margin-top: 5em;
+  
+    .service_detail_title {
+  
+      display: inline-block;
+      padding-top: 1rem;
+      font-weight: bold;
+      font-size: xx-large;
+      border-bottom: 1px solid #FF385C;
+      padding-bottom: 1rem;
+      width: 60%;
+  
+    }
+  
+    .service_detail_presentation {
+  
+      margin-top: 2em;
+      background-color: #f7f7f7;
+      padding: 1rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: large;
+    }
+  
+  
+    .service_details_jobworker_title {
+  
+      padding-top: 2em;
+      font-size: 1.3rem;
+      padding-bottom: 0.5rem;
+      text-align: left;
+      border-bottom: #FF385C;
+      font-style: italic;
+      margin-left: 3em;
+    }
+  
+    .service_details_jobworker_card {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2em;
+      margin-left: 2em;
+    }
+  
+    .service_details_jobworker_card-item {
+  
+      padding: 1rem;
+  
+    }
+  
+    .service_details_link {
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      margin: 2.5em auto;
+      font-size: larger;
+      font-weight: 700;
+  
+    }
+  }
+
+}

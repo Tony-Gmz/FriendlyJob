@@ -1,6 +1,231 @@
+
+
+
 @import 'src/styles/vars';
 
-.profilFriendlyUser{
+
+  @include phone {
+   
+    .profilFriendlyUser{
+      padding: 1em;
+      background-color: #0000000f;
+      border-radius: 1em;
+  }
+  
+  .profil{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 3em;
+    margin-top: 3em;
+    background-color:  #F7F7F7;
+    border-radius: 10px;
+  }
+  
+  .profilWorkJober_title {
+    display: inline-block;
+      font-weight: bold;
+      font-size: 1.5rem;
+      border-bottom: 1px solid #FF385C;
+      padding-bottom: 1rem;
+      width: 70%;
+  
+  }
+  
+  .profil_card{
+    align-self: center;
+  }
+  
+  .profil_img{
+    border-radius: 50%;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 250px;
+    width: 250px;
+    display: flex;
+    margin-bottom: 1.5em;
+    overflow: hidden;
+  }
+  
+  .profil_information{
+    width: 70%;
+    align-self: center;
+    background-color: #F7F7F7;
+  }
+  
+  .profil_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 1em;
+    border-radius: 1em;
+  }
+  
+  .profil_input{
+    width: 90%;
+  }
+  
+  .MuiInputBase-root{
+    line-height: 0.1em !important;
+  }
+  
+  .profil_group_btn{
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .profilJobWorker_desciption {
+  
+    margin-top: 2em;
+    line-height: 2;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #FF385C;
+    padding-bottom: 1rem;
+    width: 90%;
+  
+  
+  }
+  
+  .skill_select {
+    margin-right: 2em;
+  }
+  
+  
+  .MuiFormControl-root{
+    width: 90%;
+  }
+  
+  .MuiInputBase-input {
+    line-height: 1!important;
+  }
+  
+  .form_skill {
+    margin: 0 auto;
+  
+    
+  }
+  .form_skill_content_price {
+    width: 200px;
+  }
+  
+  .form_skill_content {
+    padding-top: 2em;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .form_skill {
+    .MuiFormControl-root {
+      width: 250px;
+      margin: auto;
+    }
+    .MuiInputBase-multiline {
+      width: 250px;
+    }
+    .form_skill_icon {
+      cursor: pointer;
+    }
+  }
+  
+  .profil_title {
+    display: inline-block;
+    padding-top: 1em;
+    font-weight: bold;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #FF385C;
+    padding-bottom: 1rem;
+    width: 90%;
+  }
+  
+  .profil_card_img {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2em;
+  }
+  
+  .MuiAvatar-circle{
+    margin: auto;
+    img {
+      width: 250px;
+     height: 250px;
+    }
+    
+  }
+  
+  .jobWorker_department_select {
+    
+    margin-bottom: 2.5em;
+  }
+  
+  .form_skill_content {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFF;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+  .form_skill_input {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 2em;
+  }
+  .form_skill_button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+  .form_skill_content_price {
+    width: 60%;
+    margin: auto;
+    padding-right: 4em;
+    padding-top: 1em;
+  }
+  
+  .form_skill_content_about {
+    width: 100%;
+    margin: auto;
+    margin-right: 5em;
+  }
+  .skill_modal {
+    margin-bottom: 2em;
+  }
+  
+  .error_message_passwordConfirmation {
+    font-size: 0.7rem;
+    color: red;
+    font-style: italic;
+    font-weight: bold;
+  }
+  .form_skill_content_radio {
+    margin: auto;
+      padding-top: 1rem;
+      font-style: italic;
+      font-weight: bold;
+  }
+   
+    
+ }
+ @include sm {
+
+  }
+  @include md {
+   
+}
+@include xl {
+
+ 
+
+  .profilFriendlyUser{
     padding: 1em;
     background-color: #0000000f;
     border-radius: 1em;
@@ -179,7 +404,7 @@
 }
 
 .form_skill_content_price {
-  width: 100px;
+  width: 20%;
 }
 
 .skill_modal {
@@ -192,3 +417,13 @@
   font-style: italic;
   font-weight: bold;
 }
+.form_skill_content_radio {
+  margin: auto;
+    padding-top: 1rem;
+    font-style: italic;
+    font-weight: bold;
+}
+
+}
+
+
