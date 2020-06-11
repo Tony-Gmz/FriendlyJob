@@ -31,6 +31,7 @@ const ProfilFiendlyUser = ({
   about,
   cancelEdit,
   departmentsList,
+  editDepartment,
   submitEdit,
   editField,
   editEmail,
@@ -58,21 +59,21 @@ const ProfilFiendlyUser = ({
     // cancelEdit();
   };
   return (
-    <div className="profilFiendlyUser">
-      <div className="profilFiendlyUser_desciption">
+    <div className="profilfu">
+      <div className="profil_fu_desciption">
         Voici votre espace personnel il vous sera utile si vous voulez effectuer des changements d'informations
       </div>
-      <div className="profil">
-        <div className="profil_card_img">
-          {userAvatar && <Avatar alt="Remy Sharp" src={urlAvatar} /> }
-          {!userAvatar && <Avatar alt="Remy Sharp" src="">{whitoutAvatar(firstname)}</Avatar>}
-          <div className="profil_card_img_upload">
+      <div className="profil_fu_friendlyUser">
+        <div>
+          {userAvatar && <img className="profil_fu_card_img" alt="Remy Sharp" src={urlAvatar} /> }
+          {!userAvatar && <Avatar className="profil_fu_card_img" alt="Remy Sharp" src="">{whitoutAvatar(firstname)}</Avatar>}
+          <div className="profil_fu_card_img_upload">
             {isEditable && <UploadImg urlAvatar={urlAvatar} />}
           </div>
         </div>
         <div className="profil_information">
           <form onSubmit={handleSubmit} className="profil_form">
-            <div className="form_element">
+            <div className="form_fu_element">
               <TextField
                 className="profil_input"
                 id="outlined-name-input"
@@ -84,7 +85,7 @@ const ProfilFiendlyUser = ({
                 disabled
               />
             </div>
-            <div className="form_element">
+            <div className="form_fu_element">
               <TextField
                 className="profil_input"
                 id="outlined-firstname-input"
@@ -97,8 +98,8 @@ const ProfilFiendlyUser = ({
               />
             </div>
             {isEditable && (
-              <div className="form_element">
-                <TextField className="profil_input" id="select" onChange={handleChange} label="Departement" name="department" value="" select>
+              <div className="form_fu_element">
+                <TextField className="profil_input" id="select" onChange={handleChange} label="Departement" name="department" select>
                   {departmentsList.map((depart) => (
                     <MenuItem value={depart.id}>{depart.name}</MenuItem>
                   ))}
@@ -106,14 +107,14 @@ const ProfilFiendlyUser = ({
               </div>
             )}
             {!isEditable && (
-              <div className="form_element">
+              <div className="form_fu_element">
                 <TextField className="profil_input" id="select" label="Departement" value="" select disabled>
                   <MenuItem value={department.id}>{department.name}</MenuItem>
                 </TextField>
               </div>
             )}
             {isEditable && (
-              <div className="form_element">
+              <div className="form_fu_element">
               <Form.Input
                 className="input"
                 label="Email*"
@@ -128,7 +129,7 @@ const ProfilFiendlyUser = ({
             </div>
             )}
             {!isEditable && (
-              <div className="form_element">
+              <div className="form_fu_element">
                 <TextField
                   className="profil_input"
                   label="Email"
@@ -142,7 +143,7 @@ const ProfilFiendlyUser = ({
               </div>
             )}
             {!isEditable && (
-              <div className="form_element">
+              <div className="form_fu_element">
                 <TextField
                   className="profil_input"
                   id="outlined-firstname-input"
@@ -156,7 +157,7 @@ const ProfilFiendlyUser = ({
               </div>
             )}
             {isEditable && (
-              <div className="form_element">
+              <div className="form_fu_element">
                 <Form.Input
                   className="input"
                   label="Mot de passe*"
@@ -170,7 +171,7 @@ const ProfilFiendlyUser = ({
               </div>
             )}
             {isEditable && (
-              <div className="form_element">
+              <div className="form_fu_element">
                 <Form.Input
                   className="input"
                   label="Mot de passe*"
@@ -212,7 +213,7 @@ const ProfilFiendlyUser = ({
               <>
                 <div className="profil_group_btn">
                   {isEditable && (
-                    <Button onClick={handleCancelClick} className="profil_btn" variant="contained" color="alerte"> Annuler</Button>
+                    <Button onClick={handleCancelClick} style={{ backgroundColor: '#ff385c', color: '#FFFF' }} className="profil_btn" variant="contained" color="alerte"> Annuler</Button>
                   )}
                   {!isEditable && (
                     <Button onClick={handleClick} className="profil_btn" variant="contained" color="primary">
@@ -220,7 +221,7 @@ const ProfilFiendlyUser = ({
                     </Button>
                   )}
                   {isEditable && (
-                    <Button type="submit" className="profil_btn" variant="contained">
+                    <Button type="submit" className="profil_btn" variant="contained" color="primary">
                       Valider
                     </Button>
                   )}

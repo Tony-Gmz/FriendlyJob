@@ -1,64 +1,156 @@
 @import 'src/styles/vars';
 
-.competence {
+  @include phone {
+    .competence {
 
-  margin-top: 2em;
-  background-color: #f7f7f7;
-  padding: 1rem;
-  border-radius: 10px;
-
-  .competence_title {
-
-    padding-top: 1em;
-    font-size: 1.2rem;
-    padding-bottom: 0.5rem;
-    text-align: left;
-    border-bottom: #FF385C;
-    font-style: italic;
-
-  }
-
-  .competence_content {
-    margin-top: 2em;
-    display: flex;
-    justify-content: space-between;
-
-    .competence_price {
-      padding-left: 1em;
+      margin-top: 2em;
+      background-color: #f7f7f7;
+      padding: 1rem;
+      border-radius: 10px;
+    
+      .competence_title {
+    
+        padding-top: 1em;
+        font-size: 1.2rem;
+        padding-bottom: 0.5rem;
+        text-align: left;
+        border-bottom: #FF385C;
+        font-style: italic;
+    
+      }
+    
+      .competence_content {
+        margin-top: 2em;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        
+        .competence_name{
+          margin-top: 1em;
+        }
+        .competence_price {
+          padding-left: 1em;
+          margin-top: 1em;
+          font-style: italic;
+        }
+    
+      }
+      .message_content_comment {
+        font-weight: bold;
+        font-style: italic;
+        width: 100%;
+      }
+    
+      .competence_content_illustration {
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        justify-content: space-between;
+        align-self: center;
+      }
+    
+      .competence_img {
+    
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        margin-left: 2em;
+    
+      }
+    
+      .competence_name {
+    
+        // padding-top: 20px;
+        padding-left: 20px;
+    
+      }
+    
+      .competence_about {
+        margin-top: 1em;
+        width: 100%;
+    
+      }
     }
-
+ 
+ }
+ @include sm {
+  
+   
   }
-  .message_content_comment {
-    font-weight: bold;
-    font-style: italic;
-  }
-
-  .competence_content_illustration {
-
-    display: flex;
-    justify-content: flex-start;
-    justify-content: space-between;
-    align-self: center;
-  }
-
-  .competence_img {
-
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-
-  }
-
-  .competence_name {
-
-    // padding-top: 20px;
-    padding-left: 20px;
-
-  }
-
-  .competence_about {
-
-    width: 35%;
-
-  }
+  @include md {
+    
 }
+@include xl {
+
+  .competence {
+
+    margin-top: 2em;
+    background-color: #f7f7f7;
+    padding: 1rem;
+    border-radius: 10px;
+  
+    .competence_title {
+  
+      padding-top: 1em;
+      font-size: 1.2rem;
+      padding-bottom: 0.5rem;
+      text-align: left;
+      border-bottom: #FF385C;
+      font-style: italic;
+  
+    }
+  
+    .competence_content {
+      margin-top: 2em;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .competence_name{
+        margin-top: 1em;
+      }
+  
+      .competence_price {
+        padding-left: 1em;
+      }
+  
+    }
+    .message_content_comment {
+      font-weight: bold;
+      font-style: italic;
+    }
+  
+    .competence_content_illustration {
+  
+      display: flex;
+      justify-content: flex-start;
+      justify-content: space-between;
+      align-self: center;
+    }
+  
+    .competence_img {
+  
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+  
+    }
+  
+    .competence_name {
+  
+      // padding-top: 20px;
+      padding-left: 20px;
+  
+    }
+  
+    .competence_about {
+  
+      width: 35%;
+  
+    }
+  }
+
+}
+
