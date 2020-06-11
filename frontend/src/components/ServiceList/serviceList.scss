@@ -10,13 +10,14 @@
   }
   
   .serviceList_presentation{
-  width: 80%;
+  width: 100%;
   margin: 3% auto;
   border-bottom: #ff385c solid 1px;
   font-size: x-large;
   font-weight: 600;
   padding-bottom: 2em;
   padding-top: 1em;
+  margin-top: 1em;
   }
   
   .serviceList_box{
@@ -61,7 +62,7 @@
 @include xl {
 
   .serviceList_wrap{
-    width: 90%;
+    width: 100%;
     margin: 5% auto;
     display: flex;
     flex-wrap: wrap;
@@ -69,7 +70,7 @@
   }
   
   .serviceList_presentation{
-  width: 80%;
+  width: 100%;
   margin: 3% auto;
   border-bottom: #ff385c solid 1px;
   font-size: x-large;
@@ -79,10 +80,11 @@
   }
   
   .serviceList_box{
+    flex-basis: 20%;
     padding:25px;
     margin:2%;
     background:white;
-    width: 25%;
+    width: 20%;
     border:1px solid #d6d6d6;
     box-shadow:0 2px 3px 0px rgba(0,0,0,0.25);
     border-radius:3px;

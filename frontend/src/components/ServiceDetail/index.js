@@ -22,7 +22,7 @@ function ServiceDetail({ serviceList, getServiceName, getSixJobWorker, jobWorker
       </div>
       <div className="service_detail_presentation">{service.description}</div>
       <div className="service_details_jobworker">
-        <div className="service_details_jobworker_title">Liste des JobWorker près de chez vous</div>
+        <div className="service_details_jobworker_title">Voici quelques JobWorkers de votre Region...</div>
         <div className="service_details_jobworker_card">
           {loadingOnServiceDetail && <Loader /> }
           {!loadingOnServiceDetail && (

@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useSpring, animated, config } from 'react-spring';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import ModalConnexion from 'src/containers/ModalConnexion';
-import {Button} from 'semantic-ui-react';
 import ModalInscription from 'src/containers/ModalInscription';
 
 import Brand from './Brand';
@@ -11,6 +10,7 @@ import BurgerMenu from './BurgerMenu';
 import CollapseMenu from './CollapseMenu';
 
 import './navivi.scss';
+import 'src/styles/_vars.scss';
 
 const Navbar = (props) => {
   const barAnimation = useSpring({
@@ -34,9 +34,9 @@ const Navbar = (props) => {
           </div>
           <div className="linkForNav">
             <NavLinks style={linkAnimation}>
-              <Link to="/services">Liste de nos services</Link>
+              <NavLink exact to="/services">Liste de nos services</NavLink>
               <a href="#inscription">Devenir JobWorker</a>
-              <Link to="/contact">Qui sommes nous</Link>
+              <NavLink to="/contact">Qui sommes nous</NavLink>
             </NavLinks>
             <NavLinks className="buttonForModal">
               <ModalConnexion />
@@ -72,12 +72,12 @@ const NavBar = styled(animated.nav)`
 `;
 
 const FlexContainer = styled.div`
-  max-width: 120rem;
+  max-width: 100%;
   display: flex;
   margin: auto;
   padding: 0 2rem;;
   justify-content: space-between;
-  height: 5rem;
+  height: 4rem;
 `;
 
 const NavLinks = styled(animated.ul)`
@@ -88,16 +88,19 @@ const NavLinks = styled(animated.ul)`
   & a {
     color: #dfe6e9;
     text-transform: uppercase;
+    font-size: 1rem;
     font-weight: 600;
     border-bottom: 1px solid transparent;
     margin: 0 1.5rem;
     transition: all 300ms linear 0s;
     text-decoration: none;
     cursor: pointer;
+    }
 
-    &:hover {
-      color: #fdcb6e;
-      border-bottom: 1px solid #fdcb6e;
+
+     a.active{
+      color: #80c5b9;
+      border-bottom: 1px solid #FF385C;
     }
 
     @media (max-width: 768px) {

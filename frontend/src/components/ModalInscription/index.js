@@ -146,8 +146,8 @@ const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValu
               </RadioGroup>
             </div>
             <div className="div_submit">
-              <button className="submit_btn" type="submit">S'inscrire</button>
               <a href="#"><button type="button" className="cancel_btn">Annuler</button></a>
+              <button className="submit_btn" type="submit">S'inscrire</button>
             </div>
           </form>
           <a href="#" className="close_btn">close</a>

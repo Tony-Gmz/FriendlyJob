@@ -34,7 +34,7 @@ const Presentation = ({ serviceList, fieldService, serviceSelected }) => {
   return (
     <div className="presentation">
       <h2 className="presentation_title">FriendlyJob oui ! Mais pourquoi faire ?</h2>
-      <p className="presentation_content">Vous avez besoin d'un jardinier, informaticien ou de faire garder votre enfant ? Friendlyjob et des centaines de JobWorker sont là pour vous. C'est très simple, trouver un service qui correspond à vos attentes, selectionner le JobWorkers de votre choix et reservez !
+      <p className="presentation_content">Vous avez besoin d'un jardinier, d'un informaticien ou bien de faire garder votre enfant ? Friendlyjob et des centaines de JobWorker sont là pour vous. C'est très simple, trouver un service qui correspond à vos attentes, selectionner le JobWorkers de votre choix et reservez !
       </p>
       <div className="presentation_input">
         <form onSubmit={handleSubmit} action="">

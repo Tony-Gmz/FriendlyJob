@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import ModalConnexion from 'src/containers/ModalConnexion';
+import ModalInscription from 'src/containers/ModalInscription';
 
 import { useSpring, animated } from 'react-spring';
 
@@ -21,6 +23,10 @@ const CollapseMenu = (props) => {
           <a href="#inscription">Devenir JobWorker</a>
           <Link to="/contact">Contact</Link>
         </NavLinks>
+        <NavLinks>
+          <ModalConnexion />
+          <ModalInscription />
+        </NavLinks>
       </CollapseWrapper>
     );
   }
@@ -32,14 +38,15 @@ export default CollapseMenu;
 const CollapseWrapper = styled(animated.div)`
   background: #2d3436;
   position: fixed;
-  top: 4.5rem;
   left: 0;
   right: 0;
+  z-index: 1;
 `;
 
 const NavLinks = styled.ul`
   list-style-type: none;
   padding: 2rem 1rem 2rem 2rem;
+  display: grid;
 
   & li {
     transition: all 300ms linear 0s;
@@ -57,5 +64,7 @@ const NavLinks = styled.ul`
       color: #fdcb6e;
       border-bottom: 1px solid #fdcb6e;
     }
+
+   
   }
 `;

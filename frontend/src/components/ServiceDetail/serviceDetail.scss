@@ -38,10 +38,9 @@
       padding-top: 2em;
       font-size: 1.3rem;
       padding-bottom: 0.5rem;
-      text-align: left;
+      text-align: center;
       border-bottom: #FF385C;
       font-style: italic;
-      margin-left: 3em;
     }
   
     .service_details_jobworker_card {
@@ -124,10 +123,9 @@
       padding-top: 2em;
       font-size: 1.3rem;
       padding-bottom: 0.5rem;
-      text-align: left;
+      text-align: center;
       border-bottom: #FF385C;
       font-style: italic;
-      margin-left: 3em;
     }
   
     .service_details_jobworker_card {
@@ -141,17 +139,44 @@
     .service_details_jobworker_card-item {
   
       padding: 1rem;
-  
+      width: 20%;
+      flex-basis: 33%;
+    
+      
+      .Jober_avatar {
+        display: unset;
+      }
     }
   
     .service_details_link {
       display: flex;
+      flex-direction: row;
       justify-content: space-between;
       width: 90%;
       margin: 2.5em auto;
       font-size: larger;
       font-weight: 700;
   
+      .service_details_link-item {
+        padding: 1em;
+        border: black solid 1px;
+        box-shadow: 10px 5px 5px grey;
+        border-radius: 0.5em;
+        margin-bottom: 1em;
+
+      
+      &:hover{
+        padding: 1em;
+        border: black solid 1px;
+        box-shadow: 5px 2.5px 2.5px grey;
+        border-radius: 0.5em;
+        margin-bottom: 1em;
+        background-color: rgba(211, 211, 211, 0.253);
+        color: black;
+        text-decoration: none;
+      }
+      }
+
     }
   }
 

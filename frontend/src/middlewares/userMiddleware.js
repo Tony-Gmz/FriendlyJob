@@ -129,7 +129,7 @@ const userMiddleware = (store) => (next) => (action) => {
       const serviceId = Number(findService.id);
       // console.log(serviceId);
 
-      axios.get(`http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/services/${serviceId}/jobworker?limit=4`)
+      axios.get(`http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/services/${serviceId}/jobworker?limit=6`)
         .then((response) => {
           // console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action

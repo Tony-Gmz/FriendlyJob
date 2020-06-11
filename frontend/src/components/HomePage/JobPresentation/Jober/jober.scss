@@ -1,41 +1,89 @@
-.jober {
-  display: flex;
-}
-.Jober_avatar {
+@import 'src/styles/vars';
 
-  padding-top: 3em;
-  .MuiAvatar-root {
-    width: 90px;
-    height: 90px;
+@include phone{
+  .jober {
+    display: flex;
+  }
+  .Jober_avatar {
+  
+    padding-top: 3em;
+    .MuiAvatar-root {
+      width: 90px;
+      height: 90px;
+    }
+  }
+  
+  .Jober_card {
+  
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  
+    .content {
+      font-style: italic;
+    }
+  
+    
+  }
+  
+   .MuiAvatar-root {
+   
+    position: unset !important;
+  }
+  
+  .card {
+    
+    position: unset !important;
+  }
+  .jober_card_detail{
+    width: 80%!important;
+    margin-top: 1em!important;
+    margin-bottom: 1em!important;
+    margin-left: auto!important;
+    margin-right: auto!important;
   }
 }
+    @include xl{
+      .jober {
+      display: flex;
+    }
+    .Jober_avatar {
 
-.Jober_card {
+      padding-top: 3em;
+      .MuiAvatar-root {
+        width: 90px;
+        height: 90px;
+      }
+    }
 
-  display: flex;
-  flex-direction: column;
-  margin: auto;
+    .Jober_card {
 
-  .content {
-    font-style: italic;
-  }
+      display: flex;
+      flex-direction: column;
+      margin: auto;
 
-  
-}
+      .content {
+        font-style: italic;
+      }
 
- .MuiAvatar-root {
- 
-  position: unset !important;
-}
+      
+    }
 
-.card {
-  
-  position: unset !important;
-}
-.jober_card_detail{
-  width: 50%!important;
-  margin-top: 1em!important;
-  margin-bottom: 1em!important;
-  margin-left: auto!important;
-  margin-right: auto!important;
-}
+    .MuiAvatar-root {
+    
+      position: unset !important;
+    }
+
+    .card {
+      
+      position: unset !important;
+    }
+    .jober_card_detail{
+      width: 50%!important;
+      margin-top: 1em!important;
+      margin-bottom: 1em!important;
+      margin-left: auto!important;
+      margin-right: auto!important;
+    }
+
+    }

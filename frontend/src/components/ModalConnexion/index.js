@@ -66,8 +66,8 @@ const ModalConnexion = ({ changeField, submitLoggin, connexionError }) => {
               </div>
             )}
             <div className="div_submit">
+              <a href="#"><button type="button" className="cancel_btn">Annuler</button></a>
               <button className="submit_btn" type="submit">Connexion</button>
-              <button className="cancel_btn" type="submit">Annuler</button>
             </div>
           </form>
           <a href="#" className="close_btn">close</a>
