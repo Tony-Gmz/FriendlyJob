@@ -152,9 +152,11 @@
 
 .message_success {
   background-color: green($color: #FFFF);
+  color: #000000;
   .message_connexion {
     font-weight: bold;
     font-style: italic;
+    border-bottom: 1px solid  #FF385C;
   }
 }
 

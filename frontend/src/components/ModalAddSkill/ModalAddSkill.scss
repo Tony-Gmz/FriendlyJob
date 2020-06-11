@@ -23,7 +23,7 @@
     .modalAddSkill_select {
     padding-top: 1.5em;
     margin: 0 auto!important;
-    width: 80%
+    width: 70%
     
     }
     
@@ -32,6 +32,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    .modalAddSkill_select {
+      padding-top: 1.5em;
+      margin: 0 auto!important;
+      width: 70%
+      
+      }
     }
     
     .modalSkill_input_content {
@@ -42,23 +48,25 @@
     padding-top: 1em;
     
     .form_skill_content_price {
-      margin-right: 3em!important;
+     
     }
     
     .MuiFormControl-root {
       width:80%;
     }
-    }
+    .form_skill_content_price {
+      align-self: center;
+      }
     .form_skill_content_about {
-      padding-top: 1em;
-      width: 100%;
-      margin: auto;
-      padding-left: 4em;
+        padding-top: 2em;
+        width: 100%;
+        margin: auto;
+        padding-left: 4em;
+      }
     }
     
-    .form_skill_content_price {
-    align-self: center;
-    }
+    
+    
     
     .modalAddSkill_submit_button {
     padding-top: 2em;

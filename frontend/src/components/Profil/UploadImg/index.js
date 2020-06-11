@@ -1,4 +1,6 @@
 import React from 'react';
+import { Button, Icon } from 'semantic-ui-react'
+import './uploadImg.scss';
 
 const UploadImg = ({ getUrlAvatar, subitAvatar }) => {
   const handleAvatarChange = (evt) => {
@@ -14,12 +16,17 @@ const UploadImg = ({ getUrlAvatar, subitAvatar }) => {
   return (
     <form onSubmit={handleSubmit}>
        <input
-        id="contained-button-file"
+        id="file"
         type="file"
         name="file"
         onChange={handleAvatarChange}
       />
-      <button type="submit">send</button>
+      <Button className="button_file" animated='vertical'>
+      <Button.Content className="button_file_content" hidden>Envoyer</Button.Content>
+      <Button.Content className="button_file_content" visible>
+        <Icon name='camera' />
+      </Button.Content>
+    </Button>
     </form>
   );
 };
