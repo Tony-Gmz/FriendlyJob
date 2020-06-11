@@ -87,9 +87,9 @@ const ProfilJobWorker = ({
       <div className="profil">
         <div className="profil_card">
           <div className="profil_title">{firstname}</div>
-          <div className="profil_card_img">
-            {userAvatar && <Avatar alt="Remy Sharp" src={urlAvatar} /> }
-            {!userAvatar && <Avatar alt="Remy Sharp" src="">{whitoutAvatar(firstname)}</Avatar>}
+          <div>
+            {userAvatar && <img className="profil_card_img" alt="Remy Sharp" src={urlAvatar} /> }
+            {!userAvatar && <Avatar className="profil_card_img" alt="Remy Sharp" src="">{whitoutAvatar(firstname)}</Avatar>}
             <div className="profil_card_img_upload">
               {isEditable && <UploadImg urlAvatar={urlAvatar} />}
             </div>
