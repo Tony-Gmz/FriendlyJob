@@ -31,7 +31,7 @@ const RequestAccepteFU = ({ request, submitFinishRequest, getCommentId}) => {
           </Card.Description>
         </div>
       </Card.Content>
-      <div className="request_Status">{request.status}</div>
+      <div className="request_Status"><i class="check circle icon"/> {request.status}</div>
       <Card.Content extra>
         <div className="buttons">
           <Button className="approve_Button">

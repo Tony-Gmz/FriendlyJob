@@ -30,12 +30,8 @@ const RequestWaitFU = ({ getRequest, request }) => {
       <div className="request_Status">{request.status}</div>
       <Card.Content extra>
         <div className="buttons">
-          <Button className="approve_Button">
-            <ModalEditRequest request={request} getRequest={getRequest} />
-          </Button>
-          <Button className="decline_Button">
-            <ModalCancelRequest request={request} getRequest={getRequest} />
-          </Button>
+          <ModalEditRequest request={request} getRequest={getRequest} />
+          <ModalCancelRequest request={request} getRequest={getRequest} />
         </div>
       </Card.Content>
     </Card>

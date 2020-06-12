@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'semantic-ui-react';
+import { Card, Button } from 'semantic-ui-react';
 import { changeHourFormat, changeDateFormat } from 'src/utils';
 
 // == Composant
@@ -37,9 +37,9 @@ const RequestRefuseFU = ({ request, getCommentId, submitDeleteRequest }) => {
         <div className="refuse_texte">
           Nous Sommes désolé mais le WorkJober a refusé votre demande.
         </div>
-        <button type="button" className="button_delete_request" onClick={handleClick}>
+        <Button type="button" className="button_delete_request" onClick={handleClick}>
           supprimer
-        </button>
+        </Button>
       </Card.Content>
     </Card>
   );
