@@ -14,10 +14,12 @@ import '../request.scss';
 
 
 // == Composant
-const Request = ({ requestSelected, getRequest, requestList, submitDeleteRequest, submitFinishRequest, getCommentId  }) => {
+const Request = ({ toggle, requestSelected, getRequest, requestList, submitDeleteRequest, submitFinishRequest, getCommentId  }) => {
+
+
   useEffect(() => {
     getRequest();
-  }, [requestSelected]);
+  }, [toggle]);
 
 
   if (requestSelected === null) {
