@@ -14,29 +14,57 @@ import '../request.scss';
 
 
 // == Composant
-const Request = ({ getRequest, requestList, submitDeleteRequest, submitFinishRequest, getCommentId  }) => {
-  console.log(requestList);
-  return (
-    <>
-      {requestList.map((request) => {
-        switch (request.status) {
-          case 'Acceptée':
-            return <RequestAccepteFU request={request} submitFinishRequest={submitFinishRequest} getCommentId={getCommentId} />;
-          case 'Refusée':
-            return <RequestRefuseFU request={request} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />;
-          case 'En attente':
-            return <RequestWaitFU request={request} getRequest={getRequest} />;
-          case 'Terminée':
-            return <RequestFinishFU request={request} />;
-          case 'Annulée':
-            return <RequestCancelFU request={request} />;
+const Request = ({ requestSelected, getRequest, requestList, submitDeleteRequest, submitFinishRequest, getCommentId  }) => {
+  useEffect(() => {
+    getRequest();
+  }, [requestSelected]);
 
-          default:
-            return null;
-        }
-      })}
-    </>
-  );
+
+  if (requestSelected === null) {
+    return (
+      <>
+        {requestList.map((request) => {
+          switch (request.status) {
+            case 'Acceptée':
+              return <RequestAccepteFU request={request} submitFinishRequest={submitFinishRequest} getCommentId={getCommentId} />;
+            case 'Refusée':
+              return <RequestRefuseFU request={request} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />;
+            case 'En attente':
+              return <RequestWaitFU request={request} getRequest={getRequest} />;
+            case 'Terminée':
+              return <RequestFinishFU request={request} />;
+            case 'Annulée':
+              return <RequestCancelFU request={request} />;
+
+            default:
+              return null;
+          }
+        })}
+      </>
+    );
+  } if (requestSelected !== null) {
+    return (
+      <>
+        {requestSelected.map((request)=> {
+          switch (request.status) {
+            case 'Acceptée':
+              return <RequestAccepteFU request={request} submitFinishRequest={submitFinishRequest} getCommentId={getCommentId} />;
+            case 'Refusée':
+              return <RequestRefuseFU request={request} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />;
+            case 'En attente':
+              return <RequestWaitFU request={request} getRequest={getRequest} />;
+            case 'Terminée':
+              return <RequestFinishFU request={request} />;
+            case 'Annulée':
+              return <RequestCancelFU request={request} />;
+
+            default:
+              return null;
+          }
+        })}
+      </>
+    );
+  }
 };
 
 
