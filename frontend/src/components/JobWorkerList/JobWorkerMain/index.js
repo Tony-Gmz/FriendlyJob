@@ -92,7 +92,7 @@ const JobWorkerMain = ({ jobWorkers, getServiceName }) => {
         )}
           
       </div>
-       {console.log(UserRating)}
+
     </div>
   );
  
