@@ -26,7 +26,7 @@ const JobWorkerMain = ({ jobWorkers, getServiceName }) => {
         {jobWorkers.map((jobWorker) => {
           const id = jobWorker.user.id;
           const userAvatar = jobWorker.user.image;
-          let userRating = jobWorker.user.jobWorkerDemands[0];
+          let userRating = jobWorker.user.jobWorkerDemands;
           console.log(userRating.rating);
           userRating = userRating.rating;
           return (
