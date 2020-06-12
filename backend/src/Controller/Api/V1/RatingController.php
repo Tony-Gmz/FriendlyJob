@@ -104,7 +104,7 @@ class RatingController extends AbstractController
             // If the demand exist, we set the demand
             $rating->setDemand($demand);
 
-            // We call the RatingVoter
+            // We call the RatingVoter for authorizations
             $this->denyAccessUnlessGranted('ADD', $rating);
             
             // We retrieve the returned errors by the validator
