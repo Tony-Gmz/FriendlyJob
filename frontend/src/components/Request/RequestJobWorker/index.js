@@ -20,7 +20,7 @@ const Request = ({ getRequest, requestList, submitAccepteRequest, submitDeleteRe
       {requestList.map((request) => {
         switch (request.status) {
           case 'Acceptée':
-            return <RequestAccepte request={request} />;
+          return <RequestAccepte request={request} />;
           case 'Refusée':
             return <RequestRefuse request={request} />;
           case 'En attente':

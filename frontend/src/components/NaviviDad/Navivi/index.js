@@ -83,7 +83,7 @@ const Navbar = ({isOpen, handleNavbar, isLogged, logOut}) => {
                 <NavLink to="/demandes">Mes demandes</NavLink>
               </NavLinks>
               <NavLinks className="buttonForModal">
-                <NavLink to="/"><Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }} onClick={handleClick}>Deconnexion</Button></NavLink>
+                <NavLink style={{ borderBottom: 'none' }} to="/"><Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }} onClick={handleClick}>Deconnexion</Button></NavLink>
               </NavLinks>
             </div>
             <BurgerWrapper>
