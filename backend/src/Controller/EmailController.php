@@ -11,6 +11,7 @@ class EmailController extends AbstractController
     
     /**
      * @Route("/confirmation", name="confirm_email", methods={"GET"})
+     * This method is used to confirm a user's email address
      */
     public function confirmEmail(CheckEmailRepository $checkEmailRepository)
     {

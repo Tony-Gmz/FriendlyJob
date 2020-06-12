@@ -9,11 +9,11 @@ class DocumentationController extends AbstractController
 {
     /**
      * @Route("/", name="documentation")
+     * This method is used to display the back office home page
      */
     public function homepage()
     {
-        return $this->render('documentation/index.html.twig', [
-            'controller_name' => 'DocumentationController',
-        ]);
+        // We render our twig view
+        return $this->render('documentation/index.html.twig');
     }
 }

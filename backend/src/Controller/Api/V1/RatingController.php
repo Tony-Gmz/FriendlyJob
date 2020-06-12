@@ -63,31 +63,37 @@ class RatingController extends AbstractController
      *      @OA\Property(property="demand", type="integer"),
      *     )
      * )
+     * This method is used in order to add a Rating
      * @Route("", name="add", methods={"POST"})
      */
     public function add(Request $request, DemandRepository $demandRepository, ValidatorInterface $validator)
     {   
 
-        //! Try Catch pour un json MalFormé
+        // This "try-catch" is used to catch the ErrorException
         try {
+            // We decode the content data of the Request object
             $jsonData = json_decode($request->getContent());
 
+            // We create a new instance of the Rating class
             $rating = new Rating();
 
+            // We set the comment
             $rating->setComment($jsonData->comment);
 
-            //! Regex pour vérifier que star soit un int
+            // We verify that the star property is an integer
             if ( ! preg_match('/^\d+$/', $jsonData->star) ) {
                 return $this->json([
                     'statut' => 404,
                     'message' => "Property star need to be an integer"
                 ], 404);
               }
+            // After the treatment, if the star is an integer, we set the star
             $rating->setStar($jsonData->star);
 
+            // We retrieve the demand by using his id
             $demand = $demandRepository->find($jsonData->demand);
 
-            //! Gérer demande inexistante 404
+            // If the demand is non existent, we are sending a 404 JSON error message
             if ($demand == null)
             {
                 return $this->json([
@@ -95,21 +101,26 @@ class RatingController extends AbstractController
                     'message' => "Adding a comment is impossible for a non-existent demand"
                 ], 404);
             }
+            // If the demand exist, we set the demand
             $rating->setDemand($demand);
 
-            //! Voter
+            // We call the RatingVoter
             $this->denyAccessUnlessGranted('ADD', $rating);
             
-            //! Validator
+            // We retrieve the returned errors by the validator
+            // If the validator catches errors, we return a 400 JSON error message
             $errors = $validator->validate($rating);
-            
             if (count($errors) > 0) {
                 return $this->json($errors, 400);
             }
 
+            // We call the EntityManagerInterface to persist the valid data
             $em = $this->getDoctrine()->getManager();
             $em->persist($rating);
-            //! Gestion d'un commentaire unique
+            // This "try-catch" is used to catch the UniqueConstraintViolationException
+            // because a demand can only have one rating
+            // If we pass the condition, we flush datas to the database
+            // If we don't pass the condition, we return a 404 JSON error message
             try {
                 $em->flush();
              }
@@ -120,6 +131,7 @@ class RatingController extends AbstractController
                 ], 404);
              }
 
+            // Once the datas are persist and flush, we return a JSON create message
             return $this->json(
                 $rating,
                 201,
@@ -127,6 +139,7 @@ class RatingController extends AbstractController
                 ['groups' => 'rating_add']
             );
         }
+        // If the try at the beginning fails at some point, we return a JSON bad request message
         catch (ErrorException $e) {
             return $this->json([
                 'status' => 400,

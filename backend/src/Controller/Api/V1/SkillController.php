@@ -53,6 +53,7 @@ class SkillController extends AbstractController
      *      @OA\Property(property="service", type="integer"),
      *     )
      * )
+     * This method is used in order to add a Skill
      * @Route("", name="add", methods={"POST"})
      */
     public function add(Request $request, UserRepository $userRepository, ServiceRepository $serviceRepository, ValidatorInterface $validator)

@@ -24,9 +24,7 @@ class Email
     {
         $email = (new TemplatedEmail())
             ->from('friendlyjob.services@gmail.com')
-            //! a décommenter
-            //->to($user->getEmail())
-            ->to('friendlyjob.services@gmail.com')
+            ->to($user->getEmail())
             ->subject('Confirmation de votre inscription')
             ->htmlTemplate('email/signup.html.twig')
             ->context([

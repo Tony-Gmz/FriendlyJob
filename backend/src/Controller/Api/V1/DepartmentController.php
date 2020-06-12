@@ -21,12 +21,15 @@ class DepartmentController extends AbstractController
      *     description="Return the list of the departments",
      *     @Model(type=Department::class, groups={"department_browse"})
      * )
+     * This method is used in order to list all the departments
      * @Route("", name="browse", methods={"GET"})
      */
     public function browse(DepartmentRepository $departmentRepository)
     {
+        // We search for all the departments data thanks to the Repository
        $departments = $departmentRepository->findAll();
 
+        // We return the retrieve data in JSON format with a 200 status code
         return $this->json(
 
             $departments, 
