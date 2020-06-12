@@ -16,6 +16,7 @@ import {
   IS_REQUEST_REFUSE,
   CLEAR_REFUSE,
   REQUEST_SORT_SELECTED,
+  GET_REQUEST_SELECTED_NAME,
 } from '../action/requestAction';
 
 const initialState = {
@@ -33,6 +34,7 @@ const initialState = {
   isSend: false,
   isRefuse: false,
   requestSelected: null,
+  requestSelectedName: null,
 
 };
 
@@ -42,6 +44,12 @@ const requestReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         requestList: action.newRequest,
+      };
+
+    case GET_REQUEST_SELECTED_NAME:
+      return {
+        ...state,
+        requestSelectedName: action.newName,
       };
 
     case REQUEST_SORT_SELECTED:
