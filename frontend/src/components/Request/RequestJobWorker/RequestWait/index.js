@@ -15,7 +15,7 @@ const RequestWait = ({ request, submitAccepteRequest, getCommentId  }) => {
     submitAccepteRequest();
   };
   return (
-    <Card className="request_Card">
+    <Card className="request_Card_wait">
       <Card.Content className="request_Content">
         <div className="request_LeftSide">
           <Card.Header>{request.friendlyUser.firstname}</Card.Header>
@@ -37,9 +37,7 @@ const RequestWait = ({ request, submitAccepteRequest, getCommentId  }) => {
           <Button onClick={handleClick} className="approve_Button">
             Accepter
           </Button>
-          <Button className="decline_Button">
             <ModalRefuseRequest request={request} />
-          </Button>
         </div>
       </Card.Content>
     </Card>
