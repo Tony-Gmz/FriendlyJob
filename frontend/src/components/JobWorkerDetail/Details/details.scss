@@ -1,175 +1,240 @@
 @import 'src/styles/vars';
 
-.detail {
-
-  margin-top: 5em;
-
   @include phone {
+ 
+    .detail {
+
+      margin-top: 5em;
     
-    margin: auto;
-   
-   }
-
-  .detail_title {
-    display: inline-block;
-    padding-top: 1rem;
-    font-weight: bold;
-    font-size: 1.5rem;
-    border-bottom: 1px solid #FF385C;
-    padding-bottom: 1rem;
-    width: 400px;
-
-    @include phone {
-      text-align: center;
-      width: 100%;
-     
-     }
-
-
-  }
-
-  .detail_content {
-
-    margin-top: 4em;
-    display: flex;
-    flex-direction: row;
-    @include phone {
+      .detail_title {
+        display: inline-block;
+        padding-top: 1rem;
+        font-weight: bold;
+        font-size: 1.5rem;
+        border-bottom: 1px solid #FF385C;
+        padding-bottom: 1rem;
+        width: 400px;
     
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      margin: auto;
-     
-     }
-     @include sm {
-     
-      display: flex;
-      flex-direction: column;
-       
-   }
-   @include md {
-    margin-top: 4em;
-    display: flex;
-    flex-direction: row;
-   
-   }
     
-
-  }
-  .detail_content_card {
-
-    width: 40%;
-    display: flex;
-    flex-direction: row;
-  }
-
-  .detail_content_about {
-
-    margin-left: 2em;
-    background-color: #f7f7f7;
-    padding: 1rem 2rem 0 2rem;
-    border-radius: 10px;
-    text-align: left;
-    width: 55%;
-    @include phone {
-     /*  margin-top: 20px;
-      margin-left: 20px;
-      width: 100%;
-      text-align: center; */
-     
-     }
-     @include sm {
-     
-     /*  margin-top: 20px;
-      margin-left: 20px;
-      width: 100%;
-      text-align: center; */
-       
-   }
-   @include md {
     
-    /* margin-left: 2em;
-    background-color: #f7f7f7;
-    padding: 1rem 2rem 0 2rem;
-    border-radius: 10px;
-    text-align: left; */
-   
-   }
-    &-title {
-      
-      @include phone {
+      }
     
-        text-align: center;
+      .detail_content {
+    
+        margin-top: 4em;
+        display: flex;
+        flex-direction: column;
+        
+      }
+      .detail_content_card {
+    
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+      }
+    
+      .detail_content_about {
+        
+        margin-top: 1em;
+        background-color: #f7f7f7;
+        padding: 1rem 2rem 0 2rem;
+        border-radius: 10px;
+        text-align: left;
+        width: 100%;
+        padding-bottom: 2em;
+
+        &-title {
+          
+          
+          font-size: 1.3rem;
+          border: #FF385C;
+          text-align: left;
+          padding-bottom: 1em;
+         
+        }
        
        }
-       @include sm {
-     
-        text-align: center;
-     }
-     @include md {
       
-      font-size: 1.3rem;
-      border: #FF385C;
-      text-align: left;
+      }
+      .detail_reservation {
+    
+        margin-top: 2em;
+      }
+    
+    .joberService {
+      display: flex;
+    }
+    .Jober_avatar {
+      align-self: center;
+      display: none;
+      .MuiAvatar-root {
+        width: 90px;
+        height: 90px;
+      }
+    }
+    
+    .Jober_card {
+    
+     
+      margin-left: 1em;
+    
+      .content {
+        font-style: italic;
+      }
+    
+      
+    }
+     .MuiAvatar-root {
+     
+      position: unset !important;
+      
+    }
+    
+    .card {
+      
+      position: unset !important;
+      margin: auto;
+    }
+    
+    .detail_reservation_message {
+      display: flex;
+      flex-direction: row;
+    
+    
+      .ui {
+        margin: 0 auto;
+        border-radius: 10px;
+      }
+    
+      .message_reservation_link {
+        font-weight: bold;
+        font-style: italic;
+      }
+      .reservation_message content {
+        padding-top: 2rem;
+      }
+    }
+    
+ }
+ @include sm {
+
+   
+  }
+  @include md {
+  
+}
+@include xl {
+
+  .detail {
+
+    margin-top: 5em;
+  
+    .detail_title {
+      display: inline-block;
+      padding-top: 1rem;
+      font-weight: bold;
+      font-size: 1.5rem;
+      border-bottom: 1px solid #FF385C;
       padding-bottom: 1rem;
+      width: 400px;
+  
+  
+  
+    }
+  
+    .detail_content {
+  
+      margin-top: 4em;
+      display: flex;
+      flex-direction: row;
+      
+    }
+    .detail_content_card {
+  
+      width: 40%;
+      display: flex;
+      flex-direction: row;
+    }
+  
+    .detail_content_about {
+  
+      margin-left: 2em;
+      background-color: #f7f7f7;
+      padding: 1rem 2rem 0 2rem;
+      border-radius: 10px;
+      text-align: left;
+      width: 55%;
+      &-title {
+        
+        
+        font-size: 1.3rem;
+        border: #FF385C;
+        text-align: left;
+        padding-bottom: 1em;
+       
+      }
      
      }
+    
+    }
+    .detail_reservation {
+  
+      margin-top: 2em;
+    }
+  
+  .joberService {
+    display: flex;
+  }
+  .Jober_avatar {
+    align-self: center;
+    display: unset;
+    .MuiAvatar-root {
+      width: 90px;
+      height: 90px;
     }
   }
-  .detail_reservation {
-
-    margin-top: 2em;
-  }
-}
-
-.joberService {
-  display: flex;
-}
-.Jober_avatar {
-  align-self: center;
-  .MuiAvatar-root {
-    width: 90px;
-    height: 90px;
-  }
-}
-
-.Jober_card {
-
- 
-  margin-left: 1em;
-
-  .content {
-    font-style: italic;
-  }
-
   
-}
-
- .MuiAvatar-root {
- 
-  position: unset !important;
-}
-
-.card {
+  .Jober_card {
   
-  position: unset !important;
+   
+    margin-left: 1em;
+  
+    .content {
+      font-style: italic;
+    }
+  
+    
+  }
+  
+   .MuiAvatar-root {
+   
+    position: unset !important;
+  }
+  
+  .card {
+    
+    position: unset !important;
+  }
+  
+  .detail_reservation_message {
+    display: flex;
+    flex-direction: row;
+  
+  
+    .ui {
+      margin: 0 auto;
+      border-radius: 10px;
+    }
+  
+    .message_reservation_link {
+      font-weight: bold;
+      font-style: italic;
+    }
+    .reservation_message content {
+      padding-top: 2rem;
+    }
+  }
+
 }
 
-.detail_reservation_message {
-  display: flex;
-  flex-direction: row;
 
-
-  .ui {
-    margin: 0 auto;
-    border-radius: 10px;
-  }
-
-  .message_reservation_link {
-    font-weight: bold;
-    font-style: italic;
-  }
-  .reservation_message content {
-    padding-top: 2rem;
-  }
-}

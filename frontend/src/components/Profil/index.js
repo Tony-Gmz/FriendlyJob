@@ -26,6 +26,7 @@ const Profil = ({
   selectedSkillDescription,
   urlAvatar,
   toggle,
+  editDepartment,
 }) => {
 
   /* useEffect(() => {
@@ -52,6 +53,7 @@ const Profil = ({
             isEdited={isEdited}
             editAbout={editAbout}
             urlAvatar={urlAvatar}
+            editDepartment={editDepartment}
           />
         )
         : (
@@ -78,6 +80,7 @@ const Profil = ({
             selectedSkillDescription={selectedSkillDescription}
             getNewSkillValue={getNewSkillValue}
             urlAvatar={urlAvatar}
+            editDepartment={editDepartment}
           />
         )}
     </>

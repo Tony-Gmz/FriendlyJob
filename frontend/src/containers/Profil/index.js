@@ -20,6 +20,7 @@ const mapStateToProps = (state) => ({
   selectedSkillDescription: state.user.selectedSkillDescription,
   urlAvatar: state.user.urlAvatar,
   toggle: state.request.toggle,
+  editDepartment: state.user.editDepartment,
 
   // roles: state.user.userData.roles[0],
 });

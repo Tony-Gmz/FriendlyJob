@@ -1,73 +1,162 @@
 @import 'src/styles/vars';
 
-.evaluation {
 
-  margin-top: 2em;
-  
-  padding: 1rem;
-  background-color: #FBFBEF;
-  border-radius: 10px;
+@include phone {
+   
+  .evaluation {
 
-  .evaluation_title {
-    padding-top: 1em;
-    font-size: 1.2rem;
-    padding-bottom: 0.5rem;
-    text-align: left;
-    border-bottom: #FF385C;
-    font-style: italic;
-  }
-  .evalutation_content {
-    display: flex;
-    flex-direction: row;
-  }
-  .evalutation_content_author {
-    display: flex;
-    flex-direction: row;
-    align-self: center;
-  }
-  .evaluation_content_firstname {
-    
-    padding-left: 1em;
-    padding-right: 3em;
-    padding-top: 1rem;
-  }
-
-  .evaluation_note {
     margin-top: 2em;
-
-  }
-
-  .evaluation_message{
-
     
-    background-color: #f7f7f7;
-    width: 40%;
+    padding: 1rem;
+    background-color: #FBFBEF;
+    border-radius: 10px;
+  
+    .evaluation_title {
+      padding-top: 1em;
+      font-size: 1.2rem;
+      padding-bottom: 0.5rem;
+      text-align: left;
+      border-bottom: #FF385C;
+      font-style: italic;
+    }
+    .evalutation_content {
+      display: flex;
+      flex-direction: column;
+    }
+    .evalutation_content_author {
+      display: flex;
+      flex-direction: row;
+      align-self: center;
+    }
+    .evaluation_content_firstname {
+      
+      padding-left: 1em;
+      padding-right: 3em;
+      padding-top: 1rem;
+    }
+  
+    .evaluation_note {
+      margin-top: 2em;
+  
+    }
+  
+    .evaluation_message{
+  
+      
+      background-color: #f7f7f7;
+      width: 100%;
+    }
+    .evaluation_message {
+      padding-bottom: 3em;
+      margin-top: 2em;
+    }
+    .message_content {
+     
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around
+  
+    }
+  
+  
+    .message_content_rating {
+  
+      padding-bottom: 1.5em;
+     
+    }
+  
+    .evaluation_see_more{
+  
+      text-align: left;
+      font-style: italic;
+  
+    }
+  
+  }
+  
     
-
-  }
-  .evaluation_message {
-    padding-bottom: 3em;
-  }
-  .message_content {
-   
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around
-
-  }
-
-
-  .message_content_rating {
-
-    padding-bottom: 1.5em;
+ }
+ @include sm {
+  
    
   }
+  @include md {
+  
+}
+@include xl {
 
-  .evaluation_see_more{
+  .evaluation {
 
-    text-align: left;
-    font-style: italic;
-
+    margin-top: 2em;
+    
+    padding: 1rem;
+    background-color: #FBFBEF;
+    border-radius: 10px;
+  
+    .evaluation_title {
+      padding-top: 1em;
+      font-size: 1.2rem;
+      padding-bottom: 0.5rem;
+      text-align: left;
+      border-bottom: #FF385C;
+      font-style: italic;
+    }
+    .evalutation_content {
+      display: flex;
+      flex-direction: row;
+    }
+    .evalutation_content_author {
+      display: flex;
+      flex-direction: row;
+      align-self: center;
+    }
+    .evaluation_content_firstname {
+      
+      padding-left: 1em;
+      padding-right: 3em;
+      padding-top: 1rem;
+    }
+  
+    .evaluation_note {
+      margin-top: 2em;
+  
+    }
+  
+    .evaluation_message{
+  
+      
+      background-color: #f7f7f7;
+      width: 40%;
+      
+  
+    }
+    .evaluation_message {
+      padding-bottom: 3em;
+    }
+    .message_content {
+     
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around
+  
+    }
+  
+  
+    .message_content_rating {
+  
+      padding-bottom: 1.5em;
+     
+    }
+  
+    .evaluation_see_more{
+  
+      text-align: left;
+      font-style: italic;
+  
+    }
+  
   }
+  
 
 }
+

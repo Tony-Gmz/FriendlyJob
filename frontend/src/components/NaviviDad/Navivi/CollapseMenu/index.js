@@ -1,12 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Button } from 'semantic-ui-react';
 import ModalConnexion from 'src/containers/ModalConnexion';
 import ModalInscription from 'src/containers/ModalInscription';
 
 import { useSpring, animated } from 'react-spring';
 
-const CollapseMenu = ({isOpen}) => {
+const CollapseMenu = ({ isOpen, isLogged, logOut }) => {
+
+  const handleClick = () => {
+    logOut();
+    localStorage.removeItem('jwtToken');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userRole');
+  };
   const { open } = useSpring({ open: isOpen ? 0 : 1 });
 console.log(`is open est ${isOpen}`);
   if (isOpen === true) {
@@ -19,6 +27,8 @@ console.log(`is open est ${isOpen}`);
         }).interpolate(openValue => `translate3d(0, ${openValue}px, 0`),
       }}
       >
+      {!isLogged && (
+        <>
         <NavLinks>
           <Link to="/services">Nos services</Link>
           <a href="#inscription">Devenir JobWorker</a>
@@ -28,6 +38,18 @@ console.log(`is open est ${isOpen}`);
           <ModalConnexion />
           <ModalInscription />
         </NavLinks>
+        </>
+      )}
+      {isLogged && (
+        <>
+        <NavLinks>
+          <Link to="/services">Nos services</Link>
+          <a href="/profil">Profil</a>
+          <Link to="/contact">Contact</Link>
+        </NavLinks>
+        <NavLinks to="/"><Button style={{ backgroundColor: '#FF385C', color: '#FFFF', margin: 'auto' }} onClick={handleClick}>Deconnexion</Button></NavLinks>
+        </>
+      )}
       </CollapseWrapper>
     );
   }

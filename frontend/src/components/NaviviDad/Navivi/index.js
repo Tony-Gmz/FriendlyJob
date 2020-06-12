@@ -97,6 +97,8 @@ const Navbar = ({isOpen, handleNavbar, isLogged, logOut}) => {
         <CollapseMenu
           isOpen={isOpen}
           handleNavbar={handleNavbar}
+          isLogged={isLogged}
+          logOut={logOut}
         />
       </>
     );
