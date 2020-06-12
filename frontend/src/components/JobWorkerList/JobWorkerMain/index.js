@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Card, Rating, Button } from 'semantic-ui-react';
 import { Link, useParams } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
-import sortArray from 'sort-array';
+
 
 import { whitoutAvatar } from 'src/utils';
 import './jobWorkerMain.scss';
@@ -14,21 +14,17 @@ const JobWorkerMain = ({ jobWorkers, getServiceName }) => {
   useEffect(() => {
     getServiceName(slug);
   }, []);
+
   return (
     <div className="jobWorker_main">
-      <div className="jobWworker_sort">
-        <select>
-          <option value="price">Trier par Prix Croissant</option>
-          <option value="price_desc">Trier par Prix Decroissant</option>
-        </select>
-      </div>
       <div className="jobWorker_wrap">
         {jobWorkers.map((jobWorker) => {
           const id = jobWorker.user.id;
           const userAvatar = jobWorker.user.image;
           let userRating = jobWorker.user.jobWorkerDemands;
-          console.log(userRating.rating);
-          userRating = userRating.rating;
+          console.log(userRating[0].rating.star)
+          let userRatingStar = userRating.rating;
+          // console.log(userRating);
           return (
             <Link>
               <div className="jobWorker_box">
@@ -42,8 +38,13 @@ const JobWorkerMain = ({ jobWorkers, getServiceName }) => {
                       <Card.Content header={jobWorker.user.firstname} />
                       <Card.Content description={jobWorker.description} />
                       <Card.Content extra>
-                        {userRating && <Rating defaultRating={jobWorker.user.jobWorkerDemands[0].rating.star} maxRating={5} disabled /> }
-                        {!userRating && <Rating defaultRating={0} maxRating={5} disabled /> }
+                      {userRating === null || userRating === 'undefined' ? (
+                        <Rating defaultRating={0} maxRating={5} disabled />
+                      ): [
+                        (userRating.rating === null || userRating.rating === 'undefined'
+                        ? <Rating defaultRating={0} maxRating={5} disabled />
+                        : <Rating defaultRating={userRating[0].rating.star} maxRating={5} disabled /> ),
+                      ]}
                         <Link to={`/services/${slug}/jobworkers/jobworker_${id}`}>
                           <Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }}>Contact</Button>
                         </Link>

@@ -12,6 +12,8 @@ const Request = ({ requestSelectedName, getRequestSelectedName, requestSelected,
   useEffect(() => {
     getRequest();
   }, [toggle]);
+
+
   console.log(requestList);
 
   console.log(userData.firstname);
@@ -43,8 +45,8 @@ const Request = ({ requestSelectedName, getRequestSelectedName, requestSelected,
         <Menu.Item id="Refusée" active={requestSelectedName === 'Refusée'} className="big-button" onClick={handleClick} value="Refusée">Refusée</Menu.Item>
       </Menu>
       {Role === 'FRIENDLY_USER'
-        ? <RequestFriendlyUser requestSelected={requestSelected} requestSortSelected={requestSortSelected} toggle={toggle} getRequest={getRequest} requestList={requestList} submitFinishRequest={submitFinishRequest} submitAccepteRequest={submitAccepteRequest} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />
-        : <RequestJobWorker requestSelected={requestSelected} requestSortSelected={requestSortSelected} toggle={toggle} getRequest={getRequest} requestList={requestList} submitAccepteRequest={submitAccepteRequest} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />}
+        ? <RequestFriendlyUser requestSelectedName={requestSelectedName} requestSelected={requestSelected} requestSortSelected={requestSortSelected} toggle={toggle} getRequest={getRequest} requestList={requestList} submitFinishRequest={submitFinishRequest} submitAccepteRequest={submitAccepteRequest} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />
+        : <RequestJobWorker requestSelectedName={requestSelectedName} requestSelected={requestSelected} requestSortSelected={requestSortSelected} toggle={toggle} getRequest={getRequest} requestList={requestList} submitAccepteRequest={submitAccepteRequest} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />}
     </div>
   );
 };

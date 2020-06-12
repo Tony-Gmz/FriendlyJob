@@ -14,7 +14,6 @@ function ServiceDetail({ serviceList, getServiceName, getSixJobWorker, jobWorker
   }, []);
 
   const service = getServiceBySlug(serviceList, slug);
-
   return (
     <div className="service_detail">
       <div className="service_detail_title">
@@ -26,11 +25,15 @@ function ServiceDetail({ serviceList, getServiceName, getSixJobWorker, jobWorker
         <div className="service_details_jobworker_card">
           {loadingOnServiceDetail && <Loader /> }
           {!loadingOnServiceDetail && (
-            jobWorkers.map((jobWorker) => (
-              <div className="service_details_jobworker_card-item">
-                <JoberService jobWorker={jobWorker} getServiceName={getServiceName} />
-              </div>
-            ))
+            jobWorkers.map((jobWorker) => {
+              const JobWorkerRate = jobWorker.user.jobWorkerDemands;
+              // console.log(JobWorkerRate);
+              return (
+                <div className="service_details_jobworker_card-item">
+                  <JoberService jobWorker={jobWorker} jobWorkerStar={JobWorkerRate} getServiceName={getServiceName} />
+                </div>
+              );
+            })
           )}
         </div>
         <div className="service_details_link">
