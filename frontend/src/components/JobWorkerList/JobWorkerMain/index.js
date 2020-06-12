@@ -16,19 +16,23 @@ const JobWorkerMain = ({ jobWorkers, getServiceName }) => {
   }, []);
 
   // <Rating defaultRating={0} maxRating={5} disabled />
-   // 
+   //  
   return (
     <div className="jobWorker_main">
       <div className="jobWorker_wrap">
         {jobWorkers.map((jobWorker) => {
           const id = jobWorker.user.id;
           const userAvatar = jobWorker.user.image;
-          let userRating = jobWorker.user.jobWorkerDemands;
-          console.log(userRating);
-          let userRatingStar = userRating[0].rating;
-          // console.log(userRating);
-          if (userRating !== null) {
-            if (userRatingStar !== null) {
+          let userRating = jobWorker.user.jobWorkerDemands[0];
+          
+          if (userRating === undefined) {
+            userRating = {
+              rating: null,
+            };
+            console.log(userRating);
+          }
+    
+            if (userRating.rating !== null) {
               return (
                 <>
                 <Link>
@@ -43,7 +47,34 @@ const JobWorkerMain = ({ jobWorkers, getServiceName }) => {
                       <Card.Content header={jobWorker.user.firstname} />
                       <Card.Content description={jobWorker.description} />
                       <Card.Content extra>
-                        <Rating defaultRating={userRating[0].rating.star} maxRating={5} disabled />
+                        <Rating defaultRating={userRating.rating.star} maxRating={5} disabled />
+                        <Link to={`/services/${slug}/jobworkers/jobworker_${id}`}>
+                          <Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }}>Contact</Button>
+                        </Link>
+                      </Card.Content>
+                    </Card>
+                  </div>
+                </div>
+              </div>
+            </Link>
+            </>
+              );
+            } else {
+              return (
+                <>
+                <Link>
+              <div className="jobWorker_box">
+                <div className="jober">
+                  <div className="Jober_avatar">
+                    {userAvatar && <Avatar alt="Remy Sharp" src={jobWorker.user.image} /> }
+                    {!userAvatar && <Avatar alt="Remy Sharp" src="">{whitoutAvatar(jobWorker.user.firstname)}</Avatar>}
+                  </div>
+                  <div className="Jober_card">
+                    <Card>
+                      <Card.Content header={jobWorker.user.firstname} />
+                      <Card.Content description={jobWorker.description} />
+                      <Card.Content extra>
+                        <Rating defaultRating={0} maxRating={5} disabled />
                         <Link to={`/services/${slug}/jobworkers/jobworker_${id}`}>
                           <Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }}>Contact</Button>
                         </Link>
@@ -57,8 +88,9 @@ const JobWorkerMain = ({ jobWorkers, getServiceName }) => {
               );
             }
 
-          }
-        })}
+          } 
+          
+        )}
       </div>
     </div>
   );

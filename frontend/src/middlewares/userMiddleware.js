@@ -164,6 +164,7 @@ const userMiddleware = (store) => (next) => (action) => {
           // console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
           console.log(response);
+          console.log(`retour du middle  ${response.data[0].skills}`);
           // dispatch saveJobWorker action in userReducer
           store.dispatch(saveJobWorker(response.data[0].skills));
         })
