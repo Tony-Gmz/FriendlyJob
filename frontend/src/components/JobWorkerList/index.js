@@ -4,9 +4,10 @@ import Loader from 'src/components/Loader';
 import JobWorkerListTitle from './JobWorkerListTitle';
 import JobWorkerMain from './JobWorkerMain';
 import { useParams } from 'react-router-dom';
+import Pagination from './Pagination';
 
 // JobWorkerList page component
-const JobWorkerList = ({ getJobWorker, currentService, jobWorkers, loadingOnJobWorkerList, getServiceName }) => {
+const JobWorkerList = ({ changeCurrentPage, currentPage, joberPerPage, getJobWorker, currentService, jobWorkers, loadingOnJobWorkerList, getServiceName }) => {
   const { slug } = useParams();
   useEffect(() => {
     getServiceName(slug);
@@ -14,13 +15,24 @@ const JobWorkerList = ({ getJobWorker, currentService, jobWorkers, loadingOnJobW
   }, []);
 
 
+  const indexOfLastJober = currentPage * joberPerPage;
+  const indexOfFirstJober = indexOfLastJober - joberPerPage;
+  const currentJobWorker = jobWorkers.slice(indexOfFirstJober, indexOfLastJober);
+
+/*   const paginate = (pageNumber) => {
+    changeCurrentPage(pageNumber);
+    console.log(pageNumber);
+  }; */
+
+console.log(jobWorkers.length);
   return (
     <>
       {loadingOnJobWorkerList && <Loader />}
       {!loadingOnJobWorkerList && (
         <>
           <JobWorkerListTitle currentService={currentService} />
-          <JobWorkerMain jobWorkers={jobWorkers} getJobWorker={getJobWorker} getServiceName={getServiceName} />
+          <JobWorkerMain jobWorkers={currentJobWorker} getJobWorker={getJobWorker} getServiceName={getServiceName} />
+          <Pagination joberPerPage={joberPerPage} totalJobWorker={jobWorkers.length} changeCurrentPage={changeCurrentPage} />
         </>
       )}
     </>

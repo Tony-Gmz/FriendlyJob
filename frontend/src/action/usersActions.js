@@ -47,6 +47,7 @@ export const CLEAR_SAVE = 'CLEAR_SAVE';
 export const SAVE_ERROR_CONNEXION = 'SAVE_ERROR_CONNEXION';
 export const GET_JOBWORKER_SERVICE = 'GET_JOBWORKER_SERVICE';
 export const SAVE_JOBWORKER_SERVICE = 'SAVE_JOBWORKER_SERIVE';
+export const CHANGE_CURRENT_PAGE = 'CHANGE_CURRENT_PAGE';
 
 export const changeField = (newValue, inputName) => ({
   type: CHANGE_FIELD,
@@ -58,10 +59,14 @@ export const submitLoggin = () => ({
   type: SUBMIT_LOGIN,
 });
 
+export const changeCurrentPage = (newCurrentPage) => ({
+  type: CHANGE_CURRENT_PAGE,
+  newCurrentPage,
+});
+
 export const saveUser = (info) => ({
   type: SAVE_USER,
   info,
-
 });
 
 export const getRandomJobWorker = () => ({

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import JobWorkerList from 'src/components/JobWorkerList';
-import { getJobWorker } from 'src/action/usersActions';
+import { getJobWorker, changeCurrentPage } from 'src/action/usersActions';
 import { getServiceName } from 'src/action/servicesActions';
 
 const mapStateToProps = (state) => ({
@@ -8,6 +8,8 @@ const mapStateToProps = (state) => ({
   jobWorkers: state.user.jobWorkers,
   currentService: state.service.serviceName,
   loadingOnJobWorkerList: state.user.loadingOnJobWorkerList,
+  currentPage: state.user.currentPage,
+  joberPerPage: state.user.joberPerPage,
 
 });
 
@@ -19,6 +21,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getServiceName: (serviceName) => {
     dispatch(getServiceName(serviceName));
+  },
+  changeCurrentPage: (newCurrentPage) => {
+    dispatch(changeCurrentPage(newCurrentPage));
   },
 });
 

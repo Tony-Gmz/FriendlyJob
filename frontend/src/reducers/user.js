@@ -23,6 +23,7 @@ import {
   CLEAR_SAVE,
   SAVE_ERROR_CONNEXION,
   SAVE_JOBWORKER_SERVICE,
+  CHANGE_CURRENT_PAGE,
 } from '../action/usersActions';
 
 const initialState = {
@@ -90,6 +91,8 @@ const initialState = {
   connexionError: null,
   /** List of service for the current jobworker's modal add Skill in his profil */
   jobWorkerService: [],
+  currentPage: 1,
+  joberPerPage: 8,
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -99,6 +102,11 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         randomJobWorker: action.newRandomJobWorker,
         loading: false,
+      };
+    case CHANGE_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.newCurrentPage,
       };
     case CHANGE_FIELD:
       return {
