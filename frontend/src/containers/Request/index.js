@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Request from 'src/components/Request';
 import { getRequest, submitRefuseRequest, submitAccepteRequest, getCommentId, submitDeleteRequest, requestSortSelected } from 'src/action/requestAction';
 import { getUserData } from 'src/action/usersActions';
-import { submitFinishRequest, getRequestSelectedName } from '../../action/requestAction';
+import { submitFinishRequest, getRequestSelectedName, resetRequestSelected } from '../../action/requestAction';
 
 
 const mapStateToProps = (state) => ({
@@ -23,6 +23,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   requestSortSelected: (newSort) => {
     dispatch(requestSortSelected(newSort));
+  },
+  resetRequestSelected: () => {
+    dispatch(resetRequestSelected());
   },
   getRequestSelectedName: (newName) => {
     dispatch(getRequestSelectedName(newName));

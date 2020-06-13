@@ -13,11 +13,14 @@ import RequestFinish from './RequestFinish';
 import '../request.scss';
 
 // == Composant
-const Request = ({ requestSelected, requestSortSelected, toggle, getRequest, requestList, submitAccepteRequest, submitDeleteRequest, getCommentId }) => {
-
+const Request = ({ requestSelectedName, requestSelected, requestSortSelected, toggle, getRequest, requestList, submitAccepteRequest, submitDeleteRequest, getCommentId }) => {
   useEffect(() => {
     getRequest();
-  }, [toggle, requestSelected]);
+    if (requestSelected !== null) {
+      const requestFilterList = requestList.filter(request => request.status === requestSelectedName);
+      requestSortSelected(requestFilterList);
+    }
+  }, [toggle]);
 
   if (requestSelected === null) {
     return (

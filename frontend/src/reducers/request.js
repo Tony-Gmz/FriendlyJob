@@ -17,6 +17,7 @@ import {
   CLEAR_REFUSE,
   REQUEST_SORT_SELECTED,
   GET_REQUEST_SELECTED_NAME,
+  RESET_REQUEST_SELECTED,
 } from '../action/requestAction';
 
 const initialState = {
@@ -56,6 +57,12 @@ const requestReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         requestSelected: action.newSort,
+      };
+
+    case RESET_REQUEST_SELECTED:
+      return {
+        ...state,
+        requestSelected: null,
       };
     case SAVE_TOGGLE:
       return {

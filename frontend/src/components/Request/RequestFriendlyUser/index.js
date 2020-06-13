@@ -14,13 +14,15 @@ import '../request.scss';
 
 
 // == Composant
-const Request = ({ toggle, requestSelected, getRequest, requestList, submitDeleteRequest, submitFinishRequest, getCommentId  }) => {
+const Request = ({ requestSelectedName, requestSortSelected, toggle, requestSelected, getRequest, requestList, submitDeleteRequest, submitFinishRequest, getCommentId  }) => {
 
-
-  useEffect(() => {
+/*   useEffect(() => {
     getRequest();
-  }, [toggle]);
-
+    if (requestSelected !== null) {
+      const requestFilterList = requestList.filter(request => request.status === requestSelectedName);
+      requestSortSelected(requestFilterList);
+    }
+  }, [toggle]); */
 
   if (requestSelected === null) {
     return (

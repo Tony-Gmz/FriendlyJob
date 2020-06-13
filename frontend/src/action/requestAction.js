@@ -20,6 +20,7 @@ export const IS_REQUEST_REFUSE = 'IS_REQUEST_REFUSE';
 export const CLEAR_REFUSE = 'CLEAR_REFUSE';
 export const REQUEST_SORT_SELECTED = 'REQUEST_SORT_SELECTED';
 export const GET_REQUEST_SELECTED_NAME = 'GET_REQUEST_SELECTED_NAME';
+export const RESET_REQUEST_SELECTED = 'RESET_REQUEST_SELECTED';
 
 
 // == EXPORT FOR COMMENT PART
@@ -32,6 +33,10 @@ export const CLEAR_SAVE = 'CLEAR_SAVE';
 
 
 // ========================================= REQUEST ==================================
+
+export const resetRequestSelected = () => ({
+  type: RESET_REQUEST_SELECTED,
+});
 
 export const requestSortSelected = (newSort) => ({
   type: REQUEST_SORT_SELECTED,

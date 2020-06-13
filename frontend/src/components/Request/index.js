@@ -8,10 +8,17 @@ import RequestFriendlyUser from './RequestFriendlyUser';
 import RequestJobWorker from './RequestJobWorker';
 
 // == Composant
-const Request = ({ requestSelectedName, getRequestSelectedName, requestSelected, requestSortSelected, toggle, getRequest, requestList, submitAccepteRequest, submitDeleteRequest, getCommentId, submitFinishRequest, userData }) => {
+const Request = ({ resetRequestSelected, requestSelectedName, getRequestSelectedName, requestSelected, requestSortSelected, toggle, getRequest, requestList, submitAccepteRequest, submitDeleteRequest, getCommentId, submitFinishRequest, userData }) => {
   useEffect(() => {
     getRequest();
   }, [toggle]);
+
+  useEffect(() => {
+    if (requestSelected !== null) {
+      const requestFilterList = requestList.filter(request => request.status === requestSelectedName);
+      requestSortSelected(requestFilterList);
+    }
+  }, [requestList]);
 
 
   console.log(requestList);
@@ -26,6 +33,15 @@ const Request = ({ requestSelectedName, getRequestSelectedName, requestSelected,
     requestSortSelected(requestFilterList);
   };
 
+  const handleClickAll = (evt) => {
+    console.log(evt.target.id);
+    getRequestSelectedName(evt.target.id);
+    resetRequestSelected();
+    if (requestSelected === null) {
+      getRequest();
+    }
+  };
+
   console.log(`la categorie selectionée est ${requestSelectedName}`);
 
   return (
@@ -37,12 +53,12 @@ const Request = ({ requestSelectedName, getRequestSelectedName, requestSelected,
           A partir cette espace vous pouvez visualiser et gerer vos differentes demandes.
         </p>
       </div>
-      <Menu tabular>
-        <Menu.Item id="Terminée" active={requestSelectedName === 'Terminée'} className="big-button" onClick={handleClick} value="Terminée">Terminée</Menu.Item>
+      <Menu tabular className="onglet_request">
+        <Menu.Item id="Toutes" active={requestSelectedName === 'Toutes'} onClick={handleClickAll} value="Toutes">Toutes</Menu.Item>
         <Menu.Item id="En attente" active={requestSelectedName === 'En attente'} className="big-button" onClick={handleClick} value="En attente">En attente</Menu.Item>
-        <Menu.Item id="Annulée" active={requestSelectedName === 'Annulée'} className="big-button" onClick={handleClick} value="Annulée">Annulée</Menu.Item>
         <Menu.Item id="Acceptée" active={requestSelectedName === 'Acceptée'} className="big-button" onClick={handleClick} value="Acceptée">Acceptée</Menu.Item>
-        <Menu.Item id="Refusée" active={requestSelectedName === 'Refusée'} className="big-button" onClick={handleClick} value="Refusée">Refusée</Menu.Item>
+        <Menu.Item id="Annulée" active={requestSelectedName === 'Annulée'} className="big-button" onClick={handleClick} value="Annulée">Annulée</Menu.Item>
+        <Menu.Item id="Terminée" active={requestSelectedName === 'Terminée'} className="big-button" onClick={handleClick} value="Terminée">Terminée</Menu.Item><Menu.Item id="Refusée" active={requestSelectedName === 'Refusée'} className="big-button" onClick={handleClick} value="Refusée">Refusée</Menu.Item>
       </Menu>
       {Role === 'FRIENDLY_USER'
         ? <RequestFriendlyUser requestSelectedName={requestSelectedName} requestSelected={requestSelected} requestSortSelected={requestSortSelected} toggle={toggle} getRequest={getRequest} requestList={requestList} submitFinishRequest={submitFinishRequest} submitAccepteRequest={submitAccepteRequest} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />
