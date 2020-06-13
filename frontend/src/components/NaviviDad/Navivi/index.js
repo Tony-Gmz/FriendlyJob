@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useSpring, animated, config } from 'react-spring';
 import { NavLink } from 'react-router-dom';
@@ -12,8 +12,10 @@ import CollapseMenu from './CollapseMenu';
 
 import './navivi.scss';
 import 'src/styles/_vars.scss';
+import { getRequest } from '../../../action/requestAction';
 
-const Navbar = ({isOpen, handleNavbar, isLogged, logOut, requestList}) => {
+const Navbar = ({ isOpen, handleNavbar, isLogged, logOut, requestList, resetRequestList, getRequest }) => {
+
 
   const handleClick = () => {
     logOut();
@@ -34,8 +36,8 @@ const Navbar = ({isOpen, handleNavbar, isLogged, logOut, requestList}) => {
     config: config.wobbly,
   });
 
-  const waitingRequest = requestList.filter(request => request.status === 'En attente');
-  console.log(waitingRequest);
+  let waitingRequest = requestList.filter(request => request.status === 'En attente');
+
   const userRole = localStorage.getItem('userRole');
   let demands = 'demande';
   if (waitingRequest.length > 1) {
@@ -91,15 +93,15 @@ const Navbar = ({isOpen, handleNavbar, isLogged, logOut, requestList}) => {
                 <NavLink to="/demandes">Mes demandes</NavLink>
               </NavLinks>
               <NavLinks className="buttonForModal">
-              <div className="notification">
-              {userRole === 'JOBWORKER' && waitingRequest.length > 0 ? (
+              {userRole === 'JOBWORKER' && waitingRequest.length > 0 && requestList !== null ? (
+                <div className="notification">
                   <Popup
                       trigger={<i class="bell icon" color='red' />}
                       content={`Vous avez ${waitingRequest.length} ${demands} en attente`}
                       
                   />
+                  </div>
                 ) : ''}
-              </div>
                 <NavLink style={{ borderBottom: 'none' }} to="/"><Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }} onClick={handleClick}>Deconnexion</Button></NavLink>
               </NavLinks>
             </div>

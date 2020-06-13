@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
 import NaviviDad from 'src/components/NaviviDad';
+import { resetRequestList, getRequest } from 'src/action/requestAction';
 import { logOut } from '../../action/usersActions';
 import { isNavbarOpen } from '../../action/navbarAction';
+
 
 
 const mapStateToProps = (state) => ({
@@ -20,6 +22,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   logOut: () => {
     dispatch(logOut());
+  },
+  resetRequestList: () => {
+    dispatch(resetRequestList());
+  },
+  getRequest: () => {
+    dispatch(getRequest());
   },
 });
 

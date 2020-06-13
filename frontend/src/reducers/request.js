@@ -18,6 +18,7 @@ import {
   REQUEST_SORT_SELECTED,
   GET_REQUEST_SELECTED_NAME,
   RESET_REQUEST_SELECTED,
+  RESET_REQUEST_LIST,
 } from '../action/requestAction';
 
 const initialState = {
@@ -93,6 +94,11 @@ const requestReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         hour: action.initialHour,
+      };
+    case RESET_REQUEST_LIST:
+      return {
+        ...state,
+        requestList: null,
       };
 
       // =====================================COMMENT
