@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from 'src/components/NaviviDad/Navivi';
 
 
-const NaviviDad = ({isOpen, isNavbarOpen, isLogged, logOut})=> {
+const NaviviDad = ({isOpen, isNavbarOpen, isLogged, logOut, requestList})=> {
   const handleNavbar = () => {
     isNavbarOpen(!isOpen);
     console.log(isOpen);
@@ -15,6 +15,7 @@ const NaviviDad = ({isOpen, isNavbarOpen, isLogged, logOut})=> {
         handleNavbar={handleNavbar}
         isLogged={isLogged}
         logOut={logOut}
+        requestList={requestList}
       />
     </>
   );

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { changeField, submitLoggin } from 'src/action/usersActions';
+import { getRequest } from 'src/action/requestAction';
 import ModalConnexion from 'src/components/ModalConnexion';
 
 const mapStateToProps = (state) => ({
@@ -16,6 +17,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   submitLoggin: () => {
     dispatch(submitLoggin());
+  },
+  getRequest: () => {
+    dispatch(getRequest());
   },
 });
 

@@ -7,12 +7,13 @@ import { Button, Form, Message } from 'semantic-ui-react';
 import './modalConnexion.scss';
 
 // == Composant
-const ModalConnexion = ({ changeField, submitLoggin, connexionError }) => {
+const ModalConnexion = ({ changeField, submitLoggin, connexionError, getRequest }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('submit envoyé');
     submitLoggin();
+    getRequest();
   };
   const handleChange = (evt) => {
     console.log(`changement du field + ${evt.target.value} + ${evt.target.name}`);

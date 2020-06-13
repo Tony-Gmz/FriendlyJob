@@ -21,6 +21,7 @@ const App = ({
   loading,
   getUserData,
   getAllDepartments,
+  getRequest,
 }) => {
   // Hook useEffect to load necessary information for our homepage ex: ServiceList for the caroussel
   useEffect(() => {
@@ -30,6 +31,7 @@ const App = ({
     const userToken = localStorage.getItem('jwtToken');
     if (userToken) {
       getUserData();
+      getRequest();
     }
   }, []);
 

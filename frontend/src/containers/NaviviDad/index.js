@@ -9,6 +9,7 @@ const mapStateToProps = (state) => ({
   isLogged: state.user.isLogged,
   // roles: state.user.userData.roles[0],
   isOpen: state.navbar.isOpen,
+  requestList: state.request.requestList,
 });
 
 const mapDispatchToProps = (dispatch) => ({

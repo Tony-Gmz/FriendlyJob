@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { getRandomJobWorker, getUserData } from 'src/action/usersActions';
 import { getServices } from 'src/action/servicesActions';
 import { getAllDepartments } from 'src/action/departmentsActions';
+import { getRequest } from 'src/action/requestAction';
 import App from 'src/components/App';
 
 const mapStateToProps = (state) => ({
@@ -23,6 +24,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   getAllDepartments: () => {
     dispatch(getAllDepartments());
+  },
+  getRequest: () => {
+    dispatch(getRequest());
   },
 });
 
