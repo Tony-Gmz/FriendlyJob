@@ -4,7 +4,7 @@ import { useSpring, animated, config } from 'react-spring';
 import { NavLink } from 'react-router-dom';
 import ModalConnexion from 'src/containers/ModalConnexion';
 import ModalInscription from 'src/containers/ModalInscription';
-import { Button } from 'semantic-ui-react';
+import { Button, Popup, Icon } from 'semantic-ui-react';
 
 import Brand from './Brand';
 import BurgerMenu from './BurgerMenu';
@@ -13,7 +13,7 @@ import CollapseMenu from './CollapseMenu';
 import './navivi.scss';
 import 'src/styles/_vars.scss';
 
-const Navbar = ({isOpen, handleNavbar, isLogged, logOut}) => {
+const Navbar = ({isOpen, handleNavbar, isLogged, logOut, requestList}) => {
 
   const handleClick = () => {
     logOut();
@@ -33,6 +33,14 @@ const Navbar = ({isOpen, handleNavbar, isLogged, logOut}) => {
     delay: 800,
     config: config.wobbly,
   });
+
+  const waitingRequest = requestList.filter(request => request.status === 'En attente');
+  console.log(waitingRequest);
+  const userRole = localStorage.getItem('userRole');
+  let demands = 'demande';
+  if (waitingRequest.length > 1) {
+    demands = 'demandes';
+  }
 
   if (isLogged === false) {
     return (
@@ -83,6 +91,15 @@ const Navbar = ({isOpen, handleNavbar, isLogged, logOut}) => {
                 <NavLink to="/demandes">Mes demandes</NavLink>
               </NavLinks>
               <NavLinks className="buttonForModal">
+              <div className="notification">
+              {userRole === 'JOBWORKER' && waitingRequest.length > 0 ? (
+                  <Popup
+                      trigger={<i class="bell icon" color='red' />}
+                      content={`Vous avez ${waitingRequest.length} ${demands} en attente`}
+                      
+                  />
+                ) : ''}
+              </div>
                 <NavLink style={{ borderBottom: 'none' }} to="/"><Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }} onClick={handleClick}>Deconnexion</Button></NavLink>
               </NavLinks>
             </div>

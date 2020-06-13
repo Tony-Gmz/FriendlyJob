@@ -6,6 +6,7 @@ import ModalConnexion from 'src/containers/ModalConnexion';
 import ModalInscription from 'src/containers/ModalInscription';
 
 import { useSpring, animated } from 'react-spring';
+import './collapseMenu.scss';
 
 const CollapseMenu = ({ isOpen, isLogged, logOut }) => {
 
