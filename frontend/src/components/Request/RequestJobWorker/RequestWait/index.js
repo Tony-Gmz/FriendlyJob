@@ -37,7 +37,7 @@ const RequestWait = ({ request, submitAccepteRequest, getCommentId  }) => {
           <Button onClick={handleClick} className="approve_Button">
             Accepter
           </Button>
-            <ModalRefuseRequest request={request} />
+          <ModalRefuseRequest request={request} />
         </div>
       </Card.Content>
     </Card>

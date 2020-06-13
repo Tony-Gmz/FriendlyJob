@@ -1,9 +1,10 @@
 import React from 'react';
 import { Button, Card } from 'semantic-ui-react';
 import { changeHourFormat, changeDateFormat } from 'src/utils';
+import PopupContact from '../../../PopUpContact';
 
 // == Composant
-const RequestAccepte = ({ request }) => {
+const RequestAccepte = ({ request, getCommentId }) => {
 
   const hourResevation = new Date(request.reservationHour);
   const dateReservation = new Date(request.reservationDate);
@@ -28,9 +29,7 @@ const RequestAccepte = ({ request }) => {
     <div className="request_Status"><i class="check circle icon"/> {request.status}</div>
     <Card.Content extra>
       <div className="buttons">
-        <Button className="approve_Button">
-          Contacter le FU
-        </Button>
+        <PopupContact request={request} getCommentId={getCommentId} />
         <Button className="decline_Button" disabled>
           Refuser
         </Button>

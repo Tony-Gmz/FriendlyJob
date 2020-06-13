@@ -28,7 +28,7 @@ const Request = ({ requestSelectedName, requestSelected, requestSortSelected, to
         {requestList.map((request) => {
           switch (request.status) {
             case 'Acceptée':
-              return <RequestAccepte request={request} />;
+              return <RequestAccepte request={request} getCommentId={getCommentId} />;
             case 'Refusée':
               return <RequestRefuse request={request} />;
             case 'En attente':
