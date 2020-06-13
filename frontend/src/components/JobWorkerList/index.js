@@ -32,7 +32,7 @@ console.log(jobWorkers.length);
         <>
           <JobWorkerListTitle currentService={currentService} />
           <JobWorkerMain jobWorkers={currentJobWorker} getJobWorker={getJobWorker} getServiceName={getServiceName} />
-          <Pagination joberPerPage={joberPerPage} totalJobWorker={jobWorkers.length} changeCurrentPage={changeCurrentPage} />
+          <Pagination currentPage={currentPage} joberPerPage={joberPerPage} totalJobWorker={jobWorkers.length} changeCurrentPage={changeCurrentPage} />
         </>
       )}
     </>

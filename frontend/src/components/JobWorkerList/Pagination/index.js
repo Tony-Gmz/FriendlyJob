@@ -1,20 +1,30 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
-import { Pagination } from 'semantic-ui-react';
-import { changeCurrentPage } from '../../../action/usersActions';
+import { Icon } from 'semantic-ui-react';
 
-const PaginationExamplePagination = ({ joberPerPage, totalJobWorker, changeCurrentPage }) => {
+
+import './pagination.scss';
+
+const PaginationExamplePagination = ({ currentPage, joberPerPage, totalJobWorker, changeCurrentPage }) => {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(totalJobWorker / joberPerPage); i++) {
     pageNumbers.push(i);
   }
-console.log(joberPerPage);
-console.log(totalJobWorker);
 
 
+  const handlePrevClick = () => {
+    changeCurrentPage(currentPage - 1);
+  };
+
+
+  const handleNextClick = () => {
+    changeCurrentPage(currentPage + 1);
+  };
 
   return (
-    <nav>
+    <nav data-pagination>
+      <a onClick={handlePrevClick} href="#"><Icon name="chevron left" /></a>
       <ul className="pagination">
         {pageNumbers.map((number) => {
           const handleClick = () => {
@@ -22,7 +32,7 @@ console.log(totalJobWorker);
             console.log(number);
           };
           return (
-            <li>
+            <li activeClassName="current">
               <a onClick={handleClick} href="#">
                 {number}
               </a>
@@ -30,7 +40,9 @@ console.log(totalJobWorker);
           );
         })}
       </ul>
+      <a onClick={handleNextClick} href="#"><Icon name="chevron right" /></a>
     </nav>
+
   );
 };
 

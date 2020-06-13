@@ -92,7 +92,7 @@ const initialState = {
   /** List of service for the current jobworker's modal add Skill in his profil */
   jobWorkerService: [],
   currentPage: 1,
-  joberPerPage: 8,
+  joberPerPage: 2,
 };
 
 const userReducer = (state = initialState, action = {}) => {
