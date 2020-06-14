@@ -10,28 +10,30 @@ const RequestCancel = ({ request, getCommentId, submitDeleteRequest }) => {
     submitDeleteRequest();
   };
   return (
-    <Card className="request_Card_refuse">
-      <Card.Content className="request_Content">
-        <div className="request_LeftSide">
-          <Card.Header>{request.friendlyUser.firstname}</Card.Header>
-          <Card.Meta>{request.service.title}</Card.Meta>
+    <ul>
+      <li className="booking-card" style={{backgroundImage: `url(${request.service.image})`}}>
+      <div className="book-container">
+        <div className="content">
+          <Button className="btn">
+            Voir mes evaluations
+          </Button>
+          <Button className="btn" onClick={handleClick}>
+            supprimer
+          </Button>
         </div>
-        <div className="request_RightSide">
-          <Card.Description>
-            {request.body}
-          </Card.Description>
-        </div>
-      </Card.Content>
-      <div className="request_Status">{request.status}</div>
-      <Card.Content extra>
-        <div className="refuse_texte">
-          Cette demande a été annulé par le FriendlyUser nous sommes desolés pour vous mais continuer a etre actif vous devriez recevoir d'autres demandes.
-        </div>
-        <button type="button" className="button_delete_request" onClick={handleClick}>
-          supprimer
-        </button>
-      </Card.Content>
-    </Card>
+      </div>
+      <div className="informations-container">
+        <h2 className="title">Demande de {request.friendlyUser.firstname} </h2>
+        <h2 className="title2">{request.service.title} </h2>
+        <p className="sub-title_cancel"><i class="calendar times icon"></i>{request.status}</p>
+        <div className="more-information">
+          <div className="info-and-date-container">
+          </div>
+          <p className="disclaimer">La demande a été annulé.</p>
+          </div>
+      </div>
+    </li>
+  </ul>
   );
 };
 
