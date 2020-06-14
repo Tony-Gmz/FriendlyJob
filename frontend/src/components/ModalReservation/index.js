@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, TextArea, Button, Message } from 'semantic-ui-react';
+import {
+  Form,
+  TextArea,
+  Button,
+  Message,
+} from 'semantic-ui-react';
 import 'date-fns';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
@@ -21,12 +26,6 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
   const { skills } = currentJobWorkerDetail;
   // console.log(skills);
   const selectedDate = Date();
-
-  const handleDateChange = (date) => {
-    console.log(date)
-    setSelectedDate(date);
-  };
-
 
   const handleChange = (evt) => {
     console.log(`coucou j'envoi ${evt.target.value} + ${evt.target.name}`);
@@ -52,19 +51,7 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
     console.log(newDate);
     changeFieldDateRequest(date);
   };
-  const changeDateFormat = (requestDate) => {
-    const years = requestDate.slice(0, 4);
-    console.log(years);
-    const month = requestDate.slice(5, 7);
-    console.log(month);
-    const day = requestDate.slice(8, 10);
-    console.log(day);
-    // const days = requestDate.getDate();
-    // const newRequestDate= `${month}/${days}/${years}`;
-    // console.log(newRequestDate);
-    requestDate = `${month}/${day}/${years}`;
-    return requestDate;
-  };
+
 
   const changeHourFormat = (requestHour) => {
     const hours = requestHour.slice(0, 2);

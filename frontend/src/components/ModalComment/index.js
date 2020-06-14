@@ -8,7 +8,7 @@ import {
   Form,
   Icon,
   ModalContent,
-  Message
+  Message,
 } from 'semantic-ui-react';
 import Rating from 'react-rating';
 
@@ -18,9 +18,9 @@ import './modalComment.scss';
 
 const ModalComment = ({ request, changeFieldComment, submitComment, changeRatingComment, getCommentId, clearSave, isSend }) => {
 
-  const handleChange = (evt) => {
-    console.log(`coucou j'envoi ${evt.target.value} + ${evt.target.name}`);
-    changeFieldComment(evt.target.value, evt.target.name);
+  const handleChange = (newCom) => {
+    console.log(`coucou j'envoi ${newCom.target.value} `);
+    changeFieldComment(newCom.target.value, newCom.target.name);
   };
 
   const handleRate = (newRate) => {
@@ -35,9 +35,9 @@ const ModalComment = ({ request, changeFieldComment, submitComment, changeRating
     submitComment();
   };
   const requestRating = request.rating;
+
   const handleClick = () => {
     getCommentId(request.id);
-    console.log(requestRating);
   };
 
   const handleClose = () => {
@@ -60,8 +60,15 @@ const ModalComment = ({ request, changeFieldComment, submitComment, changeRating
           )}
           {!requestRating && (
             <Form autoComplete="off" onSubmit={handleSubmit}>
-              <TextArea onChange={handleChange} placeholder="Laissez votre commentaire ici et n'oubliez pas la note. Merci" style={{ border: 'none', width: '100%' }} />
-              <Rating onChange={handleRate} maxRating={5} />
+              <p className="info_modalComment"><Icon name="info circle" />Pour envoyer votre commentaire vous devez reseigner un commentaire et une note...</p>
+              <TextArea
+                required
+                maxLength="200"
+                onChange={handleChange}
+                placeholder="Laissez votre commentaire ici et n'oubliez pas la note. Merci"
+                style={{ border: 'none', width: '100%' }}
+              />
+              <Rating onClick={handleRate} initialRating={0} maxRating={5} />
               <ModalContent>
                 <Button icon labelPosition="left">
                   <Icon name="delete" />

@@ -25,14 +25,18 @@ const App = ({
 }) => {
   // Hook useEffect to load necessary information for our homepage ex: ServiceList for the caroussel
   useEffect(() => {
-    getServices();
-    getRandomJobWorker();
-    getAllDepartments(); // ==================================== ????
     const userToken = localStorage.getItem('jwtToken');
     if (userToken) {
       getUserData();
       getRequest();
     }
+    const timer = setTimeout(() => {
+      getServices();
+      getRandomJobWorker();
+      getAllDepartments();
+    }, 1000);
+    return () => clearTimeout(timer);
+    // ==================================== ????
   }, []);
 
   return (
