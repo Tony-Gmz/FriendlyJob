@@ -89,7 +89,11 @@ const Navbar = ({ isOpen, handleNavbar, isLogged, logOut, requestList, resetRequ
             <div className="linkForNav">
               <NavLinks style={linkAnimation}>
                 <NavLink to="/services">Liste de nos services</NavLink>
-                <NavLink to="/profil">Profil</NavLink>
+                {userRole === 'ROLE_ADMIN' ? (
+                  <a href="http://api.friendlyjob.fr/login" rel="noopener noreferrer" target="_blank">admin</a>
+                ) : (
+                  <NavLink to="/profil">Profil</NavLink>
+                )}
                 <NavLink to="/demandes">Mes demandes</NavLink>
               </NavLinks>
               <NavLinks className="buttonForModal">
