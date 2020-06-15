@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getNewSkillValue, submitEditSkill, getSkillId, clearSave } from 'src/action/usersActions';
+import { getNewSkillValue, submitEditSkill, getSkillId, clearSave, openSuccesMessage, closeSuccesMessage } from 'src/action/usersActions';
 import ModalEditSkill from 'src/components/ModalEditSkill';
 
 
@@ -8,7 +8,7 @@ const mapStateToProps = (state) => ({
   selectedSkillPrice: state.user.selectedSkillPrice,
   selectedSkillDescription: state.user.selectedSkillDescription,
   isSave: state.user.isSave,
- 
+  isOpen: state.user.isOpen,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -25,6 +25,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   clearSave: () => {
     dispatch(clearSave());
+  },
+  openSuccessMessage: () => {
+    dispatch(openSuccesMessage());
+  },
+  closeSuccesMessage: () => {
+    dispatch(closeSuccesMessage());
   },
 });
 

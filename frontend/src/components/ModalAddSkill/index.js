@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Modal, Input, Message } from 'semantic-ui-react';
+import { Button, Modal, Input } from 'semantic-ui-react';
 import Snackbar from '@material-ui/core/Snackbar';
 import TextField from '@material-ui/core/TextField';
 import MuiAlert from '@material-ui/lab/Alert';
@@ -9,13 +9,13 @@ import './ModalAddSkill.scss';
 const ModalAddSkill = ({ serviceList, selectedSkillDescription, selectedSkillId, selectedSkillPrice, getNewSkillValue, submitNewSkill, isSave, clearSave, isOpen, openSuccessMessage, closeSuccessMesssage  }) => {
 
   const handleChange = (evt) => {
-    console.log(`${evt.target.value} + ${evt.target.name}`);
+    // console.log(`${evt.target.value} + ${evt.target.name}`);
     getNewSkillValue(evt.target.value, evt.target.name);
   };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log('coucou je suis submit de addSkill');
+    // console.log('coucou je suis submit de addSkill');
     submitNewSkill();
     openSuccessMessage();
   };
@@ -76,7 +76,7 @@ const ModalAddSkill = ({ serviceList, selectedSkillDescription, selectedSkillId,
           </div>
           <div className="succes_save_message">
             {isSave && (
-            <Snackbar open={open} autoHideDuration={6000} onClose={handleMessageClose}>
+            <Snackbar open={isOpen} autoHideDuration={6000} onClose={handleMessageClose}>
               <Alert severity="success">
                 La compétence a bien été ajouté ! vous souhaitez retourner sur <a href="/profil">profil</a> ?
               </Alert>
