@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import Select from 'react-select';
+import { Icon } from 'semantic-ui-react';
 
 // == Import Style
 import './presentation.scss';
@@ -37,7 +38,7 @@ const Presentation = ({ serviceList, fieldService, serviceSelected }) => {
       <p className="presentation_content">Vous avez besoin d'un jardinier, d'un informaticien ou bien de faire garder votre enfant ? Friendlyjob et des centaines de JobWorker sont là pour vous. C'est très simple, trouver un service qui correspond à vos attentes, selectionner le JobWorkers de votre choix et reservez !
       </p>
       <div className="presentation_input">
-        <form onSubmit={handleSubmit} action="">
+        <form onSubmit={handleSubmit} action="" className="homepage_search_input">
           <Select
             blurInputOnSelect={falseSet}
             name="serviceInput"
@@ -54,7 +55,7 @@ const Presentation = ({ serviceList, fieldService, serviceSelected }) => {
             onInputChange="input-change"
             controlShouldRenderValue
           />
-          <button type="submit" value="ok">ok</button>
+          <button type="submit" class="homepage_search_btn"><Icon name="search" /></button>
         </form>
       </div>
     </div>

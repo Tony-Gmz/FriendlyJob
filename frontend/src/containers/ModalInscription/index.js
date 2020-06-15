@@ -6,6 +6,7 @@ const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
   isSubscribe: state.inscription.isSubscribe,
   selectValue: state.inscription.departement,
+  departmentsList: state.departments.departmentsList,
 });
 
 const mapDispatchToProps = (dispatch) => ({

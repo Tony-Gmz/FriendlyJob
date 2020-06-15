@@ -1,21 +1,19 @@
 // == Import npm
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
-import { Button, Message, Form } from 'semantic-ui-react';
+import { Button, Message, Form, Select } from 'semantic-ui-react';
 
 // == Import
 import './modalInscription.scss';
 
 // == Composant
-const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValue }) => {
+const ModalInscription = ({ departmentsList, fieldValue, submitSubscribe, isSubscribe, selectValue }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('coucou je suis submit');
@@ -25,8 +23,6 @@ const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValu
     console.log(`changement du field + ${evt.target.value} + ${evt.target.name}`);
     fieldValue(evt.target.value, evt.target.name);
   };
-
-  const NumbSelectValue = Number(selectValue);
 
   return (
     <div className="ModalInscription">
@@ -77,25 +73,25 @@ const ModalInscription = ({ fieldValue, submitSubscribe, isSubscribe, selectValu
               />
             </div>
             <div className="form_element">
-              <InputLabel required id="demo-simple-select-label">Departement</InputLabel>
-              <Select
-                className="input"
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={NumbSelectValue}
+              <label>
+                Departement*
+              </label>
+              <select
+                className="inputDepartment"
+                label="Departement"
                 onChange={handleChange}
                 name="departement"
                 required
               >
-                <MenuItem value={1}>Ain</MenuItem>
-                <MenuItem value={2}>Aisne</MenuItem>
-                <MenuItem value={3}>Allier</MenuItem>
-                <MenuItem value={4}>Hautes-Alpes</MenuItem>
-                <MenuItem value={5}>Ardèche</MenuItem>
-                <MenuItem value={6}>Aveyron</MenuItem>
-                <MenuItem value={7}>Charente-Inférieure</MenuItem>
-                <MenuItem value={8}>Dordogne</MenuItem>
-              </Select>
+                {departmentsList.map((departement) => (
+                  <option
+                    key={departement.number}
+                    value={departement.id}
+                  >
+                    {departement.name}-({departement.number})
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="form_element">
               <Form.Input
