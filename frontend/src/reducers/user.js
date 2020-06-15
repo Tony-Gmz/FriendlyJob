@@ -94,8 +94,7 @@ const initialState = {
   /** List of service for the current jobworker's modal add Skill in his profil */
   jobWorkerService: [],
   currentPage: 1,
-  joberPerPage: 9,
-  joberPerPage: 2,
+  joberPerPage: 8,
   isOpen: false,
 };
 
