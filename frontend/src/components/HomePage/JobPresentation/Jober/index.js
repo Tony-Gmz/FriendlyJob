@@ -14,29 +14,33 @@ import { whitoutAvatar } from 'src/utils';
 // Styled component reusable
 
 const Jober = ({ randomJobWorker }) => {
-  const userAvatar = randomJobWorker.image;
   const slug = randomJobWorker.id;
+  console.log(randomJobWorker);
   return (
-    <div className="jober">
-      <div className="Jober_card">
-        <div className="Jober_avatar">
-          {userAvatar && <Avatar alt="Remy Sharp" src={randomJobWorker.image} /> }
-          {!userAvatar && <Avatar alt="Remy Sharp" src="">{whitoutAvatar(randomJobWorker.firstname)}</Avatar>}
+    <>
+        <div key={randomJobWorker.id} id="login-container">
+          <div className="profile-img" style={{ background: `url(${randomJobWorker.image})` }} />
+          <h1>
+            {randomJobWorker.firstname}
+          </h1>
+          <div className="description">
+            {randomJobWorker.skills[0].description}
+          </div>
+          <div className="social">
+            {randomJobWorker.skills[0].price}€/Heure
+          </div>
+          <button type="button" disabled>Contacter</button>
+          <footer>
+            <div className="likes">
+              <Rating defaultRating={randomJobWorker.jobWorkerDemands[0].rating.star} maxRating={5} disabled />
+            </div>
+            <div className="cards_department">
+              <p className="cards_department_content">{randomJobWorker.department.name}</p>
+              <p className="cards_department_content">({randomJobWorker.department.number})</p>
+            </div>
+          </footer>
         </div>
-        <Card key={randomJobWorker.id} className="jober_card_detail">
-          <Card.Content header={randomJobWorker.firstname} />
-          <Card.Content description={randomJobWorker.about} />
-          <Card.Content extra>
-            <Rating
-              defaultRating={randomJobWorker.jobWorkerDemands[0].rating.star}
-              maxRating={5}
-              disabled
-            />
-            <Link to={`/jobworker/${slug}`} />
-          </Card.Content>
-        </Card>
-      </div>
-    </div>
+    </>
   );
 };
 
@@ -44,3 +48,4 @@ Jober.propTypes = {
   randomJobWorker: PropTypes.object.isRequired,
 };
 export default Jober;
+
