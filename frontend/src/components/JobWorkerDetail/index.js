@@ -18,13 +18,9 @@ const JobWorkerDetails = ({
 }) => {
   const jobWorkerId = useParams();
   useEffect(() => {
-    const timer = setTimeout(() => {
-      getJobWorkerId(jobWorkerId.id);
-      getJobWorkerDetail();
-      getJobWorkerRating();
-    }, 2000);
-
-    return () => clearTimeout(timer);
+    getJobWorkerId(jobWorkerId.id);
+    getJobWorkerDetail();
+    getJobWorkerRating();
   }, []);
 
 

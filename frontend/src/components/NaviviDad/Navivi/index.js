@@ -54,9 +54,9 @@ const Navbar = ({ isOpen, handleNavbar, isLogged, logOut, requestList, resetRequ
             </div>
             <div className="linkForNav">
               <NavLinks style={linkAnimation}>
-                <NavLink exact to="/services">Liste de nos services</NavLink>
+                <NavLink exact to="/services/">Liste de nos services</NavLink>
                 <a href="#inscription">Devenir JobWorker</a>
-                <NavLink to="/contact">Qui sommes nous</NavLink>
+                <NavLink to="/contact/">Qui sommes nous</NavLink>
               </NavLinks>
               <NavLinks className="buttonForModal">
                 <ModalConnexion />
@@ -88,13 +88,13 @@ const Navbar = ({ isOpen, handleNavbar, isLogged, logOut, requestList, resetRequ
             </div>
             <div className="linkForNav">
               <NavLinks style={linkAnimation}>
-                <NavLink to="/services">Liste de nos services</NavLink>
+                <NavLink to="/services/">Liste de nos services</NavLink>
                 {userRole === 'ROLE_ADMIN' ? (
                   <a href="http://api.friendlyjob.fr/login" rel="noopener noreferrer" target="_blank">admin</a>
                 ) : (
-                  <NavLink to="/profil">Profil</NavLink>
+                  <NavLink to="/profil/">Profil</NavLink>
                 )}
-                <NavLink to="/demandes">Mes demandes</NavLink>
+                <NavLink to="/demandes/">Mes demandes</NavLink>
               </NavLinks>
               <NavLinks className="buttonForModal">
               {userRole === 'JOBWORKER' && waitingRequest.length > 0 && requestList !== null ? (

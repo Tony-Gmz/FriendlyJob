@@ -19,7 +19,7 @@ const ServiceList = ({ serviceList }) => (
         const slug = slugifyTitle(service.title);
         return (
           <div className="serviceList_box">
-            <Link className="serviceList_link" to={`/services/${slug}`}>
+            <Link className="serviceList_link" to={`/services/${slug}/`}>
               <img id={service.id} className="serviceList_Card_img" src={service.image} alt="profil's" />
               <div className="serviceList_Card_title">{service.title}</div>
             </Link>

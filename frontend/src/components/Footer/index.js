@@ -16,7 +16,7 @@ const Footer = () => (
     <div className="footer_link">
       <div className="footer_link_text">
         {/* Link to our Contact's pages */}
-        <Link to="/contact">Qui somme nous ?</Link>
+        <Link to="/contact/">Qui somme nous ?</Link>
       </div>
       {/* social network links to join us and follow our evolution */}
       <div className="footer_icon">

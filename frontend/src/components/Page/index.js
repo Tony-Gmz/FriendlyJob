@@ -31,13 +31,13 @@ const Page = ({ isLogged }) => {
         <Breadcrumb />
         <Switch>
           <Route
-            path="/services/:slug/jobworkers/jobworker_:id"
+            path="/services/:slug/jobworkers/jobworker/:id/"
             exact
           >
-            <JobWorkerDetail /> 
+            <JobWorkerDetail />
           </Route>
           <Route
-            path="/services/:slug/jobworker_:id"
+            path="/services/:slug/jobworker/:id/"
             exact
           >
             <JobWorkerDetail />
@@ -49,19 +49,19 @@ const Page = ({ isLogged }) => {
             <JobWorkerList />
           </Route>
           <Route
-            path="/services/:slug"
+            path="/services/:slug/"
             exact
           >
             <ServiceDetail />
           </Route>
           <Route
-            path="/services"
+            path="/services/"
             exact
           >
             <ServiceList />
           </Route>
           <Route
-            path="/demandes"
+            path="/demandes/"
             exact
           >
             {isLogged === true
@@ -69,7 +69,7 @@ const Page = ({ isLogged }) => {
               : <Error />}
           </Route>
           <Route
-            path="/profil"
+            path="/profil/"
             exact
           >
             {isLogged === true
@@ -77,7 +77,7 @@ const Page = ({ isLogged }) => {
               : <Error />}
           </Route>
           <Route
-            path="/contact"
+            path="/contact/"
             exact
           >
             <Contact />

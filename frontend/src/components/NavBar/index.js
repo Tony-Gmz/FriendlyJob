@@ -26,9 +26,9 @@ const NavBar = ({ isLogged, logOut }) => {
         </NavLink>
         <div className="nav_content">
           <ul className="nav_ul">
-            <NavLink to="/services" activeClassName="selected-link"><li>Liste de nos services</li></NavLink>
+            <NavLink to="/services/" activeClassName="selected-link"><li>Liste de nos services</li></NavLink>
             <a href="#inscription"><li>Devenir Jobworker</li></a>
-            <NavLink to="/contact"><li>Qui sommes nous</li></NavLink>
+            <NavLink to="/contact/"><li>Qui sommes nous</li></NavLink>
           </ul>
           <div className="nav_button">
             <ModalConnexion />
@@ -48,9 +48,9 @@ const NavBar = ({ isLogged, logOut }) => {
         </NavLink>
         <div className="nav_content">
           <ul className="nav_ul">
-            <NavLink to="/services" activeClassName="selected-link"><li>Liste de nos services</li></NavLink>
-            <NavLink to="/profil"><li>Profil</li></NavLink>
-            <NavLink to="/demandes" activeClassName="selected-link"><li>Mes demandes</li></NavLink>
+            <NavLink to="/services/" activeClassName="selected-link"><li>Liste de nos services</li></NavLink>
+            <NavLink to="/profil/"><li>Profil</li></NavLink>
+            <NavLink to="/demandes/" activeClassName="selected-link"><li>Mes demandes</li></NavLink>
           </ul>
           <div className="nav_button">
             <Link to="/"><Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }} onClick={handleClick}>Deconnexion</Button></Link>

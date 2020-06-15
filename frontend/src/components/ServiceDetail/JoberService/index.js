@@ -25,7 +25,7 @@ const JoberService = ({ jobWorker, getServiceName, jobWorkerStar }) => {
   if (userRating.rating !== null) {
     return (
       <>
-  <Link to={`/services/${slug}/jobworkers/jobworker_${id}`}>
+  <Link to={`/services/${slug}/jobworkers/jobworker/${id}/`}>
         <div id="login-container">
           <div className="profile-img" style={{ background: `url(${jobWorker.user.image})` }} />
           <h1>
@@ -55,7 +55,7 @@ const JoberService = ({ jobWorker, getServiceName, jobWorkerStar }) => {
 
   return (
     <>
-      <Link to={`/services/${slug}/jobworkers/jobworker_${id}`}>
+      <Link to={`/services/${slug}/jobworkers/jobworker/${id}/`}>
         <div id="login-container">
           <div className="profile-img" style={{ background: `url(${jobWorker.user.image})`}} />
           <h1>

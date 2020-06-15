@@ -5,14 +5,14 @@ import { NavLink } from 'react-router-dom';
 import './breadCrumbs.scss';
 
 const routes = [
-  { path: '/services/:slug/jobworkers/jobworker_:id', breadcrumb: 'JobWorker Détails' },
-  { path: '/services/:slug/jobworker_:id', breadcrumb: 'JobWorker Détails' },
-  { path: '/services/:slug/jobworkers', breadcrumb: 'JobWorkers Liste' },
-  { path: '/services/:slug' },
-  { path: '/services', breadcrumb: ' Nos Services' },
-  { path: '/demandes', breadcrumb: 'Mes demandes' },
-  { path: '/profil', breadcrumb: 'Mon profil' },
-  { path: '/contact', breadcrumb: 'Contact' },
+  { path: '/services/:slug/jobworkers/jobworker/:id/', breadcrumb: 'JobWorker Détails' },
+  { path: '/services/:slug/jobworker/:id/', breadcrumb: 'JobWorker Détails' },
+  { path: '/services/:slug/jobworkers/', breadcrumb: 'JobWorkers Liste' },
+  { path: '/services/:slug/' },
+  { path: '/services/', breadcrumb: ' Nos Services' },
+  { path: '/demandes/', breadcrumb: 'Mes demandes' },
+  { path: '/profil/', breadcrumb: 'Mon profil' },
+  { path: '/contact/', breadcrumb: 'Contact' },
   { path: '/', breadcrumb: 'Accueil' },
   { path: '*', breadcrumb: "Page d'erreur" },
 ];

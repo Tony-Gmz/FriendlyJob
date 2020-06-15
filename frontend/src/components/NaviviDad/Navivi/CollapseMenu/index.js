@@ -31,9 +31,9 @@ console.log(`is open est ${isOpen}`);
       {!isLogged && (
         <>
         <NavLinks>
-          <Link to="/services">Nos services</Link>
+          <Link to="/services/">Nos services</Link>
           <a href="#inscription">Devenir JobWorker</a>
-          <Link to="/contact">Contact</Link>
+          <Link to="/contact/">Contact</Link>
         </NavLinks>
         <NavLinks>
           <ModalConnexion />
@@ -44,9 +44,9 @@ console.log(`is open est ${isOpen}`);
       {isLogged && (
         <>
         <NavLinks>
-          <Link to="/services">Nos services</Link>
-          <a href="/profil">Profil</a>
-          <Link to="/contact">Contact</Link>
+          <Link to="/services/">Nos services</Link>
+          <a href="/profil/">Profil</a>
+          <Link to="/contact/">Contact</Link>
         </NavLinks>
         <NavLinks to="/"><Button style={{ backgroundColor: '#FF385C', color: '#FFFF', margin: 'auto' }} onClick={handleClick}>Deconnexion</Button></NavLinks>
         </>

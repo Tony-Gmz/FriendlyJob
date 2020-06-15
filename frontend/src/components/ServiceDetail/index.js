@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Loader from 'src/components/Loader';
 import { Link, useParams } from 'react-router-dom';
-import { getServiceBySlug } from 'src/utils';
+import { getServiceBySlug, capitalize } from 'src/utils';
 import JoberService from './JoberService';
 import './serviceDetail.scss';
 
@@ -37,7 +37,7 @@ function ServiceDetail({ serviceList, getServiceName, getSixJobWorker, jobWorker
           )}
         </div>
         <div className="service_details_link">
-          <Link className="service_details_link-item" to={`/services/${slug}/jobworkers`}>Voir plus de JobWorker dans ma région</Link>
+          <Link className="service_details_link-item" to={`/services/${slug}/jobworkers/`}>Voir plus de JobWorker dans ma région</Link>
           <a className="service_details_link-item" href="#inscription">Devenez JobWorker ! Rejoingez-nous</a>
         </div>
       </div>
