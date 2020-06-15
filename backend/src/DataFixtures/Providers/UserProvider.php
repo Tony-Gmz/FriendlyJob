@@ -124,24 +124,18 @@ class UserProvider extends BaseProvider
         return static::$admins;
     }
 
+    /**
+     * This method is used to generate a random image
+     */
     public static function getRandomImage()
     {
 
         $url = "https://picsum.photos/640/480";
 
-        //! Code pour => https://stackoverflow.com/questions/61726373/how-to-get-all-intermediary-redirects-using-symfony-httpclient
-        //! https://symfony.com/doc/current/components/http_client.html#redirects
         try {
-            //! l'url picsum fait une redirection vers la photo random
-            //! Tester avec http://www.redirection-web.net/
-            //! j'utilise le 3ème argument afin de créer une exception ( RedirectionException )
             static::$client->request('GET', $url, ['max_redirects' => 0]);
         
         } catch (RedirectionException $e) {
-            //! Ceci permet de récuperer la réponse de l'exception qui est une instance de la classe HttpClient puis d'éxécuter la méthode getInfo qui va nous permettre de récupérer le lien réécrit lors de la redirection
-            //! La personne qui à fait cette méthode est a 100% un chacal
-            //! Pour l'instant HttpClient n'est pas capable de récupérer le lien de redirection donc cette méthode permet de le faire
-            //! Guzzle est capable de le faire https://guzzle3.readthedocs.io/http-client/http-redirects.html#http-redirects
             $redirectUrl = $e->getResponse()->getInfo()['redirect_url'];
             return $redirectUrl;
         }
