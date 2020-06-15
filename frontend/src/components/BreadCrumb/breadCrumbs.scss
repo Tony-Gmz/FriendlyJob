@@ -3,13 +3,19 @@
 
 @include phone {
 .breadCrumb{
-   
+
+  display: none;
+
+}
+}
+
+@include xl{
+  .breadCrumb{
   width: 100%;
   display: flex;
   justify-content: flex-start;
   margin-left: 0.5em;
   position: absolute;
   margin-top: 1.5em;
-  
-}
+  }
 }

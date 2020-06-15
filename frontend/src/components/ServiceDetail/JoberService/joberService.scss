@@ -1,33 +1,136 @@
-.joberService {
-  display: flex;
-}
-.Jober_avatar {
 
-  padding-top: 3em;
-  .MuiAvatar-root {
-    width: 90px;
-    height: 90px;
+// ==================================== scss card V2
+@import url('https://fonts.googleapis.com/css?family=Roboto|Sriracha&display=swap');
+$background: #fffffb;
+$accent: #ff385c;
+$otherAccent: #ff385c;
+$darkBackground: #80c5b9;
+
+
+
+#login-container {
+  margin: 2em;
+  margin-bottom: 2em;
+  height: 350px;
+  width: auto;
+  padding: 20px;
+  border-radius: 5px;
+  background: $background;
+  position: relative;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+  .profile-img {
+    height: 100px;
+    width: 100px;
+    background-size: cover;
+    background-position: center;
+    background-position-x: center!important;
+    background-position-y: center!important;
+    background-size: cover!important;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    position: absolute;
+    top: -25px;
+    left: -25px;
+    border-radius: 50%;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
   }
-}
-
-.Jober_card {
-
- 
-  margin-left: 1em;
-
-  .content {
+  h1 {
+    font-family: 'Sriracha', arial, sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+    color: $otherAccent;
+  }
+  .description{
+    padding: 0.7em;
+    margin-bottom: 20px;
+    height: 100px;
+    max-height: 100px;
+  }
+  .social {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100px;
+    padding: 0.5em;
     font-style: italic;
+    font-size: 1.2em;
+    color: rgb(170, 170, 170);
+    }
+  
+  button {
+    width: 50%;
+    height: 45px;
+    font-size: 1.5rem;
+    margin: 30px 10% 0 10%;
+    color: $background;
+    border: none;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    border-radius: 5px;
+    background: linear-gradient(45deg, $accent, $otherAccent, $otherAccent, $accent);
+    background-size: 300% 300%;
+    outline: none;
+    transition: all 200ms ease-in-out;
+    &:hover{
+      box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+      transform: translateY(2px);
+      -webkit-animation: gradientBG 1.5s ease-in-out forwards;
+      animation: gradientBG 1.5s ease-in-out forwards;
+      cursor: pointer;
+    }
+    &:active {
+      box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
+      transform: translateY(4px);
+    }
   }
-
-  
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $darkBackground;
+    color: white;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 30px;
+    padding: 0 20px;
+    margin-left: -20px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    div {
+      display: flex;
+      .fa-heart {
+        color: $accent;
+      }
+      p:first-child{
+        margin-right: 10px;
+        border-right: 4px solid white;
+        padding-right: 10px;
+      }
+    }
+  }
 }
 
- .MuiAvatar-root {
- 
-  position: unset !important;
+@-webkit-keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+  // 100% {
+  //   background-position: 0% 50%;
+  // }
 }
-
-.card {
-  
-  position: unset !important;
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+  // 100% {
+  //   background-position: 0% 50%;
+  // }
 }

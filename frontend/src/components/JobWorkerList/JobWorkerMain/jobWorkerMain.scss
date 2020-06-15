@@ -2,59 +2,15 @@
  
 
 @include phone {
-  .jobWorker_main {
-
-    margin-top: 4em;
-    margin-bottom: 2em;
-  
-    .dropdown {
-      
-      z-index: 1;
-  
-    }
-    .dropdown .icon {
-     z-index: 1;
-    }
-  
-    .jobWorker_wrap {
-  
-      z-index: 1;
-    }
-  
-    
-    .jobWorker_wrap{
-      display:flex;
-      flex-wrap: wrap;
-      justify-content:center;
-      margin:10%;
-    }
-    .jobWorker_box{
-      padding:30px;
-      margin:2%;
-      background:white;
-      width: serviceCard_img;
-      box-shadow:0 2px 3px 0px rgba(0,0,0,0.25);
-      border-radius:2px;
-      transition:0 all; 
-    }
-    .jobWorker_wrap:hover .jobWorker_box{
-      filter: grayscale(10%);
-      opacity:.8;
-      transform: scale(.98);
-      box-shadow:none;
-    }
-    .jobWorker_wrap:hover .jobWorker_box:hover{
-      transform: scale(1.1);
-      filter:blur(0px);
-      opacity:1;
-      box-shadow:0 8px 20px 0px rgba(0,0,0,0.125);
-    }
-    .Jober_avatar {
-      display: none;
-    }
-  
+  .jobWorker_list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
-  
+    .jobWorker_list_item{
+    flex-basis: 25%;
+    width: auto;
+    }
 }
 @include sm {
 
@@ -64,58 +20,16 @@
  
 }
 @include xl {
-
-  .jobWorker_main {
-
-    margin-top: 4em;
+  .jobWorker_list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     margin-bottom: 2em;
-  
-    .dropdown {
-      
-      z-index: 1;
-  
-    }
-    .dropdown .icon {
-     z-index: 1;
-    }
-  
-    .jobWorker_wrap {
-  
-      z-index: 1;
-    }
-    .Jober_avatar {
-      display: unset;
-    }
-  
-    
-    .jobWorker_wrap{
-      display:flex;
-      flex-wrap: wrap;
-      justify-content:center;
-      margin:10%;
-    }
-    .jobWorker_box{
-      padding:30px;
-      margin:2%;
-      background:white;
-      width: serviceCard_img;
-      box-shadow:0 2px 3px 0px rgba(0,0,0,0.25);
-      border-radius:2px;
-      transition:0 all; 
-    }
-    .jobWorker_wrap:hover .jobWorker_box{
-      filter: grayscale(10%);
-      opacity:.8;
-      transform: scale(.98);
-      box-shadow:none;
-    }
-    .jobWorker_wrap:hover .jobWorker_box:hover{
-      transform: scale(1.1);
-      filter:blur(0px);
-      opacity:1;
-      box-shadow:0 8px 20px 0px rgba(0,0,0,0.125);
-    }
-  
-  }
 
+   
+  }
+   .jobWorker_list_item{
+    flex-basis: 25%;
+    width: auto;
+    }
 }

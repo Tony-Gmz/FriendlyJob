@@ -27,7 +27,8 @@
     }
     .jobercard {
       width: 100%;
-      display: inline-block;
+      display: flex;
+      justify-content: center;
       text-align: center;
       margin: 0 auto;
     }
@@ -67,8 +68,8 @@
             padding-top: 2em;
           }
           .jobercard {
-            display: inline-block;
-            text-align: center;
+            display: flex;
+            justify-content: center;
             margin: 0 auto;
           }
           .jobpresentation_content {
