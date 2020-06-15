@@ -3,7 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import profil from 'src/assets/img/screenshot.png';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import { Form } from 'semantic-ui-react';
@@ -12,56 +13,73 @@ import { Form } from 'semantic-ui-react';
 import { whitoutAvatar } from 'src/utils';
 
 import UploadImg from 'src/containers/UploadImg';
-import { Message } from 'semantic-ui-react';
+
 
 // == Import
 import './profilFriendlyUser.scss';
 import ModalSuppression from 'src/containers/ModalSuppression';
-import { Link } from 'react-router-dom';
+
 
 // == Composant
 const ProfilFiendlyUser = ({
   canEditProfil,
   isEditable,
-  image,
   firstname,
   lastname,
   department,
   email,
-  about,
   cancelEdit,
   departmentsList,
-  editDepartment,
   submitEdit,
   editField,
   editEmail,
   editPassword,
   editConfirmationPassword,
   isEdited,
-  editAbout,
   urlAvatar,
+  isOpen,
+  openSuccessMessage,
+  closeSuccessMessage,
 }) => {
   const userAvatar = urlAvatar;
+  // handle on click who give at the user the possibility to edit his data
   const handleClick = () => {
     canEditProfil();
   };
+  // handle on click for cancel the edit
   const handleCancelClick = () => {
     cancelEdit();
   };
+  // handle change on field to set new value in state
   const handleChange = (evt) => {
-    console.log(`${evt.target.value} + ${evt.target.name}`);
+    // console.log(`${evt.target.value} + ${evt.target.name}`);
     editField(evt.target.value, evt.target.name);
   };
+  // handle for submit the modification 
   const handleSubmit = (evt) => {
-    console.log('coucou je suis le submit de edit profil');
+    // console.log('coucou je suis le submit de edit profil');
     evt.preventDefault();
     submitEdit();
+    openSuccessMessage();
     // cancelEdit();
   };
+  // handle on close success message who set isOpen at false in state
+  const handleMessageClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    closeSuccessMessage();
+  };
+  // Function for the successMessage
+  function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
   return (
     <div className="profilfu">
       <div className="profil_fu_desciption">
-        Voici votre espace personnel il vous sera utile si vous voulez effectuer des changements d'informations
+        Voici votre espace personnel il vous sera utile si
+        vous voulez effectuer des changements d'informations
       </div>
       <div className="profil_fu_friendlyUser">
         <div>
@@ -77,7 +95,6 @@ const ProfilFiendlyUser = ({
               <TextField
                 className="profil_input"
                 id="outlined-name-input"
-                label="Nom"
                 value={firstname}
                 type="text"
                 autoComplete="current-name"
@@ -89,7 +106,6 @@ const ProfilFiendlyUser = ({
               <TextField
                 className="profil_input"
                 id="outlined-firstname-input"
-                label="Prénom"
                 value={lastname}
                 type="text"
                 autoComplete="current-firstname"
@@ -115,18 +131,18 @@ const ProfilFiendlyUser = ({
             )}
             {isEditable && (
               <div className="form_fu_element">
-              <Form.Input
-                className="input"
-                label="Email*"
-                type="email"
-                onChange={handleChange}
-                value={editEmail}
-                name="editEmail"
-               placeholder={email}
-                patern="/^[-._a-z0-9]+@[-._a-z0-9]+$/"
-                title="Le format de l'adresse mail est incorrecte"
-              />
-            </div>
+                <Form.Input
+                  className="input"
+                  label="Email*"
+                  type="email"
+                  onChange={handleChange}
+                  value={editEmail}
+                  name="editEmail"
+                  placeholder={email}
+                  patern="/^[-._a-z0-9]+@[-._a-z0-9]+$/"
+                  title="Le format de l'adresse mail est incorrecte"
+                />
+              </div>
             )}
             {!isEditable && (
               <div className="form_fu_element">
@@ -183,12 +199,11 @@ const ProfilFiendlyUser = ({
               </div>
             )}
             {isEdited && (
-              <Message  positive>
-                <Message.Header><i class="check circle icon"></i>Vos modifications ont bien été prise en compte</Message.Header>
-                <p className="message_success">
-                  Vous souhaitez revenir sur la page d'accueil ? C'est par ici  <i class="hand point right icon"></i><a href="/"><span className="message_connexion">Page d'accueil</span></a>
-                </p>
-              </Message>
+              <Snackbar open={isOpen} autoHideDuration={6000} onClose={handleMessageClose}>
+                <Alert onClose={handleMessageClose} severity="success">
+                  vos modifications ont bien été pris en compte ! vous souhaitez retourner sur la <a href="/profil">page d'accueil</a> ?
+                </Alert>
+              </Snackbar>
             )}
             {editPassword !== editConfirmationPassword ? (
               <>
@@ -244,20 +259,21 @@ ProfilFiendlyUser.propTypes = {
   canEditProfil: PropTypes.func.isRequired,
   cancelEdit: PropTypes.func.isRequired,
   submitEdit: PropTypes.func.isRequired,
+  openSuccessMessage: PropTypes.func.isRequired,
+  closeSuccessMessage: PropTypes.func.isRequired,
   /** string */
   editEmail: PropTypes.string.isRequired,
   editPassword: PropTypes.string.isRequired,
   editConfirmationPassword: PropTypes.string.isRequired,
-  editAbout: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
   firstname: PropTypes.string.isRequired,
-  about: PropTypes.string.isRequired,
   department: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
+  urlAvatar: PropTypes.string.isRequired,
   /** bool */
   isEdited: PropTypes.bool.isRequired,
   isEditable: PropTypes.bool.isRequired,
+  isOpen: PropTypes.bool.isRequired,
   /** array  */
   departmentsList: PropTypes.arrayOf(
     PropTypes.shape({

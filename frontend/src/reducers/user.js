@@ -24,6 +24,8 @@ import {
   SAVE_ERROR_CONNEXION,
   SAVE_JOBWORKER_SERVICE,
   CHANGE_CURRENT_PAGE,
+  OPEN_SUCCESS_MESSAGE,
+  CLOSE_SUCCESS_MESSAGE,
 } from '../action/usersActions';
 
 const initialState = {
@@ -93,6 +95,7 @@ const initialState = {
   jobWorkerService: [],
   currentPage: 1,
   joberPerPage: 2,
+  isOpen: false,
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -173,6 +176,7 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         userData: action.userData,
         isEdited: true,
+
       };
     case DELETE_ACCOUNT:
       return {
@@ -231,6 +235,16 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         jobWorkerService: action.service,
         loadingOnModalAddSkill: false,
+      };
+    case OPEN_SUCCESS_MESSAGE:
+      return {
+        ...state,
+        isOpen: true,
+      };
+    case CLOSE_SUCCESS_MESSAGE:
+      return {
+        ...state,
+        isOpen: false,
       };
     default: return state;
   }

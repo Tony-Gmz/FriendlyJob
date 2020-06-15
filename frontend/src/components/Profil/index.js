@@ -27,6 +27,9 @@ const Profil = ({
   urlAvatar,
   toggle,
   editDepartment,
+  isOpen,
+  closeSuccessMessage,
+  openSuccessMessage,
 }) => {
 
   /* useEffect(() => {
@@ -54,6 +57,9 @@ const Profil = ({
             editAbout={editAbout}
             urlAvatar={urlAvatar}
             editDepartment={editDepartment}
+            isOpen={isOpen}
+            openSuccessMessage={openSuccessMessage}
+            closeSuccessMessage={closeSuccessMessage}
           />
         )
         : (
@@ -81,6 +87,9 @@ const Profil = ({
             getNewSkillValue={getNewSkillValue}
             urlAvatar={urlAvatar}
             editDepartment={editDepartment}
+            isOpen={isOpen}
+            openSuccessMessage={openSuccessMessage}
+            closeSuccessMessage={closeSuccessMessage}
           />
         )}
     </>

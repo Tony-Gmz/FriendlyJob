@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Modal, Input, Message } from 'semantic-ui-react';
+import Snackbar from '@material-ui/core/Snackbar';
 import TextField from '@material-ui/core/TextField';
+import MuiAlert from '@material-ui/lab/Alert';
 import './ModalAddSkill.scss';
 
-const ModalAddSkill = ({ serviceList, selectedSkillDescription, selectedSkillId, selectedSkillPrice, getNewSkillValue, submitNewSkill, isSave, clearSave  }) => {
+const ModalAddSkill = ({ serviceList, selectedSkillDescription, selectedSkillId, selectedSkillPrice, getNewSkillValue, submitNewSkill, isSave, clearSave, isOpen, openSuccessMessage, closeSuccessMesssage  }) => {
 
   const handleChange = (evt) => {
     console.log(`${evt.target.value} + ${evt.target.name}`);
@@ -15,11 +17,23 @@ const ModalAddSkill = ({ serviceList, selectedSkillDescription, selectedSkillId,
     evt.preventDefault();
     console.log('coucou je suis submit de addSkill');
     submitNewSkill();
+    openSuccessMessage();
   };
 
   const handleClose = () => {
     clearSave();
   };
+  const handleMessageClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    closeSuccessMesssage();
+  };
+
+  function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
 
   return (
     <Modal onClose={handleClose} trigger={<Button className="ModalAddSkill_triggerButton" style={{ backgroundColor: '#303f9f', color: '#FFFF' }}>Ajouter une compétence</Button>} closeIcon>
@@ -61,14 +75,13 @@ const ModalAddSkill = ({ serviceList, selectedSkillDescription, selectedSkillId,
           </div>
           </div>
           <div className="succes_save_message">
-          {isSave && (
-            <Message  positive>
-                <Message.Header><i class="check circle icon"></i>Votre ajout de compétence a été pris en compte</Message.Header>
-                <p className="message_success">
-                  Vous souhaitez revenir sur votre profil ? C'est par ici  <i class="hand point right icon"></i><a href="/profil"><span className="message_connexion">Profil</span></a>
-                </p>
-            </Message>
-          )}
+            {isSave && (
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleMessageClose}>
+              <Alert severity="success">
+                La compétence a bien été ajouté ! vous souhaitez retourner sur <a href="/profil">profil</a> ?
+              </Alert>
+            </Snackbar>
+            )}
           </div>
           <div className="modalAddSkill_submit_button">
             <Button style={{ backgroundColor: 'green', color: '#FFFF' }}>Envoyer</Button>
