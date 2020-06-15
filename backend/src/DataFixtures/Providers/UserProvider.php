@@ -5,7 +5,6 @@ namespace App\DataFixtures\Providers;
 use Faker\Provider\Base as BaseProvider;
 use Symfony\Component\HttpClient\Exception\RedirectionException;
 use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Component\HttpClient\Exception\RedirectionException;
 
 /**
  * This provider is used to call consistent data concerning the Users
