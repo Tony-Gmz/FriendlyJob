@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { openSuccesMessage, closeSuccesMessage } from 'src/action/usersActions';
 import {
   changeFieldRequest,
   changeFieldHourRequest,
@@ -18,6 +19,7 @@ const mapStateToProps = (state) => ({
   requestHour: state.request.requestHour,
   editedDate: state.request.editedDate,
   editedHour: state.request.editedHour,
+  isOpen: state.user.isOpen,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -45,6 +47,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   changeFieldDateRequest: (newDate) => {
     dispatch(changeFieldDateRequest(newDate));
+  },
+  openSuccessMessage: () => {
+    dispatch(openSuccesMessage());
+  },
+  closeSuccessMessage: () => {
+    dispatch(closeSuccesMessage());
   },
 });
 
