@@ -3,8 +3,12 @@
 namespace App\DataFixtures\Providers;
 
 use Faker\Provider\Base as BaseProvider;
+use Symfony\Component\HttpClient\Exception\RedirectionException;
 use Symfony\Component\HttpClient\HttpClient;
 
+/**
+ * This provider is used to call consistent data concerning the Users
+ */
 class UserProvider extends BaseProvider
 {
     private static $client;
@@ -14,6 +18,7 @@ class UserProvider extends BaseProvider
         static::$client = HttpClient::create();
     }
 
+    // We set a protected property and store the data inside
     protected static $users = [
         
         'about_male' => [
@@ -73,6 +78,7 @@ class UserProvider extends BaseProvider
         ],
     ];
 
+    // We set a protected property and store the data inside (admins)
     protected static $admins = [
         
         'email' => [
@@ -112,29 +118,37 @@ class UserProvider extends BaseProvider
 
     ];
 
+    /**
+     * This method will be called to transmit the data from the property for the fixtures ($users)
+     */
     public static function getUserAbout()
     {
         return static::$users;
     }
 
+    /**
+     * This method will be called to transmit the data from the property for the fixtures ($admins)
+     */
     public static function getAdminData()
     {
         return static::$admins;
     }
 
+    /**
+     * This method is used to generate a random image
+     */
     public static function getRandomImage()
     {
-        $url = "https://i.picsum.photos/id/".mt_rand(0, 1050)."/640/480.jpg";
-        
-        $response = static::$client->request('GET', $url);
-        
-        $statusCode = $response->getStatusCode();
+        $url = "https://picsum.photos/640/480";
 
-        if ($statusCode == 404) {
-            return static::getRandomImage();
+        try {
+            
+            static::$client->request('GET', $url, ['max_redirects' => 0]);
+        
+        } catch (RedirectionException $e) {
+            
+            $redirectUrl = $e->getResponse()->getInfo()['redirect_url'];
+            return $redirectUrl;
         }
-        else {
-            return $url;
-        }   
     }
 }

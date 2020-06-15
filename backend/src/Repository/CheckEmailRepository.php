@@ -19,7 +19,9 @@ class CheckEmailRepository extends ServiceEntityRepository
         parent::__construct($registry, CheckEmail::class);
     }
 
-    
+    /**
+     * Used to find a user with the token
+     */
     public function findOneByToken($token)
     {
         return $this->createQueryBuilder('c')

@@ -19,9 +19,12 @@ class Email
         $this->mailer = $mailer;
     }
 
-
+    /**
+     * This method is used to send an email to the user who registers for a validation
+     */
     public function sendEmail(User $user, CheckEmail $checkEmail)
     {
+        // We create the Email template and we retrieve the current user's email to send him a registration email
         $email = (new TemplatedEmail())
             ->from('friendlyjob.services@gmail.com')
             ->to($user->getEmail())
@@ -33,9 +36,13 @@ class Email
             ])
         ;
 
+        // With the mailer component from Symfony, we send an email to the user
         $this->mailer->send($email);
     }
 
+    /**
+     * This method is used to generate a random token for the registration validation
+     */
     public function generateToken()
     {
         return rtrim(strtr(base64_encode(random_bytes(32)), '+/','-_'), '=');

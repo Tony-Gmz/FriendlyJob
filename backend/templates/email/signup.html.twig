@@ -1,11 +1,57 @@
-<h1>Bienvenue {{ user.fullname }} !</h1>
+{% apply inline_css %}
 
-<p>
-    Vous êtes inscrit avec cet email : {{ user.email }}
-</p>
+<style>
+    body {
+        background-color: #a04261;
+        padding: 7em 0em;
+        text-align: center;
+        border-radius: 2em;
+        width: 100%
+    }
 
-<p>
-    <a href="{{ url('confirm_email')}}?token={{ check_email.token }}">Cliquez ici pour activer votre compte !</a>
-</p>
+    h1 {
+        color: white;
+        text-align: center;
+    }
 
-<p>Toute l'équipe de FriendlyJob vous remercie pour votre confiance.</p>
+    p {
+        color: white;
+        font-size: 1.5em;
+    }
+
+    .ii a[href] {
+        color: navajowhite;
+    }
+
+    a {
+        color: navajowhite;
+    }
+
+    .activate:hover {
+        color: #80C5BA;
+        background-color: white;
+        border-radius: 1em;
+        padding: 0.7em;
+    }
+
+    .validateLink:hover {
+        text-decoration: none;
+    }
+</style>
+
+    <img src="{{ email.image('@images/logo_fj_title_crop.png') }}" alt="Logo">
+    <h1>Bienvenue {{ user.fullname }} !</h1>
+
+    <p>
+        Vous êtes inscrit avec cet email : <span class="userEmail">{{ user.email }}</span>
+    </p>
+
+    <p>
+        <a class="validateLink" href="{{ url('confirm_email')}}?token={{ check_email.token }}"><span class="activate">Cliquez ici pour activer votre compte !</span></a>
+    </p>
+
+    <p>
+        Toute l'équipe de FriendlyJob vous remercie pour votre confiance.
+    </p>
+
+{% endapply %}

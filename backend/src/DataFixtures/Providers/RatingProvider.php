@@ -4,8 +4,12 @@ namespace App\DataFixtures\Providers;
 
 use Faker\Provider\Base as BaseProvider;
 
+/**
+ * This provider is used to call consistent data concerning the Ratings
+ */
 class RatingProvider extends BaseProvider
 {
+    // We set a protected property and store the data inside
     protected static $ratings = [
         'comment' => [
             "Je suis très satisfait.",
@@ -45,6 +49,9 @@ class RatingProvider extends BaseProvider
         ]
     ];
 
+    /**
+     * This method will be called to transmit the data from the property for the fixtures
+     */
     public static function getDataRatings()
     {
         return static::$ratings;

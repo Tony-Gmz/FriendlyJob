@@ -4,8 +4,12 @@ namespace App\DataFixtures\Providers;
 
 use Faker\Provider\Base as BaseProvider;
 
+/**
+ * This provider is used to call consistent data concerning the Departments
+ */
 class DepartmentProvider extends BaseProvider
 {
+    // We set a protected property and store the data inside
     protected static $department = [
         'name' => [
             	'Ain',
@@ -215,6 +219,9 @@ class DepartmentProvider extends BaseProvider
             ],
         ];
 
+    /**
+     * This method will be called to transmit the data from the property for the fixtures
+     */
     public static function getDataDepartment(){
         return static::$department;
     }

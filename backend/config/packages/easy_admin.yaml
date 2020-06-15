@@ -133,7 +133,8 @@ easy_admin:
             disabled_actions: ['new', 'edit']
             list:
                 title: "Liste des demandes"
-                fields: 
+                fields:
+
                     ['id', 'body', 'reservationDate','reservationHour', 'status', 'createdAt', 'rating', 'service', 'friendlyUser', 'jobWorker']
                 actions:
                     - { name: 'show', icon: 'eye', label: 'Voir'}

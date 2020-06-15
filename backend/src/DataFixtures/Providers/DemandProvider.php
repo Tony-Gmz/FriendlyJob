@@ -4,8 +4,12 @@ namespace App\DataFixtures\Providers;
 
 use Faker\Provider\Base as BaseProvider;
 
+/**
+ * This provider is used to call consistent data concerning the Demands
+ */
 class DemandProvider extends BaseProvider
 {
+    // We set a protected property and store the data inside
     protected static $demands = [
         'jardinage' => [
             "J'aurais besoin de vos services pour tailler ma haie",
@@ -50,10 +54,16 @@ class DemandProvider extends BaseProvider
         ],
     ];
 
+    /**
+     * This method will be called to transmit the data from the property for the fixtures
+     */
     public static function getDataDemands(){
         return static::$demands;
     }
 
+    /**
+     * This method will be called to transmit a random date for the reservation
+     */
     public static function getReservationDate()
     {
         $year = date("2020");
@@ -65,11 +75,17 @@ class DemandProvider extends BaseProvider
         return $randomDate;
     }
 
+    /**
+     * This method will be called to transmit a random hour for the reservation
+     */
     public static function getReservationHour()
     {
         return mt_rand(6, 21) .":00";
     }
 
+    /**
+     * This method will be called to transmit a random status for a demand
+     */
     public static function getStatus()
     {
         $status = static::$demands['status'];

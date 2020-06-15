@@ -1,0 +1,22 @@
+body {
+    text-align: center;
+    width: 100%;
+}
+
+.backHomepage {
+    font-size: 1.5em;
+    color: #FF355B;
+}
+
+.thanks {
+    margin-bottom: 2em;
+    font-size: 1.5em;
+}
+
+.backHomepage:hover {
+    color: white;
+    background-color: #80C5BA;
+    border-radius: 1em;
+    padding: 0.7em;
+    text-decoration: none;
+}

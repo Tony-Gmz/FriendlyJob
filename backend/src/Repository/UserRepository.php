@@ -36,6 +36,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->flush();
     }
 
+    /**
+     * Used to get the details of a JobWorker
+     */
     public function findJobWorkerDetails($id)
     {
         $qb = $this->createQueryBuilder('u');
@@ -53,6 +56,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return $qb->getQuery()->getOneOrNullResult();
     }
 
+    /**
+     * Used to get the rating of a JobWorker
+     */
     public function findJobWorkerRating($id)
     {
         $qb = $this->createQueryBuilder('u');
@@ -71,6 +77,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return $qb->getQuery()->getResult();
     }
 
+    /**
+     * Used to get the details of all the admins
+     */
     public function findContactDetails()
     {
         $qb = $this->createQueryBuilder('u');
@@ -84,6 +93,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return $qb->getQuery()->getResult();
     }
 
+    /**
+     * Used to get the details of all the JobWorkers
+     */
     public function getAllJobWorkers()
     {
         $qb = $this->createQueryBuilder('u');
@@ -103,6 +115,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return $qb->getQuery()->getResult();
     }
 
+    /**
+     * Used to get the user's role
+     */
     public function findUserType($id, $roles) {
         
         $qb = $this->createQueryBuilder('u');
@@ -117,6 +132,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return $qb->getQuery()->getOneOrNullResult();
     }
 
+    /**
+     * Used to find all the users according to their role
+     */
     public function findByRole($roles) {
         
         $qb = $this->createQueryBuilder('u');

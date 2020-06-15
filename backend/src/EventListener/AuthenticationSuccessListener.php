@@ -13,19 +13,20 @@ class AuthenticationSuccessListener
      */
     public function onAuthenticationSuccessResponse(AuthenticationSuccessEvent $event)
     {
+        // We store the data and the user from the event
         $data = $event->getData();
         $user = $event->getUser();
 
+        // If the user is anonymous, do not grant access
         if (!$user instanceof UserInterface) {
             return;
         }
 
-        // On récuperer le checkEmail
+        // We retrieve the user's checkEmail
         $checkEmail = $user->getCheckEmail();
 
-        // Si $checkEmail est null donc l'utilisateur n'a pas d'entrée dans notre checkEmail
-        // on n'éxécute la méthode getIsConfirmed
-        // si checkEmail == null notre utilisateur est confirmé ( mécanique commande possible pour clean la table checkEmail)
+        // If $checkEmail is not null, we retrieve the user's IsConfirmed
+        // Else $checkEmail is null, the user has no entry, so the user is automatically confirmed
         if ( $checkEmail != null ){
             $isConfirmed = $checkEmail->getIsConfirmed();
         }
@@ -33,7 +34,7 @@ class AuthenticationSuccessListener
             $isConfirmed = true;
         }
 
-        //! Petite sécurité pour éviter que le token soit envoyé si l'utilisateur n'est pas confirmé
+        // Little security to avoid that the token is sent if the user is not confirmed
         /*
         if ( $isConfirmed == false )
         {
@@ -41,12 +42,14 @@ class AuthenticationSuccessListener
         }
         */
 
+        // We store the department's data from the user who sets off the event
         $department = [ 
                         'id' => $user->getDepartment()->getId(), 
                         'name' => $user->getDepartment()->getName(), 
                         'number' => $user->getDepartment()->getNumber(),
                     ];
 
+        // We store all the user's data, with a 'isLogged' key at true, and the 'isConfirmed' key
         $data['user'] = [
             'id' => $user->getId(),
             'username' => $user->getUsername(),
@@ -60,10 +63,10 @@ class AuthenticationSuccessListener
             'isConfirmed' => $isConfirmed,
         ];
 
+        // We retrieve the current User data
         $user = $event->getUser();
 
-        //dd($event, $data, $user);
-
+        // We set all the recovered data to the event
         $event->setData($data);
     }
 }

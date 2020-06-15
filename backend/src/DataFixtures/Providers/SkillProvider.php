@@ -4,8 +4,12 @@ namespace App\DataFixtures\Providers;
 
 use Faker\Provider\Base as BaseProvider;
 
+/**
+ * This provider is used to call consistent data concerning the Skills
+ */
 class SkillProvider extends BaseProvider
 {
+    // We set a protected property and store the data inside
     protected static $skills = [
         'jardinage' => [
             "Paysagiste de métier, je saurais subvenir à tous vos besoins florales et même plus encore.",
@@ -52,10 +56,16 @@ class SkillProvider extends BaseProvider
 
     ];
 
+    /**
+     * This method will be called to transmit the data from the property for the fixtures
+     */
     public static function getDescriptionSkills(){
         return static::$skills;
     }
 
+    /**
+     * This method will be called to transmit a random price for the Skills
+     */
     public static function getPriceSkills(){
         return mt_rand(8,20);
     }

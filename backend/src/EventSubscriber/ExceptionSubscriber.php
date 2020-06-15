@@ -12,10 +12,13 @@ class ExceptionSubscriber implements EventSubscriberInterface
 {
     public function onKernelException(ExceptionEvent $event)
     {
-        
+        // We store the throwable, which is a NotFoundHttpException object
         $throwable = $event->getThrowable();
+        // We store the Request object
         $request = $event->getRequest();
-        //! if qui à été nécessaire suite a l'impossibilité d'utiliser la méthode getStatusCode sur une erreur 500
+
+        // We check if the 'getStatusCode' method exists
+        // If it does not, we set the statusCode with a null value
         if (method_exists($throwable,'getStatusCode'))
         {
             $statusCode = $throwable->getStatusCode();
@@ -23,17 +26,26 @@ class ExceptionSubscriber implements EventSubscriberInterface
         else {
             $statusCode = null;
         }
+
+        // We store the path info where the request happened
         $pathInfo = $request->getPathInfo();
         
+        // We send a JSON error message with a status code (ApiResponse404 method) to handle an error 404
+        // Like this, we can treat every 404 error from every request
         if ( $throwable instanceof NotFoundHttpException && $statusCode == 404 && preg_match('`^\/api\/`', $pathInfo) ) {
             return $event->setResponse($this->setApiResponse404());
         }
 
+        // We send a JSON error message with a status code (ApiResponse403 method) to handle an error 403
+        // Like this, we can treat every 403 error from every request
         if ( $throwable instanceof AccessDeniedHttpException && $statusCode == 403 && preg_match('`^\/api\/`', $pathInfo) ) {
             return $event->setResponse($this->setApiResponse403());
         }
     }
 
+    /**
+     * This event is called on a kernel.exception
+     */
     public static function getSubscribedEvents()
     {
         return [
@@ -41,6 +53,9 @@ class ExceptionSubscriber implements EventSubscriberInterface
         ];
     }
 
+    /**
+     * This method is used to send a 404 status with a message in JSON format
+     */
     public function setApiResponse404()
     {
         $message = [
@@ -58,6 +73,9 @@ class ExceptionSubscriber implements EventSubscriberInterface
         return $response;
     }
 
+    /**
+     * This method is used to send a 403 status with a message in JSON format
+     */
     public function setApiResponse403()
     {
         $message = [

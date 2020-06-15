@@ -4,8 +4,12 @@ namespace App\DataFixtures\Providers;
 
 use Faker\Provider\Base as BaseProvider;
 
+/**
+ * This provider is used to call consistent data concerning the Services
+ */
 class ServiceProvider extends BaseProvider
 {
+    // We set a protected property and store the data inside
     protected static $services = [
         'parent_id' => [
             null,
@@ -51,7 +55,10 @@ class ServiceProvider extends BaseProvider
         ],
     ];
 
+    /**
+     * This method will be called to transmit the data from the property for the fixtures
+     */
     public static function getDataServices(){
         return static::$services;
-    }//composer remove bluemmb/faker-picsum-photos-provider
+    }
 }

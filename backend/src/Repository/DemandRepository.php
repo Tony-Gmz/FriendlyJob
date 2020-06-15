@@ -19,6 +19,10 @@ class DemandRepository extends ServiceEntityRepository
         parent::__construct($registry, Demand::class);
     }
 
+    /**
+     * Used to find all demands from one user
+     * We order the demand status
+     */
     public function findAllDemandsFromOneUser(int $userId)
     {
         $qb = $this->createQueryBuilder('d');

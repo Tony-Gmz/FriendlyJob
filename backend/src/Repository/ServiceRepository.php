@@ -19,6 +19,10 @@ class ServiceRepository extends ServiceEntityRepository
         parent::__construct($registry, Service::class);
     }
     
+    /**
+     * Used to find all the JobWorkers according to the service they are related
+     * We added some filter, to have them by price, rating, department, and by order
+     */
     public function findJobworkerByService($serviceId, $departmentId = null, $price = null, $rating = null, $orderBy = 'ASC')
     {
         $qb = $this->createQueryBuilder('s');
@@ -73,6 +77,9 @@ class ServiceRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    /**
+     * Used to find all sub-services from one service
+     */
     public function findSubServiceFromService($id)
     {
         $qb = $this->createQueryBuilder('s');
