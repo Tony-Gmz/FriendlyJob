@@ -8,6 +8,8 @@ import {
 } from 'semantic-ui-react';
 import 'date-fns';
 import Grid from '@material-ui/core/Grid';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
@@ -22,54 +24,46 @@ import './modalReservation.scss';
 
 
 // == Composant
-const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerDetail, changeFieldHourRequest, changeFieldDateRequest, requestDate, requestHour, displayHour, isSave }) => {
+const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerDetail, changeFieldHourRequest, changeFieldDateRequest, requestDate, requestHour, displayHour, isSave, isOpen, openSuccessMessage, closeSuccessMessage }) => {
   const { skills } = currentJobWorkerDetail;
   // console.log(skills);
   const selectedDate = Date();
 
   const handleChange = (evt) => {
-    console.log(`coucou j'envoi ${evt.target.value} + ${evt.target.name}`);
+    // console.log(`coucou j'envoi ${evt.target.value} + ${evt.target.name}`);
     changeFieldRequest(evt.target.value, evt.target.name);
   };
-  console.log(currentJobWorkerDetail);
+  // console.log(currentJobWorkerDetail);
   const handleSubmit = (evt) => {
-    console.log('coucou je suis le submit de la request');
+    // console.log('coucou je suis le submit de la request');
     evt.preventDefault();
     submitRequest();
+    openSuccessMessage();
   };
   const handleDate = (date) => {
-    // Methode to listen the change on the calendar et send the result in the reducer
-    console.log(date);
-    let month = (date.getMonth() + 1);
-    month = month.toString();
-    month = ('0' + (month)).slice(-2);
-    // console.log(month);
-    // console.log(date.getFullYear());
-    const years = date.getFullYear().toString();
-    const days = date.getDate().toString();
-    const newDate = `${years}-${month}-${days}`;
-    console.log(newDate);
+    // console.log(newDate);
     changeFieldDateRequest(date);
   };
 
-
-  const changeHourFormat = (requestHour) => {
-    const hours = requestHour.slice(0, 2);
-    console.log(hours);
-    const minutes = requestHour.slice(3, 5);
-    // console.log(minutes);
-   
-    requestHour = `${hours}:${minutes}`;
-    console.log(requestHour);
-    return requestHour;
-  };
-
   const handleHour = (date) => {
-    console.log(date);
+    // console.log(date);
     // console.log(date.getHours());
     // console.log(date.getMinutes());
     changeFieldHourRequest(date);
   };
+
+  const handleMessageClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    closeSuccessMessage();
+  };
+
+  function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
+
   return (
     <div className="ModalReservation">
       <a href="#reservation"><Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }}>Reservation</Button></a>
@@ -129,14 +123,11 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
             </MuiPickersUtilsProvider>
           </div>
           {isSave && (
-            <div className="modalReservation_succes_message">
-              <Message  positive>
-                <Message.Header><i className="check circle icon"/> Votre reservation a bien été prise en compte</Message.Header>
-                <p className="message_success">
-                  Vous êtes maintenante dans l'attente de confirmation de votre jobWorker ! Vous souhaitez acceder au suivi de vos demandes  ? C'est par ici        <i className="hand point right icon" /><a href="/demandes"><span className="message_connexion">Demandes</span></a>
-                </p>
-              </Message>
-            </div>
+            <Snackbar open={isOpen} autoHideDuration={6000} onClose={handleMessageClose}>
+              <Alert onClose={handleMessageClose} severity="success">
+                votre reservation a  bien été prise en compte ! vous souhaitez acceder à vos <a href="/demandes">demandes</a> ?
+              </Alert>
+            </Snackbar>
           )}
           <div>
             <form onSubmit={handleSubmit} className="div_submit">

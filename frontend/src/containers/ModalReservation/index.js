@@ -7,6 +7,7 @@ import {
   displayHour,
 } from 'src/action/requestAction';
 import ModalReservation from '../../components/ModalReservation';
+import { openSuccesMessage, closeSuccesMessage } from '../../action/usersActions';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
@@ -15,6 +16,7 @@ const mapStateToProps = (state) => ({
   requestHour: state.request.requestHour,
   hour: state.request.hour,
   isSave: state.request.isSave,
+  isOpen: state.user.isOpen,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -34,6 +36,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   displayHour: (initialHour) => {
     dispatch(displayHour(initialHour));
+  },
+  openSuccessMessage: () => {
+    dispatch(openSuccesMessage());
+  },
+  closeSuccessMessage: () => {
+    dispatch(closeSuccesMessage());
   },
 });
 
