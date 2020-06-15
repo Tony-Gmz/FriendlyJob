@@ -3,3 +3,8 @@
 {% block header %}
     <a id="logo" href="/"><img src="{{ asset('assets/images/logo_fj_title_crop.png') }}" alt="FriendlyJob"></a>
 {% endblock header %}
+
+{% block stylesheets %} 
+    {{ parent() }}
+    <link rel="icon" href="{{ asset('assets/images/logo_fj_crop.ico') }}"/>
+{% endblock %}

@@ -10,6 +10,7 @@ easy_admin:
             - Rating
         brand_color: '#FF385C'
         assets:
+            favicon: 'assets/images/logo_fj_crop.ico'
             css:
                 - 'assets/css/api-easyadmin-friendlyjob.css'
     entities:
