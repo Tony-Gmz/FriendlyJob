@@ -24,7 +24,7 @@ import './modalReservation.scss';
 
 
 // == Composant
-const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerDetail, changeFieldHourRequest, changeFieldDateRequest, requestDate, requestHour, displayHour, isSave, isOpen, openSuccessMessage, closeSuccessMessage }) => {
+const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerDetail, changeFieldHourRequest, changeFieldDateRequest, requestDate, requestHour, displayHour, isSave, isOpen, openSuccessMessage, closeSuccessMessage, errorMessageReservation }) => {
   const { skills } = currentJobWorkerDetail;
   // console.log(skills);
   const selectedDate = Date();
@@ -126,6 +126,13 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
             <Snackbar open={isOpen} autoHideDuration={6000} onClose={handleMessageClose}>
               <Alert onClose={handleMessageClose} severity="success">
                 votre reservation a  bien été prise en compte ! vous souhaitez acceder à vos <a href="/demandes">demandes</a> ?
+              </Alert>
+            </Snackbar>
+          )}
+          {errorMessageReservation && (
+            <Snackbar open={isOpen} autoHideDuration={6000} onClose={handleMessageClose}>
+              <Alert onClose={handleMessageClose} severity="error">
+                Une erreur s'est produite lors de votre reservation ! Verifiez que tous les champs soient rempli.
               </Alert>
             </Snackbar>
           )}

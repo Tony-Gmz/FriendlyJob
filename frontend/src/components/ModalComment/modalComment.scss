@@ -13,3 +13,12 @@
 .info_modalComment{
   font-size: 0.8em;
 }
+
+.info_message_comment {
+  margin-top: 2em;
+  .message {
+    background-color: #4CAF50;
+    color: #ffffff;
+    border-radius: 10px;
+  }
+}

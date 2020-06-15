@@ -84,7 +84,7 @@ const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHou
             onClose={handleMessageClose}
             anchorOrigin={{
               vertical: 'top',
-             horizontal: 'right',
+              horizontal: 'right',
             }}
             >
             <Alert onClose={handleMessageClose} severity="success">

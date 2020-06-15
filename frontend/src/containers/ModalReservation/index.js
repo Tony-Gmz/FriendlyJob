@@ -17,6 +17,7 @@ const mapStateToProps = (state) => ({
   hour: state.request.hour,
   isSave: state.request.isSave,
   isOpen: state.user.isOpen,
+  errorMessageReservation: state.request.errorMessageReservation,
 });
 
 const mapDispatchToProps = (dispatch) => ({
