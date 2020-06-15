@@ -1,10 +1,12 @@
 import React from 'react';
 import { Button, Card } from 'semantic-ui-react';
+import { changeHourFormat, changeDateFormat } from 'src/utils';
 
 
 // == Composant
 const RequestCancelFU = ({ request }) => {
-
+  const hourResevation = new Date(request.reservationHour);
+  const dateReservation = new Date(request.reservationDate);
   return (
     <ul>
       <li className="booking-card" style={{ backgroundImage: `url(${request.service.image})`}}>

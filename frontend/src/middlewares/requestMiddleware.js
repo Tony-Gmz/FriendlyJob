@@ -15,6 +15,7 @@ import {
   isRequestRefuse,
   SUBMIT_FINISH_REQUEST,
   submitComment,
+  errorMesssageReservation,
 } from '../action/requestAction';
 
 const requestMiddleware = (store) => (next) => (action) => {
@@ -63,6 +64,7 @@ const requestMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.warn(error);
+          store.dispatch(errorMesssageReservation());
         });
       next(action);
       break;

@@ -3,29 +3,28 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
-import { Input, Message } from 'semantic-ui-react';
-import CancelSharpIcon from '@material-ui/icons/CancelSharp';
+import { Input } from 'semantic-ui-react';
+
 import { whitoutAvatar } from 'src/utils';
 
 // == Import
 import './profilJobWorker.scss';
 import ModalSuppression from 'src/containers/ModalSuppression';
 import { Link } from 'react-router-dom';
-import { add } from 'date-fns/esm';
 import ModalAddSkill from 'src/containers/ModalAddSkill';
 import ModalDeleteSkill from 'src/containers/ModalDeleteSkill';
 import ModalEditSkill from 'src/containers/ModalEditSkill';
 import UploadImg from 'src/containers/UploadImg';
-import { FormControl } from '@material-ui/core';
 
 // == Composant
 const ProfilJobWorker = ({
   canEditProfil,
   isEditable,
-  image,
   firstname,
   lastname,
   department,
@@ -43,12 +42,11 @@ const ProfilJobWorker = ({
   getJobWorkerSkill,
   serviceList,
   currentJobWorkerSkills,
-  getNewSkillValue,
-  selectedSkillDescription,
-  selectedSkillId,
-  selectedSkillPrice,
   urlAvatar,
   toggle,
+  isOpen,
+  closeSuccessMessage,
+  openSuccessMessage,
 }) => {
   useEffect(() => {
     getJobWorkerSkill();
@@ -63,22 +61,28 @@ const ProfilJobWorker = ({
     cancelEdit();
   };
   const handleChange = (evt) => {
-    console.log(`${evt.target.value} + ${evt.target.name}`);
+    // console.log(`${evt.target.value} + ${evt.target.name}`);
     editField(evt.target.value, evt.target.name);
   };
-  const handleRadioChange = (e, data) => {
-    const { name, value } = data;
-    console.log(`${name} + ${value}`);
-    getNewSkillValue(value, name);
-  };
+
   const handleSubmit = (evt) => {
-    console.log('coucou je suis le submit de edit profil');
+    // console.log('coucou je suis le submit de edit profil');
     evt.preventDefault();
     submitEdit();
+    openSuccessMessage();
   };
-  const handleRadioRemoveChange = (e, data) => {
-    const {id, value} = data;
+  const handleMessageClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    closeSuccessMessage();
   };
+
+  function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
+
   return (
     <div className="profilJobWorker">
       <div className="profilJobWorker_desciption">
@@ -101,7 +105,6 @@ const ProfilJobWorker = ({
               <TextField
                 className="profil_input"
                 id="outlined-name-input"
-                label="Nom"
                 value={lastname}
                 type="text"
                 autoComplete="current-name"
@@ -113,7 +116,6 @@ const ProfilJobWorker = ({
               <TextField
                 className="profil_input"
                 id="outlined-firstname-input"
-                label="Prénom"
                 value={firstname}
                 type="text"
                 autoComplete="current-firstname"
@@ -240,16 +242,15 @@ const ProfilJobWorker = ({
               </div>
             )}
             {isEdited && (
-              <Message  positive>
-                <Message.Header><i class="check circle icon"></i>Vos modifications ont bien été prise en compte</Message.Header>
-                <p className="message_success">
-                  Vous souhaitez revenir sur la page d'accueil ? C'est par ici  <i class="hand point right icon"></i><a href="/"><span className="message_connexion">Page d'accueil</span></a>
-                </p>
-              </Message>
+              <Snackbar open={open} autoHideDuration={6000} onClose={handleMessageClose}>
+                <Alert onClose={handleMessageClose} severity="success">
+                  vos modifications ont bien été pris en compte ! vous souhaitez retourner sur <a href="/profil">profil</a> ?
+                </Alert>
+              </Snackbar>
             )}
             {editPassword !== editConfirmationPassword ? (
               <>
-                <div className="error_message_passwordConfirmation"><i class="times circle icon"></i>Le champ "mot de passe" est différent du champ "confirmation"</div>
+                <div className="error_message_passwordConfirmation"><i className="times circle icon" />Le champ "mot de passe" est différent du champ "confirmation"</div>
                 <div className="profil_group_btn">
                   {isEditable && (
                     <Link to="/"><Button onClick={handleCancelClick} className="profil_btn" variant="contained" color="alerte"> Annuler</Button></Link>
@@ -285,7 +286,7 @@ const ProfilJobWorker = ({
                 </div>
               </>
             )}
-            </form>
+          </form>
           <div className="form_skill">
             <div className="form_skill_description">
               Vous souhaitez changer ou ajouter des compétences ? Modifier votre prix horaire ? C'est par ici 
@@ -294,53 +295,52 @@ const ProfilJobWorker = ({
               <>
                 {currentJobWorkerSkills.map((skill) => {
                   const currentSkill = skill.service.id;
-                  //console.log(service.id)
+                  // console.log(service.id)
                   // console.log(currentSkill);
                   { if (currentSkill === service.id) {
-                     return (
-                       <>
-                      <div key={service.id} className="form_skill_content">
-                      <div className="form_skill_input">
-                      <div className="form_skill_content_radio">
-                       {service.title}
-                      
-                      </div>
-                      <div className="form_skill_content_price">
-                        <Input
-                          label={{ basic: true, content: '/heure' }}
-                          labelPosition='right'
-                          placeholder='Indiquez votre prix...'
-                          value={`${skill.price}€`}
-                          disabled
-                        />
-                      </div>
-                      <div className="form_skill_content_about">
-                        <TextField
-                          id="textArea-skills"
-                          label="Description"
-                          multiline
-                          rows={4}
-                          defaultValue="Default Value"
-                          variant="outlined"
-                          value={skill.description}
-                          disabled
-                        />
-                        </div>
-                        </div>
-                        <div className="form_skill_button">
-                          <div>
-                            <ModalEditSkill {...skill} />
+                    return (
+                      <>
+                        <div key={service.id} className="form_skill_content">
+                          <div className="form_skill_input">
+                            <div className="form_skill_content_radio">
+                              {service.title}
+                            </div>
+                            <div className="form_skill_content_price">
+                              <Input
+                                label={{ basic: true, content: '/heure' }}
+                                labelPosition="right"
+                                placeholder="Indiquez votre prix..."
+                                value={`${skill.price}€`}
+                                disabled
+                              />
+                            </div>
+                            <div className="form_skill_content_about">
+                              <TextField
+                                id="textArea-skills"
+                                label="Description"
+                                multiline
+                                rows={4}
+                                defaultValue="Default Value"
+                                variant="outlined"
+                                value={skill.description}
+                                disabled
+                              />
+                            </div>
                           </div>
-                      <div>
-                      <ModalDeleteSkill skill={skill.id} />
-                      </div>
-                      </div>
-                      </div>
-                    </>
+                          <div className="form_skill_button">
+                            <div>
+                              <ModalEditSkill {...skill} />
+                            </div>
+                            <div>
+                              <ModalDeleteSkill skill={skill.id} />
+                            </div>
+                          </div>
+                        </div>
+                      </>
                     );
                   }
                   }
-                  }
+                },
                 )}
               </>
             ))}
@@ -366,6 +366,8 @@ ProfilJobWorker.propTypes = {
   cancelEdit: PropTypes.func.isRequired,
   submitEdit: PropTypes.func.isRequired,
   getJobWorkerSkill: PropTypes.func.isRequired,
+  closeSuccessMessage: PropTypes.func.isRequired,
+  openSuccessMessage: PropTypes.func.isRequired,
   /** string */
   editEmail: PropTypes.string.isRequired,
   editPassword: PropTypes.string.isRequired,
@@ -377,17 +379,33 @@ ProfilJobWorker.propTypes = {
   about: PropTypes.string.isRequired,
   department: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
+  urlAvatar: PropTypes.string.isRequired,
   /** bool */
   isEdited: PropTypes.bool.isRequired,
   isEditable: PropTypes.bool.isRequired,
+  toggle: PropTypes.bool.isRequired,
+  isOpen: PropTypes.bool.isRequired,
   /** array  */
+  serviceList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    }).isRequired,
+  ).isRequired,
   departmentsList: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired,
     }).isRequired,
   ).isRequired,
-
+  currentJobWorkerSkills: PropTypes.arrayOf(
+    PropTypes.shape({
+      service: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number.isRequired,
+        }).isRequired,
+      ).isRequired,
+    }).isRequired,
+  ).isRequired,
 };
 // == Export
 export default ProfilJobWorker;

@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Modal, Input, Message } from 'semantic-ui-react';
+import { Button, Modal, Input } from 'semantic-ui-react';
 import TextField from '@material-ui/core/TextField';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 import './modalEditSkill.scss';
-const ModalEditSkill = ({ price, description, id, getSkillId, getNewSkillValue, submitEditSkill, selectedSkillPrice, selectedSkillDescription, clearSave, isSave }) => {
+
+const ModalEditSkill = ({ price, description, id, getSkillId, getNewSkillValue, submitEditSkill, selectedSkillPrice, selectedSkillDescription, clearSave, isSave, isOpen, openSuccessMessage, closeSuccessMessage }) => {
 
 
   const handleChange = (evt) => {
@@ -13,8 +16,9 @@ const ModalEditSkill = ({ price, description, id, getSkillId, getNewSkillValue, 
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log('coucou je suis submit de addSkill');
+    // console.log('coucou je suis submit de addSkill');
     submitEditSkill();
+    openSuccessMessage();
   };
 
   const handleClick = () => {
@@ -25,7 +29,18 @@ const ModalEditSkill = ({ price, description, id, getSkillId, getNewSkillValue, 
     clearSave();
   };
 
-  
+  const handleMessageClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    closeSuccessMessage();
+  };
+
+  function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
+
   return (
     <Modal onClose={handleClose} trigger={<Button style={{ backgroundColor: 'green', color: '#FFFF' }} onClick={handleClick}>modifier</Button>} closeIcon>
    <Modal.Header className="modalEditSkill_title">Modifier votre compétence</Modal.Header>
@@ -61,12 +76,11 @@ const ModalEditSkill = ({ price, description, id, getSkillId, getNewSkillValue, 
            </div>
            <div className="succes_save_message">
           {isSave && (
-            <Message  positive>
-                <Message.Header><i class="check circle icon"></i>Votre modification a bien été prise en compte</Message.Header>
-                <p className="message_success">
-                  Vous souhaitez revenir sur votre profil ? C'est par ici  <i class="hand point right icon"></i><a href="/profil"><span className="message_connexion">Profil</span></a>
-                </p>
-            </Message>
+            <Snackbar open={isOpen} autoHideDuration={6000} onClose={handleMessageClose}>
+                <Alert onClose={handleMessageClose} severity="success">
+                  vos modifications ont bien été pris en compte ! vous souhaitez retourner sur <a href="/profil">profil</a> ?
+                </Alert>
+              </Snackbar>
           )}
           </div>
             <div className="modalEditSkill_submit_button">

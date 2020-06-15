@@ -15,15 +15,17 @@ import {
 } from '@material-ui/pickers';
 import frLocale from 'date-fns/locale/fr';
 import DateFnsUtils from '@date-io/date-fns';
-import { changeDateEditFormat } from 'src/utils';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 
 import './modalEditRequest.scss';
 
-const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHour, submitSetRequest, changeFieldRequest, changeFieldDateRequest, changeFieldHourRequest, requestDate, requestHour, editedDate, editedHour }) => {
+const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHour, submitSetRequest, changeFieldRequest, changeFieldDateRequest, changeFieldHourRequest, requestDate, RequestBody, requestHour, editedDate, editedHour, isOpen, openSuccessMessage, closeSuccessMessage }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     submitSetRequest();
+    openSuccessMessage();
   };
 
   const handleClick = () => {
@@ -37,28 +39,11 @@ const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHou
   };
 
   // console.log(changeDateEditFormat(requestDate));
- 
+
   const handleDate = (date) => {
-    // Methode to listen the change on the calendar et send the result in the reducer
-    let month = (date.getMonth() + 1);
-    month = month.toString();
-    month = ('0' + (month)).slice(-2);
-    // console.log(month);
-    // console.log(date.getFullYear());
-    const years = date.getFullYear().toString();
-    const days = date.getDate().toString();
-    const newDate = `${years}-${month}-${days}`;
-    // console.log(newDate);
     changeFieldDateRequest(date);
   };
   const handleHour = (date) => {
-    // console.log(date);
-    // console.log(date.getHours());
-    // console.log(date.getMinutes());
-    const hour = date.getHours().toString();
-    const minutes = date.getMinutes().toString();
-    const newHour = `${hour}h${minutes}`;
-    // console.log(newHour);
     changeFieldHourRequest(date);
   };
 
@@ -69,7 +54,21 @@ const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHou
 
   const selectedDate = Date();
 
+  const handleMessageClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    closeSuccessMessage();
+  };
+
+  function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
+
+
   return (
+    <>
     <Modal trigger={<Button onClick={handleClick}>Modifier</Button>} closeIcon>
       <Header icon="pencil alternate" content="Modifier ma demande" />
       <form onSubmit={handleSubmit}>
@@ -79,6 +78,19 @@ const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHou
               <i className="info circle icon" /> Une fois acceptée par votre JobWorker vous ne serez plus en mesure de modifier votre demande
             </Message>
           </div>
+          <Snackbar
+            open={isOpen} 
+            autoHideDuration={6000} 
+            onClose={handleMessageClose}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            >
+            <Alert onClose={handleMessageClose} severity="success">
+              vos modifications ont bien été prise en compte !
+            </Alert>
+          </Snackbar>
           <MuiPickersUtilsProvider locale={frLocale} utils={DateFnsUtils}>
             <Grid container justify="space-around">
               <KeyboardDatePicker
@@ -114,7 +126,7 @@ const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHou
           </MuiPickersUtilsProvider>
         </Modal.Content>
         <Modal.Content className="modal_edit_request_textarea">
-          <TextArea onChange={handleChangeDescription} name="requestBody" className="modalTextArea_content" placeholder="Décrivez précisément ce dont vous avez besoin..." />
+          <TextArea onChange={handleChangeDescription} name="requestBody" className="modalTextArea_content" placeholder={request.body} value={RequestBody}/>
         </Modal.Content>
         <Modal.Actions className="modal_edit_action_button">
           <Button color="red">
@@ -126,6 +138,7 @@ const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHou
         </Modal.Actions>
       </form>
     </Modal>
+    </>
   );
 };
 

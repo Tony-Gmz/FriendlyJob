@@ -52,11 +52,11 @@ const ModalComment = ({ request, changeFieldComment, submitComment, changeRating
         <Modal.Description>
           <Header>Commentaire & Notation</Header>
           {requestRating && (
-            <Message
-              success
-              header="Status"
-              content={<i className="check circle icon">Votre commentaire a bien été pris en comtpe</i>}
-            />
+            <div className="info_message_comment">
+              <Message compact>
+                <i className="check circle icon"/> Votre commentaire a bien été pris en compte !
+              </Message>
+            </div>
           )}
           {!requestRating && (
             <Form autoComplete="off" onSubmit={handleSubmit}>

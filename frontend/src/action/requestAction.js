@@ -22,7 +22,7 @@ export const REQUEST_SORT_SELECTED = 'REQUEST_SORT_SELECTED';
 export const GET_REQUEST_SELECTED_NAME = 'GET_REQUEST_SELECTED_NAME';
 export const RESET_REQUEST_SELECTED = 'RESET_REQUEST_SELECTED';
 export const RESET_REQUEST_LIST = 'RESET_REQUEST_LIST';
-
+export const ERROR_MESSAGE_RESERVATION = 'ERROR_MESSAGE_RESERVATION';
 
 // == EXPORT FOR COMMENT PART
 export const GET_COMMENT_ID = 'GET_COMMENT_ID';
@@ -132,6 +132,9 @@ export const clearRefuse = () => ({
 });
 export const resetRequestList = () => ({
   type: RESET_REQUEST_LIST,
+});
+export const errorMesssageReservation = () => ({
+  type: ERROR_MESSAGE_RESERVATION,
 });
 // ========================================= COMMENT ==================================
 

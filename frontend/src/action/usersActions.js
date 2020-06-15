@@ -48,6 +48,8 @@ export const SAVE_ERROR_CONNEXION = 'SAVE_ERROR_CONNEXION';
 export const GET_JOBWORKER_SERVICE = 'GET_JOBWORKER_SERVICE';
 export const SAVE_JOBWORKER_SERVICE = 'SAVE_JOBWORKER_SERIVE';
 export const CHANGE_CURRENT_PAGE = 'CHANGE_CURRENT_PAGE';
+export const OPEN_SUCCESS_MESSAGE = 'OPEN_SUCCESS_MESSAGE';
+export const CLOSE_SUCCESS_MESSAGE = 'CLOSE_SUCCESS_MESSAGE';
 
 export const changeField = (newValue, inputName) => ({
   type: CHANGE_FIELD,
@@ -241,4 +243,11 @@ export const getJobWorkerService = () => ({
 export const saveJobWorkerService = (service) => ({
   type: SAVE_JOBWORKER_SERVICE,
   service,
+});
+
+export const openSuccesMessage = () => ({
+  type: OPEN_SUCCESS_MESSAGE,
+});
+export const closeSuccesMessage = () => ({
+  type: CLOSE_SUCCESS_MESSAGE,
 });

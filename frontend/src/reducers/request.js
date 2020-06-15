@@ -19,6 +19,7 @@ import {
   GET_REQUEST_SELECTED_NAME,
   RESET_REQUEST_SELECTED,
   RESET_REQUEST_LIST,
+  ERROR_MESSAGE_RESERVATION,
 } from '../action/requestAction';
 
 const initialState = {
@@ -37,7 +38,7 @@ const initialState = {
   isRefuse: false,
   requestSelected: null,
   requestSelectedName: null,
-
+  errorMessageReservation: false,
 };
 
 const requestReducer = (state = initialState, action = {}) => {
@@ -100,7 +101,11 @@ const requestReducer = (state = initialState, action = {}) => {
         ...state,
         requestList: null,
       };
-
+    case ERROR_MESSAGE_RESERVATION:
+      return {
+        ...state,
+        errorMessageReservation: true,
+      };
       // =====================================COMMENT
 
     case GET_COMMENT_ID:
