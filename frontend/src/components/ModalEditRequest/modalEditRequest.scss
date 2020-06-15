@@ -3,6 +3,11 @@
 .modaleEditSkill_infoMessage{
   display: flex;
   justify-content: center;
+  .message {
+    background-color: #2196f3;
+    color: #ffffff;
+    border-radius: 10px;
+  }
 }
 
 .modal_edit_request_textarea{
@@ -14,6 +19,7 @@
 
 .modalTextArea_content{
   width: 50%;
+  padding: 1em;
 }
 .modal_edit_action_button{
   width: 100%;

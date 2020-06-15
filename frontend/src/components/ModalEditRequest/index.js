@@ -78,15 +78,15 @@ const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHou
               <i className="info circle icon" /> Une fois acceptée par votre JobWorker vous ne serez plus en mesure de modifier votre demande
             </Message>
           </div>
-          <Snackbar 
-           open={isOpen} 
-           autoHideDuration={6000} 
-           onClose={handleMessageClose}
-           anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'right',
+          <Snackbar
+            open={isOpen} 
+            autoHideDuration={6000} 
+            onClose={handleMessageClose}
+            anchorOrigin={{
+              vertical: 'top',
+             horizontal: 'right',
             }}
-           >
+            >
             <Alert onClose={handleMessageClose} severity="success">
               vos modifications ont bien été prise en compte !
             </Alert>
