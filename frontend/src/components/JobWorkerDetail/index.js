@@ -18,11 +18,16 @@ const JobWorkerDetails = ({
 }) => {
   const jobWorkerId = useParams();
   useEffect(() => {
-    getJobWorkerId(jobWorkerId.id);
-    getJobWorkerDetail();
-    getJobWorkerRating();
+    const timer = setTimeout(() => {
+      getJobWorkerId(jobWorkerId.id);
+      getJobWorkerDetail();
+      getJobWorkerRating();
+    }, 2000);
+
+    return () => clearTimeout(timer);
   }, []);
- 
+
+
   return (
     <div className="jobWorkerDetail">
       {loadingOnJobWorkerDetail && <Loader /> }
