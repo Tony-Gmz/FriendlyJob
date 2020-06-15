@@ -5,6 +5,7 @@ namespace App\DataFixtures\Providers;
 use Faker\Provider\Base as BaseProvider;
 use Symfony\Component\HttpClient\Exception\RedirectionException;
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\HttpClient\Exception\RedirectionException;
 
 /**
  * This provider is used to call consistent data concerning the Users
@@ -16,6 +17,7 @@ class UserProvider extends BaseProvider
     public function __construct()
     {
         static::$client = HttpClient::create();
+
     }
 
     // We set a protected property and store the data inside
@@ -139,14 +141,13 @@ class UserProvider extends BaseProvider
      */
     public static function getRandomImage()
     {
+
         $url = "https://picsum.photos/640/480";
 
         try {
-            
             static::$client->request('GET', $url, ['max_redirects' => 0]);
         
         } catch (RedirectionException $e) {
-            
             $redirectUrl = $e->getResponse()->getInfo()['redirect_url'];
             return $redirectUrl;
         }

@@ -11,18 +11,21 @@ class SecurityController extends AbstractController
 {
     /**
      * @Route("/login", name="app_login")
+     * This method is used to logged an user
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
-    {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
+    {   
+        // If the user is logged we redirect him
+        if ($this->getUser()) {
+            return $this->redirectToRoute('documentation');
+        }
 
-        // get the login error if there is one
+        // Get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
+        // Last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
+        // Render the EasyAdmin login form
         return $this->render('@EasyAdmin/page/login.html.twig', [
             'last_username' => $lastUsername, 
             'error' => $error,
@@ -32,6 +35,7 @@ class SecurityController extends AbstractController
 
     /**
      * @Route("/logout", name="app_logout")
+     * This method is used to logout an user
      */
     public function logout()
     {
