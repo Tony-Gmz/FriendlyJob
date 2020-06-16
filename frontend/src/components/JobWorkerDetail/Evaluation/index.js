@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Message, Rating } from 'semantic-ui-react';
 import Avatar from '@material-ui/core/Avatar';
-import { whitoutAvatar } from 'src/utils';
 
 import './evaluation.scss';
 
@@ -22,7 +21,6 @@ const Evaluation = ({ jobWorkerRating }) => {
             <div className="evalutation_content_author">
             <div className="evaluation_content_avatar">
                 {userAvatar && <Avatar alt="Remy Sharp" src={jobWorker.friendlyUser.image} /> }
-                {!userAvatar && <Avatar alt="Remy Sharp" src="">{whitoutAvatar(jobWorker.friendlyUser.firstname)}</Avatar>}
               </div>
               <div className="evaluation_content_firstname">
               {jobWorker.friendlyUser.firstname}
