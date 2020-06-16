@@ -51,6 +51,7 @@ const Navbar = ({ isOpen, handleNavbar, isLogged, logOut, requestList, resetRequ
           <FlexContainer>
             <div className="linkForNav">
               <NavLinks style={linkAnimation}>
+                <NavLink exact className="link_OfLogo" to="/"><img className="logo_link_home" src="https://res.cloudinary.com/friendlyjob/image/upload/c_crop,q_100,w_1350/v1591561663/friendlyjob/logoC_dqklpb.png" alt="logo" /></NavLink>
                 <NavLink exact to="/services/">Liste de nos services</NavLink>
                 <a href="#inscription">Devenir JobWorker</a>
                 <NavLink to="/contact/">Qui sommes nous</NavLink>
@@ -138,7 +139,7 @@ const FlexContainer = styled.div`
   max-width: 100%;
   display: flex;
   margin: auto;
-  padding: 0.2em;
+  padding: 0.8em;
   justify-content: space-between;
 `;
 
