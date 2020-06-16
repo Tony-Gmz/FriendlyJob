@@ -16,12 +16,12 @@
   font-size: 1.5rem;
   border-bottom: 1px solid #FF385C;
   padding-bottom: 1rem;
-  width: 250px;
+  width: 100%;
 
 }
 
 .modal_block {
-  background-color: #FBFBEF;
+  background-color:  #2d3436;
   border-radius: 10px;
 }
 
@@ -159,17 +159,22 @@
 }
 
 
-.input{
-  width: 100%;
-  
-}
-
-.form_element{
+.form_element_connexion {
   display: flex;
   flex-direction: column;
   margin-bottom: 1em;
   align-items: center;
-
+  label {
+    text-align: left;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+ .input_connexion {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+ }
 }
 
 .submit_btn{

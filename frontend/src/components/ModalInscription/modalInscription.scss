@@ -3,13 +3,15 @@
 @include phone {
   .inscription{
     width: 100%;
-    height: 100vh;
+    height: auto;
     display: none;
     z-index: 2;
     position: fixed;
     top: 0;
     right: 0;
     background-color: #f7f7f7;
+
+    
   }
 
   .inputDepartment{
@@ -25,16 +27,15 @@
   .modal_title {
     display: inline-block;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     border-bottom: 1px solid #FF385C;
     padding-bottom: 1rem;
-    width: 250px;
-  
   }
   
   .modal_block {
-    background-color: #FBFBEF;
+    background-color:  #2d3436;
     border-radius: 10px;
+    color: #FFFF;
   }
   
   #inscription:target{
@@ -165,12 +166,46 @@
     font-weight: bold;
     padding-bottom: 1rem;
   }
+  .radio_inscription_item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  
+  .form_element_inscription {
+    margin-bottom: 1rem;
+    text-align: left;
+    label {
+      font-size: 1rem!important;
+      margin-bottom: 1rem;
+    }
+    .input_inscription {
+      padding: 1rem;
+    }
+  
+  }
+  .div_radio {
+    .MuiFormLabel-root {
+      display: flex!important;
+      flex-direction: row!important;
+      justify-content: space-between!important;
+    }
+
+    .PrivateRadioButtonIcon-root-5:after {
+      color: #FFF
+    }
+  }
+
+  .MuiFormLabel-root {
+    color: #FFF
+  }
   
 }
 @include xl {
   .inscription{
   width: 100%;
-  height: 100vh;
+  height: auto;
   display: none;
   z-index: 2;
   position: fixed;
@@ -193,15 +228,14 @@
 .modal_title {
   display: inline-block;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   border-bottom: 1px solid #FF385C;
   padding-bottom: 1rem;
-  width: 250px;
 
 }
 
 .modal_block {
-  background-color: #FBFBEF;
+  background-color: #2d3436;
   border-radius: 10px;
 }
 
@@ -334,6 +368,52 @@
   font-size: 0.7rem;
   font-weight: bold;
   padding-bottom: 1rem;
+}
+.radio_inscription_item {
+  margin-top: 1rem;
+  display: flex!important;
+  flex-direction: row!important;
+  justify-content: space-between!important;
+  
+}
+
+.form_element_inscription {
+  label {
+    font-size: 1rem!important;
+  }
+  .input_inscription {
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+}
+.PrivateRadioButtonIcon-root-5:after {
+  color: #FFF
+}
+
+.div_radio {
+  .MuiFormLabel-root {
+    color: #FFF
+    }
+}
+
+.inputDepartment {
+  width: 95%;
+  margin-left: 1em;
+  margin-top: 1rem;
+}
+
+.form_element_inscription_department {
+  text-align: left;
+  font-size: 1rem;
+  label {
+    margin-left: 1em;
+    text-align: left;
+  }
+  input {
+    margin-bottom: 1rem;
+  }
 }
 
 }

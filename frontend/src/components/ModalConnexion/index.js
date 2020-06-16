@@ -29,9 +29,9 @@ const ModalConnexion = ({ changeField, submitLoggin, connexionError, getRequest 
             <p className="modal_title">Bienvenue dans notre espace Connexion</p>
           </div>
           <form onSubmit={handleSubmit}>
-            <div className="form_element">
+            <div className="form_element_connexion">
               <Form.Input
-                className="input"
+                className="input_connexion"
                 label="Email*"
                 type="email"
                 onChange={handleChange}
@@ -42,9 +42,9 @@ const ModalConnexion = ({ changeField, submitLoggin, connexionError, getRequest 
                 required
               />
             </div>
-            <div className="form_element">
+            <div className="form_element_connexion">
               <Form.Input
-                className="input"
+                className="input_connexion"
                 id="outlined-password-input"
                 label="Mot de passe*"
                 type="password"
@@ -67,8 +67,8 @@ const ModalConnexion = ({ changeField, submitLoggin, connexionError, getRequest 
               </div>
             )}
             <div className="div_submit">
-              <a href="#"><button type="button" className="cancel_btn">Annuler</button></a>
-              <button className="submit_btn" type="submit">Connexion</button>
+              <a href="#"><Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }} type="button" className="cancel_btn">Annuler</Button></a>
+              <Button style={{ backgroundColor: '#303f9f', color: '#FFFF' }} className="submit_btn" type="submit">Connexion</Button>
             </div>
           </form>
           <a href="#" className="close_btn">close</a>
