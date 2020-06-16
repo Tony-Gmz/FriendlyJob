@@ -200,6 +200,14 @@
   .MuiFormLabel-root {
     color: #FFF
   }
+
+  .modal_button_trigger{
+    padding: 0.3em!important;
+    background: #ff385c!important;
+    min-height: 0.5em!important;
+    font-weight: 500!important;
+    color: white!important;
+  }
   
 }
 @include xl {
