@@ -9,6 +9,9 @@ use Faker\Generator as FakerGenerator;
 
 class NelmioFriendlyJobNativeLoader extends NativeLoader
 {
+    /**
+     * This method is used as a loader for the NelmioAliceFixtures
+     */
     protected function createFakerGenerator(): FakerGenerator
     {
         $generator = FakerGeneratorFactory::create('fr_FR');

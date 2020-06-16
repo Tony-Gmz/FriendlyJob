@@ -2,7 +2,7 @@
 
 <style>
     body {
-        background-color: #a04261;
+        background-color: #333333;
         padding: 7em 0em;
         text-align: center;
         border-radius: 2em;
@@ -17,10 +17,6 @@
     p {
         color: white;
         font-size: 1.5em;
-    }
-
-    .ii a[href] {
-        color: navajowhite;
     }
 
     a {
@@ -43,7 +39,7 @@
     <h1>Bienvenue {{ user.fullname }} !</h1>
 
     <p>
-        Vous êtes inscrit avec cet email : <span class="userEmail">{{ user.email }}</span>
+        Vous êtes inscrit avec cet email : <a class="userEmail">{{ user.email }}</a>
     </p>
 
     <p>

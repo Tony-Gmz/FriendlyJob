@@ -45,13 +45,13 @@ class ServiceProvider extends BaseProvider
         ],
         'image' => [
             'https://i.ibb.co/1bPYLmz/jardinage.jpg',
-            'https://i.ibb.co/jhR4T65/Bricolage.jpg',
+            'https://res.cloudinary.com/friendlyjob/image/upload/c_scale,h_276,q_100,w_414/v1592293097/Bricolage_uhxssp.jpg',
             'https://i.ibb.co/jG7c7KJ/demenagement.jpg',
-            'https://i.ibb.co/rMB52Bb/gardeanimaux.jpg',
+            'https://res.cloudinary.com/friendlyjob/image/upload/c_scale,h_276,w_414/v1592293119/gardeanimaux_dtlts6.jpg',
             'https://i.ibb.co/3YtgX26/informatique.jpg',
             'https://i.ibb.co/6RkgSB6/babysitting.png',
             'https://i.ibb.co/2nJLWFT/student-team-meeting-at-table.jpg',
-            'https://i.ibb.co/XL7Bn9h/aide.jpg',
+            'https://res.cloudinary.com/friendlyjob/image/upload/c_scale,h_275,w_418/v1592293168/aide_zd7o3y.jpg',
         ],
     ];
 

@@ -27,6 +27,9 @@ class FilterFixtures extends Fixture
     private static $departments;
     private static $users;
 
+    /**
+     * We use the dependency injection in order to have consistent data
+     */
     public function __construct(UserPasswordEncoderInterface $passwordEncoder, ServiceRepository $serviceRepository, DepartmentRepository $departmentRepository, UserRepository $userRepository)
     {
         static::$passwordEncoder = $passwordEncoder;
@@ -35,6 +38,9 @@ class FilterFixtures extends Fixture
         static::$users = $userRepository->findByRole("FRIENDLY_USER");
     }
 
+    /**
+     * Similar to the FakerFixtures file, we wanted to have customize data for deep tests in the front side
+     */
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('fr_FR');
@@ -69,9 +75,11 @@ class FilterFixtures extends Fixture
         $gardeningDemands = [];
 
         // BEGIN OF SKILL OBJECT CREATION
+        // We call the method that contains the data from the SkillProvider
         $skillsList = $faker->GetDescriptionSkills();
+        // We want to create 16 skills
         $numberOfSkill = 16;
-        // Gardening Skill
+        // We want to get those skills links to the gardening service
         for ($i = 0; $i < $numberOfSkill; $i++) {
             $gardeningSkill[] = static::skills($skillsList['jardinage'], 'jardinage', $services[0], $numberOfSkill);
             $skills[] = $gardeningSkill[$i];
@@ -79,8 +87,11 @@ class FilterFixtures extends Fixture
         // END OF SKILL OBJECT CREATION
 
         // BEGIN OF RATING OBJECT CREATION
+        // We call the method that contains the data from the RatingProvider
         $ratingList = $faker->getDataRatings();
+        // We want to create 16 ratings
         $numberofRating = 16;
+        // We loop in order to add the comment and the star for our 16 new Rating objects
         for ($i = 0; $i < $numberofRating; $i++) {
             $number = mt_rand(0, count($ratingList['comment']) - 1);
             
@@ -88,8 +99,11 @@ class FilterFixtures extends Fixture
             $rating->setComment($ratingList['comment'][$number]);
             $rating->setStar($ratingList['star'][$number]);
             $rating->setCreatedAt(new \DateTime());
+
+            // We store it into an array
             $ratings[] = $rating;
 
+            // Control when using the d:f:l console command
             echo static::$count. " => Objet Rating crée" . PHP_EOL;
             static::$count++;
             if (static::$count > $numberofRating)
@@ -101,8 +115,11 @@ class FilterFixtures extends Fixture
 
         // BEGIN OF JOBWORKER OBJECT CREATION
         // MALE
+        // We call the method that contains the data from the UserProvider
         $aboutList = $faker->getUserAbout();
+        // We want to create 8 male JobWorkers
         $numberOfJobWorker = 8;
+        // We loop in order to add all the data we need from the UserProvider and from the faker generator for our 8 male JobWorkers
         for ($i = 0; $i < $numberOfJobWorker; $i++) {
             $number = mt_rand(0, count($aboutList['about_male']) - 1);
             
@@ -119,9 +136,12 @@ class FilterFixtures extends Fixture
             $jobWorker->setCreatedAt(new \DateTime());
             $jobWorker->setDepartment($departments[mt_rand(0, count($departments) - 1)]);
 
+            // We store it into an array
             $jobWorkers[] = $jobWorker;
+            // And we store that array into a $users array
             $users[] = $jobWorkers[$i];
 
+            // Control when using the d:f:l console command
             echo static::$count. " => Objet JobWorker ( homme ) crée" . PHP_EOL;
             static::$count++;
             if (static::$count > $numberOfJobWorker)
@@ -131,8 +151,11 @@ class FilterFixtures extends Fixture
         }
 
         // FEMALE
+        // We call the method that contains the data from the UserProvider
         $aboutList = $faker->getUserAbout();
+        // We want to create 8 female JobWorkers
         $numberOfJobWorker = 8;
+        // We loop in order to add all the data we need from the UserProvider and from the faker generator for our 8 female JobWorkers
         for ($i = 0; $i < $numberOfJobWorker; $i++) {
             $number = mt_rand(0, count($aboutList['about_female']) - 1);
             
@@ -149,9 +172,12 @@ class FilterFixtures extends Fixture
             $jobWorker->setCreatedAt(new \DateTime());
             $jobWorker->setDepartment($departments[mt_rand(0, count($departments) - 1)]);
 
+            // We store it into an array
             $jobWorkers[] = $jobWorker;
+            // And we store that array into a $users array
             $users[] = $jobWorkers[$i];
 
+            // Control when using the d:f:l console command
             echo static::$count. " => Objet JobWorker ( femme ) crée" . PHP_EOL;
             static::$count++;
             if (static::$count > $numberOfJobWorker)
@@ -163,9 +189,13 @@ class FilterFixtures extends Fixture
         // END OF JOBWORKER OBJECT CREATION
 
         // BEGIN OF DEMAND OBJECT CREATION
+        // We call the method that contains the data from the DemandProvider
         $demandList = $faker->getDataDemands();
+        // We want to create 16 demands
         $numberOfDemands = 16;
         // Gardening Demands
+
+        // We loop in order to have all these demands links to the gardening service
         for ($i = 0; $i < $numberOfDemands; $i++) {
             $gardeningDemands[] = static::demands($demandList['jardinage'], 'jardinage', $services[0], $numberOfDemands);
             $demands[] = $gardeningDemands[$i];
@@ -174,6 +204,7 @@ class FilterFixtures extends Fixture
         
         // BEGIN RELATION ATTRIBUTION
         $countJobworker = count($jobWorkers);
+        // We loop in order to attribute the relation between all of our relations
         for ($i = 0; $i < $countJobworker ; $i++) 
         {
             $jobWorker = $jobWorkers[$i];
@@ -182,9 +213,11 @@ class FilterFixtures extends Fixture
             $demand = $demands[$i];
             $rating = $ratings[$i];
 
+            // We associate a JobWorker, a FriendlyUser and a Rating for each Demand
             $demand->setJobworker($jobWorker);
             $demand->setFriendlyUser($friendlyUser);
             $demand->setRating($rating);
+            // We set a a JobWorker for each Skill
             $skill->setUser($jobWorker);
         }
         // END RELATION ATTRIBUTION
@@ -215,6 +248,7 @@ class FilterFixtures extends Fixture
         // BEGIN PERSIST DATA
         foreach ($entities as $entity)
         {
+            // Control when using the d:f:l console command
             echo static::$count. ' => Persistance des données' . PHP_EOL;
             static::$count++;
             $manager->persist($entity);
@@ -224,27 +258,35 @@ class FilterFixtures extends Fixture
         $manager->flush();
     }
     
+    /**
+     * This method is used in order to link a Skill with a Service
+     */
+    private static function skills($arrayData, $objectName, $objectService, $count) 
+    {
+        // We initialize a new Skill object, and we attribute all the needed data and the relation with the service
+        $skill = new Skill();
+        $skill->setDescription($arrayData[mt_rand(0, count($arrayData) -1 )]);
+        $skill->setPrice(static::$faker->getPriceSkills());
+        $skill->setService($objectService);
+        $skill->setCreatedAt(new \DateTime());
 
-    private static function skills($arrayData, $objectName, $objectService, $count) {
-            
-            $skill = new Skill();
-            $skill->setDescription($arrayData[mt_rand(0, count($arrayData) -1 )]);
-            $skill->setPrice(static::$faker->getPriceSkills());
-            $skill->setService($objectService);
-            $skill->setCreatedAt(new \DateTime());
-
-            echo static::$count. " => Objet Skill lié au ". $objectName ." crée" . PHP_EOL;
-            static::$count++;
-            if (static::$count > $count)
-            {
-                static::$count = 1;
-            }
+        // Control when using the d:f:l console command
+        echo static::$count. " => Objet Skill lié au ". $objectName ." crée" . PHP_EOL;
+        static::$count++;
+        if (static::$count > $count)
+        {
+            static::$count = 1;
+        }
 
         return $skill; 
     }
 
-    private static function demands($arrayData, $objectName, $objectService, $count) {
-            
+    /**
+     * This method is used in order to link a Demand with a Service
+     */
+    private static function demands($arrayData, $objectName, $objectService, $count) 
+    {
+        // We initialize a new Demand object, and we attribute all the needed data and the relation with the service
         $demand = new Demand();
         $demand->setBody($arrayData[mt_rand(0, count($arrayData) -1 )]);
         $demand->setReservationDate(new \Datetime(static::$faker->getReservationDate().'T'.static::$faker->getReservationHour()));
@@ -253,6 +295,7 @@ class FilterFixtures extends Fixture
         $demand->setService($objectService);
         $demand->setCreatedAt(new \DateTime());
 
+        // Control when using the d:f:l console command
         echo static::$count. " => Objet Demand lié au ". $objectName ." crée" . PHP_EOL;
         static::$count++;
         if (static::$count > $count)
@@ -260,6 +303,6 @@ class FilterFixtures extends Fixture
             static::$count = 1;
         }
 
-    return $demand; 
+        return $demand; 
     }
 }
