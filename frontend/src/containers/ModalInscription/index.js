@@ -1,12 +1,14 @@
 import { connect } from 'react-redux';
 import { fieldValue, submitSubscribe } from 'src/action/inscriptionAction';
 import ModalInscription from 'src/components/ModalInscription';
+import { closeErrorMessage } from '../../action/usersActions';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
   isSubscribe: state.inscription.isSubscribe,
   selectValue: state.inscription.departement,
   departmentsList: state.departments.departmentsList,
+  errorPasswordMessage: state.user.errorPasswordMessage,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -17,6 +19,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   submitSubscribe: () => {
     dispatch(submitSubscribe());
+  },
+  closeErrorMessage: () => {
+    dispatch(closeErrorMessage());
   },
 });
 

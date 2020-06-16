@@ -4,7 +4,6 @@ import './details.scss';
 import ModalReservation from 'src/containers/ModalReservation';
 import Avatar from '@material-ui/core/Avatar';
 import { Card } from 'semantic-ui-react';
-import { whitoutAvatar } from 'src/utils';
 import { Message } from 'semantic-ui-react'
 
 
@@ -32,7 +31,7 @@ const Details = ({
         <div className="detail_content_card">
           <div className="Jober_avatar">
             {userAvatar && <Avatar alt="Remy Sharp" src={image} /> }
-            {!userAvatar && <Avatar alt="Remy Sharp" src="">{whitoutAvatar(firstname)}</Avatar>}
+            {!userAvatar && <Avatar alt="Remy Sharp" src=""></Avatar>}
           </div>
           <div className="Jober_card">
             <Card key={id}>

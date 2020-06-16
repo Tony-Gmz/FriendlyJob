@@ -13,7 +13,7 @@ import { Button, Message, Form, Select } from 'semantic-ui-react';
 import './modalInscription.scss';
 
 // == Composant
-const ModalInscription = ({ departmentsList, fieldValue, submitSubscribe, isSubscribe, selectValue }) => {
+const ModalInscription = ({ departmentsList, fieldValue, submitSubscribe, isSubscribe, selectValue, errorPasswordMessage, closeErrorMessage }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('coucou je suis submit');

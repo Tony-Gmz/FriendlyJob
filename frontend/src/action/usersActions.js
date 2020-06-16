@@ -50,6 +50,8 @@ export const SAVE_JOBWORKER_SERVICE = 'SAVE_JOBWORKER_SERIVE';
 export const CHANGE_CURRENT_PAGE = 'CHANGE_CURRENT_PAGE';
 export const OPEN_SUCCESS_MESSAGE = 'OPEN_SUCCESS_MESSAGE';
 export const CLOSE_SUCCESS_MESSAGE = 'CLOSE_SUCCESS_MESSAGE';
+export const ERROR_PASSWORD_MESSAGE = 'ERROR_PASSWORD_MESSAGE';
+export const CLOSE_ERROR_MESSAGE = 'CLOSE_ERROR_MESSAGE';
 
 export const changeField = (newValue, inputName) => ({
   type: CHANGE_FIELD,
@@ -250,4 +252,10 @@ export const openSuccesMessage = () => ({
 });
 export const closeSuccesMessage = () => ({
   type: CLOSE_SUCCESS_MESSAGE,
+});
+export const errorPasswordMessage = () => ({
+  type: ERROR_PASSWORD_MESSAGE,
+});
+export const closeErrorMessage = () => ({
+  type: CLOSE_ERROR_MESSAGE,
 });

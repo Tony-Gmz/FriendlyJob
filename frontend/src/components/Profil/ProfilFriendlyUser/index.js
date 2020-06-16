@@ -9,9 +9,6 @@ import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import { Form } from 'semantic-ui-react';
 
-
-import { whitoutAvatar } from 'src/utils';
-
 import UploadImg from 'src/containers/UploadImg';
 
 
@@ -40,6 +37,7 @@ const ProfilFiendlyUser = ({
   isOpen,
   openSuccessMessage,
   closeSuccessMessage,
+  errorPasswordMessage,
 }) => {
   const userAvatar = urlAvatar;
   // handle on click who give at the user the possibility to edit his data
@@ -84,7 +82,7 @@ const ProfilFiendlyUser = ({
       <div className="profil_fu_friendlyUser">
         <div>
           {userAvatar && <img className="profil_fu_card_img" alt="Remy Sharp" src={urlAvatar} /> }
-          {!userAvatar && <Avatar className="profil_fu_card_img" alt="Remy Sharp" src="">{whitoutAvatar(firstname)}</Avatar>}
+          {!userAvatar && <Avatar className="profil_fu_card_img" alt="Remy Sharp" />}
           <div className="profil_fu_card_img_upload">
             {isEditable && <UploadImg urlAvatar={urlAvatar} />}
           </div>
@@ -202,6 +200,13 @@ const ProfilFiendlyUser = ({
               <Snackbar open={isOpen} autoHideDuration={6000} onClose={handleMessageClose}>
                 <Alert onClose={handleMessageClose} severity="success">
                   vos modifications ont bien été pris en compte ! vous souhaitez retourner sur la <a href="/profil">page d'accueil</a> ?
+                </Alert>
+              </Snackbar>
+            )}
+            {errorPasswordMessage && (
+              <Snackbar open={isOpen} autoHideDuration={6000} onClose={handleMessageClose}>
+                <Alert onClose={handleMessageClose} severity="error">
+                  Votre mot de passe doit contenir 8 character minimum, une majuscule, une minuscule et un character spécial
                 </Alert>
               </Snackbar>
             )}

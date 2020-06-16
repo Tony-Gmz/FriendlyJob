@@ -12,9 +12,9 @@ export const slugifyTitle = (title) => (
   })
 );
 
-export const whitoutAvatar = (name) => (
+/* export const whitoutAvatar = (name) => (
   name.substr(0, 1)
-);
+); */
 
 export const changeTitle = (name) => {
   if (name === 'demenagement') {
