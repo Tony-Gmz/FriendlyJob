@@ -295,7 +295,7 @@ const userMiddleware = (store) => (next) => (action) => {
       const { toggle } = store.getState().request;
       axios({
         method: 'get',
-        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/jobworker_${id}`,
+        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/jobworker/${id}`,
         headers: {
           Authorization: `Bearer ${userToken}`,
         },

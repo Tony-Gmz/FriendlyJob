@@ -26,7 +26,7 @@ const RequestRefuseFU = ({ request, getCommentId, submitDeleteRequest }) => {
         </div>
       </div>
       <div className="informations-container">
-        <h2 className="title">Demande de {request.friendlyUser.firstname} </h2>
+        <h2 className="title">Demande à {request.jobWorker.firstname} </h2>
         <h2 className="title2">{request.service.title} </h2>
         <p className="sub-title_refuse"><i class="times circle icon" />{request.status}</p>
         <div className="more-information">

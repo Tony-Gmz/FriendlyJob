@@ -6,7 +6,7 @@ const Loader = () => (
   <>
     <div className="baba">
       <div className="middle"></div>
-      <div className="circle"></div>
+      <div className="circle_loader"></div>
     </div>
   </>
 );

@@ -129,9 +129,6 @@ const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHou
           <TextArea onChange={handleChangeDescription} name="requestBody" className="modalTextArea_content" placeholder={request.body} value={RequestBody}/>
         </Modal.Content>
         <Modal.Actions className="modal_edit_action_button">
-          <Button color="red">
-            <Icon name="remove" /> Annuler
-          </Button>
           <Button color="green">
             <Icon name="checkmark" /> Valider
           </Button>

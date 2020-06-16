@@ -94,9 +94,8 @@ const Navbar = ({ isOpen, handleNavbar, isLogged, logOut, requestList, resetRequ
               {userRole === 'JOBWORKER' && waitingRequest.length > 0 && requestList !== null ? (
                 <div className="notification">
                   <Popup
-                      trigger={<i class="bell icon" color='red' />}
+                      trigger={<i style={{marginRight: '0'}} class="bell icon" color='red' />}
                       content={`Vous avez ${waitingRequest.length} ${demands} en attente`}
-                      
                   />
                   </div>
                 ) : ''}

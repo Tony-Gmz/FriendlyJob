@@ -19,7 +19,7 @@ const RequestFinishFU = ({ request }) => {
         </div>
       </div>
       <div className="informations-container">
-        <h2 className="title">Demande de {request.friendlyUser.firstname} </h2>
+        <h2 className="title">Demande à {request.jobWorker.firstname} </h2>
         <h2 className="title2">{request.service.title} </h2>
         <p className="sub-title"><i class="calendar check outline icon"></i>{request.status}</p>
         <div className="more-information">

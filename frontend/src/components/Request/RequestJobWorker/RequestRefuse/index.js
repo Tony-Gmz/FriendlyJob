@@ -12,6 +12,9 @@ const RequestRefuse = ({ request }) => {
       <li className="booking-card" style={{backgroundImage: `url(${request.service.image})`}}>
         <div className="book-container">
           <div className="content" />
+          <Button style={{display: 'hidden', zIndex: '-9', position: 'relative'}}>
+          Terminé
+          </Button>
         </div>
       <div className="informations-container">
         <h2 className="title">Demande de {request.friendlyUser.firstname} </h2>

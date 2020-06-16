@@ -37,9 +37,6 @@ const ModalRefuseRequest = ({ request, getCommentId, submitRefuseRequest, clearR
       </Modal.Content>
       <Modal.Actions>
         <Form onSubmit={handleSubmit}>
-          <Button color="red">
-            <Icon name="remove" /> Non
-          </Button>
           <Button type="submit" color="green">
             <Icon name="checkmark" /> Oui
           </Button>

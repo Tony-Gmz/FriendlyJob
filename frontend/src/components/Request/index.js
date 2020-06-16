@@ -47,9 +47,8 @@ const Request = ({ resetRequestSelected, requestSelectedName, getRequestSelected
   return (
     <div className="request">
       <div className="request_presentation">
-        <h2 className="request_presentation_title">Bonjour <span className="span_UserName"> {userData.firstname}</span></h2>
+        <h2 className="request_presentation_title">Mes demandes</h2>
         <p>
-          Bienvenue sur votre espaces de gestion des demandes.
           A partir cette espace vous pouvez visualiser et gerer vos differentes demandes.
         </p>
       </div>

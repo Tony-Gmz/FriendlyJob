@@ -15,9 +15,6 @@ const RequestAccepte = ({ request, getCommentId }) => {
       <div className="book-container">
         <div className="content">
           <PopupContact request={request} getCommentId={getCommentId} />
-          <Button className="btn" disabled>
-            Refuser
-          </Button>
         </div>
       </div>
       <div className="informations-container">
@@ -35,7 +32,7 @@ const RequestAccepte = ({ request, getCommentId }) => {
               </p>
             </div>
           </div>
-          <p className="disclaimer">Merci pour votre service , le FriendlyUser vous laissera peut etre un avis sur votre profil. A bientot.</p>
+          <p className="disclaimer">{request.body}</p>
           </div>
       </div>
     </li>

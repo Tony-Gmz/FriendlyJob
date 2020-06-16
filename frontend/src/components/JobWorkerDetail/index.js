@@ -39,7 +39,7 @@ const JobWorkerDetails = ({
             </>
           )}
           {!currentJobWorkerRating && (
-            <div>Test</div>
+            <div></div>
           )}
         </>
       )}

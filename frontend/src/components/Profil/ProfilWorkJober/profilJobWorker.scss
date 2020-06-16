@@ -224,8 +224,10 @@
       }
   }
   
+  .form_skill_description {
+    margin-bottom: 2em;
+  }
   
-   
     
  }
  @include sm {
@@ -436,6 +438,9 @@
 
 }
 
+.form_skill_description {
+  margin-bottom: 2em;
+}
 
 
 }

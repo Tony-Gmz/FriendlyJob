@@ -123,7 +123,9 @@ const ProfilFiendlyUser = ({
             {!isEditable && (
               <div className="form_fu_element">
                 <TextField className="profil_input" id="select" label="Departement" value="" select disabled>
-                  <MenuItem value={department.id}>{department.name}</MenuItem>
+                {departmentsList.map((depart) => (
+                    <MenuItem value={depart.id}>{depart.name}</MenuItem>
+                  ))}
                 </TextField>
               </div>
             )}
@@ -179,7 +181,7 @@ const ProfilFiendlyUser = ({
                   type="password"
                   onChange={handleChange}
                   name="editPassword"
-                  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-.]).{8,100}$"
+                   // pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-.]).{8,100}$"
                   title="Votre mot de passe doit contenir au moins : huit caracteres dont une minuscule, une majuscule, un chiffre et un caractere special (ex:=$?!.;/@...)"
                 />
               </div>
