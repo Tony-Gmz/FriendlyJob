@@ -16,13 +16,13 @@ const RequestRefuseFU = ({ request, getCommentId, submitDeleteRequest }) => {
   };
 
   return (
-    <ul>
+    <ul className="request_container">
       <li className="booking-card" style={{ backgroundImage: `url(${request.service.image})`}}>
       <div className="book-container">
         <div className="content">
-        <button type="button" className="btn" onClick={handleClick}>
+        <Button type="button"  onClick={handleClick}>
           supprimer
-        </button>
+        </Button>
         </div>
       </div>
       <div className="informations-container">

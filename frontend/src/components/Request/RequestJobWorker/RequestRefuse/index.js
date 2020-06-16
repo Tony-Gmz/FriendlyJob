@@ -8,10 +8,11 @@ const RequestRefuse = ({ request }) => {
   const hourResevation = new Date(request.reservationHour);
   const dateReservation = new Date(request.reservationDate);
   return (
-    <ul>
+    <ul className="request_container">
       <li className="booking-card" style={{backgroundImage: `url(${request.service.image})`}}>
-      <div className="book-container">
-      </div>
+        <div className="book-container">
+          <div className="content" />
+        </div>
       <div className="informations-container">
         <h2 className="title">Demande de {request.friendlyUser.firstname} </h2>
         <h2 className="title2">{request.service.title} </h2>

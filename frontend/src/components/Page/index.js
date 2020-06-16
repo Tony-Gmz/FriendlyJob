@@ -31,13 +31,13 @@ const Page = ({ isLogged }) => {
         <Breadcrumb />
         <Switch>
           <Route
-            path="/services/:slug/jobworkers/jobworker/:id/"
+            path="/services/:slug/jobworkers/jobworker_:id/"
             exact
           >
             <JobWorkerDetail />
           </Route>
           <Route
-            path="/services/:slug/jobworker/:id/"
+            path="/services/:slug/jobworker_:id/"
             exact
           >
             <JobWorkerDetail />

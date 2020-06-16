@@ -11,7 +11,7 @@ const RequestWaitFU = ({ getRequest, request }) => {
   const dateReservation = new Date(request.reservationDate);
 
   return (
-    <ul>
+    <ul className="request_container">
       <li className="booking-card" style={{ backgroundImage: `url(${request.service.image})`}}>
       <div className="book-container">
         <div className="content">

@@ -24,7 +24,7 @@ const Request = ({ requestSelectedName, requestSelected, requestSortSelected, to
 
   if (requestSelected === null) {
     return (
-      <>
+      <div className="requestList_container">
         {requestList.map((request) => {
           switch (request.status) {
             case 'Acceptée':
@@ -42,12 +42,12 @@ const Request = ({ requestSelectedName, requestSelected, requestSortSelected, to
               return null;
           }
         })}
-      </>
+      </div>
     );
   }
   if (requestSelected !== null) {
     return (
-      <>
+      <div className="requestList_container">
         {requestSelected.map((request) => {
           switch (request.status) {
             case 'Acceptée':
@@ -65,7 +65,7 @@ const Request = ({ requestSelectedName, requestSelected, requestSortSelected, to
               return null;
           }
         })}
-      </>
+      </div>
     );
   }
 };

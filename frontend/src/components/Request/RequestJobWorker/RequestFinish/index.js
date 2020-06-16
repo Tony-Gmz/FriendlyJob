@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import { changeHourFormat, changeDateFormat } from 'src/utils';
 
 // == Composant
@@ -11,13 +11,10 @@ const RequestFinish = ({ request }) => {
 
 
   return (
-    <ul>
+    <ul className="request_container">
       <li className="booking-card" style={{backgroundImage: `url(${request.service.image})`}}>
       <div className="book-container">
         <div className="content">
-          <Button className="btn">
-            Mes evaluations
-          </Button>
         </div>
       </div>
       <div className="informations-container">

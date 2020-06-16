@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import { changeHourFormat, changeDateFormat } from 'src/utils';
 import PopupContact from '../../../PopUpContact';
 
@@ -10,7 +10,7 @@ const RequestAccepte = ({ request, getCommentId }) => {
   const dateReservation = new Date(request.reservationDate);
 
   return (
-    <ul>
+    <ul className="request_container">
       <li className="booking-card" style={{backgroundImage: `url(${request.service.image})`}}>
       <div className="book-container">
         <div className="content">

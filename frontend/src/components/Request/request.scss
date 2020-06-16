@@ -11,6 +11,11 @@
   flex-wrap: wrap;
 }
 
+.requestList_container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .request_presentation{
   display: flex;
   flex-direction: column;
@@ -25,48 +30,6 @@
 }
 
 
-.request_Card_refuse{
-  flex-direction: row!important;
-  border: red solid 1px!important;
-  width:100% !important;
-}
-
-.request_Card_accepte{
-  flex-direction: row!important;
-  border: blue solid 1px!important;
-  width:100% !important;
-}
-
-.request_Card_wait{
-  flex-direction: row!important;
-  width:100% !important;
-  border: yellow solid 1px!important;
-}
-
-.request_Card_finish{
-  flex-direction: row!important;
-  width:100% !important;
-  border: green solid 1px!important;
-}
-
-.request_Content{
-  display: flex !important;
-  justify-content: space-between;
-}
-
-.request_Status{
-  margin: 1em;
-}
-
-.request_RightSide{
-  max-width: 50%;
-}
-
-.request_Picture{
-  position: absolute;
-  display: flex;
-  margin-left: 3em;
-}
 .finish_text{
   margin: 1em;
 }
@@ -128,12 +91,14 @@ $orange: #ec992c;
   font-weight: 500;
 } */
 
-ul{
+.request_container{
     display: flex;
     flex-wrap: wrap;
-
     list-style: none;
     padding:0;
+    transform: scale(0.9);
+    height: fit-content;
+    width: 25%;
   
   .booking-card{
     position: relative;
@@ -178,8 +143,9 @@ ul{
       color: red;
     }
     .book-container {
-      height: 200px;
+      height: auto;
       .content {
+        padding: 1em;
         position: relative;
         opacity: 0;
         display: flex;

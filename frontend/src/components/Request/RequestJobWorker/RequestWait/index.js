@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import ModalRefuseRequest from 'src/containers/ModalRefuseRequest';
 import { changeHourFormat, changeDateFormat } from 'src/utils';
 
@@ -16,14 +16,14 @@ const RequestWait = ({ request, submitAccepteRequest, getCommentId }) => {
 
 
   return (
-    <ul>
+    <ul className="request_container">
       <li className="booking-card" style={{backgroundImage: `url(${request.service.image})`}}>
         <div className="book-container">
           <div className="content">
-            <Button className="btn" onClick={handleClick}>
+            <Button onClick={handleClick}>
               Accepter
             </Button>
-            <ModalRefuseRequest className="btn" request={request} />
+            <ModalRefuseRequest request={request} />
           </div>
         </div>
         <div className="informations-container">

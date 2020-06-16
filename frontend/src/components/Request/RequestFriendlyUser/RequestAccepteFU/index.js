@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import { changeHourFormat, changeDateFormat } from 'src/utils';
 import PopupContact from '../../../PopUpContact';
 
@@ -16,14 +16,14 @@ const RequestAccepteFU = ({ request, submitFinishRequest, getCommentId}) => {
   };
 
   return (
-    <ul>
+    <ul className="request_container">
       <li className="booking-card" style={{ backgroundImage: `url(${request.service.image})`}}>
       <div className="book-container">
         <div className="content">
         <PopupContact request={request} getCommentId={getCommentId} />
-          <button onClick={handleClick} className="btn">
+          <Button onClick={handleClick}>
           Terminé
-          </button>
+          </Button>
         </div>
       </div>
       <div className="informations-container">

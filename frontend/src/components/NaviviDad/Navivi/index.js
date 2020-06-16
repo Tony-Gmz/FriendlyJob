@@ -6,7 +6,7 @@ import ModalConnexion from 'src/containers/ModalConnexion';
 import ModalInscription from 'src/containers/ModalInscription';
 import { Button, Popup, Icon } from 'semantic-ui-react';
 
-import Brand from './Brand';
+
 import BurgerMenu from './BurgerMenu';
 import CollapseMenu from './CollapseMenu';
 
@@ -49,9 +49,6 @@ const Navbar = ({ isOpen, handleNavbar, isLogged, logOut, requestList, resetRequ
       <>
         <NavBar style={barAnimation}>
           <FlexContainer>
-            <div className="brandForNav">
-              <Brand />
-            </div>
             <div className="linkForNav">
               <NavLinks style={linkAnimation}>
                 <NavLink exact to="/services/">Liste de nos services</NavLink>
@@ -83,9 +80,6 @@ const Navbar = ({ isOpen, handleNavbar, isLogged, logOut, requestList, resetRequ
       <>
         <NavBar style={barAnimation}>
           <FlexContainer>
-            <div className="brandForNav">
-              <Brand />
-            </div>
             <div className="linkForNav">
               <NavLinks style={linkAnimation}>
                 <NavLink to="/services/">Liste de nos services</NavLink>
@@ -137,16 +131,15 @@ const NavBar = styled(animated.nav)`
   left: 0;
   background: #2d3436;
   z-index: 2;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 `;
 
 const FlexContainer = styled.div`
   max-width: 100%;
   display: flex;
   margin: auto;
-  padding: 0 2rem;;
+  padding: 0.2em;
   justify-content: space-between;
-  height: 4rem;
 `;
 
 const NavLinks = styled(animated.ul)`
@@ -157,10 +150,10 @@ const NavLinks = styled(animated.ul)`
   & a {
     color: #dfe6e9;
     text-transform: uppercase;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 0.9rem;
+    font-weight: 500;
     border-bottom: 1px solid transparent;
-    margin: 0 1.5rem;
+    margin: 0 1rem;
     transition: all 300ms linear 0s;
     text-decoration: none;
     cursor: pointer;
