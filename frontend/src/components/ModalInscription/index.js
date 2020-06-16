@@ -13,7 +13,7 @@ import { Button, Message, Form, Select } from 'semantic-ui-react';
 import './modalInscription.scss';
 
 // == Composant
-const ModalInscription = ({ departmentsList, fieldValue, submitSubscribe, isSubscribe, selectValue }) => {
+const ModalInscription = ({ departmentsList, fieldValue, submitSubscribe, isSubscribe, selectValue, errorPasswordMessage, closeErrorMessage }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log('coucou je suis submit');
@@ -42,9 +42,9 @@ const ModalInscription = ({ departmentsList, fieldValue, submitSubscribe, isSubs
             </Message>
           )}
           <form onSubmit={handleSubmit}>
-            <div className="form_element">
+            <div className="form_element_inscription">
               <Form.Input
-                className="input"
+                className="input_inscription"
                 label="Nom*"
                 type="text"
                 onChange={handleChange}
@@ -57,9 +57,9 @@ const ModalInscription = ({ departmentsList, fieldValue, submitSubscribe, isSubs
                 required
               />
             </div>
-            <div className="form_element">
+            <div className="form_element_inscription">
               <Form.Input
-                className="input"
+                className="input_inscription"
                 label="Prenom*"
                 type="text"
                 onChange={handleChange}
@@ -72,7 +72,7 @@ const ModalInscription = ({ departmentsList, fieldValue, submitSubscribe, isSubs
                 required
               />
             </div>
-            <div className="form_element">
+            <div className="form_element_inscription_department">
               <label>
                 Departement*
               </label>
@@ -93,9 +93,9 @@ const ModalInscription = ({ departmentsList, fieldValue, submitSubscribe, isSubs
                 ))}
               </select>
             </div>
-            <div className="form_element">
+            <div className="form_element_inscription">
               <Form.Input
-                className="input"
+                className="input_inscription"
                 label="Email*"
                 type="email"
                 onChange={handleChange}
@@ -105,9 +105,9 @@ const ModalInscription = ({ departmentsList, fieldValue, submitSubscribe, isSubs
                 required
               />
             </div>
-            <div className="form_element">
+            <div className="form_element_inscription">
               <Form.Input
-                className="input"
+                className="input_inscription"
                 id="outlined-password-input"
                 label="Mot de passe*"
                 type="password"
@@ -120,9 +120,9 @@ const ModalInscription = ({ departmentsList, fieldValue, submitSubscribe, isSubs
                 required
               />
             </div>
-            <div className="form_element">
+            <div className="form_element_inscription">
               <Form.Input
-                className="input"
+                className="input_inscription"
                 label="Confirmation*"
                 type="password"
                 onChange={handleChange}
@@ -142,8 +142,8 @@ const ModalInscription = ({ departmentsList, fieldValue, submitSubscribe, isSubs
               </RadioGroup>
             </div>
             <div className="div_submit">
-              <a href="#"><button type="button" className="cancel_btn">Annuler</button></a>
-              <button className="submit_btn" type="submit">S'inscrire</button>
+              <a href="#"><Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }}  type="button" className="cancel_btn">Annuler</Button></a>
+              <Button style={{ backgroundColor: '#303f9f', color: '#FFFF' }} className="submit_btn" type="submit">S'inscrire</Button>
             </div>
           </form>
           <a href="#" className="close_btn">close</a>

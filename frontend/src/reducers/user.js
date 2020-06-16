@@ -26,6 +26,8 @@ import {
   CHANGE_CURRENT_PAGE,
   OPEN_SUCCESS_MESSAGE,
   CLOSE_SUCCESS_MESSAGE,
+  ERROR_PASSWORD_MESSAGE,
+  CLOSE_ERROR_MESSAGE,
 } from '../action/usersActions';
 
 const initialState = {
@@ -96,6 +98,7 @@ const initialState = {
   currentPage: 1,
   joberPerPage: 8,
   isOpen: false,
+  errorPasswordMessage: false,
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -176,6 +179,7 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         userData: action.userData,
         isEdited: true,
+        isEditable: false,
 
       };
     case DELETE_ACCOUNT:
@@ -246,9 +250,18 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         isOpen: false,
       };
+    case ERROR_PASSWORD_MESSAGE:
+      return {
+        ...state,
+        errorPasswordMessage: true,
+      };
+    case CLOSE_ERROR_MESSAGE:
+      return {
+        ...state,
+        errorPasswordMessage: false,
+      };
     default: return state;
   }
-
 };
 
 export default userReducer;

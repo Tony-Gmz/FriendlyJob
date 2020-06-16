@@ -30,6 +30,8 @@ const Profil = ({
   isOpen,
   closeSuccessMessage,
   openSuccessMessage,
+  errorPasswordMessage,
+  closeErrorMessage,
 }) => {
 
   /* useEffect(() => {
@@ -60,6 +62,8 @@ const Profil = ({
             isOpen={isOpen}
             openSuccessMessage={openSuccessMessage}
             closeSuccessMessage={closeSuccessMessage}
+            errorPasswordMessage={errorPasswordMessage}
+            closeErrorMessage={closeErrorMessage}
           />
         )
         : (
@@ -90,6 +94,8 @@ const Profil = ({
             isOpen={isOpen}
             openSuccessMessage={openSuccessMessage}
             closeSuccessMessage={closeSuccessMessage}
+            errorPasswordMessage={errorPasswordMessage}
+            closeErrorMessage={closeErrorMessage}
           />
         )}
     </>

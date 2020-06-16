@@ -10,7 +10,6 @@ import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import { Input } from 'semantic-ui-react';
 
-import { whitoutAvatar } from 'src/utils';
 
 // == Import
 import './profilJobWorker.scss';
@@ -47,6 +46,8 @@ const ProfilJobWorker = ({
   isOpen,
   closeSuccessMessage,
   openSuccessMessage,
+  errorPasswordMessage,
+  closeErrorMessage,
 }) => {
   useEffect(() => {
     getJobWorkerSkill();
@@ -79,6 +80,10 @@ const ProfilJobWorker = ({
     closeSuccessMessage();
   };
 
+  const handleErrorMessageClose = () => {
+    closeErrorMessage();
+  };
+
   function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
@@ -93,7 +98,7 @@ const ProfilJobWorker = ({
           <div className="profil_title">{firstname}</div>
           <div>
             {userAvatar && <img className="profil_card_img" alt="Remy Sharp" src={urlAvatar} /> }
-            {!userAvatar && <Avatar className="profil_card_img" alt="Remy Sharp" src="">{whitoutAvatar(firstname)}</Avatar>}
+            {!userAvatar && <Avatar className="profil_card_img" alt="Remy Sharp" src=""></Avatar>}
             <div className="profil_card_img_upload">
               {isEditable && <UploadImg urlAvatar={urlAvatar} />}
             </div>
@@ -101,7 +106,7 @@ const ProfilJobWorker = ({
         </div>
         <div className="profil_information">
           <form onSubmit={handleSubmit} className="profil_form">
-            <div className="form_element">
+            <div className="form_element_profil">
               <TextField
                 className="profil_input"
                 id="outlined-name-input"
@@ -112,7 +117,7 @@ const ProfilJobWorker = ({
                 disabled
               />
             </div>
-            <div className="form_element">
+            <div className="form_element_profil">
               <TextField
                 className="profil_input"
                 id="outlined-firstname-input"
@@ -124,7 +129,7 @@ const ProfilJobWorker = ({
               />
             </div>
             {isEditable && (
-              <div className="form_element jobWorker_department_select">
+              <div className="form_element_profil jobWorker_department_select">
                 <TextField className="profil_input" id="select" onChange={handleChange} label="Departement" name="department" select>
                   {departmentsList.map((depart) => (
                     <MenuItem value={depart.id}>{depart.name}</MenuItem>
@@ -133,14 +138,16 @@ const ProfilJobWorker = ({
               </div>
             )}
             {!isEditable && (
-              <div className="form_element">
-                <TextField className="profil_input" id="select" label="Departement" value={department} select disabled>
-                  <MenuItem value={department.id}>{department.name}</MenuItem>
+              <div className="form_element_profil">
+              <TextField className="profil_input" id="select" onChange={handleChange} label="Departement" name="department" select disabled>
+                  {departmentsList.map((depart) => (
+                    <MenuItem value={depart.id}>{depart.name}</MenuItem>
+                  ))}
                 </TextField>
               </div>
             )}
             {!isEditable && (
-              <div className="form_element">
+              <div className="form_element_profil">
                 <TextField
                   id="outlined-multiline-static"
                   label="A propos"
@@ -154,7 +161,7 @@ const ProfilJobWorker = ({
               </div>
             )}
             {isEditable && (
-              <div className="form_element">
+              <div className="form_element_profil">
                 <TextField
                   id="outlined-multiline-static"
                   label="A propos"
@@ -169,7 +176,7 @@ const ProfilJobWorker = ({
               </div>
             )}
             {isEditable && (
-              <div className="form_element">
+              <div className="form_element_profil">
                 <TextField
                   className="profil_input"
                   id="outlined-email-input"
@@ -184,7 +191,7 @@ const ProfilJobWorker = ({
               </div>
             )}
             {!isEditable && (
-              <div className="form_element">
+              <div className="form_element_profil">
                 <TextField
                   className="profil_input"
                   label="Email"
@@ -198,7 +205,7 @@ const ProfilJobWorker = ({
               </div>
             )}
             {!isEditable && (
-              <div className="form_element">
+              <div className="form_element_profil">
                 <TextField
                   className="profil_input"
                   id="outlined-firstname-input"
@@ -212,7 +219,7 @@ const ProfilJobWorker = ({
               </div>
             )}
             {isEditable && (
-              <div className="form_element">
+              <div className="form_element_profil">
                 <TextField
                   className="profil_input"
                   id="outlined-password-input"
@@ -227,7 +234,7 @@ const ProfilJobWorker = ({
               </div>
             )}
             {isEditable && (
-              <div className="form_element">
+              <div className="form_element_profil">
                 <TextField
                   className="profil_input"
                   id="outlined-password-input"
@@ -242,9 +249,16 @@ const ProfilJobWorker = ({
               </div>
             )}
             {isEdited && (
-              <Snackbar open={open} autoHideDuration={6000} onClose={handleMessageClose}>
+              <Snackbar open={isOpen} autoHideDuration={6000} onClose={handleMessageClose}>
                 <Alert onClose={handleMessageClose} severity="success">
-                  vos modifications ont bien été pris en compte ! vous souhaitez retourner sur <a href="/profil">profil</a> ?
+                  vos modifications ont bien été pris en compte ! vous souhaitez retourner sur la <a href="/profil">page d'accueil</a> ?
+                </Alert>
+              </Snackbar>
+            )}
+            {errorPasswordMessage && (
+              <Snackbar open={open} autoHideDuration={6000} onClose={handleErrorMessageClose}>
+                <Alert onClose={handleErrorMessageClose} severity="error">
+                  Votre mot de passe doit contenir 8 character minimum, une majuscule, une minuscule et un character spécial
                 </Alert>
               </Snackbar>
             )}

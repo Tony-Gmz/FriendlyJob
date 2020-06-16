@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { canEditProfil, cancelEdit, editFieldValue, submitEdit, getJobWorkerSkill, getNewSkillValue, getUserData, getJobWorkerService, openSuccesMessage, closeSuccesMessage } from 'src/action/usersActions';
 import Profil from 'src/components/Profil/';
+import { closeErrorMessage } from '../../action/usersActions';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
@@ -22,6 +23,7 @@ const mapStateToProps = (state) => ({
   toggle: state.request.toggle,
   editDepartment: state.user.editDepartment,
   isOpen: state.user.isOpen,
+  errorPasswordMessage: state.user.errorPasswordMessage,
 
   // roles: state.user.userData.roles[0],
 });
@@ -58,6 +60,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   closeSuccessMessage: () => {
     dispatch(closeSuccesMessage());
+  },
+  closeErrorMessage: () => {
+    dispatch(closeErrorMessage());
   },
 });
 

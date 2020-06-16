@@ -31,6 +31,7 @@ import {
   saveErrorConnexion,
   GET_JOBWORKER_SERVICE,
   saveJobWorkerService,
+  errorPasswordMessage,
 } from '../action/usersActions';
 import { saveToggle } from '../action/requestAction';
 
@@ -218,11 +219,11 @@ const userMiddleware = (store) => (next) => (action) => {
     case SUBMIT_EDIT: {
       // REQUEST TO SAVE THE EDIT OF THE USER DATA
       const userToken = localStorage.getItem('jwtToken');
-      let { editEmail, editPassword, editDepartments, password, editAbout, userData, urlAvatar } = store.getState().user;
-      const { departmentId } = store.getState().user.userData.department.id;
-      console.log(departmentId);
+      let { editEmail, editPassword, department, password, editAbout, userData, urlAvatar } = store.getState().user;
+      // const { departmentId } = store.getState().user.userData.department.id;
+      // console.log(departmentId);
       console.log(editEmail);
-      console.log(editDepartments);
+      // console.log(editDepartments);
       console.log(editPassword);
       console.log(editAbout);
       console.log(urlAvatar);
@@ -232,7 +233,7 @@ const userMiddleware = (store) => (next) => (action) => {
         data: {
           email: editEmail,
           password: editPassword,
-          departments: editDepartments,
+          department: department,
           about: editAbout,
           image: urlAvatar,
         },
@@ -256,6 +257,7 @@ const userMiddleware = (store) => (next) => (action) => {
           console.warn(error);
           console.log(error.response.data);
           console.log('jai fait une erreur');
+          store.dispatch(errorPasswordMessage());
         });
       next(action);
       break;
