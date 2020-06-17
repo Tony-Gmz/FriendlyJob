@@ -17,7 +17,7 @@ export default Brand;
 const Image = styled.img`
   height: auto;
   width: 30%;
-  margin: auto 0;
+  margin: auto;
   margin-top: 0.5em;
   z-index:0;
 `;
