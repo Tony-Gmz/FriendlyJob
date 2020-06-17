@@ -1,15 +1,12 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Rating } from 'semantic-ui-react';
+import Rating from '@material-ui/lab/Rating';
 import { Link, useParams } from 'react-router-dom';
 
 import './jobWorkerMain.scss';
 
-const JobWorkerMain = ({ jobWorkers, getServiceName }) => {
+const JobWorkerMain = ({ currentPage, getJobWorker, jobWorkers, getServiceName }) => {
   const { slug } = useParams();
-  useEffect(() => {
-    getServiceName(slug);
-  }, []);
 
   return (
     <div className="jobWorker_list">
@@ -40,7 +37,7 @@ const JobWorkerMain = ({ jobWorkers, getServiceName }) => {
                   <button type="button">Contacter</button>
                   <footer>
                     <div className="likes">
-                      <Rating defaultRating={userRating.rating.star} maxRating={5} disabled />
+                      <Rating name="read-only" value={userRating.rating.star} readOnly />
                     </div>
                     <div className="cards_department">
                       <p className="cards_department_content">{jobWorker.user.department.name}</p>
@@ -69,7 +66,7 @@ const JobWorkerMain = ({ jobWorkers, getServiceName }) => {
                 <button type="button">Contacter</button>
                 <footer>
                   <div className="likes">
-                    <Rating defaultRating={0} maxRating={5} disabled />
+                    <Rating name="read-only" value={0} readOnly />
                   </div>
                   <div className="cards_department">
                     <p className="cards_department_content">{jobWorker.user.department.name}</p>

@@ -8,7 +8,7 @@
    
     .profilJobWorker{
       padding: 1em;
-      background-color: #0000000f;
+      background-color: #FFFF;
       border-radius: 1em;
 
       .profil{
@@ -85,6 +85,7 @@
         border-bottom: 1px solid #FF385C;
         padding-bottom: 1rem;
         width: 90%;
+        color: black
       
       
       }
@@ -222,12 +223,14 @@
       .MuiTextField-root {
       
       }
+
   }
   
   .form_skill_description {
     margin-bottom: 2em;
   }
   
+
     
  }
  @include sm {
@@ -241,8 +244,9 @@
  
 
   .profilJobWorker{
+    margin-top: 2em;
     padding: 1em;
-    background-color: #0000000f;
+    background-color: #FFFF;
     border-radius: 1em;
 
     .profil{
@@ -252,7 +256,7 @@
       justify-content: space-around;
       margin-bottom: 3em;
       margin-top: 3em;
-      background-color:  #F7F7F7;
+      background-color:  #FFFF;
       border-radius: 10px;
     }
     
@@ -282,7 +286,8 @@
     .profil_information{
       width: 70%;
       align-self: center;
-      background-color: #F7F7F7;
+      background-color: #FFFF;
+      padding-bottom: 2em;
     }
     
     .profil_form{
@@ -291,11 +296,13 @@
       justify-content: space-around;
       padding: 1em;
       border-radius: 1em;
+      background-color: #FFF;
     }
     
     .profil_input{
       width: 80%;
     }
+    
     
     .MuiInputBase-root{
       line-height: 0.1em !important;
@@ -320,6 +327,7 @@
     
     
     }
+
     
     .skill_select {
       margin-right: 2em;
@@ -341,15 +349,9 @@
     }
     .form_skill_content_price {
       width: 200px;
+      color: black
     }
     
-    .form_skill_content {
-      padding-top: 2em;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-    }
     
     .form_skill {
       .MuiFormControl-root {
@@ -377,7 +379,7 @@
     .profil_card_img {
       display: flex;
       flex-direction: row;
-      margin-left: 10em;
+      margin: auto;
       margin-top: 2em;
     }
     
@@ -397,7 +399,7 @@
     .form_skill_content {
       display: flex;
       flex-direction: column;
-      background-color: #FFFF;
+      background-color: #e0e0e0;
       padding: 1.5rem;
       border-radius: 10px;
       margin-top: 2em;

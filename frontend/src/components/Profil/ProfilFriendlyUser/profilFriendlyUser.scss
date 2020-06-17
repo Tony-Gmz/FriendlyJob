@@ -5,7 +5,7 @@
    
     .profilfu {
       padding: 1em;
-      background-color: #0000000f;
+      background-color: #FFFF;
       border-radius: 1em;
   
       .profil_fu_friendlyUser{
@@ -15,7 +15,7 @@
         justify-content: space-around;
         margin-bottom: 3em;
         margin-top: 3em;
-        background-color:  #F7F7F7;
+        background-color:  #FFFF;
         border-radius: 10px;
       }
       
@@ -45,7 +45,7 @@
       .profil_fu_desciption{
         width: 70%;
         align-self: center;
-        background-color: #F7F7F7;
+        background-color: #FFFF;
       }
       
       .profil_form{
@@ -67,9 +67,13 @@
       }
       
       .profil_group_btn{
-        margin-top: 2em;
+        margin-top: 3em;
         display: flex;
         justify-content: space-around;
+        width: 60%;
+        margin: auto;
+        padding-bottom: 3em;
+        padding-top: 2em;
       }
     
       
@@ -86,7 +90,9 @@
         line-height: 1!important;
       }
       
-      
+      .form_element_profil {
+        margin-top: 1em;
+      }
       
       .profil_fu_desciption {
         display: inline-block;
@@ -123,7 +129,7 @@
 
   .profilfu {
     padding: 1em;
-    background-color: #0000000f;
+    background-color: #FFFF;
     border-radius: 1em;
 
     .profil_fu_friendlyUser{
@@ -133,7 +139,7 @@
       justify-content: space-around;
       margin-bottom: 3em;
       margin-top: 3em;
-      background-color:  #F7F7F7;
+      background-color:  #FFFF;
       border-radius: 10px;
     }
     
@@ -163,7 +169,7 @@
     .profil_fu_desciption{
       width: 70%;
       align-self: center;
-      background-color: #F7F7F7;
+      background-color: #FFFF;
     }
     
     .profil_form{
@@ -245,7 +251,8 @@
       font-size: 1.5rem;
       border-bottom: 1px solid #FF385C;
       padding-bottom: 1rem;
-      width: 400px;
+      width: 100%;
+      border-radius: 10px;
     }
     
     .profil_fu_card_img {

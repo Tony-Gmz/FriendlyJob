@@ -10,6 +10,7 @@ const mapStateToProps = (state) => ({
   loadingOnJobWorkerList: state.user.loadingOnJobWorkerList,
   currentPage: state.user.currentPage,
   joberPerPage: state.user.joberPerPage,
+  loading: state.service.loading,
 
 });
 

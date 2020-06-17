@@ -33,9 +33,14 @@
   }
   
   .modal_block {
-    background-color:  #2d3436;
+    background-color:  #ffffff;
     border-radius: 10px;
-    color: #FFFF;
+
+  }
+  .header_inscription{
+
+    background-color: #FF385C!important;
+  
   }
   
   #inscription:target{
@@ -189,7 +194,7 @@
     .MuiFormLabel-root {
       display: flex!important;
       flex-direction: row!important;
-      justify-content: space-between!important;
+      color: black!important;
     }
 
     .PrivateRadioButtonIcon-root-5:after {
@@ -202,7 +207,7 @@
   }
 
   .modal_button_trigger{
-    padding: 0.3em!important;
+    padding: 0.4em!important;
     background: #ff385c!important;
     min-height: 0.5em!important;
     font-weight: 500!important;
@@ -221,15 +226,17 @@
   right: 0;
   background-color: #f7f7f7;
 }
+.header_inscription{
+
+  background-color: #FF385C!important;
+  opacity: 0.80;
+  color: #FFFF!important;
+}
 
 .inputDepartment{
     width: 100%;
-    background-color: white;
-    border-radius: 0.2em;
     height: 3.1em;
     font-family: unset;
-    font-size: large;
-    border: #00000033 solid 1px;
     padding: .67857143em 1em;
 }
 
@@ -243,7 +250,6 @@
 }
 
 .modal_block {
-  background-color: #2d3436;
   border-radius: 10px;
 }
 
@@ -381,7 +387,7 @@
   margin-top: 1rem;
   display: flex!important;
   flex-direction: row!important;
-  justify-content: space-between!important;
+  justify-content: space-around!important;
   
 }
 
@@ -422,6 +428,10 @@
   input {
     margin-bottom: 1rem;
   }
+}
+.form_inscription {
+padding-bottom: 3em;
+
 }
 
 }

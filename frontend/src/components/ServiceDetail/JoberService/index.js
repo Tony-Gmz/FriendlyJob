@@ -1,7 +1,7 @@
 // == Import Library
 import React, { useEffect } from 'react';
-import { Rating } from 'semantic-ui-react';
 import { Link, useParams } from 'react-router-dom';
+import Rating from '@material-ui/lab/Rating';
 
 // == Import style
 import './joberService.scss';
@@ -40,7 +40,7 @@ const JoberService = ({ jobWorker, getServiceName, jobWorkerStar }) => {
           <button type="button">Contacter</button>
           <footer>
             <div className="likes">
-              <Rating defaultRating={userRating.rating.star} maxRating={5} disabled />
+            <Rating name="read-only" value={userRating.rating.star} readOnly />
             </div>
             <div className="cards_department">
               <p className="cards_department_content">{jobWorker.user.department.name}</p>
@@ -70,7 +70,7 @@ const JoberService = ({ jobWorker, getServiceName, jobWorkerStar }) => {
           <button type="button">Contacter</button>
           <footer>
             <div className="likes">
-              <Rating defaultRating={0} maxRating={5} disabled />
+            <Rating name="read-only" value={0} readOnly />
             </div>
             <div className="cards_department">
               <p className="cards_department_content">{jobWorker.user.department.name}</p>

@@ -126,7 +126,7 @@ const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHou
           </MuiPickersUtilsProvider>
         </Modal.Content>
         <Modal.Content className="modal_edit_request_textarea">
-          <TextArea onChange={handleChangeDescription} name="requestBody" className="modalTextArea_content" placeholder={request.body} value={RequestBody}/>
+          <TextArea onChange={handleChangeDescription} name="requestBody" className="modalTextArea_content" placeholder={request.body} defaultValue={RequestBody}/>
         </Modal.Content>
         <Modal.Actions className="modal_edit_action_button">
           <Button color="green">

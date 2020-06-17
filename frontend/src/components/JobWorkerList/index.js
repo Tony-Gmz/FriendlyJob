@@ -19,10 +19,6 @@ const JobWorkerList = ({ changeCurrentPage, currentPage, joberPerPage, getJobWor
   const indexOfFirstJober = indexOfLastJober - joberPerPage;
   const currentJobWorker = jobWorkers.slice(indexOfFirstJober, indexOfLastJober);
 
-/*   const paginate = (pageNumber) => {
-    changeCurrentPage(pageNumber);
-    console.log(pageNumber);
-  }; */
 
 console.log(jobWorkers.length);
   return (
@@ -31,8 +27,8 @@ console.log(jobWorkers.length);
       {!loadingOnJobWorkerList && (
         <>
           <JobWorkerListTitle currentService={currentService} />
-          <JobWorkerMain jobWorkers={currentJobWorker} getJobWorker={getJobWorker} getServiceName={getServiceName} />
-          <Pagination currentPage={currentPage} joberPerPage={joberPerPage} totalJobWorker={jobWorkers.length} changeCurrentPage={changeCurrentPage} />
+          <JobWorkerMain currentPage={currentPage} jobWorkers={currentJobWorker} getJobWorker={getJobWorker} getServiceName={getServiceName} />
+          <Pagination getJobWorker={getJobWorker} getServiceName={getServiceName} currentPage={currentPage} joberPerPage={joberPerPage} totalJobWorker={jobWorkers.length} changeCurrentPage={changeCurrentPage} />
         </>
       )}
     </>

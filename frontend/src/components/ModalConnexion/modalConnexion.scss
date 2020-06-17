@@ -21,7 +21,7 @@
 }
 
 .modal_button_trigger{
-  padding: 0.3em!important;
+  padding: 0.4em!important;
   background: #ff385c!important;
   min-height: 0.5em!important;
   font-weight: 500!important;
@@ -30,7 +30,6 @@
 }
 
 .modal_block {
-  background-color:  #2d3436;
   border-radius: 10px;
 }
 
@@ -194,11 +193,16 @@
 
 .div_submit{
   display: flex;
-  justify-content: space-between;
+  justify-content: flex;
   margin-top: 2em;
+  
 }
 
-
+.header_connexion {
+  background-color: #FF385C!important;
+  opacity: 0.80;
+  color: #FFFF!important;
+}
 .cancel_btn{
   background-color: rgba(255, 0, 0, 0.555);
   padding: 0.6em;
@@ -206,3 +210,5 @@
   color: white;
   font-family: 'Courier New', Courier, monospace;
 }
+
+

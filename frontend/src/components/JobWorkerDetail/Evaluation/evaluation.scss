@@ -15,7 +15,7 @@
       padding-top: 1em;
       font-size: 1.2rem;
       padding-bottom: 0.5rem;
-      text-align: left;
+      text-align: center;
       border-bottom: #FF385C;
       font-style: italic;
     }
@@ -71,8 +71,30 @@
       font-style: italic;
   
     }
-  
+      
   }
+    .competence_content_illustration{
+      min-width: 10%;
+    }
+
+    .competence_img {
+      margin: auto!important;
+      padding: unset!important;
+      margin-bottom: 0.5em!important;
+    }
+
+    .competence_name {
+      margin: auto!important;
+      padding: unset!important;
+      margin-bottom: 0.5em!important;
+    }
+
+    .competence_price {
+      margin: auto!important;
+      padding: unset!important;
+    }
+  
+  
   
     
  }
@@ -90,16 +112,21 @@
     margin-top: 2em;
     
     padding: 1rem;
-    background-color: #FBFBEF;
+    background-color: #2d3436;
     border-radius: 10px;
+    padding-bottom: 2em;
   
     .evaluation_title {
+      text-align: center;
+      color: #FFFF;
       padding-top: 1em;
       font-size: 1.2rem;
       padding-bottom: 0.5rem;
-      text-align: left;
-      border-bottom: #FF385C;
+      border-bottom: #FF385C 1px solid;
       font-style: italic;
+      display: inline-block;
+      margin: auto;
+      width: 60%;
     }
     .evalutation_content {
       display: flex;
@@ -119,6 +146,10 @@
   
     .evaluation_note {
       margin-top: 2em;
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      padding-top: 1em;
   
     }
   
@@ -154,7 +185,28 @@
       font-style: italic;
   
     }
-  
+    .card {
+      margin: 0;
+      margin-left: 3em;
+      margin-bottom: 1rem;
+
+    }
+
+    .header {
+      padding-left: 2.5rem;
+
+    }
+
+    .meta {
+      padding-top: 1rem;
+    }
+    
+    .description {
+      padding-top: 3rem;
+      p {
+        word-break: normal;
+      }
+    }
   }
   
 

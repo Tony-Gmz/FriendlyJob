@@ -22,7 +22,7 @@ const Navbar = ({ isOpen, handleNavbar, isLogged, logOut, requestList, resetRequ
     localStorage.removeItem('jwtToken');
     localStorage.removeItem('userId');
     localStorage.removeItem('userRole');
-  }; 
+  };
 
   const barAnimation = useSpring({
     from: { transform: 'translate3d(0, -10rem, 0)' },
@@ -53,7 +53,6 @@ const Navbar = ({ isOpen, handleNavbar, isLogged, logOut, requestList, resetRequ
               <NavLinks style={linkAnimation}>
                 <NavLink exact className="link_OfLogo" to="/"><img className="logo_link_home" src="https://res.cloudinary.com/friendlyjob/image/upload/c_crop,q_100,w_1350/v1591561663/friendlyjob/logoC_dqklpb.png" alt="logo" /></NavLink>
                 <NavLink exact to="/services/">Liste de nos services</NavLink>
-                <a href="#inscription">Devenir JobWorker</a>
                 <NavLink to="/contact/">Qui sommes nous</NavLink>
               </NavLinks>
               <NavLinks className="buttonForModal">
@@ -83,24 +82,27 @@ const Navbar = ({ isOpen, handleNavbar, isLogged, logOut, requestList, resetRequ
           <FlexContainer>
             <div className="linkForNav">
               <NavLinks style={linkAnimation}>
+                <NavLink exact className="link_OfLogo" to="/"><img className="logo_link_home" src="https://res.cloudinary.com/friendlyjob/image/upload/c_crop,q_100,w_1350/v1591561663/friendlyjob/logoC_dqklpb.png" alt="logo" /></NavLink>
                 <NavLink to="/services/">Liste de nos services</NavLink>
                 {userRole === 'ROLE_ADMIN' ? (
                   <a href="http://api.friendlyjob.fr/login" rel="noopener noreferrer" target="_blank">admin</a>
                 ) : (
-                  <NavLink to="/profil/">Profil</NavLink>
+                  <>
+                    <NavLink to="/profil/">Profil</NavLink>
+                    <NavLink to="/demandes/">Mes demandes</NavLink>
+                  </>
                 )}
-                <NavLink to="/demandes/">Mes demandes</NavLink>
               </NavLinks>
               <NavLinks className="buttonForModal">
-              {userRole === 'JOBWORKER' && waitingRequest.length > 0 && requestList !== null ? (
-                <div className="notification">
-                  <Popup
+                {userRole === 'JOBWORKER' && waitingRequest.length > 0 && requestList !== null ? (
+                  <div className="notification">
+                    <Popup
                       trigger={<i style={{marginRight: '0'}} class="bell icon" color='red' />}
                       content={`Vous avez ${waitingRequest.length} ${demands} en attente`}
-                  />
+                    />
                   </div>
                 ) : ''}
-                <NavLink style={{ borderBottom: 'none' }} to="/"><Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }} onClick={handleClick}>Deconnexion</Button></NavLink>
+                <NavLink style={{ borderBottom: 'none', display: 'flex' }} to="/"><Button className="button_deconexion_trigger" onClick={handleClick}>Déconnexion</Button></NavLink>
               </NavLinks>
             </div>
             <BurgerWrapper>
@@ -151,7 +153,7 @@ const NavLinks = styled(animated.ul)`
     color: #dfe6e9;
     text-transform: uppercase;
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: 600;
     border-bottom: 1px solid transparent;
     margin: 0 1rem;
     transition: all 300ms linear 0s;

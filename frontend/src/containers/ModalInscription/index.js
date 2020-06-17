@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
-import { fieldValue, submitSubscribe } from 'src/action/inscriptionAction';
+import { fieldValue, submitSubscribe, closeErrorMessageInscription } from 'src/action/inscriptionAction';
 import ModalInscription from 'src/components/ModalInscription';
-import { closeErrorMessage } from '../../action/usersActions';
+import {  openSuccesMessage, closeSuccesMessage } from '../../action/usersActions';
+import { getAllDepartments } from 'src/action/departmentsActions';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
@@ -9,6 +10,10 @@ const mapStateToProps = (state) => ({
   selectValue: state.inscription.departement,
   departmentsList: state.departments.departmentsList,
   errorPasswordMessage: state.user.errorPasswordMessage,
+  isOpen: state.user.isOpen,
+  password: state.inscription.password,
+  confirmPassword: state.inscription.confirmPassword,
+  errorInscriptionMessage: state.inscription.errorInscriptionMessage,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -20,8 +25,17 @@ const mapDispatchToProps = (dispatch) => ({
   submitSubscribe: () => {
     dispatch(submitSubscribe());
   },
-  closeErrorMessage: () => {
-    dispatch(closeErrorMessage());
+  closeErrorMessageInscription: () => {
+    dispatch(closeErrorMessageInscription());
+  },
+  getAllDepartments: () => {
+    dispatch(getAllDepartments());
+  },
+  openSuccessMessage: () => {
+    dispatch(openSuccesMessage());
+  },
+  closeSuccessMessage: () => {
+    dispatch(closeSuccesMessage());
   },
 });
 

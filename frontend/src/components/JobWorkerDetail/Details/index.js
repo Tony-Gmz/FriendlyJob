@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import './details.scss';
 import ModalReservation from 'src/containers/ModalReservation';
 import Avatar from '@material-ui/core/Avatar';
-import { Card } from 'semantic-ui-react';
-import { Message } from 'semantic-ui-react'
-
+import { Card, Message } from 'semantic-ui-react';
+import ModalConnexion from 'src/containers/ModalConnexion';
+import ModalInscription from 'src/containers/ModalInscription';
 
 const Details = ({
   isLogged,
@@ -20,6 +20,7 @@ const Details = ({
   const userAvatar = image;
   const screenWidth = window.screen.width;
   const role = localStorage.getItem('userRole');
+  console.log(department);
   console.log(role);
   return (
 
@@ -28,26 +29,16 @@ const Details = ({
         <h2>Détail de {firstname}</h2>
       </div>
       <div className="detail_content">
-        <div className="detail_content_card">
+        <div className="detail_content_about">
           <div className="Jober_avatar">
             {userAvatar && <Avatar alt="Remy Sharp" src={image} /> }
             {!userAvatar && <Avatar alt="Remy Sharp" src=""></Avatar>}
           </div>
-          <div className="Jober_card">
-            <Card key={id}>
-              <Card.Content header={firstname} />
-              {skills && <Card.Content description={skills[0].description} />}
-              <Card.Content extra>
-                Departement : {department.name}
-              </Card.Content>
-            </Card>
-          </div>
-        </div>
-        <div className="detail_content_about">
           <div className="detail_content_about-title">
             <h3>A propos</h3>
+            <p>{about}</p>
+            <p>{department.name} | ({department.number})</p>
           </div>
-          <p>{about}</p>
         </div>
       </div>
       <div className="detail_reservation">
@@ -56,11 +47,11 @@ const Details = ({
           <div className="detail_reservation_message">
          <Message warning>
             <div>
-              <i className="info circle icon"></i>
+              <i className="info circle icon icon_message_detail"></i>
             </div>
-            <div className="reservation_message content">
+           <div className="reservation_message content">
             <Message.Header> Vous souhaitez prendre rendez-vous avec {firstname} ? Vous devez être inscrit ou connecté</Message.Header>
-            <p>Visitez notre page <a className="message_reservation_link" href="#inscription">d'inscription</a>  ou de <a className="message_reservation_link" href="#connexion"> connexion</a> et réessayez ! </p>
+            <p>Visitez notre page <ModalInscription /> ou <ModalConnexion /> et réessayez ! </p>
             </div>
           </Message>
           </div>

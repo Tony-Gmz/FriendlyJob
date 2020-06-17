@@ -1,5 +1,5 @@
-import { jardinage } from 'src/assets/img/jardinage.jpg';
 import {
+  SAVE_USER_CONFIRMED,
   SAVE_RANDOM_JOBWORKER,
   CHANGE_FIELD, SAVE_USER,
   SAVE_SIX_RANDOM_JOBWORKER,
@@ -28,6 +28,8 @@ import {
   CLOSE_SUCCESS_MESSAGE,
   ERROR_PASSWORD_MESSAGE,
   CLOSE_ERROR_MESSAGE,
+  CLOSE_ERROR_CONFIRMED_MESSAGE,
+  CLOSE_ERROR_CONNEXION_MESSAGE,
 } from '../action/usersActions';
 
 const initialState = {
@@ -98,11 +100,20 @@ const initialState = {
   currentPage: 1,
   joberPerPage: 8,
   isOpen: false,
-  errorPasswordMessage: false,
+  errorMessage: false,
+  isConfirmed: '',
+  errorConfirmedMessage: true,
+  errorConnexionMessage: true,
 };
 
 const userReducer = (state = initialState, action = {}) => {
   switch (action.type) {
+
+    case SAVE_USER_CONFIRMED:
+      return {
+        ...state,
+        isConfirmed: action.newState,
+      };
     case SAVE_RANDOM_JOBWORKER:
       return {
         ...state,
@@ -139,8 +150,8 @@ const userReducer = (state = initialState, action = {}) => {
     case SAVE_JOBWORKER:
       return {
         ...state,
-        loadingOnJobWorkerList: false,
         jobWorkers: action.newJobWorker,
+        loadingOnJobWorkerList: false,
       };
     case GET_JOBWORKER_ID:
       return {
@@ -232,7 +243,7 @@ const userReducer = (state = initialState, action = {}) => {
     case SAVE_ERROR_CONNEXION:
       return {
         ...state,
-        connexionError: action.error,
+        connexionError: true,
       };
     case SAVE_JOBWORKER_SERVICE:
       return {
@@ -253,12 +264,22 @@ const userReducer = (state = initialState, action = {}) => {
     case ERROR_PASSWORD_MESSAGE:
       return {
         ...state,
-        errorPasswordMessage: true,
+        errorMessage: true,
       };
     case CLOSE_ERROR_MESSAGE:
       return {
         ...state,
-        errorPasswordMessage: false,
+        errorMessage: false,
+      };
+    case CLOSE_ERROR_CONFIRMED_MESSAGE:
+      return {
+        ...state,
+        errorConfirmedMessage: false,
+      };
+    case CLOSE_ERROR_CONNEXION_MESSAGE:
+      return {
+        ...state,
+        errorConnexionMessage: false,
       };
     default: return state;
   }

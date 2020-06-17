@@ -84,7 +84,7 @@ const ModalEditSkill = ({ price, description, id, getSkillId, getNewSkillValue, 
           )}
           </div>
             <div className="modalEditSkill_submit_button">
-              <Button style={{ backgroundColor: 'green', color: '#FFFF', margin: 'auto' }} type="submit">Envoyer</Button>
+              <Button style={{ backgroundColor: 'green', color: '#FFFF'}} type="submit">Envoyer</Button>
           </div>
       </form>
     </Modal.Description>

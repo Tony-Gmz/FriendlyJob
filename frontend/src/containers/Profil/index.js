@@ -23,7 +23,7 @@ const mapStateToProps = (state) => ({
   toggle: state.request.toggle,
   editDepartment: state.user.editDepartment,
   isOpen: state.user.isOpen,
-  errorPasswordMessage: state.user.errorPasswordMessage,
+  errorMessage: state.user.errorMessage,
 
   // roles: state.user.userData.roles[0],
 });

@@ -14,6 +14,7 @@ import HomePage from '../HomePage';
 import Contact from '../Contact';
 
 import Error from '../Error';
+import ModalInscription from '../ModalInscription';
 
 
 

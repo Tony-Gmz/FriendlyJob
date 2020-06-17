@@ -62,6 +62,10 @@
         width: 100%;
         margin: auto;
         padding-left: 4em;
+
+        .MuiFormLabel-root {
+          z-index: -900;
+        }
       }
     }
     

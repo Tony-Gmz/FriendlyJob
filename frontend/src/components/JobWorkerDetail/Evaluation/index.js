@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Message, Rating } from 'semantic-ui-react';
+import Rating from '@material-ui/lab/Rating';
+import { Message } from 'semantic-ui-react';
 import Avatar from '@material-ui/core/Avatar';
 
 import './evaluation.scss';
@@ -12,35 +13,41 @@ const Evaluation = ({ jobWorkerRating }) => {
   return (
 
     <div className="evaluation">
-      <h4 className="evaluation_title">Evaluation</h4>
+      <h4 className="evaluation_title">Commentaire(s)</h4>
       <div className="evaluation_note">
         {jobWorkerRating.map((jobWorker) => {
           const userAvatar = jobWorker.friendlyUser.firstname;
+          console.log(jobWorker);
           return (
-            <div className="evalutation_content">
-            <div className="evalutation_content_author">
-            <div className="evaluation_content_avatar">
-                {userAvatar && <Avatar alt="Remy Sharp" src={jobWorker.friendlyUser.image} /> }
-                {!userAvatar && <Avatar alt="Remy Sharp" src=""></Avatar>}
+            <>
+            <div className="ui raised card card_evaluation">
+              <div className="content">
+                <div className="header">{jobWorker.friendlyUser.firstname}
+                  <div class="right floated author">
+                      {userAvatar && <Avatar alt="Remy Sharp" src={jobWorker.friendlyUser.image} /> }
+                      {!userAvatar && <Avatar alt="Remy Sharp" src=""></Avatar>}
+                    </div>
+                </div>
+                <div className="meta">
+                  <span className="category">{jobWorker.service.title}</span>
+                </div>
+                <div className="description">
+                  <p>{jobWorker.rating.comment}</p>
+                  <p></p>
+                </div>
               </div>
-              <div className="evaluation_content_firstname">
-              {jobWorker.friendlyUser.firstname}
+              <div className="extra content">
+                <div className="message_content_rating">
+                  <Rating name="read-only" value={jobWorkerRating[0].rating.star} readOnly />
+                </div>
               </div>
             </div>
-            <Message className="evaluation_message">
-              <Message.Header> </Message.Header>
-              <div className="message_content">
-                <div className="message_content_rating"><Rating icon="star" defaultRating={jobWorker.rating.star} maxRating={5} disabled /></div>
-                <div className="message_content_comment">{jobWorker.rating.comment}</div>
-              </div>
-            </Message>
-            </div>
-            
+
+            </>
           );
         })}
       </div>
       <div className="evaluation_see_more">
-        <a href="">Voir plus</a>
       </div>
     </div>
   );
@@ -51,3 +58,5 @@ Evaluation.propTypes = {
 
 
 export default Evaluation;
+
+

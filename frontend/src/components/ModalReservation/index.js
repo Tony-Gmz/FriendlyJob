@@ -74,7 +74,7 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
           </div>
           <div className="modal_content">
             <div className="modal_select">
-              <select name="currentSkill" onChange={handleChange} id="">
+              <select className="modal_Select_content" name="currentSkill" onChange={handleChange} id="">
                 <option value="select">Choisissez la compétence désirée</option>
                 {skills.map((skill) => (
                   <option value={skill.service.id}>{skill.service.title}</option>

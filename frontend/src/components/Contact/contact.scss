@@ -74,6 +74,18 @@
   width: 200px;
 }
 
+.rs_page_contact{
+  margin: 2em 2.5em 0 2.5em!important;
+  transform: scale(3);
+  &:hover{
+    color: #FF385C!important;
+  }
+}
+
+.link_rs:hover{
+  color: #FF385C!important;
+}
+
 .bounce-7 {
   animation-name: bounce-7;
   animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);

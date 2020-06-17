@@ -8,7 +8,7 @@ const Competence = ({ skills }) => {
 
   return (
     <div className="competence">
-      <h4 className="competence_title">Competence(s)</h4>
+      <h4 className="competence_title">Compétence(s)</h4>
       {skills.map((skill) => (
         <div className="competence_content">
           <div className="competence_content_illustration">
