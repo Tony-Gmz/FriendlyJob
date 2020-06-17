@@ -13,8 +13,8 @@ import './modalConnexion.scss';
 const ModalConnexion = ({ isConfirmed, checkUserConfirmed, changeField, submitLoggin, connexionError, getRequest, closeSuccessMessage, closeErrorConnexionMessage, closeErrorConfirmedMessage, errorConfirmedMessage, errorMessage, errorConnexionMessage }) => {
 
   const handleSubmit = (evt) => {
-     evt.preventDefault();
-      checkUserConfirmed();
+    evt.preventDefault();
+    checkUserConfirmed();
   };
   const handleChange = (evt) => {
     console.log(`changement du field + ${evt.target.value} + ${evt.target.name}`);
@@ -68,7 +68,7 @@ const ModalConnexion = ({ isConfirmed, checkUserConfirmed, changeField, submitLo
             </Alert>
           </Snackbar>
           : '' }
-        <form onSubmit={handleSubmit} onKeyDown={handleKey} className="">
+        <form onSubmit={handleSubmit} onKeyDown={handleKey} className="form_connexion">
           <div className="form_element_connexion">
             <Form.Input
               className="input_connexion"

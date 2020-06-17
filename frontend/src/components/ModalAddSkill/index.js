@@ -96,7 +96,7 @@ const ModalAddSkill = ({ serviceList, selectedSkillDescription, selectedSkillId,
             {isSave && (
             <Snackbar open={isOpen} autoHideDuration={6000} onClose={handleMessageClose}>
               <Alert severity="success">
-                La compétence a bien été ajouté ! vous souhaitez retourner sur <a href="/profil">profil</a> ?
+                La compétence a bien été ajouté ! vous souhaitez retourner sur <a className="link_skill_modal" href="/profil">profil</a> ?
               </Alert>
             </Snackbar>
             )}

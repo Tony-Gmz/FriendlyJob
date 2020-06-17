@@ -14,9 +14,7 @@ import './navivi.scss';
 import 'src/styles/_vars.scss';
 import { getRequest } from '../../../action/requestAction';
 
-const Navbar = ({ isOpen, handleNavbar, isLogged, logOut, requestList, resetRequestList, getRequest }) => {
-
-
+const Navbar = ({ userData, isOpen, handleNavbar, isLogged, logOut, requestList, resetRequestList, getRequest }) => {
   const handleClick = () => {
     logOut();
     localStorage.removeItem('jwtToken');
@@ -38,11 +36,14 @@ const Navbar = ({ isOpen, handleNavbar, isLogged, logOut, requestList, resetRequ
 
   let waitingRequest = requestList.filter(request => request.status === 'En attente');
 
-  const userRole = localStorage.getItem('userRole');
+  
+ 
   let demands = 'demande';
   if (waitingRequest.length > 1) {
     demands = 'demandes';
   }
+
+  const userRole = localStorage.getItem('userRole');
 
   if (isLogged === false) {
     return (

@@ -14,15 +14,20 @@
     
   }
 
+  .input_inscription{
+    padding: 0!important;
+    width: 100%;
+
+  }
+
   .inputDepartment{
     width: 100%;
     background-color: white;
     border-radius: 0.2em;
-    height: 3.1em;
+    height: 2.1em;
     font-family: unset;
     font-size: large;
     border: #00000033 solid 1px;
-    padding: .67857143em 1em;
 }
   .modal_title {
     display: inline-block;
@@ -74,6 +79,14 @@
     left: 0;
     margin-top: -1px;
   }
+
+  .error_message_passwordConfirmation {
+    
+    text-align: center;
+    color: red;
+    padding-top: 1em;
+  }
+  
   
   @keyframes line-animation{
   
@@ -212,10 +225,12 @@
     min-height: 0.5em!important;
     font-weight: 500!important;
     color: white!important;
+    margin-bottom: 0.5em!important;
   }
   
 }
 @include xl {
+
   .inscription{
   width: 100%;
   height: auto;
@@ -233,12 +248,7 @@
   color: #FFFF!important;
 }
 
-.inputDepartment{
-    width: 100%;
-    height: 3.1em;
-    font-family: unset;
-    padding: .67857143em 1em;
-}
+
 
 .modal_title {
   display: inline-block;
@@ -413,16 +423,27 @@
 }
 
 .inputDepartment {
-  width: 95%;
-  margin-left: 1em;
-  margin-top: 1rem;
+  width: 60%;
+  margin: 1rem 0 1rem 0;
+  height: 2.5em;
+  font-family: unset;
 }
+
+
+.input_inscription{
+  padding: 0!important;
+  width: 60%;
+
+}
+
+
 
 .form_element_inscription_department {
   text-align: left;
   font-size: 1rem;
+  display: flex;
+  flex-direction: column;
   label {
-    margin-left: 1em;
     text-align: left;
   }
   input {
@@ -433,5 +454,6 @@
 padding-bottom: 3em;
 
 }
+
 
 }

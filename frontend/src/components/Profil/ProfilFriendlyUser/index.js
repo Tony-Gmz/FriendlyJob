@@ -205,7 +205,7 @@ const ProfilFiendlyUser = ({
             {isEdited && (
               <Snackbar open={isOpen} autoHideDuration={6000} onClose={handleMessageClose}>
                 <Alert onClose={handleMessageClose} severity="success">
-                  vos modifications ont bien été pris en compte ! vous souhaitez retourner sur la <a href="/profil">page d'accueil</a> ?
+                  vos modifications ont bien été pris en compte ! vous souhaitez retourner sur la <a className="link_profil_modal" href="/">page d'accueil</a> ?
                 </Alert>
               </Snackbar>
             )}

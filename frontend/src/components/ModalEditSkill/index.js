@@ -78,7 +78,7 @@ const ModalEditSkill = ({ price, description, id, getSkillId, getNewSkillValue, 
           {isSave && (
             <Snackbar open={isOpen} autoHideDuration={6000} onClose={handleMessageClose}>
                 <Alert onClose={handleMessageClose} severity="success">
-                  vos modifications ont bien été pris en compte ! vous souhaitez retourner sur <a href="/profil">profil</a> ?
+                  vos modifications ont bien été pris en compte ! vous souhaitez retourner sur <a className="link_skill_modal" href="/profil">profil</a> ?
                 </Alert>
               </Snackbar>
           )}

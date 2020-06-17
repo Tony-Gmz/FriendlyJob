@@ -42,3 +42,10 @@ align-self: center;
  display: flex!important;
  justify-content: center!important;
 }
+
+.link_skill_modal{
+  border-bottom: 2px solid white;
+}
+a.link_skill_modal:hover {
+  color: unset;
+}

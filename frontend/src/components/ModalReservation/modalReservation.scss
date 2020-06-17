@@ -48,6 +48,13 @@
   margin-top: -1px;
 }
 
+.link_reservation_modal{
+  border-bottom: 2px solid white;
+}
+a.link_reservation_modal:hover {
+  color: unset;
+}
+
 @keyframes line-animation{
 
   0%{

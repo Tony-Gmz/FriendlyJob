@@ -36,7 +36,7 @@ function ServiceDetail({ serviceList, getServiceName, getSixJobWorker, jobWorker
           )}
         </div>
         <div className="service_details_link">
-          <Link className="service_details_link-item" to={`/services/${slug}/jobworkers/`}>Voir plus de JobWorker</Link>
+          <Link className="service_details_link-item" to={`/services/${slug}/jobworkers/`}>Voir plus de jobworkers</Link>
         </div>
       </div>
     </div>

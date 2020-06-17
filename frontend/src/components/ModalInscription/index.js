@@ -56,7 +56,7 @@ const ModalInscription = ({ getAllDepartments, departmentsList, fieldValue, subm
     <Modal.Content image scrolling>
       <Modal.Description>
         <Header>Bienvenue parmis nous</Header>
-        <div className="modal_inscription_info"><i class="info circle icon"></i>Les champs précédés de * sont obligatoire pour l'inscription</div>
+        <div className="modal_inscription_info"><i class="info circle icon"></i>Les champs suivis de * sont obligatoire pour l'inscription</div>
           {isSubscribe && (
             <Snackbar open={isOpen} autoHideDuration={10000} onClose={handleMessageClose}  anchorOrigin={{
               vertical: 'top',
@@ -173,7 +173,7 @@ const ModalInscription = ({ getAllDepartments, departmentsList, fieldValue, subm
               horizontal: 'center',
             }}>
                 <Alert onClose={handleErrorMessageClose} severity="error">
-                  Une erreur s'est produite, vérifiez que vous avez rempli tous les champs.
+                  Cette adresse email est déja existante veuillez saisir une nouvelle
                 </Alert>
               </Snackbar>
           {password !== confirmPassword ? (

@@ -40,7 +40,7 @@ const RequestRefuseFU = ({ request, getCommentId, submitDeleteRequest }) => {
               </p>
             </div>
           </div>
-          <p className="disclaimer">Nous Sommes désolé mais le WorkJober a refusé votre demande.</p>
+          <p className="disclaimer">Nous Sommes désolé mais le JobWorker a refusé votre demande.</p>
           </div>
       </div>
     </li>
