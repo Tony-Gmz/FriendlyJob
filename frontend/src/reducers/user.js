@@ -1,9 +1,7 @@
-import { jardinage } from 'src/assets/img/jardinage.jpg';
 import {
   SAVE_RANDOM_JOBWORKER,
   CHANGE_FIELD, SAVE_USER,
   SAVE_SIX_RANDOM_JOBWORKER,
-  HIDE_LOADER,
   SAVE_JOBWORKER,
   GET_JOBWORKER_ID,
   SAVE_JOBWORKER_DETAIL,
@@ -129,11 +127,6 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         jobWorkers: action.sixJobWorker,
-      };
-
-    case HIDE_LOADER:
-      return {
-        ...state,
         loadingOnServiceDetail: false,
       };
     case SAVE_JOBWORKER:

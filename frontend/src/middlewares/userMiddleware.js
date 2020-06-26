@@ -7,7 +7,6 @@ import {
   saveUser,
   GET_SIX_RANDOM_JOBWORKER,
   saveSixJobWorker,
-  hideLoader,
   GET_JOBWORKER,
   saveJobWorker,
   GET_USER_DATA,
@@ -40,12 +39,11 @@ const userMiddleware = (store) => (next) => (action) => {
   // console.log('on a intercepté une action dans le middleware: ', action);
   switch (action.type) {
     case GET_RANDOM_JOBWORKER:
-      // REQUEST TO GET A RANDOM JOBWORKER FOR THE HOMEPAGE 
+      // REQUEST TO GET A RANDOM JOBWORKER FOR THE HOMEPAGE
 
       // console.log('coucou je suis get_random_jobworker');
-      axios.get('http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/jobworker/random')
+      axios.get('http://api.friendlyjob.fr/api/v1/users/jobworker/random')
         .then((response) => {
-        
           // dispatch the action
           store.dispatch(saveRandomJobWorker(response.data));
         })
@@ -61,7 +59,7 @@ const userMiddleware = (store) => (next) => (action) => {
       // console.log(password);
       axios({
         method: 'post',
-        url: 'http://ec2-18-204-19-53.compute-1.amazonaws.com/api/login_check',
+        url: 'http://api.friendlyjob.fr/api/login_check',
         data: {
           // give the necessary data for the request
           username: email,
@@ -96,7 +94,7 @@ const userMiddleware = (store) => (next) => (action) => {
       const userToken = localStorage.getItem('jwtToken');
       axios({
         method: 'get',
-        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/`,
+        url: 'http://api.friendlyjob.fr/api/v1/users/',
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
@@ -130,7 +128,7 @@ const userMiddleware = (store) => (next) => (action) => {
       const serviceId = Number(findService.id);
       // console.log(serviceId);
 
-      axios.get(`http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/services/${serviceId}/jobworker?limit=6`)
+      axios.get(`http://api.friendlyjob.fr/api/v1/services/${serviceId}/jobworker?limit=6`)
         .then((response) => {
           // console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
@@ -140,9 +138,6 @@ const userMiddleware = (store) => (next) => (action) => {
         .catch((error) => {
           console.warn(error);
           console.log('jai fait une erreur');
-        })
-        .finally(() => {
-          store.dispatch(hideLoader());
         });
       next(action);
       break;
@@ -160,7 +155,7 @@ const userMiddleware = (store) => (next) => (action) => {
       const serviceId = Number(findService.id);
       // console.log(serviceId);
 
-      axios.get(`http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/services/${serviceId}/jobworker/rating`)
+      axios.get(`http://api.friendlyjob.fr/api/v1/services/${serviceId}/jobworker/rating`)
         .then((response) => {
           // console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
@@ -182,7 +177,7 @@ const userMiddleware = (store) => (next) => (action) => {
       // REQUEST TO GET THE DETAIL OF THE CURRENTJOBWORKER
 
       const { currentJobWorkerId } = store.getState().user;
-      axios.get(`http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/jobworker/${currentJobWorkerId}`)
+      axios.get(`http://api.friendlyjob.fr/api/v1/users/jobworker/${currentJobWorkerId}`)
         .then((response) => {
         // console.log(response);
         // je voudrais enregistrer response.data dans le state => nouvelle action
@@ -201,7 +196,7 @@ const userMiddleware = (store) => (next) => (action) => {
 
       const { currentJobWorkerId } = store.getState().user;
       console.log(currentJobWorkerId);
-      axios.get(`http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/jobworker/${currentJobWorkerId}/rating`)
+      axios.get(`http://api.friendlyjob.fr/api/v1/users/jobworker/${currentJobWorkerId}/rating`)
         .then((response) => {
         // console.log(response);
         // je voudrais enregistrer response.data dans le state => nouvelle action
@@ -229,7 +224,7 @@ const userMiddleware = (store) => (next) => (action) => {
       console.log(urlAvatar);
       axios({
         method: 'PUT',
-        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users`,
+        url: `http://api.friendlyjob.fr/api/v1/users`,
         data: {
           email: editEmail,
           password: editPassword,
@@ -267,7 +262,7 @@ const userMiddleware = (store) => (next) => (action) => {
       const userToken = localStorage.getItem('jwtToken');
       axios({
         method: 'DELETE',
-        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users`,
+        url: `http://api.friendlyjob.fr/api/v1/users`,
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
@@ -295,7 +290,7 @@ const userMiddleware = (store) => (next) => (action) => {
       const { toggle } = store.getState().request;
       axios({
         method: 'get',
-        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/jobworker/${id}`,
+        url: `http://api.friendlyjob.fr/api/v1/users/jobworker/${id}`,
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
@@ -337,7 +332,7 @@ const userMiddleware = (store) => (next) => (action) => {
       const serviceId = selectedSkillIdByName.id;
       axios({
         method: 'POST',
-        url: 'http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/skills',
+        url: 'http://api.friendlyjob.fr/api/v1/skills',
         data: {
           description: selectedSkillDescription,
           price,
@@ -370,7 +365,7 @@ const userMiddleware = (store) => (next) => (action) => {
       console.log(skillId);
       axios({
         method: 'DELETE',
-        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/skills/${skillId}`,
+        url: `http://api.friendlyjob.fr/api/v1/skills/${skillId}`,
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
@@ -397,7 +392,7 @@ const userMiddleware = (store) => (next) => (action) => {
       const { toggle } = store.getState().request;
       axios({
         method: 'PUT',
-        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/skills/${skillId}`,
+        url: `http://api.friendlyjob.fr/api/v1/skills/${skillId}`,
         data: {
           description: selectedSkillDescription,
           price: selectedSkillPrice,
@@ -450,7 +445,7 @@ const userMiddleware = (store) => (next) => (action) => {
       console.log(userToken);
       axios({
         method: 'get',
-        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/jobworker/skill/select`,
+        url: `http://api.friendlyjob.fr/api/v1/users/jobworker/skill/select`,
         headers: {
           Authorization: `Bearer ${userToken}`,
         },

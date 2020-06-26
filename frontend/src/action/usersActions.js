@@ -1,34 +1,70 @@
-/* eslint-disable import/prefer-default-export */
+// Action de get the value of connexion modal
 export const CHANGE_FIELD = 'CHANGE_FIELD';
+
+// Action to send users informations to the API
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
+
+// Action to save user data in the state
 export const SAVE_USER = 'SAVE_USER';
-export const CHECK_LOGGED = 'CHECK_LOGGED';
+
+// Action to get one random jobWorker for the homepage presentation
 export const GET_RANDOM_JOBWORKER = 'GET_RANDOM_JOBWORKER';
+
+// Action to save random jobWorker's informations
 export const SAVE_RANDOM_JOBWORKER = 'SAVE_RANDOM_JOBWORKER';
-export const GET_RANDOM_JOBWORKER_RATING = 'GET_RANDOM_JOBWORKER_RATING';
-export const SAVE_RATING_RANDOM_JOBWORKER = 'SAVE_RATING_RANDOM_JOBWORKER';
+
+// Action to get all jobWorkers
 export const GET_JOBWORKER = 'GET_JOBWORKER';
+
+// Action to save all jobWorkers
 export const SAVE_JOBWORKER = 'SAVE_JOBWORKER';
+
+// Action to get only six random jobWorker for service detail page
 export const GET_SIX_RANDOM_JOBWORKER = 'GET_SIX_RANDOM_JOBWORKER';
+
+// Action to save only six random jobWorker for service detail page
 export const SAVE_SIX_RANDOM_JOBWORKER = 'SAVE_SIX_RANDOM_JOBWORKER';
-export const HIDE_LOADER = 'HIDE_LOADER';
+
+// Action to get user data from the API
 export const GET_USER_DATA = 'GET_USER_DATA';
+
+// Action to get jobWorker detail from the API
 export const GET_JOBWORKER_DETAIL = 'GET_JOBWORKER_DETAIL';
+
+// Action to save jobWorker detail
 export const SAVE_JOBWORKER_DETAIL = 'SAVE_JOBWORKER_DETAIL';
+
+// Action get jobWorker ID
 export const GET_JOBWORKER_ID = 'GET_JOBWORKER_ID';
+
+// Action get jobWorker rating from API
 export const GET_JOBWORKER_RATING = 'GET_JOBWORKER_RATING';
+
+// Action to save jobWorker rating in the state
 export const SAVE_JOBWORKER_RATING = 'SAVE_JOBWORKER_RATING';
+
+// Action to delete disabled status of profil's input
 export const CAN_EDIT_PROFIL = 'CAN_EDIT_PROFIL';
+
+// Action to cancel CAN_EDIT_PROFIL's action
 export const CANCEL_EDIT = 'CANCEL_EDIT';
+
+// Action to edit field value when can edit profil is true
 export const EDIT_FIELD_VALUE = 'EDIT_FIELD_VALUE';
+
+// Action to submit edit to the API
 export const SUBMIT_EDIT = 'SUBMIT_EDIT';
+
+// Action to save edit
 export const SAVE_EDIT = 'SAVE_EDIT';
+
+// Action to delete user's account
 export const DELETE_ACCOUNT = 'DELETE_ACCOUNT';
+
+// Action to submit DELETE_ACCOUNT's action
 export const SUBMIT_DELETE = 'SUBMIT_DELETE';
-export const SORT_BY_PRICE = 'SORT_BY_PRICE';
-export const FILTER_BY_PRICE = 'FILTER_BY_PRICE';
-export const SORT_BY_ALPHABET = 'SORT_BY_ALPHABET';
-export const LOAD_DATA = 'LOAD_DATA';
+
+
 export const GET_JOBWORKER_SKILLS = 'GET_JOBWORKER_SKILLS';
 export const SAVE_JOBWORKER_SKILLS = 'SAVE_JOBWORKER_SKILLS';
 export const GET_NEW_SKILL_VALUE = 'GET_NEW_SKILL_VALUE';
@@ -82,15 +118,6 @@ export const saveRandomJobWorker = (newRandomJobWorker) => ({
   newRandomJobWorker,
 });
 
-export const saveRatingRandomJobWorker = (newRating) => ({
-  type: SAVE_RATING_RANDOM_JOBWORKER,
-  newRating,
-});
-
-export const getRandomJobWorkerRating = () => ({
-  type: GET_RANDOM_JOBWORKER_RATING,
-});
-
 
 export const getJobWorker = () => ({
   type: GET_JOBWORKER,
@@ -110,9 +137,6 @@ export const saveSixJobWorker = (sixJobWorker) => ({
   sixJobWorker,
 });
 
-export const hideLoader = () => ({
-  type: HIDE_LOADER,
-});
 
 export const getUserData = () => ({
   type: GET_USER_DATA,

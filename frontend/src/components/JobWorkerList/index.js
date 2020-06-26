@@ -19,10 +19,6 @@ const JobWorkerList = ({ changeCurrentPage, currentPage, joberPerPage, getJobWor
   const indexOfFirstJober = indexOfLastJober - joberPerPage;
   const currentJobWorker = jobWorkers.slice(indexOfFirstJober, indexOfLastJober);
 
-/*   const paginate = (pageNumber) => {
-    changeCurrentPage(pageNumber);
-    console.log(pageNumber);
-  }; */
 
 console.log(jobWorkers.length);
   return (

@@ -22,7 +22,7 @@ const requestMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case GET_REQUEST: {
       const userToken = localStorage.getItem('jwtToken');
-      axios.get(`http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/demands/users`, {
+      axios.get(`http://api.friendlyjob.fr/api/v1/demands/users`, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
@@ -45,7 +45,7 @@ const requestMiddleware = (store) => (next) => (action) => {
 
       axios({
         method: 'post',
-        url: 'http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/demands',
+        url: 'http://api.friendlyjob.fr/api/v1/demands',
         data: {
           body: requestBody,
           reservationDate: requestDate,
@@ -78,7 +78,7 @@ const requestMiddleware = (store) => (next) => (action) => {
 
       axios({
         method: 'post',
-        url: 'http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/ratings',
+        url: 'http://api.friendlyjob.fr/api/v1/ratings',
         data: {
           comment: commentBody,
           star: newRate,
@@ -107,7 +107,7 @@ const requestMiddleware = (store) => (next) => (action) => {
       const { toggle } = store.getState().request;
       axios({
         method: 'put',
-        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/demands/${commentId}`,
+        url: `http://api.friendlyjob.fr/api/v1/demands/${commentId}`,
         data: {
           body: requestBody,
           reservationDate: requestDate,
@@ -134,7 +134,7 @@ const requestMiddleware = (store) => (next) => (action) => {
       const { toggle } = store.getState().request;
       axios({
         method: 'put',
-        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/demands/${commentId}`,
+        url: `http://api.friendlyjob.fr/api/v1/demands/${commentId}`,
         data: {
           body: 'Ce service à été annulée',
           status: 'Annulée',
@@ -160,7 +160,7 @@ const requestMiddleware = (store) => (next) => (action) => {
       const { toggle } = store.getState().request;
       axios({
         method: 'put',
-        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/demands/${commentId}`,
+        url: `http://api.friendlyjob.fr/api/v1/demands/${commentId}`,
         data: {
           status: 'terminée',
         },
@@ -186,7 +186,7 @@ const requestMiddleware = (store) => (next) => (action) => {
       const { toggle } = store.getState().request;
       axios({
         method: 'put',
-        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/demands/${commentId}`,
+        url: `http://api.friendlyjob.fr/api/v1/demands/${commentId}`,
         data: {
           body: 'Ce service à été refusée',
           status: 'Refusée',

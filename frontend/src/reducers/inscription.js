@@ -1,4 +1,4 @@
-import { FIED_VALUE, IS_SUBSCRIBE } from "../action/inscriptionAction";
+import { FIELD_VALUE, IS_SUBSCRIBE } from "../action/inscriptionAction";
 
 const initialState = {
   // Initial State
@@ -14,7 +14,7 @@ const initialState = {
 
 const inscriptionReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case FIED_VALUE:
+    case FIELD_VALUE:
       return {
         ...state,
         [action.inputName]: action.newValue,

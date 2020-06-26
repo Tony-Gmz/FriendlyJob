@@ -11,7 +11,7 @@ const inscriptionMiddleware = (store) => (next) => (action) => {
 
       axios({
         method: 'post',
-        url: 'http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/users/add',
+        url: 'http://api.friendlyjob.fr/api/v1/users/add',
         data: {
           email: email,
           roles: [roles],
