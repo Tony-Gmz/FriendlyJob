@@ -39,12 +39,12 @@ import { saveToggle, getRequest } from '../action/requestAction';
 
 
 const userMiddleware = (store) => (next) => (action) => {
-  // console.log('on a intercepté une action dans le middleware: ', action);
+   //console.log('on a intercepté une action dans le middleware: ', action);
   switch (action.type) {
     case GET_RANDOM_JOBWORKER:
       // REQUEST TO GET A RANDOM JOBWORKER FOR THE HOMEPAGE
 
-      // console.log('coucou je suis get_random_jobworker');
+       //console.log('coucou je suis get_random_jobworker');
       axios.get('http://api.friendlyjob.fr/api/v1/users/jobworker/random')
         .then((response) => {
           // dispatch the action
@@ -57,11 +57,11 @@ const userMiddleware = (store) => (next) => (action) => {
       break;
     case CHECK_USER_CONFIRMED: {
       const { email, password } = store.getState().user;
-      // console.log(email);
-      // console.log(password);
+       //console.log(email);
+       //console.log(password);
       axios({
         method: 'post',
-        url: 'http://ec2-18-204-19-53.compute-1.amazonaws.com/api/login_check',
+        url: 'http://api.friendlyjob.fr/api/login_check',
         data: {
           // give the necessary data for the request
           username: email,
@@ -69,7 +69,7 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-          console.log(response.data.user.isConfirmed);
+          //console.log(response.data.user.isConfirmed);
           store.dispatch(saveUserConfirmed(response.data.user.isConfirmed));
          if (response.data.user.isConfirmed === true) {
             store.dispatch(submitLoggin());
@@ -87,8 +87,8 @@ const userMiddleware = (store) => (next) => (action) => {
     case SUBMIT_LOGIN: {
       // REQUEST TO SAVE THE NEW USER WITH  SIGN IN
       const { email, password } = store.getState().user;
-      // console.log(email);
-      // console.log(password);
+       //console.log(email);
+       //console.log(password);
       axios({
         method: 'post',
         url: 'http://api.friendlyjob.fr/api/login_check',
@@ -99,8 +99,8 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-          console.log(` je ne suis pas dans le if${response.data.user.isConfirmed}`);
-          console.log(response);
+          //console.log(` je ne suis pas dans le if${response.data.user.isConfirmed}`);
+          //console.log(response);
           // dispact the action saveUser to the reducer
           store.dispatch(saveUser(response.data.user));
           // dispatch the action saveUrlAvatar to reducer
@@ -134,9 +134,9 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-          // console.log(response);
+           //console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
-          console.log(response);
+          //console.log(response);
           // we dispacth saveUser action to the reducer
           store.dispatch(saveUser(response.data));
           // dispatch the action saveUrlAvatar to reducer
@@ -144,7 +144,7 @@ const userMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.warn(error);
-          console.log('jai fait une erreur');
+          //console.log('jai fait une erreur');
         });
       next(action);
       break;
@@ -154,24 +154,24 @@ const userMiddleware = (store) => (next) => (action) => {
       // REQUEST TO SAVE SIX JOBWORKER AFFILIATED TO A SERVICE
 
       const { serviceName, serviceList } = store.getState().service;
-      // console.log(serviceName);
-      // console.log(changeTitle(serviceName));
-      // console.log(serviceList);
+       //console.log(serviceName);
+       //console.log(changeTitle(serviceName));
+       //console.log(serviceList);
       const findService = serviceList.find(service => service.title === capitalize(changeTitle(serviceName)));
-      // console.log(findService);
+       //console.log(findService);
       const serviceId = Number(findService.id);
-      // console.log(serviceId);
+       //console.log(serviceId);
 
       axios.get(`http://api.friendlyjob.fr/api/v1/services/${serviceId}/jobworker?limit=6`)
         .then((response) => {
-          // console.log(response);
+           //console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
-          console.log(response);
+          //console.log(response);
           store.dispatch(saveSixJobWorker(response.data[0].skills));
         })
         .catch((error) => {
           console.warn(error);
-          console.log('jai fait une erreur');
+          //console.log('jai fait une erreur');
         });
       next(action);
       break;
@@ -181,26 +181,26 @@ const userMiddleware = (store) => (next) => (action) => {
       // REQUEST TO SAVE ALL JOBWORKER AFFILIATED TO A SERVICE 
 
       const { serviceName, serviceList } = store.getState().service;
-      // console.log(serviceName);
-      // console.log(changeTitle(serviceName));
-      // console.log(serviceList);
+       //console.log(serviceName);
+       //console.log(changeTitle(serviceName));
+       //console.log(serviceList);
       const findService = serviceList.find(service => service.title === capitalize(changeTitle(serviceName)));
-      // console.log(findService);
+       //console.log(findService);
       const serviceId = Number(findService.id);
-      // console.log(serviceId);
+       //console.log(serviceId);
 
       axios.get(`http://api.friendlyjob.fr/api/v1/services/${serviceId}/jobworker/rating`)
         .then((response) => {
-          // console.log(response);
+           //console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
-          console.log(response);
-          console.log(`retour du middle  ${response.data[0].skills}`);
+          //console.log(response);
+          //console.log(`retour du middle  ${response.data[0].skills}`);
           // dispatch saveJobWorker action in userReducer
           store.dispatch(saveJobWorker(response.data[0].skills));
         })
         .catch((error) => {
           console.warn(error);
-          console.log('jai fait une erreur');
+          //console.log('jai fait une erreur');
         })
         .finally(() => {
         });
@@ -213,14 +213,14 @@ const userMiddleware = (store) => (next) => (action) => {
       const { currentJobWorkerId } = store.getState().user;
       axios.get(`http://api.friendlyjob.fr/api/v1/users/jobworker/${currentJobWorkerId}`)
         .then((response) => {
-        // console.log(response);
+        //console.log(response);
         // je voudrais enregistrer response.data dans le state => nouvelle action
-        // console.log(response);
+        //console.log(response);
           store.dispatch(saveJobWorkerDetail(response.data));
         })
         .catch((error) => {
           console.warn(error);
-          console.log('jai fait une erreur');
+          //console.log('jai fait une erreur');
         });
       next(action);
       break;
@@ -229,17 +229,17 @@ const userMiddleware = (store) => (next) => (action) => {
       // REQUEST TO GET THE RATING OF THE CURRENTJOBWORKER
 
       const { currentJobWorkerId } = store.getState().user;
-      console.log(currentJobWorkerId);
+      //console.log(currentJobWorkerId);
       axios.get(`http://api.friendlyjob.fr/api/v1/users/jobworker/${currentJobWorkerId}/rating`)
         .then((response) => {
-        // console.log(response);
+        //console.log(response);
         // je voudrais enregistrer response.data dans le state => nouvelle action
-          console.log(response);
+          //console.log(response);
           store.dispatch(saveJobWorkerRating(response.data));
         })
         .catch((error) => {
           console.warn(error);
-          console.log('jai fait une erreur');
+          //console.log('jai fait une erreur');
           store.dispatch(saveJobWorkerRating(null));
         });
       next(action);
@@ -250,12 +250,12 @@ const userMiddleware = (store) => (next) => (action) => {
       const userToken = localStorage.getItem('jwtToken');
       let { editEmail, editPassword, department, password, editAbout, userData, urlAvatar } = store.getState().user;
       // const { departmentId } = store.getState().user.userData.department.id;
-      // console.log(departmentId);
-      console.log(editEmail);
-      // console.log(editDepartments);
-      console.log(editPassword);
-      console.log(editAbout);
-      console.log(urlAvatar);
+      //console.log(departmentId);
+      //console.log(editEmail);
+      //console.log(editDepartments);
+      //console.log(editPassword);
+      //console.log(editAbout);
+      //console.log(urlAvatar);
       axios({
         method: 'PUT',
         url: `http://api.friendlyjob.fr/api/v1/users`,
@@ -271,11 +271,11 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-          // console.log(response);
+           //console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
-          console.log(response);
+          //console.log(response);
           // const { token } = response.data;
-          console.log(response.data.token);
+          //console.log(response.data.token);
           if (response.data.token !== null) {
             localStorage.removeItem('jwtToken');
             localStorage.setItem('jwtToken', response.data.token);
@@ -284,8 +284,8 @@ const userMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.warn(error);
-          console.log(error.response.data);
-          console.log('jai fait une erreur');
+          //console.log(error.response.data);
+          //console.log('jai fait une erreur');
           store.dispatch(errorPasswordMessage());
         });
       next(action);
@@ -302,9 +302,9 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-          // console.log(response);
+           //console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
-          console.log(response);
+          //console.log(response);
           store.dispatch(deleteAccount());
           localStorage.getItem('jwtToken');
           localStorage.removeItem('userId');
@@ -312,7 +312,7 @@ const userMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.warn(error);
-          console.log('jai fait une erreur');
+          //console.log('jai fait une erreur');
         });
       next(action);
       break;
@@ -330,9 +330,9 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-          // console.log(response);
+           //console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
-          console.log(response);
+          //console.log(response);
           if (!response.data) {
             store.dispatch(saveJobWorkerSkills([]));
           }
@@ -342,7 +342,7 @@ const userMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.warn(error);
-          console.log('jai fait une erreur');
+          //console.log('jai fait une erreur');
         });
       next(action);
       break;
@@ -358,11 +358,11 @@ const userMiddleware = (store) => (next) => (action) => {
       const { serviceList } = store.getState().service;
       const price = Number(selectedSkillPrice);
       const { toggle } = store.getState().request;
-      // console.log(`${selectedSkillId}+${selectedSkillPrice}+${selectedSkillDescription}+`);
-      // console.log(price);
+       //console.log(`${selectedSkillId}+${selectedSkillPrice}+${selectedSkillDescription}+`);
+       //console.log(price);
       // get the current id skill with a find function 
       const selectedSkillIdByName = serviceList.find(service => service.title === selectedSkillId);
-      //  console.log(selectedSkillIdByName);
+      //  //console.log(selectedSkillIdByName);
       const serviceId = selectedSkillIdByName.id;
       axios({
         method: 'POST',
@@ -379,14 +379,14 @@ const userMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           store.dispatch(saveToggle(!toggle));
           store.dispatch(isSkillSave());
-          // console.log(response);
+           //console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
-          console.log(response);
+          //console.log(response);
           // store.dispatch(saveJobWorkerSkills(response.data.skills));
         })
         .catch((error) => {
           console.warn(error);
-          console.log(error.response);
+          //console.log(error.response);
         });
       next(action);
       break;
@@ -396,7 +396,7 @@ const userMiddleware = (store) => (next) => (action) => {
       const userToken = localStorage.getItem('jwtToken');
       const { skillId } = store.getState().user;
       const { toggle } = store.getState().request;
-      console.log(skillId);
+      //console.log(skillId);
       axios({
         method: 'DELETE',
         url: `http://api.friendlyjob.fr/api/v1/skills/${skillId}`,
@@ -405,9 +405,9 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-          // console.log(response);
+           //console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
-          console.log(response);
+          //console.log(response);
           store.dispatch(saveToggle(!toggle));
           store.dispatch(isSkillSave());
           // store.dispatch(saveJobWorkerSkills(response.data.skills));
@@ -415,7 +415,7 @@ const userMiddleware = (store) => (next) => (action) => {
         .catch((error) => {
           console.warn(error);
          
-          console.log('jai fait une erreur');
+          //console.log('jai fait une erreur');
         });
       next(action);
       break;
@@ -438,21 +438,21 @@ const userMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           store.dispatch(saveToggle(!toggle));
           store.dispatch(isSkillSave());
-          // console.log(response);
+           //console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
-          console.log(response);
+          //console.log(response);
           // store.dispatch(saveJobWorkerSkills(response.data.skills));
         })
         .catch((error) => {
           console.warn(error);
-          console.log('jai fait une erreur');
+          //console.log('jai fait une erreur');
         });
       next(action);
       break;
     }
     case SUBMIT_AVATAR: {
       const{ avatarData } = store.getState().user;
-      console.log(avatarData);
+      //console.log(avatarData);
       const data = new FormData();
       data.append('file', avatarData);
       data.append('upload_preset', 'friendlyjob');
@@ -462,21 +462,21 @@ const userMiddleware = (store) => (next) => (action) => {
         data,
       })
         .then((response) => {
-          // console.log(response);
+           //console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
-          console.log(response);
+          //console.log(response);
           store.dispatch(saveUrlAvatar(response.data.secure_url));
         })
         .catch((error) => {
           console.warn(error);
-          console.log('jai fait une erreur');
+          //console.log('jai fait une erreur');
         });
         next(action);
         break;
     }
     case GET_JOBWORKER_SERVICE: {
       const userToken = localStorage.getItem('jwtToken');
-      console.log(userToken);
+      //console.log(userToken);
       axios({
         method: 'get',
         url: `http://api.friendlyjob.fr/api/v1/users/jobworker/skill/select`,
@@ -485,15 +485,15 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-          // console.log(response);
+           //console.log(response);
           // je voudrais enregistrer response.data dans le state => nouvelle action
-          console.log(response);
+          //console.log(response);
           // we dispacth saveUser action to the reducer
           store.dispatch(saveJobWorkerService(response.data));
         })
         .catch((error) => {
           console.warn(error);
-          console.log('jai fait une erreur');
+          //console.log('jai fait une erreur');
         });
     }
     default:

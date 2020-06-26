@@ -53,7 +53,7 @@ const ProfilJobWorker = ({
     getJobWorkerSkill();
   }, [toggle]);
 
-  // console.log(currentJobWorkerSkills);
+   //console.log(currentJobWorkerSkills);
   const userAvatar = urlAvatar;
   const handleClick = () => {
     canEditProfil();
@@ -62,12 +62,12 @@ const ProfilJobWorker = ({
     cancelEdit();
   };
   const handleChange = (evt) => {
-    // console.log(`${evt.target.value} + ${evt.target.name}`);
+     //console.log(`${evt.target.value} + ${evt.target.name}`);
     editField(evt.target.value, evt.target.name);
   };
 
   const handleSubmit = (evt) => {
-    // console.log('coucou je suis le submit de edit profil');
+     //console.log('coucou je suis le submit de edit profil');
     evt.preventDefault();
     submitEdit();
     openSuccessMessage();
@@ -307,8 +307,8 @@ const ProfilJobWorker = ({
               <>
                 {currentJobWorkerSkills.map((skill) => {
                   const currentSkill = skill.service.id;
-                  // console.log(service.id)
-                  // console.log(currentSkill);
+                   //console.log(service.id)
+                   //console.log(currentSkill);
                   { if (currentSkill === service.id) {
                     return (
                       <>

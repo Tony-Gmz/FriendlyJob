@@ -5,7 +5,7 @@ import {
   changeFieldHourRequest,
   changeFieldDateRequest,
   submitSetRequest,
-  getCommentId,
+  getRequestId,
   getRequestDate,
   getRequestHour,
 } from '../../action/requestAction';
@@ -13,7 +13,7 @@ import ModalEditRequest from '../../components/ModalEditRequest';
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
-  commentId: state.request.commentId,
+  requestId: state.request.requestId,
   RequestBody: state.request.RequestBody,
   requestDate: state.request.requestDate,
   requestHour: state.request.requestHour,
@@ -25,8 +25,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   // nom de la prop à remplir: callback qui contient un appel à dispatch
   // With dispatch we send the action in the reducer
-  getCommentId: (commentId) => {
-    dispatch(getCommentId(commentId));
+  getRequestId: (requestId) => {
+    dispatch(getRequestId(requestId));
   },
 
   getRequestDate: (reservationDate) => {

@@ -13,7 +13,7 @@ import RequestFinish from './RequestFinish';
 import '../request.scss';
 
 // == Composant
-const Request = ({ requestSelectedName, requestSelected, requestSortSelected, toggle, getRequest, requestList, submitAccepteRequest, submitDeleteRequest, getCommentId }) => {
+const Request = ({ requestSelectedName, requestSelected, requestSortSelected, toggle, getRequest, requestList, submitAccepteRequest, submitDeleteRequest, getRequestId }) => {
   useEffect(() => {
     getRequest();
     if (requestSelected !== null) {
@@ -28,15 +28,15 @@ const Request = ({ requestSelectedName, requestSelected, requestSortSelected, to
         {requestList.map((request) => {
           switch (request.status) {
             case 'Acceptée':
-              return <RequestAccepte request={request} getCommentId={getCommentId} />;
+              return <RequestAccepte request={request} getRequestId={getRequestId} />;
             case 'Refusée':
               return <RequestRefuse request={request} />;
             case 'En attente':
-              return <RequestWait request={request} submitAccepteRequest={submitAccepteRequest} getCommentId={getCommentId} />;
+              return <RequestWait request={request} submitAccepteRequest={submitAccepteRequest} getRequestId={getRequestId} />;
             case 'Terminée':
               return <RequestFinish request={request} />;
             case 'Annulée':
-              return <RequestCancel request={request} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />;
+              return <RequestCancel request={request} submitDeleteRequest={submitDeleteRequest} getRequestId={getRequestId} />;
 
             default:
               return null;
@@ -51,15 +51,15 @@ const Request = ({ requestSelectedName, requestSelected, requestSortSelected, to
         {requestSelected.map((request) => {
           switch (request.status) {
             case 'Acceptée':
-              return <RequestAccepte request={request} getCommentId={getCommentId} />;
+              return <RequestAccepte request={request} getRequestId={getRequestId} />;
             case 'Refusée':
               return <RequestRefuse request={request} />;
             case 'En attente':
-              return <RequestWait request={request} submitAccepteRequest={submitAccepteRequest} getCommentId={getCommentId} />;
+              return <RequestWait request={request} submitAccepteRequest={submitAccepteRequest} getRequestId={getRequestId} />;
             case 'Terminée':
               return <RequestFinish request={request} />;
             case 'Annulée':
-              return <RequestCancel request={request} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />;
+              return <RequestCancel request={request} submitDeleteRequest={submitDeleteRequest} getRequestId={getRequestId} />;
 
             default:
               return null;

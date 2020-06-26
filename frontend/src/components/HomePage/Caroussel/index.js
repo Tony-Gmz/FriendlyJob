@@ -60,8 +60,8 @@ const Caroussel = ({ serviceList }) => {
         {serviceList.map((service) => {
           const slug = slugifyTitle(service.title);
           return (
-            <Link to={`/services/${slug}/`}>
-              <div key={service.id} className="caroussel_content">
+            <Link key={service.id} to={`/services/${slug}/`}>
+              <div className="caroussel_content">
                 <div className="carroussel_content_img">
                   <img className="caroussel_img" src={service.image} alt="jardinage" />
                 </div>

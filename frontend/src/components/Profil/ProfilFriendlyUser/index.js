@@ -50,12 +50,12 @@ const ProfilFiendlyUser = ({
   };
   // handle change on field to set new value in state
   const handleChange = (evt) => {
-    // console.log(`${evt.target.value} + ${evt.target.name}`);
+     //console.log(`${evt.target.value} + ${evt.target.name}`);
     editField(evt.target.value, evt.target.name);
   };
   // handle for submit the modification 
   const handleSubmit = (evt) => {
-    // console.log('coucou je suis le submit de edit profil');
+     //console.log('coucou je suis le submit de edit profil');
     evt.preventDefault();
     submitEdit();
     openSuccessMessage();

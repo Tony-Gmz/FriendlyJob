@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './details.scss';
 import ModalReservation from 'src/containers/ModalReservation';
 import Avatar from '@material-ui/core/Avatar';
-import { Card, Message } from 'semantic-ui-react';
+import { Message } from 'semantic-ui-react';
 import ModalConnexion from 'src/containers/ModalConnexion';
 import ModalInscription from 'src/containers/ModalInscription';
 
@@ -13,15 +13,13 @@ const Details = ({
   image,
   about,
   department,
-  skills,
-  id,
 }) => {
-  /*  console.log(`prenom: ${department.name} + a propos :${about}`); */
+  /*  //console.log(`prenom: ${department.name} + a propos :${about}`); */
   const userAvatar = image;
-  const screenWidth = window.screen.width;
+  // const screenWidth = window.screen.width;
   const role = localStorage.getItem('userRole');
-  console.log(department);
-  console.log(role);
+   //console.log(department);
+   //console.log(role);
   return (
 
     <div className="detail">
@@ -32,7 +30,7 @@ const Details = ({
         <div className="detail_content_about">
           <div className="Jober_avatar">
             {userAvatar && <Avatar alt="Remy Sharp" src={image} /> }
-            {!userAvatar && <Avatar alt="Remy Sharp" src=""></Avatar>}
+            {!userAvatar && <Avatar alt="Remy Sharp" src="" />}
           </div>
           <div className="detail_content_about-title">
             <h3>A propos</h3>
@@ -45,15 +43,17 @@ const Details = ({
         {isLogged === true && role === 'FRIENDLY_USER' ? <ModalReservation /> : ''}
         {!isLogged && (
           <div className="detail_reservation_message">
-         <Message warning>
-            <div>
-              <i className="info circle icon icon_message_detail"></i>
-            </div>
-           <div className="reservation_message content">
-            <Message.Header> Vous souhaitez prendre rendez-vous avec {firstname} ? Vous devez être inscrit ou connecté</Message.Header>
-            <p>Visitez notre page <ModalInscription /> ou <ModalConnexion /> et réessayez ! </p>
-            </div>
-          </Message>
+            <Message warning>
+              <div>
+                <i className="info circle icon icon_message_detail" />
+              </div>
+              <div className="reservation_message content">
+                <Message.Header> Vous souhaitez prendre rendez-vous avec {firstname}
+                  ? Vous devez être inscrit ou connecté
+                </Message.Header>
+                <p>Visitez notre page <ModalInscription /> ou <ModalConnexion /> et réessayez ! </p>
+              </div>
+            </Message>
           </div>
         )}
       </div>
@@ -62,7 +62,6 @@ const Details = ({
 };
 
 Details.propTypes = {
-  id: PropTypes.number.isRequired,
   isLogged: PropTypes.bool.isRequired,
   firstname: PropTypes.string.isRequired,
   about: PropTypes.string.isRequired,
@@ -70,11 +69,6 @@ Details.propTypes = {
   department: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-    }).isRequired,
-  ).isRequired,
-  skills: PropTypes.arrayOf(
-    PropTypes.shape({
-      description: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,
 };

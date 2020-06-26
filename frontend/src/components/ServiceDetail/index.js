@@ -26,7 +26,7 @@ function ServiceDetail({ serviceList, getServiceName, getSixJobWorker, jobWorker
           {!loadingOnServiceDetail && (
             jobWorkers.map((jobWorker) => {
               const JobWorkerRate = jobWorker.user.jobWorkerDemands;
-              // console.log(JobWorkerRate);
+               //console.log(JobWorkerRate);
               return (
                 <div className="service_details_jobworker_card-item">
                   <JoberService jobWorker={jobWorker} jobWorkerStar={JobWorkerRate} getServiceName={getServiceName} />

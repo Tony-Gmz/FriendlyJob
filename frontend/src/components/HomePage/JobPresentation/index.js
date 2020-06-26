@@ -40,8 +40,11 @@ const JobPresentation = ({ randomJobWorker, loading, isLogged }) => (
 );
 
 JobPresentation.propTypes = {
+  // object
   randomJobWorker: PropTypes.object.isRequired,
+  // bool
   loading: PropTypes.bool.isRequired,
+  isLogged: PropTypes.bool.isRequired,
 };
 
 export default JobPresentation;

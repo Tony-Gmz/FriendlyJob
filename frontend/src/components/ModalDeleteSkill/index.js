@@ -12,13 +12,13 @@ import {
 const ModalDeleteSkill = ({ skill, getSkillId, submitDeleteSkill }) => {
 
   const handleClick = () => {
-    console.log(skill);
+    //console.log(skill);
     getSkillId(skill);
   };
 
 
   const handleSubmit = (evt) => {
-    console.log('voila le submit du delete');
+    //console.log('voila le submit du delete');
     evt.preventDefault();
     submitDeleteSkill();
   };

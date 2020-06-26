@@ -20,24 +20,29 @@ const App = ({
   getUserData,
   getAllDepartments,
   getRequest,
-  requestList,
 }) => {
   // Hook useEffect to load necessary information for our homepage ex: ServiceList for the caroussel
+  // getUserData to get user's data after a refresh
   useEffect(() => {
+    // if the user is connected the token is store in localStorage
+    // if token exist we load getUserData and getRequest
     const userToken = localStorage.getItem('jwtToken');
     if (userToken) {
       getUserData();
       getRequest();
     }
-    const timer = setTimeout(() => {
+    getServices();
+    getRandomJobWorker();
+    getAllDepartments();
+    // setTimeOut neccessary because
+    /* const timer = setTimeout(() => {
       getServices();
       getRandomJobWorker();
       getAllDepartments();
     }, 1000);
-    return () => clearTimeout(timer);
+    return () => clearTimeout(timer); */
     // ==================================== ????
   }, []);
- 
   return (
     <div className="app">
       {/* condition for the render (if loading print the loader if not print App) */}
@@ -58,6 +63,7 @@ App.propTypes = {
   /**
    * Func with no param
    */
+  getRequest: PropTypes.func.isRequired,
   getUserData: PropTypes.func.isRequired,
   getRandomJobWorker: PropTypes.func.isRequired,
   getServices: PropTypes.func.isRequired,

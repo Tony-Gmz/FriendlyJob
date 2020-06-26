@@ -4,13 +4,13 @@ import ModalRefuseRequest from 'src/containers/ModalRefuseRequest';
 import { changeHourFormat, changeDateFormat } from 'src/utils';
 
 // == Composant
-const RequestWait = ({ request, submitAccepteRequest, getCommentId }) => {
+const RequestWait = ({ request, submitAccepteRequest, getRequestId }) => {
   const hourResevation = new Date(request.reservationHour);
   const dateReservation = new Date(request.reservationDate);
 
   const handleClick = () => {
-    console.log('click sur accepte detecté');
-    getCommentId(request.id);
+    // console.log('click sur accepte detecté');
+    getRequestId(request.id);
     submitAccepteRequest();
   };
 

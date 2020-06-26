@@ -8,7 +8,7 @@ import RequestFriendlyUser from './RequestFriendlyUser';
 import RequestJobWorker from './RequestJobWorker';
 
 // == Composant
-const Request = ({ resetRequestSelected, requestSelectedName, getRequestSelectedName, requestSelected, requestSortSelected, toggle, getRequest, requestList, submitAccepteRequest, submitDeleteRequest, getCommentId, submitFinishRequest, userData }) => {
+const Request = ({ resetRequestSelected, requestSelectedName, getRequestSelectedName, requestSelected, requestSortSelected, toggle, getRequest, requestList, submitAccepteRequest, submitDeleteRequest, getRequestId, submitFinishRequest, userData }) => {
   useEffect(() => {
     getRequest();
   }, [toggle]);
@@ -21,20 +21,20 @@ const Request = ({ resetRequestSelected, requestSelectedName, getRequestSelected
   }, [requestList]);
 
 
-  console.log(requestList);
+  //console.log(requestList);
 
-  console.log(userData.firstname);
+  //console.log(userData.firstname);
   const Role = localStorage.getItem('userRole');
 
   const handleClick = (evt) => {
-    console.log(evt.target.id);
+    //console.log(evt.target.id);
     getRequestSelectedName(evt.target.id);
     const requestFilterList = requestList.filter(request => request.status === evt.target.id);
     requestSortSelected(requestFilterList);
   };
 
   const handleClickAll = (evt) => {
-    console.log(evt.target.id);
+    //console.log(evt.target.id);
     getRequestSelectedName(evt.target.id);
     resetRequestSelected();
     if (requestSelected === null) {
@@ -42,7 +42,7 @@ const Request = ({ resetRequestSelected, requestSelectedName, getRequestSelected
     }
   };
 
-  console.log(`la categorie selectionée est ${requestSelectedName}`);
+  //console.log(`la categorie selectionée est ${requestSelectedName}`);
 
   return (
     <div className="request">
@@ -60,8 +60,8 @@ const Request = ({ resetRequestSelected, requestSelectedName, getRequestSelected
         <Menu.Item id="Terminée" active={requestSelectedName === 'Terminée'} className="big-button" onClick={handleClick} value="Terminée">Terminée</Menu.Item><Menu.Item id="Refusée" active={requestSelectedName === 'Refusée'} className="big-button" onClick={handleClick} value="Refusée">Refusée</Menu.Item>
       </Menu>
       {Role === 'FRIENDLY_USER'
-        ? <RequestFriendlyUser requestSelectedName={requestSelectedName} requestSelected={requestSelected} requestSortSelected={requestSortSelected} toggle={toggle} getRequest={getRequest} requestList={requestList} submitFinishRequest={submitFinishRequest} submitAccepteRequest={submitAccepteRequest} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />
-        : <RequestJobWorker requestSelectedName={requestSelectedName} requestSelected={requestSelected} requestSortSelected={requestSortSelected} toggle={toggle} getRequest={getRequest} requestList={requestList} submitAccepteRequest={submitAccepteRequest} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />}
+        ? <RequestFriendlyUser requestSelectedName={requestSelectedName} requestSelected={requestSelected} requestSortSelected={requestSortSelected} toggle={toggle} getRequest={getRequest} requestList={requestList} submitFinishRequest={submitFinishRequest} submitAccepteRequest={submitAccepteRequest} submitDeleteRequest={submitDeleteRequest} getRequestId={getRequestId} />
+        : <RequestJobWorker requestSelectedName={requestSelectedName} requestSelected={requestSelected} requestSortSelected={requestSortSelected} toggle={toggle} getRequest={getRequest} requestList={requestList} submitAccepteRequest={submitAccepteRequest} submitDeleteRequest={submitDeleteRequest} getRequestId={getRequestId} />}
     </div>
   );
 };

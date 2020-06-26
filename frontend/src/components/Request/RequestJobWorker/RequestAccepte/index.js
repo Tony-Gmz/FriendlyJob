@@ -4,7 +4,7 @@ import { changeHourFormat, changeDateFormat } from 'src/utils';
 import PopupContact from '../../../PopUpContactJw';
 
 // == Composant
-const RequestAccepte = ({ request, getCommentId }) => {
+const RequestAccepte = ({ request, getRequestId }) => {
 
   const hourResevation = new Date(request.reservationHour);
   const dateReservation = new Date(request.reservationDate);
@@ -14,7 +14,7 @@ const RequestAccepte = ({ request, getCommentId }) => {
       <li className="booking-card" style={{backgroundImage: `url(${request.service.image})`}}>
       <div className="book-container">
         <div className="content">
-          <PopupContact request={request} getCommentId={getCommentId} />
+          <PopupContact request={request} getRequestId={getRequestId} />
         </div>
       </div>
       <div className="informations-container">

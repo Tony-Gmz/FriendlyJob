@@ -15,7 +15,7 @@ const JoberService = ({ jobWorker, getServiceName, jobWorkerStar }) => {
   const  id  = jobWorker.user.id;
   let userRating = jobWorker.user.jobWorkerDemands[0];
 
-  console.log(jobWorker.user.image);
+  //console.log(jobWorker.user.image);
 
   if (userRating === undefined) {
     userRating = {

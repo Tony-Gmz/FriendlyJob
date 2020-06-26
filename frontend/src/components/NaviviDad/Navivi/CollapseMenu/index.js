@@ -17,7 +17,7 @@ const CollapseMenu = ({ isOpen, isLogged, logOut }) => {
     localStorage.removeItem('userRole');
   };
   const { open } = useSpring({ open: isOpen ? 0 : 1 });
-console.log(`is open est ${isOpen}`);
+//console.log(`is open est ${isOpen}`);
   if (isOpen === true) {
     console.log('je suis rentrer dans le if');
     return (

@@ -5,10 +5,10 @@ import Navbar from 'src/components/NaviviDad/Navivi';
 const NaviviDad = ({ userData, isOpen, isNavbarOpen, isLogged, logOut, requestList, resetRequestList, getRequest })=> {
   const handleNavbar = () => {
     isNavbarOpen(!isOpen);
-    console.log(isOpen);
+    //console.log(isOpen);
   };
 
-  console.log(userData);
+  //console.log(userData);
 
   return (
     <>

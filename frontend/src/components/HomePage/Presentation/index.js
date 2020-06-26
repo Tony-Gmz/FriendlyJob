@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+/* eslint-disable jsx-a11y/control-has-associated-label */
 // == Import Library
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -12,6 +14,7 @@ import './presentation.scss';
 import { slugifyTitle } from 'src/utils';
 
 // component presentation in homepage
+// eslint-disable-next-line padded-blocks
 const Presentation = ({ serviceList, fieldService, serviceSelected }) => {
 
   const history = useHistory();
@@ -22,12 +25,11 @@ const Presentation = ({ serviceList, fieldService, serviceSelected }) => {
 
   const handleChange = (serviceSelected) => {
     fieldService(slugifyTitle(serviceSelected.value));
-    console.log(serviceSelected);
-    console.log(serviceSelected.value);
-    console.log(serviceSelected.name);
+     //console.log(serviceSelected);
+     //console.log(serviceSelected.value);
+     //console.log(serviceSelected.name);
   };
 
-  
   const handleKeyPress = (evt) => {
     if (evt.key === 'Enter') {
       history.push(`/services/${serviceSelected}`);
@@ -59,7 +61,7 @@ const Presentation = ({ serviceList, fieldService, serviceSelected }) => {
             onInputChange="input-change"
             controlShouldRenderValue
           />
-          <button type="submit" class="homepage_search_btn"><Icon name="search" /></button>
+          <button type="submit" className="homepage_search_btn"><Icon name="search" /></button>
         </form>
       </div>
     </div>

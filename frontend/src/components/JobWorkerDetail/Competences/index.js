@@ -1,9 +1,10 @@
 /* eslint-disable arrow-body-style */
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import './competences.scss';
 
+// eslint-disable-next-line padded-blocks
 const Competence = ({ skills }) => {
 
   return (

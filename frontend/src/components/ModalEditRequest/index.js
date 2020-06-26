@@ -20,7 +20,7 @@ import MuiAlert from '@material-ui/lab/Alert';
 
 import './modalEditRequest.scss';
 
-const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHour, submitSetRequest, changeFieldRequest, changeFieldDateRequest, changeFieldHourRequest, requestDate, RequestBody, requestHour, editedDate, editedHour, isOpen, openSuccessMessage, closeSuccessMessage }) => {
+const ModalEditRequest = ({ request, getRequestId, getRequestDate, getRequestHour, submitSetRequest, changeFieldRequest, changeFieldDateRequest, changeFieldHourRequest, requestDate, RequestBody, requestHour, editedDate, editedHour, isOpen, openSuccessMessage, closeSuccessMessage }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -29,7 +29,7 @@ const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHou
   };
 
   const handleClick = () => {
-    getCommentId(request.id);
+    getRequestId(request.id);
     getRequestDate(request.reservationDate);
     getRequestHour(request.reservationHour);
   };
@@ -38,7 +38,7 @@ const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHou
     changeFieldRequest(evt.target.value, evt.target.name);
   };
 
-  // console.log(changeDateEditFormat(requestDate));
+   //console.log(changeDateEditFormat(requestDate));
 
   const handleDate = (date) => {
     changeFieldDateRequest(date);
@@ -50,7 +50,7 @@ const ModalEditRequest = ({ request, getCommentId, getRequestDate, getRequestHou
 
   const reservationDate = request.reservationDate;
   const reservationHour = request.reservationHour;
-  console.log(reservationHour);
+  //console.log(reservationHour);
 
   const selectedDate = Date();
 

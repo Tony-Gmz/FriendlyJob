@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 // == Import library
 import React from 'react';
 import { Icon } from 'semantic-ui-react';

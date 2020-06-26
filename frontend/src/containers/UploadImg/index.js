@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getUrlAvatar, subitAvatar } from 'src/action/usersActions';
+import { getUrlAvatar, submitAvatar } from 'src/action/usersActions';
 import UploadImg from 'src/components/Profil/UploadImg';
 
 const mapStateToProps = (state) => ({
@@ -13,8 +13,8 @@ const mapDispatchToProps = (dispatch) => ({
   getUrlAvatar: (newAvatar) => {
     dispatch(getUrlAvatar(newAvatar));
   },
-  subitAvatar: () => {
-    dispatch(subitAvatar());
+  submitAvatar: () => {
+    dispatch(submitAvatar());
   },
 });
 

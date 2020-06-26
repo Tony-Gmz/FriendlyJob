@@ -90,7 +90,7 @@ const initialState = {
   urlAvatar: '',
   /** file send for picture in user's profil */
   avatarData: null,
-  /** bool for the user's profil */
+  /** bool for the user's profil success message */
   isSave: false,
   /** error when the user try to connect in app  */
   connexionError: null,

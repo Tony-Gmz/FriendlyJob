@@ -26,29 +26,29 @@ import './modalReservation.scss';
 // == Composant
 const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerDetail, changeFieldHourRequest, changeFieldDateRequest, requestDate, requestHour, displayHour, isSave, isOpen, openSuccessMessage, closeSuccessMessage, errorMessageReservation }) => {
   const { skills } = currentJobWorkerDetail;
-  // console.log(skills);
+   //console.log(skills);
   const selectedDate = Date();
 
   const handleChange = (evt) => {
-    // console.log(`coucou j'envoi ${evt.target.value} + ${evt.target.name}`);
+     //console.log(`coucou j'envoi ${evt.target.value} + ${evt.target.name}`);
     changeFieldRequest(evt.target.value, evt.target.name);
   };
-  // console.log(currentJobWorkerDetail);
+   //console.log(currentJobWorkerDetail);
   const handleSubmit = (evt) => {
-    // console.log('coucou je suis le submit de la request');
+     //console.log('coucou je suis le submit de la request');
     evt.preventDefault();
     submitRequest();
     openSuccessMessage();
   };
   const handleDate = (date) => {
-    // console.log(newDate);
+     //console.log(newDate);
     changeFieldDateRequest(date);
   };
 
   const handleHour = (date) => {
-    // console.log(date);
-    // console.log(date.getHours());
-    // console.log(date.getMinutes());
+     //console.log(date);
+     //console.log(date.getHours());
+     //console.log(date.getMinutes());
     changeFieldHourRequest(date);
   };
 

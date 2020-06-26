@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import Request from 'src/components/Request';
-import { getRequest, submitRefuseRequest, submitAccepteRequest, getCommentId, submitDeleteRequest, requestSortSelected } from 'src/action/requestAction';
+import { getRequest, submitRefuseRequest, submitAccepteRequest, getRequestId, submitDeleteRequest, requestSortSelected } from 'src/action/requestAction';
 import { getUserData } from 'src/action/usersActions';
 import { submitFinishRequest, getRequestSelectedName, resetRequestSelected } from '../../action/requestAction';
 
 
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
-  commentId: state.request.commentId,
+  requestId: state.request.requestId,
   userData: state.user.userData,
   requestList: state.request.requestList,
   toggle: state.request.toggle,
@@ -18,8 +18,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   // nom de la prop à remplir: callback qui contient un appel à dispatch
   // With dispatch we send the action in the reducer
-  getCommentId: (commentId) => {
-    dispatch(getCommentId(commentId));
+  getRequestId: (requestId) => {
+    dispatch(getRequestId(requestId));
   },
   requestSortSelected: (newSort) => {
     dispatch(requestSortSelected(newSort));

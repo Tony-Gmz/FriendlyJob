@@ -2,14 +2,14 @@ import React from 'react';
 import { Button, Icon } from 'semantic-ui-react'
 import './uploadImg.scss';
 
-const UploadImg = ({ getUrlAvatar, subitAvatar }) => {
+const UploadImg = ({ getUrlAvatar, submitAvatar }) => {
   const handleAvatarChange = (evt) => {
-    console.log(evt.target.files[0]);
+    //console.log(evt.target.files[0]);
     const file = evt.target.files[0];
     getUrlAvatar(file);
   };
   const handleSubmit = (evt) => {
-    console.log('submit img');
+    //console.log('submit img');
     evt.preventDefault();
     subitAvatar();
   };

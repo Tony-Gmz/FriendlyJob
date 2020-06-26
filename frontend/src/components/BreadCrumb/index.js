@@ -24,7 +24,7 @@ const Breadcrumbs = withBreadcrumbs(routes)(({ breadcrumbs }) => (
       // and any props found in your route objects will be passed through too
       <NavLink to={match.url}>
         <span key={match.url}>
-          {breadcrumb}  > 
+          {breadcrumb}  >
         </span>
       </NavLink>
     ))}

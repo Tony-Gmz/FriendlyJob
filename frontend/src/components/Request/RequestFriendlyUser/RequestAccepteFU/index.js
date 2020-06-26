@@ -5,14 +5,14 @@ import PopupContact from '../../../PopUpContact';
 
 
 // == Composant
-const RequestAccepteFU = ({ request, submitFinishRequest, getCommentId}) => {
+const RequestAccepteFU = ({ request, submitFinishRequest, getRequestId}) => {
   const hourResevation = new Date(request.reservationHour);
   const dateReservation = new Date(request.reservationDate);
 
   const handleClick = () => {
-    getCommentId(request.id);
+    getRequestId(request.id);
     submitFinishRequest();
-    console.log('clickclick');
+    // console.log('clickclick');
   };
 
   return (
@@ -20,7 +20,7 @@ const RequestAccepteFU = ({ request, submitFinishRequest, getCommentId}) => {
       <li className="booking-card" style={{ backgroundImage: `url(${request.service.image})`}}>
       <div className="book-container">
         <div className="content">
-        <PopupContact request={request} getCommentId={getCommentId} />
+        <PopupContact request={request} getRequestId={getRequestId} />
           <Button onClick={handleClick}>
           Terminé
           </Button>

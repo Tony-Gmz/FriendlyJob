@@ -11,14 +11,14 @@ import {
 import './modalRefuseRequest.scss';
 
 
-const ModalRefuseRequest = ({ request, getCommentId, submitRefuseRequest, clearRefuse, isRefuse }) => {
+const ModalRefuseRequest = ({ request, getRequestId, submitRefuseRequest, clearRefuse, isRefuse }) => {
   const handleClick = () => {
-    getCommentId(request.id);
+    getRequestId(request.id);
   };
 
 
   const handleSubmit = (evt) => {
-    console.log('voila le submit du commentaire');
+    //console.log('voila le submit du commentaire');
     evt.preventDefault();
     submitRefuseRequest();
   };

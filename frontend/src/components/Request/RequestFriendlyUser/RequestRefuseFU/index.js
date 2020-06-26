@@ -3,15 +3,15 @@ import { Card, Button } from 'semantic-ui-react';
 import { changeHourFormat, changeDateFormat } from 'src/utils';
 
 // == Composant
-const RequestRefuseFU = ({ request, getCommentId, submitDeleteRequest }) => {
+const RequestRefuseFU = ({ request, getRequestId, submitDeleteRequest }) => {
 
   const hourResevation = new Date(request.reservationHour);
   const dateReservation = new Date(request.reservationDate);
 
   const handleClick = () => {
-    console.log(request.id);
-    console.log('click sur supprimer');
-    getCommentId(request.id);
+    // console.log(request.id);
+    // console.log('click sur supprimer');
+    getRequestId(request.id);
     submitDeleteRequest();
   };
 

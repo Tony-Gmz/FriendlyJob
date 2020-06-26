@@ -81,7 +81,7 @@ export const changeHourFormat = (date) => {
   const hour = date.getHours();
   let minutes = date.getMinutes().toString();
   minutes = ('0'+(minutes)).slice(-2);
-  // console.log(minutes);
+   //console.log(minutes);
   date = `${hour}h${minutes}`;
   return date;
 };
@@ -91,8 +91,8 @@ export const changeDateFormat = (date) => {
   let month = (date.getMonth() + 1);
     month = month.toString();
     month = ('0' + (month)).slice(-2);
-    // console.log(month);
-    // console.log(date.getFullYear());
+     //console.log(month);
+     //console.log(date.getFullYear());
     const years = date.getFullYear().toString();
     const days = date.getDate().toString();
     date = `${days}-${month}-${years}`;

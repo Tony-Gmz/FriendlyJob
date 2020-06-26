@@ -24,12 +24,12 @@ const ModalInscription = ({ getAllDepartments, departmentsList, fieldValue, subm
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log('coucou je suis submit');
+    //console.log('coucou je suis submit');
     submitSubscribe();
     openSuccessMessage();
   };
   const handleChange = (evt) => {
-    console.log(`changement du field + ${evt.target.value} + ${evt.target.name}`);
+    //console.log(`changement du field + ${evt.target.value} + ${evt.target.name}`);
     fieldValue(evt.target.value, evt.target.name);
   };
   const handleMessageClose = (event, reason) => {

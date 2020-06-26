@@ -70,10 +70,11 @@ export const RESET_REQUEST_LIST = 'RESET_REQUEST_LIST';
 // action to set errorMessageReservation in requestReducer at true
 export const ERROR_MESSAGE_RESERVATION = 'ERROR_MESSAGE_RESERVATION';
 
+// action to get the comment's id
+export const GET_REQUEST_ID = 'GET_REQUEST_ID';
+
 // == EXPORT FOR COMMENT PART
 
-// action to get the comment's id
-export const GET_COMMENT_ID = 'GET_COMMENT_ID';
 
 // action to get the value of field comment in modalComment
 export const CHANGE_FIELD_COMMENT = 'CHANGE_FIELD_COMMENT';
@@ -224,7 +225,7 @@ export const submitFinishRequest = () => ({
 });
 
 /**
- * 
+ * Method to submit the edited request
  */
 export const submitSetRequest = () => ({
   type: SUBMIT_SET_REQUEST,
@@ -232,7 +233,7 @@ export const submitSetRequest = () => ({
 
 /**
  * 
- * @param {*} initialHour 
+ * @param {*} initialHour
  */
 export const displayHour = (initialHour) => ({
   type: DISPLAY_HOUR,
@@ -240,7 +241,7 @@ export const displayHour = (initialHour) => ({
 });
 
 /**
- * 
+ * action to get the date of the request in modalEditRequest
  * @param {*} reservationDate
  */
 export const getRequestDate = (reservationDate) => ({
@@ -249,7 +250,7 @@ export const getRequestDate = (reservationDate) => ({
 });
 
 /**
- * 
+ * action to get the hour of the request in modalEditRequest
  * @param {*} reservationHour
  */
 export const getRequestHour = (reservationHour) => ({
@@ -258,28 +259,28 @@ export const getRequestHour = (reservationHour) => ({
 });
 
 /**
- * 
+ * Method to set isRefuse in requestReducer at true
  */
 export const isRequestRefuse = () => ({
   type: IS_REQUEST_REFUSE,
 });
 
 /**
- * 
+ * Method to set isRefuse in requestReducer at false
  */
 export const clearRefuse = () => ({
   type: CLEAR_REFUSE,
 });
 
 /**
- * 
+ * Method to set RequestList in requestReducer at null
  */
 export const resetRequestList = () => ({
   type: RESET_REQUEST_LIST,
 });
 
 /**
- * 
+ * Method to set errorMessageReservation in requestReducer at true
  */
 export const errorMesssageReservation = () => ({
   type: ERROR_MESSAGE_RESERVATION,
@@ -287,18 +288,18 @@ export const errorMesssageReservation = () => ({
 // ========================================= COMMENT ==================================
 
 /**
- * 
- * @param {*} commentId 
+ * Method to get the comment's id
+ * @param {*} requestId
  */
-export const getCommentId = (commentId) => ({
-  type: GET_COMMENT_ID,
-  commentId,
+export const getRequestId = (requestId) => ({
+  type: GET_REQUEST_ID,
+  requestId,
 });
 
 /**
- * 
- * @param {*} newValue 
- * @param {*} inputName 
+ * Method to get the value of field comment in modalComment
+ * @param {*} newValue
+ * @param {*} inputName
  */
 export const changeFieldComment = (newValue, inputName) => ({
   type: CHANGE_FIELD_COMMENT,
@@ -307,7 +308,7 @@ export const changeFieldComment = (newValue, inputName) => ({
 });
 
 /**
- * 
+ * Method to get the value of the rating in modalComment
  * @param {*} newRate 
  */
 export const changeRatingComment = (newRate) => ({
@@ -316,21 +317,21 @@ export const changeRatingComment = (newRate) => ({
 });
 
 /**
- * 
+ * Method to submit a new comment
  */
 export const submitComment = () => ({
   type: SUBMIT_COMMENT,
 });
 
 /**
- * 
+ * Method to set isSend in requestReducer at true 
  */
 export const isCommentSend = () => ({
   type: IS_COMMENT_SEND,
 });
 
 /**
- * 
+ * Method to set isSend in requestReducer at false
  */
 export const clearSave = () => ({
   type: CLEAR_SAVE,

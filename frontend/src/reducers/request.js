@@ -4,7 +4,7 @@ import {
   CHANGE_FIELD_DATE_REQUEST,
   CHANGE_FIELD_HOUR_REQUEST,
   SAVE_NEW_REQUEST,
-  GET_COMMENT_ID,
+  GET_REQUEST_ID,
   CHANGE_FIELD_COMMENT,
   CHANGE_RATING_COMMENT,
   SAVE_TOGGLE,
@@ -30,7 +30,7 @@ const initialState = {
   requestHour: '',
   commentBody: '',
   newRate: '',
-  commentId: '',
+  requestId: '',
   toggle: true,
   hour: '',
   isSave: false,
@@ -108,10 +108,10 @@ const requestReducer = (state = initialState, action = {}) => {
       };
       // =====================================COMMENT
 
-    case GET_COMMENT_ID:
+    case GET_REQUEST_ID:
       return {
         ...state,
-        commentId: action.commentId,
+        requestId: action.requestId,
       };
 
     case CHANGE_FIELD_COMMENT:

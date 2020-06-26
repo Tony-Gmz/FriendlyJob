@@ -3,10 +3,10 @@ import { Button } from 'semantic-ui-react';
 import { changeHourFormat, changeDateFormat } from 'src/utils';
 
 // == Composant
-const RequestCancel = ({ request, getCommentId, submitDeleteRequest }) => {
+const RequestCancel = ({ request, getRequestId, submitDeleteRequest }) => {
   
   const handleClick = () => {
-    getCommentId(request.id);
+    getRequestId(request.id);
     submitDeleteRequest();
   };
 

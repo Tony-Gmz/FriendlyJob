@@ -1,27 +1,30 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Icon } from 'semantic-ui-react';
-import { useParams } from 'react-router-dom';
 
 
 import './pagination.scss';
 
-const PaginationExamplePagination = ({getJobWorker, getServiceName, currentPage, joberPerPage, totalJobWorker, changeCurrentPage }) => {
+const PaginationExamplePagination = ({
+  currentPage,
+  joberPerPage,
+  totalJobWorker,
+  changeCurrentPage,
+}) => {
   const pageNumbers = [];
 
-  for (let i = 1; i <= Math.ceil(totalJobWorker / joberPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(totalJobWorker / joberPerPage); i += 1) {
     pageNumbers.push(i);
   }
 
   const handlePrevClick = () => {
     changeCurrentPage(currentPage - 1);
-
   };
 
 
   const handleNextClick = () => {
     changeCurrentPage(currentPage + 1);
-
   };
 
   return (
@@ -31,10 +34,10 @@ const PaginationExamplePagination = ({getJobWorker, getServiceName, currentPage,
         {pageNumbers.map((number) => {
           const handleClick = () => {
             changeCurrentPage(number);
-            console.log(number);
+             //console.log(number);
           };
           return (
-            <li activeClassName="current">
+            <li key={number} activeclassname="current">
               <a onClick={handleClick} href="#">
                 {number}
               </a>
@@ -48,5 +51,10 @@ const PaginationExamplePagination = ({getJobWorker, getServiceName, currentPage,
   );
 };
 
-
+PaginationExamplePagination.propTypes = {
+  currentPage: PropTypes.number.isRequired,
+  joberPerPage: PropTypes.number.isRequired,
+  totalJobWorker: PropTypes.number.isRequired,
+  changeCurrentPage: PropTypes.func.isRequired,
+};
 export default PaginationExamplePagination;

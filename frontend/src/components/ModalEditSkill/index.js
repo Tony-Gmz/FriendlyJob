@@ -10,19 +10,19 @@ const ModalEditSkill = ({ price, description, id, getSkillId, getNewSkillValue, 
 
 
   const handleChange = (evt) => {
-    console.log(`${evt.target.value} + ${evt.target.name}`);
+    //console.log(`${evt.target.value} + ${evt.target.name}`);
     getNewSkillValue(evt.target.value, evt.target.name);
   };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    // console.log('coucou je suis submit de addSkill');
+     //console.log('coucou je suis submit de addSkill');
     submitEditSkill();
     openSuccessMessage();
   };
 
   const handleClick = () => {
-    console.log(id);
+    //console.log(id);
     getSkillId(id);
   };
   const handleClose = () => {

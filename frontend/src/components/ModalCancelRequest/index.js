@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Button,
   Header,
@@ -10,18 +11,16 @@ import {
 import './modalCancelRequest.scss';
 
 
-const ModalCancelRequest = ({ request, getCommentId, submitCancelRequest  }) => {
-
+const ModalCancelRequest = ({ request, getRequestId, submitCancelRequest }) => {
   const handleClick = () => {
-    getCommentId(request.id);
+    getRequestId(request.id);
   };
 
 
   const handleSubmit = (evt) => {
-    console.log('voila le submit du commentaire');
+     //console.log('voila le submit du commentaire');
     evt.preventDefault();
     submitCancelRequest();
-    getRequest();
   };
 
   return (
@@ -43,5 +42,15 @@ const ModalCancelRequest = ({ request, getCommentId, submitCancelRequest  }) => 
   );
 };
 
-
+ModalCancelRequest.propTypes = {
+  /** func with param */
+  getRequestId: PropTypes.func.isRequired,
+  /** fucn with no param */
+  submitCancelRequest: PropTypes.func.isRequired,
+  request: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    }).isRequired,
+  ).isRequired,
+};
 export default ModalCancelRequest;

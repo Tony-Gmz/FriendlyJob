@@ -29,11 +29,11 @@ const requestMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           store.dispatch(saveRequest(response.data));
-          console.log(response);
+          // console.log(response);
         })
         .catch((error) => {
           console.warn(error);
-        }); 
+        });
       next(action);
       break;
     }
@@ -59,7 +59,7 @@ const requestMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           store.dispatch(saveNewRequest(response.data));
         })
         .catch((error) => {
@@ -72,7 +72,7 @@ const requestMiddleware = (store) => (next) => (action) => {
 
     case SUBMIT_COMMENT: {
       const { commentBody, newRate } = store.getState().request;
-      const { commentId } = store.getState().request;
+      const { requestId } = store.getState().request;
       const userToken = localStorage.getItem('jwtToken');
       const { toggle } = store.getState().request;
 
@@ -82,7 +82,7 @@ const requestMiddleware = (store) => (next) => (action) => {
         data: {
           comment: commentBody,
           star: newRate,
-          demand: commentId,
+          demand: requestId,
         },
         headers: {
           Authorization: `Bearer ${userToken}`,
@@ -91,23 +91,23 @@ const requestMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           store.dispatch(saveToggle(!toggle));
           store.dispatch(isCommentSend());
-          console.log(response);
+          // console.log(response);
         })
         .catch((error) => {
           console.warn(error);
-          console.log(error.response.data);
+          // console.log(error.response.data);
         });
       next(action);
       break;
     }
 
     case SUBMIT_SET_REQUEST: {
-      const { commentId, requestBody, requestDate, requestHour } = store.getState().request;
+      const { requestId, requestBody, requestDate, requestHour } = store.getState().request;
       const userToken = localStorage.getItem('jwtToken');
       const { toggle } = store.getState().request;
       axios({
         method: 'put',
-        url: `http://api.friendlyjob.fr/api/v1/demands/${commentId}`,
+        url: `http://api.friendlyjob.fr/api/v1/demands/${requestId}`,
         data: {
           body: requestBody,
           reservationDate: requestDate,
@@ -119,7 +119,7 @@ const requestMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           store.dispatch(saveToggle(!toggle));
-          console.log(response);
+          // console.log(response);
         })
         .catch((error) => {
           console.warn(error);
@@ -129,12 +129,12 @@ const requestMiddleware = (store) => (next) => (action) => {
     }
 
     case SUBMIT_CANCEL_REQUEST: {
-      const { commentId } = store.getState().request;
+      const { requestId } = store.getState().request;
       const userToken = localStorage.getItem('jwtToken');
       const { toggle } = store.getState().request;
       axios({
         method: 'put',
-        url: `http://api.friendlyjob.fr/api/v1/demands/${commentId}`,
+        url: `http://api.friendlyjob.fr/api/v1/demands/${requestId}`,
         data: {
           body: 'Ce service à été annulée',
           status: 'Annulée',
@@ -145,7 +145,7 @@ const requestMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           store.dispatch(saveToggle(!toggle));
-          console.log(response);
+          // console.log(response);
         })
         .catch((error) => {
           console.warn(error);
@@ -155,12 +155,12 @@ const requestMiddleware = (store) => (next) => (action) => {
     }
 
     case SUBMIT_FINISH_REQUEST: {
-      const { commentId } = store.getState().request;
+      const { requestId } = store.getState().request;
       const userToken = localStorage.getItem('jwtToken');
       const { toggle } = store.getState().request;
       axios({
         method: 'put',
-        url: `http://api.friendlyjob.fr/api/v1/demands/${commentId}`,
+        url: `http://api.friendlyjob.fr/api/v1/demands/${requestId}`,
         data: {
           status: 'terminée',
         },
@@ -170,23 +170,23 @@ const requestMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           store.dispatch(saveToggle(!toggle));
-          console.log(response);
+          // console.log(response);
         })
         .catch((error) => {
           console.warn(error);
-          console.log(error.response);
+          // console.log(error.response);
         });
       next(action);
       break;
     }
 
     case SUBMIT_REFUSE_REQUEST: {
-      const { commentId } = store.getState().request;
+      const { requestId } = store.getState().request;
       const userToken = localStorage.getItem('jwtToken');
       const { toggle } = store.getState().request;
       axios({
         method: 'put',
-        url: `http://api.friendlyjob.fr/api/v1/demands/${commentId}`,
+        url: `http://api.friendlyjob.fr/api/v1/demands/${requestId}`,
         data: {
           body: 'Ce service à été refusée',
           status: 'Refusée',
@@ -198,7 +198,7 @@ const requestMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           store.dispatch(saveToggle(!toggle));
           store.dispatch(isRequestRefuse());
-          console.log(response);
+          // console.log(response);
         })
         .catch((error) => {
           console.warn(error);
@@ -208,12 +208,12 @@ const requestMiddleware = (store) => (next) => (action) => {
     }
 
     case SUBMIT_ACCEPTE_REQUEST: {
-      const { commentId } = store.getState().request;
+      const { requestId } = store.getState().request;
       const userToken = localStorage.getItem('jwtToken');
       const { toggle } = store.getState().request;
       axios({
         method: 'put',
-        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/demands/${commentId}`,
+        url: `http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/demands/${requestId}`,
         data: {
           status: 'Acceptée',
         },
@@ -223,7 +223,7 @@ const requestMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           store.dispatch(saveToggle(!toggle));
-          console.log(response);
+          // console.log(response);
         })
         .catch((error) => {
           console.warn(error);
@@ -233,14 +233,14 @@ const requestMiddleware = (store) => (next) => (action) => {
     }
 
     case SUBMIT_DELETE_REQUEST: {
-      const { commentId } = store.getState().request;
+      const { requestId } = store.getState().request;
       const userToken = localStorage.getItem('jwtToken');
       const { toggle } = store.getState().request;
       axios({
         method: 'delete',
         url: 'http://ec2-18-204-19-53.compute-1.amazonaws.com/api/v1/demands/',
         data: {
-          id: commentId,
+          id: requestId,
         },
         headers: {
           Authorization: `Bearer ${userToken}`,
@@ -248,7 +248,7 @@ const requestMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           store.dispatch(saveToggle(!toggle));
-          console.log(response);
+          // console.log(response);
         })
         .catch((error) => {
           console.warn(error);

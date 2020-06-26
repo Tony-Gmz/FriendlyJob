@@ -14,7 +14,7 @@ import '../request.scss';
 
 
 // == Composant
-const Request = ({ requestSelectedName, requestSortSelected, toggle, requestSelected, getRequest, requestList, submitDeleteRequest, submitFinishRequest, getCommentId  }) => {
+const Request = ({ requestSelectedName, requestSortSelected, toggle, requestSelected, getRequest, requestList, submitDeleteRequest, submitFinishRequest, getRequestId  }) => {
 
 /*   useEffect(() => {
     getRequest();
@@ -30,9 +30,9 @@ const Request = ({ requestSelectedName, requestSortSelected, toggle, requestSele
         {requestList.map((request) => {
           switch (request.status) {
             case 'Acceptée':
-              return <RequestAccepteFU request={request} submitFinishRequest={submitFinishRequest} getCommentId={getCommentId} />;
+              return <RequestAccepteFU request={request} submitFinishRequest={submitFinishRequest} getRequestId={getRequestId} />;
             case 'Refusée':
-              return <RequestRefuseFU request={request} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />;
+              return <RequestRefuseFU request={request} submitDeleteRequest={submitDeleteRequest} getRequestId={getRequestId} />;
             case 'En attente':
               return <RequestWaitFU request={request} getRequest={getRequest} />;
             case 'Terminée':
@@ -52,9 +52,9 @@ const Request = ({ requestSelectedName, requestSortSelected, toggle, requestSele
         {requestSelected.map((request) => {
           switch (request.status) {
             case 'Acceptée':
-              return <RequestAccepteFU request={request} submitFinishRequest={submitFinishRequest} getCommentId={getCommentId} />;
+              return <RequestAccepteFU request={request} submitFinishRequest={submitFinishRequest} getRequestId={getRequestId} />;
             case 'Refusée':
-              return <RequestRefuseFU request={request} submitDeleteRequest={submitDeleteRequest} getCommentId={getCommentId} />;
+              return <RequestRefuseFU request={request} submitDeleteRequest={submitDeleteRequest} getRequestId={getRequestId} />;
             case 'En attente':
               return <RequestWaitFU request={request} getRequest={getRequest} />;
             case 'Terminée':

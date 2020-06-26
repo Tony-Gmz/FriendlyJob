@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button, Popup } from 'semantic-ui-react';
 
-const PopupContact = ({request, getCommentId }) => {
+const PopupContact = ({request, getRequestId }) => {
 
   const handleClick = () => {
-    getCommentId(request.id);
+    getRequestId(request.id);
   };
 
   return (
