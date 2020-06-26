@@ -25,16 +25,15 @@ const ModalSuppression = ({isDelete, submitDelete}) => {
             <Button  basic color='red' inverted >
               <Icon name='remove' close /> No
             </Button>
-              <Button type="submit"  color='green' inverted>
+              <a href="/"><Button type="submit"  color='green' inverted>
                 <Icon name='checkmark' /> Yes
-              </Button>
+              </Button></a>
             </form>
           </Modal.Actions>
         </>
       )}
       {isDelete && (
         <>
-       
           <Modal.Content>
             <p>
               <span className="delete_message">Votre compte a bien été supprimé !</span>

@@ -37,7 +37,7 @@ const ProfilFiendlyUser = ({
   isOpen,
   openSuccessMessage,
   closeSuccessMessage,
-  errorPasswordMessage,
+  errorMessage,
 }) => {
   const userAvatar = urlAvatar;
   // handle on click who give at the user the possibility to edit his data
@@ -130,22 +130,22 @@ const ProfilFiendlyUser = ({
               </div>
             )}
             {isEditable && (
-              <div className="form_fu_element">
-                <Form.Input
-                  className="input"
-                  label="Email*"
-                  type="email"
-                  onChange={handleChange}
+              <div className="form_element_profil">
+                <TextField
+                  className="profil_input"
+                  id="outlined-email-input"
+                  label="Email"
                   value={editEmail}
-                  name="editEmail"
                   placeholder={email}
-                  patern="/^[-._a-z0-9]+@[-._a-z0-9]+$/"
-                  title="Le format de l'adresse mail est incorrecte"
+                  type="email"
+                  variant="outlined"
+                  onChange={handleChange}
+                  name="editEmail"
                 />
               </div>
             )}
             {!isEditable && (
-              <div className="form_fu_element">
+              <div className="form_element_profil">
                 <TextField
                   className="profil_input"
                   label="Email"
@@ -159,7 +159,7 @@ const ProfilFiendlyUser = ({
               </div>
             )}
             {!isEditable && (
-              <div className="form_fu_element">
+              <div className="form_element_profil">
                 <TextField
                   className="profil_input"
                   id="outlined-firstname-input"
@@ -173,39 +173,43 @@ const ProfilFiendlyUser = ({
               </div>
             )}
             {isEditable && (
-              <div className="form_fu_element">
-                <Form.Input
-                  className="input"
-                  label="Mot de passe*"
+              <div className="form_element_profil">
+                <TextField
+                  className="profil_input"
+                  id="outlined-password-input"
+                  label="Mot de passe"
                   value={editPassword}
                   type="password"
+                  autoComplete="current-firstname"
+                  variant="outlined"
                   onChange={handleChange}
                   name="editPassword"
-                   // pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-.]).{8,100}$"
-                  title="Votre mot de passe doit contenir au moins : huit caracteres dont une minuscule, une majuscule, un chiffre et un caractere special (ex:=$?!.;/@...)"
                 />
               </div>
             )}
             {isEditable && (
-              <div className="form_fu_element">
-                <Form.Input
-                  className="input"
-                  label="Mot de passe*"
-                  type="password"
+              <div className="form_element_profil">
+                <TextField
+                  className="profil_input"
+                  id="outlined-password-input"
+                  label="Confirmation du Mot de passe"
                   value={editConfirmationPassword}
-                  onChange={handleChange}
+                  type="password"
+                  autoComplete="current-firstname"
+                  variant="outlined"
                   name="editConfirmationPassword"
+                  onChange={handleChange}
                 />
               </div>
             )}
             {isEdited && (
               <Snackbar open={isOpen} autoHideDuration={6000} onClose={handleMessageClose}>
                 <Alert onClose={handleMessageClose} severity="success">
-                  vos modifications ont bien été pris en compte ! vous souhaitez retourner sur la <a href="/profil">page d'accueil</a> ?
+                  vos modifications ont bien été pris en compte ! vous souhaitez retourner sur la <a className="link_profil_modal" href="/">page d'accueil</a> ?
                 </Alert>
               </Snackbar>
             )}
-            {errorPasswordMessage && (
+            {errorMessage && (
               <Snackbar open={isOpen} autoHideDuration={6000} onClose={handleMessageClose}>
                 <Alert onClose={handleMessageClose} severity="error">
                   Votre mot de passe doit contenir 8 character minimum, une majuscule, une minuscule et un character spécial

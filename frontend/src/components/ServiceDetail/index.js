@@ -21,7 +21,6 @@ function ServiceDetail({ serviceList, getServiceName, getSixJobWorker, jobWorker
       </div>
       <div className="service_detail_presentation">{service.description}</div>
       <div className="service_details_jobworker">
-        <div className="service_details_jobworker_title">Voici quelques JobWorkers de votre Region...</div>
         <div className="service_details_jobworker_card">
           {loadingOnServiceDetail && <Loader /> }
           {!loadingOnServiceDetail && (
@@ -37,8 +36,7 @@ function ServiceDetail({ serviceList, getServiceName, getSixJobWorker, jobWorker
           )}
         </div>
         <div className="service_details_link">
-          <Link className="service_details_link-item" to={`/services/${slug}/jobworkers/`}>Voir plus de JobWorker dans ma région</Link>
-          <a className="service_details_link-item" href="#inscription">Devenez JobWorker ! Rejoingez-nous</a>
+          <Link className="service_details_link-item" to={`/services/${slug}/jobworkers/`}>Voir plus de jobworkers</Link>
         </div>
       </div>
     </div>

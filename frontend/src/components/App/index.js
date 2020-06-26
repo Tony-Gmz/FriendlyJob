@@ -8,9 +8,7 @@ import './App.scss';
 // == Import Components
 import Footer from 'src/components/Footer';
 import Loader from 'src/components/Loader';
-// import NavBar from 'src/containers/NavBar';
 import Page from 'src/containers/Page';
-// import Breadcrumb from 'src/components/BreadCrumb';
 import NaviviDad from 'src/containers/NaviviDad';
 
 
@@ -22,6 +20,7 @@ const App = ({
   getUserData,
   getAllDepartments,
   getRequest,
+  requestList,
 }) => {
   // Hook useEffect to load necessary information for our homepage ex: ServiceList for the caroussel
   useEffect(() => {
@@ -38,16 +37,14 @@ const App = ({
     return () => clearTimeout(timer);
     // ==================================== ????
   }, []);
-
+ 
   return (
     <div className="app">
       {/* condition for the render (if loading print the loader if not print App) */}
       {loading && <Loader />}
       {!loading && (
       <>
-        {/*  <NavBar /> */}
         <NaviviDad />
-        {/* <Breadcrumb /> */}
         <Page />
         <Footer />
       </>

@@ -2,33 +2,73 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Header, Icon, Image, Modal, Form, Message } from 'semantic-ui-react';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 
 
 // == Import
 import './modalConnexion.scss';
 
 // == Composant
-const ModalConnexion = ({ changeField, submitLoggin, connexionError, getRequest }) => {
+const ModalConnexion = ({ isConfirmed, checkUserConfirmed, changeField, submitLoggin, connexionError, getRequest, closeSuccessMessage, closeErrorConnexionMessage, closeErrorConfirmedMessage, errorConfirmedMessage, errorMessage, errorConnexionMessage }) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log('submit envoyé');
-    submitLoggin();
-    getRequest();
+    checkUserConfirmed();
   };
   const handleChange = (evt) => {
     console.log(`changement du field + ${evt.target.value} + ${evt.target.name}`);
     changeField(evt.target.value, evt.target.name);
   };
 
+  const handleKey = (evt) => {
+    console.log(evt.key);
+    if (evt.key === 'Enter') {
+      checkUserConfirmed();
+    }
+  };
+
+  const handleMessageClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    closeSuccessMessage();
+  };
+
+  const handleErrorConfirmedMessageClose = () => {
+    closeErrorConfirmedMessage();
+  };
+  const handleErrorMessageClose = () => {
+    closeErrorConnexionMessage();
+  };
+
+  function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
+
+  console.log(errorConfirmedMessage);
+
   return (
 
-    <Modal trigger={<Button className="modal_button_trigger">Connexion</Button>}>
-    <Modal.Header>Espace de Connexion</Modal.Header>
+    <Modal trigger={<Button id="triggerInscription" className="modal_button_trigger">Connexion</Button>} closeIcon>
+    <Modal.Header className="header_connexion">Espace de Connexion</Modal.Header>
     <Modal.Content>
       <Modal.Description>
         <Header>Bienvenue</Header>
-        <form onSubmit={handleSubmit} className="">
+        {isConfirmed === false
+        ? 
+        <Snackbar 
+        open={errorConfirmedMessage} 
+        autoHideDuration={6000} 
+        onClose={handleErrorConfirmedMessageClose}
+        >
+            <Alert onClose={handleErrorConfirmedMessageClose} severity="error">
+             Afin d'effectuer votre première connexion, vous devez confirmer votre adresse mail
+            </Alert>
+          </Snackbar>
+          : '' }
+        <form onSubmit={handleSubmit} onKeyDown={handleKey} className="form_connexion">
           <div className="form_element_connexion">
             <Form.Input
               className="input_connexion"
@@ -55,29 +95,25 @@ const ModalConnexion = ({ changeField, submitLoggin, connexionError, getRequest 
             />
           </div>
           {connexionError && (
-            <div className="errorMessage">
-              <Message
-                error
-                header="Une erreur s'est produite lors de la connexion"
-                list={[
-                  'Verifiez si vous avez indiqué la bonne adresse email.',
-                  'N\'oubliez pas que votre mot de passe doit contenir une majuscule, un chiffre et un caractère spéciale.',
-                ]}
-              />
-            </div>
+            <Snackbar 
+              open={errorConnexionMessage} 
+              autoHideDuration={6000} 
+              onClose={handleErrorMessageClose}
+            >
+            <Alert onClose={handleErrorMessageClose} severity="error">
+             Votre email ou votre mot de passe est incorrect
+            </Alert>
+          </Snackbar>
           )}
         </form>
       </Modal.Description>
     </Modal.Content>
       <Modal.Actions>
         <div className="div_submit">
-          <Button style={{ backgroundColor: '#FF385C', color: '#FFFF' }} type="button" className="cancel_btn">Annuler</Button>
           <Button style={{ backgroundColor: '#303f9f', color: '#FFFF' }} onClick={handleSubmit} className="submit_btn" type="submit">Connexion</Button>
         </div>
       </Modal.Actions>
     </Modal>
-
-
   );
 };
 

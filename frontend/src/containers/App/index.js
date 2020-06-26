@@ -8,6 +8,7 @@ import App from 'src/components/App';
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
   loading: state.service.loading,
+  requestList: state.request.requestList,
 });
 
 const mapDispatchToProps = (dispatch) => ({

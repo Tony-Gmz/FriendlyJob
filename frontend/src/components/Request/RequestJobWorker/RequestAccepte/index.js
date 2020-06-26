@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
 import { changeHourFormat, changeDateFormat } from 'src/utils';
-import PopupContact from '../../../PopUpContact';
+import PopupContact from '../../../PopUpContactJw';
 
 // == Composant
 const RequestAccepte = ({ request, getCommentId }) => {

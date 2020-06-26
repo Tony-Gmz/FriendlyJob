@@ -10,7 +10,7 @@ import {
   ModalContent,
   Message,
 } from 'semantic-ui-react';
-import Rating from 'react-rating';
+import Rating from '@material-ui/lab/Rating';
 
 
 import 'react-rater/lib/react-rater.css';
@@ -24,8 +24,8 @@ const ModalComment = ({ request, changeFieldComment, submitComment, changeRating
   };
 
   const handleRate = (newRate) => {
-    console.log(`voila evt rate ${newRate}`);
-    changeRatingComment(newRate);
+    console.log(`voila evt rate ${newRate.target.value}`);
+    changeRatingComment(newRate.target.value);
   };
 
 
@@ -45,7 +45,7 @@ const ModalComment = ({ request, changeFieldComment, submitComment, changeRating
   };
 
   return (
-    <Modal onClose={handleClose} className="modal_comment" trigger={<Button onClick={handleClick}>Laisser un commentaire</Button>} centered={false}>
+    <Modal closeIcon onClose={handleClose} className="modal_comment" trigger={<Button onClick={handleClick}>Laisser un commentaire</Button>} centered={false}>
       <Modal.Header>Dites nous ce que vous pensez des compétences de {request.jobWorker.firstname} en {request.service.title}</Modal.Header>
       <Modal.Content image>
         <Image wrapped size="medium" className="comment_image" src={request.jobWorker.image} />
@@ -60,7 +60,7 @@ const ModalComment = ({ request, changeFieldComment, submitComment, changeRating
           )}
           {!requestRating && (
             <Form autoComplete="off" onSubmit={handleSubmit}>
-              <p className="info_modalComment"><Icon name="info circle" />Pour envoyer votre commentaire vous devez reseigner un commentaire et une note...</p>
+              <p className="info_modalComment"><Icon name="info circle" />Vous pouvez renseigner un commentaire et une note</p>
               <TextArea
                 required
                 maxLength="200"
@@ -68,7 +68,7 @@ const ModalComment = ({ request, changeFieldComment, submitComment, changeRating
                 placeholder="Laissez votre commentaire ici et n'oubliez pas la note. Merci"
                 style={{ border: 'none', width: '100%' }}
               />
-              <Rating onClick={handleRate} initialRating={0} maxRating={5} />
+              <Rating className="star_modal_comment" onChange={handleRate} />
               <ModalContent>
                 <Button icon labelPosition="left">
                   <Icon name="delete" />

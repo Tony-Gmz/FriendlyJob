@@ -88,6 +88,20 @@ export const OPEN_SUCCESS_MESSAGE = 'OPEN_SUCCESS_MESSAGE';
 export const CLOSE_SUCCESS_MESSAGE = 'CLOSE_SUCCESS_MESSAGE';
 export const ERROR_PASSWORD_MESSAGE = 'ERROR_PASSWORD_MESSAGE';
 export const CLOSE_ERROR_MESSAGE = 'CLOSE_ERROR_MESSAGE';
+export const CHECK_USER_CONFIRMED = 'CHECK_USER_CONFIRMED';
+export const SAVE_USER_CONFIRMED = 'SAVE_USER_CONFIRMED';
+export const CLOSE_ERROR_CONFIRMED_MESSAGE = 'CLOSE_ERROR_CONFIRMED_MESSAGE';
+export const CLOSE_ERROR_CONNEXION_MESSAGE = 'CLOSE_ERROR_CONNEXION_MESSAGE';
+
+
+export const saveUserConfirmed = (newState) => ({
+  type: SAVE_USER_CONFIRMED,
+  newState,
+});
+
+export const checkUserConfirmed = () => ({
+  type: CHECK_USER_CONFIRMED,
+});
 
 export const changeField = (newValue, inputName) => ({
   type: CHANGE_FIELD,
@@ -270,7 +284,6 @@ export const saveJobWorkerService = (service) => ({
   type: SAVE_JOBWORKER_SERVICE,
   service,
 });
-
 export const openSuccesMessage = () => ({
   type: OPEN_SUCCESS_MESSAGE,
 });
@@ -282,4 +295,10 @@ export const errorPasswordMessage = () => ({
 });
 export const closeErrorMessage = () => ({
   type: CLOSE_ERROR_MESSAGE,
+});
+export const closeErrorConfirmedMessage = () => ({
+  type: CLOSE_ERROR_CONFIRMED_MESSAGE,
+});
+export const closeErrorConnexionMessage = () => ({
+  type: CLOSE_ERROR_CONNEXION_MESSAGE,
 });

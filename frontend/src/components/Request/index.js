@@ -49,7 +49,7 @@ const Request = ({ resetRequestSelected, requestSelectedName, getRequestSelected
       <div className="request_presentation">
         <h2 className="request_presentation_title">Mes demandes</h2>
         <p>
-          A partir cette espace vous pouvez visualiser et gerer vos differentes demandes.
+          Dans cet espace vous pouvez visualiser et gérer vos différentes demandes.
         </p>
       </div>
       <Menu tabular className="onglet_request">

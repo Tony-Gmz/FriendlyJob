@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { changeTitle, capitalize } from 'src/utils';
 import {
+  CHECK_USER_CONFIRMED,
   GET_RANDOM_JOBWORKER,
   saveRandomJobWorker,
   SUBMIT_LOGIN,
@@ -31,8 +32,10 @@ import {
   GET_JOBWORKER_SERVICE,
   saveJobWorkerService,
   errorPasswordMessage,
+  saveUserConfirmed,
+  submitLoggin,
 } from '../action/usersActions';
-import { saveToggle } from '../action/requestAction';
+import { saveToggle, getRequest } from '../action/requestAction';
 
 
 const userMiddleware = (store) => (next) => (action) => {
@@ -52,8 +55,37 @@ const userMiddleware = (store) => (next) => (action) => {
         });
       next(action);
       break;
+    case CHECK_USER_CONFIRMED: {
+      const { email, password } = store.getState().user;
+      // console.log(email);
+      // console.log(password);
+      axios({
+        method: 'post',
+        url: 'http://ec2-18-204-19-53.compute-1.amazonaws.com/api/login_check',
+        data: {
+          // give the necessary data for the request
+          username: email,
+          password,
+        },
+      })
+        .then((response) => {
+          console.log(response.data.user.isConfirmed);
+          store.dispatch(saveUserConfirmed(response.data.user.isConfirmed));
+         if (response.data.user.isConfirmed === true) {
+            store.dispatch(submitLoggin());
+            store.dispatch(getRequest());
+          }
+        })
+        .catch((error) => {
+          console.warn(error);
+          // DISPATCH for save in state an error to make an conditionnal display
+          store.dispatch(saveErrorConnexion());
+        });
+      next(action);
+      break;
+    }
     case SUBMIT_LOGIN: {
-      // REQUEST TO SAVE THE NEW USER WITH  SIGN IN 
+      // REQUEST TO SAVE THE NEW USER WITH  SIGN IN
       const { email, password } = store.getState().user;
       // console.log(email);
       // console.log(password);
@@ -67,6 +99,7 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       })
         .then((response) => {
+          console.log(` je ne suis pas dans le if${response.data.user.isConfirmed}`);
           console.log(response);
           // dispact the action saveUser to the reducer
           store.dispatch(saveUser(response.data.user));
@@ -83,6 +116,7 @@ const userMiddleware = (store) => (next) => (action) => {
           console.warn(error);
           // DISPATCH for save in state an error to make an conditionnal display
           store.dispatch(saveErrorConnexion(error.response.data));
+          
         });
       next(action);
       break;

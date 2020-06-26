@@ -11,8 +11,8 @@ import './serviceList.scss';
 const ServiceList = ({ serviceList }) => (
   <div className="serviceList">
     <div className="serviceList_presentation">
-      Cliquez sur le service de votre choix pour avoir un appercu
-      des JobWorkers present dans votre region.
+      Cliquez sur le service de votre choix pour avoir un aperçu
+      des JobWorkers spécialisés dans le service selectionné.
     </div>
     <div className="serviceList_wrap">
       {serviceList.map((service) => {

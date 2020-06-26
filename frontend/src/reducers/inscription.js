@@ -1,4 +1,4 @@
-import { FIELD_VALUE, IS_SUBSCRIBE } from "../action/inscriptionAction";
+import { FIELD_VALUE, IS_SUBSCRIBE, OPEN_ERROR_MESSAGE_INSCRIPTION, CLOSE_ERROR_MESSAGE_INSCRIPTION } from "../action/inscriptionAction";
 
 const initialState = {
   // Initial State
@@ -9,7 +9,9 @@ const initialState = {
   email: '',
   roles: '',
   password: '',
+  confirmPassword: '',
   isSubscribe: false,
+  errorInscriptionMessage: false,
 };
 
 const inscriptionReducer = (state = initialState, action = {}) => {
@@ -23,6 +25,16 @@ const inscriptionReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isSubscribe: true,
+      };
+    case OPEN_ERROR_MESSAGE_INSCRIPTION:
+      return {
+        ...state,
+        errorInscriptionMessage: true,
+      };
+    case CLOSE_ERROR_MESSAGE_INSCRIPTION:
+      return {
+        ...state,
+        errorInscriptionMessage: false,
       };
     default: return state;
   }

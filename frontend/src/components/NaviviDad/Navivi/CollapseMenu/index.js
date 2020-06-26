@@ -31,6 +31,7 @@ console.log(`is open est ${isOpen}`);
       {!isLogged && (
         <>
         <NavLinks>
+          <Link to="/">Accueil</Link>
           <Link to="/services/">Nos services</Link>
           <a href="#inscription">Devenir JobWorker</a>
           <Link to="/contact/">Contact</Link>
@@ -44,6 +45,7 @@ console.log(`is open est ${isOpen}`);
       {isLogged && (
         <>
         <NavLinks>
+          <Link to="/">accueil</Link> 
           <Link to="/services/">Nos services</Link>
           <a href="/profil/">Profil</a>
           <Link to="/contact/">Contact</Link>
@@ -69,7 +71,7 @@ const CollapseWrapper = styled(animated.div)`
 
 const NavLinks = styled.ul`
   list-style-type: none;
-  padding: 2rem 1rem 2rem 2rem;
+  padding: 3rem 1rem 2rem 2rem;
   display: grid;
 
   & li {

@@ -11,18 +11,18 @@ const Footer = () => (
 
   <footer className="footer">
     <div className="footer_content">
-      &copy; 2020 - FriendlyJob Tout droits réservés
+      &copy; 2020 - FriendlyJob Tous droits réservés
     </div>
     <div className="footer_link">
       <div className="footer_link_text">
         {/* Link to our Contact's pages */}
-        <Link to="/contact/">Qui somme nous ?</Link>
+        <Link to="/contact/">Qui sommes nous ?</Link>
       </div>
       {/* social network links to join us and follow our evolution */}
       <div className="footer_icon">
-        <Button className="footer_icon_item" circular color="facebook" icon="facebook" />
-        <Button className="footer_icon_item" circular color="twitter" icon="twitter" />
-        <Button className="footer_icon_item" circular color="linkedin" icon="linkedin" />
+        <a href="https://www.facebook.com/Friendly-Job-105296767884614" target="_blank"><Button className="footer_icon_item" circular color="facebook" icon="facebook" /></a>
+        <a href="https://twitter.com/JobFriendly" target="_blank"><Button className="footer_icon_item" circular color="twitter" icon="twitter" /></a>
+        <a href="https://www.linkedin.com/company/friendlyjobandco/" target="_blank"><Button className="footer_icon_item" circular color="linkedin" icon="linkedin" /></a>
       </div>
     </div>
   </footer>

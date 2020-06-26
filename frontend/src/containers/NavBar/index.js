@@ -6,7 +6,7 @@ import { logOut } from '../../action/usersActions';
 const mapStateToProps = (state) => ({
   // nom de la prop à remplir: donnée à récupérer dans le state
   isLogged: state.user.isLogged,
-  // roles: state.user.userData.roles[0],
+  userData: state.user.userData,
 });
 
 const mapDispatchToProps = (dispatch) => ({

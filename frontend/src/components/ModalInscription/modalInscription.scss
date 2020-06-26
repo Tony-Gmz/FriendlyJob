@@ -14,15 +14,20 @@
     
   }
 
+  .input_inscription{
+    padding: 0!important;
+    width: 100%;
+
+  }
+
   .inputDepartment{
     width: 100%;
     background-color: white;
     border-radius: 0.2em;
-    height: 3.1em;
+    height: 2.1em;
     font-family: unset;
     font-size: large;
     border: #00000033 solid 1px;
-    padding: .67857143em 1em;
 }
   .modal_title {
     display: inline-block;
@@ -33,9 +38,14 @@
   }
   
   .modal_block {
-    background-color:  #2d3436;
+    background-color:  #ffffff;
     border-radius: 10px;
-    color: #FFFF;
+
+  }
+  .header_inscription{
+
+    background-color: #FF385C!important;
+  
   }
   
   #inscription:target{
@@ -69,6 +79,14 @@
     left: 0;
     margin-top: -1px;
   }
+
+  .error_message_passwordConfirmation {
+    
+    text-align: center;
+    color: red;
+    padding-top: 1em;
+  }
+  
   
   @keyframes line-animation{
   
@@ -189,7 +207,7 @@
     .MuiFormLabel-root {
       display: flex!important;
       flex-direction: row!important;
-      justify-content: space-between!important;
+      color: black!important;
     }
 
     .PrivateRadioButtonIcon-root-5:after {
@@ -202,15 +220,17 @@
   }
 
   .modal_button_trigger{
-    padding: 0.3em!important;
+    padding: 0.4em!important;
     background: #ff385c!important;
     min-height: 0.5em!important;
     font-weight: 500!important;
     color: white!important;
+    margin-bottom: 0.5em!important;
   }
   
 }
 @include xl {
+
   .inscription{
   width: 100%;
   height: auto;
@@ -221,17 +241,14 @@
   right: 0;
   background-color: #f7f7f7;
 }
+.header_inscription{
 
-.inputDepartment{
-    width: 100%;
-    background-color: white;
-    border-radius: 0.2em;
-    height: 3.1em;
-    font-family: unset;
-    font-size: large;
-    border: #00000033 solid 1px;
-    padding: .67857143em 1em;
+  background-color: #FF385C!important;
+  opacity: 0.80;
+  color: #FFFF!important;
 }
+
+
 
 .modal_title {
   display: inline-block;
@@ -243,7 +260,6 @@
 }
 
 .modal_block {
-  background-color: #2d3436;
   border-radius: 10px;
 }
 
@@ -381,7 +397,7 @@
   margin-top: 1rem;
   display: flex!important;
   flex-direction: row!important;
-  justify-content: space-between!important;
+  justify-content: space-around!important;
   
 }
 
@@ -407,21 +423,37 @@
 }
 
 .inputDepartment {
-  width: 95%;
-  margin-left: 1em;
-  margin-top: 1rem;
+  width: 60%;
+  margin: 1rem 0 1rem 0;
+  height: 2.5em;
+  font-family: unset;
 }
+
+
+.input_inscription{
+  padding: 0!important;
+  width: 60%;
+
+}
+
+
 
 .form_element_inscription_department {
   text-align: left;
   font-size: 1rem;
+  display: flex;
+  flex-direction: column;
   label {
-    margin-left: 1em;
     text-align: left;
   }
   input {
     margin-bottom: 1rem;
   }
 }
+.form_inscription {
+padding-bottom: 3em;
+
+}
+
 
 }

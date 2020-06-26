@@ -62,6 +62,10 @@
         width: 100%;
         margin: auto;
         padding-left: 4em;
+
+        .MuiFormLabel-root {
+          z-index: -900;
+        }
       }
     }
     
@@ -72,6 +76,13 @@
     padding-top: 2em;
     padding-bottom: 2em;
     margin: 0 auto;
+    }
+
+    .link_skill_modal{
+      border-bottom: 2px solid white;
+    }
+    a.link_skill_modal:hover {
+      color: unset;
     }
    
     

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SUBMIT_SUBSCRIBE, IsSubscribe } from 'src/action/inscriptionAction';
+import { SUBMIT_SUBSCRIBE, IsSubscribe, openErrorMessageInscription } from 'src/action/inscriptionAction';
 
 const inscriptionMiddleware = (store) => (next) => (action) => {
   // console.log('on a intercepté une action dans le middleware: ', action);
@@ -30,6 +30,9 @@ const inscriptionMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.warn(error);
+          console.log('je suis une erreur sur linscription');
+          store.dispatch(openErrorMessageInscription());
+
         })
         .finally(() => {
         });

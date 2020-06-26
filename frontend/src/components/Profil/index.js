@@ -30,7 +30,7 @@ const Profil = ({
   isOpen,
   closeSuccessMessage,
   openSuccessMessage,
-  errorPasswordMessage,
+  errorMessage,
   closeErrorMessage,
 }) => {
 
@@ -62,7 +62,7 @@ const Profil = ({
             isOpen={isOpen}
             openSuccessMessage={openSuccessMessage}
             closeSuccessMessage={closeSuccessMessage}
-            errorPasswordMessage={errorPasswordMessage}
+            errorMessage={errorMessage}
             closeErrorMessage={closeErrorMessage}
           />
         )
@@ -94,7 +94,7 @@ const Profil = ({
             isOpen={isOpen}
             openSuccessMessage={openSuccessMessage}
             closeSuccessMessage={closeSuccessMessage}
-            errorPasswordMessage={errorPasswordMessage}
+            errorMessage={errorMessage}
             closeErrorMessage={closeErrorMessage}
           />
         )}

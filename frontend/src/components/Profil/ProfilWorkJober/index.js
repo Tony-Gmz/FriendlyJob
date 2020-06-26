@@ -46,7 +46,7 @@ const ProfilJobWorker = ({
   isOpen,
   closeSuccessMessage,
   openSuccessMessage,
-  errorPasswordMessage,
+  errorMessage,
   closeErrorMessage,
 }) => {
   useEffect(() => {
@@ -95,8 +95,7 @@ const ProfilJobWorker = ({
       </div>
       <div className="profil">
         <div className="profil_card">
-          <div className="profil_title">{firstname}</div>
-          <div>
+          <div className="profil_card_avatar">
             {userAvatar && <img className="profil_card_img" alt="Remy Sharp" src={urlAvatar} /> }
             {!userAvatar && <Avatar className="profil_card_img" alt="Remy Sharp" src=""></Avatar>}
             <div className="profil_card_img_upload">
@@ -152,9 +151,8 @@ const ProfilJobWorker = ({
                   id="outlined-multiline-static"
                   label="A propos"
                   multiline
-                  value={about}
+                  value={editAbout}
                   rows={10}
-                  defaultValue="Default Value"
                   variant="outlined"
                   disabled
                 />
@@ -251,11 +249,11 @@ const ProfilJobWorker = ({
             {isEdited && (
               <Snackbar open={isOpen} autoHideDuration={6000} onClose={handleMessageClose}>
                 <Alert onClose={handleMessageClose} severity="success">
-                  vos modifications ont bien été pris en compte ! vous souhaitez retourner sur la <a href="/profil">page d'accueil</a> ?
+                  vos modifications ont bien été pris en compte ! vous souhaitez retourner sur la <a className="link_profil_modal" href="/">page d'accueil</a> ?
                 </Alert>
               </Snackbar>
             )}
-            {errorPasswordMessage && (
+            {errorMessage && (
               <Snackbar open={open} autoHideDuration={6000} onClose={handleErrorMessageClose}>
                 <Alert onClose={handleErrorMessageClose} severity="error">
                   Votre mot de passe doit contenir 8 character minimum, une majuscule, une minuscule et un character spécial

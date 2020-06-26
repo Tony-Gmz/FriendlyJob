@@ -48,6 +48,13 @@
   margin-top: -1px;
 }
 
+.link_reservation_modal{
+  border-bottom: 2px solid white;
+}
+a.link_reservation_modal:hover {
+  color: unset;
+}
+
 @keyframes line-animation{
 
   0%{
@@ -169,6 +176,16 @@
 width: 200px;
 
 }
+.modal_Select_content{
+
+  height: 40px;
+  border-radius: 10px;
+  font-weight: bold;
+  border: none;
+  background-color: #FFF;
+  margin-left: 1rem;
+
+}
 @import 'src/styles/vars'; 
 
 .modal_input_select {
@@ -185,4 +202,8 @@ width: 200px;
 .modalTextArea {
   width: 593px;
   margin: 0 auto;
+}
+.div_submit {
+  display: flex;
+  justify-content: space-around;
 }

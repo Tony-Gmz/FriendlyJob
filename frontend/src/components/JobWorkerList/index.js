@@ -27,8 +27,8 @@ console.log(jobWorkers.length);
       {!loadingOnJobWorkerList && (
         <>
           <JobWorkerListTitle currentService={currentService} />
-          <JobWorkerMain jobWorkers={currentJobWorker} getJobWorker={getJobWorker} getServiceName={getServiceName} />
-          <Pagination currentPage={currentPage} joberPerPage={joberPerPage} totalJobWorker={jobWorkers.length} changeCurrentPage={changeCurrentPage} />
+          <JobWorkerMain currentPage={currentPage} jobWorkers={currentJobWorker} getJobWorker={getJobWorker} getServiceName={getServiceName} />
+          <Pagination getJobWorker={getJobWorker} getServiceName={getServiceName} currentPage={currentPage} joberPerPage={joberPerPage} totalJobWorker={jobWorkers.length} changeCurrentPage={changeCurrentPage} />
         </>
       )}
     </>

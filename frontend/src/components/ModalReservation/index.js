@@ -74,7 +74,7 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
           </div>
           <div className="modal_content">
             <div className="modal_select">
-              <select name="currentSkill" onChange={handleChange} id="">
+              <select className="modal_Select_content" name="currentSkill" onChange={handleChange} id="">
                 <option value="select">Choisissez la compétence désirée</option>
                 {skills.map((skill) => (
                   <option value={skill.service.id}>{skill.service.title}</option>
@@ -125,7 +125,7 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
           {isSave && (
             <Snackbar open={isOpen} autoHideDuration={6000} onClose={handleMessageClose}>
               <Alert onClose={handleMessageClose} severity="success">
-                votre reservation a  bien été prise en compte ! vous souhaitez acceder à vos <a href="/demandes">demandes</a> ?
+                votre reservation a  bien été prise en compte ! vous souhaitez acceder à vos <a className="link_reservation_modal" href="/demandes">demandes</a> ?
               </Alert>
             </Snackbar>
           )}

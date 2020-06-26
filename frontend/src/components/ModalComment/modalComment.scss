@@ -5,6 +5,16 @@
   overflow: hidden;
 }
 
+.comment_image img{
+  border-radius: 50%;
+}
+
+.star_modal_comment{
+  margin-left: 1.5em;
+  transform: scale(1.7)!important;
+  margin-bottom: 1.5em!important;
+}
+
 .bottom_modalComment{
   border-bottom-left-radius: 2em;
   border-bottom-right-radius: 2em;
