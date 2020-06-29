@@ -1,5 +1,5 @@
-
-import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import {
   Button,
   Header,
@@ -10,15 +10,13 @@ import {
 
 
 const ModalDeleteSkill = ({ skill, getSkillId, submitDeleteSkill }) => {
-
   const handleClick = () => {
-    //console.log(skill);
+    // console.log(skill);
     getSkillId(skill);
   };
 
-
   const handleSubmit = (evt) => {
-    //console.log('voila le submit du delete');
+    // console.log('voila le submit du delete');
     evt.preventDefault();
     submitDeleteSkill();
   };
@@ -45,5 +43,10 @@ const ModalDeleteSkill = ({ skill, getSkillId, submitDeleteSkill }) => {
   );
 };
 
+ModalDeleteSkill.propTypes = {
+  skill: PropTypes.string.isRequired,
+  getSkillId: PropTypes.func.isRequired,
+  submitDeleteSkill: PropTypes.func.isRequired,
+};
 
 export default ModalDeleteSkill;

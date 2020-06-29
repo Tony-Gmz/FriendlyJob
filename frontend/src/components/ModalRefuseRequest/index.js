@@ -1,24 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Button,
   Header,
   Icon,
   Modal,
   Form,
-  Message,
 } from 'semantic-ui-react';
 
 import './modalRefuseRequest.scss';
 
 
-const ModalRefuseRequest = ({ request, getRequestId, submitRefuseRequest, clearRefuse, isRefuse }) => {
+const ModalRefuseRequest = ({
+  request,
+  getRequestId,
+  submitRefuseRequest,
+  clearRefuse,
+}) => {
   const handleClick = () => {
     getRequestId(request.id);
   };
 
 
   const handleSubmit = (evt) => {
-    //console.log('voila le submit du commentaire');
+    // console.log('voila le submit du commentaire');
     evt.preventDefault();
     submitRefuseRequest();
   };
@@ -32,7 +37,8 @@ const ModalRefuseRequest = ({ request, getRequestId, submitRefuseRequest, clearR
       <Header icon="trash" content="Refuser le service" />
       <Modal.Content>
         <p>
-          Si vous refuser ce service vous ne pourrez pas contacter le FriendlyUser et le service ne sera plus accessible..
+          Si vous refuser ce service vous ne pourrez pas contacter
+          le FriendlyUser et le service ne sera plus accessible..
         </p>
       </Modal.Content>
       <Modal.Actions>
@@ -44,6 +50,18 @@ const ModalRefuseRequest = ({ request, getRequestId, submitRefuseRequest, clearR
       </Modal.Actions>
     </Modal>
   );
+};
+
+ModalRefuseRequest.propTypes = {
+  request: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    }).isRequired,
+  ).isRequired,
+  // func without param
+  getRequestId: PropTypes.func.isRequired,
+  submitRefuseRequest: PropTypes.func.isRequired,
+  clearRefuse: PropTypes.func.isRequired,
 };
 
 

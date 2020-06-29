@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { useSpring, animated, config } from 'react-spring';
 import { NavLink } from 'react-router-dom';
 import ModalConnexion from 'src/containers/ModalConnexion';
 import ModalInscription from 'src/containers/ModalInscription';
-import { Button, Popup, Icon } from 'semantic-ui-react';
+import { Button, Popup } from 'semantic-ui-react';
 
 
 import BurgerMenu from './BurgerMenu';
@@ -12,9 +13,14 @@ import CollapseMenu from './CollapseMenu';
 
 import './navivi.scss';
 import 'src/styles/_vars.scss';
-import { getRequest } from '../../../action/requestAction';
 
-const Navbar = ({ userData, isOpen, handleNavbar, isLogged, logOut, requestList, resetRequestList, getRequest }) => {
+const Navbar = ({
+  isOpen,
+  handleNavbar,
+  isLogged,
+  logOut,
+  requestList,
+}) => {
   const handleClick = () => {
     logOut();
     localStorage.removeItem('jwtToken');
@@ -34,15 +40,14 @@ const Navbar = ({ userData, isOpen, handleNavbar, isLogged, logOut, requestList,
     config: config.wobbly,
   });
 
-  let waitingRequest = requestList.filter(request => request.status === 'En attente');
+  const waitingRequest = requestList.filter((request) => request.status === 'En attente');
 
-  
- 
   let demands = 'demande';
   if (waitingRequest.length > 1) {
     demands = 'demandes';
   }
 
+  // for having a dynamic navbar without reload we need to get userRole from the state and not from the localstorage
   const userRole = localStorage.getItem('userRole');
 
   if (isLogged === false) {

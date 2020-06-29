@@ -127,16 +127,15 @@ const ModalConnexion = ({
 ModalConnexion.propTypes = {
   /** func with param */
   changeField: PropTypes.func.isRequired,
-  /** finc without param */
+  /** func without param */
   closeErrorConnexionMessage: PropTypes.func.isRequired,
   checkUserConfirmed: PropTypes.func.isRequired,
   closeErrorConfirmedMessage: PropTypes.func.isRequired,
-  errorConfirmedMessage: PropTypes.func.isRequired,
-  /** array */
-  connexionError: PropTypes.array.isRequired,
   /** bool */
   isConfirmed: PropTypes.bool.isRequired,
+  connexionError: PropTypes.bool.isRequired,
   errorConnexionMessage: PropTypes.bool.isRequired,
+  errorConfirmedMessage: PropTypes.bool.isRequired,
 };
 
 // == Export

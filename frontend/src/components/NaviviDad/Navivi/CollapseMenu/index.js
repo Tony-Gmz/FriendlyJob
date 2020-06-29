@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Button } from 'semantic-ui-react';
@@ -17,46 +18,52 @@ const CollapseMenu = ({ isOpen, isLogged, logOut }) => {
     localStorage.removeItem('userRole');
   };
   const { open } = useSpring({ open: isOpen ? 0 : 1 });
-//console.log(`is open est ${isOpen}`);
+  // console.log(`is open est ${isOpen}`);
   if (isOpen === true) {
-    console.log('je suis rentrer dans le if');
+    // console.log('je suis rentrer dans le if');
     return (
       <CollapseWrapper style={{
         transform: open.interpolate({
           range: [0, 0.2, 0.3, 1],
           output: [0, -20, 0, -200],
-        }).interpolate(openValue => `translate3d(0, ${openValue}px, 0`),
+        }).interpolate((openValue) => `translate3d(0, ${openValue}px, 0`),
       }}
       >
-      {!isLogged && (
-        <>
-        <NavLinks>
-          <Link to="/">Accueil</Link>
-          <Link to="/services/">Nos services</Link>
-          <a href="#inscription">Devenir JobWorker</a>
-          <Link to="/contact/">Contact</Link>
-        </NavLinks>
-        <NavLinks>
-          <ModalConnexion />
-          <ModalInscription />
-        </NavLinks>
-        </>
-      )}
-      {isLogged && (
-        <>
-        <NavLinks>
-          <Link to="/">accueil</Link> 
-          <Link to="/services/">Nos services</Link>
-          <a href="/profil/">Profil</a>
-          <Link to="/contact/">Contact</Link>
-        </NavLinks>
-        <NavLinks to="/"><Button style={{ backgroundColor: '#FF385C', color: '#FFFF', margin: 'auto' }} onClick={handleClick}>Deconnexion</Button></NavLinks>
-        </>
-      )}
+        {!isLogged && (
+          <>
+            <NavLinks>
+              <Link to="/">Accueil</Link>
+              <Link to="/services/">Nos services</Link>
+              <a href="#inscription">Devenir JobWorker</a>
+              <Link to="/contact/">Contact</Link>
+            </NavLinks>
+            <NavLinks>
+              <ModalConnexion />
+              <ModalInscription />
+            </NavLinks>
+          </>
+        )}
+        {isLogged && (
+          <>
+            <NavLinks>
+              <Link to="/">accueil</Link>
+              <Link to="/services/">Nos services</Link>
+              <a href="/profil/">Profil</a>
+              <Link to="/contact/">Contact</Link>
+            </NavLinks>
+            <NavLinks to="/"><Button style={{ backgroundColor: '#FF385C', color: '#FFFF', margin: 'auto' }} onClick={handleClick}>Deconnexion</Button></NavLinks>
+          </>
+        )}
       </CollapseWrapper>
     );
   }
   return null;
+};
+
+CollapseMenu.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  isLogged: PropTypes.bool.isRequired,
+  logOut: PropTypes.func.isRequired,
 };
 
 export default CollapseMenu;

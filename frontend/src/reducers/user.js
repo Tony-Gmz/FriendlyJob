@@ -40,13 +40,13 @@ const initialState = {
   /** indique si l'utilisateur est loggué */
   isLogged: false,
   /** informations de l'utilisateur */
-  userData: null,
+  userData: {},
   /** Token  */
   token: '',
   /** currentJobwokerId */
   currentJobWorkerId: null,
   /** RandomJobWoker Data for homePage */
-  randomJobWorker: null,
+  randomJobWorker: {},
   /** Loading HomePage */
   loading: true,
   /** Loading service detail */
@@ -61,7 +61,7 @@ const initialState = {
   /** Jobworkers List */
   jobWorkers: [],
   /** Current Jobworker Detail */
-  currentJobWorkerDetail: [],
+  currentJobWorkerDetail: {},
   /** Current JobWorker Rating for details */
   currentJobWorkerRating: [],
   /** current jobWorker Skills for edit */
@@ -72,7 +72,7 @@ const initialState = {
   editEmail: null,
   editPassword: null,
   editDepartment: null,
-  editAbout: null,
+  editAbout: '',
   editConfirmationPassword: null,
   /** bool for edit */
   isEdited: false,
@@ -93,21 +93,20 @@ const initialState = {
   /** bool for the user's profil success message */
   isSave: false,
   /** error when the user try to connect in app  */
-  connexionError: null,
+  connexionError: false,
   /** List of service for the current jobworker's modal add Skill in his profil */
   jobWorkerService: [],
   currentPage: 1,
   joberPerPage: 8,
   isOpen: false,
   errorMessage: false,
-  isConfirmed: '',
+  isConfirmed: true,
   errorConfirmedMessage: true,
   errorConnexionMessage: true,
 };
 
 const userReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-
     case SAVE_USER_CONFIRMED:
       return {
         ...state,

@@ -8,9 +8,12 @@ import './jobpresentation.scss';
 
 // component for jobworker presentation in homepage
 
-const JobPresentation = ({ randomJobWorker, loading, isLogged }) => (
+const JobPresentation = ({ randomJobWorker, loading, isLogged }) => {
 
-  <div className="jobpresentation">
+  console.log(randomJobWorker);
+
+  return (
+    <div className="jobpresentation">
     {loading && <Loader />}
     {!loading && (
     <>
@@ -37,10 +40,11 @@ const JobPresentation = ({ randomJobWorker, loading, isLogged }) => (
     </div>
     )}
   </div>
-);
+  );
+};
 
 JobPresentation.propTypes = {
-  // object
+  // array
   randomJobWorker: PropTypes.object.isRequired,
   // bool
   loading: PropTypes.bool.isRequired,

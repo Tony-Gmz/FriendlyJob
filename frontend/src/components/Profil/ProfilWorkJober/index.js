@@ -1,3 +1,5 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable consistent-return */
 /* eslint-disable no-lone-blocks */
 // == Import npm
 import React, { useEffect } from 'react';
@@ -26,9 +28,7 @@ const ProfilJobWorker = ({
   isEditable,
   firstname,
   lastname,
-  department,
   email,
-  about,
   cancelEdit,
   departmentsList,
   submitEdit,
@@ -53,7 +53,7 @@ const ProfilJobWorker = ({
     getJobWorkerSkill();
   }, [toggle]);
 
-   //console.log(currentJobWorkerSkills);
+  // console.log(currentJobWorkerSkills);
   const userAvatar = urlAvatar;
   const handleClick = () => {
     canEditProfil();
@@ -62,12 +62,12 @@ const ProfilJobWorker = ({
     cancelEdit();
   };
   const handleChange = (evt) => {
-     //console.log(`${evt.target.value} + ${evt.target.name}`);
+    // console.log(`${evt.target.value} + ${evt.target.name}`);
     editField(evt.target.value, evt.target.name);
   };
 
   const handleSubmit = (evt) => {
-     //console.log('coucou je suis le submit de edit profil');
+    // console.log('coucou je suis le submit de edit profil');
     evt.preventDefault();
     submitEdit();
     openSuccessMessage();
@@ -91,13 +91,14 @@ const ProfilJobWorker = ({
   return (
     <div className="profilJobWorker">
       <div className="profilJobWorker_desciption">
-        Voici votre espace personnel il vous sera utile si vous voulez effectuer des changements d'informations
+        Voici votre espace personnel il vous sera utile
+        si vous voulez effectuer des changements d'informations
       </div>
       <div className="profil">
         <div className="profil_card">
           <div className="profil_card_avatar">
             {userAvatar && <img className="profil_card_img" alt="Remy Sharp" src={urlAvatar} /> }
-            {!userAvatar && <Avatar className="profil_card_img" alt="Remy Sharp" src=""></Avatar>}
+            {!userAvatar && <Avatar className="profil_card_img" alt="Remy Sharp" src="" />}
             <div className="profil_card_img_upload">
               {isEditable && <UploadImg urlAvatar={urlAvatar} />}
             </div>
@@ -138,7 +139,7 @@ const ProfilJobWorker = ({
             )}
             {!isEditable && (
               <div className="form_element_profil">
-              <TextField className="profil_input" id="select" onChange={handleChange} label="Departement" name="department" select disabled>
+                <TextField className="profil_input" id="select" onChange={handleChange} label="Departement" name="department" select disabled>
                   {departmentsList.map((depart) => (
                     <MenuItem value={depart.id}>{depart.name}</MenuItem>
                   ))}
@@ -301,17 +302,17 @@ const ProfilJobWorker = ({
           </form>
           <div className="form_skill">
             <div className="form_skill_description">
-              Vous souhaitez changer ou ajouter des compétences ? Modifier votre prix horaire ? C'est par ici 
+              Vous souhaitez changer ou ajouter des compétences ?
+              Modifier votre prix horaire ? C'est par ici
             </div>
             {serviceList.map((service) => (
               <>
                 {currentJobWorkerSkills.map((skill) => {
                   const currentSkill = skill.service.id;
-                   //console.log(service.id)
-                   //console.log(currentSkill);
+                  // console.log(service.id)
+                  // console.log(currentSkill);
                   { if (currentSkill === service.id) {
                     return (
-                      <>
                         <div key={service.id} className="form_skill_content">
                           <div className="form_skill_input">
                             <div className="form_skill_content_radio">
@@ -332,7 +333,6 @@ const ProfilJobWorker = ({
                                 label="Description"
                                 multiline
                                 rows={4}
-                                defaultValue="Default Value"
                                 variant="outlined"
                                 value={skill.description}
                                 disabled
@@ -348,7 +348,6 @@ const ProfilJobWorker = ({
                             </div>
                           </div>
                         </div>
-                      </>
                     );
                   }
                   }
@@ -380,6 +379,7 @@ ProfilJobWorker.propTypes = {
   getJobWorkerSkill: PropTypes.func.isRequired,
   closeSuccessMessage: PropTypes.func.isRequired,
   openSuccessMessage: PropTypes.func.isRequired,
+  closeErrorMessage: PropTypes.func.isRequired,
   /** string */
   editEmail: PropTypes.string.isRequired,
   editPassword: PropTypes.string.isRequired,
@@ -397,6 +397,7 @@ ProfilJobWorker.propTypes = {
   isEditable: PropTypes.bool.isRequired,
   toggle: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.bool.isRequired,
   /** array  */
   serviceList: PropTypes.arrayOf(
     PropTypes.shape({

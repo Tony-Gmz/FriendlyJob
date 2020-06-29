@@ -7,7 +7,6 @@ import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
-import { Form } from 'semantic-ui-react';
 
 import UploadImg from 'src/containers/UploadImg';
 
@@ -23,7 +22,6 @@ const ProfilFiendlyUser = ({
   isEditable,
   firstname,
   lastname,
-  department,
   email,
   cancelEdit,
   departmentsList,
@@ -50,12 +48,12 @@ const ProfilFiendlyUser = ({
   };
   // handle change on field to set new value in state
   const handleChange = (evt) => {
-     //console.log(`${evt.target.value} + ${evt.target.name}`);
+    // console.log(`${evt.target.value} + ${evt.target.name}`);
     editField(evt.target.value, evt.target.name);
   };
-  // handle for submit the modification 
+  // handle for submit the modification
   const handleSubmit = (evt) => {
-     //console.log('coucou je suis le submit de edit profil');
+    // console.log('coucou je suis le submit de edit profil');
     evt.preventDefault();
     submitEdit();
     openSuccessMessage();
@@ -123,7 +121,7 @@ const ProfilFiendlyUser = ({
             {!isEditable && (
               <div className="form_fu_element">
                 <TextField className="profil_input" id="select" label="Departement" value="" select disabled>
-                {departmentsList.map((depart) => (
+                  {departmentsList.map((depart) => (
                     <MenuItem value={depart.id}>{depart.name}</MenuItem>
                   ))}
                 </TextField>
@@ -212,13 +210,14 @@ const ProfilFiendlyUser = ({
             {errorMessage && (
               <Snackbar open={isOpen} autoHideDuration={6000} onClose={handleMessageClose}>
                 <Alert onClose={handleMessageClose} severity="error">
-                  Votre mot de passe doit contenir 8 character minimum, une majuscule, une minuscule et un character spécial
+                  Votre mot de passe doit contenir 8 character minimum,
+                  une majuscule, une minuscule et un character spécial
                 </Alert>
               </Snackbar>
             )}
             {editPassword !== editConfirmationPassword ? (
               <>
-                <div className="error_message_passwordConfirmation"><i className="times circle icon"/>Le champ "mot de passe" est différent du champ "confirmation"</div>
+                <div className="error_message_passwordConfirmation"><i className="times circle icon" />Le champ "mot de passe" est différent du champ "confirmation"</div>
                 <div className="profil_group_btn">
                   {isEditable && (
                     <Button onClick={handleCancelClick} className="profil_btn" variant="contained" color="alerte"> Annuler</Button>
@@ -278,13 +277,13 @@ ProfilFiendlyUser.propTypes = {
   editConfirmationPassword: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
   firstname: PropTypes.string.isRequired,
-  department: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   urlAvatar: PropTypes.string.isRequired,
   /** bool */
   isEdited: PropTypes.bool.isRequired,
   isEditable: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.bool.isRequired,
   /** array  */
   departmentsList: PropTypes.arrayOf(
     PropTypes.shape({

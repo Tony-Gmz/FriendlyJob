@@ -18,12 +18,7 @@ const Profil = ({
   editAbout,
   getJobWorkerSkill,
   serviceList,
-  getUserData,
   currentJobWorkerSkills,
-  getNewSkillValue,
-  selectedSkillId,
-  selectedSkillPrice,
-  selectedSkillDescription,
   urlAvatar,
   toggle,
   editDepartment,
@@ -85,10 +80,6 @@ const Profil = ({
             getJobWorkerSkill={getJobWorkerSkill}
             serviceList={serviceList}
             currentJobWorkerSkills={currentJobWorkerSkills}
-            selectedSkillId={selectedSkillId}
-            selectedSkillPrice={selectedSkillPrice}
-            selectedSkillDescription={selectedSkillDescription}
-            getNewSkillValue={getNewSkillValue}
             urlAvatar={urlAvatar}
             editDepartment={editDepartment}
             isOpen={isOpen}

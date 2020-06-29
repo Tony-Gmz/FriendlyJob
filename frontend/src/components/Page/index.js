@@ -14,8 +14,6 @@ import HomePage from '../HomePage';
 import Contact from '../Contact';
 
 import Error from '../Error';
-import ModalInscription from '../ModalInscription';
-
 
 
 const Page = ({ isLogged }) => {
@@ -101,7 +99,7 @@ const Page = ({ isLogged }) => {
   );
 };
 Page.propTypes = {
-  serviceList: PropTypes.array.isRequired,
+  isLogged: PropTypes.bool.isRequired,
 };
 
 export default Page;

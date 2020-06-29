@@ -1,18 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Header, Icon, Modal } from 'semantic-ui-react';
+import {
+  Button,
+  Header,
+  Icon,
+  Modal,
+} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-const ModalSuppression = ({isDelete, submitDelete}) => {
-
+const ModalSuppression = ({ isDelete, submitDelete }) => {
   const handleDeleteSubmit = (evt) => {
     evt.preventDefault();
     submitDelete();
   };
 
   return (
-    <Modal trigger={<Button basic color='red' content='Red'>supprimer votre compte</Button>} basic size='small' closeIcon>
-      <Header icon='trash alternate icon' content='Vous souhaitez déjà nous quitter ?' />
+    <Modal trigger={<Button basic color="red" content="Red">supprimer votre compte</Button>} basic size="small" closeIcon>
+      <Header icon="trash alternate icon" content="Vous souhaitez déjà nous quitter ?" />
       {!isDelete && (
         <>
           <Modal.Content>
@@ -22,12 +26,14 @@ const ModalSuppression = ({isDelete, submitDelete}) => {
           </Modal.Content>
           <Modal.Actions>
             <form className="form_modal_delete" onSubmit={handleDeleteSubmit}>
-            <Button  basic color='red' inverted >
-              <Icon name='remove' close /> No
-            </Button>
-              <a href="/"><Button type="submit"  color='green' inverted>
-                <Icon name='checkmark' /> Yes
-              </Button></a>
+              <Button basic color="red" inverted>
+                <Icon name="remove" close /> No
+              </Button>
+              <a href="/">
+                <Button type="submit" color="green" inverted>
+                  <Icon name="checkmark" /> Yes
+                </Button>
+              </a>
             </form>
           </Modal.Actions>
         </>
@@ -41,16 +47,15 @@ const ModalSuppression = ({isDelete, submitDelete}) => {
             </p>
           </Modal.Content>
           <Modal.Actions>
-          <Link to="/">
-            <Button  basic color='red' inverted >
-              <Icon name='remove' close /> revenir à la page d'accueil
-            </Button>
-          </Link>
+            <Link to="/">
+              <Button basic color="red" inverted>
+                <Icon name="remove" close /> revenir à la page d'accueil
+              </Button>
+            </Link>
           </Modal.Actions>
-         
         </>
       )}
-     </Modal>
+    </Modal>
   );
 };
 

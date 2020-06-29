@@ -1,10 +1,10 @@
+/* eslint-disable no-unneeded-ternary */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Form,
   TextArea,
   Button,
-  Message,
 } from 'semantic-ui-react';
 import 'date-fns';
 import Grid from '@material-ui/core/Grid';
@@ -24,31 +24,44 @@ import './modalReservation.scss';
 
 
 // == Composant
-const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerDetail, changeFieldHourRequest, changeFieldDateRequest, requestDate, requestHour, displayHour, isSave, isOpen, openSuccessMessage, closeSuccessMessage, errorMessageReservation }) => {
+const ModalReservation = ({
+  changeFieldRequest,
+  submitRequest,
+  currentJobWorkerDetail,
+  changeFieldHourRequest,
+  changeFieldDateRequest,
+  requestDate,
+  requestHour,
+  isSave,
+  isOpen,
+  openSuccessMessage,
+  closeSuccessMessage,
+  errorMessageReservation,
+}) => {
   const { skills } = currentJobWorkerDetail;
-   //console.log(skills);
+  // console.log(skills);
   const selectedDate = Date();
 
   const handleChange = (evt) => {
-     //console.log(`coucou j'envoi ${evt.target.value} + ${evt.target.name}`);
+    // console.log(`coucou j'envoi ${evt.target.value} + ${evt.target.name}`);
     changeFieldRequest(evt.target.value, evt.target.name);
   };
-   //console.log(currentJobWorkerDetail);
+  // console.log(currentJobWorkerDetail);
   const handleSubmit = (evt) => {
-     //console.log('coucou je suis le submit de la request');
+    // console.log('coucou je suis le submit de la request');
     evt.preventDefault();
     submitRequest();
     openSuccessMessage();
   };
   const handleDate = (date) => {
-     //console.log(newDate);
+    // console.log(newDate);
     changeFieldDateRequest(date);
   };
 
   const handleHour = (date) => {
-     //console.log(date);
-     //console.log(date.getHours());
-     //console.log(date.getMinutes());
+    // console.log(date);
+    // console.log(date.getHours());
+    // console.log(date.getMinutes());
     changeFieldHourRequest(date);
   };
 
@@ -77,7 +90,12 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
               <select className="modal_Select_content" name="currentSkill" onChange={handleChange} id="">
                 <option value="select">Choisissez la compétence désirée</option>
                 {skills.map((skill) => (
-                  <option value={skill.service.id}>{skill.service.title}</option>
+                  <option
+                    key={skill.service.id}
+                    value={skill.service.id}
+                  >
+                    {skill.service.title}
+                  </option>
                 ))}
               </select>
             </div>
@@ -102,7 +120,6 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
                   KeyboardButtonProps={{
                     'aria-label': 'change date',
                   }}
-                  DateTimeFormat={Intl.DateTimeFormat}
                   locale="fr"
                 />
                 <KeyboardTimePicker
@@ -132,7 +149,8 @@ const ModalReservation = ({ changeFieldRequest, submitRequest, currentJobWorkerD
           {errorMessageReservation && (
             <Snackbar open={isOpen} autoHideDuration={6000} onClose={handleMessageClose}>
               <Alert onClose={handleMessageClose} severity="error">
-                Une erreur s'est produite lors de votre reservation ! Verifiez que tous les champs soient rempli.
+                Une erreur s'est produite lors de votre reservation !
+                Verifiez que tous les champs soient rempli.
               </Alert>
             </Snackbar>
           )}
@@ -158,11 +176,16 @@ ModalReservation.propTypes = {
   changeFieldDateRequest: PropTypes.func.isRequired,
   /** func with no params */
   submitRequest: PropTypes.func.isRequired,
-  currentJobWorkerDetail: PropTypes.arrayOf(
-    PropTypes.shape({
-
-    }).isRequired,
-  ).isRequired,
+  closeSuccessMessage: PropTypes.func.isRequired,
+  openSuccessMessage: PropTypes.func.isRequired,
+  currentJobWorkerDetail: PropTypes.object.isRequired,
+  /** string */
+  requestDate: PropTypes.string.isRequired,
+  requestHour: PropTypes.string.isRequired,
+  /** Bool */
+  isSave: PropTypes.bool.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  errorMessageReservation: PropTypes.bool.isRequired,
 };
 
 // == Export
