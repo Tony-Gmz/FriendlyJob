@@ -11,7 +11,7 @@ const Competence = ({ skills }) => {
     <div className="competence">
       <h4 className="competence_title">Compétence(s)</h4>
       {skills.map((skill) => (
-        <div className="competence_content">
+        <div key={skill.id} className="competence_content">
           <div className="competence_content_illustration">
             <img className="competence_img" src={skill.service.image} alt="competence" />
             <p className="competence_name">{skill.service.title}</p>
@@ -27,18 +27,7 @@ const Competence = ({ skills }) => {
 };
 
 Competence.propTypes = {
-  skills: PropTypes.arrayOf(
-    PropTypes.shape({
-      description: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      service: PropTypes.arrayOf(
-        PropTypes.shape({
-          image: PropTypes.string.isRequired,
-          title: PropTypes.string.isRequired,
-        }).isRequired,
-      ).isRequired,
-    }).isRequired,
-  ).isRequired,
+  skills: PropTypes.array.isRequired,
 };
 
 export default Competence;

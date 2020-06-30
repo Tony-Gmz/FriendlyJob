@@ -31,17 +31,14 @@ const App = ({
       getUserData();
       getRequest();
     }
-    getServices();
-    getRandomJobWorker();
-    getAllDepartments();
-    // setTimeOut neccessary because
-    /* const timer = setTimeout(() => {
+    // setTimeOut neccessary because when we refresh 
+    // profil and request pages we need to wait that userData be reading
+    const timer = setTimeout(() => {
       getServices();
       getRandomJobWorker();
       getAllDepartments();
     }, 1000);
-    return () => clearTimeout(timer); */
-    // ==================================== ????
+    return () => clearTimeout(timer);
   }, []);
   return (
     <div className="app">

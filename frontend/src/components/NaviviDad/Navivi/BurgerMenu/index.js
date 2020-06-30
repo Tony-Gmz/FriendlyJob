@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Burgermenu = ({ isOpen, handleNavbar }) => {
-  // 
+  // f
   return (
     <Wrapper onClick={handleNavbar}>
       <div className={isOpen === true ? 'open' : ''}>
@@ -17,7 +17,7 @@ const Burgermenu = ({ isOpen, handleNavbar }) => {
 
 Burgermenu.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  handleNavbar: PropTypes.bool.isRequired,
+  handleNavbar: PropTypes.func.isRequired,
 };
 
 export default Burgermenu;

@@ -112,12 +112,12 @@ ModalEditSkill.propTypes = {
   getSkillId: PropTypes.func.isRequired,
   getNewSkillValue: PropTypes.func.isRequired,
   submitEditSkill: PropTypes.func.isRequired,
-  selectedSkillPrice: PropTypes.number.isRequired,
-  selectedSkillDescription: PropTypes.string.isRequired,
-  clearSave: PropTypes.bool.isRequired,
+  selectedSkillPrice: PropTypes.number,
+  selectedSkillDescription: PropTypes.string,
+  clearSave: PropTypes.func.isRequired,
   isSave: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool.isRequired,
-  openSuccessMessage: PropTypes.bool.isRequired,
-  closeSuccessMessage: PropTypes.bool.isRequired,
+  openSuccessMessage: PropTypes.func.isRequired,
+  closeSuccessMessage: PropTypes.bool,
 };
 export default ModalEditSkill;

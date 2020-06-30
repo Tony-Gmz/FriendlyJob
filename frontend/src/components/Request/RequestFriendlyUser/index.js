@@ -1,6 +1,6 @@
 // == Import library
-import React, { useEffect } from 'react';
-
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // == Import components
 import RequestRefuseFU from './RequestRefuseFU';
@@ -14,16 +14,14 @@ import '../request.scss';
 
 
 // == Composant
-const Request = ({ requestSelectedName, requestSortSelected, toggle, requestSelected, getRequest, requestList, submitDeleteRequest, submitFinishRequest, getRequestId  }) => {
-
-/*   useEffect(() => {
-    getRequest();
-    if (requestSelected !== null) {
-      const requestFilterList = requestList.filter(request => request.status === requestSelectedName);
-      requestSortSelected(requestFilterList);
-    }
-  }, [toggle]); */
-
+const Request = ({
+  requestSelected,
+  getRequest,
+  requestList,
+  submitDeleteRequest,
+  submitFinishRequest,
+  getRequestId,
+}) => {
   if (requestSelected === null) {
     return (
       <div className="requestList_container">
@@ -71,6 +69,13 @@ const Request = ({ requestSelectedName, requestSortSelected, toggle, requestSele
   }
 };
 
-
+Request.propTypes = {
+  requestSelected: PropTypes.array,
+  getRequest: PropTypes.func.isRequired,
+  requestList: PropTypes.array.isRequired,
+  submitDeleteRequest: PropTypes.func.isRequired,
+  getRequestId: PropTypes.func.isRequired,
+  submitFinishRequest: PropTypes.func.isRequired,
+};
 // == Export
 export default Request;

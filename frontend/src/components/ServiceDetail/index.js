@@ -2,11 +2,17 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Loader from 'src/components/Loader';
 import { Link, useParams } from 'react-router-dom';
-import { getServiceBySlug, capitalize } from 'src/utils';
+import { getServiceBySlug } from 'src/utils';
 import JoberService from './JoberService';
 import './serviceDetail.scss';
 
-function ServiceDetail({ serviceList, getServiceName, getSixJobWorker, jobWorkers, loadingOnServiceDetail }) {
+function ServiceDetail({
+  serviceList,
+  getServiceName,
+  getSixJobWorker,
+  jobWorkers,
+  loadingOnServiceDetail,
+}) {
   const { slug } = useParams();
   useEffect(() => {
     getServiceName(slug);
@@ -26,10 +32,15 @@ function ServiceDetail({ serviceList, getServiceName, getSixJobWorker, jobWorker
           {!loadingOnServiceDetail && (
             jobWorkers.map((jobWorker) => {
               const JobWorkerRate = jobWorker.user.jobWorkerDemands;
-               //console.log(JobWorkerRate);
               return (
-                <div className="service_details_jobworker_card-item">
-                  <JoberService jobWorker={jobWorker} jobWorkerStar={JobWorkerRate} getServiceName={getServiceName} />
+                <div key={jobWorker.user.id} className="service_details_jobworker_card-item">
+                  <JoberService
+                    jobWorker={jobWorker}
+                    jobWorkerStar={JobWorkerRate}
+                    getServiceName={getServiceName}
+                    jobWorkers={jobWorkers}
+                    id={jobWorker.user.id}
+                  />
                 </div>
               );
             })
@@ -44,6 +55,10 @@ function ServiceDetail({ serviceList, getServiceName, getSixJobWorker, jobWorker
 }
 
 ServiceDetail.propTypes = {
+  jobWorkers: PropTypes.array.isRequired,
+  getServiceName: PropTypes.func.isRequired,
+  getSixJobWorker: PropTypes.func.isRequired,
+  loadingOnServiceDetail: PropTypes.bool.isRequired,
   serviceList: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,

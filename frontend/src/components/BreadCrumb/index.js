@@ -22,8 +22,8 @@ const Breadcrumbs = withBreadcrumbs(routes)(({ breadcrumbs }) => (
     {breadcrumbs.map(({ match, breadcrumb }) => (
       // other props are available during render, such as `location`
       // and any props found in your route objects will be passed through too
-      <NavLink to={match.url}>
-        <span key={match.url}>
+      <NavLink key={match.url} to={match.url}>
+        <span>
           {breadcrumb}  >
         </span>
       </NavLink>

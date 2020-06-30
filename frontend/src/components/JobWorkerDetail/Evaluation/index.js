@@ -8,7 +8,7 @@ import './evaluation.scss';
 
 const Evaluation = ({ jobWorkerRating }) => {
   // eslint-disable-next-line no-console
-  //console.log(jobWorkerRating);
+  // console.log(jobWorkerRating);
   return (
 
     <div className="evaluation">
@@ -16,9 +16,9 @@ const Evaluation = ({ jobWorkerRating }) => {
       <div className="evaluation_note">
         {jobWorkerRating.map((jobWorker) => {
           const userAvatar = jobWorker.friendlyUser.firstname;
-           //console.log(jobWorker);
+          // console.log(jobWorker);
           return (
-            <>
+            <div key={jobWorker.id}>
               <div className="ui raised card card_evaluation">
                 <div className="content">
                   <div className="header">{jobWorker.friendlyUser.firstname}
@@ -41,7 +41,7 @@ const Evaluation = ({ jobWorkerRating }) => {
                 </div>
               </div>
 
-            </>
+            </div>
           );
         })}
       </div>
@@ -50,14 +50,6 @@ const Evaluation = ({ jobWorkerRating }) => {
 };
 
 Evaluation.propTypes = {
-  jobWorkerRating: PropTypes.arrayOf(
-    PropTypes.shape({
-      rating: PropTypes.arrayOf(
-        PropTypes.shape({
-          star: PropTypes.number.isRequired,
-        }).isRequired,
-      ).isRequired,
-    }).isRequired,
-  ).isRequired,
+  jobWorkerRating: PropTypes.array.isRequired,
 };
 export default Evaluation;

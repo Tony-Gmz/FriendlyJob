@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+
 import { useSpring, animated, config } from 'react-spring';
 import { NavLink } from 'react-router-dom';
 import ModalConnexion from 'src/containers/ModalConnexion';
@@ -77,6 +77,8 @@ const Navbar = ({
         <CollapseMenu
           isOpen={isOpen}
           handleNavbar={handleNavbar}
+          isLogged={isLogged}
+          logOut={logOut}
         />
       </>
     );
@@ -103,7 +105,7 @@ const Navbar = ({
                 {userRole === 'JOBWORKER' && waitingRequest.length > 0 && requestList !== null ? (
                   <div className="notification">
                     <Popup
-                      trigger={<i style={{marginRight: '0'}} class="bell icon" color='red' />}
+                      trigger={<i style={{ marginRight: '0' }} className="bell icon" color="red" />}
                       content={`Vous avez ${waitingRequest.length} ${demands} en attente`}
                     />
                   </div>

@@ -9,33 +9,28 @@ import ModalInscription from 'src/containers/ModalInscription';
 
 const Details = ({
   isLogged,
-  firstname,
-  image,
-  about,
-  department,
+  currentJobWorkerDetail,
 }) => {
-  /*  //console.log(`prenom: ${department.name} + a propos :${about}`); */
-  const userAvatar = image;
-  // const screenWidth = window.screen.width;
+  console.log(currentJobWorkerDetail);
+  const userAvatar = currentJobWorkerDetail.image;
+  // we use UseRole for a condition display
   const role = localStorage.getItem('userRole');
-   //console.log(department);
-   //console.log(role);
   return (
 
     <div className="detail">
       <div className="detail_title">
-        <h2>Détail de {firstname}</h2>
+        <h2>Détail de {currentJobWorkerDetail.firstname}</h2>
       </div>
       <div className="detail_content">
         <div className="detail_content_about">
           <div className="Jober_avatar">
-            {userAvatar && <Avatar alt="Remy Sharp" src={image} /> }
+            {userAvatar && <Avatar alt="Remy Sharp" src={currentJobWorkerDetail.image} /> }
             {!userAvatar && <Avatar alt="Remy Sharp" src="" />}
           </div>
           <div className="detail_content_about-title">
             <h3>A propos</h3>
-            <p>{about}</p>
-            <p>{department.name} | ({department.number})</p>
+            <p>{currentJobWorkerDetail.about}</p>
+            <p>{currentJobWorkerDetail.department.name} | ({currentJobWorkerDetail.department.number})</p>
           </div>
         </div>
       </div>
@@ -48,7 +43,7 @@ const Details = ({
                 <i className="info circle icon icon_message_detail" />
               </div>
               <div className="reservation_message content">
-                <Message.Header> Vous souhaitez prendre rendez-vous avec {firstname}
+                <Message.Header> Vous souhaitez prendre rendez-vous avec {currentJobWorkerDetail.firstname}
                   ? Vous devez être inscrit ou connecté
                 </Message.Header>
                 <p>Visitez notre page <ModalInscription /> ou <ModalConnexion /> et réessayez ! </p>
@@ -63,14 +58,7 @@ const Details = ({
 
 Details.propTypes = {
   isLogged: PropTypes.bool.isRequired,
-  firstname: PropTypes.string.isRequired,
-  about: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  department: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    }).isRequired,
-  ).isRequired,
+  currentJobWorkerDetail: PropTypes.object.isRequired,
 };
 
 export default Details;

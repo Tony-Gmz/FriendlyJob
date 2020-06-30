@@ -36,8 +36,8 @@ const initialState = {
   isSave: false,
   isSend: false,
   isRefuse: false,
-  requestSelected: null,
-  requestSelectedName: null,
+  requestSelected: [],
+  requestSelectedName: '',
   errorMessageReservation: false,
 };
 

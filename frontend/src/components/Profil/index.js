@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import ProfilFriendlyUser from './ProfilFriendlyUser';
 import ProfilWorkJober from './ProfilWorkJober';
@@ -27,13 +27,8 @@ const Profil = ({
   openSuccessMessage,
   errorMessage,
   closeErrorMessage,
+  departments,
 }) => {
-
-  /* useEffect(() => {
-    getUserData();
-  }, [userData]); */
-
-
   const role = localStorage.getItem('userRole');
   return (
     <>
@@ -59,6 +54,7 @@ const Profil = ({
             closeSuccessMessage={closeSuccessMessage}
             errorMessage={errorMessage}
             closeErrorMessage={closeErrorMessage}
+            departments={departments}
           />
         )
         : (
@@ -87,6 +83,7 @@ const Profil = ({
             closeSuccessMessage={closeSuccessMessage}
             errorMessage={errorMessage}
             closeErrorMessage={closeErrorMessage}
+            departments={departments}
           />
         )}
     </>
@@ -97,7 +94,7 @@ Profil.propTypes = {
   /** func with params */
   editFieldValue: PropTypes.func.isRequired,
   /** array  */
-  userData: PropTypes.array.isRequired,
+  userData: PropTypes.object.isRequired,
   departmentsList: PropTypes.array.isRequired,
   currentJobWorkerSkills: PropTypes.array.isRequired,
   serviceList: PropTypes.array.isRequired,
@@ -106,13 +103,22 @@ Profil.propTypes = {
   cancelEdit: PropTypes.func.isRequired,
   submitEdit: PropTypes.func.isRequired,
   getJobWorkerSkill: PropTypes.func.isRequired,
+  closeSuccessMessage: PropTypes.func.isRequired,
+  openSuccessMessage: PropTypes.func.isRequired,
+  closeErrorMessage: PropTypes.func.isRequired,
   /** string */
-  editEmail: PropTypes.string.isRequired,
-  editPassword: PropTypes.string.isRequired,
-  editConfirmationPassword: PropTypes.string.isRequired,
-  editAbout: PropTypes.string.isRequired,
+  editEmail: PropTypes.string,
+  editPassword: PropTypes.string,
+  editConfirmationPassword: PropTypes.string,
+  editAbout: PropTypes.string,
+  urlAvatar: PropTypes.string.isRequired,
   /** bool */
   isEdited: PropTypes.bool.isRequired,
   isEditable: PropTypes.bool.isRequired,
+  toggle: PropTypes.bool.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.bool.isRequired,
+  /** number */
+  departments: PropTypes.number,
 };
 export default Profil;

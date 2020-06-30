@@ -44,7 +44,7 @@ const ModalDeleteSkill = ({ skill, getSkillId, submitDeleteSkill }) => {
 };
 
 ModalDeleteSkill.propTypes = {
-  skill: PropTypes.string.isRequired,
+  skill: PropTypes.number.isRequired,
   getSkillId: PropTypes.func.isRequired,
   submitDeleteSkill: PropTypes.func.isRequired,
 };

@@ -20,20 +20,20 @@ const ModalAddSkill = ({
   closeSuccessMesssage,
 }) => {
   const handleChange = (evt) => {
-     //console.log(`${evt.target.value} + ${evt.target.name}`);
+    // console.log(`${evt.target.value} + ${evt.target.name}`);
     getNewSkillValue(evt.target.value, evt.target.name);
   };
 
   const handleSelectChange = (data) => {
-     //console.log(data.value);
-     //console.log(data.name);
+    // console.log(data.value);
+    // console.log(data.name);
 
     getNewSkillValue(data.value, data.name);
   };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-     //console.log('coucou je suis submit de addSkill');
+    // console.log('coucou je suis submit de addSkill');
     submitNewSkill();
     openSuccessMessage();
   };
@@ -131,10 +131,10 @@ ModalAddSkill.propTypes = {
   submitNewSkill: PropTypes.func.isRequired,
   clearSave: PropTypes.func.isRequired,
   openSuccessMessage: PropTypes.func.isRequired,
-  closeSuccessMesssage: PropTypes.func.isRequired,
+  closeSuccessMesssage: PropTypes.func,
   /** string */
-  selectedSkillDescription: PropTypes.string.isRequired,
-  selectedSkillPrice: PropTypes.string.isRequired,
+  selectedSkillDescription: PropTypes.string,
+  selectedSkillPrice: PropTypes.string,
   /** array */
   serviceList: PropTypes.arrayOf(
     PropTypes.shape({

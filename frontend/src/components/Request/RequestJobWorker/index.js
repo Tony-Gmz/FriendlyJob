@@ -1,5 +1,6 @@
 // == Import library
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 // == Import components
 import RequestCancel from './RequestCancel';
@@ -13,11 +14,21 @@ import RequestFinish from './RequestFinish';
 import '../request.scss';
 
 // == Composant
-const Request = ({ requestSelectedName, requestSelected, requestSortSelected, toggle, getRequest, requestList, submitAccepteRequest, submitDeleteRequest, getRequestId }) => {
+const Request = ({
+  requestSelectedName,
+  requestSelected,
+  requestSortSelected,
+  toggle,
+  getRequest,
+  requestList,
+  submitAccepteRequest,
+  submitDeleteRequest,
+  getRequestId,
+}) => {
   useEffect(() => {
     getRequest();
-    if (requestSelected !== null) {
-      const requestFilterList = requestList.filter(request => request.status === requestSelectedName);
+    if (requestSelected !== '') {
+      const requestFilterList = requestList.filter((request) => request.status === requestSelectedName);
       requestSortSelected(requestFilterList);
     }
   }, [toggle]);
@@ -68,6 +79,18 @@ const Request = ({ requestSelectedName, requestSelected, requestSortSelected, to
       </div>
     );
   }
+};
+
+Request.propTypes = {
+  requestSelectedName: PropTypes.string.isRequired,
+  requestSelected: PropTypes.array,
+  requestSortSelected: PropTypes.func.isRequired,
+  toggle: PropTypes.bool.isRequired,
+  getRequest: PropTypes.func.isRequired,
+  requestList: PropTypes.array.isRequired,
+  submitAccepteRequest: PropTypes.func.isRequired,
+  submitDeleteRequest: PropTypes.func.isRequired,
+  getRequestId: PropTypes.func.isRequired,
 };
 
 // == Export

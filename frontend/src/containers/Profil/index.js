@@ -24,6 +24,7 @@ const mapStateToProps = (state) => ({
   editDepartment: state.user.editDepartment,
   isOpen: state.user.isOpen,
   errorMessage: state.user.errorMessage,
+  departments: state.user.departments,
 
   // roles: state.user.userData.roles[0],
 });

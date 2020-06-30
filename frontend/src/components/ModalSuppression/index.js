@@ -15,7 +15,7 @@ const ModalSuppression = ({ isDelete, submitDelete }) => {
   };
 
   return (
-    <Modal trigger={<Button basic color="red" content="Red">supprimer votre compte</Button>} basic size="small" closeIcon>
+    <Modal trigger={<Button basic color="red">supprimer votre compte</Button>} basic size="small" closeIcon>
       <Header icon="trash alternate icon" content="Vous souhaitez déjà nous quitter ?" />
       {!isDelete && (
         <>

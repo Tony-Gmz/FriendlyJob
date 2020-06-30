@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
 import ModalRefuseRequest from 'src/containers/ModalRefuseRequest';
 import { changeHourFormat, changeDateFormat } from 'src/utils';
@@ -29,7 +30,7 @@ const RequestWait = ({ request, submitAccepteRequest, getRequestId }) => {
         <div className="informations-container">
           <h2 className="title">Demande de {request.friendlyUser.firstname} </h2>
           <h2 className="title2">{request.service.title} </h2>
-          <p className="sub-title"><i class="clock outline icon"/>{request.status}</p>
+          <p className="sub-title"><i className="clock outline icon"/>{request.status}</p>
           <div className="more-information">
             <div className="info-and-date-container">
               <div className="box date">
@@ -49,5 +50,11 @@ const RequestWait = ({ request, submitAccepteRequest, getRequestId }) => {
   );
 };
 
+
+RequestWait.propTypes = {
+  request: PropTypes.object.isRequired,
+  getRequestId: PropTypes.func.isRequired,
+  submitAccepteRequest: PropTypes.func.isRequired,
+};
 // == Export
 export default RequestWait;

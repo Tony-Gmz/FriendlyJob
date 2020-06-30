@@ -34,7 +34,6 @@ const CollapseMenu = ({ isOpen, isLogged, logOut }) => {
             <NavLinks>
               <Link to="/">Accueil</Link>
               <Link to="/services/">Nos services</Link>
-              <a href="#inscription">Devenir JobWorker</a>
               <Link to="/contact/">Contact</Link>
             </NavLinks>
             <NavLinks>

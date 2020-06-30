@@ -23,19 +23,20 @@ const JobWorkerDetails = ({
     getJobWorkerRating();
   }, []);
 
-
+  console.log(currentJobWorkerDetail);
+  // console.log(currentJobWorkerRating);
   return (
     <div className="jobWorkerDetail">
       {loadingOnJobWorkerDetail && <Loader /> }
       {!loadingOnJobWorkerDetail && (
         <>
-          <Details isLogged={isLogged} {...currentJobWorkerDetail} />
+          <Details isLogged={isLogged} currentJobWorkerDetail={currentJobWorkerDetail} />
           <Competence skills={currentJobWorkerDetail.skills} />
           {currentJobWorkerRating && (
             <>
-            {currentJobWorkerRating.map((jobWorkerRating) => (
-              <Evaluation jobWorkerRating={jobWorkerRating.jobWorkerDemands} />
-            ))}
+              {currentJobWorkerRating.map((jobWorkerRating) => (
+                <Evaluation key={jobWorkerRating.id} jobWorkerRating={jobWorkerRating.jobWorkerDemands} />
+              ))}
             </>
           )}
           {!currentJobWorkerRating && (

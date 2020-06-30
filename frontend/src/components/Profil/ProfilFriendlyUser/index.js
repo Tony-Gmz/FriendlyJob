@@ -272,9 +272,9 @@ ProfilFiendlyUser.propTypes = {
   openSuccessMessage: PropTypes.func.isRequired,
   closeSuccessMessage: PropTypes.func.isRequired,
   /** string */
-  editEmail: PropTypes.string.isRequired,
-  editPassword: PropTypes.string.isRequired,
-  editConfirmationPassword: PropTypes.string.isRequired,
+  editEmail: PropTypes.string,
+  editPassword: PropTypes.string,
+  editConfirmationPassword: PropTypes.string,
   lastname: PropTypes.string.isRequired,
   firstname: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,

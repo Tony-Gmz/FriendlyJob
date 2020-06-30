@@ -48,6 +48,7 @@ const ProfilJobWorker = ({
   openSuccessMessage,
   errorMessage,
   closeErrorMessage,
+  departments,
 }) => {
   useEffect(() => {
     getJobWorkerSkill();
@@ -120,7 +121,7 @@ const ProfilJobWorker = ({
             <div className="form_element_profil">
               <TextField
                 className="profil_input"
-                id="outlined-firstname-input"
+                id="outlined-firstname"
                 value={firstname}
                 type="text"
                 autoComplete="current-firstname"
@@ -130,18 +131,18 @@ const ProfilJobWorker = ({
             </div>
             {isEditable && (
               <div className="form_element_profil jobWorker_department_select">
-                <TextField className="profil_input" id="select" onChange={handleChange} label="Departement" name="department" select>
+                <TextField className="profil_input" id="select" onChange={handleChange} label="Departement" value={departments} name="department" select>
                   {departmentsList.map((depart) => (
-                    <MenuItem value={depart.id}>{depart.name}</MenuItem>
+                    <MenuItem key={depart.id} value={depart.id}>{depart.name}</MenuItem>
                   ))}
                 </TextField>
               </div>
             )}
             {!isEditable && (
               <div className="form_element_profil">
-                <TextField className="profil_input" id="select" onChange={handleChange} label="Departement" name="department" select disabled>
+                <TextField className="profil_input" id="select" onChange={handleChange} label="Departement" value={departments} name="department" select disabled>
                   {departmentsList.map((depart) => (
-                    <MenuItem value={depart.id}>{depart.name}</MenuItem>
+                    <MenuItem key={depart.name} value={depart.id}>{depart.name}</MenuItem>
                   ))}
                 </TextField>
               </div>
@@ -306,54 +307,54 @@ const ProfilJobWorker = ({
               Modifier votre prix horaire ? C'est par ici
             </div>
             {serviceList.map((service) => (
-              <>
+              <div key={service.id}>
                 {currentJobWorkerSkills.map((skill) => {
                   const currentSkill = skill.service.id;
                   // console.log(service.id)
                   // console.log(currentSkill);
                   { if (currentSkill === service.id) {
                     return (
-                        <div key={service.id} className="form_skill_content">
-                          <div className="form_skill_input">
-                            <div className="form_skill_content_radio">
-                              {service.title}
-                            </div>
-                            <div className="form_skill_content_price">
-                              <Input
-                                label={{ basic: true, content: '/heure' }}
-                                labelPosition="right"
-                                placeholder="Indiquez votre prix..."
-                                value={`${skill.price}€`}
-                                disabled
-                              />
-                            </div>
-                            <div className="form_skill_content_about">
-                              <TextField
-                                id="textArea-skills"
-                                label="Description"
-                                multiline
-                                rows={4}
-                                variant="outlined"
-                                value={skill.description}
-                                disabled
-                              />
-                            </div>
+                      <div key={service.title} className="form_skill_content">
+                        <div className="form_skill_input">
+                          <div className="form_skill_content_radio">
+                            {service.title}
                           </div>
-                          <div className="form_skill_button">
-                            <div>
-                              <ModalEditSkill {...skill} />
-                            </div>
-                            <div>
-                              <ModalDeleteSkill skill={skill.id} />
-                            </div>
+                          <div className="form_skill_content_price">
+                            <Input
+                              label={{ basic: true, content: '/heure' }}
+                              labelPosition="right"
+                              placeholder="Indiquez votre prix..."
+                              value={`${skill.price}€`}
+                              disabled
+                            />
+                          </div>
+                          <div className="form_skill_content_about">
+                            <TextField
+                              id="textArea-skills"
+                              label="Description"
+                              multiline
+                              rows={4}
+                              variant="outlined"
+                              value={skill.description}
+                              disabled
+                            />
                           </div>
                         </div>
+                        <div className="form_skill_button">
+                          <div>
+                            <ModalEditSkill {...skill} />
+                          </div>
+                          <div>
+                            <ModalDeleteSkill skill={skill.id} />
+                          </div>
+                        </div>
+                      </div>
                     );
                   }
                   }
                 },
                 )}
-              </>
+              </div>
             ))}
             <div className="skill_modal">
               <div>
@@ -381,15 +382,14 @@ ProfilJobWorker.propTypes = {
   openSuccessMessage: PropTypes.func.isRequired,
   closeErrorMessage: PropTypes.func.isRequired,
   /** string */
-  editEmail: PropTypes.string.isRequired,
-  editPassword: PropTypes.string.isRequired,
-  editConfirmationPassword: PropTypes.string.isRequired,
-  editAbout: PropTypes.string.isRequired,
+  editEmail: PropTypes.string,
+  editPassword: PropTypes.string,
+  editConfirmationPassword: PropTypes.string,
+  editAbout: PropTypes.string,
   image: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
   firstname: PropTypes.string.isRequired,
   about: PropTypes.string.isRequired,
-  department: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   urlAvatar: PropTypes.string.isRequired,
   /** bool */
@@ -398,6 +398,8 @@ ProfilJobWorker.propTypes = {
   toggle: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool.isRequired,
   errorMessage: PropTypes.bool.isRequired,
+  /** number */
+  departments: PropTypes.number,
   /** array  */
   serviceList: PropTypes.arrayOf(
     PropTypes.shape({
@@ -412,11 +414,8 @@ ProfilJobWorker.propTypes = {
   ).isRequired,
   currentJobWorkerSkills: PropTypes.arrayOf(
     PropTypes.shape({
-      service: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.number.isRequired,
-        }).isRequired,
-      ).isRequired,
+      description: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
     }).isRequired,
   ).isRequired,
 };
