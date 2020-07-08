@@ -1,0 +1,29 @@
+@import 'src/styles/vars';
+
+.modaleEditSkill_infoMessage{
+  display: flex;
+  justify-content: center;
+  .message {
+    background-color: #2196f3;
+    color: #ffffff;
+    border-radius: 10px;
+  }
+}
+
+.modal_edit_request_textarea{
+    width: 100%;
+    margin: 1em auto;
+    display: flex;
+    justify-content: center;
+}
+
+.modalTextArea_content{
+  width: 50%;
+  padding: 1em;
+}
+.modal_edit_action_button{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin: 2em 0;
+}

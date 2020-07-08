@@ -1,0 +1,27 @@
+@import 'src/styles/vars';
+
+h1 {
+  font-weight: $titleFontWeight;
+  font-size: $mainTitleFontSize;
+}
+h2{
+  font-weight: $titleFontWeight;
+  font-size: $secondaryTitleFontSize;
+}
+h3{
+  font-weight: $littleTitleFontWeight;
+  font-size: $littleTitleFontSize;
+}
+p{
+  font-size: $textFontSize;
+}
+
+
+.page{
+  width: 100%;
+  margin: 3em auto;
+}
+
+.page-content{
+padding-top: 2em;
+}

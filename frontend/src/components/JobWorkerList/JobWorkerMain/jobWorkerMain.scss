@@ -1,0 +1,35 @@
+@import 'src/styles/vars';
+ 
+
+@include phone {
+  .jobWorker_list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+    .jobWorker_list_item{
+    flex-basis: 25%;
+    width: auto;
+    }
+}
+@include sm {
+
+ 
+}
+@include md {
+ 
+}
+@include xl {
+  .jobWorker_list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2em;
+
+   
+  }
+   .jobWorker_list_item{
+    flex-basis: 25%;
+    width: auto;
+    }
+}

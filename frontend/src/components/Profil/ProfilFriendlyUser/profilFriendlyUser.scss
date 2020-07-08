@@ -1,0 +1,280 @@
+@import 'src/styles/vars';
+
+
+  @include phone {
+   
+    .profilfu {
+      padding: 1em;
+      background-color: #FFFF;
+      border-radius: 1em;
+  
+      .profil_fu_friendlyUser{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-bottom: 3em;
+        margin-top: 3em;
+        background-color:  #FFFF;
+        border-radius: 10px;
+      }
+      
+      .profilWorkJober_title {
+        display: inline-block;
+          font-weight: bold;
+          font-size: 1.5rem;
+          border-bottom: 1px solid #FF385C;
+          padding-bottom: 1rem;
+          width: 250px;
+      
+      }
+      
+      .profil_card{
+        align-self: center;
+      }
+      
+      .profil_img{
+        display: flex;
+        flex-direction: column;
+        margin-top: 2em;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+      }
+      
+      .profil_fu_desciption{
+        width: 70%;
+        align-self: center;
+        background-color: #FFFF;
+      }
+      
+      .profil_form{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 1em;
+        border-radius: 1em;
+      }
+      .form_fu_element {
+        margin-top: 1em;
+      }
+      .profil_input{
+        width: 80%;
+      }
+      
+      .MuiInputBase-root{
+        line-height: 0.1em !important;
+      }
+      
+      .profil_group_btn{
+        margin-top: 3em;
+        display: flex;
+        justify-content: space-around;
+        width: 60%;
+        margin: auto;
+        padding-bottom: 3em;
+        padding-top: 2em;
+      }
+    
+      
+      .skill_select {
+        margin-right: 2em;
+      }
+      
+      
+      .MuiFormControl-root{
+        width: 80%;
+      }
+      
+      .MuiInputBase-input {
+        line-height: 1!important;
+      }
+      
+      .form_element_profil {
+        margin-top: 1em;
+      }
+      
+      .profil_fu_desciption {
+        display: inline-block;
+        padding-top: 1em;
+        font-weight: bold;
+        font-size: 1.5rem;
+        border-bottom: 1px solid #FF385C;
+        padding-bottom: 1rem;
+        width: 100%;
+        margin-top: 2em;
+      }
+      
+      .profil_fu_card_img {
+        width: 80px;
+        height: 80px;
+        margin: 2em auto;
+        border-radius: 50%;
+  
+      }
+      
+  
+    }
+
+    .link_profil_modal{
+      border-bottom: 2px solid white;
+    }
+    a.link_profil_modal:hover {
+      color: unset;
+    }
+  }
+  
+ @include sm {
+
+  }
+  @include md {
+   
+}
+@include xl {
+
+ 
+
+  .profilfu {
+    padding: 1em;
+    background-color: #FFFF;
+    border-radius: 1em;
+
+    .profil_fu_friendlyUser{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      margin-bottom: 3em;
+      margin-top: 3em;
+      background-color:  #FFFF;
+      border-radius: 10px;
+    }
+    
+    .profilWorkJober_title {
+      display: inline-block;
+        font-weight: bold;
+        font-size: 1.5rem;
+        border-bottom: 1px solid #FF385C;
+        padding-bottom: 1rem;
+        width: 250px;
+    
+    }
+    
+    .profil_card{
+      align-self: center;
+    }
+    
+    .profil_img{
+      display: flex;
+      flex-direction: row;
+      margin-top: 2em;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+    
+    .profil_fu_desciption{
+      width: 70%;
+      align-self: center;
+      background-color: #FFFF;
+    }
+    
+    .profil_form{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 1em;
+      border-radius: 1em;
+    }
+    .form_fu_element {
+      margin-top: 1em;
+    }
+    .profil_input{
+      width: 80%;
+    }
+    
+    .MuiInputBase-root{
+      line-height: 0.1em !important;
+    }
+    
+    .profil_group_btn{
+      margin-top: 2em;
+      display: flex;
+      justify-content: space-around;
+    }
+  
+    
+    .skill_select {
+      margin-right: 2em;
+    }
+    
+    
+    .MuiFormControl-root{
+      width: 593px;
+    }
+    
+    .MuiSelect-select {
+      line-height: 2!important;
+    }
+    
+    .MuiInputBase-input {
+      line-height: 1!important;
+    }
+    
+    .form_skill {
+      margin: 0 auto;
+    
+      
+    }
+    .form_skill_content_price {
+      width: 200px;
+    }
+    
+    .form_skill_content {
+      padding-top: 2em;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    
+    .form_skill {
+      .MuiFormControl-root {
+        width: 250px;
+        margin: auto;
+      }
+      .MuiInputBase-multiline {
+        width: 250px;
+      }
+      .form_skill_icon {
+        cursor: pointer;
+      }
+    }
+    
+    .profil_fu_desciption {
+      display: inline-block;
+      padding-top: 1em;
+      font-weight: bold;
+      font-size: 1.5rem;
+      border-bottom: 1px solid #FF385C;
+      padding-bottom: 1rem;
+      width: 100%;
+      border-radius: 10px;
+    }
+    
+    .profil_fu_card_img {
+      width: 80px;
+      height: 80px;
+      margin: 2em auto;
+      border-radius: 50%;
+
+    }
+    
+
+  }
+    
+}
+
+
+
+

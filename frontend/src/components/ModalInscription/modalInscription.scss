@@ -1,0 +1,459 @@
+@import 'src/styles/vars';
+
+@include phone {
+  .inscription{
+    width: 100%;
+    height: auto;
+    display: none;
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #f7f7f7;
+
+    
+  }
+
+  .input_inscription{
+    padding: 0!important;
+    width: 100%;
+
+  }
+
+  .inputDepartment{
+    width: 100%;
+    background-color: white;
+    border-radius: 0.2em;
+    height: 2.1em;
+    font-family: unset;
+    font-size: large;
+    border: #00000033 solid 1px;
+}
+  .modal_title {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 1.4rem;
+    border-bottom: 1px solid #FF385C;
+    padding-bottom: 1rem;
+  }
+  
+  .modal_block {
+    background-color:  #ffffff;
+    border-radius: 10px;
+
+  }
+  .header_inscription{
+
+    background-color: #FF385C!important;
+  
+  }
+  
+  #inscription:target{
+    display: flex;
+  }
+  
+  .inscription:before{
+    content: "";
+    box-sizing: border-box;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+  
+    position: fixed;
+    left: 0;
+    top: 50%;
+    will-change: height, top;
+    animation: open-animation .6s cubic-bezier(0.83, 0.04, 0, 1.16) .65s both;
+  }
+  
+  .inscription:after{
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: #000000;
+  
+    will-change: width, opacity;
+    animation: line-animation .6s cubic-bezier(0.83, 0.04, 0, 1.16) both;
+  
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -1px;
+  }
+
+  .error_message_passwordConfirmation {
+    
+    text-align: center;
+    color: red;
+    padding-top: 1em;
+  }
+  
+  
+  @keyframes line-animation{
+  
+    0%{
+      width: 0;
+      opacity: 1;
+    }
+  
+    99%{
+      width: 100%;
+      opacity: 1;
+    }
+  
+    100%{
+      width: 100%;
+      opacity: 0;
+    }  
+  }
+  
+  @keyframes open-animation{
+  
+    0%{
+      height: 0;
+      top: 50%;
+    }
+  
+    100%{
+      height: 100vh;
+      top: 0;
+    }
+  }
+  
+  .modal_block{
+    height: calc(100vh - 40px);
+    padding: 5% 15%;
+    box-sizing: border-box;
+    position: relative;
+    
+    margin: auto;
+    overflow: auto;
+    animation: fade .5s ease-out 1.3s both;
+  }
+  
+  @keyframes fade{
+  
+    0%{
+      opacity: 0;
+    }
+  
+    100%{
+      opacity: 1;
+    }
+  }
+  
+  .form_title{
+    font-size: 2.5rem;
+    margin: 0 0 1em;
+  }
+  
+  .close_btn{
+    width: 3.2rem;
+    height: 3.2rem;
+    text-indent: -9999px;
+    
+    position: fixed;
+    top: 20px;
+    right: 20px;
+  
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTE5IDYuNDFMMTcuNTkgNSAxMiAxMC41OSA2LjQxIDUgNSA2LjQxIDEwLjU5IDEyIDUgMTcuNTkgNi40MSAxOSAxMiAxMy40MSAxNy41OSAxOSAxOSAxNy41OSAxMy40MSAxMnoiLz4gICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==);
+  }
+  
+  
+  .inscription_btn{
+    color: rgb(2, 2, 2);
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    border: 2px solid lightgreen;
+    border-radius: 1em;
+    margin: 1em;
+  }
+  
+  .message_success {
+    background-color: green($color: #FFFF);
+    .message_connexion {
+      font-weight: bold;
+      font-style: italic;
+    }
+  }
+  
+  .modal_inscription_info {
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding-bottom: 1rem;
+  }
+  .radio_inscription_item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  
+  .form_element_inscription {
+    margin-bottom: 1rem;
+    text-align: left;
+    label {
+      font-size: 1rem!important;
+      margin-bottom: 1rem;
+    }
+    .input_inscription {
+      padding: 1rem;
+    }
+  
+  }
+  .div_radio {
+    .MuiFormLabel-root {
+      display: flex!important;
+      flex-direction: row!important;
+      color: black!important;
+    }
+
+    .PrivateRadioButtonIcon-root-5:after {
+      color: #FFF
+    }
+  }
+
+  .MuiFormLabel-root {
+    color: #FFF
+  }
+
+  .modal_button_trigger{
+    padding: 0.4em!important;
+    background: #ff385c!important;
+    min-height: 0.5em!important;
+    font-weight: 500!important;
+    color: white!important;
+    margin-bottom: 0.5em!important;
+  }
+  
+}
+@include xl {
+
+  .inscription{
+  width: 100%;
+  height: auto;
+  display: none;
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #f7f7f7;
+}
+.header_inscription{
+
+  background-color: #FF385C!important;
+  opacity: 0.80;
+  color: #FFFF!important;
+}
+
+
+
+.modal_title {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.4rem;
+  border-bottom: 1px solid #FF385C;
+  padding-bottom: 1rem;
+
+}
+
+.modal_block {
+  border-radius: 10px;
+}
+
+#inscription:target{
+  display: flex;
+}
+
+.inscription:before{
+  content: "";
+  box-sizing: border-box;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+
+  position: fixed;
+  left: 0;
+  top: 50%;
+  will-change: height, top;
+  animation: open-animation .6s cubic-bezier(0.83, 0.04, 0, 1.16) .65s both;
+}
+
+.inscription:after{
+  content: "";
+  width: 0;
+  height: 2px;
+  background-color: #000000;
+
+  will-change: width, opacity;
+  animation: line-animation .6s cubic-bezier(0.83, 0.04, 0, 1.16) both;
+
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -1px;
+}
+
+@keyframes line-animation{
+
+  0%{
+    width: 0;
+    opacity: 1;
+  }
+
+  99%{
+    width: 100%;
+    opacity: 1;
+  }
+
+  100%{
+    width: 100%;
+    opacity: 0;
+  }  
+}
+
+@keyframes open-animation{
+
+  0%{
+    height: 0;
+    top: 50%;
+  }
+
+  100%{
+    height: 100vh;
+    top: 0;
+  }
+}
+
+.modal_block{
+  height: calc(100vh - 40px);
+  padding: 5% 15%;
+  box-sizing: border-box;
+  position: relative;
+  
+  margin: auto;
+  overflow: auto;
+  animation: fade .5s ease-out 1.3s both;
+}
+
+@keyframes fade{
+
+  0%{
+    opacity: 0;
+  }
+
+  100%{
+    opacity: 1;
+  }
+}
+
+.form_title{
+  font-size: 2.5rem;
+  margin: 0 0 1em;
+}
+
+.close_btn{
+  width: 3.2rem;
+  height: 3.2rem;
+  text-indent: -9999px;
+  
+  position: fixed;
+  top: 20px;
+  right: 20px;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gICAgPHBhdGggZD0iTTE5IDYuNDFMMTcuNTkgNSAxMiAxMC41OSA2LjQxIDUgNSA2LjQxIDEwLjU5IDEyIDUgMTcuNTkgNi40MSAxOSAxMiAxMy40MSAxNy41OSAxOSAxOSAxNy41OSAxMy40MSAxMnoiLz4gICAgPHBhdGggZD0iTTAgMGgyNHYyNEgweiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==);
+}
+
+
+.inscription_btn{
+  color: rgb(2, 2, 2);
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  border: 2px solid lightgreen;
+  border-radius: 1em;
+  margin: 1em;
+}
+
+.message_success {
+  background-color: green($color: #FFFF);
+  color: #000000;
+  .message_connexion {
+    font-weight: bold;
+    font-style: italic;
+    border-bottom: 1px solid  #FF385C;
+  }
+}
+
+.modal_inscription_info {
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+.radio_inscription_item {
+  margin-top: 1rem;
+  display: flex!important;
+  flex-direction: row!important;
+  justify-content: space-around!important;
+  
+}
+
+.form_element_inscription {
+  label {
+    font-size: 1rem!important;
+  }
+  .input_inscription {
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+}
+.PrivateRadioButtonIcon-root-5:after {
+  color: #FFF
+}
+
+.div_radio {
+  .MuiFormLabel-root {
+    color: #FFF
+    }
+}
+
+.inputDepartment {
+  width: 60%;
+  margin: 1rem 0 1rem 0;
+  height: 2.5em;
+  font-family: unset;
+}
+
+
+.input_inscription{
+  padding: 0!important;
+  width: 60%;
+
+}
+
+
+
+.form_element_inscription_department {
+  text-align: left;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  label {
+    text-align: left;
+  }
+  input {
+    margin-bottom: 1rem;
+  }
+}
+.form_inscription {
+padding-bottom: 3em;
+
+}
+
+
+}

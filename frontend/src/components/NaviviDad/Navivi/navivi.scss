@@ -1,0 +1,35 @@
+.linkForNav{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+}
+
+.buttonForModal{
+  margin-top: 0.8em;
+  display: flex;
+}
+
+.logo_link_home{
+    // width: 12%!important;
+    position: fixed!important;
+    top: -30px!important;
+    left: 0px!important;
+    height: 84px!important;
+    width: 86px!important;
+}
+
+.link_OfLogo{
+  margin-right: 4em!important;
+}
+
+.button_deconexion_trigger{
+  padding: 0.4em!important;
+  background: #ff385c!important;
+  min-height: 0.5em!important;
+  font-weight: 500!important;
+  color: white!important;
+  margin-right: 1em!important;
+}
+
+

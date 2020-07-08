@@ -1,0 +1,155 @@
+@import 'src/styles/vars';
+
+.caroussel {
+ 
+    @include phone {
+      width: 100%;
+      margin: auto;
+      margin-top: 5em;
+      border-radius: 10px;
+      padding: 1rem;
+
+      .caroussel_img {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+     
+    }
+      .slick-dots{
+        transform: scale(1.2);
+      }
+    
+      li{
+        color: #ffff;
+      }
+    
+      .caroussel_service_title {
+        padding: 0.8rem;
+    
+      }
+    
+      .caroussel_content {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      .carroussel_content_img {
+        overflow: hidden;
+        border-radius: 10px;
+      }
+
+    }
+
+      @include sm {
+
+      }
+
+        @include md {
+          width: 70%;
+          margin: auto;
+          margin-top: 5em;
+          border-radius: 10px;
+          padding: 3rem;
+
+          .caroussel_img {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            transition: transform .2s;
+            &:hover {
+              transform: scale(1.5);
+              
+            }
+         
+        }
+        .slick-arrow {
+          background-color: rgba(0, 0, 0, 0.3);
+          border-radius: 50%;
+          color: white;
+          transform: scale(2);
+        }
+        .slick-dots{
+          transform: scale(1.4);
+        }
+      
+        li{
+      
+          color: #ffff;
+        }
+      
+        .caroussel_service_title {
+          padding: 1.2rem;
+      
+        }
+      
+        .caroussel_content {
+          padding-left: 1rem;
+          padding-right: 1rem;
+         
+        }
+        .carroussel_content_img {
+          overflow: hidden;
+          border-radius: 10px;
+          &:hover{
+            border-radius: 10px;
+          }
+        }
+        }
+
+          @include xl{
+            width: 90%;
+            margin: auto;
+            margin-top: 3em;
+            border-radius: 10px;
+            padding: 2rem;
+
+            .caroussel_img {
+              width: 100%;
+              height: auto;
+              overflow: hidden;
+              transition: transform .2s;
+              &:hover {
+                transform: scale(1.5);
+                
+              }
+           
+          }
+          .slick-arrow {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            color: white;
+            transform: scale(1.2);
+          }
+          .slick-dots{
+            transform: scale(1.2);
+          }
+        
+          li{
+        
+            color: #ffff;
+          }
+        
+          .caroussel_service_title {
+            padding: 1.2rem;
+        
+          }
+        
+          .caroussel_content {
+            padding-left: 1rem;
+            padding-right: 1rem;
+           
+          }
+          .carroussel_content_img {
+            overflow: hidden;
+            border-radius: 10px;
+            &:hover{
+              border-radius: 10px;
+            }
+          }
+
+
+
+  }
+
+
+}
+

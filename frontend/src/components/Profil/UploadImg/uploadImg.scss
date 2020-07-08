@@ -1,0 +1,49 @@
+
+
+@import 'src/styles/vars';
+
+.app {
+
+
+  @include phone {
+   
+    .input-file {
+      display: none;
+    }
+    
+    .vertical {
+      background-color: #2D3436;
+      margin-top: 2em;
+      z-index: 1;
+    }
+    .button_file_content{
+      color:#ff385c;
+      
+    }
+    
+    
+ }
+ @include sm {
+  
+   
+  }
+  @include md {
+    
+}
+@include xl {
+  .input-file {
+    display: none;
+  }
+  
+  .vertical {
+    background-color: #2D3436;
+    margin-top: 0;
+    z-index: 1;
+  }
+  .button_file_content{
+    color:#ff385c;
+  }
+  
+
+}
+}

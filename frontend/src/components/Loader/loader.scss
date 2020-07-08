@@ -1,0 +1,36 @@
+@import 'src/styles/vars';
+
+.baba{
+  padding: 20px;
+}
+.circle_loader {
+  margin: auto;
+  width: 200px;
+  height: 200px;
+  -webkit-animation: spin 1s infinite ease-in;
+  animation: spin 1s infinite linear;
+  background-image:  url(https://i.ibb.co/h2DP1Fr/circle.png); 
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.middle {
+  margin: auto;
+  position: relative;
+  top: 210px;
+  width: 170px;
+  height: 170px;
+  background-image:  url(https://i.ibb.co/6X91D1h/middle.png); 
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  50% { -webkit-transform: rotate(55deg); }
+}
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}
+

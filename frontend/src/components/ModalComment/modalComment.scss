@@ -1,0 +1,34 @@
+@import 'src/styles/vars';
+
+.comment_image{
+  border-radius: 3em;
+  overflow: hidden;
+}
+
+.comment_image img{
+  border-radius: 50%;
+}
+
+.star_modal_comment{
+  margin-left: 1.5em;
+  transform: scale(1.7)!important;
+  margin-bottom: 1.5em!important;
+}
+
+.bottom_modalComment{
+  border-bottom-left-radius: 2em;
+  border-bottom-right-radius: 2em;
+}
+
+.info_modalComment{
+  font-size: 0.8em;
+}
+
+.info_message_comment {
+  margin-top: 2em;
+  .message {
+    background-color: #4CAF50;
+    color: #ffffff;
+    border-radius: 10px;
+  }
+}

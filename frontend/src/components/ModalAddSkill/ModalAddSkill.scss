@@ -1,0 +1,158 @@
+@import 'src/styles/vars';
+
+  @include phone {
+   
+    .modalAddSkill_title {
+      padding-top: 1rem;
+      font-weight: bold;
+      font-size: 1.5rem;
+      border-bottom: 1px solid #FF385C;
+      padding-bottom: 1rem;
+      width: 80%;
+    }
+    
+    .modalAddSkill_description {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding-top: 1.5rem;
+    line-height: 1.5;
+    
+    }
+    
+    .modalAddSkill_select {
+    padding-top: 1.5em;
+    margin: 0 auto!important;
+    width: 70%
+    
+    }
+    
+    .modalAddSkill_form {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .modalAddSkill_select {
+      padding-top: 1.5em;
+      margin: 0 auto!important;
+      width: 70%
+      
+      }
+    }
+    
+    .modalSkill_input_content {
+    padding-top: 1.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-top: 1em;
+    
+    .form_skill_content_price {
+     
+    }
+    
+    .MuiFormControl-root {
+      width:80%;
+    }
+    .form_skill_content_price {
+      align-self: center;
+      }
+    .form_skill_content_about {
+        padding-top: 2em;
+        width: 100%;
+        margin: auto;
+        padding-left: 4em;
+
+        .MuiFormLabel-root {
+          z-index: -900;
+        }
+      }
+    }
+    
+    
+    
+    
+    .modalAddSkill_submit_button {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    margin: 0 auto;
+    }
+
+    .link_skill_modal{
+      border-bottom: 2px solid white;
+    }
+    a.link_skill_modal:hover {
+      color: unset;
+    }
+   
+    
+ }
+ @include sm {
+
+  }
+  @include md {
+   
+}
+@include xl {
+
+ 
+
+.modalAddSkill_title {
+  padding-top: 1rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #FF385C;
+  padding-bottom: 1rem;
+  width: 400px;
+}
+
+.modalAddSkill_description {
+text-align: center;
+font-weight: bold;
+font-size: 1.5rem;
+padding-top: 1.5rem;
+line-height: 1.5;
+
+}
+
+.modalAddSkill_select {
+padding-top: 1.5em;
+margin-left: 15em;
+width: 400px;
+
+}
+
+.modalAddSkill_form {
+margin: 0 auto;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
+.modalSkill_input_content {
+padding-top: 1.5em;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+margin-left: 3em;
+
+.MuiFormControl-root {
+  width: 400px;
+}
+}
+.form_skill_content_about {
+width: 400px;
+}
+
+.form_skill_content_price {
+align-self: center;
+}
+
+.modalAddSkill_submit_button {
+padding-top: 2em;
+padding-bottom: 2em;
+margin: 0 auto;
+}
+
+}
+

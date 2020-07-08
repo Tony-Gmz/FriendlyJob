@@ -46,20 +46,40 @@
     "webpack-merge": "*"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.10.1",
+    "@date-io/date-fns": "1.x",
     "@material-ui/core": "^4.10.0",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.54",
+    "@material-ui/pickers": "^3.2.10",
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
+    "cloudinary-react": "^1.5.0",
+    "date-fns": "^2.14.0",
     "dompurify": "^2.0.11",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
     "prop-types": "*",
     "react": "*",
     "react-dom": "*",
     "react-feather": "^2.0.8",
+    "react-rater": "^5.1.1",
+    "react-rating": "^2.0.5",
     "react-redux": "^7.2.0",
+    "react-router-breadcrumbs-hoc": "^3.3.0",
     "react-router-dom": "^5.2.0",
+    "react-select": "^3.1.0",
+    "react-slick": "^0.26.1",
+    "react-spring": "^8.0.27",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
+    "rsuite": "^4.7.0",
     "semantic-ui-react": "^0.88.2",
     "slugify": "^1.4.0",
+    "sort-array": "^4.1.1",
     "styled-components": "^5.1.0"
+  },
+  "externals": {
+    "jquery": "jQuery"
   }
 }

@@ -1,0 +1,82 @@
+@import 'src/styles/vars';
+
+
+@include phone {
+  .presentation {
+  margin-top: 4em;
+
+  .presentation_title {
+    width: 99%;
+    display: inline-block;
+    border-bottom: 1px solid #FF385C;
+    padding-bottom: 1rem;
+  }
+
+.homepage_search_input{
+  display: flex;
+}
+
+.css-2b097c-container{
+  width: 90%!important;
+}
+
+.css-yk16xz-control{
+  width: 100%!important;
+}
+
+.homepage_search_btn{
+  width: 7%;
+  border-radius: 2.2em;
+  margin-left: 0.5em;
+  background-color: rgba(211, 211, 211, 0.527);
+  font-family: unset;
+}
+
+  .presentation_content {
+
+    line-height: 2;
+    padding: 2em 1em 0 1em;
+    width: 99%;
+    margin: 0 auto;
+  }
+
+  .presentation_input {
+
+    padding-top: 2rem;
+    width: 80%;
+    margin: auto;
+
+  }
+}
+}
+@include xl {
+  .presentation {
+
+  margin-top: 4em;
+
+  .presentation_title {
+    width: 45%;
+    display: inline-block;
+    border-bottom: 1px solid #FF385C;
+    padding-bottom: 1rem;
+  }
+
+  .presentation_content {
+
+    line-height: 2;
+    padding: 2em 1em 0 1em;
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  .presentation_input {
+
+    padding-top: 2rem;
+    width: 50%;
+    margin: auto;
+
+  }
+}
+}
+
+

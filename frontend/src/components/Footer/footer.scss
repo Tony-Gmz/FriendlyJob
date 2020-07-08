@@ -1,0 +1,63 @@
+@import 'src/styles/vars';
+
+.footer {
+  width: 80%;
+  z-index: 1;
+  margin-top: 4em;
+  border-top: 3px solid #dfdadaca;
+  display: flex;
+  justify-content: space-around;
+  bottom: 0;
+  background-color: #FFFF;
+  padding-top: 2em;
+
+  @include phone {
+    
+    width: 100%;
+    z-index: 1;
+    margin-top: 4em;
+    border-top: 3px solid #dfdadaca;
+    display: flex;
+    justify-content: space-around;
+    bottom: 0;
+    background-color: #FFFF;
+    padding-top: 2em;
+    
+   }
+   @include sm {
+   
+    width: 100%;
+     
+     
+ }
+ @include md {
+  
+  width: 100%;
+ }
+
+  .footer_content {
+
+    text-align: left;
+    padding-top: 1rem;
+    font-size: 0.9rem;
+
+  }
+
+  .footer_link {
+    display: flex;
+  }
+  .footer_link_text {
+    padding-top: 1rem;
+    padding-right: 1rem;
+  }
+
+  .footer_icon {
+
+    padding-bottom: 1rem;
+
+  }
+
+  
+
+
+}

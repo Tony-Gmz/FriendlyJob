@@ -1,0 +1,73 @@
+// Phone device 
+$screen-phone-min: 315px;
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+ 
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+ 
+// Tablets and small desktops
+$screen-lg-min: 992px;
+ 
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+// variable wich set primary and secondary colors for button
+$buttonColorsMain:#FF385C;
+$buttonColorsSecondary: #303f9f;
+
+$secondaryColors: #80c5b9;
+
+// variable wich set weight and font size for titles (h1, h2)
+$titleFontWeight: bolder;
+$mainTitleFontSize: 1.4rem;
+$secondaryTitleFontSize: 1.3rem;
+
+$littleTitleFontWeight:bold;
+$littleTitleFontSize:1.2rem;
+
+$linkWeight: bold;
+$linkFontSize: 1.2rem;
+
+$textFontSize: 1rem;
+
+
+// responsive design
+@mixin phone {
+  @media (min-width: #{$screen-phone-min}) {
+    @content;
+}
+}
+@mixin sm {
+   @media (min-width: #{$screen-sm-min}) {
+       @content;
+   }
+}
+ 
+// Medium devices
+@mixin md {
+   @media (min-width: #{$screen-md-min}) {
+       @content;
+   }
+}
+ 
+// Large devices
+@mixin lg {
+   @media (min-width: #{$screen-lg-min}) {
+       @content;
+   }
+}
+ 
+// Extra large devices
+@mixin xl {
+   @media (min-width: #{$screen-xl-min}) {
+       @content;
+   }
+}
+ 
+// Custom devices
+@mixin rwd($screen) {
+   @media (min-width: $screen+'px' ) {
+      @content;
+   }
+}

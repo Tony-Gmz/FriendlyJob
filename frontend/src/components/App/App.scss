@@ -1,0 +1,40 @@
+@import 'src/styles/vars';
+
+.app {
+
+
+  @include phone {
+   
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    height: 100vh;
+    
+ }
+ @include sm {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  height: 100vh;
+   
+  }
+  @include md {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    height: 100vh;
+}
+@include xl {
+
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  height: 100vh;
+
+}
+}
+
